@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>JSON筆記 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JSON筆記">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">JSON筆記</h1>
+  
+
+      
+        <time datetime="2013-06-18T10:39:00.000Z">2013-06-18 18:39:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>JSON 筆記</p>
+<p>JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法<br>因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式</p>
+<p>JSON的內容主要有二種型態，一種是物件，一種是陣列<br>物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔<br>陣列用中括號包起來，每個資料之間用逗點分隔</p>
+<p><div><pre class="brush:javascript">{<br>  “ID”: 1,<br>  “Name”: “JSON Demo”,<br>  “State”: 2,<br>  “Date”: “\/Date(13714 84800000)\/“,<br>  “Guid”: “7c52f0a4-a742-4898-a55c-583ab851b183”,<br>  “DataList”: [<br>    1,<br>    2,<br>    3,<br>    4,<br>    5<br>  ]<br>}<br></pre></div><br>JSON的資料型態有文字、數字、布林、NULL<br>文字:用雙引號包起來的內容<br>數字:包含整數和浮點數<br>布林: true / false<br>更多完整的介紹，可以參考官網或W3CSchool</p>
+<p><a href="http://www.json.org/json-zh.html" target="_blank" rel="noopener">JSON官網介紹</a></p>
+<p><a href="http://www.w3schools.com/json/default.asp" target="_blank" rel="noopener">W3CSchool Learn JSON</a></p>
+<hr>
+<p>在.NET中內建兩種解析方式，但需要Framework 3.5以上</p>
+<p>System.Web.Extensions下面的JavaScriptSerializer<br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer.html" target="_blank" rel="noopener">JavaScriptSerializer 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_18.html" target="_blank" rel="noopener">JavaScriptSerializer 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-ienumerable.html" target="_blank" rel="noopener">JavaScriptSerializer 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-idictionary.html" target="_blank" rel="noopener">JavaScriptSerializer 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_19.html" target="_blank" rel="noopener">JavaScriptSerializer 日期處理</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_7623.html" target="_blank" rel="noopener">JavaScriptSerializer ScriptIgnoreAttribute</a></p>
+<hr>
+<p>System.Runtime.Serialization下面的DataContractJsonSerializer<br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer.html" target="_blank" rel="noopener">DataContractJsonSerializer 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_20.html" target="_blank" rel="noopener">DataContractJsonSerializer 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-ienumerable.html" target="_blank" rel="noopener">DataContractJsonSerializer 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-idictionary.html" target="_blank" rel="noopener">DataContractJsonSerializer 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_6717.html" target="_blank" rel="noopener">DataContractJsonSerializer 日期處理</a></p>
+<hr>
+<p>另外還有一個好用的第三方套件JSON.Net<br><a href="http://blog.developer.idv.tw/2013/06/jsonnet_27.html" target="_blank" rel="noopener">Json.Net 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet.html" target="_blank" rel="noopener">Json.Net 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet-ienumerable.html" target="_blank" rel="noopener">Json.Net 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet-idictionary.html" target="_blank" rel="noopener">Json.Net 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/07/jsonnet.html" target="_blank" rel="noopener">Json.Net 日期處理</a></p>
+<hr>
+<p>另外介紹幾個好用的工具<br><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a><br>一個用來方便格式化JSON字串的網站 </p>
+<p><a href="http://json2csharp.com/" target="_blank" rel="noopener">JSON2CSharp</a><br>一個用來產生C#對應類別的網站</p>
+<p><a href="http://jsonclassgenerator.codeplex.com/" target="_blank" rel="noopener">JSON C# Class Generator</a><br>一個用來產生C#對應類別的程式</p>
+<p><a href="http://jsonlint.com/" target="_blank" rel="noopener">JSONLint - The JSON Validator</a></p>
+
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/JSON/">JSON</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

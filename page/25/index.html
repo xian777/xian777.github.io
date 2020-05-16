@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 25 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/08/TeamCity-Migrate-To-SQL-Server/">TeamCity Migrate To SQL Server</a></h1>
+  
+
+      
+        <time datetime="2012-11-08T12:57:00.000Z">2012-11-08 20:57:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="首先淮備好資料庫，例如一個名稱為TeamCity的DB"><a href="#首先淮備好資料庫，例如一個名稱為TeamCity的DB" class="headerlink" title="首先淮備好資料庫，例如一個名稱為TeamCity的DB"></a>首先淮備好資料庫，例如一個名稱為TeamCity的DB</h2><p><img src="http://2.bp.blogspot.com/-vkJGa93mgS8/UJud6ZDutdI/AAAAAAAAAXA/efJdpGCptNE/s1600/01.NewDB.png" alt="](http://2.bp.blogspot.com/-vkJGa93mgS8/UJud6ZDutdI/AAAAAAAAAXA/efJdpGCptNE/s1600/01.NewDB.png)"></p>
+<h2 id="建一個登入帳號，這裡帳號用bar，密碼用foo當範例"><a href="#建一個登入帳號，這裡帳號用bar，密碼用foo當範例" class="headerlink" title="建一個登入帳號，這裡帳號用bar，密碼用foo當範例"></a>建一個登入帳號，這裡帳號用bar，密碼用foo當範例</h2><p><img src="http://1.bp.blogspot.com/-WRh2WZcEgNM/UJud7G_MGSI/AAAAAAAAAXI/hipvEg4ZmNY/s1600/02.NewUser.png" alt="](http://1.bp.blogspot.com/-WRh2WZcEgNM/UJud7G_MGSI/AAAAAAAAAXI/hipvEg4ZmNY/s1600/02.NewUser.png)"></p>
+<h2 id="給予db-owner的權限"><a href="#給予db-owner的權限" class="headerlink" title="給予db_owner的權限"></a>給予db_owner的權限</h2><p><img src="http://3.bp.blogspot.com/-1mkS-zvnKaw/UJud7voFGwI/AAAAAAAAAXQ/IbcM34MqW_g/s1600/03.Owner.png" alt="](http://3.bp.blogspot.com/-1mkS-zvnKaw/UJud7voFGwI/AAAAAAAAAXQ/IbcM34MqW_g/s1600/03.Owner.png)"></p>
+<h2 id="再來下載Database-Driver，官網的文件中有介紹兩種Driver"><a href="#再來下載Database-Driver，官網的文件中有介紹兩種Driver" class="headerlink" title="再來下載Database Driver，官網的文件中有介紹兩種Driver"></a>再來下載Database Driver，官網的文件中有介紹兩種Driver</h2><h2 id="但我試了半天都不行用，後來爬文找到更改連線字串的寫法就可以了"><a href="#但我試了半天都不行用，後來爬文找到更改連線字串的寫法就可以了" class="headerlink" title="但我試了半天都不行用，後來爬文找到更改連線字串的寫法就可以了"></a>但我試了半天都不行用，後來爬文找到更改連線字串的寫法就可以了</h2><h2 id="所以在這裡以Microsoft-JDBC-Driver來介紹"><a href="#所以在這裡以Microsoft-JDBC-Driver來介紹" class="headerlink" title="所以在這裡以Microsoft JDBC Driver來介紹"></a>所以在這裡以Microsoft JDBC Driver來介紹</h2><h2 id="先去Microsoft-Download-Center-下載Driver"><a href="#先去Microsoft-Download-Center-下載Driver" class="headerlink" title="先去Microsoft Download Center 下載Driver"></a>先去Microsoft Download Center <a href="http://www.microsoft.com/zh-tw/download/details.aspx?id=11774" target="_blank" rel="noopener">下載Driver</a></h2><p><img src="http://1.bp.blogspot.com/-YNHb9XrRv9k/UJud8PN0l0I/AAAAAAAAAXY/-w8b5MtUqSk/s1600/04.Download.png" alt="](http://1.bp.blogspot.com/-YNHb9XrRv9k/UJud8PN0l0I/AAAAAAAAAXY/-w8b5MtUqSk/s1600/04.Download.png)"></p>
+<h2 id="下載後解壓縮，把sqljdbc4-jar複製到這個神秘的地方"><a href="#下載後解壓縮，把sqljdbc4-jar複製到這個神秘的地方" class="headerlink" title="下載後解壓縮，把sqljdbc4.jar複製到這個神秘的地方"></a>下載後解壓縮，把sqljdbc4.jar複製到這個神秘的地方</h2><p><img src="http://3.bp.blogspot.com/-whQq072tXfw/UJud8vAsOII/AAAAAAAAAXg/QhDweQyvu08/s1600/05.LibDir.png" alt="](http://3.bp.blogspot.com/-whQq072tXfw/UJud8vAsOII/AAAAAAAAAXg/QhDweQyvu08/s1600/05.LibDir.png)"></p>
+<h2 id="再來編輯database-mssql-properties-dist這一個範本檔"><a href="#再來編輯database-mssql-properties-dist這一個範本檔" class="headerlink" title="再來編輯database.mssql.properties.dist這一個範本檔"></a>再來編輯database.mssql.properties.dist這一個範本檔</h2><p><img src="http://1.bp.blogspot.com/-8eIjxlciydI/UJud9RDp2bI/AAAAAAAAAXo/LzrW7FDwNZA/s1600/06.DatabaseTemplate.png" alt="](http://1.bp.blogspot.com/-8eIjxlciydI/UJud9RDp2bI/AAAAAAAAAXo/LzrW7FDwNZA/s1600/06.DatabaseTemplate.png)"></p>
+<h2 id="官網的文件是把帳密打在後面，但試了半天就是不行"><a href="#官網的文件是把帳密打在後面，但試了半天就是不行" class="headerlink" title="官網的文件是把帳密打在後面，但試了半天就是不行"></a>官網的文件是把帳密打在後面，但試了半天就是不行</h2><p><a href="http://t800t8.blogspot.tw/2009/07/configuring-teamcity-with-sql-server.html" target="_blank" rel="noopener">爬文的結果</a>把帳密改寫在連線字串中就成功了，JAVA真是一種神秘的語言<br><img src="http://2.bp.blogspot.com/-k2IyAF5GUFk/UJud91XM0HI/AAAAAAAAAXw/l4Jxv5E89a8/s1600/07.Config.png" alt="](http://2.bp.blogspot.com/-k2IyAF5GUFk/UJud91XM0HI/AAAAAAAAAXw/l4Jxv5E89a8/s1600/07.Config.png)"></p>
+<p>TeamCity升級到7.1.2後，JDBC的設定不能用了，只好再試了一下另一種連線方式jtds-1.2.2<br>首先到此下載，<a href="http://sourceforge.net/projects/jtds/files/" target="_blank" rel="noopener">jTDS - SQL Server and Sybase JDBC driver</a><br>我下載最新的版本，會有java.lang.UnsupportedClassVersionError的錯誤，換成1.2.2就好了<br>一樣把jtds-1.2.2.jar複製到lib/jdbc的資料夾<br>連線字串就可以照著範本的格式打了<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connectionUrl=jdbc:jtds:sqlserver://<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>:1433/<span class="tag">&lt;<span class="name">dbname</span>&gt;</span></span><br><span class="line">connectionProperties.user=<span class="tag">&lt;<span class="name">username</span>&gt;</span></span><br><span class="line">connectionProperties.password=<span class="tag">&lt;<span class="name">password</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://confluence.jetbrains.net/display/TCD7/Migrating+to+an+External+Database" target="_blank" rel="noopener">Migrating to an External Database</a></li>
+</ul>
+<h2 id="到此淮備工作就完成了，要開始轉移資料之前，要先把服務停下來"><a href="#到此淮備工作就完成了，要開始轉移資料之前，要先把服務停下來" class="headerlink" title="到此淮備工作就完成了，要開始轉移資料之前，要先把服務停下來"></a>到此淮備工作就完成了，要開始轉移資料之前，要先把服務停下來</h2><p><img src="http://1.bp.blogspot.com/-ZO21PE08jw8/UJud-TBJl6I/AAAAAAAAAX4/3I9MMVD7KMw/s1600/08.StopService.png" alt="](http://1.bp.blogspot.com/-ZO21PE08jw8/UJud-TBJl6I/AAAAAAAAAX4/3I9MMVD7KMw/s1600/08.StopService.png)"></p>
+<h2 id="然後打開一個cmd，輸入以下指令"><a href="#然後打開一個cmd，輸入以下指令" class="headerlink" title="然後打開一個cmd，輸入以下指令"></a>然後打開一個cmd，輸入以下指令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set path=%path%;c:\TeamCity\jre\bin</span><br></pre></td></tr></table></figure>
+<p>這行是和設定JAVA_HOME這個神秘的全域變數同樣的效果<br>用來把Java Run Time的路徑包含進系統的path<br>因為我沒安裝JAVA環境，所以要指向到TeamCity自帶的jre路徑<br>但如果在執行過程中會發生無法開啟jvm.cfg這個錯誤訊息的話<br>把System32下面的Java.exe、Javaw.exe、Javaws.exe都砍掉就行了<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maintainDB.cmd migrate -T c:\ProgramData\JetBrains\TeamCity\config\database.mssql.properties.dist</span><br></pre></td></tr></table></figure></p>
+<p>maintainDB.cmd是TeamCity自帶的資料庫維護工具，可以用來備份、還原、和搬移資料<br>這邊用的是migrate，把剛設定資料庫的設定檔用-T參考傳進去就行了<br><img src="http://3.bp.blogspot.com/-6skME4p2u5U/UJud-95UhjI/AAAAAAAAAYA/L0Lezi6GN14/s1600/09.Cmd.png" alt="](http://3.bp.blogspot.com/-6skME4p2u5U/UJud-95UhjI/AAAAAAAAAYA/L0Lezi6GN14/s1600/09.Cmd.png)"></p>
+<p>順利的話，就會開始搬移資料進SQL Server，並且也會把剛剛的資料庫連線範本<br>複制成正式用的檔案database.properties<br><img src="http://3.bp.blogspot.com/-Y76ZKXqUFmY/UJumBkLtVVI/AAAAAAAAAYw/56KfkQqXhIQ/s1600/10.Success.png" alt="](http://3.bp.blogspot.com/-Y76ZKXqUFmY/UJumBkLtVVI/AAAAAAAAAYw/56KfkQqXhIQ/s1600/10.Success.png)"></p>
+<h2 id="資料庫的物件也都建好了，重啟服務就完成囉"><a href="#資料庫的物件也都建好了，重啟服務就完成囉" class="headerlink" title="資料庫的物件也都建好了，重啟服務就完成囉"></a>資料庫的物件也都建好了，重啟服務就完成囉</h2><p><a href="http://2.bp.blogspot.com/-D0C-bR5Sb1Y/UJueAvRMlHI/AAAAAAAAAYQ/JzHxo2Gdqvw/s1600/11.MigrateOK.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-D0C-bR5Sb1Y/UJueAvRMlHI/AAAAAAAAAYQ/JzHxo2Gdqvw/s1600/11.MigrateOK.png" alt></a></p>
+<h2 id="參考資料-1"><a href="#參考資料-1" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://www.microsoft.com/zh-tw/download/details.aspx?id=11774" target="_blank" rel="noopener">Microsoft JDBC Driver 4.0 for SQL Server</a></li>
+<li><a href="http://blog.csdn.net/xiaofeixia22222/article/details/6235720" target="_blank" rel="noopener">Error: could not open `C:/Program Files/Java/jre6/lib/i386/jvm.cfg’之解决方法</a></li>
+<li><a href="http://t800t8.blogspot.tw/2009/07/configuring-teamcity-with-sql-server.html" target="_blank" rel="noopener">Configuring TeamCity with SQL Server 2008 Express</a></li>
+<li><a href="http://www.tellingmachine.com/post/Migrating-TeamCity-database-to-Microsoft-SQL-Server-2008-R2.aspx" target="_blank" rel="noopener">Migrating TeamCity database to Microsoft SQL Server 2008 R2</a></li>
+<li><a href="http://confluence.jetbrains.net/display/TCD7/Migrating+to+an+External+Database" target="_blank" rel="noopener">Migrating to an External Database</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/07/安裝continuous-integration-CI-server-TeamCity/">安裝continuous integration (CI) server:TeamCity</a></h1>
+  
+
+      
+        <time datetime="2012-11-07T11:59:00.000Z">2012-11-07 19:59:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例"><a href="#首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例" class="headerlink" title="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例"></a>首先到<a href="http://www.jetbrains.com/teamcity/download/index.html" target="_blank" rel="noopener">TeamCity的官網</a>下載合適平台的安裝檔，這裡以Windows平台為例</h2><p><img src="http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png" alt="](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)"></p>
+<h2 id="接下來一直按下一步就行了"><a href="#接下來一直按下一步就行了" class="headerlink" title="接下來一直按下一步就行了"></a>接下來一直按下一步就行了</h2><p><img src="http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png" alt="](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)"></p>
+<h2 id="安裝的路徑"><a href="#安裝的路徑" class="headerlink" title="安裝的路徑"></a>安裝的路徑</h2><p><img src="http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png" alt="](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)"></p>
+<h2 id="安裝的項目，可單獨選擇Build-Agent或Server"><a href="#安裝的項目，可單獨選擇Build-Agent或Server" class="headerlink" title="安裝的項目，可單獨選擇Build Agent或Server"></a>安裝的項目，可單獨選擇Build Agent或Server</h2><p><img src="http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png" alt="](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)"></p>
+<h2 id="設定檔的路徑"><a href="#設定檔的路徑" class="headerlink" title="設定檔的路徑"></a>設定檔的路徑</h2><p><img src="http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png" alt="](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)"></p>
+<h2 id="如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080"><a href="#如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080" class="headerlink" title="如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080"></a>如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080</h2><p><img src="http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png" alt="](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)"></p>
+<h2 id="設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了"><a href="#設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了" class="headerlink" title="設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了"></a>設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了</h2><p><img src="http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png" alt="](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)"></p>
+<h2 id="選擇TeamCity-Server-Service要用的帳號"><a href="#選擇TeamCity-Server-Service要用的帳號" class="headerlink" title="選擇TeamCity Server Service要用的帳號"></a>選擇TeamCity Server Service要用的帳號</h2><p><img src="http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png" alt="](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)"></p>
+<h2 id="選擇TeamCity-Agent-Service要用的帳號"><a href="#選擇TeamCity-Agent-Service要用的帳號" class="headerlink" title="選擇TeamCity Agent Service要用的帳號"></a>選擇TeamCity Agent Service要用的帳號</h2><p><img src="http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png" alt="](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)"></p>
+<h2 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h2><p><img src="http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png" alt="](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)"></p>
+<h2 id="到此安裝完成，按下Finish開始設定頁面"><a href="#到此安裝完成，按下Finish開始設定頁面" class="headerlink" title="到此安裝完成，按下Finish開始設定頁面"></a>到此安裝完成，按下Finish開始設定頁面</h2><p><img src="http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png" alt="](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)"></p>
+<h2 id="第一次執行時的頁面，按下Proceed按鈕執行初始化動作"><a href="#第一次執行時的頁面，按下Proceed按鈕執行初始化動作" class="headerlink" title="第一次執行時的頁面，按下Proceed按鈕執行初始化動作"></a>第一次執行時的頁面，按下Proceed按鈕執行初始化動作</h2><p><img src="http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png" alt="](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)"></p>
+<h2 id="等待初始化完成後，會跳出使用者授權頁面"><a href="#等待初始化完成後，會跳出使用者授權頁面" class="headerlink" title="等待初始化完成後，會跳出使用者授權頁面"></a>等待初始化完成後，會跳出使用者授權頁面</h2><p><img src="http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png" alt="](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)"></p>
+<h2 id="輸入一組管理用的帳號"><a href="#輸入一組管理用的帳號" class="headerlink" title="輸入一組管理用的帳號"></a>輸入一組管理用的帳號</h2><p><img src="http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png" alt="](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)"></p>
+<h2 id="登入成功，接下來就可以開始來設定專案了"><a href="#登入成功，接下來就可以開始來設定專案了" class="headerlink" title="登入成功，接下來就可以開始來設定專案了"></a>登入成功，接下來就可以開始來設定專案了</h2><p><img src="http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png" alt="](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)"></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://www.jetbrains.com/teamcity/buy/edition_comparison.html" target="_blank" rel="noopener">TeamCity Edition Comparison Matrix</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/06/Windows平台的軟體套件管理-Chocolatey/">Windows平台的軟體套件管理:Chocolatey</a></h1>
+  
+
+      
+        <time datetime="2012-11-06T05:56:00.000Z">2012-11-06 13:56:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先到<a href="http://chocolatey.org/" target="_blank" rel="noopener">官網</a>逛一下，安裝的方式很簡單，打開一個cmd，切到C:\，直接在官網上的那一串複製貼上就好了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\@powershell -NoProfile -ExecutionPolicy unrestricted  -Command "iex ((new-object  net.webclient .DownloadString('http://bit.ly/psChocInstall'))"  &amp;amp;&amp;amp; SET PATH=%PATH%;%systemdrive%\chocolatey\bin</span><br></pre></td></tr></table></figure>
+<p>如果有Vistual Studio，也安裝Nuget套件的話，也可以用命令列安裝chocolatey套件<code>Install-Package chocolatey</code></p>
+<p>如果有nuget命令列工具的話，直接安裝也可以<code>nuget install chocolatey</code></p>
+<p>安裝好之後，可在官網搜尋目前有的套件，常見的像<code></code>tortoisesvn、Radmin.Viewer、7zip，只要執行cinst 套件名稱就可以安裝了，還滿方便的</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/06/NuGet-套件超過30MB的問題/">NuGet 套件超過30MB的問題</a></h1>
+  
+
+      
+        <time datetime="2012-11-06T05:28:00.000Z">2012-11-06 13:28:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h2><p>開始打包Web套件之後，套件的檔案很快就超過了30MB，使用NuGet Push的時後，一直顯示404找不到網頁，再到IIS查Log，回應碼是404.13，再Google一下，原來IIS7預設的上傳是30MB， 所以把這個值設大一點就好了，例如加大到300MB<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">httpRuntime</span> <span class="attr">maxRequestLength</span>=<span class="string">”31457280”</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://help.octopusdeploy.com/discussions/problems/184-30mb-default-maximum-nuget-package-size" target="_blank" rel="noopener">30MB Default Maximum Nuget Package Size </a></li>
+<li><a href="http://martinondotnet.blogspot.tw/2010/04/iis-7-gotcha-40413-not-found-uploading.html" target="_blank" rel="noopener">404.13 Not Found – Uploading Large Files with Integrated Pipeline!&nbsp;</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/06/Octopus-XML設定檔轉換和替代變數/">Octopus XML設定檔轉換和替代變數</a></h1>
+  
+
+      
+        <time datetime="2012-11-06T02:48:00.000Z">2012-11-06 10:48:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案佈署的過程中，不同環境的設定檔會有所不同<br>web.config使用的還是XDT Transform<br>只要檔名和環境別對的起來，就會自動轉換，例如UAT環境<br>佈署的時後，只要有web.uat.config這個檔案<br>就會自動轉換原來的web.config<br>除此之外，Octopus還有一些預先定義好的變數，可以在Variables裡面設定<br><img src="http://3.bp.blogspot.com/-y3E2E-vvY3k/UJh56tJ6rVI/AAAAAAAAATo/cx2IDuw-4NA/s1600/01.+Variables.png" alt="](http://3.bp.blogspot.com/-y3E2E-vvY3k/UJh56tJ6rVI/AAAAAAAAATo/cx2IDuw-4NA/s1600/01.+Variables.png)"></p>
+<p>OctopusOriginalPackageDirectoryPath<br>這個變數用來指定套件佈署時的原來位置，例如 C:\Apps\Prod\MyApp\1.0.0</p>
+<p>OctopusPackageDirectoryPath<br>這個變數用來自訂套件要安裝的位置，例如D:\WebSite\MyApp</p>
+<p>OctopusWebSiteName<br>這個變數用來自訂站台的名稱，如不指定，則是以套件的名稱來對應IIS的設定</p>
+<p>更多詳細的設定，可以參考官網的文件</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://octopusdeploy.com/documentation/features/variables" target="_blank" rel="noopener">Variables</a></li>
+<li><a href="http://octopusdeploy.com/documentation/features/xml-config" target="_blank" rel="noopener">XML Configuration Files</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/05/Octopus部署專案/">Octopus部署專案</a></h1>
+  
+
+      
+        <time datetime="2012-11-05T13:36:00.000Z">2012-11-05 21:36:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add-NuGet-feed"><a href="#首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add-NuGet-feed" class="headerlink" title="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed"></a>首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed</h2><p><img src="http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png" alt="](http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png)"></p>
+<h2 id="輸入名稱和NuGet-Server所在位置，如有需要授權就再輸入帳密，然後按下新增"><a href="#輸入名稱和NuGet-Server所在位置，如有需要授權就再輸入帳密，然後按下新增" class="headerlink" title="輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增"></a>輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增</h2><p><img src="http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png" alt="](http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png)"></p>
+<h2 id="接下來先建立專案群組"><a href="#接下來先建立專案群組" class="headerlink" title="接下來先建立專案群組"></a>接下來先建立專案群組</h2><p><img src="http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png" alt="](http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png)"></p>
+<h2 id="再來選擇建立專案"><a href="#再來選擇建立專案" class="headerlink" title="再來選擇建立專案"></a>再來選擇建立專案</h2><p><img src="http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png" alt="](http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png)"></p>
+<h2 id="輸入專案資訊"><a href="#輸入專案資訊" class="headerlink" title="輸入專案資訊"></a>輸入專案資訊</h2><p><img src="http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png" alt="](http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png)"></p>
+<h2 id="新增完成，點擊專案名稱來設定部署"><a href="#新增完成，點擊專案名稱來設定部署" class="headerlink" title="新增完成，點擊專案名稱來設定部署"></a>新增完成，點擊專案名稱來設定部署</h2><p><img src="http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png" alt="](http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png)"></p>
+<h2 id="選擇Steps，再點擊Add-package-step"><a href="#選擇Steps，再點擊Add-package-step" class="headerlink" title="選擇Steps，再點擊Add package step"></a>選擇Steps，再點擊Add package step</h2><p><img src="http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png" alt="](http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png)"></p>
+<h2 id="輸入套件資料，如果專案有多個套件，可重覆此步驟"><a href="#輸入套件資料，如果專案有多個套件，可重覆此步驟" class="headerlink" title="輸入套件資料，如果專案有多個套件，可重覆此步驟"></a>輸入套件資料，如果專案有多個套件，可重覆此步驟</h2><p><img src="http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png" alt="](http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png)"></p>
+<h2 id="接下來建立發佈版本"><a href="#接下來建立發佈版本" class="headerlink" title="接下來建立發佈版本"></a>接下來建立發佈版本</h2><p><img src="http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png" alt="](http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png)"></p>
+<h2 id="輸入版本資訊"><a href="#輸入版本資訊" class="headerlink" title="輸入版本資訊"></a>輸入版本資訊</h2><p><img src="http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png" alt="](http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png)"></p>
+<h2 id="發佈版本資訊"><a href="#發佈版本資訊" class="headerlink" title="發佈版本資訊"></a>發佈版本資訊</h2><p><img src="http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png" alt="](http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png)"></p>
+<h2 id="執行發佈版本"><a href="#執行發佈版本" class="headerlink" title="執行發佈版本"></a>執行發佈版本</h2><p><img src="http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png" alt="](http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png)"></p>
+<h2 id="發佈成功"><a href="#發佈成功" class="headerlink" title="發佈成功"></a>發佈成功</h2><p><img src="http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png" alt="](http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png)"></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/05/Octopus打包網站專案/">Octopus打包網站專案</a></h1>
+  
+
+      
+        <time datetime="2012-11-05T12:47:00.000Z">2012-11-05 20:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="先建一個HelloWorld的空白站台"><a href="#先建一個HelloWorld的空白站台" class="headerlink" title="先建一個HelloWorld的空白站台"></a>先建一個HelloWorld的空白站台</h2><p><img src="http://1.bp.blogspot.com/-q-PoZn-V6so/UJey4s6A-gI/AAAAAAAAAQ4/VkzzC4SN6sQ/s1600/01.NewProject.png" alt="](http://1.bp.blogspot.com/-q-PoZn-V6so/UJey4s6A-gI/AAAAAAAAAQ4/VkzzC4SN6sQ/s1600/01.NewProject.png)"></p>
+<h2 id="新增一個首頁，輸出Hello和目前時間"><a href="#新增一個首頁，輸出Hello和目前時間" class="headerlink" title="新增一個首頁，輸出Hello和目前時間"></a>新增一個首頁，輸出Hello和目前時間</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">    public partial class _default : System.Web.UI.Page</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Response.Write(“hello:” + DateTime.Now.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="接下來用NuGet安裝OctoPack套件"><a href="#接下來用NuGet安裝OctoPack套件" class="headerlink" title="接下來用NuGet安裝OctoPack套件"></a>接下來用NuGet安裝OctoPack套件</h2><p><img src="http://3.bp.blogspot.com/-JZBnLxWF4Fg/UJey5I_yqbI/AAAAAAAAARA/DPpwKjhGQAs/s1600/02.OctoPack.png" alt="](http://3.bp.blogspot.com/-JZBnLxWF4Fg/UJey5I_yqbI/AAAAAAAAARA/DPpwKjhGQAs/s1600/02.OctoPack.png)"></p>
+<h2 id="新增一個nuspec檔案，但所有佔位符號都要手動輸入"><a href="#新增一個nuspec檔案，但所有佔位符號都要手動輸入" class="headerlink" title="新增一個nuspec檔案，但所有佔位符號都要手動輸入"></a>新增一個nuspec檔案，但所有佔位符號都要手動輸入</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=”1.0”?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">package</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">metadata</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>佈署測試用Package<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">authors</span>&gt;</span>Xian<span class="tag">&lt;/<span class="name">authors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">owners</span>&gt;</span>Xian<span class="tag">&lt;/<span class="name">owners</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">licenseUrl</span>&gt;</span>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE<span class="tag">&lt;/<span class="name">licenseUrl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">projectUrl</span>&gt;</span>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE<span class="tag">&lt;/<span class="name">projectUrl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iconUrl</span>&gt;</span>http://ICON_URL_HERE_OR_DELETE_THIS_LINE<span class="tag">&lt;/<span class="name">iconUrl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">requireLicenseAcceptance</span>&gt;</span>false<span class="tag">&lt;/<span class="name">requireLicenseAcceptance</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>佈署測試用…<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">releaseNotes</span>&gt;</span>Summary of changes made in this release of the package.<span class="tag">&lt;/<span class="name">releaseNotes</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copyright</span>&gt;</span>Copyright 2012<span class="tag">&lt;/<span class="name">copyright</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tags</span>&gt;</span>Tag1 Tag2<span class="tag">&lt;/<span class="name">tags</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">metadata</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="選擇Release組態，按下建置"><a href="#選擇Release組態，按下建置" class="headerlink" title="選擇Release組態，按下建置"></a>選擇Release組態，按下建置</h2><h2 id="bin資料夾下就可以得到這個網站的套件"><a href="#bin資料夾下就可以得到這個網站的套件" class="headerlink" title="bin資料夾下就可以得到這個網站的套件"></a>bin資料夾下就可以得到這個網站的套件</h2><p><img src="http://1.bp.blogspot.com/-japnZvmbHog/UJe1DhHUsfI/AAAAAAAAARQ/0KQr17x0ehs/s1600/03.Package.png" alt="](http://1.bp.blogspot.com/-japnZvmbHog/UJe1DhHUsfI/AAAAAAAAARQ/0KQr17x0ehs/s1600/03.Package.png)"></p>
+<h2 id="為了方便起見，爬了一下文，找到利用MSBuild和參數來完成同樣的工具"><a href="#為了方便起見，爬了一下文，找到利用MSBuild和參數來完成同樣的工具" class="headerlink" title="為了方便起見，爬了一下文，找到利用MSBuild和參數來完成同樣的工具"></a>為了方便起見，爬了一下文，找到利用MSBuild和參數來完成同樣的工具</h2><h2 id="順便佈署到NuGet-Server去"><a href="#順便佈署到NuGet-Server去" class="headerlink" title="順便佈署到NuGet Server去"></a>順便佈署到NuGet Server去</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msbuild Ruby1_WS.csproj /t:Rebuild /t:ResolveReferences /t:_CopyWebApplication /p:Configuration=Release /p:WebProjectOutputDir=publish\ /p:OutDir=publish\bin\&lt;/div&gt;/p:OctopusPublishPackageToHttp=http://NuGetServer所在網址 /p:OctopusPublishApiKey=NuGetServer上傳的密碼</span><br></pre></td></tr></table></figure>
+<h2 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h2><ul>
+<li><a href="https://github.com/OctopusDeploy/OctoPack" target="_blank" rel="noopener">OctoPack Web Application Publishing</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/05/安裝Octopus-Tentacle/">安裝Octopus Tentacle</a></h1>
+  
+
+      
+        <time datetime="2012-11-05T12:13:00.000Z">2012-11-05 20:13:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="首先到官網下載Tentacle安裝程式"><a href="#首先到官網下載Tentacle安裝程式" class="headerlink" title="首先到官網下載Tentacle安裝程式"></a>首先到官網下載Tentacle安裝程式</h2><p><img src="http://2.bp.blogspot.com/-23up0pJpYA8/UJeslHAt-1I/AAAAAAAAAPk/rNtz5vZ9vI8/s1600/00.Files.png" alt="](http://2.bp.blogspot.com/-23up0pJpYA8/UJeslHAt-1I/AAAAAAAAAPk/rNtz5vZ9vI8/s1600/00.Files.png)"></p>
+<h2 id="一直按下一步就可以完成安裝了"><a href="#一直按下一步就可以完成安裝了" class="headerlink" title="一直按下一步就可以完成安裝了"></a>一直按下一步就可以完成安裝了</h2><p><img src="http://4.bp.blogspot.com/-iLmkFkUJ7Ss/UJesluMrZmI/AAAAAAAAAPs/XQ__Y070zrw/s1600/01.Install.png" alt="](http://4.bp.blogspot.com/-iLmkFkUJ7Ss/UJesluMrZmI/AAAAAAAAAPs/XQ__Y070zrw/s1600/01.Install.png)"></p>
+<h2 id="接下來進入設定畫面，這裡的信任key要從剛安裝的網站上取得"><a href="#接下來進入設定畫面，這裡的信任key要從剛安裝的網站上取得" class="headerlink" title="接下來進入設定畫面，這裡的信任key要從剛安裝的網站上取得"></a>接下來進入設定畫面，這裡的信任key要從剛安裝的網站上取得</h2><p><img src="http://2.bp.blogspot.com/-2Zn6TeCZlSU/UJesmFKNP1I/AAAAAAAAAP0/YgSc8eNFe5o/s1600/02.Client.png" alt="](http://2.bp.blogspot.com/-2Zn6TeCZlSU/UJesmFKNP1I/AAAAAAAAAP0/YgSc8eNFe5o/s1600/02.Client.png)"></p>
+<h2 id="先建一個環境出來"><a href="#先建一個環境出來" class="headerlink" title="先建一個環境出來"></a>先建一個環境出來</h2><p><img src="http://3.bp.blogspot.com/-Jye8t4XHAPk/UJesm4wStcI/AAAAAAAAAP8/QCS7jTpZP34/s1600/03.EnvirAdd.png" alt="](http://3.bp.blogspot.com/-Jye8t4XHAPk/UJesm4wStcI/AAAAAAAAAP8/QCS7jTpZP34/s1600/03.EnvirAdd.png)"></p>
+<h2 id="再建一個機器，把Tentacle的Key打上去Thumbprint就是要打到Tentacle去的Key"><a href="#再建一個機器，把Tentacle的Key打上去Thumbprint就是要打到Tentacle去的Key" class="headerlink" title="再建一個機器，把Tentacle的Key打上去Thumbprint就是要打到Tentacle去的Key"></a>再建一個機器，把Tentacle的Key打上去Thumbprint就是要打到Tentacle去的Key</h2><h2 id="Roles輸入機器的用途，這邊以WebServer為例"><a href="#Roles輸入機器的用途，這邊以WebServer為例" class="headerlink" title="Roles輸入機器的用途，這邊以WebServer為例"></a>Roles輸入機器的用途，這邊以WebServer為例</h2><p><img src="http://1.bp.blogspot.com/-qErkwlnaUtg/UJesncGhhuI/AAAAAAAAAQE/fCZqO4Ua6u0/s1600/04.AddMachine.png" alt="](http://1.bp.blogspot.com/-qErkwlnaUtg/UJesncGhhuI/AAAAAAAAAQE/fCZqO4Ua6u0/s1600/04.AddMachine.png)"></p>
+<h2 id="再回到Tentacle的設定畫面，這邊是部署過來的資料要存放的地方"><a href="#再回到Tentacle的設定畫面，這邊是部署過來的資料要存放的地方" class="headerlink" title="再回到Tentacle的設定畫面，這邊是部署過來的資料要存放的地方"></a>再回到Tentacle的設定畫面，這邊是部署過來的資料要存放的地方</h2><p><img src="http://4.bp.blogspot.com/-pKa_a3Nn6qI/UJesn-5iwxI/AAAAAAAAAQM/mn_Bo-idNpI/s1600/05.ClientLocation.png" alt="](http://4.bp.blogspot.com/-pKa_a3Nn6qI/UJesn-5iwxI/AAAAAAAAAQM/mn_Bo-idNpI/s1600/05.ClientLocation.png)"></p>
+<h2 id="Tentacle的Service，按下Install就行了"><a href="#Tentacle的Service，按下Install就行了" class="headerlink" title="Tentacle的Service，按下Install就行了"></a>Tentacle的Service，按下Install就行了</h2><p><img src="http://3.bp.blogspot.com/-P1ConmMDXMo/UJesoVX8gVI/AAAAAAAAAQU/eHXVH7AnDxI/s1600/06.ClientService.png" alt="](http://3.bp.blogspot.com/-P1ConmMDXMo/UJesoVX8gVI/AAAAAAAAAQU/eHXVH7AnDxI/s1600/06.ClientService.png)"></p>
+<h2 id="回到網站，按一下Check-health，順利的話就會看到剛設定的Machine可以使用了"><a href="#回到網站，按一下Check-health，順利的話就會看到剛設定的Machine可以使用了" class="headerlink" title="回到網站，按一下Check health，順利的話就會看到剛設定的Machine可以使用了"></a>回到網站，按一下Check health，順利的話就會看到剛設定的Machine可以使用了</h2><p><img src="http://1.bp.blogspot.com/-yM3_QMYevIA/UJespGj3ikI/AAAAAAAAAQc/tckJLMtWuJg/s1600/07.OK.png" alt="](http://1.bp.blogspot.com/-yM3_QMYevIA/UJespGj3ikI/AAAAAAAAAQc/tckJLMtWuJg/s1600/07.OK.png)"></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/05/安裝自動佈署工具Octopus/">安裝自動佈署工具Octopus</a></h1>
+  
+
+      
+        <time datetime="2012-11-05T11:48:00.000Z">2012-11-05 19:48:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先到<a href="http://octopusdeploy.com/downloads" target="_blank" rel="noopener">Octopus官網</a>下載安裝檔<br>Octopus Install是Server端<br>Octopus Tentacle Installer是Client端<br><img src="http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png" alt="](http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png)"></p>
+<h2 id="先下載Server端，然後一直下一步就可以安裝好了"><a href="#先下載Server端，然後一直下一步就可以安裝好了" class="headerlink" title="先下載Server端，然後一直下一步就可以安裝好了"></a>先下載Server端，然後一直下一步就可以安裝好了</h2><p><img src="http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png" alt="](http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png)"></p>
+<h2 id="接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集"><a href="#接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集" class="headerlink" title="接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集"></a>接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集</h2><p><img src="http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png" alt="](http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png)"></p>
+<h2 id="這邊是資料存放的地方，自行輸入路徑按Save就行了"><a href="#這邊是資料存放的地方，自行輸入路徑按Save就行了" class="headerlink" title="這邊是資料存放的地方，自行輸入路徑按Save就行了"></a>這邊是資料存放的地方，自行輸入路徑按Save就行了</h2><p><img src="http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png" alt="](http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png)"></p>
+<h2 id="這邊是Service安裝，按下Install就行了"><a href="#這邊是Service安裝，按下Install就行了" class="headerlink" title="這邊是Service安裝，按下Install就行了"></a>這邊是Service安裝，按下Install就行了</h2><p><img src="http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png" alt="](http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png)"></p>
+<h2 id="這邊是網站的安裝，按下Create-Site就行了"><a href="#這邊是網站的安裝，按下Create-Site就行了" class="headerlink" title="這邊是網站的安裝，按下Create Site就行了"></a>這邊是網站的安裝，按下Create Site就行了</h2><p><img src="http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png" alt="](http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png)"></p>
+<h2 id="IIS中就會出現這個網站"><a href="#IIS中就會出現這個網站" class="headerlink" title="IIS中就會出現這個網站"></a>IIS中就會出現這個網站</h2><p><img src="http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png" alt="](http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png)"></p>
+<h2 id="第一次瀏覽這個網站的時後，會需要輸入管理員的密碼"><a href="#第一次瀏覽這個網站的時後，會需要輸入管理員的密碼" class="headerlink" title="第一次瀏覽這個網站的時後，會需要輸入管理員的密碼"></a>第一次瀏覽這個網站的時後，會需要輸入管理員的密碼</h2><p><img src="http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png" alt="](http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png)"><br><img src="http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png" alt></p>
+<h2 id="通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了"><a href="#通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了" class="headerlink" title="通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了"></a>通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了</h2><p><img src="http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png" alt="](http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png)"></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/11/05/Nuget-版本控制/">Nuget 版本控制</a></h1>
+  
+
+      
+        <time datetime="2012-11-05T10:29:00.000Z">2012-11-05 18:29:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h2><p>NuGet正式套件的檔名，通常是這樣的格式:[id].[Major].[Minor].[Patch].nupkg<br>ex: MyPackage.1.0.1.nupkg<br>測試套件的檔名，通常格式為:id.[Major].[Minor].[Patch]-[alpha | beta | rc].nupkg</p>
+<p>ex:<br>MyPackage.1.0.1-alpha.nupkg<br>MyPackage.1.0.1-beta.nupkg<br>MyPackage.1.0.1-rc.nupkg</p>
+<ul>
+<li>有相依性的套件，指定的版號格式如下</li>
+<li>直接指定版號為最低版號</li>
+<li>小括號為不包含</li>
+<li>中括號為包含</li>
+<li>空白表示最新版號<br>1.0  = 1.0 ≤ x<br>(,1.0]  = x ≤ 1.0<br>(,1.0)  = x &lt; 1.0<br>[1.0] = x == 1.0<br>(1.0) = invalid<br>(1.0,) = 1.0 &lt; x<br>(1.0,2.0) = 1.0 &lt; x &lt; 2.0<br>[1.0,2.0] = 1.0 ≤ x ≤ 2.0<br>empty = latest version.</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://docs.nuget.org/docs/reference/versioning" target="_blank" rel="noopener">Versioning</a></li>
+</ul>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/24/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/26/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

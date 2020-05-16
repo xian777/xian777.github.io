@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>NuGet Multiple Framework 建置 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="NuGet Multiple Framework 建置">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">NuGet Multiple Framework 建置</h1>
+  
+
+      
+        <time datetime="2013-12-24T03:20:00.000Z">2013-12-24 11:20:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下<br><br>Step1 每個版本建立一個方案檔<br>一般專案的命名為net20、net35、net40、net45…<br>其他類型的專案則再加上縮寫<br>Client Profile(client)<br>WindowsPhone(wp)<br>Silverlight(sl)<br>CompactFramework(cf)<br>更多完整的資料請參考官網文件<br><a href="http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package" target="_blank" rel="noopener">http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package</a></div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png" alt></a></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png" alt></a></div><div>Step2 每一個版本建立一個專案檔</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png" alt></a></div><span style="background-color: #fcfcfc; color: #333333; font-family: Consolas, 'Courier New'; font-size: 13.600000381469727px;"><br></span><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png" alt></a></div><br><div>Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑<br><strong><span style="color: red;">注意每個組態都要設定喔 </span></strong></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png" alt></a></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png" alt></a></div><div>Step4 依Framework版本，加上條件式編譯<br><br></div><div><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br><br>#if NET35 || NET40 || NET45<br>using System.Linq;<br>#endif<br><br>using System.Text;<br><br>#if NET40 || NET45<br>using System.Threading.Tasks;<br>#endif<br><br>namespace ClassLibrary1<br>{<br>    public class Class1<br>    {<br>    }<br>}<br><br></pre></div><div>Step5 手動建立nuget spec檔</div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png" alt></a></div><div><pre class="brush:xml">&lt;?xml version=”1.0”?&gt;<br>&lt;package &gt;<br>  &lt;metadata&gt;<br>    &lt;id&gt;ClassLibrary1&lt;/id&gt;<br>    &lt;version&gt;1.0.0&lt;/version&gt;<br>    &lt;authors&gt;xian&lt;/authors&gt;<br>    &lt;owners&gt;xian&lt;/owners&gt;<br>    &lt;licenseUrl&gt;<a href="http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl" target="_blank" rel="noopener">http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl</a>&gt;<br>    &lt;projectUrl&gt;<a href="http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl" target="_blank" rel="noopener">http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl</a>&gt;<br>    &lt;iconUrl&gt;<a href="http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl" target="_blank" rel="noopener">http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl</a>&gt;<br>    &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt;<br>    &lt;description&gt;Package description&lt;/description&gt;<br>    &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt;<br>    &lt;copyright&gt;Copyright 2013&lt;/copyright&gt;<br>    &lt;tags&gt;Tag1 Tag2&lt;/tags&gt;<br>    &lt;dependencies&gt;<br>      &lt;dependency id=”SampleDependency” version=”1.0” /&gt;<br>    &lt;/dependencies&gt;<br>  &lt;/metadata&gt;<br>  &lt;files&gt;<br>        &lt;file src=”ClassLibrary1*<em>\</em>.cs” exclude=”ClassLibrary1\obj*<em>\</em>.cs” target=”src” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net20\ClassLibrary1.dll” target=”lib\net20\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net20\ClassLibrary1.pdb” target=”lib\net20\ClassLibrary1.pdb” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net35\ClassLibrary1.dll” target=”lib\net35\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net35\ClassLibrary1.pdb” target=”lib\net35\ClassLibrary1.pdb” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net40\ClassLibrary1.dll” target=”lib\net40\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net40\ClassLibrary1.pdb” target=”lib\net40\ClassLibrary1.pdb” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net45\ClassLibrary1.dll” target=”lib\net45\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net45\ClassLibrary1.pdb” target=”lib\net45\ClassLibrary1.pdb” /&gt;<br>    &lt;/files&gt;<br>&lt;/package&gt;&nbsp;</pre></div><br><div>Step6 加上測試用批次檔</div><br><div><pre class="brush:xml">@echo off<br>set MSBUILD=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe<br>if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe<br>if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v3.5\msbuild.exe<br>if not exist %MSBUILD% (<br> echo MSBuild not found<br> exit<br>)<br><br>%MSBUILD% ClassLibrary1.net20.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net35.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net40.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net45.sln /property:Configuration=Release /m<br>nuget pack ClassLibrary1.nuspec<br>pause<br></pre></div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png" alt></a></div>
+
+<p>瀏覽結果</p></div><p></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png" alt></a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/NuGet/">NuGet</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

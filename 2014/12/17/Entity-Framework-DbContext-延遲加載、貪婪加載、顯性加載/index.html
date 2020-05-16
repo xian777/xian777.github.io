@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Entity Framework DbContext 延遲加載、貪婪加載、顯性加載 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Entity Framework DbContext 延遲加載、貪婪加載、顯性加載">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</h1>
+  
+
+      
+        <time datetime="2014-12-17T08:26:00.000Z">2014-12-17 16:26:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異<br>DemoContext</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Topic&gt; Topic { get; set; }<br>        public DbSet&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br></pre></div><br>留言版主表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Topic”)]<br>    public class Topic<br>    {<br>        [Key]<br>        public int TopicId { get; set; }<br>        public string TopicTitle { get; set; }<br>        public virtual ICollection&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br><br></pre></div><br>留言版明細表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        [Key]<br>        public int ReplyId { get; set; }<br>        [ForeignKey(“Topic”)]<br>        public int TopicId { get; set; }<br>        public string ReplyMessage { get; set; }<br>        public virtual Topic Topic { get; set; }<br>    }<br>}<br></pre></div><br>資料初始化<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.Data.Entity;<br><br>    public class MyInit : DropCreateDatabaseAlways&lt;DemoContext&gt;<br>    {<br>        protected override void Seed(DemoContext context)<br>        {<br>            context.Topic.AddRange(<br>                new List&lt;Topic&gt;<br>                {<br>                    new Topic<br>                    {<br>                        TopicTitle = “a”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “a1” },<br>                            new Reply { ReplyMessage = “a2” },<br>                            new Reply { ReplyMessage = “a3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “b”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “b1” },<br>                            new Reply { ReplyMessage = “b2” },<br>                            new Reply { ReplyMessage = “b3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “c”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “c1” },<br>                            new Reply { ReplyMessage = “c2” },<br>                            new Reply { ReplyMessage = “c3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “d”<br>                    }<br>                });<br>        }<br>    }<br>}<br><br></pre></div>產生的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png" alt></a></div>
+
+<p>延遲加載利用遠端代理模式，必須在導覽屬性上使用virtual關鍵字，才會在存取到這個屬性時，動態去建立相對應的類別<br>這種方式比較明顯的缺點，是會分段產生SQL語法，還有就是在取資料的時後，雖然有加入過濾的條件，但是最後產生的SQL語法，還是會取回全部的資料，然後才在記憶體中過濾資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br><br>                foreach (var topic in db.Topic)<br>                {<br>                    foreach (var reply in topic.Reply.Where(x=&gt;x.ReplyMessage.Contains(“1”)))<br>                    {<br>                        Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>延遲加載產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [Extent1]<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=1<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=2<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=3<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=4<br>go<br><br></pre></div><br>貪婪加載是產生Join的語法，在一次SQL查詢中就取回所有的資料<br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br><br>                foreach (var topic in db.Topic.Include(x =&gt; x.Reply))<br>                {<br>                    foreach (var reply in topic.Reply.Where(x =&gt; x.ReplyMessage.Contains(“1”)))<br>                    {<br>                        Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Project1].[TopicId] AS [TopicId],<br>    [Project1].[TopicTitle] AS [TopicTitle],<br>    [Project1].[C1] AS [C1],<br>    [Project1].[ReplyId] AS [ReplyId],<br>    [Project1].[TopicId1] AS [TopicId1],<br>    [Project1].[ReplyMessage] AS [ReplyMessage]<br>    FROM ( SELECT<br>        [Extent1].[TopicId] AS [TopicId],<br>        [Extent1].[TopicTitle] AS [TopicTitle],<br>        [Extent2].[ReplyId] AS [ReplyId],<br>        [Extent2].[TopicId] AS [TopicId1],<br>        [Extent2].[ReplyMessage] AS [ReplyMessage],<br>        CASE WHEN ([Extent2].[ReplyId] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]<br>        FROM  [dbo].[Topic] AS [Extent1]<br>        LEFT OUTER JOIN [dbo].[Reply] AS [Extent2] ON [Extent1].[TopicId] = [Extent2].[TopicId]<br>    )  AS [Project1]<br>    ORDER BY [Project1].[TopicId] ASC, [Project1].[C1] ASC<br></pre></div><br>顯性加載也是分段式的語法，和延遲加載的差別在於，延遲加載必須先取回導覽屬性的全部資料，才能繼續後續的處理，而顯性加載則可以篩選要取回那些資料<br>透過Entry取得實體後，Collection是取集合對應的屬性，Reference是取實體對應的屬性<br>db.Configuration.LazyLoadingEnabled是用來指定是否要啟用延遲加載，預設是啟用的<br><br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br>                db.Configuration.LazyLoadingEnabled = false;<br><br>                foreach (var topic in db.Topic)<br>                {<br>                    db.Entry(topic).Collection(x =&gt; x.Reply)<br>                        .Query()<br>                        .Where(x =&gt; x.ReplyMessage.Contains(“1”))<br>                        .Load();<br><br>                    if (topic.Reply != null)<br>                    {<br>                        foreach (var reply in topic.Reply)<br>                        {<br>                            Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                        }<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [Extent1]<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=1<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=2<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=3<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=4<br>go<br><br></pre></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Entity-Framework/">Entity Framework</a>, <a href="/tags/DbContext/">DbContext</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

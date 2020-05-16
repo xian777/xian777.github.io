@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Entity Framework Code First 資料庫初始化設定 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Entity Framework Code First 資料庫初始化設定">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Entity Framework Code First 資料庫初始化設定</h1>
+  
+
+      
+        <time datetime="2014-10-31T09:32:00.000Z">2014-10-31 17:32:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在參考了entityFramework套件之後，設定檔中會自動增加一個EntityFramework的區域設定<br>其中的defaultConnectionFactory宣告了預設的資料庫位置<br>不同的版本預設的localdb實體名稱會有不同，這邊的例子是mssqllocaldb</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>    &lt;configSections&gt;<br>        &lt;!– For more information on Entity Framework configuration, visit <a href="http://go.microsoft.com/fwlink/?LinkID=237468" target="_blank" rel="noopener">http://go.microsoft.com/fwlink/?LinkID=237468</a> –&gt;<br>        &lt;section name=”entityFramework” type=”System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089” requirePermission=”false” /&gt;<br>    &lt;/configSections&gt;<br>    &lt;startup&gt;<br>        &lt;supportedRuntime version=”v4.0” sku=”.NETFramework,Version=v4.5” /&gt;<br>    &lt;/startup&gt;<br>    &lt;entityFramework&gt;<br>        &lt;defaultConnectionFactory type=”System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework”&gt;<br>            &lt;parameters&gt;<br>                &lt;parameter value=”mssqllocaldb” /&gt;<br>            &lt;/parameters&gt;<br>        &lt;/defaultConnectionFactory&gt;<br>        &lt;providers&gt;<br>            &lt;provider invariantName=”System.Data.SqlClient” type=”System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer” /&gt;<br>        &lt;/providers&gt;<br>    &lt;/entityFramework&gt;<br>&lt;/configuration&gt;<br></pre></div><br>就會自動建立一個包含完整Assembly名稱的資料庫<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png" alt></a></div>
+
+<p>如果在設定檔的連線區段中，有一個和DbContext同名的設定值，就會改用這邊的連線設定<br>建立的資料庫也會是連線字串中指定的名稱</p>
+<div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;</pre></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png" alt></a></div><br>也可以透過預設建構式指定要使用設定檔中的那個值<br><div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>    &lt;add name=”d1” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d1;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;<br></pre></div><br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}<br></pre></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-dbjwZcEhoYw/VFNJwZsdzMI/AAAAAAAABuY/Vret3Kef1e0/s1600/d1.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-dbjwZcEhoYw/VFNJwZsdzMI/AAAAAAAABuY/Vret3Kef1e0/s1600/d1.png" alt></a></div><br>或是使用DbContext物件時，透過建構式傳入要使用的名稱<br><div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>    &lt;add name=”d1” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d1;Integrated Security=true;”/&gt;<br>    &lt;add name=”d2” providerName=”System.Data.SqlClient”<br>                connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d2;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;</pre></div><br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DemoContext(string name) : base(name)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}</pre></div><br><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    using (DemoContext db = new DemoContext(“d2”))<br>    {<br>        db.Database.Initialize(true);<br>    }<br>}</pre></div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-BhpDZY3FCIc/VFNLSgDVLuI/AAAAAAAABuk/GA9qeZJMc00/s1600/d2.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-BhpDZY3FCIc/VFNLSgDVLuI/AAAAAAAABuk/GA9qeZJMc00/s1600/d2.png" alt></a></div><br>另一種建構式是傳入DbConnection物件，搭配contextOwnsConnection來決定是否要共用連線<br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DemoContext(string name) : base(name)<br>    {<br>    }<br><br>    public DemoContext(DbConnection connection) : base(connection, contextOwnsConnection: false)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}<br></pre></div><br>如果共用連線的話，在第一個DbContext執行完後就會釋放連線<br>執行第二個DbContext物件的時後就會報錯<br><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[“d1”].ConnectionString);<br><br>    using (DemoContext db = new DemoContext(conn))<br>    {<br>        Console.WriteLine(db.Class1.Count());<br>    }<br><br>    using (DemoContext db = new DemoContext(conn))<br>    {<br>        Console.WriteLine(db.Class1.Count());<br>    }<br>}<br></pre></div><br>System.Data.Entity.Database.SetInitializer函式可以用來初始化資料庫<br>System.Data.Entity.CreateDatabaseIfNotExists<br>只有在資料庫不存在的時後才會建立，這是預設的策略<br><br>System.Data.Entity.DropCreateDatabaseIfModelChanges<br>只有當資料庫結構發生變化的時後，才砍掉重練<br><br>System.Data.Entity.DropCreateDatabaseAlways<br>不管資料庫結構是否有改變，每次都砍掉重練<br><br>通常在應用程式的進入點例如Global.asax，Main會設置初始化策略<br>但是在切換環境的時後，要改變策略就要重新修改編譯部署<br>所以比較方便的方式，是配置在設定檔中，有兩種設定方式<br><br>一種是設定在AppSetting區段，設成Disabled就是禁用資料庫初始化功能<br><div><pre class="brush:csharp">&lt;appSettings&gt;<br>    &lt;add key=”DatabaseInitializerForType ConsoleApplication1.Models.DemoContext, ConsoleApplication1”<br>            value=”System.Data.Entity.DropCreateDatabaseIfModelChanges<code>1[[ConsoleApplication1.Models.DemoContext, ConsoleApplication1]], EntityFramework&quot; /&amp;gt;
+    &amp;lt;!--&amp;lt;add key=&quot;DatabaseInitializerForType ConsoleApplication1.Models.DemoContext, ConsoleApplication1&quot;
+            value=&quot;Disabled&quot; /&amp;gt;--&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+一種是設定在entityFramework的contextx區段
+&lt;div&gt;&lt;pre class=&quot;brush:xml&quot;&gt;&amp;lt;entityFramework&amp;gt;
+    &amp;lt;defaultConnectionFactory type=&quot;System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework&quot;&amp;gt;
+        &amp;lt;parameters&amp;gt;
+            &amp;lt;parameter value=&quot;mssqllocaldb&quot; /&amp;gt;
+        &amp;lt;/parameters&amp;gt;
+    &amp;lt;/defaultConnectionFactory&amp;gt;
+    &amp;lt;contexts&amp;gt;
+        &amp;lt;context type=&quot;ConsoleApplication1.Models.DemoContext, ConsoleApplication1&quot;&amp;gt;
+            &amp;lt;databaseInitializer type=&quot;System.Data.Entity.DropCreateDatabaseIfModelChanges</code>1[[ConsoleApplication1.Models.DemoContext, ConsoleApplication1]], EntityFramework” /&gt;<br>        &lt;/context&gt;<br>    &lt;/contexts&gt;<br>    &lt;providers&gt;<br>        &lt;provider invariantName=”System.Data.SqlClient” type=”System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer” /&gt;<br>    &lt;/providers&gt;<br>&lt;/entityFramework&gt;<div><br></div><br></pre></div><br>最後可以新增一個自訂的策略，並覆寫Seed函式，就能在初始化資料庫的時後，執行自訂的動作，例如新增資料<br><div><pre class="brush:csharp">public class MyInitialize : DropCreateDatabaseIfModelChanges&lt;DemoContext&gt;<br>{<br>    protected override void Seed(DemoContext context)<br>    {<br>        context.Class1.Add(new Class1 { C1 = “a” });<br>        context.Class1.Add(new Class1 { C1 = “b” });<br>        context.Class1.Add(new Class1 { C1 = “c” });<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Code-First/">Code First</a>, <a href="/tags/Entity-Framework/">Entity Framework</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

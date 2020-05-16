@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>NLog Targets › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="NLog Targets">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">NLog Targets</h1>
+  
+
+      
+        <time datetime="2012-12-29T16:29:00.000Z">2012-12-30 00:29:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Targets"><a href="#NLog-Targets" class="headerlink" title="NLog Targets"></a>NLog Targets</h2><p>target用來定義Log的輸出目標，基本的兩個屬性為</p>
+<ul>
+<li>name - 目標的名稱，用來給rule路由指定的名稱</li>
+<li>type - 目標的類型，NLog支援的類型很多，完整資料請參考<a href="https://github.com/nlog/nlog/wiki/Targets" target="_blank" rel="noopener">官網Supported Targets文件</a>每一個target元素代表一個輸出目標，只要name屬性值不衝突即可<br><pre class="brush:xml">&lt;targets&gt;<br>&lt;target name=”f1” xsi:type=”File” fileName=”file1.txt”/&gt;<br>&lt;target name=”f2” xsi:type=”File” fileName=”file2.txt”/&gt;<br>&lt;target name=”n1” xsi:type=”Network” address=”tcp://localhost:4001”/&gt;<br>&lt;target name=”ds” xsi:type=”OutputDebugString”/&gt;<br>&lt;/targets&gt;<br></pre><br>依照type的不同，會有相對應的屬性，例如<br>File需要指定FileName檔名<br>Database需指定資料庫相關的參數和語法<br>Mail需指定郵件主機等資訊<br>每種類型的設定方式，之後再來詳細介紹</li>
+</ul>
+<hr>
+<h2 id="自訂target"><a href="#自訂target" class="headerlink" title="自訂target"></a>自訂target</h2><p>要自行擴充target可以參考官網文件的<a href="https://github.com/nlog/nlog/wiki/How%20to%20write%20a%20Target" target="_blank" rel="noopener">How to write a target</a><br>只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式<br>再利用extensions元素或在程式碼中註冊就行了</p>
+<hr>
+<h2 id="Wrapper-Targets"><a href="#Wrapper-Targets" class="headerlink" title="Wrapper Targets"></a>Wrapper Targets</h2><div>NLog提供幾個封裝和複合目標，用來增加target的功能</div><div><br><br><em>   asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行)
+</em>   retry-on-error(自動重試功能)<br><em>   buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log)
+</em>   filtering(過濾條件，會依設定值決定是否輸出Log)<div>更多詳細功能請參考<a href="https://github.com/nlog/nlog/wiki/Targets" target="_blank" rel="noopener">官網的Wrapper Targets文件</a></div></div><div><br></div><div>Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能</div><pre class="brush:xml">&lt;targets&gt;<br>    &lt;!– 增加非同步功能–&gt;<br>    &lt;target name=”n” xsi:type=”AsyncWrapper”&gt;<br>        &lt;!– 增加自動重試功能 –&gt;<br>        &lt;target xsi:type=”RetryingWrapper”&gt;<br>            &lt;target xsi:type=”File” fileName=”${file}.txt” /&gt;<br>        &lt;/target&gt;<br>    &lt;/target&gt;<br>&lt;/targets&gt;<br></pre><div><br>由於非同步處理是很常用來增加效能的功能，所以提供了一個更簡單的設定方式<br><br></div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;targets async=”true”&gt;<br>        &lt;!– 放在這個section之間的target都會有非同步功能 –&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre><br><br><em> </em> *<br><br>## Default wrappers<br><div>如果有多組target元素需要大腸包小腸的時後，多層的嵌套會比較複雜<br>所以提供了預設封裝的功能<br>使用default-wrapper元素設定，同一組的target就會有同樣的封裝功能</div><div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;!– 第一組Wrapper –&gt;<br>    &lt;targets&gt;<br>        &lt;default-wrapper xsi:type=”BufferingWrapper” bufferSize=”100”/&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt”/&gt;<br>    &lt;/targets&gt;<br>    &lt;!– 第二組Wrapper –&gt;<br>    &lt;targets&gt;<br>        &lt;default-wrapper xsi:type=”AsyncWrapper”&gt;<br>            &lt;wrapper xsi:type=”RetryingWrapper”/&gt;<br>        &lt;/default-wrapper&gt;<br>        &lt;target name=”n1” xsi:type=”Network” address=”tcp://localhost:4001”/&gt;<br>        &lt;target name=”n2” xsi:type=”Network” address=”tcp://localhost:4002”/&gt;<br>        &lt;target name=”n3” xsi:type=”Network” address=”tcp://localhost:4003”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre></div>
+
+<hr>
+<h2 id="Default-target-parameters"><a href="#Default-target-parameters" class="headerlink" title="Default target parameters"></a>Default target parameters</h2><div>類似的功能在參數設定上也有<br>同一組的target需要設定同樣的參數設定的話，也可以利用這個功能設定一次就好</div><div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;targets&gt;<br>        &lt;!– 多組target都有同樣的屬性keepFileOpen –&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f3” xsi:type=”File” fileName=”f3.txt” keepFileOpen=”false”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br>&lt;!– 替代的設定方式如下 –&gt;<br>&lt;nlog&gt;<br>    &lt;targets&gt;<br>        &lt;!– 利用default-target-parameters來設定一次就好 –&gt;<br>        &lt;default-target-parameters xsi:type=”File” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt”/&gt;<br>        &lt;target name=”f3” xsi:type=”File” fileName=”f3.txt”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre></div><div><br><br>上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-config.html" target="_blank" rel="noopener">NLog Config</a><br>下一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-rules.html" target="_blank" rel="noopener">NLog Rules</a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/NLog/">NLog</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

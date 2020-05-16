@@ -1,0 +1,552 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 23 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/30/NLog-API/">NLog API</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T15:02:00.000Z">2012-12-30 23:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="LogManager"><a href="#LogManager" class="headerlink" title="LogManager"></a>LogManager</h2><div>LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method</div><div><br></div><div><br><br><em>   LogManager.GetLogger - 取得或建立指定的logger<br><span style="color: orange;">建議建立Logger的方式，需要手動指定名稱</span>
+</em>   LogManager.GetCurrentClassLogger&nbsp; - 取得或建立目前類別名稱的logger<br><span style="color: orange;">雖然比較方便，但底層是以StackTrace取得名稱，成本高很多</span><br><em>   LogManager.Configuration - 取得或設定目前日誌的設定資訊
+</em>   LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold<br><br><em> </em> <em><br><br>## Logger<br><div>NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log</div><div>每個Method都有多個overloads用來最小化內存配置以提高日誌速度</div><div><div>
+
+</div></div></em>   Log() - 使用指定的格式和參數，將訊息寫入指定的級別<br><em>   Trace() - 使用指定的格式和參數，將訊息寫入Trace級別
+</em>   Debug() - 使用指定的格式和參數，將訊息寫入Debug級別<br><em>   Info() - 使用指定的格式和參數，將訊息寫入Info級別
+</em>   Warn() - 使用指定的格式和參數，將訊息寫入Warn級別<br><em>   Erro() - 使用指定的格式和參數，將訊息寫入Error級別
+</em>   Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別</div><div>以下的方法和屬性用來檢查該層級的日誌是否啟用</div><div><br></div><div><br><br><em>   IsEnabled() - 確定指定的級別日誌是否啟用
+</em>   IsTraceEnabled - 確定Trace級別日誌是否啟用<br><em>   IsDebugEnabled - 確定Debug級別日誌是否啟用
+</em>   IsInfoEnabled - 確定Info級別日誌是否啟用<br><em>   IsWarnEnabled - 確定Warn級別日誌是否啟用
+</em>   IsErrorEnabled - 確定Error級別日誌是否啟用<br><em>   IsFatalEnabled - 確定Fatal級別日誌是否啟用</em></div><span id="internal-source-marker_0.8555412123391619" style="font-size: 16px; vertical-align: baseline;">除此之外，NLog還提供了一組方法來記錄Exception</span><br><span style="font-size: 16px; vertical-align: baseline;">通過配置Layout Renderer的${exception}，可以取得很詳細的訊息</span>
+
+   <span style="vertical-align: baseline;">LogException() - 使用指定的格式和參數，將訊息和例外寫入指定的級別</span><br><em>   <span style="vertical-align: baseline;">TraceException() - 使用指定的格式和參數，將訊息和例外寫入Trace級別</span>
+</em>   <span style="vertical-align: baseline;">DebugException() - 使用指定的格式和參數，將訊息和例外寫入Debug級別</span><br><em>   <span style="vertical-align: baseline;">InfoException() - 使用指定的格式和參數，將訊息和例外寫入Info級別</span>
+</em>   <span style="vertical-align: baseline;">WarnException() - 使用指定的格式和參數，將訊息和例外寫曾Warn級別</span><br><em>   <span style="vertical-align: baseline;">ErrorException() - 使用指定的格式和參數，將訊息和例外寫曾Error級別</span>
+</em>   <span style="vertical-align: baseline;">FatalException() - 使用指定的格式和參數，將訊息和例外寫曾Fatal級別</span><span style="font-size: 16px; vertical-align: baseline;"></span><br><span style="font-size: 16px; vertical-align: baseline;">${exception}的詳細設定方式，請參考</span><a href="https://github.com/nlog/nlog/wiki/Exception-Layout-Renderer" target="_blank" rel="noopener"><span style="color: #1155cc; font-size: 16px; vertical-align: baseline;">官網文件</span></a><span style="font-size: 16px; vertical-align: baseline;"></span><br><br><em>   <span style="vertical-align: baseline;">format - 用逗號分隔的例外屬性例表，不區分大小寫<br>Message, Type, ShortType, ToString, Method, StackTrace</span>
+</em>   <span style="vertical-align: baseline;">innerFormat - 用逗號分隔的例外屬性例表，不區分大小寫<br>Message, Type, ShortType, ToString, Method, StackTrace</span><br><em>   <span style="vertical-align: baseline;">maxInnerExceptionLevel - 內部錯誤的最大層數</span><span style="font-size: 16px; vertical-align: baseline;"></span><br><span style="font-size: 16px; vertical-align: baseline;">${onexception} - 用來輸出內部例外</span><br><span style="font-size: 16px; vertical-align: baseline;"></span><br><span style="font-size: 16px; vertical-align: baseline;">範例</span><br><span style="font-size: 16px; vertical-align: baseline;">StackTrace：${exception:format=stacktrace}</span><br><span style="font-size: 16px; vertical-align: baseline;">Exception Type：${exception:format=type}</span><br><span style="font-size: 16px; vertical-align: baseline;">Exception Message：${exception:format=message}</span><br><span style="font-size: 16px; vertical-align: baseline;">Inner  Exception  ：${onexception:${exception:format=type,message,method:maxInnerExceptionLevel=5:innerFormat=shortType,message,method}}</span>
+
+</em> <em> </em><br><div><br><br>## Example<br></div><div>最基本的使用範例，取得Logger並輸出了一個字串訊息</div><div><br></div><div><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using System.Threading.Tasks;<br>using NLog;<br><br>namespace NLogApp<br>{<br>    class Program<br>    {<br>        static readonly Logger log = LogManager.GetLogger(“Program”);<br><br>        static void Main(string[] args)<br>        {<br>            log.Debug(“Debug Message…”);<br>        }<br>    }<br>}<br><br></pre></div><div>如果需要更多細部控制，可以實例化一個LogEvent來調整屬性，再傳給logger輸出</div><div><pre class="brush:csharp">using System;<br>using System.Globalization;<br>using NLog;<br><br>class MyClass<br>{<br>    static Logger logger = LogManager.GetLogger(“MyClass”);<br><br>    public void LogSomething()<br>    {<br>        LogEventInfo myEvent = new LogEventInfo(LogLevel.Debug, “”, “My debug message”);<br>        myEvent.LoggerName = logger.Name;<br>        myEvent.Properties.Add(“MyCustomValue”, “This is from MyClass”);<br><br>        logger.Log(myEvent);<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/30/NLog-學習筆記/">NLog 學習筆記</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T08:57:00.000Z">2012-12-30 16:57:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>一套好用的Logging工具在開發和日後維護上很有幫助，之前一直用的是log4net，雖然功能強大，但層級式的設定檔比較複雜不容易掌握，而且相關的中文資源也不是很多</p>
+<p>後來找到NLog這個套件，Google一下很快就上手了，而且也有不少詳細的中文資料，擴充功能也很簡單，在此記錄一下學習筆記和參考資料</p>
+<h2 id="NLog學習筆記"><a href="#NLog學習筆記" class="headerlink" title="NLog學習筆記"></a>NLog學習筆記</h2><div>1.&nbsp;<a href="http://blog.developer.idv.tw/2012/12/nlog.html" target="_blank" rel="noopener">NLog 初體驗</a><br>&nbsp; &nbsp; NLog的安裝、設定、和使用<br><br>2. <a href="http://blog.developer.idv.tw/2012/12/nlog-config.html" target="_blank" rel="noopener">NLog Config</a><br>&nbsp; &nbsp; NLog的設定檔作用和內容<br><br>3.<a href="http://blog.developer.idv.tw/2012/12/nlog-targets.html" target="_blank" rel="noopener"> NLog Targets</a><br>&nbsp; &nbsp; Nlog的輸出目標<br><br>4. <a href="http://blog.developer.idv.tw/2012/12/nlog-rules.html" target="_blank" rel="noopener">NLog Rules</a><br>&nbsp; &nbsp; NLog的輸出的路由規則<br><br>5. <a href="http://blog.developer.idv.tw/2012/12/nlog-layouts.html" target="_blank" rel="noopener">NLog Layout</a><br>&nbsp; &nbsp; NLog的輸出格式<br><br>6. <a href="http://blog.developer.idv.tw/2013/11/logviewer.html" target="_blank" rel="noopener">好用的Log Viewer</a><br><br>7. <a href="http://blog.developer.idv.tw/2013/12/commonlogging.html" target="_blank" rel="noopener">Common.Logging</a><br><br>8. <a href="http://blog.developer.idv.tw/2014/08/log.html" target="_blank" rel="noopener">個人常用Log格式</a><br><br>9. <a href="http://blog.developer.idv.tw/2014/09/nlog-database-target.html" target="_blank" rel="noopener">NLog Database Target</a><br><br>10. <a href="http://blog.developer.idv.tw/2014/09/elmah-error-logging-modules-and-handlers.html" target="_blank" rel="noopener">ELMAH</a><br><br>11. <a href="http://blog.developer.idv.tw/2014/09/nlogelmah.html" target="_blank" rel="noopener">NLog.Elmah</a></div>
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><div><a href="http://nlog-project.org/" target="_blank" rel="noopener">NLog官網</a></div><div><br><a href="https://github.com/nlog/nlog/wiki" target="_blank" rel="noopener">NLog Document</a></div></p>
+<p>&nbsp;<a href="http://kevintsengtw.blogspot.tw/p/blog-page_12.html#.UN59kqxcUep" target="_blank" rel="noopener">mrkt 的程式學習筆記 - 系統記錄與效能監測</a></p>
+<p><a href="http://www.cnblogs.com/dflying/category/78087.html" target="_blank" rel="noopener">Dflying Chen @ cnblogs - NLog系列</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/30/NLog-Layouts/">NLog Layouts</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T08:47:00.000Z">2012-12-30 16:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Layouts"><a href="#NLog-Layouts" class="headerlink" title="NLog Layouts"></a>NLog Layouts</h2><div>Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中</div><div>這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯</div><div>使用方法是$字號和左右大括號，包住Layout Renderers</div><div>參數的使用方法則是冒號分隔，屬性=值的方式</div><div>預設的輸出格式如下</div><div><br></div><div><pre class="brush:xml">${longdate}|${level:uppercase=true}|${logger}|${message}</pre></div><div><div><br></div>
+
+<hr>
+<div><br><br>## Layout Renderers<br></div></div><div><br><br><em>   ${basedir} - 應用程式所在的資料庫
+</em>   ${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊<br><em>   ${data} - 目前日期和時間
+</em>   ${exception} - 例外的訊息<br><em>   ${level} - 日誌的級別
+</em>   ${logger} - 日誌的來源<br><em>   ${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm
+</em>   ${machinename} - 電腦名稱<br><em>   ${message} - 日誌的內容
+</em>   ${newline} - 換行符號<br><em>   ${shortdate} - 短日期格式 &nbsp;yyyy-MM-dd
+</em>   ${stacktrace} - 呼叫堆疊資訊<br><em>   ${time} - 時間格式，HH:mm:ss.mmm.
+</em>   ${windows-identity} - 登入帳號</div><div>每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考<a href="https://github.com/NLog/NLog/wiki/Layout-renderers" target="_blank" rel="noopener">官網Layout Renderers文件</a><br><br><em> </em> <em><br><br>## Pre-Defined Layouts<br>NLog還包含了幾個預設定義好的格式，詳細的文件請參考<a href="https://github.com/NLog/NLog/wiki/Layouts" target="_blank" rel="noopener">官網的Layout文件</a>
+
+</em>   CsvLayout - CSV格式<br><em>   LayoutWithHeaderAndFooter - 加上Header和Footer的格式
+</em>   Log4JXmlEventLayout - Log4j相容的格式<br>*   SimpleLayout - 簡單的文字內容格式<br><br><div>上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-rules.html" target="_blank" rel="noopener">NLog Rules</a></div>
+
+<p></p></div><p></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/30/NLog-Rules/">NLog Rules</a></h1>
+  
+
+      
+        <time datetime="2012-12-29T17:40:00.000Z">2012-12-30 01:40:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Rules"><a href="#NLog-Rules" class="headerlink" title="NLog Rules"></a>NLog Rules</h2><div>NLog使用一個簡單的路由表檢查</div><div>當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去</div><div>如果指定了final屬性，之後的規則就不再檢查</div><div>Rules可以使用的屬性如下</div><div><br></div><div><br><br>1.  name - 日誌來源的名稱(允許使用通配符號<em>)<br>2.  minlevel - 設定符合該規則的最低級別<br>3.  maxlevel - 設定符合該規則的最高級別<br>4.  level - 設定符合該規則的特定級別<br>5.  levels - 設定符合該規則的級別列表，用逗號分隔<br>6.  writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔<br>7.  final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查<div>以下為一些例子</div></em></div><div><pre class="brush:xml">&lt;!– 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target –&gt;<br>&lt;logger name=”Name.Space.Class1” minlevel=”Debug” writeTo=”f1” /&gt;<br><br>&lt;!– 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target –&gt;<br>&lt;logger name=”Name.Space.Class1” levels=”Debug,Error” writeTo=”f1” /&gt;<br><br>&lt;!– 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target –&gt;<br>&lt;logger name=”Name.Space.“ writeTo=”f3,f4” /&gt;<br><br>&lt;!–<br>    命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間<br>    也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo<br>    同時不再檢查之後的規則，因為這裡設定final=true<br>–&gt;<br>&lt;logger name=”Name.Space.*” minlevel=”Debug” maxlevel=”Error” final=”true” /&gt;<br></pre></div>
+
+<hr>
+<h2 id="NLog-Level"><a href="#NLog-Level" class="headerlink" title="NLog Level"></a>NLog Level</h2><p>NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出</p>
+<ol>
+<li>Trace - 大量而詳細的訊息，一般只用在開發環境</li>
+<li>Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境</li>
+<li>Info - 用來提示用的訊息，例如使用者登出入，交易參數資料</li>
+<li>Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限</li>
+<li>Error - 一般錯誤的訊息，一般就是try catch到的Exception</li>
+<li>Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行<div>最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了</div><div><br>上一篇: <a href="http://blog.developer.idv.tw/2012/12/nlog-targets.html" target="_blank" rel="noopener">NLog Targets</a><br>下一篇: <a href="http://blog.developer.idv.tw/2012/12/nlog-layouts.html" target="_blank" rel="noopener">NLog Layouts&nbsp;</a></div></li>
+</ol>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/30/NLog-Targets/">NLog Targets</a></h1>
+  
+
+      
+        <time datetime="2012-12-29T16:29:00.000Z">2012-12-30 00:29:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Targets"><a href="#NLog-Targets" class="headerlink" title="NLog Targets"></a>NLog Targets</h2><p>target用來定義Log的輸出目標，基本的兩個屬性為</p>
+<ul>
+<li>name - 目標的名稱，用來給rule路由指定的名稱</li>
+<li>type - 目標的類型，NLog支援的類型很多，完整資料請參考<a href="https://github.com/nlog/nlog/wiki/Targets" target="_blank" rel="noopener">官網Supported Targets文件</a>每一個target元素代表一個輸出目標，只要name屬性值不衝突即可<br><pre class="brush:xml">&lt;targets&gt;<br>&lt;target name=”f1” xsi:type=”File” fileName=”file1.txt”/&gt;<br>&lt;target name=”f2” xsi:type=”File” fileName=”file2.txt”/&gt;<br>&lt;target name=”n1” xsi:type=”Network” address=”tcp://localhost:4001”/&gt;<br>&lt;target name=”ds” xsi:type=”OutputDebugString”/&gt;<br>&lt;/targets&gt;<br></pre><br>依照type的不同，會有相對應的屬性，例如<br>File需要指定FileName檔名<br>Database需指定資料庫相關的參數和語法<br>Mail需指定郵件主機等資訊<br>每種類型的設定方式，之後再來詳細介紹</li>
+</ul>
+<hr>
+<h2 id="自訂target"><a href="#自訂target" class="headerlink" title="自訂target"></a>自訂target</h2><p>要自行擴充target可以參考官網文件的<a href="https://github.com/nlog/nlog/wiki/How%20to%20write%20a%20Target" target="_blank" rel="noopener">How to write a target</a><br>只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式<br>再利用extensions元素或在程式碼中註冊就行了</p>
+<hr>
+<h2 id="Wrapper-Targets"><a href="#Wrapper-Targets" class="headerlink" title="Wrapper Targets"></a>Wrapper Targets</h2><div>NLog提供幾個封裝和複合目標，用來增加target的功能</div><div><br><br><em>   asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行)
+</em>   retry-on-error(自動重試功能)<br><em>   buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log)
+</em>   filtering(過濾條件，會依設定值決定是否輸出Log)<div>更多詳細功能請參考<a href="https://github.com/nlog/nlog/wiki/Targets" target="_blank" rel="noopener">官網的Wrapper Targets文件</a></div></div><div><br></div><div>Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能</div><pre class="brush:xml">&lt;targets&gt;<br>    &lt;!– 增加非同步功能–&gt;<br>    &lt;target name=”n” xsi:type=”AsyncWrapper”&gt;<br>        &lt;!– 增加自動重試功能 –&gt;<br>        &lt;target xsi:type=”RetryingWrapper”&gt;<br>            &lt;target xsi:type=”File” fileName=”${file}.txt” /&gt;<br>        &lt;/target&gt;<br>    &lt;/target&gt;<br>&lt;/targets&gt;<br></pre><div><br>由於非同步處理是很常用來增加效能的功能，所以提供了一個更簡單的設定方式<br><br></div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;targets async=”true”&gt;<br>        &lt;!– 放在這個section之間的target都會有非同步功能 –&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre><br><br><em> </em> *<br><br>## Default wrappers<br><div>如果有多組target元素需要大腸包小腸的時後，多層的嵌套會比較複雜<br>所以提供了預設封裝的功能<br>使用default-wrapper元素設定，同一組的target就會有同樣的封裝功能</div><div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;!– 第一組Wrapper –&gt;<br>    &lt;targets&gt;<br>        &lt;default-wrapper xsi:type=”BufferingWrapper” bufferSize=”100”/&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt”/&gt;<br>    &lt;/targets&gt;<br>    &lt;!– 第二組Wrapper –&gt;<br>    &lt;targets&gt;<br>        &lt;default-wrapper xsi:type=”AsyncWrapper”&gt;<br>            &lt;wrapper xsi:type=”RetryingWrapper”/&gt;<br>        &lt;/default-wrapper&gt;<br>        &lt;target name=”n1” xsi:type=”Network” address=”tcp://localhost:4001”/&gt;<br>        &lt;target name=”n2” xsi:type=”Network” address=”tcp://localhost:4002”/&gt;<br>        &lt;target name=”n3” xsi:type=”Network” address=”tcp://localhost:4003”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre></div>
+
+<hr>
+<h2 id="Default-target-parameters"><a href="#Default-target-parameters" class="headerlink" title="Default target parameters"></a>Default target parameters</h2><div>類似的功能在參數設定上也有<br>同一組的target需要設定同樣的參數設定的話，也可以利用這個功能設定一次就好</div><div><pre class="brush:xml">&lt;nlog&gt;<br>    &lt;targets&gt;<br>        &lt;!– 多組target都有同樣的屬性keepFileOpen –&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f3” xsi:type=”File” fileName=”f3.txt” keepFileOpen=”false”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br>&lt;!– 替代的設定方式如下 –&gt;<br>&lt;nlog&gt;<br>    &lt;targets&gt;<br>        &lt;!– 利用default-target-parameters來設定一次就好 –&gt;<br>        &lt;default-target-parameters xsi:type=”File” keepFileOpen=”false”/&gt;<br>        &lt;target name=”f1” xsi:type=”File” fileName=”f1.txt”/&gt;<br>        &lt;target name=”f2” xsi:type=”File” fileName=”f2.txt”/&gt;<br>        &lt;target name=”f3” xsi:type=”File” fileName=”f3.txt”/&gt;<br>    &lt;/targets&gt;<br>&lt;/nlog&gt;<br></pre></div><div><br><br>上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-config.html" target="_blank" rel="noopener">NLog Config</a><br>下一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-rules.html" target="_blank" rel="noopener">NLog Rules</a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/29/NLog-Config/">NLog Config</a></h1>
+  
+
+      
+        <time datetime="2012-12-29T08:27:00.000Z">2012-12-29 16:27:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog設定檔位置"><a href="#NLog設定檔位置" class="headerlink" title="NLog設定檔位置"></a>NLog設定檔位置</h2><p>NLog的設定檔有幾個位置，參考<a href="https://github.com/nlog/nlog/wiki/Configuration-file" target="_blank" rel="noopener">官網文件</a>如下</p>
+<ol>
+<li>應用程式的標準設定檔(app.config或是web.config)<br><span style="color: orange;">執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動</span></li>
+<li>應用程式所在目錄的app.exe.nlog<br><span style="color: orange;">每個專案都要手動指定檔名比較麻煩點</span></li>
+<li>應用程式所在目錄的NLog.config<br><span style="color: red;">建議使用的設定檔方式</span></li>
+<li>Nlog.dll所在目錄的NLog.dll.config<br><span style="color: orange;">和第三種方式差不多，還是選擇比較常見的第三種方式吧</span></li>
+<li>環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案<br><span style="color: orange;">設在這種神秘的地方，應該會被扁吧</span><div>在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式</div></li>
+</ol>
+<hr>
+<h2 id="NLog設定檔元素"><a href="#NLog設定檔元素" class="headerlink" title="NLog設定檔元素"></a>NLog設定檔元素</h2><div>Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目</div><div><br><br>1.  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定<br>2.  rules - 定義Log的路由規則，Log的過濾條件也在這裡設定<br>3.  extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組<br>4.  include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用<br>5.  variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料</div><div><br><br><em> </em> *<br><br>## NLog設定檔自動重讀<br>NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效<br>如果要自動重讀的話，需要設定一個屬性autoReload=”true”才能生效<br><br><pre class="brush:xml">&lt;nlog autoreload=”true”&gt;<br>   …<br>&lt;/nlog&gt;<br></pre></div>
+
+<hr>
+<h2 id="NLog設定檔疑難排解"><a href="#NLog設定檔疑難排解" class="headerlink" title="NLog設定檔疑難排解"></a>NLog設定檔疑難排解</h2><p><div>有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題</div><div>例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限</div><div>這時後可以利用NLog內部的Log來查詢原因</div><div></div></p>
+<ol>
+<li>throwExceptions -&nbsp;設定是否要引發錯誤<br><span style="color: orange;">NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false</span></li>
+<li>internalLogFile - 設定內部錯誤要輸出的文件位置<br><span style="color: orange;">直接給一個檔名就好，會輸出在執行檔所在目錄下面</span></li>
+<li>internalLogLevel - 設定內部錯誤要輸出的層級<br><span style="color: orange;">基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息</span></li>
+<li>internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗<br><span style="color: orange;">如果不想寫檔，又有Console可以用的話，那就設定為true吧</span></li>
+<li>internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流<br><span style="color: orange;">為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr</span><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png" alt></a></div><div><br></div><div class="separator" style="clear: both; text-align: left;">上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog.html" target="_blank" rel="noopener">NLog 初體驗</a></div>下一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-targets.html" target="_blank" rel="noopener">NLog Targets</a></li>
+</ol>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/29/NLog-初體驗/">NLog 初體驗</a></h1>
+  
+
+      
+        <time datetime="2012-12-29T06:55:00.000Z">2012-12-29 14:55:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div class="separator" style="clear: both; text-align: left;">先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log</div><div class="separator" style="clear: both; text-align: left;">首先讓環境簡單點，所以開一個主控台專案來當範例</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">接下來引用NLog最簡單的方式當然就是用NuGet安裝了</div><div class="separator" style="clear: both; text-align: left;">如果對NuGet不熟的話，可以參考之前的<a href="http://blog.developer.idv.tw/2012/12/nuget.html" target="_blank" rel="noopener">NuGet學習筆記</a></div><div class="separator" style="clear: both; text-align: left;"></div>NLog這個套件是NLog.dll元件本身<br>NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense)<br><br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png" alt></a></div><div class="separator" style="clear: both; text-align: left;">安裝好後，專案中就會多了這三個東西 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"><br></div>打開設定檔，把註解拿掉，先使用預設值來體驗一下<br>詳細的設定方式，之後再介紹<br><br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>&nbsp; &nbsp; &nbsp; xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br>&nbsp; &nbsp; &lt;!–<br>&nbsp; See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>&nbsp; for information on customizing logging rules and outputs.<br>&nbsp; &nbsp;–&gt;<br>&nbsp; &nbsp; &lt;targets&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!– add your targets here –&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=”File” name=”f” fileName=”${basedir}/logs/${shortdate}.log”<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br>&nbsp; &nbsp; &lt;/targets&gt;<br>&nbsp; &nbsp; &lt;rules&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!– add your logging rules here –&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;logger name=”*” minlevel=”Trace” writeTo=”f” /&gt;<br>&nbsp; &nbsp; &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre><div class="separator" style="clear: both; text-align: left;"><br></div>呼叫NLog的方式也很簡單，直接用LogManager來引用就行了<br>寫Log的方式也很直覺，總共有六個層級，都寫一個試試看<br><br><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using System.Threading.Tasks;<br>using NLog;<br><br>namespace NLogApp<br>{<br>    class Program<br>    {<br>        // 引用NLog<br>        static Logger log = LogManager.GetCurrentClassLogger();<br><br>        static void Main(string[] args)<br>        {<br>            // 每個層級都寫一個試試看<br>            log.Trace(“trace”);<br>            log.Debug(“debug”);<br>            log.Info(“info”);<br>            log.Warn(“warn”);<br>            log.Error(“error”);<br>            log.Fatal(“fatal”);<br>        }<br>    }<br>}<br></pre><br><div class="separator" style="clear: both; text-align: left;">這裡需要注意一下，如果是App專案的話，NLog.config這個檔案的屬性</div><div class="separator" style="clear: both; text-align: left;"><strong>複製到輸出目錄</strong>要確定是在<span style="color: red;">永遠複製</span>這個選項</div><div class="separator" style="clear: both; text-align: left;">這樣Run的時後執行檔和設定檔在同一個目錄才會有作用</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">編譯成功就執行一下，如果沒有權限問題的話，在執行檔下面就會寫出一個log檔</div><div class="separator" style="clear: both; text-align: left;">也會看到NLog.config複製到這裡</div><div class="separator" style="clear: both; text-align: left;">記得要按一下<strong>方案總管</strong>中的<span style="color: red;">顯示所有檔案</span>，才會看到不在專案中的檔案喔</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">打開log檔，裡面就是剛寫的那六個層級的log，使用上就是這麼簡單 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">下一篇:<a href="http://blog.developer.idv.tw/2012/12/nlog-config.html" target="_blank" rel="noopener">NLog Config</a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/25/VS2012-Remote-Debug-遠端偵錯/">VS2012 Remote Debug 遠端偵錯</a></h1>
+  
+
+      
+        <time datetime="2012-12-25T04:03:00.000Z">2012-12-25 12:03:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div class="separator" style="clear: both; text-align: left;">VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上 </div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png" alt></a></div><div class="separator" style="clear: both; text-align: left;">首先下載Remote Tools for Visual Studio 2012</div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png" alt></a></div><div class="separator" style="clear: both; text-align: left;">在伺服器上面安裝遠端偵錯工具 </div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png" alt></a></div><div class="separator" style="clear: both; text-align: left;">在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png" alt></a></div><div class="separator" style="clear: both; text-align: left;"><br></div>打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">上一篇: <a href="http://blog.developer.idv.tw/2012/09/aspnet.html" target="_blank" rel="noopener">VS2010 Remote Debug 遠端偵錯</a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/24/StyleCop-整合SVN/">StyleCop 整合SVN</a></h1>
+  
+
+      
+        <time datetime="2012-12-24T12:18:00.000Z">2012-12-24 20:18:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="安裝SVNStyleCop"><a href="#安裝SVNStyleCop" class="headerlink" title="安裝SVNStyleCop"></a>安裝SVNStyleCop</h2><p>1. 首先<a href="http://svnstylecop.codeplex.com/" target="_blank" rel="noopener">下載SVNStyleCop安裝檔</a><br>2. 解壓縮後編輯SVNStyleCop.exe.config<br>3. 設定SVNSettings.StyleCop裡面要檢查的規則<br>4. 修改SVNStyleCop.exe.config裡面的路徑範本</p>
+<pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="svnStyleCopConfig" type="SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" /&gt;
+    &lt;/configSections&gt;
+
+    &lt;svnStyleCopConfig tempFolder="Temp"&gt;
+        &lt;!-- 設定svnlook.exe執行檔位置 --&gt;
+        &lt;svnLook location="C:\Program Files\VisualSVN Server\bin\svnlook.exe" /&gt;
+        &lt;styleCop settingsFile="SVNSettings.StyleCop" maxViolationCount="20" /&gt;
+
+        &lt;!-- 設定專案路徑範本 --&gt;
+        &lt;pathPatterns&gt;
+            &lt;clear /&gt;
+            &lt;add value="^trunk/.*\.cs$"/&gt;
+   &lt;add value="^branches/.*\.cs$"/&gt;
+   &lt;add value="^tags/.*\.cs$"/&gt;
+        &lt;/pathPatterns&gt;
+    &lt;/svnStyleCopConfig&gt;
+
+&lt;/configuration&gt;</pre>
+
+<h2 id="設定"><a href="#設定" class="headerlink" title="設定"></a>設定</h2><div>1. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑</div><div>2. 把批次檔的內容複製到SVN Repos的pre-commit hook</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png" alt></a></div><div><br></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="http://svnstylecop.codeplex.com/" target="_blank" rel="noopener">SVNStyleCop官網</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/24/StyleCop-整合專案設定/">StyleCop 整合專案設定</a></h1>
+  
+
+      
+        <time datetime="2012-12-24T12:17:00.000Z">2012-12-24 20:17:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先卸載專案</p>
+<p>如果要讓沒通過規則的警告變成錯誤，可以在專案中加入StyleCopTreatErrorsAsWarnings這個屬性</p>
+<p><pre class="brush: xml">&lt;PropertyGroup&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Configuration Condition=” ‘$(Configuration)’ == ‘’ “&gt;Debug&lt;/Configuration&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Platform Condition=” ‘$(Platform)’ == ‘’ “&gt;AnyCPU&lt;/Platform&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ProjectGuid&gt;{6F76C2E4-57EF-4A46-9A41-E7A9653F5EF9}&lt;/ProjectGuid&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OutputType&gt;Exe&lt;/OutputType&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AppDesignerFolder&gt;Properties&lt;/AppDesignerFolder&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RootNamespace&gt;DemoApp&lt;/RootNamespace&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AssemblyName&gt;DemoApp&lt;/AssemblyName&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;FileAlignment&gt;512&lt;/FileAlignment&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;StyleCopTreatErrorsAsWarnings&gt;false&lt;/StyleCopTreatErrorsAsWarnings&gt;<br>&lt;/PropertyGroup&gt;<br></pre><br>如果要編譯的時後，也做規則驗證，可以在最下面加入一個StyleCop.targets</p>
+<p><pre class="brush: xml">&lt;Import Project=”$(MSBuildToolsPath)\Microsoft.CSharp.targets” /&gt;<br>&lt;Import Project=”$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets” /&gt;</pre></p>
+<p><br>參考資料</p>
+<p><a href="http://blogs.msdn.com/b/sourceanalysis/archive/2008/05/24/source-analysis-msbuild-integration.aspx" target="_blank" rel="noopener">http://blogs.msdn.com/b/sourceanalysis/archive/2008/05/24/source-analysis-msbuild-integration.aspx</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/22/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/24/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,491 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 13 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/07/07/Server2008R2-System佔用80Port的問題/">Server2008R2 System佔用80Port的問題</a></h1>
+  
+
+      
+        <time datetime="2014-07-07T09:02:00.000Z">2014-07-07 17:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近常碰到80Port被作業系統佔用的問題，原因大部份都是不正常關機引起來<br>每隔一段時間要找解法，總是忘了一些關鍵字，所以在此備忘一下</p>
+<p>首先打開命令字元，透過netstat的-o選項，可以顯示出佔用的PID<br>小技巧是透過管線用findstr過濾80 port，資料會更清楚一些<br>netstat -nao | findstr 80</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-SSuCyUSsSnw/U7pgnq53qPI/AAAAAAAABho/hg6SklZ9agY/s1600/01.pid.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-SSuCyUSsSnw/U7pgnq53qPI/AAAAAAAABho/hg6SklZ9agY/s1600/01.pid.png" alt></a></div><br>打開工作管理員，可以看到PID4是SYSTEM<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-9GhaTmuwWkI/U7phN98gW7I/AAAAAAAABhw/5m-VC4rZZAA/s1600/04.task.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-9GhaTmuwWkI/U7phN98gW7I/AAAAAAAABhw/5m-VC4rZZAA/s1600/04.task.png" alt></a></div><br>先用net stop http關閉http服務<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-AIUUtYYITAY/U7phTeHe4tI/AAAAAAAABh4/A0yys6zFSa4/s1600/02.stop.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-AIUUtYYITAY/U7phTeHe4tI/AAAAAAAABh4/A0yys6zFSa4/s1600/02.stop.png" alt></a></div>
+
+<p>再用sc config http start= disabled就行了<br><span style="color: red;">注意等號和值之間必須空一格</span><br>然後重開機就解決囉</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-VNI45eKIgAw/U7phWLo6uEI/AAAAAAAABiA/2hAReHUC9mA/s1600/03.disabled.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-VNI45eKIgAw/U7phWLo6uEI/AAAAAAAABiA/2hAReHUC9mA/s1600/03.disabled.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/07/07/StyleCop-中文環境設定/">StyleCop 中文環境設定</a></h1>
+  
+
+      
+        <time datetime="2014-07-07T08:51:00.000Z">2014-07-07 16:51:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則</p>
+<p>首先在專案上按右鍵，選擇StyleCop Settings</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>在Rules中的Documentation Rules中，再打開Element Documentation<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png" alt></a></div><br>取消SA1630 DocumentationTextMustContainWhitespace<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png" alt></a></div><br>取消SA1650 ElementDocumentationMustBeSpelledCorrectly<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png" alt></a></div><br>設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png" alt></a></div><br>內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已<br><div><pre class="brush:xml">&lt;StyleCopSettings Version=”105”&gt;<br>    &lt;Analyzers&gt;<br>        &lt;Analyzer AnalyzerId=”StyleCop.CSharp.DocumentationRules”&gt;<br>            &lt;Rules&gt;<br>                &lt;Rule Name=”DocumentationTextMustContainWhitespace”&gt;<br>                    &lt;RuleSettings&gt;<br>                        &lt;BooleanProperty Name=”Enabled”&gt;False&lt;/BooleanProperty&gt;<br>                    &lt;/RuleSettings&gt;<br>                &lt;/Rule&gt;<br>                &lt;Rule Name=”ElementDocumentationMustBeSpelledCorrectly”&gt;<br>                    &lt;RuleSettings&gt;<br>                        &lt;BooleanProperty Name=”Enabled”&gt;False&lt;/BooleanProperty&gt;<br>                    &lt;/RuleSettings&gt;<br>                &lt;/Rule&gt;<br>            &lt;/Rules&gt;<br>            &lt;AnalyzerSettings /&gt;<br>        &lt;/Analyzer&gt;<br>    &lt;/Analyzers&gt;<br>&lt;/StyleCopSettings&gt;<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/17/Visual-Studio-資料庫專案/">Visual Studio 資料庫專案</a></h1>
+  
+
+      
+        <time datetime="2014-06-17T10:06:00.000Z">2014-06-17 18:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先開一個新專案，選擇SQL Server資料庫專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png" alt></a></div><br>匯入的方式有三種，這邊用現有的資料庫當例子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png" alt></a></div><br>輸入要匯入的資料庫連線資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png" alt></a></div><br>接下來需要一點時間來把資料庫物件轉成對應的檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>匯入成功後會得到一堆物件定義的檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>接下來用新增一個資料表當例子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png" alt></a></div><br>輸入要新增的資料表的名稱<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" alt></a></div><br>簡單建立幾個欄位，完成後存檔<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png" alt></a></div><br>編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署<br>這邊用直接發行的方式來部署<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png" alt></a></div><br>輸入要部署的目標伺服器的連線字串後按下發行<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png" alt></a></div><br>順利發行成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png" alt></a></div><br>目標伺服器上就可以看到新增的資料表囉<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-n2Lc4etDMPI/U6APYsuqOII/AAAAAAAABf8/7lmXxHj4WfU/s1600/11.%25E6%2596%25B0%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-n2Lc4etDMPI/U6APYsuqOII/AAAAAAAABf8/7lmXxHj4WfU/s1600/11.%25E6%2596%25B0%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/17/SQL-Server-資料層應用程式/">SQL Server 資料層應用程式</a></h1>
+  
+
+      
+        <time datetime="2014-06-17T07:50:00.000Z">2014-06-17 15:50:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>為了方便練習，所以透過SQL LocalDB建立兩個執行個體</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-PYm-vP7F9SQ/U5_tXS5y79I/AAAAAAAABbY/QPu4WEiLHPY/s1600/01.%25E5%25BB%25BA%25E7%2592%25B0%25E5%25A2%2583.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-PYm-vP7F9SQ/U5_tXS5y79I/AAAAAAAABbY/QPu4WEiLHPY/s1600/01.%25E5%25BB%25BA%25E7%2592%25B0%25E5%25A2%2583.png" alt></a></div><br><div>再來建立一個練習用的資料庫，這裡用北風資料庫為例子</div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-QazOoP4b4vU/U5_tXe_J0JI/AAAAAAAABbk/pq6cEvQRC8w/s1600/02.%25E5%258C%2597%25E9%25A2%25A8%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-QazOoP4b4vU/U5_tXe_J0JI/AAAAAAAABbk/pq6cEvQRC8w/s1600/02.%25E5%258C%2597%25E9%25A2%25A8%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png" alt></a></div><br><div>首先把資料庫註冊成資料層應用程式</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-e0MTcSY8jTM/U5_tXfsjfyI/AAAAAAAABbw/Pufq3ukfQOQ/s1600/03.%25E8%25A8%25BB%25E5%2586%258A.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-e0MTcSY8jTM/U5_tXfsjfyI/AAAAAAAABbw/Pufq3ukfQOQ/s1600/03.%25E8%25A8%25BB%25E5%2586%258A.png" alt></a></div><br><div>設定屬性<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Pl3r-mf7M_s/U5_tXxN09nI/AAAAAAAABbo/FdNbbjp1-P8/s1600/04.%25E8%25A8%25BB%25E5%2586%258A%25E5%25B1%25AC%25E6%2580%25A7.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-Pl3r-mf7M_s/U5_tXxN09nI/AAAAAAAABbo/FdNbbjp1-P8/s1600/04.%25E8%25A8%25BB%25E5%2586%258A%25E5%25B1%25AC%25E6%2580%25A7.png" alt></a></div><br>驗證與摘要<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-c4VmOP54fdc/U5_tYMrk4pI/AAAAAAAABeY/uCabHv_R9SA/s1600/05.%25E8%25A8%25BB%25E5%2586%258A%25E6%2591%2598%25E8%25A6%2581.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-c4VmOP54fdc/U5_tYMrk4pI/AAAAAAAABeY/uCabHv_R9SA/s1600/05.%25E8%25A8%25BB%25E5%2586%258A%25E6%2591%2598%25E8%25A6%2581.png" alt></a></div><br>註冊完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-VFcJVLC0KFU/U5_tYT_tj-I/AAAAAAAABb4/a8aRtT07uE4/s1600/06.%25E8%25A8%25BB%25E5%2586%258A%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-VFcJVLC0KFU/U5_tYT_tj-I/AAAAAAAABb4/a8aRtT07uE4/s1600/06.%25E8%25A8%25BB%25E5%2586%258A%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>再來擷取資料層應用程式，不用註冊也可以直接擷取</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-RSIBOQZNGCM/U5_tY546YjI/AAAAAAAABec/W0PK5ycOF_k/s1600/07.%25E6%2593%25B7%25E5%258F%2596.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-RSIBOQZNGCM/U5_tY546YjI/AAAAAAAABec/W0PK5ycOF_k/s1600/07.%25E6%2593%25B7%25E5%258F%2596.png" alt></a></div><br><div>選擇檔案輸出的路徑和檔名<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-LLMbv0HkHOE/U5_tZNY6SaI/AAAAAAAABcM/spVOVImkRGk/s1600/08.%25E6%2593%25B7%25E5%258F%2596%25E5%25B1%25AC%25E6%2580%25A7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-LLMbv0HkHOE/U5_tZNY6SaI/AAAAAAAABcM/spVOVImkRGk/s1600/08.%25E6%2593%25B7%25E5%258F%2596%25E5%25B1%25AC%25E6%2580%25A7.png" alt></a></div><br>驗證與摘要<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-61wr623zbFM/U5_tZRMNqLI/AAAAAAAABcU/WeBsHrL7iwY/s1600/09.%25E6%2593%25B7%25E5%258F%2596%25E6%2591%2598%25E8%25A6%2581.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-61wr623zbFM/U5_tZRMNqLI/AAAAAAAABcU/WeBsHrL7iwY/s1600/09.%25E6%2593%25B7%25E5%258F%2596%25E6%2591%2598%25E8%25A6%2581.png" alt></a></div><br>封裝完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-cLyszCK0cvA/U5_tZ8t6XyI/AAAAAAAABck/OAtx5RDGruQ/s1600/10.%25E6%2593%25B7%25E5%258F%2596%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-cLyszCK0cvA/U5_tZ8t6XyI/AAAAAAAABck/OAtx5RDGruQ/s1600/10.%25E6%2593%25B7%25E5%258F%2596%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>再來把擷取出來的檔案部署到第二個環境</div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HW0bgK0INAE/U5_taIk8hfI/AAAAAAAABeI/MdQ6LrTAvcc/s1600/11.%25E9%2583%25A8%25E7%25BD%25B2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-HW0bgK0INAE/U5_taIk8hfI/AAAAAAAABeI/MdQ6LrTAvcc/s1600/11.%25E9%2583%25A8%25E7%25BD%25B2.png" alt></a></div><br><div>選擇剛輸出的檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-hD5cEqITLcM/U5_taFULOqI/AAAAAAAABcg/mxhSAzjH0wA/s1600/12.%25E9%2583%25A8%25E6%259A%2591%25E9%2581%25B8%25E6%25AA%2594.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-hD5cEqITLcM/U5_taFULOqI/AAAAAAAABcg/mxhSAzjH0wA/s1600/12.%25E9%2583%25A8%25E6%259A%2591%25E9%2581%25B8%25E6%25AA%2594.png" alt></a></div><br>設定要部署的資料庫名稱<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/--HEJU57mtNU/U5_taRjuiiI/AAAAAAAABc0/u6ZaFtAdBiA/s1600/13.%25E9%2583%25A8%25E7%25BD%25B2%25E5%2590%258D%25E7%25A8%25B1.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/--HEJU57mtNU/U5_taRjuiiI/AAAAAAAABc0/u6ZaFtAdBiA/s1600/13.%25E9%2583%25A8%25E7%25BD%25B2%25E5%2590%258D%25E7%25A8%25B1.png" alt></a></div><br>部署摘要<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-kAAdV8Uf_WE/U5_tazOwtdI/AAAAAAAABco/st3V2Dhj1zk/s1600/14.%25E9%2583%25A8%25E7%25BD%25B2%25E6%2591%2598%25E8%25A6%2581.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-kAAdV8Uf_WE/U5_tazOwtdI/AAAAAAAABco/st3V2Dhj1zk/s1600/14.%25E9%2583%25A8%25E7%25BD%25B2%25E6%2591%2598%25E8%25A6%2581.png" alt></a></div><br>部署完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-h_FTGXGLzVA/U5_tbOrYbXI/AAAAAAAABc8/0bFQzE8Av30/s1600/15.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-h_FTGXGLzVA/U5_tbOrYbXI/AAAAAAAABc8/0bFQzE8Av30/s1600/15.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>第二個環境也有北風資料庫了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-KhTDtavtW30/U5_tbfNVwCI/AAAAAAAABeQ/RIxgYNMd3z8/s1600/16.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-KhTDtavtW30/U5_tbfNVwCI/AAAAAAAABeQ/RIxgYNMd3z8/s1600/16.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png" alt></a></div><br>再來異動第一個環境的資料庫的schema，這裡用新增一個資料表當例子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Z9Ah5th7ysI/U5_tcFWAAFI/AAAAAAAABdI/9CNike4If7w/s1600/17.%25E6%2596%25B0%25E5%25A2%259E%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Z9Ah5th7ysI/U5_tcFWAAFI/AAAAAAAABdI/9CNike4If7w/s1600/17.%25E6%2596%25B0%25E5%25A2%259E%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png" alt></a></div><br></div>再擷取一次資料層應用程式<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-aefoQHvcJwA/U5_tcsH9hwI/AAAAAAAABdc/kYcdxZRIwEg/s1600/18-1.%25E5%2586%258D%25E6%2593%25B7%25E5%258F%2596%25E4%25B8%2580%25E6%25AC%25A1.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-aefoQHvcJwA/U5_tcsH9hwI/AAAAAAAABdc/kYcdxZRIwEg/s1600/18-1.%25E5%2586%258D%25E6%2593%25B7%25E5%258F%2596%25E4%25B8%2580%25E6%25AC%25A1.png" alt></a></div><br>在第二個環境上用升級的方式匯入<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-fmVxwKzU1Zk/U5_tcqyqHTI/AAAAAAAABdU/xYCAJbOrZVw/s1600/18-2.%25E5%258D%2587%25E7%25B4%259A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-fmVxwKzU1Zk/U5_tcqyqHTI/AAAAAAAABdU/xYCAJbOrZVw/s1600/18-2.%25E5%258D%2587%25E7%25B4%259A.png" alt></a></div><br><div>選擇剛匯出的檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-0dr008Hag30/U5_tdDzNlDI/AAAAAAAABeU/QFWzbi0JWZY/s1600/19.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E6%25AA%2594.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-0dr008Hag30/U5_tdDzNlDI/AAAAAAAABeU/QFWzbi0JWZY/s1600/19.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E6%25AA%2594.png" alt></a></div><br></div>這邊的尚未變更指的是從上次建立資料層應用程式後都沒有變更Schema<br>而不是和要升級的檔案比對的結果<br><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-u0kKhoucR7Q/U5_tdQeE3MI/AAAAAAAABeA/IRpxqd8w-Z4/s1600/20.%25E5%258D%2587%25E7%25B4%259A%25E5%2581%25B5%25E6%25B8%25AC%25E7%25B5%2590%25E6%259E%259C.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-u0kKhoucR7Q/U5_tdQeE3MI/AAAAAAAABeA/IRpxqd8w-Z4/s1600/20.%25E5%258D%2587%25E7%25B4%259A%25E5%2581%25B5%25E6%25B8%25AC%25E7%25B5%2590%25E6%259E%259C.png" alt></a></div><br></div>升級選項<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-WZ8HUXKankM/U5_tdzT3F1I/AAAAAAAABdo/Vldgx3uqvPs/s1600/21.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E9%25A0%2585.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-WZ8HUXKankM/U5_tdzT3F1I/AAAAAAAABdo/Vldgx3uqvPs/s1600/21.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E9%25A0%2585.png" alt></a></div><br><div>升級計畫</div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-BDKkSYVWaHE/U5_td354TOI/AAAAAAAABd8/54GfkmMNWwU/s1600/22.%25E5%258D%2587%25E7%25B4%259A%25E8%25A8%2588%25E5%258A%2583.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-BDKkSYVWaHE/U5_td354TOI/AAAAAAAABd8/54GfkmMNWwU/s1600/22.%25E5%258D%2587%25E7%25B4%259A%25E8%25A8%2588%25E5%258A%2583.png" alt></a></div><br><div>升級摘要<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Mw0clAb-f5Q/U5_teYqP2zI/AAAAAAAABd0/Gwo6zt5Tr2c/s1600/23.%25E5%258D%2587%25E7%25B4%259A%25E6%2591%2598%25E8%25A6%2581.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Mw0clAb-f5Q/U5_teYqP2zI/AAAAAAAABd0/Gwo6zt5Tr2c/s1600/23.%25E5%258D%2587%25E7%25B4%259A%25E6%2591%2598%25E8%25A6%2581.png" alt></a></div><br></div>升級完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-IE5yhPETFqQ/U5_telmV4VI/AAAAAAAABd4/Lse01AvDSkQ/s1600/24.%25E5%258D%2587%25E7%25B4%259A%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-IE5yhPETFqQ/U5_telmV4VI/AAAAAAAABd4/Lse01AvDSkQ/s1600/24.%25E5%258D%2587%25E7%25B4%259A%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>升級後可以看到新增的資料表<br><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-va77B4s-mHI/U5_te15PgUI/AAAAAAAABeM/Wp1USWOjwS4/s1600/25.%25E5%258D%2587%25E7%25B4%259A%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-va77B4s-mHI/U5_te15PgUI/AAAAAAAABeM/Wp1USWOjwS4/s1600/25.%25E5%258D%2587%25E7%25B4%259A%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png" alt></a></div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/06/TeamCity-整合-StyleCop/">TeamCity 整合 StyleCop</a></h1>
+  
+
+      
+        <time datetime="2014-06-06T06:10:00.000Z">2014-06-06 14:10:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先打開管理頁面的Plugin List，選擇<a href="http://confluence.jetbrains.com/display/TW/TeamCity+Plugins" target="_blank" rel="noopener">Available Plugin</a></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png" alt></a></div><br>找到StyleCop Runner<br><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png" alt></a></div><br></div><div>下載最新版本的StyleCop Plugin<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png" alt></a></div><br></div><div><br></div><div>把檔案解壓縮後會得到不帶版本號的Stylecop.zip<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png" alt></a></div><br></div><div><br>打開管理頁面的PluginList，點擊Upload plugin zip連結</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png" alt></a></div><br></div><div>選擇剛解壓縮出來的Stylecop.zip<br>上傳到Plugins資料夾下面</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png" alt></a></div><br></div><div>重新啟動TeamCity服務</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png" alt></a></div><br></div><div>Plugin列表中可以看到StyleCop套件的資訊</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png" alt></a></div><br></div><div>Build Step中就可以選擇StyleCop這個Runner<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png" alt></a></div>輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png" alt></a></div><br>預設會把找到的問題當做錯誤，造成建置失敗<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png" alt></a></div><br>可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制<br>另一個方法是勾選Treat errors as warnings，把錯誤當成警告<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png" alt></a></div><br>建置結果會順利通過，但有檢查到的數量顯示<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png" alt></a></div><br>點選該筆建置內容，就會看到StyleCop的詳細資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png" alt></a></div>
+
+<p></p></div><div><br></div><p></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/05/AngularJS-筆記/">AngularJS 筆記</a></h1>
+  
+
+      
+        <time datetime="2014-06-05T06:16:00.000Z">2014-06-05 14:16:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>1.</p>
+<p>2.</p>
+<p>3.</p>
+<p>4.</p>
+<p>5.</p>
+<p>6.</p>
+<p>7.</p>
+<p>8.</p>
+<p>9.</p>
+<p>10.</p>
+<p>學習資源<br><a href="https://docs.angularjs.org/guide" target="_blank" rel="noopener">AngularJS Guide</a>&nbsp;官方文件<br><a href="https://egghead.io/" target="_blank" rel="noopener">egghead.io</a>&nbsp;有很多教學影片<br><a href="https://github.com/jmcunningham/AngularJS-Learning/blob/master/ZH-TW.md" target="_blank" rel="noopener">AngularJS 學習資源</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/04/SVN-Global-Ignore/">SVN Global Ignore</a></h1>
+  
+
+      
+        <time datetime="2014-06-04T07:16:00.000Z">2014-06-04 15:16:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先是全域設定檔，位置在%AppData%\Subversion\config</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png" alt></a></div><br>搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png" alt></a></div><br>第二個地方是TortoiseSVN的設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png" alt></a></div><br>第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png" alt></a></div>
+
+<p>如果沒設定過的話，需要手動新增一個設定</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png" alt></a></div><br>有svn:global-ignores的屬性可以設定，每一行代表一個設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png" alt></a></div>
+
+<p>C#常用的忽略列表有</p>
+<div><pre class="brush:shell">#OS junk files<br>[Tt]humbs.db<br><br>#Visual Studio files<br>[Bb]in<br>[Oo]bj<br><em>.user
+</em>.suo<br><em>.[Cc]ache<br><br>#NuGet<br>packages
+</em>.nupkg<br><br># SQL Server files<br><em>.mdf
+</em>.ldf<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/04/Controller加入單元測試/">Controller加入單元測試</a></h1>
+  
+
+      
+        <time datetime="2014-06-04T03:43:00.000Z">2014-06-04 11:43:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否</p>
+<h1 id="首先加入一個測試專案，名稱為要測試的專案名稱後面加-Tests"><a href="#首先加入一個測試專案，名稱為要測試的專案名稱後面加-Tests" class="headerlink" title="首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests"></a>首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests</h1><p><img src="http://1.bp.blogspot.com/-OZinuFI1mHU/U46Vkhkz8aI/AAAAAAAABX8/jcka12CXCac/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt="加入一個測試專案"></p>
+<h1 id="依照MVC的習慣，加入一個Controllers資料夾"><a href="#依照MVC的習慣，加入一個Controllers資料夾" class="headerlink" title="依照MVC的習慣，加入一個Controllers資料夾"></a>依照MVC的習慣，加入一個Controllers資料夾</h1><p>在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test<br><img src="http://4.bp.blogspot.com/-pYXbFulua7o/U46VpOARWdI/AAAAAAAABYE/KVYnuvxFJ4M/s1600/02.%E6%96%B0%E5%A2%9E%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6.png" alt="加入一個Controllers資料夾"></p>
+<h1 id="首先初始化一些要共用的變數"><a href="#首先初始化一些要共用的變數" class="headerlink" title="首先初始化一些要共用的變數"></a>首先初始化一些要共用的變數</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Mock&lt;IGuestbookRepository&gt; repository;</span><br><span class="line"><span class="keyword">private</span> GuestbookController ctrl;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestInitialize</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GuestbookControllerTestInitialize</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.repository = <span class="keyword">new</span> Mock&lt;IGuestbookRepository&gt;();</span><br><span class="line">    <span class="keyword">this</span>.repository</span><br><span class="line">        .Setup(x =&gt; x.Find(It.IsIn&lt;<span class="keyword">int</span>&gt;(<span class="number">1</span>)))</span><br><span class="line">        .Returns(<span class="keyword">new</span> Guestbook());</span><br><span class="line">    <span class="keyword">this</span>.ctrl = <span class="keyword">new</span> GuestbookController(<span class="keyword">this</span>.repository.Object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Index相關測試"><a href="#Index相關測試" class="headerlink" title="Index相關測試"></a>Index相關測試</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Index_GET_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Index() <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Create相關測試"><a href="#Create相關測試" class="headerlink" title="Create相關測試"></a>Create相關測試</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Create_GET_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Create() <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Create_POST_Success_Return_RedirectToRouteResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> model = <span class="keyword">new</span> Guestbook();</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Create(model) <span class="keyword">as</span> RedirectToRouteResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Create_POST_Fail_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> model = <span class="keyword">new</span> Guestbook();</span><br><span class="line">    <span class="keyword">this</span>.ctrl.ModelState.AddModelError(<span class="string">"key"</span>, <span class="string">"message"</span>);</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Create(model) <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Edit相關測試"><a href="#Edit相關測試" class="headerlink" title="Edit相關測試"></a>Edit相關測試</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Edit_GET_Null_ID_Return_HttpStatusCodeResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>? id = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Edit(id) <span class="keyword">as</span> HttpStatusCodeResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Edit_GET_Invalid_ID_Return_HttpNotFoundResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Edit(id) <span class="keyword">as</span> HttpNotFoundResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Edit_GET_Valid_ID_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Edit(id) <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Edit_POST_Success_Return_RedirectToRouteResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> model = <span class="keyword">new</span> Guestbook();</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Edit(model) <span class="keyword">as</span> RedirectToRouteResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Edit_POST_Fail_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> model = <span class="keyword">new</span> Guestbook();</span><br><span class="line">    <span class="keyword">this</span>.ctrl.ModelState.AddModelError(<span class="string">"key"</span>, <span class="string">"message"</span>);</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Edit(model) <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Delete相關測試"><a href="#Delete相關測試" class="headerlink" title="Delete相關測試"></a>Delete相關測試</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Delete_GET_Null_ID_Return_HttpStatusCodeResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>? id = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Delete(id) <span class="keyword">as</span> HttpStatusCodeResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Delete_GET_Invalid_ID_Return_HttpNotFound</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>? id = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Delete(id) <span class="keyword">as</span> HttpNotFoundResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Delete_GET_Valid_ID_Return_ViewResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>? id = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.Delete(id) <span class="keyword">as</span> ViewResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Delete_POST_Return_RedirectToRouteResult</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">this</span>.ctrl.DeleteConfirmed(id) <span class="keyword">as</span> RedirectToRouteResult;</span><br><span class="line">    Assert.IsNotNull(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="單元測試涵蓋率可以參考NCover、NCrunch等工具"><a href="#單元測試涵蓋率可以參考NCover、NCrunch等工具" class="headerlink" title="單元測試涵蓋率可以參考NCover、NCrunch等工具"></a>單元測試涵蓋率可以參考NCover、NCrunch等工具</h1>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/04/Autofac-一種IOC容器/">Autofac 一種IOC容器</a></h1>
+  
+
+      
+        <time datetime="2014-06-04T02:55:00.000Z">2014-06-04 10:55:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入</p>
+<h1 id="首先透過NuGet安裝Autofac套件"><a href="#首先透過NuGet安裝Autofac套件" class="headerlink" title="首先透過NuGet安裝Autofac套件"></a>首先透過NuGet安裝Autofac套件</h1><p><img src="http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png" alt="安裝Autofac套件](http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png)"></p>
+<h1 id="因為是MVC專案，所以還要再裝一個MVC整合套件"><a href="#因為是MVC專案，所以還要再裝一個MVC整合套件" class="headerlink" title="因為是MVC專案，所以還要再裝一個MVC整合套件"></a>因為是MVC專案，所以還要再裝一個MVC整合套件</h1><p><img src="http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png" alt="MVC整合套件](http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png)"></p>
+<h1 id="依照慣例在App-Start資料夾下新增一個AutofacConfig"><a href="#依照慣例在App-Start資料夾下新增一個AutofacConfig" class="headerlink" title="依照慣例在App_Start資料夾下新增一個AutofacConfig"></a>依照慣例在App_Start資料夾下新增一個AutofacConfig</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">WebApplication1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> Autofac;</span><br><span class="line">    <span class="keyword">using</span> Autofac.Integration.Mvc;</span><br><span class="line">    <span class="keyword">using</span> System.Reflection;</span><br><span class="line">    <span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AutofacConfig</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RegisterDependies</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            ContainerBuilder builder = <span class="keyword">new</span> ContainerBuilder();</span><br><span class="line">            builder.RegisterControllers(Assembly.GetExecutingAssembly());</span><br><span class="line">            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())</span><br><span class="line">                .Where(x =&amp;gt; x.Namespace.EndsWith(<span class="string">"Repositories"</span>))</span><br><span class="line">                .AsImplementedInterfaces();</span><br><span class="line">            IContainer container = builder.Build();</span><br><span class="line">            DependencyResolver.SetResolver(<span class="keyword">new</span> AutofacDependencyResolver(container));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在Global的Application-Start事件中啟用Autofac"><a href="#在Global的Application-Start事件中啟用Autofac" class="headerlink" title="在Global的Application_Start事件中啟用Autofac"></a>在Global的Application_Start事件中啟用Autofac</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">WebApplication1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line">    <span class="keyword">using</span> System.Web.Routing;</span><br><span class="line"></span><br><span class="line">    public class MvcApplication : System.Web.HttpApplication</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Application_Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            AreaRegistration.RegisterAllAreas();</span><br><span class="line">            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);</span><br><span class="line">            RouteConfig.RegisterRoutes(RouteTable.Routes);</span><br><span class="line">            AutofacConfig.RegisterDependies();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/06/03/Moq-一個用來模擬物件的類別庫/">Moq 一個用來模擬物件的類別庫</a></h1>
+  
+
+      
+        <time datetime="2014-06-03T07:07:00.000Z">2014-06-03 15:07:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>當系統利用介面完成物件來隔離外部物件之後，為了方便測試通常會寫一些假的物件來抽換<br>但功能越來越多之後，測試的假類別也越多，檔案不好管理<br>這時後可以讓Moq利用反射的方式讓我們很容易地新增假物件<br>Moq只能模擬公開的介面，如果是繼承的類別則需要Virtual才能模擬</p>
+<p>要使用Moq很簡單，利用NuGet安裝套件就行了</p>
+<p><img src="http://1.bp.blogspot.com/-cwTzcXKv6l0/U408MjPlOYI/AAAAAAAABXU/yxksMr1XfO8/s1600/01.Moq.png" alt="安裝moq](http://1.bp.blogspot.com/-cwTzcXKv6l0/U408MjPlOYI/AAAAAAAABXU/yxksMr1XfO8/s1600/01.Moq.png)"></p>
+<h1 id="用一個簡單的IFoo介面來當例子"><a href="#用一個簡單的IFoo介面來當例子" class="headerlink" title="用一個簡單的IFoo介面來當例子"></a>用一個簡單的IFoo介面來當例子</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFoo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">F1</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">F2</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">F3</span>(<span class="params"><span class="keyword">int</span> x</span>)</span>;</span><br><span class="line">    <span class="keyword">event</span> EventHandler&amp;lt;<span class="keyword">object</span>&amp;gt; MyEvent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先建立一個IFoo型別的Mock物件<br>在建構式中可以指定MockBehavior來設定模擬物件的程度<br>Strict是限制需要完整模擬物件，Loose則不需要<br>預設為Default，也就是Loose<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Mock&amp;lt;IFoo&amp;gt; mock;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestInitialize</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MyTestInitialize</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.mock = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一開始先用沒有回傳值的函式當例子，就先不做更多的設定<br>直接使用Mock物件的Object屬性取得模擬的假物件就可以使用了<br>這裡用Verify和Times來檢查該函式的呼叫次數<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Object.F1();</span><br><span class="line">    foo.Verify(x =&amp;gt; x.F1(), Times.Once());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再來用一個有回傳值的函式當例子，所以再加上回傳值的設定<br>這裡的意思是呼叫F2函式的時後，總是回傳123的值回來<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Setup(x =&amp;gt; x.F2()).Returns(<span class="number">123</span>);</span><br><span class="line">    Assert.AreEqual(<span class="number">123</span>, foo.Object.F2());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函式中的參數可以透過It物件來設定<br>這裡的意思是只要傳入int型別的參數，就回傳456的值<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod3</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Setup(x =&amp;gt; x.F3(It.IsAny&amp;lt;<span class="keyword">int</span>&amp;gt;())).Returns(<span class="number">456</span>);</span><br><span class="line">    Assert.AreEqual(<span class="number">456</span>, foo.Object.F3(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="除了回傳值之外，也可以設定Callback函式"><a href="#除了回傳值之外，也可以設定Callback函式" class="headerlink" title="除了回傳值之外，也可以設定Callback函式"></a>除了回傳值之外，也可以設定Callback函式</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod4</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Setup(x =&amp;gt; x.F1()).Callback(() =&amp;gt; counter++);</span><br><span class="line">    foo.Object.F1();</span><br><span class="line">    Assert.AreEqual(<span class="number">1</span>, counter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="還有丟回指定的Exception"><a href="#還有丟回指定的Exception" class="headerlink" title="還有丟回指定的Exception"></a>還有丟回指定的Exception</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line">[<span class="meta">ExpectedException(typeof(Exception))</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod5</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Setup(x =&amp;gt; x.F1()).Throws(<span class="keyword">new</span> Exception());</span><br><span class="line">    foo.Object.F1();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="還有引發指定的事件"><a href="#還有引發指定的事件" class="headerlink" title="還有引發指定的事件"></a>還有引發指定的事件</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestMethod6</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mock&amp;lt;IFoo&amp;gt; foo = <span class="keyword">new</span> Mock&amp;lt;IFoo&amp;gt;();</span><br><span class="line">    foo.Raise(x =&amp;gt; x.MyEvent += (s, a) =&amp;gt; &#123; Console.WriteLine(a); &#125;, <span class="number">123</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>參考資料<br><a href="https://github.com/Moq/moq4/wiki/Quickstart" target="_blank" rel="noopener">Moq Quickstart</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/12/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/14/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

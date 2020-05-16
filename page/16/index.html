@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 16 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-控制介面/">Windows Service 控制介面</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T10:52:00.000Z">2014-01-20 18:52:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://msdn.microsoft.com/zh-tw/library/system.serviceprocess.servicecontroller(v=vs.110" target="_blank" rel="noopener">ServiceController</a>.aspx)這個類別可以用來控制Service的狀態<br>詳細的資訊請參考<a href="http://msdn.microsoft.com/zh-tw/library/system.serviceprocess.servicecontroller(v=vs.110" target="_blank" rel="noopener">MSDN上面的文件</a>.aspx)</p>
+<p>新增一個Windows Form應用程式來當範例</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>首先要先參考System.ServiceProcess這個元件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png" alt></a></div><br>簡單拉兩個按鈕來控制啟動或停止服務<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png" alt></a></div><br>在Button Click事件中，透過ServiceController來切換狀態<br><div><pre class="brush:csharp">private void Btn_Start_Click(object sender, EventArgs e)<br>{<br>    // 設定服務<br>    using (ServiceController objSC = new ServiceController(“Service1”))<br>    {<br>        // 設定一個 Timeout 時間，若超過 30 秒啟動不成功就宣告失敗<br>        TimeSpan timeout = TimeSpan.FromMilliseconds(1000 <em> 30);<br><br>        // 啟動服務<br>        objSC.Start();<br><br>        // 設定該服務必須在timeout時間內切換到Running狀態<br>        objSC.WaitForStatus(ServiceControllerStatus.Running, timeout);<br>    }<br>}<br><br>private void Btn_Stop_Click(object sender, EventArgs e)<br>{<br>    // 設定服務<br>    using (ServiceController objSC = new ServiceController(“Service1”))<br>    {<br>        // 若該服務不是「停用」的狀態，才將其停止運作，否則會引發 Exception<br>        if (objSC.Status != ServiceControllerStatus.Stopped &amp;&amp; objSC.Status != ServiceControllerStatus.StopPending)<br>        {<br>            // 設定一個 Timeout 時間，若超過30秒停止不成功就宣告失敗!<br>            TimeSpan timeout = TimeSpan.FromMilliseconds(1000 </em> 30);<br><br>            // 停止服務<br>            objSC.Stop();<br><br>            // 設定該服務必須在timeout時間內切換到Stopped狀態<br>            objSC.WaitForStatus(ServiceControllerStatus.Stopped, timeout);<br>        }<br>    }<br>}<br></pre></div><br>再拉個按鈕來發送自訂命令<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-J0zJAuvlOIc/Utz_J-xZXrI/AAAAAAAAA_4/h5dhVxRDgtA/s1600/04.%E8%87%AA%E8%A8%82%E5%91%BD%E4%BB%A4%E6%8C%89%E9%88%95.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-J0zJAuvlOIc/Utz_J-xZXrI/AAAAAAAAA_4/h5dhVxRDgtA/s1600/04.%E8%87%AA%E8%A8%82%E5%91%BD%E4%BB%A4%E6%8C%89%E9%88%95.png" alt></a></div><br>透過ExecuteCommand來發送命令，<span style="color: red;">需要注意這裡面的CommandID必須在128~256這個範圍</span><br><div><pre class="brush:csharp">private void Btn_CMD_128_Click(object sender, EventArgs e)<br>{<br>    // 設定服務<br>    using (ServiceController objSC = new ServiceController(“Service1”))<br>    {<br>        if (objSC.Status == ServiceControllerStatus.Running)<br>        {<br>            objSC.ExecuteCommand(128);<br>        }<br>    }<br>}<br></pre></div><br>在Service中去覆寫OnCustomCommand，就可以收到發送命令的通知<br>至於收到什麼編號要去做什麼行為，簡單地用個switch case就行了<br><div><pre class="brush:csharp">protected override void OnCustomCommand(int command)<br>{<br>    switch (command)<br>    {<br>        case 128:<br>            break;<br>        case 129:<br>            break;<br>        case 130:<br>            break;<br>        default:<br>            break;<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-啟動參數/">Windows Service 啟動參數</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T10:13:00.000Z">2014-01-20 18:13:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Windows Service可以透過幾種方式來傳入啟動參數<br>可以利用服務的啟動參數</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png" alt></a></div><br>OnStart就可以收到參數<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png" alt></a></div><br><span style="color: red;">但需要注意這種方式只能設定一次，下次啟動還要再設定才行</span><br>透過命令列的話有兩種方式<br>net start service1 /3000 /yyyyMMddHHmmss<br>但這種方式收到的參數也會有斜線<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png" alt></a></div><br>sc start service1 3000 yyyyMMddHHmmss<br>這種方式就不會有斜線了<br><br>還有一種方式是設定在服務機碼的ImagePath後面<br>需要透過覆寫安裝程式的Install函式來完成<br><div><pre class="brush:csharp">using System.Collections;<br>using System.ComponentModel;<br>using Microsoft.Win32;<br><br>namespace MyService<br>{<br>    [RunInstaller(true)]<br>    public partial class ProjectInstaller : System.Configuration.Install.Installer<br>    {<br>        public ProjectInstaller()<br>        {<br>            InitializeComponent();<br>        }<br><br>        public override void Install(IDictionary stateSaver)<br>        {<br>            base.Install(stateSaver);<br><br>            // 安裝的時後增加啟動參數<br>            RegistryKey System = Registry.LocalMachine.OpenSubKey(“System”);<br>            RegistryKey currentControlSet = System.OpenSubKey(“CurrentControlSet”);<br>            RegistryKey services = currentControlSet.OpenSubKey(“Services”);<br>            RegistryKey service = services.OpenSubKey(this.serviceInstaller1.ServiceName, true);<br>            string imagePath = service.GetValue(“ImagePath”) + “ 3000 yyyyMMddHHmmss”;<br>            service.SetValue(“ImagePath”, imagePath);<br>            service.Close();<br>        }<br>    }<br>}<br><br></pre></div><br>服務的內容就會在執行路徑後面帶上參數<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-UUq9LvzYQ9s/Utz0-hjTDAI/AAAAAAAAA-0/Z_xDcHxKKoY/s1600/04.ImagePath.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-UUq9LvzYQ9s/Utz0-hjTDAI/AAAAAAAAA-0/Z_xDcHxKKoY/s1600/04.ImagePath.png" alt></a></div>透過Environment.GetCommandLineArgs()來取得參數<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-x4WCgs2qNMo/Utz2Ak-MkHI/AAAAAAAAA_I/0KkslrpmTMQ/s1600/05.GetCommandLineArgs.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-x4WCgs2qNMo/Utz2Ak-MkHI/AAAAAAAAA_I/0KkslrpmTMQ/s1600/05.GetCommandLineArgs.png" alt></a></div><br><span style="color: red;">只不過這種參數方式是需要修改機碼，所以設定上不太方便</span><br><br>最簡單好用的方式，莫過於透過app.config中的appSettings<br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>    &lt;configSections&gt;<br>        &lt;sectionGroup name=”common”&gt;<br>            &lt;section name=”logging” type=”Common.Logging.ConfigurationSectionHandler, Common.Logging”/&gt;<br>        &lt;/sectionGroup&gt;<br>    &lt;/configSections&gt;<br>    &lt;common&gt;<br>        &lt;logging&gt;<br>            &lt;factoryAdapter type=”Common.Logging.NLog.NLogLoggerFactoryAdapter, Common.Logging.NLog”&gt;<br>                &lt;arg key=”configType” value=”FILE” /&gt;<br>                &lt;arg key=”configFile” value=”~/NLog.config” /&gt;<br>            &lt;/factoryAdapter&gt;<br>        &lt;/logging&gt;<br>    &lt;/common&gt;<br>    &lt;appSettings&gt;<br>        &lt;add key=”TimerInterval” value=”3000” /&gt;<br>        &lt;add key=”DateTimeFormat” value=”HH:mm:ss yyyy/MM/dd” /&gt;<br>    &lt;/appSettings&gt;<br>    &lt;startup&gt;<br>        &lt;supportedRuntime version=”v4.0” sku=”.NETFramework,Version=v4.5” /&gt;<br>    &lt;/startup&gt;<br>    &lt;runtime&gt;<br>        &lt;assemblyBinding xmlns=”urn:schemas-microsoft-com:asm.v1”&gt;<br>            &lt;dependentAssembly&gt;<br>                &lt;assemblyIdentity name=”NLog” publicKeyToken=”5120e14c03d0593c” culture=”neutral” /&gt;<br>                &lt;bindingRedirect oldVersion=”0.0.0.0-2.1.0.0” newVersion=”2.1.0.0” /&gt;<br>            &lt;/dependentAssembly&gt;<br>            &lt;dependentAssembly&gt;<br>                &lt;assemblyIdentity name=”Common.Logging” publicKeyToken=”af08829b84f0328e” culture=”neutral” /&gt;<br>                &lt;bindingRedirect oldVersion=”0.0.0.0-2.1.2.0” newVersion=”2.1.2.0” /&gt;<br>            &lt;/dependentAssembly&gt;<br>        &lt;/assemblyBinding&gt;<br>    &lt;/runtime&gt;<br>&lt;/configuration&gt;<br></pre></div><br>記得要引用System.Configuration參考<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-MCi8mOBjr8o/Utz1SMcvjLI/AAAAAAAAA-8/ytnE2aN3h6s/s1600/06.System.Configuration.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-MCi8mOBjr8o/Utz1SMcvjLI/AAAAAAAAA-8/ytnE2aN3h6s/s1600/06.System.Configuration.png" alt></a></div><br>啟動的時後取出參數傳入就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SobbyJex93Y/Utz2kaEy_5I/AAAAAAAAA_Q/3mmshi85rrs/s1600/08.%E8%A8%AD%E5%AE%9A%E6%AA%94.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-SobbyJex93Y/Utz2kaEy_5I/AAAAAAAAA_Q/3mmshi85rrs/s1600/08.%E8%A8%AD%E5%AE%9A%E6%AA%94.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-遠端偵錯方式/">Windows Service 遠端偵錯方式</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T08:54:00.000Z">2014-01-20 16:54:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>通常在本機開發的時後都是沒有問題的，會發生問題都是佈署到正式環境後才會發生=”=<br>而用一般遠端偵錯的方式，都是已經啟動服務成功才能下中斷點<br>如果問題出在啟動失敗的話，就中斷不到<br>這種情境可以加入System.Diagnostics.Debugger.Launch();<br>讓應用程式等待偵錯工具的連入後才會繼續執行下去</p>
+<div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        private NowTimeReporter reporter = new NowTimeReporter();<br><br>        public Service1()<br>        {<br>            InitializeComponent();<br><br>            // 偵錯中斷用<br>            System.Diagnostics.Debugger.Launch();<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>            this.reporter.Start();<br>        }<br><br>        protected override void OnStop()<br>        {<br>            this.reporter.Stop();<br>        }<br>    }<br>}<br></pre></div><br>執行start.bat來啟動服務<br><div><pre class="brush:bash">net start Service1<br></pre></div><br>就會跳出選擇偵錯工具的畫面，這裡先不選擇<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png" alt></a></div><br>回到本機，選擇工具-&gt;附加執行緒，選擇遠端和輸入IP，再選擇執行檔，然後附加就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png" alt></a></div><br>到Server中上放開偵錯工具選擇畫面<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png" alt></a></div>
+
+<p>就會停在System.Diagnostics.Debugger.Launch();這一行</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png" alt></a></div><br>在本機也可以用這種偵錯方式，就不用到應用程式進入點去動手腳<br>只要讓服務啟動，再選擇偵錯工具連入就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png" alt></a></div><br><div class="separator" style="clear: both; text-align: center;"></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-本機偵錯方式-1/">Windows Service 本機偵錯方式</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T08:02:00.000Z">2014-01-20 16:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Windows Service輸出類型雖然是Windows 應用程式</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png" alt></a></div><br>但開發的時後直接執行卻會出現啟動錯誤的提示訊息<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png" alt></a></div><br>原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run<br><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            ServiceBase[] ServicesToRun;<br>            ServicesToRun = new ServiceBase[]<br>                {<br>                    new Service1()<br>                };<br>            ServiceBase.Run(ServicesToRun);<br>        }<br>    }<br>}<br></pre></div><br>為了方便本機開發，就需要先動點手腳<br>首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法<br><div><pre class="brush:csharp">using System;<br>using System.Timers;<br>using Common.Logging;<br><br>namespace MyService<br>{<br>    internal class NowTimeReporter<br>    {<br>        private Timer timer;<br>        private ILog log;<br>        private double timerInterval = 1000;<br>        private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;<br><br>        public NowTimeReporter()<br>        {<br>            this.log = LogManager.GetLogger(typeof(Service1));<br>            this.timer = new Timer();<br>            this.timer.Interval = this.timerInterval;<br>            this.timer.AutoReset = false;<br>            this.timer.Enabled = false;<br>            this.timer.Elapsed += Timer_Elapsed;<br>        }<br><br>        public void Start()<br>        {<br>            this.timer.Enabled = true;<br>        }<br><br>        public void Stop()<br>        {<br>            this.timer.Enabled = false;<br>        }<br><br>        private void Timer_Elapsed(object sender, ElapsedEventArgs e)<br>        {<br>            this.timer.Stop();<br><br>            try<br>            {<br>                this.log.TraceFormat(“now:{0}”, DateTime.Now.ToString(this.datetimeFormat));<br>            }<br>            catch (Exception ex)<br>            {<br>                this.log.Error(ex);<br>            }<br><br>            this.timer.Start();<br>        }<br>    }<br>}<br></pre></div>
+
+<p>讓Service只是簡單的呼叫Start和Stop</p>
+<div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        private NowTimeReporter reporter = new NowTimeReporter();<br><br>        public Service1()<br>        {<br>            InitializeComponent();<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>            this.reporter.Start();<br>        }<br><br>        protected override void OnStop()<br>        {<br>            this.reporter.Stop();<br>        }<br>    }<br>}<br></pre></div><br>把專案類型切換成主控台應用程式<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-_6dwZbrHQ6k/UtzVxS49o9I/AAAAAAAAA8c/7ZwqsjwMIz8/s1600/03.%E4%B8%BB%E6%8E%A7%E5%8F%B0%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-_6dwZbrHQ6k/UtzVxS49o9I/AAAAAAAAA8c/7ZwqsjwMIz8/s1600/03.%E4%B8%BB%E6%8E%A7%E5%8F%B0%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F.png" alt></a></div>
+
+<p>接下來在程式進入點的地方利用執行時的使用者名稱來判斷要用那一種方式啟動</p>
+<div><pre class="brush:csharp">using System;<br>using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            if (Environment.UserName == “SYSTEM”)<br>            {<br>                ServiceBase[] ServicesToRun;<br>                ServicesToRun = new ServiceBase[]<br>                {<br>                    new Service1()<br>                };<br>                ServiceBase.Run(ServicesToRun);<br>            }<br>            else<br>            {<br>                NowTimeReporter reporter = new NowTimeReporter();<br>                reporter.Start();<br>                Console.ReadLine();<br>            }<br>        }<br>    }<br>}<br></pre></div><br>然後在本機開發的時後，就可以直接下中斷點了<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-1IvUKb9mbqg/UtzX2QkWC2I/AAAAAAAAA8w/MlS2NUEZBXU/s1600/04.%E4%B8%AD%E6%96%B7%E9%BB%9E.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-1IvUKb9mbqg/UtzX2QkWC2I/AAAAAAAAA8w/MlS2NUEZBXU/s1600/04.%E4%B8%AD%E6%96%B7%E9%BB%9E.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-本機偵錯方式/">Windows Service 本機偵錯方式</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T08:02:00.000Z">2014-01-20 16:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Windows Service輸出類型雖然是Windows 應用程式</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png" alt></a></div><br>但開發的時後直接執行卻會出現啟動錯誤的提示訊息<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png" alt></a></div><br>原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run<br><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            ServiceBase[] ServicesToRun;<br>            ServicesToRun = new ServiceBase[]<br>                {<br>                    new Service1()<br>                };<br>            ServiceBase.Run(ServicesToRun);<br>        }<br>    }<br>}<br></pre></div><br>為了方便本機開發，就需要先動點手腳<br>首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法<br><div><pre class="brush:csharp">using System;<br>using System.Timers;<br>using Common.Logging;<br><br>namespace MyService<br>{<br>    internal class NowTimeReporter<br>    {<br>        private Timer timer;<br>        private ILog log;<br>        private double timerInterval = 1000;<br>        private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;<br><br>        public NowTimeReporter()<br>        {<br>            this.log = LogManager.GetLogger(typeof(Service1));<br>            this.timer = new Timer();<br>            this.timer.Interval = this.timerInterval;<br>            this.timer.AutoReset = false;<br>            this.timer.Enabled = false;<br>            this.timer.Elapsed += Timer_Elapsed;<br>        }<br><br>        public void Start()<br>        {<br>            this.timer.Enabled = true;<br>        }<br><br>        public void Stop()<br>        {<br>            this.timer.Enabled = false;<br>        }<br><br>        private void Timer_Elapsed(object sender, ElapsedEventArgs e)<br>        {<br>            this.timer.Stop();<br><br>            try<br>            {<br>                this.log.TraceFormat(“now:{0}”, DateTime.Now.ToString(this.datetimeFormat));<br>            }<br>            catch (Exception ex)<br>            {<br>                this.log.Error(ex);<br>            }<br><br>            this.timer.Start();<br>        }<br>    }<br>}<br></pre></div>
+
+<p>讓Service只是簡單的呼叫Start和Stop</p>
+<div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        private NowTimeReporter reporter = new NowTimeReporter();<br><br>        public Service1()<br>        {<br>            InitializeComponent();<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>            this.reporter.Start();<br>        }<br><br>        protected override void OnStop()<br>        {<br>            this.reporter.Stop();<br>        }<br>    }<br>}<br></pre></div><br>把專案類型切換成主控台應用程式<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-_6dwZbrHQ6k/UtzVxS49o9I/AAAAAAAAA8c/7ZwqsjwMIz8/s1600/03.%E4%B8%BB%E6%8E%A7%E5%8F%B0%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-_6dwZbrHQ6k/UtzVxS49o9I/AAAAAAAAA8c/7ZwqsjwMIz8/s1600/03.%E4%B8%BB%E6%8E%A7%E5%8F%B0%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F.png" alt></a></div>
+
+<p>接下來在程式進入點的地方利用執行時的使用者名稱來判斷要用那一種方式啟動</p>
+<div><pre class="brush:csharp">using System;<br>using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            if (Environment.UserName == “SYSTEM”)<br>            {<br>                ServiceBase[] ServicesToRun;<br>                ServicesToRun = new ServiceBase[]<br>                {<br>                    new Service1()<br>                };<br>                ServiceBase.Run(ServicesToRun);<br>            }<br>            else<br>            {<br>                NowTimeReporter reporter = new NowTimeReporter();<br>                reporter.Start();<br>                Console.ReadLine();<br>            }<br>        }<br>    }<br>}<br></pre></div><br>然後在本機開發的時後，就可以直接下中斷點了<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-1IvUKb9mbqg/UtzX2QkWC2I/AAAAAAAAA8w/MlS2NUEZBXU/s1600/04.%E4%B8%AD%E6%96%B7%E9%BB%9E.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-1IvUKb9mbqg/UtzX2QkWC2I/AAAAAAAAA8w/MlS2NUEZBXU/s1600/04.%E4%B8%AD%E6%96%B7%E9%BB%9E.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/20/Windows-Service-開發/">Windows Service 開發</a></h1>
+  
+
+      
+        <time datetime="2014-01-20T05:45:00.000Z">2014-01-20 13:45:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。<br>用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹</p>
+<div><br></div><div>首先開一個新專案，名稱為MyService</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png" alt></a></div><br></div><div>在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png" alt></a></div><br></div><div>先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務</div><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            ServiceBase[] ServicesToRun;<br>            ServicesToRun = new ServiceBase[]<br>            {<br>                new Service1()<br>            };<br>            ServiceBase.Run(ServicesToRun);<br>        }<br>    }<br>}<br><br></pre></div><div>再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件</div><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        public Service1()<br>        {<br>            InitializeComponent();<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>        }<br><br>        protected override void OnStop()<br>        {<br>        }<br>    }<br>}<br><br></pre></div><div>可覆寫的方法如下</div><div><table><tbody><tr><td>OnContinue</td><td>指定暫停服務後要繼續正常運作所要執行的動作</td></tr><tr><td>OnCustomCommand</td><td>指定在具有指定參數值的命令發生時所要執行的動作<br><span style="color: red;">需要注意命令編號為128~256</span></td></tr><tr><td>OnPause</td><td>指定在服務暫停時所要執行的動作</td></tr><tr><td>OnPowerEvent</td><td>這適用於攜帶型電腦，當它們進入暫停模式的時候，不同於系統關閉</td></tr><tr><td>OnSessionChange</td><td>當從 Terminal Server 工作階段接收到變更事件時執行</td></tr><tr><td>OnShutdown</td><td>指定緊接在系統關閉之前應該發生的處理</td></tr><tr><td>OnStart</td><td>指定在服務啟動時所要執行的動作</td></tr><tr><td>OnStop</td><td>指定在服務停止執行時所要執行的動作</td></tr></tbody></table></div><div><br>可設定的屬性如下，最常用的還是ServiceName這個屬性</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-mAXtu_uATeY/UtybEa1AujI/AAAAAAAAA5w/INeITSD60RY/s1600/03.ServiceBase%E5%B1%AC%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-mAXtu_uATeY/UtybEa1AujI/AAAAAAAAA5w/INeITSD60RY/s1600/03.ServiceBase%E5%B1%AC%E6%80%A7.png" alt></a></div><br></div><div>更詳細的內容可以參考MSDN關於<a href="http://msdn.microsoft.com/zh-tw/library/system.serviceprocess.servicebase(v=vs.110" target="_blank" rel="noopener">ServiceBase</a>.aspx)的介紹</div><div><br></div><div>先來簡單地寫個定時功能<br>透過Log元件輸出目前時間到Log2Console<br>相關內容可以參考之前的筆記<br><a href="http://blog.developer.idv.tw/2013/12/commonlogging.html" target="_blank" rel="noopener">Common.Logging</a><br><a href="http://blog.developer.idv.tw/2013/11/logviewer.html" target="_blank" rel="noopener">好用的LogViewer</a><br><br></div><div><pre class="brush:csharp">using System;<br>using System.ServiceProcess;<br>using System.Timers;<br>using Common.Logging;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        private Timer timer;<br>        private ILog log;<br>        private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;<br>        private double timerInterval = 1000;<br><br>        public Service1()<br>        {<br>            InitializeComponent();<br>            this.log = LogManager.GetLogger(typeof(Service1));<br>            this.timer = new Timer();<br>            this.timer.Interval = this.timerInterval;<br>            this.timer.AutoReset = false;<br>            this.timer.Enabled = false;<br>            this.timer.Elapsed += Timer_Elapsed;<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>            this.timer.Enabled = true;<br>        }<br><br>        protected override void OnStop()<br>        {<br>            this.timer.Enabled = false;<br>        }<br><br>        private void Timer_Elapsed(object sender, ElapsedEventArgs e)<br>        {<br>            this.timer.Stop();<br><br>            try<br>            {<br>                this.log.TraceFormat(“now:{0}”, DateTime.Now.ToString(this.datetimeFormat));<br>            }<br>            catch (Exception ex)<br>            {<br>                this.log.Error(ex);<br>            }<br><br>            this.timer.Start();<br>        }<br>    }<br>}<br><br></pre></div><div>接下來要增加安裝程式，在Service1.cs的設計畫面按右鍵，選擇加入安裝程式</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ovn0HIpEK38/UtybIw9JreI/AAAAAAAAA54/_d1_EmcvqEE/s1600/04.%E5%8A%A0%E5%85%A5%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ovn0HIpEK38/UtybIw9JreI/AAAAAAAAA54/_d1_EmcvqEE/s1600/04.%E5%8A%A0%E5%85%A5%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F.png" alt></a></div><br></div><div>會增加一個繼承自System.Configuration.Install.Installer的ProjectInstaller類別</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-UKW0EPYGkkk/UtybMznln5I/AAAAAAAAA6A/aoHnh0w5gwU/s1600/05.Projectnstaller.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-UKW0EPYGkkk/UtybMznln5I/AAAAAAAAA6A/aoHnh0w5gwU/s1600/05.Projectnstaller.png" alt></a></div><br></div><div>先設定服務執行時使用的帳號，比較安全的帳號是NetworkService，如果有需要存取資源的話，再去允許權限或是改用LocalSystem這個帳號</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-CYoBSMIfZj4/Utybkt47AiI/AAAAAAAAA6Q/9Y5H4xUtBd4/s1600/06.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-CYoBSMIfZj4/Utybkt47AiI/AAAAAAAAA6Q/9Y5H4xUtBd4/s1600/06.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" alt></a></div><br></div><div>接下來設定服務的啟動方式，最常用的當然是自動啟動<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-iS03_xS0ewU/UtyfYhnVFPI/AAAAAAAAA68/CN4arzq-Q3Y/s1600/07.AotuMatic.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-iS03_xS0ewU/UtyfYhnVFPI/AAAAAAAAA68/CN4arzq-Q3Y/s1600/07.AotuMatic.png" alt></a></div><br></div><div>DisplayName是名稱，Description描述</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-sK3GlrDv3cQ/Utybu00xq_I/AAAAAAAAA6g/_omh1Cvm4xA/s1600/08.%E5%90%8D%E7%A8%B1%E6%8F%8F%E8%BF%B0.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-sK3GlrDv3cQ/Utybu00xq_I/AAAAAAAAA6g/_omh1Cvm4xA/s1600/08.%E5%90%8D%E7%A8%B1%E6%8F%8F%E8%BF%B0.png" alt></a></div><br></div><div>設定好後就完成這個Service，編譯後產生執行檔，接下來就要把這個服務安裝的到作業系統中</div><div>比較正規的作法是去新增一個安裝專案，但為了方便開發起見，以下用批次檔的方式來安裝</div><div><br></div><div>新增幾個批次檔，並改成永遠複製<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-IeOUENSgG7I/Uty35k-diyI/AAAAAAAAA7g/X4PkkxCTMZc/s1600/13.batfile.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-IeOUENSgG7I/Uty35k-diyI/AAAAAAAAA7g/X4PkkxCTMZc/s1600/13.batfile.png" alt></a></div><br><div>install.bat用來安裝 </div><div><pre class="brush:bash">@echo off<br>set InstallUtil=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v3.5\InstallUtil.exe<br>if not exist %InstallUtil% (<br> echo InstallUtil.exe not found<br> exit<br>)<br><br>%InstallUtil% -i MyService.exe<br></pre></div><br><div>restart.bat用來重新啟動服務 </div><div><pre class="brush:bash">net stop Service1<br>net start Service1<br></pre></div><br><div>start.bat用來啟動服務 </div><div><pre class="brush:bash">net start Service1<br></pre></div><br><div>stop.bat用來停止服務 </div><div><pre class="brush:bash">net stop Service1<br></pre></div><br><div>uninstall.bat用來反安裝 </div><div><pre class="brush:bash">@echo off<br>set InstallUtil=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v3.5\InstallUtil.exe<br>if not exist %InstallUtil% (<br> echo InstallUtil.exe not found<br> exit<br>)<br><br>%InstallUtil% -u MyService.exe<br></pre></div><br><span style="color: red;">注意檔案編碼為ANSI格式</span>，UTF8格式在command pro中執行會有亂碼</div><div>批次檔是透過InstallUtil.exe這個工具程式來安裝和反安裝，詳細的參數請參考<a href="http://msdn.microsoft.com/zh-tw/library/50614e95(v=vs.110" target="_blank" rel="noopener">MSDN的說明</a>.aspx)</div><div><br></div><div>點擊install.bat，安裝成功</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-c0GwQkAtsis/Uty3Z7jSevI/AAAAAAAAA7Y/v7dRgrQqiMc/s1600/11.install.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-c0GwQkAtsis/Uty3Z7jSevI/AAAAAAAAA7Y/v7dRgrQqiMc/s1600/11.install.png" alt></a></div><br></div><div>點繫start.bat，啟動服務<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-OuMwHcWUqPA/UtzKFtatI2I/AAAAAAAAA7w/yqZ3XtmwBH8/s1600/14.Start.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-OuMwHcWUqPA/UtzKFtatI2I/AAAAAAAAA7w/yqZ3XtmwBH8/s1600/14.Start.png" alt></a></div><br>順利的話就可以在Log2Console中定時收到目前時間<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-6L01sHTG9Ws/UtzKQtBQroI/AAAAAAAAA74/hGzL_CENGSk/s1600/15.run.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-6L01sHTG9Ws/UtzKQtBQroI/AAAAAAAAA74/hGzL_CENGSk/s1600/15.run.png" alt></a></div>
+
+<p>要移除服務就點擊uninstall.bat，反安裝成功</p></div><div><br></div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-D4bFUIA_Kfk/Utyb6S2DsJI/AAAAAAAAA6w/H9_s_cUU95E/s1600/12.uninstall.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-D4bFUIA_Kfk/Utyb6S2DsJI/AAAAAAAAA6w/H9_s_cUU95E/s1600/12.uninstall.png" alt></a></div><br></div><div><br></div><div><br></div><p></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/12/24/Common-Logging/">Common.Logging</a></h1>
+  
+
+      
+        <time datetime="2013-12-24T07:45:00.000Z">2013-12-24 15:45:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好</p>
+<p>Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考<a href="http://netcommon.sourceforge.net/" target="_blank" rel="noopener">官網</a>，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式</p>
+<p>Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件<br>應該是為了可儶性，把介面和抽象類別分離到Core套件<br>在套件的使用上要做點調整</p>
+<p>Common Logging 2.3.1版之後，已不再使用Common.Logging.Core<br>為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本<br>例如Common.Logging.NLog31對應到NLog 3.1版本</p>
+<p>首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png" alt></a></div>
+
+<p>簡單寫一個函式讓之後引用的程式來呼叫</p>
+<div><pre class="brush:csharp">using Common.Logging;<br><br>namespace ClassLibrary1<br>{<br>    public class Class1<br>    {<br>        private ILog log = LogManager.GetLogger&lt;Class1&gt;());<br><br>        public void SayHello()<br>        {<br>            this.log.Info(“Hello”);<br>        }<br>    }<br>}<br></pre></div><br>再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png" alt></a></div><br>簡單寫一個Button Click來呼叫類別庫中的函式<br><div><pre class="brush:csharp">using System;<br>using System.Windows.Forms;<br><br>namespace WindowsFormsApplication1<br>{<br>    public partial class Form1 : Form<br>    {<br>        public Form1()<br>        {<br>            InitializeComponent();<br>        }<br><br>        private void button1_Click(object sender, EventArgs e)<br>        {<br>            ClassLibrary1.Class1 x = new ClassLibrary1.Class1();<br>            x.SayHello();<br>        }<br>    }<br>}<br></pre></div><br>因為要轉接到NLog去，所以再新增套件Common.Logging.NLog31，對應的NLog版本就是3.1<br>如果要對應到其他的版本，可以選擇對應的套件<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-AE_fFBVrJSQ/VHKb3tGq9-I/AAAAAAAABvw/kRMfp3sX7nI/s1600/02.Nlog%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-AE_fFBVrJSQ/VHKb3tGq9-I/AAAAAAAABvw/kRMfp3sX7nI/s1600/02.Nlog%E5%A5%97%E4%BB%B6.png" alt></a></div><br>加入NLog，為了方便起見，順便加入NLog.Configuration和NLog Schema for Intellisense(TM)<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Re1X-FNbZ0Q/VHKb71DU-_I/AAAAAAAABv4/rGS2CXpklXQ/s1600/03.Config%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Re1X-FNbZ0Q/VHKb71DU-_I/AAAAAAAABv4/rGS2CXpklXQ/s1600/03.Config%E5%A5%97%E4%BB%B6.png" alt></a></div><br>接下來透過設定檔把Log轉接到NLog<br><br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>    &lt;configSections&gt;<br>        &lt;sectionGroup name=”common”&gt;<br>            &lt;section name=”logging” type=”Common.Logging.ConfigurationSectionHandler, Common.Logging”/&gt;<br>        &lt;/sectionGroup&gt;<br>    &lt;/configSections&gt;<br>    &lt;common&gt;<br>        &lt;logging&gt;<br>            &lt;factoryAdapter type=”Common.Logging.NLog.NLogLoggerFactoryAdapter, Common.Logging.NLog31”&gt;<br>                &lt;arg key=”configType” value=”FILE” /&gt;<br>                &lt;arg key=”configFile” value=”~/NLog.config” /&gt;<br>            &lt;/factoryAdapter&gt;<br>        &lt;/logging&gt;<br>    &lt;/common&gt;<br>    &lt;startup&gt;<br>        &lt;supportedRuntime version=”v4.0” sku=”.NETFramework,Version=v4.5” /&gt;<br>    &lt;/startup&gt;<br>    &lt;runtime&gt;<br>        &lt;assemblyBinding xmlns=”urn:schemas-microsoft-com:asm.v1”&gt;<br>            &lt;dependentAssembly&gt;<br>                &lt;assemblyIdentity name=”NLog” publicKeyToken=”5120e14c03d0593c” culture=”neutral” /&gt;<br>                &lt;bindingRedirect oldVersion=”0.0.0.0-2.1.0.0” newVersion=”2.1.0.0” /&gt;<br>            &lt;/dependentAssembly&gt;<br>        &lt;/assemblyBinding&gt;<br>    &lt;/runtime&gt;<br>&lt;/configuration&gt;<br></pre></div>NLog使用預設的設定<br><br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;!– add your targets here –&gt;<br>        &lt;target xsi:type=”File” name=”f” fileName=”${basedir}/logs/${shortdate}.log”<br>                layout=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br><br>    &lt;/targets&gt;<br><br>    &lt;rules&gt;<br>        &lt;!– add your logging rules here –&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”f” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>輸出的結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-z3rA9UMH-kw/Urk7GkSlchI/AAAAAAAAA5E/NCuolISJCSY/s1600/05.result.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-z3rA9UMH-kw/Urk7GkSlchI/AAAAAAAAA5E/NCuolISJCSY/s1600/05.result.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/12/24/NuGet-Multiple-Framework-建置/">NuGet Multiple Framework 建置</a></h1>
+  
+
+      
+        <time datetime="2013-12-24T03:20:00.000Z">2013-12-24 11:20:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下<br><br>Step1 每個版本建立一個方案檔<br>一般專案的命名為net20、net35、net40、net45…<br>其他類型的專案則再加上縮寫<br>Client Profile(client)<br>WindowsPhone(wp)<br>Silverlight(sl)<br>CompactFramework(cf)<br>更多完整的資料請參考官網文件<br><a href="http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package" target="_blank" rel="noopener">http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package</a></div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png" alt></a></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png" alt></a></div><div>Step2 每一個版本建立一個專案檔</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png" alt></a></div><span style="background-color: #fcfcfc; color: #333333; font-family: Consolas, 'Courier New'; font-size: 13.600000381469727px;"><br></span><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png" alt></a></div><br><div>Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑<br><strong><span style="color: red;">注意每個組態都要設定喔 </span></strong></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png" alt></a></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png" alt></a></div><div>Step4 依Framework版本，加上條件式編譯<br><br></div><div><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br><br>#if NET35 || NET40 || NET45<br>using System.Linq;<br>#endif<br><br>using System.Text;<br><br>#if NET40 || NET45<br>using System.Threading.Tasks;<br>#endif<br><br>namespace ClassLibrary1<br>{<br>    public class Class1<br>    {<br>    }<br>}<br><br></pre></div><div>Step5 手動建立nuget spec檔</div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png" alt></a></div><div><pre class="brush:xml">&lt;?xml version=”1.0”?&gt;<br>&lt;package &gt;<br>  &lt;metadata&gt;<br>    &lt;id&gt;ClassLibrary1&lt;/id&gt;<br>    &lt;version&gt;1.0.0&lt;/version&gt;<br>    &lt;authors&gt;xian&lt;/authors&gt;<br>    &lt;owners&gt;xian&lt;/owners&gt;<br>    &lt;licenseUrl&gt;<a href="http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl" target="_blank" rel="noopener">http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl</a>&gt;<br>    &lt;projectUrl&gt;<a href="http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl" target="_blank" rel="noopener">http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl</a>&gt;<br>    &lt;iconUrl&gt;<a href="http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl" target="_blank" rel="noopener">http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl</a>&gt;<br>    &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt;<br>    &lt;description&gt;Package description&lt;/description&gt;<br>    &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt;<br>    &lt;copyright&gt;Copyright 2013&lt;/copyright&gt;<br>    &lt;tags&gt;Tag1 Tag2&lt;/tags&gt;<br>    &lt;dependencies&gt;<br>      &lt;dependency id=”SampleDependency” version=”1.0” /&gt;<br>    &lt;/dependencies&gt;<br>  &lt;/metadata&gt;<br>  &lt;files&gt;<br>        &lt;file src=”ClassLibrary1*<em>\</em>.cs” exclude=”ClassLibrary1\obj*<em>\</em>.cs” target=”src” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net20\ClassLibrary1.dll” target=”lib\net20\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net20\ClassLibrary1.pdb” target=”lib\net20\ClassLibrary1.pdb” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net35\ClassLibrary1.dll” target=”lib\net35\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net35\ClassLibrary1.pdb” target=”lib\net35\ClassLibrary1.pdb” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net40\ClassLibrary1.dll” target=”lib\net40\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net40\ClassLibrary1.pdb” target=”lib\net40\ClassLibrary1.pdb” /&gt;<br>  &lt;file src=”ClassLibrary1\bin\Release\net45\ClassLibrary1.dll” target=”lib\net45\ClassLibrary1.dll” /&gt;<br>        &lt;file src=”ClassLibrary1\bin\Release\net45\ClassLibrary1.pdb” target=”lib\net45\ClassLibrary1.pdb” /&gt;<br>    &lt;/files&gt;<br>&lt;/package&gt;&nbsp;</pre></div><br><div>Step6 加上測試用批次檔</div><br><div><pre class="brush:xml">@echo off<br>set MSBUILD=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe<br>if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe<br>if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v3.5\msbuild.exe<br>if not exist %MSBUILD% (<br> echo MSBuild not found<br> exit<br>)<br><br>%MSBUILD% ClassLibrary1.net20.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net35.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net40.sln /property:Configuration=Release /m<br>%MSBUILD% ClassLibrary1.net45.sln /property:Configuration=Release /m<br>nuget pack ClassLibrary1.nuspec<br>pause<br></pre></div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png" alt></a></div>
+
+<p>瀏覽結果</p></div><p></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/11/04/好用的LogViewer/">好用的LogViewer</a></h1>
+  
+
+      
+        <time datetime="2013-11-04T10:25:00.000Z">2013-11-04 18:25:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Log2Console是個好用的Log Viewer，可以配合Log4Net或NLog使用<br>首先到<a href="http://log2console.codeplex.com/" target="_blank" rel="noopener">官網下載</a></p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-1SU04Sq3oOc/UndxtGbDi3I/AAAAAAAAA14/21nZBzzTQVg/s1600/01.download.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-1SU04Sq3oOc/UndxtGbDi3I/AAAAAAAAA14/21nZBzzTQVg/s1600/01.download.png" alt></a></div><span id="goog_1348107367"></span><span id="goog_1348107368"></span><br><br>安裝好後先設定接收方式<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-hx4I28pk5po/Undxwe6iabI/AAAAAAAAA2A/1VERa_k_LQs/s1600/02.receive.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-hx4I28pk5po/Undxwe6iabI/AAAAAAAAA2A/1VERa_k_LQs/s1600/02.receive.png" alt></a></div>
+
+<p>這裡以UDP為例</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-DyJoQXRgRBo/Undx0h2GzVI/AAAAAAAAA2I/1L9xaWi3D3Q/s1600/03.add.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-DyJoQXRgRBo/Undx0h2GzVI/AAAAAAAAA2I/1L9xaWi3D3Q/s1600/03.add.png" alt></a></div>
+
+<p>設定要使用的Port號就行了<br>下方是log4net的設定範例</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-GkGKo0EWtOU/Undx4VhUDRI/AAAAAAAAA2Q/CBvil9xgUg4/s1600/04.udpport.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-GkGKo0EWtOU/Undx4VhUDRI/AAAAAAAAA2Q/CBvil9xgUg4/s1600/04.udpport.png" alt></a></div>
+
+<p>以NLog來當日誌輸出元件的話，可以透過Chainsaw將Log寫到指定的位址和埠號</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Chainsaw” name=”viewer” address=”tcp://127.0.0.1:7071”  /&gt;<br>    &lt;/targets&gt;<br><br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”viewer” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+
+<p>隨便輸出幾個Log試試</p>
+<div><pre class="brush:csharp">using NLog;<br><br>namespace ConsoleApplication1<br>{<br>    class Program<br>    {<br>        private static Logger log = LogManager.GetLogger(“Program”);<br><br>        static void Main(string[] args)<br>        {<br>            log.Trace(“trace”);<br>            log.Debug(“debug”);<br>            log.Info(“info”);<br>            log.Warn(“warn”);<br>            log.Error(“error”);<br>            log.Fatal(“fatal”);<br>        }<br>    }<br>}<br></pre></div><br>單擊列表中的Log，可以在下方看到詳細資料<br>左上角的下拉選單可以用來過濾要顯示的層級<br>中間的搜尋框可以用來過濾日誌的內容<br>右邊的樹狀選單可以用來過濾Logger名稱<br>至於更詳細的設定，例如字型、顏色等功能，可在Settings裡面調整<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-rfZNdONB7CI/Und1p7MLCzI/AAAAAAAAA2o/Cl0WxPiCRpk/s1600/05.message.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-rfZNdONB7CI/Und1p7MLCzI/AAAAAAAAA2o/Cl0WxPiCRpk/s1600/05.message.png" alt></a></div><br><div class="separator" style="clear: both; text-align: center;"></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/10/09/TeamCity-刪除特定的Nuget-Package/">TeamCity 刪除特定的Nuget Package</a></h1>
+  
+
+      
+        <time datetime="2013-10-09T03:02:00.000Z">2013-10-09 11:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>因為設定上的問題，從TeamCity所生成管理的Nuget package的版本號碼會有衝突<br>所以需要把有問題的package先刪除<br>但TeamCity本身沒有直接支援刪除的功能，找到了一篇用reset api刪除的方式</p>
+<p>利用Filddler來執行rest api，網址為http://&lt;teamcity&gt;/httpAuth/app/rest/builds/id<br>最後的id為指定的建置版本，也是要刪除的版本<br>可以很容易的在一些設定頁面上，找一下網址後面的BuildId所帶的值來取得</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png" alt></a></div>
+
+<p>使用Filddler執行DELETE方法，並在標頭中加入Authorization: Basic (UserName:Password)就行了</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png" alt></a></div>
+
+<p>括號內的帳密需要用base64編碼，利用TextWizard來轉換就行了</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png" alt></a></div></p>
+<p><div class="separator" style="clear: both; text-align: center;"></div><br>參考連結</p>
+<p><a href="http://stackoverflow.com/questions/10218318/how-to-remove-a-specific-version-of-a-package-on-a-teamcity-nuget-feed" target="_blank" rel="noopener">http://stackoverflow.com/questions/10218318/how-to-remove-a-specific-version-of-a-package-on-a-teamcity-nuget-feed</a></p>
+<p><a href="http://fiddler2.com/" target="_blank" rel="noopener">Fiddler 下載</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/15/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/17/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xian&#39;s 學習筆記</title>
+  
+  <subtitle>千里之行 始於足下</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.developer.idv.tw/"/>
+  <updated>2020-05-16T10:35:40.193Z</updated>
+  <id>http://www.developer.idv.tw/</id>
+  
+  <author>
+    <name>李明憲</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>certbot</title>
+    <link href="http://www.developer.idv.tw/2018/09/14/certbot/"/>
+    <id>http://www.developer.idv.tw/2018/09/14/certbot/</id>
+    <published>2018-09-14T06:25:42.000Z</published>
+    <updated>2020-05-16T10:35:40.193Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;申請wildcard憑證&quot;&gt;&lt;a href=&quot;#申請wildcard憑證&quot; class=&quot;headerlink&quot; title=&quot;申請wildcard憑證&quot;&gt;&lt;/a&gt;申請wildcard憑證&lt;/h1&gt;&lt;p&gt;透過docker執行以下指令&lt;br&gt;-d
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>kubeadm install</title>
+    <link href="http://www.developer.idv.tw/2018/06/28/kubeadm-install/"/>
+    <id>http://www.developer.idv.tw/2018/06/28/kubeadm-install/</id>
+    <published>2018-06-28T07:27:40.000Z</published>
+    <updated>2020-05-16T10:35:40.193Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;在ubuntu-16-04上安裝kubeadm&quot;&gt;&lt;a href=&quot;#在ubuntu-16-04上安裝kubeadm&quot; class=&quot;headerlink&quot; title=&quot;在ubuntu 16.04上安裝kubeadm&quot;&gt;&lt;/a&gt;在ubuntu
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker container</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/docker-container/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/docker-container/</id>
+    <published>2018-06-10T07:27:41.000Z</published>
+    <updated>2020-05-16T10:35:40.190Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;建立一個新容器&quot;&gt;&lt;a href=&quot;#建立一個新容器&quot; class=&quot;headerlink&quot; title=&quot;建立一個新容器&quot;&gt;&lt;/a&gt;建立一個新容器&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker images</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/docker-images/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/docker-images/</id>
+    <published>2018-06-10T07:25:16.000Z</published>
+    <updated>2020-05-16T10:35:40.190Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;查詢docker-hub上的images&quot;&gt;&lt;a href=&quot;#查詢docker-hub上的images&quot; class=&quot;headerlink&quot; title=&quot;查詢docker hub上的images&quot;&gt;&lt;/a&gt;查詢docker
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker command</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/docker-command/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/docker-command/</id>
+    <published>2018-06-10T07:15:52.000Z</published>
+    <updated>2020-05-16T10:35:40.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;docker指令示意圖&quot;&gt;&lt;a href=&quot;#docker指令示意圖&quot; class=&quot;headerlink&quot; title=&quot;docker指令示意圖&quot;&gt;&lt;/a&gt;docker指令示意圖&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>install docker on linux</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/install-docker-on-linux/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/install-docker-on-linux/</id>
+    <published>2018-06-10T06:57:21.000Z</published>
+    <updated>2020-05-16T10:35:40.192Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;安裝預設版本&quot;&gt;&lt;a href=&quot;#安裝預設版本&quot; class=&quot;headerlink&quot; title=&quot;安裝預設版本&quot;&gt;&lt;/a&gt;安裝預設版本&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>install docker on windows</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/install-docker-on-windows/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/install-docker-on-windows/</id>
+    <published>2018-06-10T05:55:17.000Z</published>
+    <updated>2020-05-16T10:35:40.192Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在google搜尋docker for windows到連結到官網下載&lt;a href=&quot;https://store.docker.com/editions/community/docker-ce-desktop-windows&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="docker" scheme="http://www.developer.idv.tw/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker簡介</title>
+    <link href="http://www.developer.idv.tw/2018/06/10/docker%E7%B0%A1%E4%BB%8B/"/>
+    <id>http://www.developer.idv.tw/2018/06/10/docker%E7%B0%A1%E4%BB%8B/</id>
+    <published>2018-06-10T05:19:42.000Z</published>
+    <updated>2020-05-16T10:35:40.190Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Docker-vs-VM&quot;&gt;&lt;a href=&quot;#Docker-vs-VM&quot; class=&quot;headerlink&quot; title=&quot;Docker vs VM&quot;&gt;&lt;/a&gt;Docker vs VM&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>安裝Android Studio</title>
+    <link href="http://www.developer.idv.tw/2016/11/14/%E5%AE%89%E8%A3%9DAndroid-Studio/"/>
+    <id>http://www.developer.idv.tw/2016/11/14/%E5%AE%89%E8%A3%9DAndroid-Studio/</id>
+    <published>2016-11-14T03:46:00.000Z</published>
+    <updated>2020-05-16T10:35:40.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;安裝Android Studio影片&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;iframe allowfullscreen
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Android" scheme="http://www.developer.idv.tw/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安裝JAVA JDK</title>
+    <link href="http://www.developer.idv.tw/2016/11/14/%E5%AE%89%E8%A3%9DJAVA-JDK/"/>
+    <id>http://www.developer.idv.tw/2016/11/14/%E5%AE%89%E8%A3%9DJAVA-JDK/</id>
+    <published>2016-11-14T03:39:00.000Z</published>
+    <updated>2020-05-16T10:35:40.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;安裝JAVA SDK影片&lt;/div&gt;&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align:
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Android" scheme="http://www.developer.idv.tw/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker on linux</title>
+    <link href="http://www.developer.idv.tw/2016/10/05/Docker-on-linux/"/>
+    <id>http://www.developer.idv.tw/2016/10/05/Docker-on-linux/</id>
+    <published>2016-10-05T00:56:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Docker-on-linux&quot;&gt;&lt;a href=&quot;#Docker-on-linux&quot; class=&quot;headerlink&quot; title=&quot;Docker on linux&quot;&gt;&lt;/a&gt;Docker on linux&lt;/h1&gt;&lt;h1 id=&quot;前置條件&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="docker" scheme="http://www.developer.idv.tw/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker on windows</title>
+    <link href="http://www.developer.idv.tw/2016/10/05/Docker-on-windows/"/>
+    <id>http://www.developer.idv.tw/2016/10/05/Docker-on-windows/</id>
+    <published>2016-10-05T00:38:00.000Z</published>
+    <updated>2020-05-16T10:35:40.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Docker-on-windows&quot;&gt;&lt;a href=&quot;#Docker-on-windows&quot; class=&quot;headerlink&quot; title=&quot;Docker on windows&quot;&gt;&lt;/a&gt;Docker on windows&lt;/h1&gt;&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="docker" scheme="http://www.developer.idv.tw/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>svn migration to git</title>
+    <link href="http://www.developer.idv.tw/2016/09/30/svn-migration-to-git/"/>
+    <id>http://www.developer.idv.tw/2016/09/30/svn-migration-to-git/</id>
+    <published>2016-09-30T01:12:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先下載subgit，需要先安裝好JAVA環境&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="git" scheme="http://www.developer.idv.tw/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gogs with application request routing</title>
+    <link href="http://www.developer.idv.tw/2016/08/15/Gogs-with-application-request-routing/"/>
+    <id>http://www.developer.idv.tw/2016/08/15/Gogs-with-application-request-routing/</id>
+    <published>2016-08-15T15:14:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Application Request Route的使用方式可以參考以前的筆記&lt;br&gt;&lt;a href=&quot;http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+      <category term="arr" scheme="http://www.developer.idv.tw/tags/arr/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gogs 筆記</title>
+    <link href="http://www.developer.idv.tw/2016/08/15/Gogs-%E7%AD%86%E8%A8%98/"/>
+    <id>http://www.developer.idv.tw/2016/08/15/Gogs-%E7%AD%86%E8%A8%98/</id>
+    <published>2016-08-15T13:59:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[Windows 版本]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.developer.idv.tw/2016/08/gogs-go-git-service-on-windows.html&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gogs with nginx reverse proxy</title>
+    <link href="http://www.developer.idv.tw/2016/08/15/Gogs-with-nginx-reverse-proxy/"/>
+    <id>http://www.developer.idv.tw/2016/08/15/Gogs-with-nginx-reverse-proxy/</id>
+    <published>2016-08-15T13:37:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ngix新增一組站台設定&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both; text-align: center;&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+      <category term="nginx" scheme="http://www.developer.idv.tw/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx run as windows service</title>
+    <link href="http://www.developer.idv.tw/2016/08/15/Nginx-run-as-windows-service/"/>
+    <id>http://www.developer.idv.tw/2016/08/15/Nginx-run-as-windows-service/</id>
+    <published>2016-08-15T13:09:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在&lt;a href=&quot;https://nginx.org/en/download.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官網下載Nginx&lt;/a&gt;編譯好的執行檔&lt;/p&gt;
+&lt;div class=&quot;separator&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+      <category term="nginx" scheme="http://www.developer.idv.tw/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gogs run as windows service</title>
+    <link href="http://www.developer.idv.tw/2016/08/14/Gogs-run-as-windows-service/"/>
+    <id>http://www.developer.idv.tw/2016/08/14/Gogs-run-as-windows-service/</id>
+    <published>2016-08-14T08:21:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在&lt;a href=&quot;https://gogs.io/docs/installation/run_as_windows_service&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gogs - Go Git Service on windows</title>
+    <link href="http://www.developer.idv.tw/2016/08/14/Gogs-Go-Git-Service-on-windows/"/>
+    <id>http://www.developer.idv.tw/2016/08/14/Gogs-Go-Git-Service-on-windows/</id>
+    <published>2016-08-14T07:47:00.000Z</published>
+    <updated>2020-05-16T10:35:40.187Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;先到&lt;a href=&quot;https://gogs.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官網&lt;/a&gt;下載windodws版本編譯好的二進制壓縮檔&lt;/p&gt;
+&lt;div class=&quot;separator&quot; style=&quot;clear: both;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="git" scheme="http://www.developer.idv.tw/tags/git/"/>
+    
+      <category term="gogs" scheme="http://www.developer.idv.tw/tags/gogs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello .NET Core 1.0</title>
+    <link href="http://www.developer.idv.tw/2016/08/14/Hello-NET-Core-1-0/"/>
+    <id>http://www.developer.idv.tw/2016/08/14/Hello-NET-Core-1-0/</id>
+    <published>2016-08-14T04:05:00.000Z</published>
+    <updated>2020-05-16T10:35:40.188Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先到&lt;a href=&quot;https://www.microsoft.com/net/core#windows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官網&lt;/a&gt;按照步驟安裝SDK&lt;/p&gt;
+&lt;div class=&quot;separator&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>

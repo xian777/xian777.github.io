@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Entity Framework Code First 繼承對應設定 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Entity Framework Code First 繼承對應設定">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Entity Framework Code First 繼承對應設定</h1>
+  
+
+      
+        <time datetime="2014-11-26T03:50:00.000Z">2014-11-26 11:50:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>TPH(Table Per Hierarchy)<br>基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法</p>
+<p>Table1 </p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations;<br><br>    public class Table1<br>    {<br>        [Key]<br>        public int Table1Id { get; set; }<br><br>        public int C1 { get; set; }<br><br>        public int C2 { get; set; }<br>    }<br>}<br></pre></div><br>Table2<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    public class Table2 : Table1<br>    {<br>        public int C3 { get; set; }<br><br>        public int C4 { get; set; }<br>    }<br>}<br></pre></div><br>新增幾筆資料<br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Table1.Add(new Table1 { C1 = 1, C2 = 2 });<br>                db.Table2.Add(new Table2 { C1 = 1, C2 = 2, C3 = 3, C4 = 4 });<br>                db.SaveChanges();<br>            }<br>        }<br>    }<br>}<br></pre></div><br>TPH資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png" alt></a></div><br>TPH資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" alt></a></div><br>可以透過Fluent API設定用來識別的欄位，和識別資料的值<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;()<br>                .Map(x=&gt; {<br>                    x.ToTable(“Table1”);<br>                    x.Requires(“QQ”).HasValue(“AA”);<br>                })<br>                .Map&lt;Table2&gt;(x=&gt; {<br>                    x.Requires(“QQ”).HasValue(“BB”);<br>                });<br>        }<br>    }<br>}<br></pre></div><br>設定後資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div>
+
+<p>TPT(Table Per Type)<br>把資料映射到各自的資料表中，並在衍生類別的資料表中自動生成外鍵來關聯基厎類別的資料表，使用方式很簡單，只要指定各自資料表的名稱就行了</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”);<br>            modelBuilder.Entity&lt;Table2&gt;().ToTable(“Table2”);<br>        }<br>    }<br>}<br></pre></div><br>TPT資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png" alt></a></div><br>TPT資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" alt></a></div>
+
+<p>TPC(Table Per Concreate Type)<br>除了資料映射到各自的資料表之外，衍生類別的資料表中還會包含基底類別的欄位<br>透過FluentAPI設定Map即可</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;()<br>                .Map(x =&gt;<br>                {<br>                    x.ToTable(“Table1”);<br>                })<br>                .Map&lt;Table2&gt;(x =&gt;<br>                {<br>                    x.ToTable(“Table2”);<br>                    x.MapInheritedProperties();<br>                });<br>        }<br>    }<br>}<br></pre></div><br>TPC資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>TPC資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Code-First/">Code First</a>, <a href="/tags/Entity-Framework/">Entity Framework</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

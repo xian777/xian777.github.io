@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>安裝continuous integration (CI) server:TeamCity › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="安裝continuous integration (CI) server:TeamCity">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">安裝continuous integration (CI) server:TeamCity</h1>
+  
+
+      
+        <time datetime="2012-11-07T11:59:00.000Z">2012-11-07 19:59:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例"><a href="#首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例" class="headerlink" title="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例"></a>首先到<a href="http://www.jetbrains.com/teamcity/download/index.html" target="_blank" rel="noopener">TeamCity的官網</a>下載合適平台的安裝檔，這裡以Windows平台為例</h2><p><img src="http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png" alt="](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)"></p>
+<h2 id="接下來一直按下一步就行了"><a href="#接下來一直按下一步就行了" class="headerlink" title="接下來一直按下一步就行了"></a>接下來一直按下一步就行了</h2><p><img src="http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png" alt="](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)"></p>
+<h2 id="安裝的路徑"><a href="#安裝的路徑" class="headerlink" title="安裝的路徑"></a>安裝的路徑</h2><p><img src="http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png" alt="](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)"></p>
+<h2 id="安裝的項目，可單獨選擇Build-Agent或Server"><a href="#安裝的項目，可單獨選擇Build-Agent或Server" class="headerlink" title="安裝的項目，可單獨選擇Build Agent或Server"></a>安裝的項目，可單獨選擇Build Agent或Server</h2><p><img src="http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png" alt="](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)"></p>
+<h2 id="設定檔的路徑"><a href="#設定檔的路徑" class="headerlink" title="設定檔的路徑"></a>設定檔的路徑</h2><p><img src="http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png" alt="](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)"></p>
+<h2 id="如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080"><a href="#如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080" class="headerlink" title="如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080"></a>如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080</h2><p><img src="http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png" alt="](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)"></p>
+<h2 id="設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了"><a href="#設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了" class="headerlink" title="設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了"></a>設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了</h2><p><img src="http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png" alt="](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)"></p>
+<h2 id="選擇TeamCity-Server-Service要用的帳號"><a href="#選擇TeamCity-Server-Service要用的帳號" class="headerlink" title="選擇TeamCity Server Service要用的帳號"></a>選擇TeamCity Server Service要用的帳號</h2><p><img src="http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png" alt="](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)"></p>
+<h2 id="選擇TeamCity-Agent-Service要用的帳號"><a href="#選擇TeamCity-Agent-Service要用的帳號" class="headerlink" title="選擇TeamCity Agent Service要用的帳號"></a>選擇TeamCity Agent Service要用的帳號</h2><p><img src="http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png" alt="](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)"></p>
+<h2 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h2><p><img src="http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png" alt="](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)"></p>
+<h2 id="到此安裝完成，按下Finish開始設定頁面"><a href="#到此安裝完成，按下Finish開始設定頁面" class="headerlink" title="到此安裝完成，按下Finish開始設定頁面"></a>到此安裝完成，按下Finish開始設定頁面</h2><p><img src="http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png" alt="](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)"></p>
+<h2 id="第一次執行時的頁面，按下Proceed按鈕執行初始化動作"><a href="#第一次執行時的頁面，按下Proceed按鈕執行初始化動作" class="headerlink" title="第一次執行時的頁面，按下Proceed按鈕執行初始化動作"></a>第一次執行時的頁面，按下Proceed按鈕執行初始化動作</h2><p><img src="http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png" alt="](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)"></p>
+<h2 id="等待初始化完成後，會跳出使用者授權頁面"><a href="#等待初始化完成後，會跳出使用者授權頁面" class="headerlink" title="等待初始化完成後，會跳出使用者授權頁面"></a>等待初始化完成後，會跳出使用者授權頁面</h2><p><img src="http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png" alt="](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)"></p>
+<h2 id="輸入一組管理用的帳號"><a href="#輸入一組管理用的帳號" class="headerlink" title="輸入一組管理用的帳號"></a>輸入一組管理用的帳號</h2><p><img src="http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png" alt="](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)"></p>
+<h2 id="登入成功，接下來就可以開始來設定專案了"><a href="#登入成功，接下來就可以開始來設定專案了" class="headerlink" title="登入成功，接下來就可以開始來設定專案了"></a>登入成功，接下來就可以開始來設定專案了</h2><p><img src="http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png" alt="](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)"></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://www.jetbrains.com/teamcity/buy/edition_comparison.html" target="_blank" rel="noopener">TeamCity Edition Comparison Matrix</a></li>
+</ul>
+
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Build-Server/">Build Server</a>, <a href="/tags/TeamCity/">TeamCity</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

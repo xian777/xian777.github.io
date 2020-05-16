@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>NLog 初體驗 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="NLog 初體驗">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">NLog 初體驗</h1>
+  
+
+      
+        <time datetime="2012-12-29T06:55:00.000Z">2012-12-29 14:55:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div class="separator" style="clear: both; text-align: left;">先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log</div><div class="separator" style="clear: both; text-align: left;">首先讓環境簡單點，所以開一個主控台專案來當範例</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">接下來引用NLog最簡單的方式當然就是用NuGet安裝了</div><div class="separator" style="clear: both; text-align: left;">如果對NuGet不熟的話，可以參考之前的<a href="http://blog.developer.idv.tw/2012/12/nuget.html" target="_blank" rel="noopener">NuGet學習筆記</a></div><div class="separator" style="clear: both; text-align: left;"></div>NLog這個套件是NLog.dll元件本身<br>NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense)<br><br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png" alt></a></div><div class="separator" style="clear: both; text-align: left;">安裝好後，專案中就會多了這三個東西 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"><br></div>打開設定檔，把註解拿掉，先使用預設值來體驗一下<br>詳細的設定方式，之後再介紹<br><br><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>&nbsp; &nbsp; &nbsp; xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br>&nbsp; &nbsp; &lt;!–<br>&nbsp; See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>&nbsp; for information on customizing logging rules and outputs.<br>&nbsp; &nbsp;–&gt;<br>&nbsp; &nbsp; &lt;targets&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!– add your targets here –&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=”File” name=”f” fileName=”${basedir}/logs/${shortdate}.log”<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br>&nbsp; &nbsp; &lt;/targets&gt;<br>&nbsp; &nbsp; &lt;rules&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!– add your logging rules here –&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;logger name=”*” minlevel=”Trace” writeTo=”f” /&gt;<br>&nbsp; &nbsp; &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre><div class="separator" style="clear: both; text-align: left;"><br></div>呼叫NLog的方式也很簡單，直接用LogManager來引用就行了<br>寫Log的方式也很直覺，總共有六個層級，都寫一個試試看<br><br><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using System.Threading.Tasks;<br>using NLog;<br><br>namespace NLogApp<br>{<br>    class Program<br>    {<br>        // 引用NLog<br>        static Logger log = LogManager.GetCurrentClassLogger();<br><br>        static void Main(string[] args)<br>        {<br>            // 每個層級都寫一個試試看<br>            log.Trace(“trace”);<br>            log.Debug(“debug”);<br>            log.Info(“info”);<br>            log.Warn(“warn”);<br>            log.Error(“error”);<br>            log.Fatal(“fatal”);<br>        }<br>    }<br>}<br></pre><br><div class="separator" style="clear: both; text-align: left;">這裡需要注意一下，如果是App專案的話，NLog.config這個檔案的屬性</div><div class="separator" style="clear: both; text-align: left;"><strong>複製到輸出目錄</strong>要確定是在<span style="color: red;">永遠複製</span>這個選項</div><div class="separator" style="clear: both; text-align: left;">這樣Run的時後執行檔和設定檔在同一個目錄才會有作用</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">編譯成功就執行一下，如果沒有權限問題的話，在執行檔下面就會寫出一個log檔</div><div class="separator" style="clear: both; text-align: left;">也會看到NLog.config複製到這裡</div><div class="separator" style="clear: both; text-align: left;">記得要按一下<strong>方案總管</strong>中的<span style="color: red;">顯示所有檔案</span>，才會看到不在專案中的檔案喔</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">打開log檔，裡面就是剛寫的那六個層級的log，使用上就是這麼簡單 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;">下一篇:<a href="http://blog.developer.idv.tw/2012/12/nlog-config.html" target="_blank" rel="noopener">NLog Config</a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/NLog/">NLog</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

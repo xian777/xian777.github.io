@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 10 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/12/17/Entity-Framework-DbContext-延遲加載、貪婪加載、顯性加載/">Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</a></h1>
+  
+
+      
+        <time datetime="2014-12-17T08:26:00.000Z">2014-12-17 16:26:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異<br>DemoContext</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Topic&gt; Topic { get; set; }<br>        public DbSet&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br></pre></div><br>留言版主表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Topic”)]<br>    public class Topic<br>    {<br>        [Key]<br>        public int TopicId { get; set; }<br>        public string TopicTitle { get; set; }<br>        public virtual ICollection&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br><br></pre></div><br>留言版明細表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        [Key]<br>        public int ReplyId { get; set; }<br>        [ForeignKey(“Topic”)]<br>        public int TopicId { get; set; }<br>        public string ReplyMessage { get; set; }<br>        public virtual Topic Topic { get; set; }<br>    }<br>}<br></pre></div><br>資料初始化<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.Data.Entity;<br><br>    public class MyInit : DropCreateDatabaseAlways&lt;DemoContext&gt;<br>    {<br>        protected override void Seed(DemoContext context)<br>        {<br>            context.Topic.AddRange(<br>                new List&lt;Topic&gt;<br>                {<br>                    new Topic<br>                    {<br>                        TopicTitle = “a”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “a1” },<br>                            new Reply { ReplyMessage = “a2” },<br>                            new Reply { ReplyMessage = “a3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “b”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “b1” },<br>                            new Reply { ReplyMessage = “b2” },<br>                            new Reply { ReplyMessage = “b3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “c”,<br>                        Reply = new List&lt;Reply&gt;<br>                        {<br>                            new Reply { ReplyMessage = “c1” },<br>                            new Reply { ReplyMessage = “c2” },<br>                            new Reply { ReplyMessage = “c3” },<br>                        }<br>                    },<br>                    new Topic<br>                    {<br>                        TopicTitle = “d”<br>                    }<br>                });<br>        }<br>    }<br>}<br><br></pre></div>產生的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png" alt></a></div>
+
+<p>延遲加載利用遠端代理模式，必須在導覽屬性上使用virtual關鍵字，才會在存取到這個屬性時，動態去建立相對應的類別<br>這種方式比較明顯的缺點，是會分段產生SQL語法，還有就是在取資料的時後，雖然有加入過濾的條件，但是最後產生的SQL語法，還是會取回全部的資料，然後才在記憶體中過濾資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br><br>                foreach (var topic in db.Topic)<br>                {<br>                    foreach (var reply in topic.Reply.Where(x=&gt;x.ReplyMessage.Contains(“1”)))<br>                    {<br>                        Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>延遲加載產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [Extent1]<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=1<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=2<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=3<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @EntityKeyValue1’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=4<br>go<br><br></pre></div><br>貪婪加載是產生Join的語法，在一次SQL查詢中就取回所有的資料<br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br><br>                foreach (var topic in db.Topic.Include(x =&gt; x.Reply))<br>                {<br>                    foreach (var reply in topic.Reply.Where(x =&gt; x.ReplyMessage.Contains(“1”)))<br>                    {<br>                        Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Project1].[TopicId] AS [TopicId],<br>    [Project1].[TopicTitle] AS [TopicTitle],<br>    [Project1].[C1] AS [C1],<br>    [Project1].[ReplyId] AS [ReplyId],<br>    [Project1].[TopicId1] AS [TopicId1],<br>    [Project1].[ReplyMessage] AS [ReplyMessage]<br>    FROM ( SELECT<br>        [Extent1].[TopicId] AS [TopicId],<br>        [Extent1].[TopicTitle] AS [TopicTitle],<br>        [Extent2].[ReplyId] AS [ReplyId],<br>        [Extent2].[TopicId] AS [TopicId1],<br>        [Extent2].[ReplyMessage] AS [ReplyMessage],<br>        CASE WHEN ([Extent2].[ReplyId] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]<br>        FROM  [dbo].[Topic] AS [Extent1]<br>        LEFT OUTER JOIN [dbo].[Reply] AS [Extent2] ON [Extent1].[TopicId] = [Extent2].[TopicId]<br>    )  AS [Project1]<br>    ORDER BY [Project1].[TopicId] ASC, [Project1].[C1] ASC<br></pre></div><br>顯性加載也是分段式的語法，和延遲加載的差別在於，延遲加載必須先取回導覽屬性的全部資料，才能繼續後續的處理，而顯性加載則可以篩選要取回那些資料<br>透過Entry取得實體後，Collection是取集合對應的屬性，Reference是取實體對應的屬性<br>db.Configuration.LazyLoadingEnabled是用來指定是否要啟用延遲加載，預設是啟用的<br><br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new MyInit());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br>                db.Configuration.LazyLoadingEnabled = false;<br><br>                foreach (var topic in db.Topic)<br>                {<br>                    db.Entry(topic).Collection(x =&gt; x.Reply)<br>                        .Query()<br>                        .Where(x =&gt; x.ReplyMessage.Contains(“1”))<br>                        .Load();<br><br>                    if (topic.Reply != null)<br>                    {<br>                        foreach (var reply in topic.Reply)<br>                        {<br>                            Console.WriteLine(“title:{0}, message:{1}”, topic.TopicTitle, reply.ReplyMessage);<br>                        }<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}<br></pre></div><br>產生的SQL語法<br><div><pre class="brush:sql">SELECT<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [Extent1]<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=1<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=2<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=3<br>go<br>exec sp_executesql N’SELECT<br>    [Extent1].[ReplyId] AS [ReplyId],<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[ReplyMessage] AS [ReplyMessage]<br>    FROM [dbo].[Reply] AS [Extent1]<br>    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N’’%1%’’)’,N‘@EntityKeyValue1 int’,@EntityKeyValue1=4<br>go<br><br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/12/17/Entity-Framework-DbContext-新增、修改、刪除、查詢/">Entity Framework DbContext 新增、修改、刪除、查詢</a></h1>
+  
+
+      
+        <time datetime="2014-12-17T07:33:00.000Z">2014-12-17 15:33:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先建立一個留言版的資料庫來當例子</p>
+<p>DemoContext</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Topic&gt; Topic { get; set; }<br>        public DbSet&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br></pre></div><br>留言版主表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Topic”)]<br>    public class Topic<br>    {<br>        [Key]<br>        public int TopicId { get; set; }<br>        public string TopicTitle { get; set; }<br>        public virtual ICollection&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br><br></pre></div>留言版明細表<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        [Key]<br>        public int ReplyId { get; set; }<br>        [ForeignKey(“Topic”)]<br>        public int TopicId { get; set; }<br>        public string ReplyMessage { get; set; }<br>        public virtual Topic Topic { get; set; }<br>    }<br>}<br></pre></div><br>新增、修改、刪除、查詢<br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br>    using System.Collections.Generic;<br>    using System.Data.Entity;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 初始化資料庫<br>            Database.SetInitializer(new DropCreateDatabaseAlways&lt;DemoContext&gt;());<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Database.Initialize(false);<br>            }<br><br>            // 新增<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Topic.Add(new Topic<br>                {<br>                    TopicTitle = “a”,<br>                    Reply = new List&lt;Reply&gt;<br>                    {<br>                        new Reply { ReplyMessage = “a1” },<br>                        new Reply { ReplyMessage = “a2” },<br>                        new Reply { ReplyMessage = “a3” },<br>                    }<br>                });<br><br>                db.SaveChanges();<br>            }<br><br>            // 修改<br>            using (DemoContext db = new DemoContext())<br>            {<br>                var model = db.Topic.FirstOrDefault();<br>                if (model != null)<br>                {<br>                    model.TopicTitle = “modify”;<br>                    db.SaveChanges();<br>                }<br>            }<br><br>            // 查詢<br>            using (DemoContext db = new DemoContext())<br>            {<br>                var model1 = db.Topic.Find(1);<br>                var model2 = db.Topic.SingleOrDefault();<br>                var model3 = db.Topic.FirstOrDefault();<br>            }<br><br>            // 刪除<br>            using (DemoContext db = new DemoContext())<br>            {<br>                var model = new Topic { TopicId = 1 };<br>                db.Entry(model).State = EntityState.Deleted;<br>                db.SaveChanges();<br>            }<br>        }<br>    }<br>}<br></pre></div><br>新增的SQL<br><div><pre class="brush:sql">exec sp_reset_connection<br>go<br>exec sp_executesql N’INSERT [dbo].<a href="[TopicTitle]">Topic</a><br>VALUES (@0)<br>SELECT [TopicId]<br>FROM [dbo].[Topic]<br>WHERE @@ROWCOUNT &gt; 0 AND [TopicId] = scope_identity()’,N‘@0 nvarchar(max) ‘,@0=N’a’<br>go<br>exec sp_executesql N’INSERT [dbo].<a href="[TopicId], [ReplyMessage]">Reply</a><br>VALUES (@0, @1)<br>SELECT [ReplyId]<br>FROM [dbo].[Reply]<br>WHERE @@ROWCOUNT &gt; 0 AND [ReplyId] = scope_identity()’,N‘@0 int,@1 nvarchar(max) ‘,@0=1,@1=N’a1’<br>go<br>exec sp_executesql N’INSERT [dbo].<a href="[TopicId], [ReplyMessage]">Reply</a><br>VALUES (@0, @1)<br>SELECT [ReplyId]<br>FROM [dbo].[Reply]<br>WHERE @@ROWCOUNT &gt; 0 AND [ReplyId] = scope_identity()’,N‘@0 int,@1 nvarchar(max) ‘,@0=1,@1=N’a2’<br>go<br>exec sp_executesql N’INSERT [dbo].<a href="[TopicId], [ReplyMessage]">Reply</a><br>VALUES (@0, @1)<br>SELECT [ReplyId]<br>FROM [dbo].[Reply]<br>WHERE @@ROWCOUNT &gt; 0 AND [ReplyId] = scope_identity()’,N‘@0 int,@1 nvarchar(max) ‘,@0=1,@1=N’a3’<br>go<br><br></pre></div><br>修改的SQL<br><div><pre class="brush:sql">exec sp_reset_connection<br>go<br>SELECT TOP (1)<br>    [c].[TopicId] AS [TopicId],<br>    [c].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [c]<br>go<br>exec sp_reset_connection<br>go<br>exec sp_executesql N’UPDATE [dbo].[Topic]<br>SET [TopicTitle] = @0<br>WHERE ([TopicId] = @1)<br>‘,N‘@0 nvarchar(max) ,@1 int’,@0=N’modify’,@1=1<br>go<br><br></pre></div><br>查詢的SQL<br><div><pre class="brush:sql">exec sp_reset_connection<br>go<br>exec sp_executesql N’SELECT TOP (2)<br>    [Extent1].[TopicId] AS [TopicId],<br>    [Extent1].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [Extent1]<br>    WHERE [Extent1].[TopicId] = @p0’,N‘@p0 int’,@p0=1<br>go<br>exec sp_reset_connection<br>go<br>SELECT TOP (2)<br>    [c].[TopicId] AS [TopicId],<br>    [c].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [c]<br>go<br>exec sp_reset_connection<br>go<br>SELECT TOP (1)<br>    [c].[TopicId] AS [TopicId],<br>    [c].[TopicTitle] AS [TopicTitle]<br>    FROM [dbo].[Topic] AS [c]<br>go<br></pre></div><div><br></div><br>刪除的SQL<br><div><pre class="brush:sql">exec sp_reset_connection<br>go<br>exec sp_executesql N’DELETE [dbo].[Topic]<br>WHERE ([TopicId] = @0)’,N‘@0 int’,@0=1<br>go<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/26/Entity-Framework-Code-First-繼承對應設定/">Entity Framework Code First 繼承對應設定</a></h1>
+  
+
+      
+        <time datetime="2014-11-26T03:50:00.000Z">2014-11-26 11:50:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>TPH(Table Per Hierarchy)<br>基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法</p>
+<p>Table1 </p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations;<br><br>    public class Table1<br>    {<br>        [Key]<br>        public int Table1Id { get; set; }<br><br>        public int C1 { get; set; }<br><br>        public int C2 { get; set; }<br>    }<br>}<br></pre></div><br>Table2<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    public class Table2 : Table1<br>    {<br>        public int C3 { get; set; }<br><br>        public int C4 { get; set; }<br>    }<br>}<br></pre></div><br>新增幾筆資料<br><div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using ConsoleApplication1.Models;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            using (DemoContext db = new DemoContext())<br>            {<br>                db.Table1.Add(new Table1 { C1 = 1, C2 = 2 });<br>                db.Table2.Add(new Table2 { C1 = 1, C2 = 2, C3 = 3, C4 = 4 });<br>                db.SaveChanges();<br>            }<br>        }<br>    }<br>}<br></pre></div><br>TPH資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png" alt></a></div><br>TPH資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" alt></a></div><br>可以透過Fluent API設定用來識別的欄位，和識別資料的值<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;()<br>                .Map(x=&gt; {<br>                    x.ToTable(“Table1”);<br>                    x.Requires(“QQ”).HasValue(“AA”);<br>                })<br>                .Map&lt;Table2&gt;(x=&gt; {<br>                    x.Requires(“QQ”).HasValue(“BB”);<br>                });<br>        }<br>    }<br>}<br></pre></div><br>設定後資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div>
+
+<p>TPT(Table Per Type)<br>把資料映射到各自的資料表中，並在衍生類別的資料表中自動生成外鍵來關聯基厎類別的資料表，使用方式很簡單，只要指定各自資料表的名稱就行了</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”);<br>            modelBuilder.Entity&lt;Table2&gt;().ToTable(“Table2”);<br>        }<br>    }<br>}<br></pre></div><br>TPT資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png" alt></a></div><br>TPT資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png" alt></a></div>
+
+<p>TPC(Table Per Concreate Type)<br>除了資料映射到各自的資料表之外，衍生類別的資料表中還會包含基底類別的欄位<br>透過FluentAPI設定Map即可</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Table1&gt;()<br>                .Map(x =&gt;<br>                {<br>                    x.ToTable(“Table1”);<br>                })<br>                .Map&lt;Table2&gt;(x =&gt;<br>                {<br>                    x.ToTable(“Table2”);<br>                    x.MapInheritedProperties();<br>                });<br>        }<br>    }<br>}<br></pre></div><br>TPC資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>TPC資料儲存的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/25/Entity-Framework-Code-First-Complex-Type/">Entity Framework Code First Complex Type</a></h1>
+  
+
+      
+        <time datetime="2014-11-25T10:25:00.000Z">2014-11-25 18:25:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Complex Type是用來重覆使用的欄位，有幾個規定<br>1. 不能有主索引<br>2. 一個類別中只能有一個實體<br>3. 只能是引用屬性，不能是集合屬性</p>
+<p>Table1</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    public class Table1<br>    {<br>        public int Table1Id { get; set; }<br>        public Address Address { get; set; }<br>    }<br>}<br></pre></div><br>Table2<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    public class Table2<br>    {<br>        public int Table2Id { get; set; }<br>        public Address Address { get; set; }<br>    }<br>}<br></pre></div><br>Address<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    public class Address<br>    {<br>        public string Addr1 { get; set; }<br><br>        public string Addr2 { get; set; }<br>    }<br>}<br></pre></div><br>預設狀態資料表的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-VUdYb_36M7Y/VHRZEfTanyI/AAAAAAAABxc/9lM5jwJEEXg/s1600/01.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-VUdYb_36M7Y/VHRZEfTanyI/AAAAAAAABxc/9lM5jwJEEXg/s1600/01.png" alt></a></div><br>加上DataAnnotation<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [ComplexType]<br>    public class Address<br>    {<br>        [Column(“Addr1”)]<br>        public string Addr1 { get; set; }<br><br>        [Column(“Addr2”)]<br><br>        public string Addr2 { get; set; }<br>    }<br>}<br></pre></div><br>Fluent API設定<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br>    using System.Data.Entity.ModelConfiguration;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Table1&gt; Table1 { get; set; }<br>        public DbSet&lt;Table2&gt; Table2 { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Configurations.Add(new AddressConfiguration());<br>        }<br><br>        private class AddressConfiguration : ComplexTypeConfiguration&lt;Address&gt;<br>        {<br>            public AddressConfiguration()<br>            {<br>                this.Property(x =&gt; x.Addr1).HasColumnName(“Addr1”);<br>                this.Property(x =&gt; x.Addr2).HasColumnName(“Addr2”);<br>            }<br>        }<br>    }<br>}<br></pre></div><br>加上設定後資料表的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-SrcjXxIdxHs/VHRZH1IT_rI/AAAAAAAABxk/Hp82tQKWg18/s1600/02.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-SrcjXxIdxHs/VHRZH1IT_rI/AAAAAAAABxk/Hp82tQKWg18/s1600/02.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/25/Entity-Framework-Code-First-多對多關聯設定/">Entity Framework Code First 多對多關聯設定</a></h1>
+  
+
+      
+        <time datetime="2014-11-25T08:48:00.000Z">2014-11-25 16:48:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>兩個類別之間，各自包含對應的集合導覽屬性，就會被當成多對多關系<br>在資料庫中的多對多關系，需要用三張表來表示，分別是一對多再多對一</p>
+<p>一個使用者可以有多個群組</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“User”)]<br>    public class User<br>    {<br>        public int UserId { get; set; }<br><br>        public string UserName { get; set; }<br><br>        public virtual ICollection&lt;Group&gt; Group { get; set; }<br>    }<br>}<br></pre></div><br>一個群組可以有多個使用者<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Group”)]<br>    public class Group<br>    {<br>        public int GroupId { get; set; }<br><br>        public string GroupName { get; set; }<br><br>        public virtual ICollection&lt;User&gt; User { get; set; }<br>    }<br>}<br></pre></div><br>預設會自動生成第三張表<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Kf0FCZt6HKU/VHQ_vKY2CbI/AAAAAAAABw4/vmkQa6Gjf08/s1600/01.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Kf0FCZt6HKU/VHQ_vKY2CbI/AAAAAAAABw4/vmkQa6Gjf08/s1600/01.png" alt></a></div>
+
+<p>透過FluentAPI設定第三張表的名稱，和欄位名稱</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;User&gt; User { get; set; }<br><br>        public DbSet&lt;Group&gt; Group { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;User&gt;()<br>                .HasMany(x =&gt; x.Group)<br>                .WithMany(x =&gt; x.User)<br>                .Map(x =&gt;{<br>                    x.ToTable(“MyUserGroup”);<br>                    x.MapLeftKey(“UserID”);<br>                    x.MapRightKey(“GroupID”);<br>                });<br>        }<br>    }<br>}<br></pre></div><br>資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-pPz9en0LdGs/VHRB1DkAGRI/AAAAAAAABxE/bn58i66WkR0/s1600/03.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-pPz9en0LdGs/VHRB1DkAGRI/AAAAAAAABxE/bn58i66WkR0/s1600/03.png" alt></a></div><br>關聯圖<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ge9m8hgR2NE/VHRCAxbu4CI/AAAAAAAABxM/dWik0q60CHA/s1600/04.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ge9m8hgR2NE/VHRCAxbu4CI/AAAAAAAABxM/dWik0q60CHA/s1600/04.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/25/Entity-Framework-Code-First-一對多關聯設定/">Entity Framework Code First 一對多關聯設定</a></h1>
+  
+
+      
+        <time datetime="2014-11-25T08:17:00.000Z">2014-11-25 16:17:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>兩個類別之間，一個包含集合導覽屬性，一個包含引用屬性，就會被當成一對多關系</p>
+<p>主表</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Collections.Generic;<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Topic”)]<br>    public class Topic<br>    {<br>        public int TopicId { get; set; }<br><br>        public string Title { get; set; }<br><br>        public virtual ICollection&lt;Reply&gt; Reply { get; set; }<br>    }<br>}<br></pre></div><br>明細表<br>外鍵的命名只有符合預設的規則，就會建立關系，規則如下<br>1. 目標類型索引的名稱<br>2. 目標類型名稱+目標類型主索引名稱<br>3. 導覽屬性名稱+目標類型主索引名稱<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        public int ReplyId { get; set; }<br><br>        public int TopicId { get; set; }<br>        // public int TopicTopicId { get; set; }<br>        // public int TheTopicTopicId { get; set; }<br><br>        public string Title { get; set; }<br><br>        public virtual Topic TheTopic { get; set; }<br>    }<br>}<br></pre></div><br>若不是用預設規則的命名方式，可以透過ForeignKey這個Attribute設定<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        public int ReplyId { get; set; }<br><br>        [ForeignKey(“TheTopic”)]<br>        public int tid { get; set; }<br><br>        public string Title { get; set; }<br><br>        public virtual Topic TheTopic { get; set; }<br>    }<br>}<br></pre></div><br>也可以設定在引用屬性上<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.ComponentModel.DataAnnotations.Schema;<br><br>    [Table(“Reply”)]<br>    public class Reply<br>    {<br>        public int ReplyId { get; set; }<br><br>        public int tid { get; set; }<br><br>        public string Title { get; set; }<br><br>        [ForeignKey(“tid”)]<br>        public virtual Topic TheTopic { get; set; }<br>    }<br>}<br></pre></div><br>透過FluentAPI設定方式<br><div><pre class="brush:csharp">namespace ConsoleApplication1.Models<br>{<br>    using System.Data.Entity;<br><br>    public class DemoContext : DbContext<br>    {<br>        public DbSet&lt;Topic&gt; Topic { get; set; }<br><br>        public DbSet&lt;Reply&gt; Reply { get; set; }<br><br>        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>        {<br>            modelBuilder.Entity&lt;Topic&gt;()<br>                .HasMany(x =&gt; x.Reply)<br>                .WithRequired(x =&gt; x.TheTopic)<br>                .HasForeignKey(x =&gt; x.tid)<br>                .WillCascadeOnDelete(true);<br>        }<br>    }<br>}<br></pre></div><br>資料表建立的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-x8Be3G5KSmE/VHQ8NnYctyI/AAAAAAAABwk/2MeEYOuWK8c/s1600/01.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-x8Be3G5KSmE/VHQ8NnYctyI/AAAAAAAABwk/2MeEYOuWK8c/s1600/01.png" alt></a></div><br>關聯圖<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-h0YFZrs6BNg/VHQ8RG_hqqI/AAAAAAAABws/K-w1Qjy3owY/s1600/02.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-h0YFZrs6BNg/VHQ8RG_hqqI/AAAAAAAABws/K-w1Qjy3owY/s1600/02.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/24/Entity-Framework-Code-First-一對一關聯設定/">Entity Framework Code First 一對一關聯設定</a></h1>
+  
+
+      
+        <time datetime="2014-11-24T09:42:00.000Z">2014-11-24 17:42:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在兩個類別之間，各自包含一個引用屬性，就會被當成一對一關系<br>只是那張是主資料表，需要利用Fluent API來設定</p>
+<p>主資料表</p>
+<div><pre class="brush:csharp">using System.ComponentModel.DataAnnotations;<br><br>public partial class TableA<br>{<br>    [Key]<br>    public int TabId { get; set; }<br><br>    public int C1 { get; set; }<br><br>    public virtual TableB TableB { get; set; }<br>}</pre></div><br>對應的資料表<br><div><pre class="brush:csharp">using System.ComponentModel.DataAnnotations;<br><br>public partial class TableB<br>{<br>    [Key]<br>    public int TabId { get; set; }<br><br>    public int CC1 { get; set; }<br><br>    public virtual TableA TableA { get; set; }<br>}</pre></div><br>設定關聯<br><div><pre class="brush:csharp">using System.Data.Entity;<br><br>public partial class DemoContext : DbContext<br>{<br>    public DemoContext()<br>        : base(“name=DemoContext”)<br>    {<br>    }<br><br>    public virtual DbSet&lt;TableA&gt; TableA { get; set; }<br>    public virtual DbSet&lt;TableB&gt; TableB { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;TableA&gt;()<br>            .HasOptional(x =&gt; x.TableB)<br>            .WithRequired(x =&gt; x.TableA);<br>    }<br>}</pre></div><br>建立出一對一關系的資料表<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-rbt4EUaTb5Q/VHL9dejT89I/AAAAAAAABwI/QiNQmRhMIfo/s1600/%E6%9C%AA%E5%91%BD%E5%90%8D.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-rbt4EUaTb5Q/VHL9dejT89I/AAAAAAAABwI/QiNQmRhMIfo/s1600/%E6%9C%AA%E5%91%BD%E5%90%8D.png" alt></a></div>
+
+<p>關聯圖</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-4NfXgZRL470/VHL_AJYWIvI/AAAAAAAABwU/0OA1cJHzG5s/s1600/%E6%9C%AA%E5%91%BD%E5%90%8D.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-4NfXgZRL470/VHL_AJYWIvI/AAAAAAAABwU/0OA1cJHzG5s/s1600/%E6%9C%AA%E5%91%BD%E5%90%8D.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/31/Entity-Framework-Code-First-資料庫初始化設定/">Entity Framework Code First 資料庫初始化設定</a></h1>
+  
+
+      
+        <time datetime="2014-10-31T09:32:00.000Z">2014-10-31 17:32:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在參考了entityFramework套件之後，設定檔中會自動增加一個EntityFramework的區域設定<br>其中的defaultConnectionFactory宣告了預設的資料庫位置<br>不同的版本預設的localdb實體名稱會有不同，這邊的例子是mssqllocaldb</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>    &lt;configSections&gt;<br>        &lt;!– For more information on Entity Framework configuration, visit <a href="http://go.microsoft.com/fwlink/?LinkID=237468" target="_blank" rel="noopener">http://go.microsoft.com/fwlink/?LinkID=237468</a> –&gt;<br>        &lt;section name=”entityFramework” type=”System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089” requirePermission=”false” /&gt;<br>    &lt;/configSections&gt;<br>    &lt;startup&gt;<br>        &lt;supportedRuntime version=”v4.0” sku=”.NETFramework,Version=v4.5” /&gt;<br>    &lt;/startup&gt;<br>    &lt;entityFramework&gt;<br>        &lt;defaultConnectionFactory type=”System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework”&gt;<br>            &lt;parameters&gt;<br>                &lt;parameter value=”mssqllocaldb” /&gt;<br>            &lt;/parameters&gt;<br>        &lt;/defaultConnectionFactory&gt;<br>        &lt;providers&gt;<br>            &lt;provider invariantName=”System.Data.SqlClient” type=”System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer” /&gt;<br>        &lt;/providers&gt;<br>    &lt;/entityFramework&gt;<br>&lt;/configuration&gt;<br></pre></div><br>就會自動建立一個包含完整Assembly名稱的資料庫<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png" alt></a></div>
+
+<p>如果在設定檔的連線區段中，有一個和DbContext同名的設定值，就會改用這邊的連線設定<br>建立的資料庫也會是連線字串中指定的名稱</p>
+<div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;</pre></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png" alt></a></div><br>也可以透過預設建構式指定要使用設定檔中的那個值<br><div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>    &lt;add name=”d1” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d1;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;<br></pre></div><br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}<br></pre></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-dbjwZcEhoYw/VFNJwZsdzMI/AAAAAAAABuY/Vret3Kef1e0/s1600/d1.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-dbjwZcEhoYw/VFNJwZsdzMI/AAAAAAAABuY/Vret3Kef1e0/s1600/d1.png" alt></a></div><br>或是使用DbContext物件時，透過建構式傳入要使用的名稱<br><div><pre class="brush:xml">&lt;connectionStrings&gt;<br>    &lt;add name=”DemoContext” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;”/&gt;<br>    &lt;add name=”d1” providerName=”System.Data.SqlClient”<br>            connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d1;Integrated Security=true;”/&gt;<br>    &lt;add name=”d2” providerName=”System.Data.SqlClient”<br>                connectionString=”Data Source=(localdb)\v11.0;Initial Catalog=d2;Integrated Security=true;”/&gt;<br>&lt;/connectionStrings&gt;</pre></div><br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DemoContext(string name) : base(name)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}</pre></div><br><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    using (DemoContext db = new DemoContext(“d2”))<br>    {<br>        db.Database.Initialize(true);<br>    }<br>}</pre></div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-BhpDZY3FCIc/VFNLSgDVLuI/AAAAAAAABuk/GA9qeZJMc00/s1600/d2.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-BhpDZY3FCIc/VFNLSgDVLuI/AAAAAAAABuk/GA9qeZJMc00/s1600/d2.png" alt></a></div><br>另一種建構式是傳入DbConnection物件，搭配contextOwnsConnection來決定是否要共用連線<br><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DemoContext() : base(“name=d1”)<br>    {<br>    }<br><br>    public DemoContext(string name) : base(name)<br>    {<br>    }<br><br>    public DemoContext(DbConnection connection) : base(connection, contextOwnsConnection: false)<br>    {<br>    }<br><br>    public DbSet&lt;Class1&gt; Class1 { get; set; }<br>}<br></pre></div><br>如果共用連線的話，在第一個DbContext執行完後就會釋放連線<br>執行第二個DbContext物件的時後就會報錯<br><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[“d1”].ConnectionString);<br><br>    using (DemoContext db = new DemoContext(conn))<br>    {<br>        Console.WriteLine(db.Class1.Count());<br>    }<br><br>    using (DemoContext db = new DemoContext(conn))<br>    {<br>        Console.WriteLine(db.Class1.Count());<br>    }<br>}<br></pre></div><br>System.Data.Entity.Database.SetInitializer函式可以用來初始化資料庫<br>System.Data.Entity.CreateDatabaseIfNotExists<br>只有在資料庫不存在的時後才會建立，這是預設的策略<br><br>System.Data.Entity.DropCreateDatabaseIfModelChanges<br>只有當資料庫結構發生變化的時後，才砍掉重練<br><br>System.Data.Entity.DropCreateDatabaseAlways<br>不管資料庫結構是否有改變，每次都砍掉重練<br><br>通常在應用程式的進入點例如Global.asax，Main會設置初始化策略<br>但是在切換環境的時後，要改變策略就要重新修改編譯部署<br>所以比較方便的方式，是配置在設定檔中，有兩種設定方式<br><br>一種是設定在AppSetting區段，設成Disabled就是禁用資料庫初始化功能<br><div><pre class="brush:csharp">&lt;appSettings&gt;<br>    &lt;add key=”DatabaseInitializerForType ConsoleApplication1.Models.DemoContext, ConsoleApplication1”<br>            value=”System.Data.Entity.DropCreateDatabaseIfModelChanges<code>1[[ConsoleApplication1.Models.DemoContext, ConsoleApplication1]], EntityFramework&quot; /&amp;gt;
+    &amp;lt;!--&amp;lt;add key=&quot;DatabaseInitializerForType ConsoleApplication1.Models.DemoContext, ConsoleApplication1&quot;
+            value=&quot;Disabled&quot; /&amp;gt;--&amp;gt;
+&amp;lt;/appSettings&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+一種是設定在entityFramework的contextx區段
+&lt;div&gt;&lt;pre class=&quot;brush:xml&quot;&gt;&amp;lt;entityFramework&amp;gt;
+    &amp;lt;defaultConnectionFactory type=&quot;System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework&quot;&amp;gt;
+        &amp;lt;parameters&amp;gt;
+            &amp;lt;parameter value=&quot;mssqllocaldb&quot; /&amp;gt;
+        &amp;lt;/parameters&amp;gt;
+    &amp;lt;/defaultConnectionFactory&amp;gt;
+    &amp;lt;contexts&amp;gt;
+        &amp;lt;context type=&quot;ConsoleApplication1.Models.DemoContext, ConsoleApplication1&quot;&amp;gt;
+            &amp;lt;databaseInitializer type=&quot;System.Data.Entity.DropCreateDatabaseIfModelChanges</code>1[[ConsoleApplication1.Models.DemoContext, ConsoleApplication1]], EntityFramework” /&gt;<br>        &lt;/context&gt;<br>    &lt;/contexts&gt;<br>    &lt;providers&gt;<br>        &lt;provider invariantName=”System.Data.SqlClient” type=”System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer” /&gt;<br>    &lt;/providers&gt;<br>&lt;/entityFramework&gt;<div><br></div><br></pre></div><br>最後可以新增一個自訂的策略，並覆寫Seed函式，就能在初始化資料庫的時後，執行自訂的動作，例如新增資料<br><div><pre class="brush:csharp">public class MyInitialize : DropCreateDatabaseIfModelChanges&lt;DemoContext&gt;<br>{<br>    protected override void Seed(DemoContext context)<br>    {<br>        context.Class1.Add(new Class1 { C1 = “a” });<br>        context.Class1.Add(new Class1 { C1 = “b” });<br>        context.Class1.Add(new Class1 { C1 = “c” });<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/27/Entity-Framework-Code-First-組織Fluent-API-設定/">Entity Framework Code First 組織Fluent API 設定</a></h1>
+  
+
+      
+        <time datetime="2014-10-27T10:16:00.000Z">2014-10-27 18:16:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多</p>
+<div>可以透過EntityTypeConfiguration&lt;T&gt;來分類</div><div><br>一般的設定方式</div><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired()<br>            .HasMaxLength(10)<br>            .IsFixedLength()<br>            .IsUnicode(false);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.c1)<br>            .HasPrecision(18, 2);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.t1)<br>            .IsRowVersion();<br>    }<br>}</pre><br></div><div>分類後的設定方式</div><div><pre class="brush:csharp">public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Configurations.Add(new Table1Configuration());<br>    }<br><br>    private class Table1Configuration : EntityTypeConfiguration&lt;Table1&gt;<br>    {<br>        public Table1Configuration()<br>        {<br>            this.ToTable(“Table1”).HasKey(x =&gt; x.id);<br>            this.Property(x =&gt; x.id)<br>                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>                .HasColumnName(“sid”)<br>                .HasColumnType(“bigint”);<br>            this.Property(x =&gt; x.s1)<br>                .IsRequired()<br>                .HasMaxLength(10)<br>                .IsFixedLength()<br>                .IsUnicode(false);<br>            this.Property(x =&gt; x.c1)<br>                .HasPrecision(18, 2);<br>            this.Property(x =&gt; x.t1)<br>                .IsRowVersion();<br>        }<br>    }<br>}</pre><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/27/Entity-Framework-Code-First-對應規則設定/">Entity Framework Code First 對應規則設定</a></h1>
+  
+
+      
+        <time datetime="2014-10-27T09:47:00.000Z">2014-10-27 17:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>要改變預設對應規則，可以用兩種方式<br>一種是使用Attributes的方式，例如[key]<br>一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定</p>
+<p>資料表名稱和主索引</p>
+<div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    public int id { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>    }<br>}<br></pre></div><br>自動編號<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    public int id { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);<br>    }<br>}</pre></div><div>欄位名稱 </div><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”)]<br>    public int id { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”);<br>    }<br>}<br></pre></div><br>欄位型態<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>    }<br>}<br></pre></div><br>不可為空(文字)<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br><br>    [Required]<br>    public string s1 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired();<br>    }<br>}<br></pre></div><br>最大長度(文字)<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br><br>    [Required]<br>    [MaxLength(10)]<br>    public string s1 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired()<br>            .HasMaxLength(10);<br>    }<br>}<br></pre></div><br>varchar, char(文字)<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br><br>    [Required]<br>    [MaxLength(10)]<br>    [Column(TypeName=”char”)]<br>    public string s1 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired()<br>            .HasMaxLength(10)<br>            .IsFixedLength()<br>            .IsUnicode(false);<br>    }<br>}</pre></div><br>精準度(浮點數)<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br><br>    [Required]<br>    [MaxLength(10)]<br>    [Column(TypeName=”char”)]<br>    public string s1 { get; set; }<br><br>    public decimal c1 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired()<br>            .HasMaxLength(10)<br>            .IsFixedLength()<br>            .IsUnicode(false);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.c1)<br>            .HasPrecision(18, 2);<br>    }<br>}</pre></div><br>時間戳記<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]<br>    [Column(“sid”, TypeName = “bigint”)]<br>    public int id { get; set; }<br><br>    [Required]<br>    [MaxLength(10)]<br>    [Column(TypeName = “char”)]<br>    public string s1 { get; set; }<br><br>    public decimal c1 { get; set; }<br><br>    [Timestamp]<br>    public byte[] t1 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; x.id);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.id)<br>            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)<br>            .HasColumnName(“sid”)<br>            .HasColumnType(“bigint”);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.s1)<br>            .IsRequired()<br>            .HasMaxLength(10)<br>            .IsFixedLength()<br>            .IsUnicode(false);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.c1)<br>            .HasPrecision(18, 2);<br>        modelBuilder.Entity&lt;Table1&gt;().Property(x =&gt; x.t1)<br>            .IsRowVersion();<br>    }<br>}</pre></div><br>複合索引<br><div><pre class="brush:csharp">[Table(“Table1”)]<br>public class Table1<br>{<br>    [Key]<br>    [Column(Order = 1)]<br>    public int id1 { get; set; }<br><br>    [Key]<br>    [Column(Order = 2)]<br>    public int id2 { get; set; }<br>}<br><br>public class DemoContext : DbContext<br>{<br>    public DbSet&lt;Table1&gt; Table1 { get; set; }<br><br>    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>    {<br>        modelBuilder.Entity&lt;Table1&gt;().ToTable(“Table1”).HasKey(x =&gt; new { x.id1, x.id2 });<br>    }<br>}</pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/9/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/11/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

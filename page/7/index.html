@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 7 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/03/04/C-HexString-to-ByteArray/">C# HexString to ByteArray</a></h1>
+  
+
+      
+        <time datetime="2015-03-04T07:43:00.000Z">2015-03-04 15:43:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>16進位的字串轉成ByteArray</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using System;<br>    using System.Linq;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            string hexstring = “0123456789abcdef”;<br>            byte[] byteArray = Enumerable.Range(0, hexstring.Length)<br>                .Where(x =&gt; x % 2 == 0)<br>                .Select(x =&gt; Convert.ToByte(hexstring.Substring(x, 2), 16))<br>                .ToArray();<br>            Console.WriteLine(BitConverter.ToString(byteArray));<br>        }<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/28/NodeJS-筆記/">NodeJS 筆記</a></h1>
+  
+
+      
+        <time datetime="2015-01-28T07:42:00.000Z">2015-01-28 15:42:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/21/Redis-RedisOutputCacheProvider/">Redis RedisOutputCacheProvider</a></h1>
+  
+
+      
+        <time datetime="2015-01-21T09:51:00.000Z">2015-01-21 17:51:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先開個Web專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-W0eH1UB-UAg/VL9vePbpb0I/AAAAAAAACI4/dA1ZpbAc2uo/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-W0eH1UB-UAg/VL9vePbpb0I/AAAAAAAACI4/dA1ZpbAc2uo/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>安裝Microsoft.Web.RedisOutputCacheProvider套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-QT6Acrh4AnY/VL9106aZdnI/AAAAAAAACJg/7SwSvzSuaow/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-QT6Acrh4AnY/VL9106aZdnI/AAAAAAAACJg/7SwSvzSuaow/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div><br>web.config中的caching區段會自動帶入預設的設定<br>註解的說明也很清楚<br><div><pre class="brush:csharp">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>  &lt;system.web&gt;<br>    &lt;compilation debug=”true” targetFramework=”4.5” /&gt;<br>    &lt;httpRuntime targetFramework=”4.5” /&gt;<br>    &lt;caching&gt;<br>      &lt;outputCache defaultProvider=”MyRedisOutputCache”&gt;<br>        &lt;providers&gt;<br>          &lt;!– Either use ‘connectionString’ and provide all parameters as string OR use ‘host’,’port’,’accessKey’,’ssl’,’connectionTimeoutInMilliseconds’ and ‘operationTimeoutInMilliseconds’. –&gt;<br>          &lt;!– ‘databaseId’ and ‘applicationName’ can be used with both options. –&gt;<br>          &lt;!–<br>          &lt;add name=”MyRedisOutputCache”<br>            host = “127.0.0.1” [String]<br>            port = “” [number]<br>            accessKey = “” [String]<br>            ssl = “false” [true|false]<br>            databaseId = “0” [number]<br>            applicationName = “” [String]<br>            connectionTimeoutInMilliseconds = “5000” [number]<br>            operationTimeoutInMilliseconds = “1000” [number]<br>            connectionString = “&lt;valid StackExchange.Redis connection string&gt;” [String]<br>          /&gt;<br>          –&gt;<br>          &lt;add name=”MyRedisOutputCache” type=”Microsoft.Web.Redis.RedisOutputCacheProvider” host=”10.9.11.64” accessKey=”” ssl=”false” /&gt;<br>        &lt;/providers&gt;<br>      &lt;/outputCache&gt;<br>    &lt;/caching&gt;<br>  &lt;/system.web&gt;<br>&lt;/configuration&gt;<br></pre></div><br>隨便輸出點東西<br><div><pre class="brush:csharp">namespace WebApplication1<br>{<br>    using System;<br><br>    public partial class WebForm1 : System.Web.UI.Page<br>    {<br>        protected void Page_Load(object sender, EventArgs e)<br>        {<br>            Response.Write(DateTime.Now);<br>        }<br>    }<br>}<br></pre></div><br>頁面啟用快取<br><div><pre class="brush:html">&lt;%@ Page Language=”C#” AutoEventWireup=”true” CodeBehind=”WebForm1.aspx.cs” Inherits=”WebApplication1.WebForm1” %&gt;<br>&lt;%@ OutputCache Duration=”60” VaryByParam=”*” %&gt;<br>&lt;!DOCTYPE html&gt;<br><br>&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml&quot;</a>&gt;<br>&lt;head runat=”server”&gt;<br>&lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”/&gt;<br>    &lt;title&gt;&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;form id=”form1” runat=”server”&gt;<br>    &lt;div&gt;<br><br>    &lt;/div&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></pre></div>網頁輸出的結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-by2w238QgVI/VL92f8VkUzI/AAAAAAAACJo/lpbT_JMRf7A/s1600/03.%E7%B6%B2%E9%A0%81%E7%B5%90%E6%9E%9C.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-by2w238QgVI/VL92f8VkUzI/AAAAAAAACJo/lpbT_JMRf7A/s1600/03.%E7%B6%B2%E9%A0%81%E7%B5%90%E6%9E%9C.png" alt></a></div><br>Redis上面存在的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-banUlA3Yokc/VL92jLW0W6I/AAAAAAAACJw/HwN6RslnBD4/s1600/04.Redis%E7%B5%90%E6%9E%9C.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-banUlA3Yokc/VL92jLW0W6I/AAAAAAAACJw/HwN6RslnBD4/s1600/04.Redis%E7%B5%90%E6%9E%9C.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/21/Redis-SessionStateProvider/">Redis SessionStateProvider</a></h1>
+  
+
+      
+        <time datetime="2015-01-21T09:28:00.000Z">2015-01-21 17:28:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先開一個Web專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-W0eH1UB-UAg/VL9vePbpb0I/AAAAAAAACI4/dA1ZpbAc2uo/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-W0eH1UB-UAg/VL9vePbpb0I/AAAAAAAACI4/dA1ZpbAc2uo/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>安裝Microsoft.Web.RedisSessionStateProvider套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-DuvFSvwfNg4/VL9vy-aDZCI/AAAAAAAACJA/Isrbq2EmYPE/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-DuvFSvwfNg4/VL9vy-aDZCI/AAAAAAAACJA/Isrbq2EmYPE/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div><br>設定檔中的sessionState自動會加入一段設定，註解的說明也很清楚<br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;configuration&gt;<br>  &lt;system.web&gt;<br>    &lt;compilation debug=”true” targetFramework=”4.5” /&gt;<br>    &lt;httpRuntime targetFramework=”4.5” /&gt;<br>    &lt;sessionState mode=”Custom” customProvider=”MySessionStateStore”&gt;<br>      &lt;providers&gt;<br>        &lt;!– Either use ‘connectionString’ and provide all parameters as string OR use ‘host’,’port’,’accessKey’,’ssl’,’connectionTimeoutInMilliseconds’ and ‘operationTimeoutInMilliseconds’. –&gt;<br>        &lt;!– ‘throwOnError’,’retryTimeoutInMilliseconds’,’databaseId’ and ‘applicationName’ can be used with both options. –&gt;<br>        &lt;!–<br>          &lt;add name=”MySessionStateStore”<br>            host = “127.0.0.1” [String]<br>            port = “” [number]<br>            accessKey = “” [String]<br>            ssl = “false” [true|false]<br>            throwOnError = “true” [true|false]<br>            retryTimeoutInMilliseconds = “5000” [number]<br>            databaseId = “0” [number]<br>            applicationName = “” [String]<br>            connectionTimeoutInMilliseconds = “5000” [number]<br>            operationTimeoutInMilliseconds = “1000” [number]<br>            connectionString = “&lt;valid StackExchange.Redis connection string&gt;” [String]<br>          /&gt;<br>        –&gt;<br>        &lt;add name=”MySessionStateStore” type=”Microsoft.Web.Redis.RedisSessionStateProvider” host=”10.9.11.64” accessKey=”” ssl=”false” /&gt;<br>      &lt;/providers&gt;<br>    &lt;/sessionState&gt;<br>  &lt;/system.web&gt;<br>&lt;/configuration&gt;<br></pre></div>
+
+<p>隨便存取一個session</p>
+<div><pre class="brush:csharp">namespace WebApplication1<br>{<br>    using System;<br><br>    public partial class WebForm1 : System.Web.UI.Page<br>    {<br>        protected void Page_Load(object sender, EventArgs e)<br>        {<br>            var obj = Session[“abc”];<br>            if (obj == null)<br>            {<br>                obj = DateTime.Now;<br>                Session[“abc”] = obj;<br>            }<br><br>            Response.Write(Session.SessionID + “&lt;br/&gt;”);<br>            Response.Write(obj);<br>        }<br>    }<br>}<br></pre></div><br>網頁輸出的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-XDITvfzHrlQ/VL9xHz3vpMI/AAAAAAAACJM/j0doTj1aKNc/s1600/03.%E7%B6%B2%E9%A0%81%E7%B5%90%E6%9E%9C.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-XDITvfzHrlQ/VL9xHz3vpMI/AAAAAAAACJM/j0doTj1aKNc/s1600/03.%E7%B6%B2%E9%A0%81%E7%B5%90%E6%9E%9C.png" alt></a></div><br>Redis上面存放的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Qc3XW48A9b4/VL9xLaLMkGI/AAAAAAAACJU/h03hTmz0EFE/s1600/04.Redis%E7%B5%90%E6%9E%9C.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-Qc3XW48A9b4/VL9xLaLMkGI/AAAAAAAACJU/h03hTmz0EFE/s1600/04.Redis%E7%B5%90%E6%9E%9C.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/21/Redis-持久化/">Redis 持久化</a></h1>
+  
+
+      
+        <time datetime="2015-01-21T08:26:00.000Z">2015-01-21 16:26:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用<br>RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案<br>所以一旦發生故障，損失的資料較多</p>
+<p>啟用RDB持久化</p>
+<h1 id="save-900-1"><a href="#save-900-1" class="headerlink" title="save 900 1"></a>save 900 1</h1><h1 id="save-300-10"><a href="#save-300-10" class="headerlink" title="save 300 10"></a>save 300 10</h1><h1 id="save-60-10000"><a href="#save-60-10000" class="headerlink" title="save 60 10000"></a>save 60 10000</h1><p>關閉RDB持久化</p>
+<h1 id="nbsp-save-“”"><a href="#nbsp-save-“”" class="headerlink" title="&nbsp; save “”"></a>&nbsp; save “”</h1><p>設定是否可以壓縮<br>rdbcompression yes</p>
+<p>設定RDB的檔名<br>dbfilename dump.rdb</p>
+<p>設定檔案的資料夾位置<br>dir ./</p>
+<p>===============================================<br>AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整</p>
+<p>啟用AOF持久化</p>
+<h1 id="appendonly-no"><a href="#appendonly-no" class="headerlink" title="appendonly no"></a>appendonly no</h1><p>AOF檔案名稱</p>
+<h1 id="appendfilename-appendonly-aof"><a href="#appendfilename-appendonly-aof" class="headerlink" title="appendfilename appendonly.aof"></a>appendfilename appendonly.aof</h1><p>AOF檔案寫入的方式</p>
+<h1 id="appendfsync-always"><a href="#appendfsync-always" class="headerlink" title="appendfsync always"></a>appendfsync always</h1><p>appendfsync everysec</p>
+<h1 id="appendfsync-no"><a href="#appendfsync-no" class="headerlink" title="appendfsync no"></a>appendfsync no</h1><p>設定AOF檔案重整的時間<br>auto-aof-rewrite-percentage 100<br>auto-aof-rewrite-min-size 64mb</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/21/Redis-StoredSet/">Redis StoredSet</a></h1>
+  
+
+      
+        <time datetime="2015-01-21T08:08:00.000Z">2015-01-21 16:08:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>ZADD</td><td>將一個或多個元素加入有序集合</td></tr><tr><td>ZCARD</td><td>取得有序集合中的元素個數</td></tr><tr><td>ZCOUNT</td><td>取得有序集合中，score值在min到max的元素個數</td></tr><tr><td>ZINCRBY</td><td>設定有序集合中的成員score遞增值</td></tr><tr><td>ZRANGE</td><td>取得有序集合中指定位置範圍的元素</td></tr><tr><td>ZRANGEBYSCORE</td><td>取得有序集合中指定score範圍的元素</td></tr><tr><td>ZRANK</td><td>取得有序集合中元素從大到小的排列順序</td></tr><tr><td>ZREM</td><td>移除有序集合中一個或多個元素</td></tr><tr><td>ZREMRANGEBYRANK</td><td>移除有序集合中指定排名範圍的元素</td></tr><tr><td>ZREMRANGEBYSCORE</td><td>移除有序集合中指定score範圍的元素</td></tr><tr><td>ZREVRANGE</td><td>取得有序集合中指定位置範圍的元素<br>元素以遞減方式排列</td></tr><tr><td>ZREVRANGEBYSCORE</td><td>取得有序集合中指定score範圍的元素<br>元素以遞減方式排列</td></tr><tr><td>ZREVRANK</td><td>取得有序集合中元素從小到大的排列順序</td></tr><tr><td>ZSCORE</td><td>取得有序集點中元素的score值</td></tr><tr><td>ZUNIONSTORE</td><td>合併一個或多個有序集合的聯集<br>並把合併後的資料存成另一個有序集合</td></tr><tr><td>ZINTERSTORE</td><td>合併一個或多個有序集合的交集<br>並把合併後的資料存成另一個有序集合</td></tr><tr><td>ZSCAN</td><td>搜尋有序集合元素</td></tr><tr><td>ZRANGEBYLEX</td><td>取得有序集合中指定位置範圍的元素<br>當元素有相同的score時，用成員的字典順序排列</td></tr><tr><td>ZLEXCOUNT</td><td>取得有序集合中指定位置範圍的元素數量<br>當元素有相同的score時，用成員的字典順序排列</td></tr><tr><td>ZREMRANGEBYLEX</td><td>移除有序集合中指定排名範圍的元素<br>當元素有相同的score時，用成員的字典順序排列</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-Set/">Redis Set</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T03:54:00.000Z">2015-01-20 11:54:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>SADD</td><td>將一或多個元性加入集合</td></tr><tr><td>SCARD</td><td>取得集合中元素的數量</td></tr><tr><td>SDIFF</td><td>取得集合中的差集</td></tr><tr><td>SDIFFSTORE</td><td>取得集合中的差集，並將結果存到另一個集合</td></tr><tr><td>SINTER</td><td>取得集合中的合集</td></tr><tr><td>SINTERSTORE</td><td>取得集合中的合集，並將結果存到另一個集合</td></tr><tr><td>SISMEMBER</td><td>判斷集合中是否有指定的元素</td></tr><tr><td>SMEMBERS</td><td>取得集合中的所有元素</td></tr><tr><td>SMOVE</td><td>將集合中的元素移動到另一個集合</td></tr><tr><td>SPOP</td><td>隨機取得集合中的元素，並移除該元素</td></tr><tr><td>SRANDMEMBER</td><td>隨機取得集合中的元素，不移除該元素</td></tr><tr><td>SREM</td><td>移除集合中的一個或多個元素</td></tr><tr><td>SUNION</td><td>取得集合中的聯集</td></tr><tr><td>SUNIONSTORE</td><td>取得集合中的聯集，並將結果存到另一個集合</td></tr><tr><td>SSCAN</td><td>搜尋集合中的元素</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-List/">Redis List</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T03:42:00.000Z">2015-01-20 11:42:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>BLPOP</td><td>阻塞式指令，從開頭彈出內容</td></tr><tr><td>BRPOP</td><td>阻塞式指令，從尾端彈出內容</td></tr><tr><td>BRPOPLPUSH</td><td>阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部</td></tr><tr><td>LINDEX</td><td>取得List中指定位置的內容</td></tr><tr><td>LINSERT</td><td>配合AFTER和BEFORE來決定插入指定位置的前面或後面</td></tr><tr><td>LLEN</td><td>取得List的長度</td></tr><tr><td>LPOP</td><td>從開頭彈出資料</td></tr><tr><td>LPUSH</td><td>從開頭加入資料</td></tr><tr><td>LPUSHX</td><td>從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功</td></tr><tr><td>LRANGE</td><td>取得指定範圍內的資料</td></tr><tr><td>LREM</td><td>移除和指定內容相同的元素和個數</td></tr><tr><td>LSET</td><td>設定指定的資料</td></tr><tr><td>LTRIM</td><td>只保留指定範圍內的資料，不在指定範圍的資料全部移除</td></tr><tr><td>RPOP</td><td>從尾部彈出資料</td></tr><tr><td>RPOPLPUSH</td><td>從尾部彈出資料，並把彈出的資料加入一個List的頭部</td></tr><tr><td>RPUSH</td><td>從尾部加入資料</td></tr><tr><td>RPUSHX</td><td>從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-Hash/">Redis Hash</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T03:30:00.000Z">2015-01-20 11:30:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>HDEL</td><td>刪除指定的鍵值裡面的欄位</td></tr><tr><td>HEXISTS</td><td>檢查指定的鍵值欄位是否存在</td></tr><tr><td>HGET</td><td>取得指定的鍵值欄位內容</td></tr><tr><td>HGETALL</td><td>取得指定的鍵值所有欄位內容</td></tr><tr><td>HINCRBY</td><td>指定的鍵值欄位內容遞增加一</td></tr><tr><td>HINCRBYFLOAT</td><td>指定的鍵值欄位內容遞指定的浮點數</td></tr><tr><td>HKEYS</td><td>取得指定鍵值的所有欄位名稱</td></tr><tr><td>HLEN</td><td>取得指定鍵值的欄位數量</td></tr><tr><td>HMGET</td><td>同時取得多組指定鍵值的欄位內容</td></tr><tr><td>HMSET</td><td>同時設定多組指定鍵值的欄位內容</td></tr><tr><td>HSET</td><td>設定指定鍵值的欄位內容</td></tr><tr><td>HSETNX</td><td>設定指定鍵值的欄位內容</td></tr><tr><td>HVALS</td><td>取得指定鍵值的所有欄位的內容</td></tr><tr><td>HSCAN</td><td>查詢指定鍵值的欄位名稱</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-String/">Redis String</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T03:23:00.000Z">2015-01-20 11:23:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>APPEND</td><td>拼接字串</td></tr><tr><td>BITCOUNT</td><td>計算字串中的二進位值被設成1的個數</td></tr><tr><td>BITOP</td><td>字串中的二進位值的位元操作</td></tr><tr><td>DECR</td><td>遞減值一</td></tr><tr><td>DECRBY</td><td>遞減指定的值</td></tr><tr><td>GET</td><td>取得指定鍵值的內容</td></tr><tr><td>GETBIT</td><td>取得指定鍵值的二進位內容</td></tr><tr><td>GETRANGE</td><td>取得指定鍵值的資料特定位置的內容</td></tr><tr><td>GETSET</td><td>設定指定鍵值的內容，並返回舊值</td></tr><tr><td>INCR</td><td>遞增值一</td></tr><tr><td>INCRBY</td><td>遞增指定的值</td></tr><tr><td>INCRBYFLOAT</td><td>遞增指定的浮點數值</td></tr><tr><td>MGET</td><td>一次取回多組指定的key value</td></tr><tr><td>MSET</td><td>一次設定多組key value</td></tr><tr><td>MSETNX</td><td>一次設定多組key value，並且所有設定的key都不存在才成功</td></tr><tr><td>PSETEX</td><td>設定key value，並指定過期時間，單位是毫秒</td></tr><tr><td>SET</td><td>設定key value<br>配合ex參數設定過期時間，單位是秒<br>配合px參數設定過期時間，單位是毫秒<br>配合nx參數只有key不存在時才成功<br>配合xx參數只有key已存在時才成功</td></tr><tr><td>SETBIT</td><td>設定指定鍵值的二進位資料</td></tr><tr><td>SETEX</td><td>設定key value，並指定過期時間，單位是秒</td></tr><tr><td>SETNX</td><td>設定key value，並只有在key不存在時才成功</td></tr><tr><td>SETRANGE</td><td>更改特定位置的資料內容</td></tr><tr><td>STRLEN</td><td>取得指定鍵值的內容長度</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/6/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/8/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

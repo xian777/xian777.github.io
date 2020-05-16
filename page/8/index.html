@@ -1,0 +1,489 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 8 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-Key/">Redis Key</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T03:05:00.000Z">2015-01-20 11:05:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>DEL</td><td>刪除指定的Key</td></tr><tr><td>DUMP</td><td>將指定key的內容匯出二進位內容<br>配合RESTORE指令可以把資料還原</td></tr><tr><td>EXISTS</td><td>判斷指定的Key是否存在</td></tr><tr><td>EXPIRE</td><td>用來設定Key的過期時間，單位是秒</td></tr><tr><td>EXPIREAT</td><td>用來設定Key的過期時間，單位是秒，UNIX時間戳記</td></tr><tr><td>KEYS</td><td>用來查詢目前Redis實體上的Key<br>可配合pattern查詢</td></tr><tr><td>MIGRATE</td><td>搬移資料到不同的Redis執行個體</td></tr><tr><td>MOVE</td><td>將指定的Key值搬到同一個Redis執行個體的不同資料庫</td></tr><tr><td>OBJECT</td><td>用來顯示該Key值的特性<br>OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數<br>OBJECT ENCODING &lt;key&gt; 取得該key的編碼<br>OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數</td></tr><tr><td>PERSIST</td><td>取消KEY上面的過期時間</td></tr><tr><td>PEXPIRE</td><td>用來設定Key的過期時間，單位是毫秒</td></tr><tr><td>PEXPIREAT</td><td>用來設定Key的過期時間，單位是毫秒，UNIX時間戳記</td></tr><tr><td>PTTL</td><td>取得Key到期的剩餘時間，單位是毫秒</td></tr><tr><td>RANDOMKEY</td><td>隨機取得一個Key</td></tr><tr><td>RENAME</td><td>更名Key的名稱，如果新名稱已存在會覆蓋</td></tr><tr><td>RENAMENX</td><td>當key的新名稱不存在時，才更名Key的名稱</td></tr><tr><td>RESTORE</td><td>配合DUMP指令匯出的二進位內容<br>用來把資料還原</td></tr><tr><td>SORT</td><td>排序指定key的內容<br>配合limit可限制筆數<br><br></td></tr><tr><td>TTL</td><td>取得Key到期的剩餘時間，單位是秒</td></tr><tr><td>TYPE</td><td>取得指定Key的內容的資料型態</td></tr><tr><td>SCAN</td><td>搜尋Key，可配合pattern<br>返回結果是一個迭代的指標</td></tr></tbody></table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/20/Redis-C-Client-StackExchange-Redis/">Redis C# Client - StackExchange.Redis</a></h1>
+  
+
+      
+        <time datetime="2015-01-20T02:36:00.000Z">2015-01-20 10:36:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先透過NuGet安裝StackExchange.Redis這個套件<br>如果需要簽署的元件，可以安裝StackExchange.Redis.StrongName這個套件</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-5e3umPXt3g0/VL2_bYzn_sI/AAAAAAAACIo/y5oTaiwue3Q/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-5e3umPXt3g0/VL2_bYzn_sI/AAAAAAAACIo/y5oTaiwue3Q/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div>
+
+<p>透過ConnectionMultiplexer這個類別來產生連線，並重覆使用<br>再透過GetDatabase來取得要IDatabase介面，就可以存取Redis了</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1<br>{<br>    using System;<br>    using StackExchange.Redis;<br><br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            ConnectionMultiplexer conn = ConnectionMultiplexer.Connect(“127.0.0.1:6379”);<br>            IDatabase cache = conn.GetDatabase();<br>            cache.StringSet(“key1”, “value1”);<br>            string data = cache.StringGet(“key1”);<br>            Console.WriteLine(data);<br>        }<br>    }<br>}<br></pre></div>
+
+<p>參考資料</p>
+<p><a href="https://github.com/StackExchange/StackExchange.Redis" target="_blank" rel="noopener">StackExchange.Redis官網</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/19/Redis-設定檔/">Redis 設定檔</a></h1>
+  
+
+      
+        <time datetime="2015-01-19T11:13:00.000Z">2015-01-19 19:13:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>用來指派空間的單位簡寫，不區分大小寫</p>
+<h1 id="1k-gt-1000-bytes"><a href="#1k-gt-1000-bytes" class="headerlink" title="1k =&gt; 1000 bytes"></a>1k =&gt; 1000 bytes</h1><h1 id="1kb-gt-1024-bytes"><a href="#1kb-gt-1024-bytes" class="headerlink" title="1kb =&gt; 1024 bytes"></a>1kb =&gt; 1024 bytes</h1><h1 id="1m-gt-1000000-bytes"><a href="#1m-gt-1000000-bytes" class="headerlink" title="1m =&gt; 1000000 bytes"></a>1m =&gt; 1000000 bytes</h1><h1 id="1mb-gt-1024-1024-bytes"><a href="#1mb-gt-1024-1024-bytes" class="headerlink" title="1mb =&gt; 1024*1024 bytes"></a>1mb =&gt; 1024*1024 bytes</h1><h1 id="1g-gt-1000000000-bytes"><a href="#1g-gt-1000000000-bytes" class="headerlink" title="1g =&gt; 1000000000 bytes"></a>1g =&gt; 1000000000 bytes</h1><h1 id="1gb-gt-102410241024-bytes"><a href="#1gb-gt-102410241024-bytes" class="headerlink" title="1gb =&gt; 102410241024 bytes"></a>1gb =&gt; 1024<em>1024</em>1024 bytes</h1><p>伺服器埠號<br>port 6379</p>
+<p>繫結位址，預設是本機全部</p>
+<h1 id="bind-127-0-0-1"><a href="#bind-127-0-0-1" class="headerlink" title="bind 127.0.0.1"></a>bind 127.0.0.1</h1><p>Client連線閒置多久要切斷連線，單位為秒，0是不限制時間<br>timeout 0</p>
+<p>################################ 快照設定 &nbsp;#################################<br>第一個參數是秒數，第二個參數是異動次數<br>符合以下任一條件，就執行一次快照，產生dump.rdb</p>
+<p>save 900 1<br>save 300 10<br>save 60 10000</p>
+<p>產生快照檔時是否要壓縮檔案<br>rdbcompression yes</p>
+<p>快照檔案的檔名<br>dbfilename dump.rdb</p>
+<p>快照檔案的路徑<br>dir ./</p>
+<p>################################# 覆寫 #################################</p>
+<p>在slave的實體上，用來指定master的位址</p>
+<h1 id="slaveof-lt-masterip-gt-lt-masterport-gt"><a href="#slaveof-lt-masterip-gt-lt-masterport-gt" class="headerlink" title="slaveof &lt;masterip&gt; &lt;masterport&gt;"></a>slaveof &lt;masterip&gt; &lt;masterport&gt;</h1><p>如果master需要驗證密碼時設定</p>
+<h1 id="masterauth-lt-master-password-gt"><a href="#masterauth-lt-master-password-gt" class="headerlink" title="masterauth &lt;master-password&gt;"></a>masterauth &lt;master-password&gt;</h1><p>當slave和master斷線，或是正在同步中，是否回應Client端要求<br>設定成no會回應一個SYNC with master in progress的錯誤<br>slave-serve-stale-data yes</p>
+<p>設定slave是否唯讀<br>slave-read-only yes</p>
+<div><br></div>slave對master實體ping的時間間隔，單位是秒數<br># repl-ping-slave-period 10<br><br>master傳輸或是ping回應的時間間隔，單位是秒數<br># repl-timeout 60<br><br>slave和master同步後，是否要延遲同步，讓master合併小封包再一回氣同步到slave<br>效能較佳，但資料可能不同步<br>repl-disable-tcp-nodelay no<br><br>slave優先權，當master無法服務時，數字低的優先被提升為master<br>slave-priority 100<br><br>################################## 安全 ###################################<br><br>Client連線時是否需要密碼<br># requirepass foobared<br><br>重寫命令，設定成空字串來禁用命令<br># rename-command CONFIG “”<br><br>################################### 限制 ####################################<br><br>最大連線數<br># maxclients 10000<br><br>最大記憶體<br># maxmemory &lt;bytes&gt;<br><br>當記憶體達到上限，使用那一種刪除演算法<br># volatile-lru：使用LRU演算法刪除帶有過期標記的key<br># allkeys-lru：使用LRU演算法刪除任何Key<br># volatile-random：隨機移除一個帶有過期標記的Key<br># allkeys-random：隨機移除一個Key<br># volatile-ttl：移除快要過期的Key<br># noeviction：不移除Key，回應一個錯誤給Client端<br>預設為volatile-lru<br># maxmemory-policy volatile-lru<br><br>LRU演算法的樣本範圍<br># maxmemory-samples 3<br><div><br>############################## AOF模式 ##########################<br><br>是否啟用AOF持久化模式<br>appendonly no<br><br>AOF模式的檔案名稱<br># appendfilename appendonly.aof<br><br>AOF模式的寫入時機<br>no：由作業系統決定，性能最好，可靠性最低<br>everysec：每秒執行一次寫入<br>always：每次都寫入硬碟，效能最差<br># appendfsync always<br>appendfsync everysec<br># appendfsync no<br><br>在阻塞命令時阻止faync在主程序中被呼叫<br>no-appendfsync-on-rewrite no<br><br>AOF自動重寫設定，把重覆的命令合併以減少檔案大小<br>auto-aof-rewrite-percentage 100<br>auto-aof-rewrite-min-size 64mb<br><br>################################ LUA 腳本 &nbsp;###############################<br>lua腳本的最大執行時間，單位是毫秒<br>lua-time-limit 5000<br><br>################################## SLOW LOG ###################################<br>用來記錄超出執行時間的命令，單位為微秒，10000等於1秒<br>slowlog-log-slower-than 10000<br><br>slowlog的長度，超過設定長度後，最舊的會被移除<br>slowlog-max-len 128<br><br>############################### 進階設定 ###############################<br>設定hash的資料超過多少數量時，切換使用的數據結構<br>hash-max-ziplist-entries 512<br>hash-max-ziplist-value 64<br><br>設定list的資料超過多少數量時，切換使用的數據結構<br>list-max-ziplist-entries 512<br>list-max-ziplist-value 64<br><br>設定set的資料超過多少數量時，切換使用的數據結構<br>set-max-intset-entries 512<br><br>設定stored set的資料超過多少數量時，切換使用的數據結構<br>zset-max-ziplist-entries 128<br>zset-max-ziplist-value 64<br><br>hash是否使用延遲刷新機制，越多操作，越多刷新<br>activerehashing yes<br><br>第一個參數是強制限制，第二個參數是軟性限制，和軟性時間<br>當客戶輸出緩存達到限制時，會強制斷開連線<br>client-output-buffer-limit normal 0 0 0<br>client-output-buffer-limit slave 256mb 64mb 60<br>client-output-buffer-limit pubsub 32mb 8mb 60<br><br>背景任務執行頻率，範圍為1到500，預設為10<br>設定越大，CPU消耗越大，延遲越小<br>hz 10<br><br>啟用子行程重寫AOF檔案<br>aof-rewrite-incremental-fsync yes<br><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/19/Redis-安裝/">Redis 安裝</a></h1>
+  
+
+      
+        <time datetime="2015-01-19T09:56:00.000Z">2015-01-19 17:56:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p><div>在Linux環境上安裝Redis，最簡單的方式是用套件管理(apt or yum)，但通常不是最新版本<br>如果要使用最新版本，需要到官網下載原始碼編譯</div>$ wget <a href="http://download.redis.io/releases/redis-2.8.19.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-2.8.19.tar.gz</a><br>$ tar xzf redis-2.8.19.tar.gz<br>$ cd redis-2.8.19<br>$ make</p>
+<p><div>編譯如果碰到這個情況 </div>make[1]: Entering directory ‘/tmp/redis-2.8.19/src’<br>&nbsp; &nbsp; CC adlist.o<br>In file included from adlist.c:34:0:<br>zmalloc.h:50:31: fatal error: jemalloc/jemalloc.h: No such file or directory<br>&nbsp;#include &lt;jemalloc/jemalloc.h&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;^<br>compilation terminated.</p>
+<p><div><br></div><div>可以到deps下面先行編譯</div>$ cd deps<br>$ make hiredis jemalloc linenoise lua</p>
+<p><div>或是直接執行以下的命令</div>$ make MALLOC=libc</p>
+<p>Windows下的安裝，可以參考MSOpenTech在github上面的文件<br><a href="https://github.com/MSOpenTech/redis" target="_blank" rel="noopener">https://github.com/MSOpenTech/redis</a></p>
+<p>可以直接下載編譯好的版本<br><a href="https://github.com/MSOpenTech/redis/releases" target="_blank" rel="noopener">https://github.com/MSOpenTech/redis/releases</a></p>
+<p>更簡單的方式是透過nuget下載，連設定都有，套件名稱為redis-64<br><a href="https://www.nuget.org/packages/Redis-64/" target="_blank" rel="noopener">https://www.nuget.org/packages/Redis-64/</a></p>
+<p>設定Service<br>redis-server –service-install redis.windows.conf –loglevel verbose</p>
+<p>解除Service<br>redis-server –service-uninstall</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/14/Redis-筆記/">Redis 筆記</a></h1>
+  
+
+      
+        <time datetime="2015-01-14T03:11:00.000Z">2015-01-14 11:11:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>1. <a href="http://blog.developer.idv.tw/2015/01/redis_19.html" target="_blank" rel="noopener">Redis 安裝</a><br>2. <a href="http://blog.developer.idv.tw/2015/01/redis_68.html" target="_blank" rel="noopener">Redis 設定檔</a><br>3. <a href="http://blog.developer.idv.tw/2015/01/redis-c-client-stackexchangeredis.html" target="_blank" rel="noopener">Redis C# Client - StackExchange.Redis</a><br>4. <a href="http://blog.developer.idv.tw/2015/01/redis-key.html" target="_blank" rel="noopener">Redis Key</a><br>5. <a href="http://blog.developer.idv.tw/2015/01/redis-string.html" target="_blank" rel="noopener">Redis String</a><br>6. <a href="http://blog.developer.idv.tw/2015/01/redis-hash.html" target="_blank" rel="noopener">Redis Hash</a><br>7. <a href="http://blog.developer.idv.tw/2015/01/redis-list.html" target="_blank" rel="noopener">Redis List</a><br>8. <a href="http://blog.developer.idv.tw/2015/01/redis-set.html" target="_blank" rel="noopener">Redis Set</a><br>9. <a href="http://blog.developer.idv.tw/2015/01/redis-storedset.html" target="_blank" rel="noopener">Redis StoredSet</a><br>10. <a href="http://blog.developer.idv.tw/2015/01/redis_21.html" target="_blank" rel="noopener">Redis 持久化</a><br>11. <a href="http://blog.developer.idv.tw/2015/01/redis-sessionstateprovider.html" target="_blank" rel="noopener">Redis SessionStateProvider</a><br>12. <a href="http://blog.developer.idv.tw/2015/01/redis-redisoutputcacheprovider.html" target="_blank" rel="noopener">Redis RedisOutputCacheProvider</a></p>
+<p>參考資料</p>
+<p><a href="http://redis.readthedocs.org/en/latest/" target="_blank" rel="noopener">Redis 命令參考</a></p>
+<p><a href="https://github.com/ServiceStack/ServiceStack.Redis" target="_blank" rel="noopener">ServiceStack.Redis</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/05/設定負載測試/">設定負載測試</a></h1>
+  
+
+      
+        <time datetime="2015-01-05T09:53:00.000Z">2015-01-05 17:53:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>新增負載測試</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-dcs_lZz5lcc/VKpergmBveI/AAAAAAAACHo/Ul10P_dDjqI/s1600/01.%E5%8A%A0%E5%85%A5%E8%B2%A0%E8%BC%89%E6%B8%AC%E8%A9%A6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-dcs_lZz5lcc/VKpergmBveI/AAAAAAAACHo/Ul10P_dDjqI/s1600/01.%E5%8A%A0%E5%85%A5%E8%B2%A0%E8%BC%89%E6%B8%AC%E8%A9%A6.png" alt></a></div><br>建立新負載測試精靈歡迎畫面<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Yt1HIwMAADw/VKpercJjGSI/AAAAAAAACHI/kAUw1imLZQI/s1600/02.%E6%AD%A1%E8%BF%8E%E7%B2%BE%E9%9D%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Yt1HIwMAADw/VKpercJjGSI/AAAAAAAACHI/kAUw1imLZQI/s1600/02.%E6%AD%A1%E8%BF%8E%E7%B2%BE%E9%9D%88.png" alt></a></div><br>輸入這個負載測試的名稱<br>考慮時間特性，指的是每個動作之間考慮時間的方式<br>使用記錄的考慮時間，會是設定好的固定時間<br>使用常態分佈，會動態加減時間，比較符合真實的使用者習慣<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-cLk8Bv1qOmU/VKpersGjaqI/AAAAAAAACHM/ryNW75MhXEs/s1600/03.%E8%80%83%E6%85%AE%E6%99%82%E9%96%93%E7%89%B9%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-cLk8Bv1qOmU/VKpersGjaqI/AAAAAAAACHM/ryNW75MhXEs/s1600/03.%E8%80%83%E6%85%AE%E6%99%82%E9%96%93%E7%89%B9%E6%80%A7.png" alt></a></div><br>負載模式是用來設定連線的使用者數<br>常數負載是固定人數<br>逐步執行負載是設定初始人數在再幾秒內持續增加人數至最高人數<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-TcTnkuMf-yA/VKpesJ0alKI/AAAAAAAACHQ/WeK7HBX403Q/s1600/04.%E8%B2%A0%E8%BC%89%E4%BA%BA%E6%95%B8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-TcTnkuMf-yA/VKpesJ0alKI/AAAAAAAACHQ/WeK7HBX403Q/s1600/04.%E8%B2%A0%E8%BC%89%E4%BA%BA%E6%95%B8.png" alt></a></div><br>測試混合模型<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-abXFwS34kEc/VKpesn6Y99I/AAAAAAAACHk/E4XrhgIBQoc/s1600/05.%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-abXFwS34kEc/VKpesn6Y99I/AAAAAAAACHk/E4XrhgIBQoc/s1600/05.%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B.png" alt></a></div><br>測試混合是設定多個測試和各自的比例<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-y0MydR8f5HI/VKpes2vyE1I/AAAAAAAACHg/eltUfz2CWs4/s1600/06.%E6%B8%AC%E8%A9%A6%E6%B7%B7%E5%90%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-y0MydR8f5HI/VKpes2vyE1I/AAAAAAAACHg/eltUfz2CWs4/s1600/06.%E6%B8%AC%E8%A9%A6%E6%B7%B7%E5%90%88.png" alt></a></div><br>混路混合是設定多個網路類型和各自的比例<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-vTch6nvGWm0/VKpet2TbIwI/AAAAAAAACHs/SeDApjDilJ4/s1600/07.%E7%B6%B2%E8%B7%AF%E6%B7%B7%E5%90%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-vTch6nvGWm0/VKpet2TbIwI/AAAAAAAACHs/SeDApjDilJ4/s1600/07.%E7%B6%B2%E8%B7%AF%E6%B7%B7%E5%90%88.png" alt></a></div><br>瀏覽器混合是設定多個瀏覽器和各自的比例<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-c3nXSGjnvGE/VKpeuPqy2xI/AAAAAAAACIE/x1vpU2Fi0ew/s1600/08.%E7%80%8F%E8%A6%BD%E5%99%A8%E6%B7%B7%E5%90%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-c3nXSGjnvGE/VKpeuPqy2xI/AAAAAAAACIE/x1vpU2Fi0ew/s1600/08.%E7%80%8F%E8%A6%BD%E5%99%A8%E6%B7%B7%E5%90%88.png" alt></a></div><br>計數器集合<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Ryh75YFfhKc/VKpeuZ4WWGI/AAAAAAAACH0/i99LA56jLoc/s1600/09.%E8%A8%88%E6%95%B8%E5%99%A8%E9%9B%86%E5%90%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-Ryh75YFfhKc/VKpeuZ4WWGI/AAAAAAAACH0/i99LA56jLoc/s1600/09.%E8%A8%88%E6%95%B8%E5%99%A8%E9%9B%86%E5%90%88.png" alt></a></div><br>回合設定是設定執行次數或是持續時間<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-x0dowQMZJkg/VKpeuzTb3lI/AAAAAAAACH8/FqzdTOOaZs4/s1600/10.%E5%9B%9E%E5%90%88%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-x0dowQMZJkg/VKpeuzTb3lI/AAAAAAAACH8/FqzdTOOaZs4/s1600/10.%E5%9B%9E%E5%90%88%E8%A8%AD%E5%AE%9A.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/05/設定Web效能測試/">設定Web效能測試</a></h1>
+  
+
+      
+        <time datetime="2015-01-05T08:58:00.000Z">2015-01-05 16:58:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>加入Web效能測試</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png" alt></a></div><br>如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png" alt></a></div><br>在伺服器管理員中，點擊設定IE ESC</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png" alt></a></div><br>把管理員關閉就行了</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png" alt></a></div><br>在瀏覽器中就會看到錄製工具列</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png" alt></a></div><br>在網址列隨便輸入網址，就會看到自動錄製操作</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png" alt></a></div><br>按下停止錄制後，會把錄製的結果帶回Visual Studio<br>可以在已錄制的項目上按屬性來修改，也可以手動插入要求</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png" alt></a></div><br>接下來介紹如果繫結資料，先準備一個XML檔案</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png" alt></a></div><br>隨便輸入一些資料</p>
+<p><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;customers&gt;<br>  &lt;customer account=”aa” /&gt;<br>  &lt;customer account=”bb” /&gt;<br>  &lt;customer account=”cc” /&gt;<br>&lt;/customers&gt;<br></pre></div><br>點擊新增資料來源</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png" alt></a></div><br>選擇剛準備的XML檔案，可以看到解析出來的資料</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png" alt></a></div><br>選擇資料來源的資料表</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png" alt></a></div><br>資料來源就新增成功了，另外可以設定資料來源的讀取方式</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png" alt></a></div><br>在要繫結的項目上，直接選擇到要繫結的欄位就行了</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png" alt></a></div><br>開始執行測試</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png" alt></a></div><br>測試結果</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/01/05/設定測試代理環境/">設定測試代理環境</a></h1>
+  
+
+      
+        <time datetime="2015-01-05T08:14:00.000Z">2015-01-05 16:14:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先到官網下載安裝程式</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ARtUNpImvZo/VKpEaChkYpI/AAAAAAAACDY/QVnvhoJNx6k/s1600/01.%E4%B8%8B%E8%BC%89Agent.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ARtUNpImvZo/VKpEaChkYpI/AAAAAAAACDY/QVnvhoJNx6k/s1600/01.%E4%B8%8B%E8%BC%89Agent.png" alt></a></div><br>影像檔中包含Controller和Agent兩部份<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Su7wbyt6LSA/VKpEZz3QNrI/AAAAAAAACDc/soomqXCK7Z4/s1600/02.%E5%85%89%E7%A2%9F%E5%85%A7%E5%AE%B9.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Su7wbyt6LSA/VKpEZz3QNrI/AAAAAAAACDc/soomqXCK7Z4/s1600/02.%E5%85%89%E7%A2%9F%E5%85%A7%E5%AE%B9.png" alt></a></div><br>先安裝Controller<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-u6McZDKKKBM/VKpEZ-dsQuI/AAAAAAAACDU/c1UI6D9MUIY/s1600/03.Ctl%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-u6McZDKKKBM/VKpEZ-dsQuI/AAAAAAAACDU/c1UI6D9MUIY/s1600/03.Ctl%E6%8E%88%E6%AC%8A%E6%A2%9D%E6%AC%BE.png" alt></a></div><br>這裡的執行帳號需要有管理員權限，如果沒有網域的話，那可以在其他電腦上建立一組相同的帳號密碼並加入管理群組<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-mmPnjLYELDQ/VKpEbMxR0WI/AAAAAAAACDk/qZuLB5cfIzA/s1600/04.%E8%A8%AD%E5%AE%9ACtrl.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-mmPnjLYELDQ/VKpEbMxR0WI/AAAAAAAACDk/qZuLB5cfIzA/s1600/04.%E8%A8%AD%E5%AE%9ACtrl.png" alt></a></div><br>Controller設定成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-KOiM_ZoQMrA/VKpEbXp3xHI/AAAAAAAACDw/hzsd6v1bfhw/s1600/05.%E8%A8%AD%E5%AE%9A%E7%B5%90%E6%9E%9C.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-KOiM_ZoQMrA/VKpEbXp3xHI/AAAAAAAACDw/hzsd6v1bfhw/s1600/05.%E8%A8%AD%E5%AE%9A%E7%B5%90%E6%9E%9C.png" alt></a></div><br>接下來安裝Agent<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-IVJ_2cc7CkQ/VKpEbvOBOBI/AAAAAAAACDs/Xetiqv6gBgU/s1600/06.%E5%AE%89%E8%A3%9DAgent.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-IVJ_2cc7CkQ/VKpEbvOBOBI/AAAAAAAACDs/Xetiqv6gBgU/s1600/06.%E5%AE%89%E8%A3%9DAgent.png" alt></a></div><br>以服務啟動Agent<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-7q4qudSTVwc/VKpEb9o_2ZI/AAAAAAAACD0/9XO5becMa7Q/s1600/07.%E4%BB%A3%E7%90%86%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-7q4qudSTVwc/VKpEb9o_2ZI/AAAAAAAACD0/9XO5becMa7Q/s1600/07.%E4%BB%A3%E7%90%86%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>Agent的帳號需可以連接到Controller的管理員權限<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-PnFGMsCsIqc/VKpEcS0HlWI/AAAAAAAACEM/rSNy48CCGIU/s1600/08.%E4%BB%A3%E7%90%86%E9%80%A3%E6%8E%A5%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-PnFGMsCsIqc/VKpEcS0HlWI/AAAAAAAACEM/rSNy48CCGIU/s1600/08.%E4%BB%A3%E7%90%86%E9%80%A3%E6%8E%A5%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>Agent設定成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-SkHjyoeMv6I/VKpEcvxOjiI/AAAAAAAACD8/6qgetFnFEAk/s1600/09.%E8%A8%AD%E5%AE%9A%E5%AE%8C%E6%88%90.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-SkHjyoeMv6I/VKpEcvxOjiI/AAAAAAAACD8/6qgetFnFEAk/s1600/09.%E8%A8%AD%E5%AE%9A%E5%AE%8C%E6%88%90.png" alt></a></div><br>建立一個Web效能和負載測試專案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-8TJJYQX1-R8/VKpHfldditI/AAAAAAAACEg/vZckpPuMjBo/s1600/10.%E5%BB%BA%E7%AB%8B%E6%B8%AC%E8%A9%A6%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-8TJJYQX1-R8/VKpHfldditI/AAAAAAAACEg/vZckpPuMjBo/s1600/10.%E5%BB%BA%E7%AB%8B%E6%B8%AC%E8%A9%A6%E5%B0%88%E6%A1%88.png" alt></a></div><br>調整測試設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-lhy1jkciqMg/VKpHjps1UBI/AAAAAAAACEo/YdfYxTItywA/s1600/11.%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-lhy1jkciqMg/VKpHjps1UBI/AAAAAAAACEo/YdfYxTItywA/s1600/11.%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>採用本機電腦或測試控器執行測試<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-z4gJ32JFxnE/VKpHmshfa5I/AAAAAAAACEw/ZFAPmgYGs-A/s1600/12.%E6%9C%AC%E6%A9%9F%E6%B8%AC%E8%A9%A6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-z4gJ32JFxnE/VKpHmshfa5I/AAAAAAAACEw/ZFAPmgYGs-A/s1600/12.%E6%9C%AC%E6%A9%9F%E6%B8%AC%E8%A9%A6.png" alt></a></div><br>測試執行方法改用遠端執行，再管理測試控制器<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-XEADtblISeM/VKpHp6hLmsI/AAAAAAAACE4/lZykOHVPv38/s1600/13.%E8%A8%AD%E5%AE%9A%E6%8E%A7%E5%88%B6%E5%99%A8.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-XEADtblISeM/VKpHp6hLmsI/AAAAAAAACE4/lZykOHVPv38/s1600/13.%E8%A8%AD%E5%AE%9A%E6%8E%A7%E5%88%B6%E5%99%A8.png" alt></a></div><br>輸入控制器的位址，就可以看到所有Agent的狀態了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/--QkQCzRhfFk/VKpHtvxwMlI/AAAAAAAACFA/p9hf2bc50ps/s1600/14.%E8%BC%B8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%99%A8%E4%BD%8D%E5%9D%80.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/--QkQCzRhfFk/VKpHtvxwMlI/AAAAAAAACFA/p9hf2bc50ps/s1600/14.%E8%BC%B8%E5%85%A5%E6%8E%A7%E5%88%B6%E5%99%A8%E4%BD%8D%E5%9D%80.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/12/31/Team-Foundation-Server-加入組建定義/">Team Foundation Server 加入組建定義</a></h1>
+  
+
+      
+        <time datetime="2014-12-31T11:06:00.000Z">2014-12-31 19:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>打開Team Explorer，點擊組建</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png" alt></a></div><br>新增組建定義<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png" alt></a></div><br>組建定義名稱<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png" alt></a></div><br>觸發程序用來設定何時執行這個建置<br>連續整合是每當程式碼簽入時就會觸發<br>累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響<br>閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查<br>排程可以設定固定時間啟動建置<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png" alt></a></div><br>來源設定用來設定原始碼從何而來<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>組建預設值用來設定建置成功後的產品要輸出到什麼地方<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png" alt></a></div><br>流程是用來設定建置的動作和細部的設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png" alt></a></div><br>保留原則用來設定不同建置結果下是否要保留建置出來的產品<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png" alt></a></div><br>設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義<br>在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png" alt></a></div><br>手動執行之前，可以設定一下這一次的組建的控制器和代理<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>雙擊組建定義，可以叫出組建記錄<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png" alt></a></div><br>雙擊組建記錄，可以看該次組建的結果<br>這次組建失敗，原因是少了Microsoft.WebApplication.targets<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png" alt></a></div><br>可以手動複製這個資料夾到組建伺服器上相同的位置<br>比較簡單的方式是安裝Visual Studio Shell轉散發套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png" alt></a></div><br>就會有相關的檔案了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png" alt></a></div><br>再執行一次就建置成功了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/12/31/Team-Foundation-Server-加入Build-Service/">Team Foundation Server 加入Build Service</a></h1>
+  
+
+      
+        <time datetime="2014-12-31T10:01:00.000Z">2014-12-31 18:01:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>開啟Team Foundation Server 管理主控台，選擇組建組態</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-bn_xJJbIX0o/VKPI-TH9Y9I/AAAAAAAAB_s/VRanOZS4e2I/s1600/01.%E9%81%B8%E6%93%87%E7%B5%84%E5%BB%BA%E7%B5%84%E6%85%8B.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-bn_xJJbIX0o/VKPI-TH9Y9I/AAAAAAAAB_s/VRanOZS4e2I/s1600/01.%E9%81%B8%E6%93%87%E7%B5%84%E5%BB%BA%E7%B5%84%E6%85%8B.png" alt></a></div><br>選擇設定Team Foundation Build Service<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-5Jk7w3534t8/VKPI-caW41I/AAAAAAAAB_o/GzjU1TvaHcY/s1600/02.%E8%A8%AD%E5%AE%9ABuild%2BService.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-5Jk7w3534t8/VKPI-caW41I/AAAAAAAAB_o/GzjU1TvaHcY/s1600/02.%E8%A8%AD%E5%AE%9ABuild%2BService.png" alt></a></div><br>啟動組建服務組態精靈<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-ZLND94T2DIM/VKPI-Y9-DAI/AAAAAAAAB_w/WVTztx_TtK0/s1600/03.%E7%B5%84%E6%85%8B%E7%B2%BE%E9%9D%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-ZLND94T2DIM/VKPI-Y9-DAI/AAAAAAAAB_w/WVTztx_TtK0/s1600/03.%E7%B5%84%E6%85%8B%E7%B2%BE%E9%9D%88.png" alt></a></div><br>選擇專案集合<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9_djwfA6j2o/VKPI_JBnPBI/AAAAAAAAB_0/AVizkdJRFvg/s1600/04.%E9%81%B8%E5%8F%96Team%E5%B0%88%E6%A1%88%E9%9B%86%E5%90%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-9_djwfA6j2o/VKPI_JBnPBI/AAAAAAAAB_0/AVizkdJRFvg/s1600/04.%E9%81%B8%E5%8F%96Team%E5%B0%88%E6%A1%88%E9%9B%86%E5%90%88.png" alt></a></div><br>設定組建服務，代理程式數目通常和CPU數量一樣<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-9Ys8UsgCF8s/VKPI_tjbzRI/AAAAAAAAB_8/-bJRA36ED0o/s1600/05.%E7%B5%84%E5%BB%BA%E6%9C%8D%E5%8B%99.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-9Ys8UsgCF8s/VKPI_tjbzRI/AAAAAAAAB_8/-bJRA36ED0o/s1600/05.%E7%B5%84%E5%BB%BA%E6%9C%8D%E5%8B%99.png" alt></a></div><br>設定要執行組態服務的帳號<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-T9jqRvc72aY/VKPI_1Yu8AI/AAAAAAAACBE/LsUpJY-u1_I/s1600/06.%E5%9F%B7%E8%A1%8C%E5%B8%B3%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-T9jqRvc72aY/VKPI_1Yu8AI/AAAAAAAACBE/LsUpJY-u1_I/s1600/06.%E5%9F%B7%E8%A1%8C%E5%B8%B3%E8%99%9F.png" alt></a></div><br>確認組態是否正確<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-xPq3XtvO1e4/VKPJADCKs0I/AAAAAAAACAA/fT9AixdrdLM/s1600/07.%E7%B5%84%E6%85%8B%E7%A2%BA%E8%AA%8D.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-xPq3XtvO1e4/VKPJADCKs0I/AAAAAAAACAA/fT9AixdrdLM/s1600/07.%E7%B5%84%E6%85%8B%E7%A2%BA%E8%AA%8D.png" alt></a></div><br>檢查組態是否正確<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-5dE7y0l529w/VKPJAo3H3mI/AAAAAAAACAI/RHeMks_WU20/s1600/08.%E6%AA%A2%E6%9F%A5%E7%B5%84%E6%85%8B.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-5dE7y0l529w/VKPJAo3H3mI/AAAAAAAACAI/RHeMks_WU20/s1600/08.%E6%AA%A2%E6%9F%A5%E7%B5%84%E6%85%8B.png" alt></a></div><br>組態設定成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-mhnvBntQNpw/VKPJA7rVIGI/AAAAAAAACAM/_n2oSjijuTs/s1600/09.%E8%A8%AD%E5%AE%9A%E5%AE%8C%E6%88%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-mhnvBntQNpw/VKPJA7rVIGI/AAAAAAAACAM/_n2oSjijuTs/s1600/09.%E8%A8%AD%E5%AE%9A%E5%AE%8C%E6%88%90.png" alt></a></div><br>組態設定結果，加入防火牆例外 TCP 9191<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-dtm9evu7GcA/VKPJBka-GDI/AAAAAAAACAU/0QgwRZ4_Ufk/s1600/10.%E5%AE%8C%E6%88%90%E7%95%AB%E9%9D%A2.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-dtm9evu7GcA/VKPJBka-GDI/AAAAAAAACAU/0QgwRZ4_Ufk/s1600/10.%E5%AE%8C%E6%88%90%E7%95%AB%E9%9D%A2.png" alt></a></div><br>設定代理程式的屬性<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-7MHdrKb88uA/VKPJBy4iXoI/AAAAAAAACAY/HFhNjJcuMeo/s1600/11.%E7%B5%84%E5%BB%BA%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-7MHdrKb88uA/VKPJBy4iXoI/AAAAAAAACAY/HFhNjJcuMeo/s1600/11.%E7%B5%84%E5%BB%BA%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>自訂工作目錄<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-yqwpIB8tGoA/VKPJCUZNcbI/AAAAAAAACAg/Tm5Or60Y1Kg/s1600/12.%E8%AE%8A%E6%9B%B4%E8%B7%AF%E5%BE%91.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-yqwpIB8tGoA/VKPJCUZNcbI/AAAAAAAACAg/Tm5Or60Y1Kg/s1600/12.%E8%AE%8A%E6%9B%B4%E8%B7%AF%E5%BE%91.png" alt></a></div><br>執行組態的時後，就會在指定的工作目錄作業<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-2SxDSOLS9fo/VKPJCv-AJvI/AAAAAAAACAw/KhFMxIZtGO8/s1600/13.%E5%BB%BA%E7%BD%AE%E8%B7%AF%E5%BE%91.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-2SxDSOLS9fo/VKPJCv-AJvI/AAAAAAAACAw/KhFMxIZtGO8/s1600/13.%E5%BB%BA%E7%BD%AE%E8%B7%AF%E5%BE%91.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/7/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/9/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

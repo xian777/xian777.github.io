@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 2 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/10/05/Docker-on-linux/">Docker on linux</a></h1>
+  
+
+      
+        <time datetime="2016-10-05T00:56:00.000Z">2016-10-05 08:56:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="Docker-on-linux"><a href="#Docker-on-linux" class="headerlink" title="Docker on linux"></a>Docker on linux</h1><h1 id="前置條件"><a href="#前置條件" class="headerlink" title="前置條件"></a>前置條件</h1><ul>
+<li>kernal 3.8以上</li>
+<li>64位元</li>
+</ul>
+<h1 id="安裝腳本"><a href="#安裝腳本" class="headerlink" title="安裝腳本"></a>安裝腳本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure>
+<h1 id="安裝完成"><a href="#安裝完成" class="headerlink" title="安裝完成"></a>安裝完成</h1><ul>
+<li>如果不是用root執行docker的話，記得加入帳號執行docker的權限<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker your-user</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-ekabkWpPcWs/V_RShADmG0I/AAAAAAAAEKE/Xm5jigPW7lcVxm_7AhqYRm8IPE2vlPnDACLcB/s1600/linux.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-ekabkWpPcWs/V_RShADmG0I/AAAAAAAAEKE/Xm5jigPW7lcVxm_7AhqYRm8IPE2vlPnDACLcB/s1600/linux.png" alt></a></div>
+
+<h1 id="移除安裝"><a href="#移除安裝" class="headerlink" title="移除安裝"></a>移除安裝</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge docker-engine</span><br><span class="line">sudo apt-get autoremove --purge docker-engine</span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/10/05/Docker-on-windows/">Docker on windows</a></h1>
+  
+
+      
+        <time datetime="2016-10-05T00:38:00.000Z">2016-10-05 08:38:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="Docker-on-windows"><a href="#Docker-on-windows" class="headerlink" title="Docker on windows"></a>Docker on windows</h1><h1 id="前置條件"><a href="#前置條件" class="headerlink" title="前置條件"></a>前置條件</h1><ul>
+<li>Windows 10 Professional版本以上</li>
+<li>啟用Hyper-V支援</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png" alt></a></div><span id="goog_198635478"></span><span id="goog_198635479"></span><br><br># 安裝<br>## 首先到<a href="http://www.docker.com/products/overview" target="_blank" rel="noopener">官網下載安裝程式</a><br><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png" alt></a></div>
+
+<h2 id="接受授權合約"><a href="#接受授權合約" class="headerlink" title="接受授權合約"></a>接受授權合約</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png" alt></a></div>
+
+<h2 id="開始安裝"><a href="#開始安裝" class="headerlink" title="開始安裝"></a>開始安裝</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png" alt></a></div>
+
+<h2 id="安裝完成"><a href="#安裝完成" class="headerlink" title="安裝完成"></a>安裝完成</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png" alt></a></div>
+
+<h2 id="Docker-is-running"><a href="#Docker-is-running" class="headerlink" title="Docker is running"></a>Docker is running</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png" alt></a></div>
+
+<h2 id="在工作列上Docker的icon按右鍵選Settings"><a href="#在工作列上Docker的icon按右鍵選Settings" class="headerlink" title="在工作列上Docker的icon按右鍵選Settings"></a>在工作列上Docker的icon按右鍵選Settings</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png" alt></a></div>
+
+<h2 id="設定共享磁碟"><a href="#設定共享磁碟" class="headerlink" title="設定共享磁碟"></a>設定共享磁碟</h2><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png" alt></a></div>
+
+<h2 id="設定使用資源"><a href="#設定使用資源" class="headerlink" title="設定使用資源"></a>設定使用資源</h2><p><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png" alt></a></div><br>開始Docker之旅吧:)</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/09/30/svn-migration-to-git/">svn migration to git</a></h1>
+  
+
+      
+        <time datetime="2016-09-30T01:12:00.000Z">2016-09-30 09:12:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先下載subgit，需要先安裝好JAVA環境</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-WHgp_trAbNo/V-26bWM_UjI/AAAAAAAAEIk/EYrM4H_RPPAHpMDLqQlsYc_HB44XmVghgCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-WHgp_trAbNo/V-26bWM_UjI/AAAAAAAAEIk/EYrM4H_RPPAHpMDLqQlsYc_HB44XmVghgCLcB/s1600/01.png" alt></a></div>
+
+<p>解壓縮後開啟命令列工具到bin資料夾，輸入指令<br>subgit import –non-interactive –default-domain example.com –svn-url <a href="https://svnurl/svn/ExampleProjectName" target="_blank" rel="noopener">https://svnurl/svn/ExampleProjectName</a> ExampleProjectName</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-64W4fqUASBs/V-26bj589cI/AAAAAAAAEIs/iz9lOQ6-c_46nLtpFPHJYZIxpWJujxWIACLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-64W4fqUASBs/V-26bj589cI/AAAAAAAAEIs/iz9lOQ6-c_46nLtpFPHJYZIxpWJujxWIACLcB/s1600/02.png" alt></a></div>
+
+<p>匯出成功後，再推送到git server<br>git push –mirror <a href="https://giturl/ExampleProjectName.git" target="_blank" rel="noopener">https://giturl/ExampleProjectName.git</a></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-U4IxN5KqWkE/V-26briOl8I/AAAAAAAAEIo/CJ2qjT_Tx7Qsi3Gz9hpXOsfMEAPuCnXUgCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-U4IxN5KqWkE/V-26briOl8I/AAAAAAAAEIo/CJ2qjT_Tx7Qsi3Gz9hpXOsfMEAPuCnXUgCLcB/s1600/03.png" alt></a></div>
+
+<p>這樣就轉移成功囉</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-CwDVvOuB2mI/V-26cDNV6FI/AAAAAAAAEIw/GHX1Udg6XVU2QCuEjCxbxMGqLubK7FozACLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-CwDVvOuB2mI/V-26cDNV6FI/AAAAAAAAEIw/GHX1Udg6XVU2QCuEjCxbxMGqLubK7FozACLcB/s1600/04.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/15/Gogs-with-application-request-routing/">Gogs with application request routing</a></h1>
+  
+
+      
+        <time datetime="2016-08-15T15:14:00.000Z">2016-08-15 23:14:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Application Request Route的使用方式可以參考以前的筆記<br><a href="http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html" target="_blank" rel="noopener">透過Application Request Route來做SSL offloading</a><br><a href="http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html</a></p>
+<p>預設的站台只繫結http 80 port</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png" alt></a></div><br>安裝好ARR後，新增一組Server Farm<br><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png" alt></a></div><br>新增一台伺服器，httpPort改成3000<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png" alt></a></div><br>新增一條URL Rewrite規則<br><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png" alt></a></div><br>使用規則運算式: .*<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png" alt></a></div><br>路由到剛設定的伺服器陣列<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png" alt></a></div><br>新增一組測試網址<br><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png" alt></a></div><br>瀏覽測試網址，http port 80 會路由到gogs的port 3000<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-cBz_me155kY/V7HcJMSQtdI/AAAAAAAAD3k/jDB8V0C-uhkXo2o_0WjMDq-otZYSGDblQCLcB/s1600/08.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-cBz_me155kY/V7HcJMSQtdI/AAAAAAAAD3k/jDB8V0C-uhkXo2o_0WjMDq-otZYSGDblQCLcB/s1600/08.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/15/Gogs-筆記/">Gogs 筆記</a></h1>
+  
+
+      
+        <time datetime="2016-08-15T13:59:00.000Z">2016-08-15 21:59:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>[Windows 版本]</p>
+<p><a href="http://blog.developer.idv.tw/2016/08/gogs-go-git-service-on-windows.html" target="_blank" rel="noopener">Gogs - Go Git Service on windows</a><br><a href="http://blog.developer.idv.tw/2016/08/gogs-go-git-service-on-windows.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/08/gogs-go-git-service-on-windows.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/08/gogs-run-as-windows-service.html" target="_blank" rel="noopener">Gogs run as windows service</a><br><a href="http://blog.developer.idv.tw/2016/08/gogs-run-as-windows-service.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/08/gogs-run-as-windows-service.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/08/nginx-run-as-windows-service.html" target="_blank" rel="noopener">Nginx run as windows service</a><br><a href="http://blog.developer.idv.tw/2016/08/nginx-run-as-windows-service.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/08/nginx-run-as-windows-service.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/08/gogs-with-nginx-reverse-proxy.html" target="_blank" rel="noopener">Gogs with nginx reverse proxy</a><br><a href="http://blog.developer.idv.tw/2016/08/gogs-with-nginx-reverse-proxy.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/08/gogs-with-nginx-reverse-proxy.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/08/gogs-with-application-request-routing.html" target="_blank" rel="noopener">Gogs with application request routing</a><br><a href="http://blog.developer.idv.tw/2016/08/gogs-with-application-request-routing.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2016/08/gogs-with-application-request-routing.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/09/svn-migration-to-git.html" target="_blank" rel="noopener">svn migration to git</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/15/Gogs-with-nginx-reverse-proxy/">Gogs with nginx reverse proxy</a></h1>
+  
+
+      
+        <time datetime="2016-08-15T13:37:00.000Z">2016-08-15 21:37:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>ngix新增一組站台設定</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png" alt></a></div><br>新增站台的DNS，為了測試方便所以建在本機的hosts<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png" alt></a></div><br>修改一下gogs的設定，把domain和ROOT_URL改成這組測試的網址<br>順便DISABLE_SSH = true<br><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png" alt></a></div><br>重新啟動gogs服務後，就可以用這組測試網址了<br><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-_ejX-3n9d10/V7HFjXs0YCI/AAAAAAAAD24/C8_75LtckZY6qaY2SE7fxLQEVJJIfEIQQCLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-_ejX-3n9d10/V7HFjXs0YCI/AAAAAAAAD24/C8_75LtckZY6qaY2SE7fxLQEVJJIfEIQQCLcB/s1600/04.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/15/Nginx-run-as-windows-service/">Nginx run as windows service</a></h1>
+  
+
+      
+        <time datetime="2016-08-15T13:09:00.000Z">2016-08-15 21:09:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">官網下載Nginx</a>編譯好的執行檔</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png" alt></a></div><div><br></div><div><a href="https://nssm.cc/download" target="_blank" rel="noopener">下載nssm</a>用來把nginx的執行檔註冊成一個服務</div><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png" alt></a></div><div><br></div><div>執行nssm install nginx</div><div>設定好nginx執行檔的路徑和工作目錄</div><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png" alt></a></div><div><br></div><div>啟動nginx服務</div><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png" alt></a></div><div><br></div><div>nginx啟動成功</div><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png" alt></a></div><div><br></div><div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/14/Gogs-run-as-windows-service/">Gogs run as windows service</a></h1>
+  
+
+      
+        <time datetime="2016-08-14T08:21:00.000Z">2016-08-14 16:21:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>在<a href="https://gogs.io/docs/installation/run_as_windows_service" target="_blank" rel="noopener">官網的說明文件</a>中有很詳細的介紹，記錄一下設定的方式</p>
+<div class="separator" style="clear: both; text-align: center;"></div><br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png" alt></a></div><div class="separator" style="clear: both; text-align: center;"></div><br>要注意的是設定檔的位置<br>一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini<br>但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了<br>之後升級的時後才不會覆蓋掉自定義的設定<br><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png" alt></a></div><br>所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔<br>打開命令列工具，透過sc命令新增一個服務<br>$sc create gogs start= auto binPath= “”D:\gogs\gogs.exe” web –config “D:\gogs\custom\conf\app.ini””<br>再透過net命令啟動服務<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png" alt></a></div><br>gogs服務已啟動<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-WhxSujJgC_Y/V7AoqniCSmI/AAAAAAAAD18/DadvnNTSKZY9BAc_sWButuYQl0D2W_OgACLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-WhxSujJgC_Y/V7AoqniCSmI/AAAAAAAAD18/DadvnNTSKZY9BAc_sWButuYQl0D2W_OgACLcB/s1600/04.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/14/Gogs-Go-Git-Service-on-windows/">Gogs - Go Git Service on windows</a></h1>
+  
+
+      
+        <time datetime="2016-08-14T07:47:00.000Z">2016-08-14 15:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先到<a href="https://gogs.io/" target="_blank" rel="noopener">官網</a>下載windodws版本編譯好的二進制壓縮檔</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png" alt></a></div><br>解壓縮後到資料夾下執行gogs web即可，預設Listen port是3000<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png" alt></a></div><br>打開瀏覽器進入<a href="http://127.0.0.1:3000後，開始初始化設定" target="_blank" rel="noopener">http://127.0.0.1:3000後，開始初始化設定</a><br>設定要使用的資料庫和專案放置的資料夾路徑<br><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png" alt></a></div>
+
+<p>勾選禁止註冊和登錄訪問限制<br>再建立一個管理員帳號就完成設定了</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png" alt></a></div><br>如果沒有勾選禁止註冊，右上角的登入旁邊就會有一個註冊的功能<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png" alt></a></div>
+
+<p>登入後先來建一個專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png" alt></a></div>
+
+<p>輸入專案的名稱，把可見度勾成私有的，就必需有帳密才能下載專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png" alt></a></div><br>右上角的路徑是當初設定時所輸入的網址<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png" alt></a></div><br>把專案取回來<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png" alt></a></div><br>因為是私人專案所以需要輸入帳密<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png" alt></a></div><br>新增一個測試專案<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png" alt></a></div><br>把測試專案移到工作目錄後送交<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png" alt></a></div><br>把測試專案推送到gogs<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png" alt></a></div><br>專案同步完成<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-MIzAkq01Q84/V7Aho156k9I/AAAAAAAAD1U/zIUcvw2GbEA53yuYSPy2YM7gCscPAgZMACLcB/s1600/17.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-MIzAkq01Q84/V7Aho156k9I/AAAAAAAAD1U/zIUcvw2GbEA53yuYSPy2YM7gCscPAgZMACLcB/s1600/17.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2016/08/14/Hello-NET-Core-1-0/">Hello .NET Core 1.0</a></h1>
+  
+
+      
+        <time datetime="2016-08-14T04:05:00.000Z">2016-08-14 12:05:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先到<a href="https://www.microsoft.com/net/core#windows" target="_blank" rel="noopener">官網</a>按照步驟安裝SDK</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png" alt></a></div>
+
+<p>使用dotnet new 命令來初始化一個專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png" alt></a></div><br>dotnet restore:還原套件<br>dotnet build:建置專案<br>dotnet run:執行專案<br><div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png" alt></a></div>
+
+<p>打開<a href="http://127.0.01:5000就可以看到站台了" target="_blank" rel="noopener">http://127.0.01:5000就可以看到站台了</a></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png" alt></a></div><br>dotnet publish: 發佈專案<br>帶入-output參數可以指發佈的路徑<br><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png" alt></a></div>
+
+<p>發佈後的資料夾</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png" alt></a></div><br>使用dotnet命令來執行專案的dll<br><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-hq4N5cTjojk/V6_aF10BTGI/AAAAAAAAD0M/wRFrhYttj9UVrlYhi1tGAARZkbaQO3XaACLcB/s1600/08.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-hq4N5cTjojk/V6_aF10BTGI/AAAAAAAAD0M/wRFrhYttj9UVrlYhi1tGAARZkbaQO3XaACLcB/s1600/08.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/3/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

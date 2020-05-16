@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>dbup - 資料庫更新工具 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="dbup - 資料庫更新工具">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">dbup - 資料庫更新工具</h1>
+  
+
+      
+        <time datetime="2016-05-18T07:34:00.000Z">2016-05-18 15:34:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>dbup是一個用來更新資料庫的工庫，只能往前更新，不能往後回復更新<br>dbup-consolescripts是用來新增一個年月日時分秒_檔名.sql的套件</p>
+<p>新增一個Console專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://4.bp.blogspot.com/-mogF88yuPbM/VzwauDgNoCI/AAAAAAAADxs/xQeX1VxpOh0gCJj1SDOHjbU38SjXthHQgCLcB/s1600/01.png" target="_blank" rel="noopener"><img src="https://4.bp.blogspot.com/-mogF88yuPbM/VzwauDgNoCI/AAAAAAAADxs/xQeX1VxpOh0gCJj1SDOHjbU38SjXthHQgCLcB/s1600/01.png" alt></a></div>
+
+<h2 id="透過NuGet新增dbup和db-consolescripts套件"><a href="#透過NuGet新增dbup和db-consolescripts套件" class="headerlink" title="透過NuGet新增dbup和db-consolescripts套件"></a>透過NuGet新增dbup和db-consolescripts套件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> install-package dbup</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> install-package dbup-consolescripts</span></span><br></pre></td></tr></table></figure>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-oV1LzJLW774/VzwauAIASRI/AAAAAAAADxk/0ahWoAwgPMcxgb21clM47CU7mhOZPhhRQCLcB/s1600/02.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-oV1LzJLW774/VzwauAIASRI/AAAAAAAADxk/0ahWoAwgPMcxgb21clM47CU7mhOZPhhRQCLcB/s1600/02.png" alt></a></div>
+
+<h1 id="加入System-Configuration參考"><a href="#加入System-Configuration參考" class="headerlink" title="加入System.Configuration參考"></a>加入System.Configuration參考</h1><div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-2MXHs6-ULcU/VzwauNNva1I/AAAAAAAADxo/4u4Kh9JLsn09nbXM-nbdqo5Oa00XHRCAQCLcB/s1600/03.png" target="_blank" rel="noopener"><img src="https://2.bp.blogspot.com/-2MXHs6-ULcU/VzwauNNva1I/AAAAAAAADxo/4u4Kh9JLsn09nbXM-nbdqo5Oa00XHRCAQCLcB/s1600/03.png" alt></a></div>
+
+<h2 id="新增連線字串"><a href="#新增連線字串" class="headerlink" title="新增連線字串"></a>新增連線字串</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&amp;lt;</span>?xml version="1.0" encoding="utf-8" ?<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;lt;</span>configuration<span class="symbol">&amp;gt;</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>connectionStrings<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>add name="DBConn" providerName="System.Data.SqlClient"</span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span>connectionString="data source=(localdb)\ATCity;initial catalog=RankingSystem;trusted_connection=true;"/<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>/connectionStrings<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>startup<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span>/startup<span class="symbol">&amp;gt;</span></span><br><span class="line"><span class="symbol">&amp;lt;</span>/configuration<span class="symbol">&amp;gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改Program-cs"><a href="#修改Program-cs" class="headerlink" title="修改Program.cs"></a>修改Program.cs</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">SGT.ATCity.RankingSystem.Database</span></span><br><span class="line">&#123;</span><br><span class="line">&amp;nbsp; &amp;nbsp; <span class="keyword">using</span> System;</span><br><span class="line">&amp;nbsp; &amp;nbsp; <span class="keyword">using</span> System.Configuration;</span><br><span class="line">&amp;nbsp; &amp;nbsp; <span class="keyword">using</span> System.Reflection;</span><br><span class="line">&amp;nbsp; &amp;nbsp; <span class="keyword">using</span> DbUp;</span><br><span class="line"></span><br><span class="line">&amp;nbsp; &amp;nbsp; <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&amp;nbsp; &amp;nbsp; &#123;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">&amp;nbsp</span>; &amp;nbsp; &amp;nbsp; &amp;nbsp; &#123;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">var</span> connectionString = ConfigurationManager.ConnectionStrings[<span class="string">"DBConn"</span>].ConnectionString;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">var</span> upgrader =</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; DeployChanges.To</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .SqlDatabase(connectionString)</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .LogToConsole()</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .Build();</span><br><span class="line"></span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">var</span> result = upgrader.PerformUpgrade();</span><br><span class="line"></span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">if</span> (!result.Successful)</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &#123;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.ForegroundColor = ConsoleColor.Red;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(result.Error);</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.ResetColor();</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &#125;</span><br><span class="line"></span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.ForegroundColor = ConsoleColor.Green;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(<span class="string">"Success!"</span>);</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.ResetColor();</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &#125;</span><br><span class="line">&amp;nbsp; &amp;nbsp; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="新增SQL檔案"><a href="#新增SQL檔案" class="headerlink" title="新增SQL檔案"></a>新增SQL檔案</h2><ul>
+<li>透過套件管理器主控台執行New-Migration 名稱, 即可新增一個年月日時分秒_名稱的sql檔案</li>
+<li>檔案的順序很重要, 會影響呼叫的執行順序</li>
+<li>編輯要更新資料庫的SQL語法</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-z6hmfsyfRSg/VzwauckPVTI/AAAAAAAADxw/aOHvq5xrR9AEdB4RcY8XcN6SHcTCuadnACLcB/s1600/04.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-z6hmfsyfRSg/VzwauckPVTI/AAAAAAAADxw/aOHvq5xrR9AEdB4RcY8XcN6SHcTCuadnACLcB/s1600/04.png" alt></a></div>
+
+<h1 id="按下F5執行資料庫更新"><a href="#按下F5執行資料庫更新" class="headerlink" title="按下F5執行資料庫更新"></a>按下F5執行資料庫更新</h1><div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-BC3wQlzmEZc/VzwaujPeeMI/AAAAAAAADx0/TZB4dww4HqMoWwNyFg6kjPfUjlvC6N_OwCLcB/s1600/05.png" target="_blank" rel="noopener"><img src="https://1.bp.blogspot.com/-BC3wQlzmEZc/VzwaujPeeMI/AAAAAAAADx0/TZB4dww4HqMoWwNyFg6kjPfUjlvC6N_OwCLcB/s1600/05.png" alt></a></div>
+
+<h1 id="資料庫更新結果"><a href="#資料庫更新結果" class="headerlink" title="資料庫更新結果"></a>資料庫更新結果</h1><ul>
+<li>新增一個SchemaVersions資料表來記錄更新的記錄</li>
+<li>相同檔名只會執行一次</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-6as9yxMcY7g/VzwauoTO58I/AAAAAAAADx4/QFz_LWjEFtsPFKmHKcr8nhJ0CFxMWgFdgCLcB/s1600/06.png" target="_blank" rel="noopener"><img src="https://3.bp.blogspot.com/-6as9yxMcY7g/VzwauoTO58I/AAAAAAAADx4/QFz_LWjEFtsPFKmHKcr8nhJ0CFxMWgFdgCLcB/s1600/06.png" alt></a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

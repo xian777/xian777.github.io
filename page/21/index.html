@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 21 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/27/Json-Net-轉換-IEnumerable-介面/">Json.Net 轉換 IEnumerable 介面</a></h1>
+  
+
+      
+        <time datetime="2013-06-27T08:31:00.000Z">2013-06-27 16:31:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>Json.Net對於IEnumerable介面的處理，同樣是序列化成陣列的格式<br>首先先宣告個物件以便之後的處理</div><br><div><pre class="brush:csharp">private class Person<br>{<br>    public int id { get; set; }<br>    public string name { get; set; }<br>    public DateTime date { get; set; }<br>}<br></pre></div><br><div>轉換IEnumerable介面，以List為例 </div><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    // 淮備資料<br>    List&lt;Person&gt; list1 = new List&lt;Person&gt;()<br>    {<br>        new Person()<br>        {<br>            id = 1,<br>            name = “p1”,<br>            date = DateTime.Today.AddDays(-1)<br><br>        },<br>        new Person()<br>        {<br>            id = 2,<br>            name=”p2”,<br>            date = DateTime.Today<br>        },<br>        new Person()<br>        {<br>            id = 3,<br>            name = “p3”,<br>            date = DateTime.Today.AddDays(1)<br>        }<br>    };<br><br>    // 序列化<br>    string jsonString = JsonConvert.SerializeObject(list1);<br>    Console.WriteLine(jsonString);<br><br>    // 反序列化<br>    List&lt;Person&gt; list2 = JsonConvert.DeserializeObject&lt;List&lt;Person&gt;&gt;(jsonString);<br>    foreach (var item in list2)<br>    {<br>        Console.WriteLine(“id:{0}, name:{1}, date:{2}”, item.id, item.name, item.date);<br>    }<br><br>    Console.ReadLine();<br>}<br></pre></div><br><div>執行結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-jcrtfBwMruc/Ucv4HcocPmI/AAAAAAAAAxs/PINPmEH-b6g/s1600/05.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-jcrtfBwMruc/Ucv4HcocPmI/AAAAAAAAAxs/PINPmEH-b6g/s1600/05.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/27/Json-Net-用法/">Json.Net 用法</a></h1>
+  
+
+      
+        <time datetime="2013-06-27T08:02:00.000Z">2013-06-27 16:02:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>首先用最基本的JsonTextWriter和JsonTextReader<br>JsonTextWriter使用成對的方法來輸出Json字串<br>JsonTextReader使用Read方法來持續讀取Json字串<br>看得出來在使用上有點拖泥帶水</div><div><pre class="brush:csharp">static void Main(string[] args)<br>{<br>    string jsonString = string.Empty;<br><br>    using (StringWriter sw = new StringWriter())<br>    {<br>        using (JsonTextWriter writer = new JsonTextWriter(sw))<br>        {<br>            // 開始輸出物件<br>            writer.WriteStartObject();<br><br>            // 輸出屬性:id<br>            writer.WritePropertyName(“id”);<br>            writer.WriteValue(1);<br><br>            // 輸出屬性:name<br>            writer.WritePropertyName(“name”);<br>            writer.WriteValue(“xian”);<br><br>            // 輸出屬性today<br>            writer.WritePropertyName(“today”);<br>            writer.WriteValue(DateTime.Today);<br><br>            // 開始輸出陣列<br>            writer.WritePropertyName(“arraydata”);<br>            writer.WriteStartArray();<br>            writer.WriteValue(1);<br>            writer.WriteValue(2);<br>            writer.WriteValue(3);<br><br>            // 結束輸出陣列<br>            writer.WriteEndArray();<br><br>            // 結束串出物件<br>            writer.WriteEndObject();<br>        }<br><br>        jsonString = sw.ToString();<br>        Console.WriteLine(jsonString);<br>    }<br><br>    using (StringReader sr = new StringReader(jsonString))<br>    {<br>        using (JsonTextReader reader = new JsonTextReader(sr))<br>        {<br>            while (reader.Read())<br>            {<br>                if (reader.Value != null)<br>                {<br>                    Console.WriteLine(“token:{0}, value:{1}”, reader.TokenType, reader.Value);<br>                }<br>                else<br>                {<br>                    Console.WriteLine(“token:{0}”, reader.TokenType);<br>                }<br>            }<br>        }<br>    }<br><br>    Console.ReadLine();<br>}<br></pre></div><br><div>執行結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-g8DBrvIgZWI/UcvtZzhR10I/AAAAAAAAAxI/zFqpHkQDLVU/s1600/02.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-g8DBrvIgZWI/UcvtZzhR10I/AAAAAAAAAxI/zFqpHkQDLVU/s1600/02.png" alt></a></div></div>
+
+<hr>
+<div>使用JObject可以簡化一點 </div><div><pre class="brush:csharp">// 淮備Json資料<br>JObject obj1 = new JObject()<br>{<br>    new JProperty(“id”, 1),<br>    new JProperty(“name”, “xian”),<br>    new JProperty(“today”, DateTime.Today),<br>    new JProperty(“arraydata”,<br>    new JArray()<br>    {<br>        new JValue(1),<br>        new JValue(2),<br>        new JValue(3),<br>    })<br>};<br><br>string jsonString = obj1.ToString();<br>Console.WriteLine(jsonString);<br><br>// 解析Json格式<br>JObject obj2 = JObject.Parse(jsonString);<br>Console.WriteLine(<br>    “id:{0}, name:{1}, today:{2}, arraydata:{3}”,<br>    obj2[“id”],<br>    obj2[“name”],<br>    obj2[“today”],<br>    obj2[“arraydata”]);<br>Console.ReadLine();<br></pre></div><div>執行結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-l28UuWRqnjg/Ucvw4fibXHI/AAAAAAAAAxY/4PF_rybr6Gk/s1600/022.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-l28UuWRqnjg/Ucvw4fibXHI/AAAAAAAAAxY/4PF_rybr6Gk/s1600/022.png" alt></a></div></div>
+
+<hr>
+<div>最常使用還是JsonConvert這一個方式，用法也很直覺 </div><br><div><pre class="brush:csharp">// 淮備資料<br>Person p1 = new Person()<br>{<br>    id = 1,<br>    name = “xian”,<br>    today = DateTime.Today<br>};<br><br>// 序列化物件<br>string jsonString = JsonConvert.SerializeObject(p1);<br>Console.WriteLine(“jsonstring:{0}”, jsonString);<br><br>// 反序列化物件<br>Person p2 = JsonConvert.DeserializeObject&lt;Person&gt;(jsonString);<br>Console.WriteLine(“id:{0}, name:{1}, today:{2}”, p2.id, p2.name, p2.today);<br><br>Console.ReadLine();<br></pre></div><div>執行結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-p0ZFI8Yk4qA/UcvtAucxvPI/AAAAAAAAAxA/BnB2RiseCNw/s1600/03.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-p0ZFI8Yk4qA/UcvtAucxvPI/AAAAAAAAAxA/BnB2RiseCNw/s1600/03.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/27/Json-Net-介紹/">Json.Net 介紹</a></h1>
+  
+
+      
+        <time datetime="2013-06-27T07:00:00.000Z">2013-06-27 15:00:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Json.Net 是一個第三方套件，其強大的功能和.Net內建的比較表，可以去<a href="http://james.newtonking.com/" target="_blank" rel="noopener">官網</a>看一下<br>個人比較有感覺的差別是</p>
+<ul>
+<li>支援.Net 2.0</li>
+<li>支援LINQ&nbsp;&nbsp;</li>
+<li>支援暱名類別</li>
+<li>支援dynamic物件</li>
+<li>日期格式為ISO8601該專案為Open Source，可以到codeplex<a href="http://json.codeplex.com/" target="_blank" rel="noopener">下載原始碼 </a><br>安裝的方式也很簡單，打開NuGet輸入Json.Net就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png" alt></a></div>Json.Net也有完整的<a href="http://james.newtonking.com/projects/json/help/" target="_blank" rel="noopener">線上文件</a>可以參考</li>
+</ul>
+<p>以下是Json.Net常用的物件</p>
+<table border="1" cellpadding="3" cellspacing="1">                <tbody><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm" target="_blank" rel="noopener">JsonConvert</a></td>                        <td>最容易使用的一個靜態工具類別</td>                    </tr><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm" target="_blank" rel="noopener">JsonTextReader</a></td>                        <td>讀取Json格式</td>                    </tr><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm" target="_blank" rel="noopener">JsonTextWriter</a></td>                        <td>輸出Json格式</td>                    </tr><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#" target="_blank" rel="noopener">JObject</a></td>                        <td>對應Json物件，就是大括號包起來的部份</td>                    </tr><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#" target="_blank" rel="noopener">JArray</a></td>                        <td>對應Json陣列，就是中括號包起來的部份</td>                    </tr><tr>                        <td><a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#" target="_blank" rel="noopener">JValue</a></td>                        <td>對應Json值的部份</td>                    </tr></tbody>            </table>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/20/DataContractJsonSerializer-日期處理/">DataContractJsonSerializer 日期處理</a></h1>
+  
+
+      
+        <time datetime="2013-06-20T08:25:00.000Z">2013-06-20 16:25:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>使用DataContractJsonSerializer序列化日期時，格式為\/Date(ticks+時區資料)\/這個樣子<br>因為有時區資料，所以不用像JavaScriptSerializer一樣還要手動加上ToLocalTime函式</div><div><pre class="brush:csharp">// 初始化DataContractJsonSerializer類別<br>DateTime d1 = DateTime.Now;<br>DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(DateTime));<br>string jsonString = string.Empty;<br><br>// 序列化資料<br>using (MemoryStream ms = new MemoryStream())<br>{<br>    dcjs.WriteObject(ms, d1);<br>    jsonString = Encoding.UTF8.GetString(ms.ToArray());<br>    Console.WriteLine(jsonString);<br>    Console.WriteLine();<br>}<br><br>// 反序列化資料<br>using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))<br>{<br>    DateTime d2 = (DateTime)dcjs.ReadObject(ms);<br>    Console.WriteLine(“d1:{0}, kind:{1}”, d1, d1.Kind);<br>    Console.WriteLine(“d2:{0}, kind:{1}”, d2, d2.Kind);<br>}<br><br>Console.ReadLine();<br></pre></div><br><div>執行結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png" alt></a></div></div><br><div>使用JavaScript處理的時後，因為多了時區資料，所以reg要修改一下<br>打開一個Chrome的主控台並輸入以下幾行指令</div><div><pre class="brush:javascript">// 建立一個JSON格式的資料<br>data = { “today”: “\/Date(1371716206301+0800)\/“};<br><br>// 看一下資料解析的樣子<br>data.today;<br><br>// 把前後的斜線去掉的樣子<br>data.today.replace(/\//g, “”);<br><br>// 使用eval來得到日期<br>eval(“new “ + data.today.replace(/\//g, “”))<br><br>// 使用reg取出ticks的部份<br>data.today.replace(/\/Date((.<em>?))\//g, “$1”);<br><br>// parseInt轉成數字後也能得到日期<br>new Date(parseInt(data.today.replace(/\/Date((.</em>?))\//g, “$1”)))<br></pre></div><div>執行結果如下<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-lX5uOGKia5E/UcK8KOlx7nI/AAAAAAAAAwg/uMOO8i9qw-c/s1600/04-5.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-lX5uOGKia5E/UcK8KOlx7nI/AAAAAAAAAwg/uMOO8i9qw-c/s1600/04-5.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/20/DataContractJsonSerializer-轉換-IDictionary-介面/">DataContractJsonSerializer 轉換 IDictionary 介面</a></h1>
+  
+
+      
+        <time datetime="2013-06-20T07:50:00.000Z">2013-06-20 15:50:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>轉換IDictionary介面的方式也一樣，只要注意初始化DataContractJsonSerializer類別時傳入IDictionary介面就好<br>但是輸出的結果並不如預期中為物件的格式<br>直接宣告一個Dictionary來當範例</div><div><pre class="brush:csharp">// 淮備序列化的類別資料<br>Dictionary&lt;int, object&gt; dataList = new Dictionary&lt;int, object&gt;()<br>{<br>    {1, “a”},<br>    {2, “b”},<br>    {3, “c”}<br>};<br></pre></div><div><br>初始化時要傳入這個Dictionary的型別 </div><div><pre class="brush:csharp">// 初始化DataContractJsonSerializer類別<br>DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(Dictionary&lt;int, object&gt;));<br>string jsonString = string.Empty;<br></pre></div><br><div>序列化的方式一樣 </div><div><pre class="brush:csharp">// 序列化資料<br>using (MemoryStream ms = new MemoryStream())<br>{<br>    dcjs.WriteObject(ms, dataList);<br>    jsonString = Encoding.UTF8.GetString(ms.ToArray());<br>    Console.WriteLine(jsonString);<br>    Console.WriteLine();<br>}<br></pre></div><br><div>反序列化的方式也一樣 </div><div><pre class="brush:csharp">// 反序列化資料<br>using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))<br>{<br>    Dictionary&lt;int, object&gt; data2List = dcjs.ReadObject(ms) as Dictionary&lt;int, object&gt;;<br>    foreach (KeyValuePair&lt;int, object&gt; item in data2List)<br>    {<br>        Console.WriteLine(<br>            “Key:{0}, Value:{1}”,<br>            item.Key,<br>            item.Value);<br>    }<br>}<br></pre></div><br><div>執行結果可以看到序列化成JSON字串時，會固定變成Key:xx, Value:oo的陣列<br>這在不同JSON元件之間的轉換會造成一些問題<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Et1ueQR5Ln0/UcKzdBLQPvI/AAAAAAAAAwA/lxpN84Etqmk/s1600/04-3.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-Et1ueQR5Ln0/UcKzdBLQPvI/AAAAAAAAAwA/lxpN84Etqmk/s1600/04-3.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/20/DataContractJsonSerializer-轉換-IEnumerable-介面/">DataContractJsonSerializer 轉換 IEnumerable 介面</a></h1>
+  
+
+      
+        <time datetime="2013-06-20T07:34:00.000Z">2013-06-20 15:34:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>轉換IEnumerable的用法和一般的資料沒什麼不同<br>差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable<br>宣告一個相同的資料型別來做範例 </div><div><pre class="brush:csharp">[DataContract]<br>public class JsonData<br>{<br>    [DataMember(Name = “ID”, Order = 0)]<br>    public int Id { get; set; }<br><br>    [DataMember(Order = 1)]<br>    public string Name { get; set; }<br><br>    [DataMember(Order = 2)]<br>    public DateTime Today { get; set; }<br><br>    [DataMember(Order=3)]<br>    public bool IsBool { get; set; }<br><br>    [IgnoreDataMember()]<br>    public string UnlessField { get; set; }<br>}<br></pre></div><br><div>準備一個List來當做序列化的資料<br>初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別</div><div><pre class="brush:csharp">// 淮備序列化的類別資料<br>List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;()<br>{<br>    new JsonData()<br>    {<br>        Id = 1,<br>        Name = “data1”,<br>        Today = DateTime.Now.AddDays(-1),<br>        IsBool = true,<br>        UnlessField = “沒用到的欄位1”<br>    },<br>    new JsonData()<br>    {<br>        Id = 2,<br>        Name = “data2”,<br>        Today = DateTime.Now,<br>        IsBool = false,<br>        UnlessField = “沒用到的欄位2”<br>    },<br>    new JsonData()<br>    {<br>        Id = 3,<br>        Name = “data3”,<br>        Today = DateTime.Now.AddDays(1),<br>        IsBool = true,<br>        UnlessField = “沒用到的欄位3”<br>    }<br><br>};<br><br>// 初始化DataContractJsonSerializer類別<br>DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List&lt;JsonData&gt;));<br>string jsonString = string.Empty;<br></pre></div><br><div>序列化的方法一樣 </div><div><pre class="brush:csharp">// 序列化資料<br>using (MemoryStream ms = new MemoryStream())<br>{<br>    dcjs.WriteObject(ms, dataList);<br>    jsonString = Encoding.UTF8.GetString(ms.ToArray());<br>    Console.WriteLine(jsonString);<br>    Console.WriteLine();<br>}<br></pre></div><br><div>反序列化的方法也一樣 </div><div><pre class="brush:csharp">// 反序列化資料<br>using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))<br>{<br>    List&lt;JsonData&gt; data2List = dcjs.ReadObject(ms) as List&lt;JsonData&gt;;<br>    foreach (JsonData item in data2List)<br>    {<br>        Console.WriteLine(<br>            “Id:{0}, Name:{1}, Today:{2}, IsBool:{3}, UnlessField:{4}”,<br>            item.Id,<br>            item.Name,<br>            item.Today,<br>            item.IsBool,<br>            item.UnlessField);<br>    }<br>}<br></pre></div><br><div>執行結果資料一樣序列化成陣列的樣子，反序列化也沒什麼問題<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-j1sVYW0xrmk/UcKv_7wCK4I/AAAAAAAAAvw/gpDughnVeRg/s1600/04.2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-j1sVYW0xrmk/UcKv_7wCK4I/AAAAAAAAAvw/gpDughnVeRg/s1600/04.2.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/20/DataContractJsonSerializer-用法/">DataContractJsonSerializer 用法</a></h1>
+  
+
+      
+        <time datetime="2013-06-20T07:15:00.000Z">2013-06-20 15:15:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>首先需要先定義資料類別<br><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx" target="_blank" rel="noopener">DataContract</a>用來標記類別<br><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx" target="_blank" rel="noopener">DataMember</a>用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序<br><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx" target="_blank" rel="noopener">IgnoreDataMember</a>用來標記屬性，表示不參與序列化過程</div><div><pre class="brush:csharp">[DataContract]<br>public class JsonData<br>{<br>    [DataMember(Name = “ID”, Order = 0)]<br>    public int Id { get; set; }<br><br>    [DataMember(Order = 1)]<br>    public string Name { get; set; }<br><br>    [DataMember(Order = 2)]<br>    public DateTime Today { get; set; }<br><br>    [DataMember(Order=3)]<br>    public bool IsBool { get; set; }<br><br>    [IgnoreDataMember()]<br>    public string UnlessField { get; set; }<br>}<br></pre></div><br><div>初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 </div><div><pre class="brush:csharp">// 淮備序列化的類別資料<br>JsonData d1 = new JsonData()<br>{<br>    Id = 1,<br>    Name = “data”,<br>    Today = DateTime.Now,<br>    IsBool = true,<br>    UnlessField = “沒用到的欄位”<br>};<br><br>// 初始化DataContractJsonSerializer類別<br>DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(JsonData));<br>string jsonString = string.Empty;<br></pre></div><br><div>序列化資料使用WriteObject寫入Stream<br>再用Encoding取得json字串 </div><div><pre class="brush:csharp">// 序列化資料<br>using (MemoryStream ms = new MemoryStream())<br>{<br>    dcjs.WriteObject(ms, d1);<br>    jsonString = Encoding.UTF8.GetString(ms.ToArray());<br>    Console.WriteLine(jsonString);<br>}<br></pre></div><br><div>反序列化資料先用Encoding取得取得Byte Array讀入Stream<br>再用ReadObject讀出資料型別</div><div><pre class="brush:csharp">// 反序列化資料<br>using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))<br>{<br>    JsonData d2 = dcjs.ReadObject(ms) as JsonData;<br>    Console.WriteLine(<br>        “Id:{0}, Name:{1}, Today:{2}, IsBool:{3}, UnlessField:{4}”,<br>        d2.Id,<br>        d2.Name,<br>        d2.Today,<br>        d2.IsBool,<br>        d2.UnlessField);<br>}<br></pre></div><div><br>執行結果如下<br>1. 日期的部份加入了時區的資料，所以反序列化回來後不用再手動加上ToLocalTime函數<br>2.&nbsp; 標記為IgnoreDataMember的欄位並沒有參考序列化的過程，反序列化回來後是空字串<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-eBsCYgXxTuk/UcKrNqc_bBI/AAAAAAAAAvg/4fo00gDjWwA/s1600/04.1.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-eBsCYgXxTuk/UcKrNqc_bBI/AAAAAAAAAvg/4fo00gDjWwA/s1600/04.1.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/20/DataContractJsonSerializer-介紹/">DataContractJsonSerializer 介紹</a></h1>
+  
+
+      
+        <time datetime="2013-06-20T06:35:00.000Z">2013-06-20 14:35:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>JavaScriptSerializer是.NET 3.5中新增的類別<br>該類別在System.Runtime.Serialization.Json命名空間下面<br>需引用System.Runtime.Serialization.dll</div><div>建構式 </div><div><table border="1" cellpadding="3" cellspacing="1">                <tbody><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/bb908625.aspx" target="_blank" rel="noopener">DataContractJsonSerializer(Type)</a></td>                        <td>傳入要轉換的資料型別</td>                    </tr><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/hh194418.aspx" target="_blank" rel="noopener">DataContractJsonSerializer(Type, DataContractJsonSerializerSettings)</a></td>                        <td>傳入要轉換的資料型別，和設定值</td>                    </tr></tbody>            </table></div><br><div>方法 </div><div><table border="1" cellpadding="3" cellspacing="1">                <tbody><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.writeobject.aspx" target="_blank" rel="noopener">WriteObject</a><br></td>                        <td>將物件序列化成JSON字串</td>                    </tr><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.readobject.aspx" target="_blank" rel="noopener">ReadObject</a><br></td>                        <td>將JSON字串反序列化成指定的物件</td>                    </tr></tbody>            </table></div><br><div>參考資料<br><br><a href="http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.aspx" target="_blank" rel="noopener">System.Runtime.Serialization.Json 命名空間</a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/19/JavaScriptSerializer-ScriptIgnoreAttribute/">JavaScriptSerializer ScriptIgnoreAttribute</a></h1>
+  
+
+      
+        <time datetime="2013-06-19T09:47:00.000Z">2013-06-19 17:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>ScriptIgnore這個Attribute是用來取消屬性或欄位的序列化</div><br><div><pre class="brush:csharp">using System;<br>using System.Web.Script.Serialization;<br><br>namespace ConsoleApplication1<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            string jsonString = string.Empty;<br>            Data data = new Data()<br>            {<br>                Id = 1,<br>                Name = “data”<br>            };<br><br>            JavaScriptSerializer jss = new JavaScriptSerializer();<br>            jsonString = jss.Serialize(data);<br>            Console.WriteLine(jsonString);<br>            Console.ReadLine();<br>        }<br><br>        private class Data<br>        {<br>            public int Id { get; set; }<br>            public string Name { get; set; }<br>        }<br>    }<br>}<br></pre></div><br><div>執行結果如下</div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png" alt></a></div><br>加上ScriptIgnore這個Attribute之後<br><div><pre class="brush:csharp">using System;<br>using System.Web.Script.Serialization;<br><br>namespace ConsoleApplication1<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            string jsonString = string.Empty;<br>            Data data = new Data()<br>            {<br>                Id = 1,<br>                Name = “data”<br>            };<br><br>            JavaScriptSerializer jss = new JavaScriptSerializer();<br>            jsonString = jss.Serialize(data);<br>            Console.WriteLine(jsonString);<br>            Console.ReadLine();<br>        }<br><br>        private class Data<br>        {<br>            public int Id { get; set; }<br><br>            [ScriptIgnore]<br>            public string Name { get; set; }<br>        }<br>    }<br>}<br></pre></div><div>執行結果如下</div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-NuSXZrS5PHg/UcF97o95C-I/AAAAAAAAAvQ/7WrPyRw6dqU/s1600/02r2.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-NuSXZrS5PHg/UcF97o95C-I/AAAAAAAAAvQ/7WrPyRw6dqU/s1600/02r2.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/19/JavaScriptSerializer-日期處理/">JavaScriptSerializer 日期處理</a></h1>
+  
+
+      
+        <time datetime="2013-06-19T09:20:00.000Z">2013-06-19 17:20:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子<br>其中的tick為1970/1/1到目前為止的毫秒數<br>因為沒有時區資訊，而且預設會轉換成UTC時間<br>所以反序列化回來的時後，會有時區的問題</div><div><pre class="brush:csharp">string jsonString = string.Empty;<br>DateTime d1 = DateTime.Now;<br><br>JavaScriptSerializer jss = new JavaScriptSerializer();<br>jsonString = jss.Serialize(d1);<br>Console.WriteLine(jsonString);<br><br>DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString);<br>Console.WriteLine(“d1:{0}, kind:{1}”, d1, d1.Kind);<br>Console.WriteLine(“d2:{0}, kind:{1}”, d2, d2.Kind);<br>Console.ReadLine();</pre></div><div>執行結果如下 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-F8fcPVk1keE/UcFuKhJJOmI/AAAAAAAAAug/KVQeon93Nxw/s1600/01.r1.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-F8fcPVk1keE/UcFuKhJJOmI/AAAAAAAAAug/KVQeon93Nxw/s1600/01.r1.png" alt></a></div><div>解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 </div><div><pre class="brush:csharp">string jsonString = string.Empty;<br>DateTime d1 = DateTime.Now;<br><br>JavaScriptSerializer jss = new JavaScriptSerializer();<br>jsonString = jss.Serialize(d1);<br>Console.WriteLine(jsonString);<br><br>DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime();<br>Console.WriteLine(“d1:{0}, kind:{1}”, d1, d1.Kind);<br>Console.WriteLine(“d2:{0}, kind:{1}”, d2, d2.Kind);<br>Console.ReadLine();<br></pre></div><div>執行結果如下 </div><br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png" alt>&nbsp;</a></div><div>另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解<br>打開一個Chrome的主控台來測試一下，輸入以下幾行指令</div><div><pre class="brush:javascript">// 建立一個JSON格式的資料<br>data = { “today”: “\/Date(1371631612818)\/“ };<br><br>// 看一下資料解析的樣子<br>data.today;<br><br>// 把前後的斜線去掉的樣子<br>data.today.replace(/\//g, “”);<br><br>// 使用eval來得到日期<br>eval(“new “ + data.today.replace(/\//g, “”))<br><br>// 使用reg取出ticks的部份<br>data.today.replace(/\/Date((\d+))\//g, “$1”);<br><br>// parseInt轉成數字後也能得到日期<br>new Date(parseInt(data.today.replace(/\/Date((\d+))\//g, “$1”)))</pre></div><div>執行結果如下<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-8kc7pENjgFo/UcF2_-0zwkI/AAAAAAAAAu4/iC1ITkH7wGY/s1600/01r3.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-8kc7pENjgFo/UcF2_-0zwkI/AAAAAAAAAu4/iC1ITkH7wGY/s1600/01r3.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/20/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/22/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

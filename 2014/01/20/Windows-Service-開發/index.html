@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Windows Service 開發 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Windows Service 開發">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Windows Service 開發</h1>
+  
+
+      
+        <time datetime="2014-01-20T05:45:00.000Z">2014-01-20 13:45:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。<br>用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹</p>
+<div><br></div><div>首先開一個新專案，名稱為MyService</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png" alt></a></div><br></div><div>在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png" alt></a></div><br></div><div>先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務</div><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    static class Program<br>    {<br>        /// &lt;summary&gt;<br>        /// 應用程式的主要進入點。<br>        /// &lt;/summary&gt;<br>        static void Main()<br>        {<br>            ServiceBase[] ServicesToRun;<br>            ServicesToRun = new ServiceBase[]<br>            {<br>                new Service1()<br>            };<br>            ServiceBase.Run(ServicesToRun);<br>        }<br>    }<br>}<br><br></pre></div><div>再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件</div><div><pre class="brush:csharp">using System.ServiceProcess;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        public Service1()<br>        {<br>            InitializeComponent();<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>        }<br><br>        protected override void OnStop()<br>        {<br>        }<br>    }<br>}<br><br></pre></div><div>可覆寫的方法如下</div><div><table><tbody><tr><td>OnContinue</td><td>指定暫停服務後要繼續正常運作所要執行的動作</td></tr><tr><td>OnCustomCommand</td><td>指定在具有指定參數值的命令發生時所要執行的動作<br><span style="color: red;">需要注意命令編號為128~256</span></td></tr><tr><td>OnPause</td><td>指定在服務暫停時所要執行的動作</td></tr><tr><td>OnPowerEvent</td><td>這適用於攜帶型電腦，當它們進入暫停模式的時候，不同於系統關閉</td></tr><tr><td>OnSessionChange</td><td>當從 Terminal Server 工作階段接收到變更事件時執行</td></tr><tr><td>OnShutdown</td><td>指定緊接在系統關閉之前應該發生的處理</td></tr><tr><td>OnStart</td><td>指定在服務啟動時所要執行的動作</td></tr><tr><td>OnStop</td><td>指定在服務停止執行時所要執行的動作</td></tr></tbody></table></div><div><br>可設定的屬性如下，最常用的還是ServiceName這個屬性</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-mAXtu_uATeY/UtybEa1AujI/AAAAAAAAA5w/INeITSD60RY/s1600/03.ServiceBase%E5%B1%AC%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-mAXtu_uATeY/UtybEa1AujI/AAAAAAAAA5w/INeITSD60RY/s1600/03.ServiceBase%E5%B1%AC%E6%80%A7.png" alt></a></div><br></div><div>更詳細的內容可以參考MSDN關於<a href="http://msdn.microsoft.com/zh-tw/library/system.serviceprocess.servicebase(v=vs.110" target="_blank" rel="noopener">ServiceBase</a>.aspx)的介紹</div><div><br></div><div>先來簡單地寫個定時功能<br>透過Log元件輸出目前時間到Log2Console<br>相關內容可以參考之前的筆記<br><a href="http://blog.developer.idv.tw/2013/12/commonlogging.html" target="_blank" rel="noopener">Common.Logging</a><br><a href="http://blog.developer.idv.tw/2013/11/logviewer.html" target="_blank" rel="noopener">好用的LogViewer</a><br><br></div><div><pre class="brush:csharp">using System;<br>using System.ServiceProcess;<br>using System.Timers;<br>using Common.Logging;<br><br>namespace MyService<br>{<br>    public partial class Service1 : ServiceBase<br>    {<br>        private Timer timer;<br>        private ILog log;<br>        private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;<br>        private double timerInterval = 1000;<br><br>        public Service1()<br>        {<br>            InitializeComponent();<br>            this.log = LogManager.GetLogger(typeof(Service1));<br>            this.timer = new Timer();<br>            this.timer.Interval = this.timerInterval;<br>            this.timer.AutoReset = false;<br>            this.timer.Enabled = false;<br>            this.timer.Elapsed += Timer_Elapsed;<br>        }<br><br>        protected override void OnStart(string[] args)<br>        {<br>            this.timer.Enabled = true;<br>        }<br><br>        protected override void OnStop()<br>        {<br>            this.timer.Enabled = false;<br>        }<br><br>        private void Timer_Elapsed(object sender, ElapsedEventArgs e)<br>        {<br>            this.timer.Stop();<br><br>            try<br>            {<br>                this.log.TraceFormat(“now:{0}”, DateTime.Now.ToString(this.datetimeFormat));<br>            }<br>            catch (Exception ex)<br>            {<br>                this.log.Error(ex);<br>            }<br><br>            this.timer.Start();<br>        }<br>    }<br>}<br><br></pre></div><div>接下來要增加安裝程式，在Service1.cs的設計畫面按右鍵，選擇加入安裝程式</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ovn0HIpEK38/UtybIw9JreI/AAAAAAAAA54/_d1_EmcvqEE/s1600/04.%E5%8A%A0%E5%85%A5%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ovn0HIpEK38/UtybIw9JreI/AAAAAAAAA54/_d1_EmcvqEE/s1600/04.%E5%8A%A0%E5%85%A5%E5%AE%89%E8%A3%9D%E7%A8%8B%E5%BC%8F.png" alt></a></div><br></div><div>會增加一個繼承自System.Configuration.Install.Installer的ProjectInstaller類別</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-UKW0EPYGkkk/UtybMznln5I/AAAAAAAAA6A/aoHnh0w5gwU/s1600/05.Projectnstaller.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-UKW0EPYGkkk/UtybMznln5I/AAAAAAAAA6A/aoHnh0w5gwU/s1600/05.Projectnstaller.png" alt></a></div><br></div><div>先設定服務執行時使用的帳號，比較安全的帳號是NetworkService，如果有需要存取資源的話，再去允許權限或是改用LocalSystem這個帳號</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-CYoBSMIfZj4/Utybkt47AiI/AAAAAAAAA6Q/9Y5H4xUtBd4/s1600/06.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-CYoBSMIfZj4/Utybkt47AiI/AAAAAAAAA6Q/9Y5H4xUtBd4/s1600/06.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" alt></a></div><br></div><div>接下來設定服務的啟動方式，最常用的當然是自動啟動<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-iS03_xS0ewU/UtyfYhnVFPI/AAAAAAAAA68/CN4arzq-Q3Y/s1600/07.AotuMatic.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-iS03_xS0ewU/UtyfYhnVFPI/AAAAAAAAA68/CN4arzq-Q3Y/s1600/07.AotuMatic.png" alt></a></div><br></div><div>DisplayName是名稱，Description描述</div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-sK3GlrDv3cQ/Utybu00xq_I/AAAAAAAAA6g/_omh1Cvm4xA/s1600/08.%E5%90%8D%E7%A8%B1%E6%8F%8F%E8%BF%B0.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-sK3GlrDv3cQ/Utybu00xq_I/AAAAAAAAA6g/_omh1Cvm4xA/s1600/08.%E5%90%8D%E7%A8%B1%E6%8F%8F%E8%BF%B0.png" alt></a></div><br></div><div>設定好後就完成這個Service，編譯後產生執行檔，接下來就要把這個服務安裝的到作業系統中</div><div>比較正規的作法是去新增一個安裝專案，但為了方便開發起見，以下用批次檔的方式來安裝</div><div><br></div><div>新增幾個批次檔，並改成永遠複製<br><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-IeOUENSgG7I/Uty35k-diyI/AAAAAAAAA7g/X4PkkxCTMZc/s1600/13.batfile.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-IeOUENSgG7I/Uty35k-diyI/AAAAAAAAA7g/X4PkkxCTMZc/s1600/13.batfile.png" alt></a></div><br><div>install.bat用來安裝 </div><div><pre class="brush:bash">@echo off<br>set InstallUtil=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v3.5\InstallUtil.exe<br>if not exist %InstallUtil% (<br> echo InstallUtil.exe not found<br> exit<br>)<br><br>%InstallUtil% -i MyService.exe<br></pre></div><br><div>restart.bat用來重新啟動服務 </div><div><pre class="brush:bash">net stop Service1<br>net start Service1<br></pre></div><br><div>start.bat用來啟動服務 </div><div><pre class="brush:bash">net start Service1<br></pre></div><br><div>stop.bat用來停止服務 </div><div><pre class="brush:bash">net stop Service1<br></pre></div><br><div>uninstall.bat用來反安裝 </div><div><pre class="brush:bash">@echo off<br>set InstallUtil=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe<br>if not exist %InstallUtil% set InstallUtil=%WINDIR%\Microsoft.NET\Framework\v3.5\InstallUtil.exe<br>if not exist %InstallUtil% (<br> echo InstallUtil.exe not found<br> exit<br>)<br><br>%InstallUtil% -u MyService.exe<br></pre></div><br><span style="color: red;">注意檔案編碼為ANSI格式</span>，UTF8格式在command pro中執行會有亂碼</div><div>批次檔是透過InstallUtil.exe這個工具程式來安裝和反安裝，詳細的參數請參考<a href="http://msdn.microsoft.com/zh-tw/library/50614e95(v=vs.110" target="_blank" rel="noopener">MSDN的說明</a>.aspx)</div><div><br></div><div>點擊install.bat，安裝成功</div><div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-c0GwQkAtsis/Uty3Z7jSevI/AAAAAAAAA7Y/v7dRgrQqiMc/s1600/11.install.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-c0GwQkAtsis/Uty3Z7jSevI/AAAAAAAAA7Y/v7dRgrQqiMc/s1600/11.install.png" alt></a></div><br></div><div>點繫start.bat，啟動服務<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-OuMwHcWUqPA/UtzKFtatI2I/AAAAAAAAA7w/yqZ3XtmwBH8/s1600/14.Start.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-OuMwHcWUqPA/UtzKFtatI2I/AAAAAAAAA7w/yqZ3XtmwBH8/s1600/14.Start.png" alt></a></div><br>順利的話就可以在Log2Console中定時收到目前時間<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-6L01sHTG9Ws/UtzKQtBQroI/AAAAAAAAA74/hGzL_CENGSk/s1600/15.run.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-6L01sHTG9Ws/UtzKQtBQroI/AAAAAAAAA74/hGzL_CENGSk/s1600/15.run.png" alt></a></div>
+
+<p>要移除服務就點擊uninstall.bat，反安裝成功</p></div><div><br></div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-D4bFUIA_Kfk/Utyb6S2DsJI/AAAAAAAAA6w/H9_s_cUU95E/s1600/12.uninstall.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-D4bFUIA_Kfk/Utyb6S2DsJI/AAAAAAAAA6w/H9_s_cUU95E/s1600/12.uninstall.png" alt></a></div><br></div><div><br></div><div><br></div><p></p>
+
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/C/">C#</a>, <a href="/tags/windows-service/">windows service</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

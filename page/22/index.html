@@ -1,0 +1,563 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 22 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/18/JavaScriptSerializer-轉換-IDictionary-介面/">JavaScriptSerializer 轉換 IDictionary 介面</a></h1>
+  
+
+      
+        <time datetime="2013-06-18T10:40:00.000Z">2013-06-18 18:40:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>一樣開個新的Console專案，和加入System.Web.Extensions.dll參考<br>完整的程式碼如下</div><div><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br>using System.Web.Script.Serialization;<br><br>namespace JavaScriptSerializerDemo<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 淮備要序列化的資料<br>            Dictionary&lt;string, object&gt; data = new Dictionary&lt;string, object&gt;()<br>            {<br>                {<br>                    “ID”, 1<br>                },<br>                {<br>                    “Name”, “Dictionary Demo”<br>                },<br>                {<br>                    “State”, EnumState.c<br>                },<br>                {<br>                    “Date”, DateTime.Today<br>                },<br>                {<br>                    “Guid”, Guid.NewGuid()<br>                }<br>            };<br><br>            // 序列化<br>            JavaScriptSerializer jss = new JavaScriptSerializer();<br>            string jsonString = jss.Serialize(data);<br>            Console.WriteLine(“序列化的JSON字串:{0}\r\n”, jsonString);<br><br>            // 反序列化<br>            JsonObject obj = jss.Deserialize&lt;JsonObject&gt;(jsonString);<br>            Console.WriteLine(<br>                “反序列化後的物件, ID:{0}, Name:{1}, State:{2}, Date:{3}, GUID:{4}\r\n”,<br>                obj.ID,<br>                obj.Name,<br>                obj.State,<br>                obj.Date,<br>                obj.GUID);<br><br>            Dictionary&lt;string, object&gt; dict = jss.Deserialize&lt;Dictionary&lt;string, object&gt;&gt;(jsonString);<br>            Console.WriteLine(“反序列化回Dictionary”);<br>            foreach (var key in dict.Keys)<br>            {<br>                Console.WriteLine(“Key:{0}, Value:{1}”, key, dict[key]);<br>            }<br><br>            Console.ReadLine();<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 要序列化的資料類別<br>        /// &lt;/summary&gt;<br>        private class JsonObject<br>        {<br>            public int ID { get; set; }<br>            public string Name { get; set; }<br>            public EnumState State { get; set; }<br>            public DateTime Date { get; set; }<br>            public Guid GUID { get; set; }<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 狀態列舉<br>        /// &lt;/summary&gt;<br>        public enum EnumState<br>        {<br>            a = 0,<br>            b = 1,<br>            c = 2<br>        }<br>    }<br>}<br><br></pre></div><br><div>序列化後的JSON </div><div><pre class="brush:javascript">{<br>  “ID”: 1,<br>  “Name”: “Dictionary Demo”,<br>  “State”: 2,<br>  “Date”: “\/Date(13714 84800000)\/“,<br>  “Guid”: “7c52f0a4-a742-4898-a55c-583ab851b183”<br>}<br></pre></div><div><br>輸出的結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-B-mVNtMsiRk/UcAx1cKBfDI/AAAAAAAAAtw/2Cz6mRMH_hI/s1600/03.+Result03.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-B-mVNtMsiRk/UcAx1cKBfDI/AAAAAAAAAtw/2Cz6mRMH_hI/s1600/03.+Result03.png" alt></a></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/18/JavaScriptSerializer-用法/">JavaScriptSerializer 用法</a></h1>
+  
+
+      
+        <time datetime="2013-06-18T10:39:00.000Z">2013-06-18 18:39:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>首先開一個Console專案</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png" alt></a></div><div>加入System.Web.Extensions.dll的引用</div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png" alt></a></div><div>完整的程式碼如下</div><div><pre class="brush:csharp">using System;<br>using System.Web.Script.Serialization;<br><br>namespace JavaScriptSerializerDemo<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 淮備要序列化的資料<br>            JsonObject data = new JsonObject()<br>            {<br>                ID = 1,<br>                Name = “JsonObject”,<br>                State = EnumState.c,<br>                Date = DateTime.Today,<br>                GUID = Guid.NewGuid()<br>            };<br><br>            // 序列化<br>            JavaScriptSerializer jss = new JavaScriptSerializer();<br>            string jsonString = jss.Serialize(data);<br>            Console.WriteLine(“序列化的JSON字串:{0}\r\n”, jsonString);<br><br>            // 反序列化<br>            JsonObject obj = jss.Deserialize&lt;JsonObject&gt;(jsonString);<br>            Console.WriteLine(<br>                “反序列化後的物件, ID:{0}, Name:{1}, State:{2}, Date:{3}, GUID:{4}”,<br>                obj.ID,<br>                obj.Name,<br>                obj.State,<br>                obj.Date,<br>                obj.GUID);<br><br>            Console.ReadLine();<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 要序列化的資料類別<br>        /// &lt;/summary&gt;<br>        private class JsonObject<br>        {<br>            public int ID { get; set; }<br>            public string Name { get; set; }<br>            public EnumState State { get; set; }<br>            public DateTime Date { get; set; }<br>            public Guid GUID { get; set; }<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 狀態列舉<br>        /// &lt;/summary&gt;<br>        public enum EnumState<br>        {<br>            a = 0,<br>            b = 1,<br>            c = 2<br>        }<br>    }<br>}<br></pre></div><div>序列化的JSON字串<br><pre class="brush:csharp">{<br>  “ID”: 1,<br>  “Name”: “JsonObject”,<br>  “State”: 2,<br>  “Date”: “\/Date(1371484800 000)\/“,<br>  “GUID”: “80d39299-a127-459f-b6ef-55626c490f80”<br>}</pre></div><br><div>執行的結果<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-no6cdwZCVzo/UcA2jzMJbPI/AAAAAAAAAuA/1mlIoyjrQdg/s1600/03.Result01.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-no6cdwZCVzo/UcA2jzMJbPI/AAAAAAAAAuA/1mlIoyjrQdg/s1600/03.Result01.png" alt></a></div><br><div class="separator" style="clear: both; text-align: center;"></div></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/18/JSON筆記/">JSON筆記</a></h1>
+  
+
+      
+        <time datetime="2013-06-18T10:39:00.000Z">2013-06-18 18:39:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>JSON 筆記</p>
+<p>JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法<br>因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式</p>
+<p>JSON的內容主要有二種型態，一種是物件，一種是陣列<br>物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔<br>陣列用中括號包起來，每個資料之間用逗點分隔</p>
+<p><div><pre class="brush:javascript">{<br>  “ID”: 1,<br>  “Name”: “JSON Demo”,<br>  “State”: 2,<br>  “Date”: “\/Date(13714 84800000)\/“,<br>  “Guid”: “7c52f0a4-a742-4898-a55c-583ab851b183”,<br>  “DataList”: [<br>    1,<br>    2,<br>    3,<br>    4,<br>    5<br>  ]<br>}<br></pre></div><br>JSON的資料型態有文字、數字、布林、NULL<br>文字:用雙引號包起來的內容<br>數字:包含整數和浮點數<br>布林: true / false<br>更多完整的介紹，可以參考官網或W3CSchool</p>
+<p><a href="http://www.json.org/json-zh.html" target="_blank" rel="noopener">JSON官網介紹</a></p>
+<p><a href="http://www.w3schools.com/json/default.asp" target="_blank" rel="noopener">W3CSchool Learn JSON</a></p>
+<hr>
+<p>在.NET中內建兩種解析方式，但需要Framework 3.5以上</p>
+<p>System.Web.Extensions下面的JavaScriptSerializer<br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer.html" target="_blank" rel="noopener">JavaScriptSerializer 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_18.html" target="_blank" rel="noopener">JavaScriptSerializer 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-ienumerable.html" target="_blank" rel="noopener">JavaScriptSerializer 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-idictionary.html" target="_blank" rel="noopener">JavaScriptSerializer 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_19.html" target="_blank" rel="noopener">JavaScriptSerializer 日期處理</a><br><a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_7623.html" target="_blank" rel="noopener">JavaScriptSerializer ScriptIgnoreAttribute</a></p>
+<hr>
+<p>System.Runtime.Serialization下面的DataContractJsonSerializer<br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer.html" target="_blank" rel="noopener">DataContractJsonSerializer 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_20.html" target="_blank" rel="noopener">DataContractJsonSerializer 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-ienumerable.html" target="_blank" rel="noopener">DataContractJsonSerializer 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-idictionary.html" target="_blank" rel="noopener">DataContractJsonSerializer 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_6717.html" target="_blank" rel="noopener">DataContractJsonSerializer 日期處理</a></p>
+<hr>
+<p>另外還有一個好用的第三方套件JSON.Net<br><a href="http://blog.developer.idv.tw/2013/06/jsonnet_27.html" target="_blank" rel="noopener">Json.Net 介紹</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet.html" target="_blank" rel="noopener">Json.Net 用法</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet-ienumerable.html" target="_blank" rel="noopener">Json.Net 轉換 IEnumerable 介面</a><br><a href="http://blog.developer.idv.tw/2013/06/jsonnet-idictionary.html" target="_blank" rel="noopener">Json.Net 轉換 IDictionary 介面</a><br><a href="http://blog.developer.idv.tw/2013/07/jsonnet.html" target="_blank" rel="noopener">Json.Net 日期處理</a></p>
+<hr>
+<p>另外介紹幾個好用的工具<br><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a><br>一個用來方便格式化JSON字串的網站 </p>
+<p><a href="http://json2csharp.com/" target="_blank" rel="noopener">JSON2CSharp</a><br>一個用來產生C#對應類別的網站</p>
+<p><a href="http://jsonclassgenerator.codeplex.com/" target="_blank" rel="noopener">JSON C# Class Generator</a><br>一個用來產生C#對應類別的程式</p>
+<p><a href="http://jsonlint.com/" target="_blank" rel="noopener">JSONLint - The JSON Validator</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/18/JavaScriptSerializer-介紹/">JavaScriptSerializer 介紹</a></h1>
+  
+
+      
+        <time datetime="2013-06-18T10:39:00.000Z">2013-06-18 18:39:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>JavaScriptSerializer是.NET 3.5中新增的類別<br>該類別在System.Web.Script.Serialization命名空間下面<br>需引用System.Web.Extensions.dll</p>
+<p>方法</p>
+<table border="1" cellpadding="3" cellspacing="1">                <tbody><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.serialize%28v=vs.90%29.aspx" target="_blank" rel="noopener">Serialize</a></td>                        <td>將物件序列化成JSON字串</td>                    </tr><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/bb355316%28v=vs.90%29.aspx" target="_blank" rel="noopener">Deserialize&lt;T&gt;</a></td>                        <td>將JSON字串反序列化成指定的物件</td>                    </tr></tbody>            </table>
+
+<p>屬性</p>
+<p><table border="1" cellpadding="3" cellspacing="1">                <tbody><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.maxjsonlength%28v=vs.90%29.aspx" target="_blank" rel="noopener">MaxJsonLength</a></td>                        <td>取得或設定可接受的字串最大長度，預設為4MB</td>                    </tr><tr>                        <td><a href="http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.recursionlimit%28v=vs.90%29.aspx" target="_blank" rel="noopener">RecursionLimit</a></td>                        <td>取得或設定要處理物件層級數目的限制</td>                    </tr></tbody>            </table><br>參考資料</p>
+<p><a href="http://msdn.microsoft.com/zh-tw/library/bb359469%28v=vs.90%29.aspx" target="_blank" rel="noopener">System.Web.Script.Serialization 命名空間</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/06/18/JavaScriptSerializer-轉換-IEnumerable-介面/">JavaScriptSerializer 轉換 IEnumerable 介面</a></h1>
+  
+
+      
+        <time datetime="2013-06-18T10:39:00.000Z">2013-06-18 18:39:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>一樣開新Console專案做示範，並加入System.Web.Extensions.dll參考<br>完整的程式碼如下</div><div><pre class="brush:csharp">using System;<br>using System.Collections.Generic;<br>using System.Web.Script.Serialization;<br><br>namespace JavaScriptSerializerDemo<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            // 淮備要序列化的資料<br>            List&lt;JsonObject&gt; data = new List&lt;JsonObject&gt;()<br>            {<br>                new JsonObject()<br>                {<br>                    ID = 1,<br>                    Name = “JsonObject1”,<br>                    State = EnumState.a,<br>                    Date = DateTime.Today.AddDays(-1),<br>                    GUID = Guid.NewGuid()<br>                },<br>                new JsonObject()<br>                {<br>                    ID = 2,<br>                    Name = “JsonObject2”,<br>                    State = EnumState.b,<br>                    Date = DateTime.Today,<br>                    GUID = Guid.NewGuid()<br>                },<br>                new JsonObject()<br>                {<br>                    ID = 3,<br>                    Name = “JsonObject3”,<br>                    State = EnumState.c,<br>                    Date = DateTime.Today.AddDays(1),<br>                    GUID = Guid.NewGuid()<br>                },<br>            };<br><br>            // 序列化<br>            JavaScriptSerializer jss = new JavaScriptSerializer();<br>            string jsonString = jss.Serialize(data);<br>            Console.WriteLine(“序列化的JSON字串:{0}\r\n”, jsonString);<br><br>            // 反序列化<br>            List&lt;JsonObject&gt; obj = jss.Deserialize&lt;List&lt;JsonObject&gt;&gt;(jsonString);<br>            foreach (var item in obj)<br>            {<br>                Console.WriteLine(<br>                    “反序列化後的物件, ID:{0}, Name:{1}, State:{2}, Date:{3}, GUID:{4}”,<br>                    item.ID,<br>                    item.Name,<br>                    item.State,<br>                    item.Date,<br>                    item.GUID);<br>            }<br><br>            Console.ReadLine();<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 要序列化的資料類別<br>        /// &lt;/summary&gt;<br>        private class JsonObject<br>        {<br>            public int ID { get; set; }<br>            public string Name { get; set; }<br>            public EnumState State { get; set; }<br>            public DateTime Date { get; set; }<br>            public Guid GUID { get; set; }<br>        }<br><br>        /// &lt;summary&gt;<br>        /// 狀態列舉<br>        /// &lt;/summary&gt;<br>        public enum EnumState<br>        {<br>            a = 0,<br>            b = 1,<br>            c = 2<br>        }<br>    }<br>}<br></pre></div><div><br>序列化後的結果</div><div><pre class="brush:javascript">[<br>  {<br>    “ID”: 1,<br>    “Name”: “JsonObject1”,<br>    “State”: 0,<br>    “Date”: “\/Date(13713984 00000)\/“,<br>    “GUID”: “97eff121-b03d-4c76-9d18-1a82660f3f40”<br>  },<br>  {<br>    “ID”: 2,<br>    “Name”: “JsonObject2”,<br>    “State”: 1,<br>    “Date”: “\/Date(1371484800000)\/“,<br>    “GUID”: “2fa2f230-d721-4c21-9630 -a90657bb4aac”<br>  },<br>  {<br>    “ID”: 3,<br>    “Name”: “JsonObject3”,<br>    “State”: 2,<br>    “Date”: “\/Date(1371571200 000)\/“,<br>    “GUID”: “e8a8462f-7c59-4f34-a895-484f2be13bd7”<br>  }<br>]</pre></div><div>執行的結果 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-LNUNck-sUA4/UcA3p_YRqvI/AAAAAAAAAuQ/3cU_FdYALX8/s1600/03.Result02.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-LNUNck-sUA4/UcA3p_YRqvI/AAAAAAAAAuQ/3cU_FdYALX8/s1600/03.Result02.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2013/01/11/StyleCop-常見問題與修正方法/">StyleCop 常見問題與修正方法</a></h1>
+  
+
+      
+        <time datetime="2013-01-11T08:55:00.000Z">2013-01-11 16:55:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-單一頁面檢查方法"><a href="#1-單一頁面檢查方法" class="headerlink" title="1. 單一頁面檢查方法"></a>1. 單一頁面檢查方法</h2><p>在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="2-沒有檔頭宣告"><a href="#2-沒有檔頭宣告" class="headerlink" title="2. 沒有檔頭宣告"></a>2. 沒有檔頭宣告</h2><h3 id="錯誤訊息"><a href="#錯誤訊息" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</p>
+<h3 id="修正方法"><a href="#修正方法" class="headerlink" title="修正方法"></a>修正方法</h3><p>程式碼第一行加上檔頭宣告，格式如下</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>如果是自動產生的檔案，可用auto-generated標籤略過<br>// &lt;auto-generated /&gt;<br><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="3-縮排格式不正確"><a href="#3-縮排格式不正確" class="headerlink" title="3. 縮排格式不正確"></a>3. 縮排格式不正確</h2><p>錯誤訊息<br>Tabs are not allowed. Use spaces instead. </p>
+<h3 id="修正方法-1"><a href="#修正方法-1" class="headerlink" title="修正方法"></a>修正方法</h3><p>工具–&gt;選項–&gt;文字編輯器–&gt;所有語言–&gt;定位點<br>定位點和縮排大小都設定成4，並選擇插入空格的方式<br>開啟原始碼，使用CTRL+k, d重整程式碼即可</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="4-Using指示詞位置"><a href="#4-Using指示詞位置" class="headerlink" title="4. Using指示詞位置"></a>4. Using指示詞位置</h2><p>錯誤訊息<br>All using directives must be placed inside of the namespace.</p>
+<h3 id="修正方法-2"><a href="#修正方法-2" class="headerlink" title="修正方法"></a>修正方法</h3><p>把所有using指示詞剪下，放到namespace下面</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-bCvpbNrMUgs/UO_OgWrg87I/AAAAAAAAArU/FLhlVA8UfbA/s1600/06.using.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-bCvpbNrMUgs/UO_OgWrg87I/AAAAAAAAArU/FLhlVA8UfbA/s1600/06.using.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="5-Using-指示詞順序"><a href="#5-Using-指示詞順序" class="headerlink" title="5. Using 指示詞順序"></a>5. Using 指示詞順序</h2><h3 id="錯誤訊息-1"><a href="#錯誤訊息-1" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>Using directives must be sorted alphabetically by the namespaces.</p>
+<h3 id="修正方法-3"><a href="#修正方法-3" class="headerlink" title="修正方法"></a>修正方法</h3><p>命名空間按照字母排序<br>系統內建的命名空間先排，再排自訂的命名空間</p>
+<h2 id="6-明確指定修飾詞"><a href="#6-明確指定修飾詞" class="headerlink" title="6. 明確指定修飾詞"></a>6. 明確指定修飾詞</h2><p>錯誤訊息<br>The class must have an access modifier.</p>
+<h3 id="修正方法-4"><a href="#修正方法-4" class="headerlink" title="修正方法"></a>修正方法</h3><p>加上明確的修飾詞，public、private、protected、internal、protected internal</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-vG6tSwtR4zM/UO_Pd8mz57I/AAAAAAAAAro/gDoCLYX826Y/s1600/08.Modify.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-vG6tSwtR4zM/UO_Pd8mz57I/AAAAAAAAAro/gDoCLYX826Y/s1600/08.Modify.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="7-沒有文件註解"><a href="#7-沒有文件註解" class="headerlink" title="7. 沒有文件註解"></a>7. 沒有文件註解</h2><h3 id="錯誤訊息-2"><a href="#錯誤訊息-2" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The class must have a documentation header.<br>The method must have a documentation header.<br>The property must have a documentation header.</p>
+<h3 id="修正方法-5"><a href="#修正方法-5" class="headerlink" title="修正方法"></a>修正方法</h3><p>加上XML文件註解</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-AsbybJiDFKo/UO_PjIJgd_I/AAAAAAAAArw/3wSBqeQq1Kw/s1600/09.Comment.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-AsbybJiDFKo/UO_PjIJgd_I/AAAAAAAAArw/3wSBqeQq1Kw/s1600/09.Comment.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="8-中文註解問題"><a href="#8-中文註解問題" class="headerlink" title="8. 中文註解問題"></a>8. 中文註解問題</h2><h3 id="錯誤訊息-3"><a href="#錯誤訊息-3" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The documentation text within the summary tag contains incorrectly spelled words: 中文字 &nbsp; </p>
+<h3 id="修正方法-6"><a href="#修正方法-6" class="headerlink" title="修正方法"></a>修正方法</h3><p>在專案上按右鍵，選擇StyleCop Settings</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-d8tv6rESvGw/UO_JN4dMbaI/AAAAAAAAAqQ/y-pLFVYwL2Y/s1600/02.Setting.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-d8tv6rESvGw/UO_JN4dMbaI/AAAAAAAAAqQ/y-pLFVYwL2Y/s1600/02.Setting.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>在Options上，預設Culture是en-US，隨便選擇其他的語系後按確定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-fc-JQlB0g6E/UO_JQT7A2YI/AAAAAAAAAqY/B-jxs-_870Q/s1600/03.Option.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-fc-JQlB0g6E/UO_JQT7A2YI/AAAAAAAAAqY/B-jxs-_870Q/s1600/03.Option.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>在方案總管上按顯示所有檔案，會看到產生出Settings.StyleCop的檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-CPE1oznMNvI/UO_JTFTdRkI/AAAAAAAAAqg/fBOsEO7X4KM/s1600/04.SolutionExplorer.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-CPE1oznMNvI/UO_JTFTdRkI/AAAAAAAAAqg/fBOsEO7X4KM/s1600/04.SolutionExplorer.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>打開後把Culture修改成zh-TW就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-aN0pltuovsA/UO_JVUTotOI/AAAAAAAAAqo/We5R_b-0Md0/s1600/05.Culture.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-aN0pltuovsA/UO_JVUTotOI/AAAAAAAAAqo/We5R_b-0Md0/s1600/05.Culture.png" alt></a></div><br><div class="separator" style="clear: both; text-align: left;"></div>
+
+<h2 id="9-文件註解內容中沒有空格"><a href="#9-文件註解內容中沒有空格" class="headerlink" title="9. 文件註解內容中沒有空格"></a>9. 文件註解內容中沒有空格</h2><h3 id="錯誤訊息-4"><a href="#錯誤訊息-4" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The documentation text within the summary tag does not contain any whitespace between words, indicating that it most likely does not follow a proper grammatical structure required for documentation text.</p>
+<h3 id="修正方法-7"><a href="#修正方法-7" class="headerlink" title="修正方法"></a>修正方法</h3><p>注解文字中加入空格</p>
+<h2 id="10-一般屬性註解格式"><a href="#10-一般屬性註解格式" class="headerlink" title="10. 一般屬性註解格式"></a>10. 一般屬性註解格式</h2><h3 id="錯誤訊息-5"><a href="#錯誤訊息-5" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The property’s documentation summary text must begin with: Gets or sets</p>
+<h3 id="修正方法-8"><a href="#修正方法-8" class="headerlink" title="修正方法"></a>修正方法</h3><p>註解文字開頭使用 Gets or sets</p>
+<pre class="brush:csharp">/// &lt;summary&gt;
+/// Gets or sets MyPropData
+/// &lt;/summary&gt;
+public int MyPropData { get; set; }
+</pre>
+
+<h2 id="11-布林屬性註解格式"><a href="#11-布林屬性註解格式" class="headerlink" title="11. 布林屬性註解格式"></a>11. 布林屬性註解格式</h2><h3 id="錯誤訊息-6"><a href="#錯誤訊息-6" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The property’s documentation summary text must begin with: Gets or sets a value indicating whether</p>
+<h3 id="修正方法-9"><a href="#修正方法-9" class="headerlink" title="修正方法"></a>修正方法</h3><p>註解文字開頭使用 Gets or sets a value indicating whether</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Gets or sets a value indicating whether MyBooleanData
+/// &lt;/summary&gt;
+public bool MyBooleanData { get; set; }
+</pre>
+
+<h2 id="12-建構式註解格式"><a href="#12-建構式註解格式" class="headerlink" title="12. 建構式註解格式"></a>12. 建構式註解格式</h2><h3 id="錯誤訊息-7"><a href="#錯誤訊息-7" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The documentation text within the constructor’s summary tag must begin with the text: Initializes a new instance of the &lt;see cref=”類別名稱” /&gt; class.</p>
+<h3 id="修正方法-10"><a href="#修正方法-10" class="headerlink" title="修正方法"></a>修正方法</h3><p>註解文字開頭使用Initializes a new instance of the &lt;see cref=”類別名稱” /&gt; class.</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="Program" /&gt; class.
+/// &lt;/summary&gt;
+public Program()
+{
+}
+</pre>
+
+<h2 id="13-程式碼元素順序"><a href="#13-程式碼元素順序" class="headerlink" title="13. 程式碼元素順序"></a>13. 程式碼元素順序</h2><h3 id="錯誤訊息-8"><a href="#錯誤訊息-8" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>All methods must be placed after all properties.<br>All private properties must be placed after all public properties.</p>
+<h3 id="修正方法-11"><a href="#修正方法-11" class="headerlink" title="修正方法"></a>修正方法</h3><p>程式碼撰寫順序: public -&gt; internal -&gt; protected internal -&gt; protected -&gt; private<br>程式碼元素撰寫順序: Fields -&gt; Constructor -&gt; Event-&gt; Property -&gt; Method</p>
+<h2 id="14-函數多行參數格式"><a href="#14-函數多行參數格式" class="headerlink" title="14. 函數多行參數格式"></a>14. 函數多行參數格式</h2><h3 id="錯誤訊息-9"><a href="#錯誤訊息-9" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method. &nbsp; </p>
+<h3 id="修正方法-12"><a href="#修正方法-12" class="headerlink" title="修正方法"></a>修正方法</h3><p>每個參數獨立一行</p>
+<pre class="brush:xml">Console.WriteLine(
+    "arg1:{0}, arg2:{1}, arg3:{2}",
+    args[0], 
+    args[1], 
+    args[2]);
+</pre>
+
+<h2 id="15-呼叫同類別的成員需加入this-前綴詞"><a href="#15-呼叫同類別的成員需加入this-前綴詞" class="headerlink" title="15. 呼叫同類別的成員需加入this.前綴詞"></a>15. 呼叫同類別的成員需加入this.前綴詞</h2><h3 id="錯誤訊息-10"><a href="#錯誤訊息-10" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><p>The call to MyData must begin with the ‘this.’ prefix to indicate that the item is a member of the class.</p>
+<h3 id="修正方法-13"><a href="#修正方法-13" class="headerlink" title="修正方法"></a>修正方法</h3><p>明確使用this前綴詞來呼叫同類別的屬性、方法</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="Program" /&gt; class.
+/// &lt;/summary&gt;
+public Program()
+{
+    this.MyPropData = 123;
+}
+
+/// &lt;summary&gt;
+/// Gets or sets MyPropData
+/// &lt;/summary&gt;
+public int MyPropData { get; set; }
+</pre>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/31/NLog-RichTextBox-Target/">NLog RichTextBox Target</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T18:06:00.000Z">2012-12-31 02:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-RichTextBox-Target"><a href="#NLog-RichTextBox-Target" class="headerlink" title="NLog RichTextBox Target"></a>NLog RichTextBox Target</h2><div>將Log訊息寫到RichTextBox控制項</div><div>如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger</div><div>例如在表單建構式之後，或是在Form_Load事件之後</div><div>不然還是會獨立建出一個RichTextBox出來</div><div><br></div><div><pre class="brush:csharp">static Logger log;<br><br>private void Form1_Load(object sender, EventArgs e)<br>{<br>    // 需在Form_Load才取得Logger<br>    log = LogManager.GetCurrentClassLogger();<br>}<br></pre></div>
+
+<h2 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h2><div>完整資料請參考<a href="https://github.com/nlog/nlog/wiki/RichTextBox-target" target="_blank" rel="noopener">官網的RichTextBox Target文件</a></div><div><br><br><em>   name - Target的名稱
+</em>   layout - 輸出的格式<br><em>   autoScroll - 是否自動捲動最下方
+</em>   maxLines - 最大行數，超過會往上移動，移除最上方記錄<br><em>   controlName - 控制項名稱
+</em>   formName - 表單名稱<br><em>   useDefaultRowColoringRules - Log文字是否使用預設的顏色<div>非同步，自動捲動，最大20行，使用預設色系的設定檔</div></em></div><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets async=”true”&gt;<br>        &lt;target xsi:type=”RichTextBox” name=”f”<br>                autoScroll=”true”<br>                maxLines=”20”<br>                formName=”Form1”<br>                controlName=”richTextBox1”<br>                useDefaultRowColoringRules=”true”<br>                layout=”${longdate} ${uppercase:${level}} ${message}”  /&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”“ minlevel=”Trace” writeTo=”f” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div><div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/31/NLog-Debugger-Target/">NLog Debugger Target</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T17:13:00.000Z">2012-12-31 01:13:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Debugger-Target"><a href="#NLog-Debugger-Target" class="headerlink" title="NLog Debugger Target"></a>NLog Debugger Target</h2><div>將Log輸出到Vistual Studio的輸出視窗，Web應用程式的開發很有幫助</div><div><br></div>
+
+<h2 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h2><div>基本上和其他Target一樣，沒有特別需要介紹的屬性</div><div>完整資料還是參考<a href="https://github.com/nlog/nlog/wiki/Debugger-target" target="_blank" rel="noopener">官網的Debugger Target文件</a></div><div><br></div><div><br><br><em>   name - Target的名稱
+</em>   header - 頭部格式<br><em>   layout - 輸出格式
+</em>   footer - 尾部格式<div>屬性很簡單，設定檔也簡單</div></div><div><pre class="brush:csharp">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Debugger” name=”f”<br>            layout=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”f” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/31/NLog-Mail-Target/">NLog Mail Target</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T17:07:00.000Z">2012-12-31 01:07:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-Mail-Target"><a href="#NLog-Mail-Target" class="headerlink" title="NLog Mail Target"></a>NLog Mail Target</h2><div>透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員</div>
+
+<h2 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h2><div>完整的資料請參考<a href="https://github.com/nlog/nlog/wiki/Mail-target" target="_blank" rel="noopener">官網Mail Target文件</a></div><div><br></div><div><br><br><em>   html - 是否為HTML格式的郵件，預設為false
+</em>   encoding - 郵件編碼，預設為UTF8<br><em>   subject - 郵件主題
+</em>   to - 收件者<br><em>   bcc - 密件副本
+</em>   cc - 副本<br><em>   from - 寄件者
+</em>   body - 郵件內容，預設為${message}<br><em>   smtpUserName - 郵件主機寄信帳號
+</em>   enableSsl - 是否啟用SSL通訊協定<br><em>   smtpPassword - 郵件主密寄信密碼
+</em>   smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None<br><em>   smtpServer - &nbsp;郵件主機位址
+</em>   smtpPort - 郵件主機埠號，預設為25</div><div><br></div><div>一個簡單的範例，發生Error層級以上的Log，就寄信給管理員</div><div><pre class="brush:csharp">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Mail” name=”MailAlarm”<br>                smtpServer=”郵件主機位置”<br>                smtpPort=”25”<br>                subject=”${machineName}於${longdate}發生問題”<br>                from=”寄信人Mail”<br>                to=”收信人Mail”<br>                body=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Error” writeTo=”MailAlarm” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2012/12/31/NLog-File-Target/">NLog File Target</a></h1>
+  
+
+      
+        <time datetime="2012-12-30T16:37:00.000Z">2012-12-31 00:37:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog-File-Target"><a href="#NLog-File-Target" class="headerlink" title="NLog File Target"></a>NLog File Target</h2><p>輸出到檔案是預設的設定，可以是一個或是多個檔案</p>
+<h2 id="參數"><a href="#參數" class="headerlink" title="參數"></a>參數</h2><div>File Target可以使用的參數很多，除了特殊需求之外，大部份採用預設值就行了</div><div>詳細說明請參考<a href="https://github.com/nlog/nlog/wiki/File-target" target="_blank" rel="noopener">官網File Target文件</a></div><div><br></div><div>以下為常用的參數</div><div><br><br><em>   name - target的名稱
+</em>   layout - 輸出格式，預設為${longdate}|${level:uppercase=true}|${logger}|${message}<br><em>   header - 頭部格式
+</em>   footer - 尾部格式<br><em>   encoding - 檔案編碼，如果有中文字的話，可以指定成<span style="color: orange;">utf-8</span>
+</em>   <span style="color: orange;">fileName - 檔案名稱，配合Layout Renderers組合檔名</span></div><div><br><br>## 常用範例<br>非同步，每小時寫檔，UTF8格式</div><div><pre class="brush:csharp">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”AsyncWrapper” name=”f” queueLimit=”5000” overflowAction=”Discard”&gt;<br>            &lt;target xsi:type=”File” fileName=”${basedir}/logs/${date:format=yyyy-MM-dd-HH}.log”<br>                layout=”${longdate} ${uppercase:${level}} ${message}” encoding=”utf-8” /&gt;<br>        &lt;/target&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”<em>“ minlevel=”Trace” writeTo=”f” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;</em></pre></div><div><br>CSV格式<br><div><pre class="brush:csharp">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;!–<br>  See <a href="http://nlog-project.org/wiki/Configuration_file" target="_blank" rel="noopener">http://nlog-project.org/wiki/Configuration_file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”AsyncWrapper” name=”f” queueLimit=”5000” overflowAction=”Discard”&gt;<br>            &lt;target xsi:type=”File” fileName=”${basedir}/logs/${date:format=yyyy-MM-dd-HH}.log”<br>                layout=”${longdate} ${uppercase:${level}} ${message}” encoding=”utf-8” /&gt;<br>        &lt;/target&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”“ minlevel=”Trace” writeTo=”f” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/21/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/23/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

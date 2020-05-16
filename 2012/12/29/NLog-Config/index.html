@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>NLog Config › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="NLog Config">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">NLog Config</h1>
+  
+
+      
+        <time datetime="2012-12-29T08:27:00.000Z">2012-12-29 16:27:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="NLog設定檔位置"><a href="#NLog設定檔位置" class="headerlink" title="NLog設定檔位置"></a>NLog設定檔位置</h2><p>NLog的設定檔有幾個位置，參考<a href="https://github.com/nlog/nlog/wiki/Configuration-file" target="_blank" rel="noopener">官網文件</a>如下</p>
+<ol>
+<li>應用程式的標準設定檔(app.config或是web.config)<br><span style="color: orange;">執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動</span></li>
+<li>應用程式所在目錄的app.exe.nlog<br><span style="color: orange;">每個專案都要手動指定檔名比較麻煩點</span></li>
+<li>應用程式所在目錄的NLog.config<br><span style="color: red;">建議使用的設定檔方式</span></li>
+<li>Nlog.dll所在目錄的NLog.dll.config<br><span style="color: orange;">和第三種方式差不多，還是選擇比較常見的第三種方式吧</span></li>
+<li>環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案<br><span style="color: orange;">設在這種神秘的地方，應該會被扁吧</span><div>在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式</div></li>
+</ol>
+<hr>
+<h2 id="NLog設定檔元素"><a href="#NLog設定檔元素" class="headerlink" title="NLog設定檔元素"></a>NLog設定檔元素</h2><div>Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目</div><div><br><br>1.  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定<br>2.  rules - 定義Log的路由規則，Log的過濾條件也在這裡設定<br>3.  extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組<br>4.  include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用<br>5.  variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料</div><div><br><br><em> </em> *<br><br>## NLog設定檔自動重讀<br>NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效<br>如果要自動重讀的話，需要設定一個屬性autoReload=”true”才能生效<br><br><pre class="brush:xml">&lt;nlog autoreload=”true”&gt;<br>   …<br>&lt;/nlog&gt;<br></pre></div>
+
+<hr>
+<h2 id="NLog設定檔疑難排解"><a href="#NLog設定檔疑難排解" class="headerlink" title="NLog設定檔疑難排解"></a>NLog設定檔疑難排解</h2><p><div>有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題</div><div>例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限</div><div>這時後可以利用NLog內部的Log來查詢原因</div><div></div></p>
+<ol>
+<li>throwExceptions -&nbsp;設定是否要引發錯誤<br><span style="color: orange;">NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false</span></li>
+<li>internalLogFile - 設定內部錯誤要輸出的文件位置<br><span style="color: orange;">直接給一個檔名就好，會輸出在執行檔所在目錄下面</span></li>
+<li>internalLogLevel - 設定內部錯誤要輸出的層級<br><span style="color: orange;">基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息</span></li>
+<li>internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗<br><span style="color: orange;">如果不想寫檔，又有Console可以用的話，那就設定為true吧</span></li>
+<li>internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流<br><span style="color: orange;">為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr</span><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png" alt></a></div><div><br></div><div class="separator" style="clear: both; text-align: left;">上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog.html" target="_blank" rel="noopener">NLog 初體驗</a></div>下一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-targets.html" target="_blank" rel="noopener">NLog Targets</a></li>
+</ol>
+
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/NLog/">NLog</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

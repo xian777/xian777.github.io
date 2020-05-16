@@ -1,0 +1,529 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 11 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/20/Entity-Framework-Code-First-預設對應規則/">Entity Framework Code First 預設對應規則</a></h1>
+  
+
+      
+        <time datetime="2014-10-20T07:43:00.000Z">2014-10-20 15:43:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>資料庫<br>預設採用SQLEXPRESS，如果沒有SQLEXPRESS執行個體，會嘗試Localdb<br>如果有和DbContext同名的連線字串，就會直接使用<br>也可透過覆寫建構式的時後，傳入指定的連線字串名稱<br>或是透過DbConnection，在執行階段傳入連線物件</p>
+<p>Table<br>資料表為類別名稱的複數形式，而且schema都為dbo<br>可以透過System.ComponentModel.DataAnnotations.Schema.Table<br>或是Fluent API的Entity&lt;T&gt;.ToTable來指定資料表的名稱<br>也可以覆寫OnModelCreating，移除複數資料表的約定<br>modelBuilder.Conventions.Remove&lt;PluralizingTableNameConvention&gt;();</p>
+<p>主索引<br>預設為類別名稱加上Id結尾的屬性，如果資料形態是int，還會加上自動編號<br>可以透過System.ComponentModel.DataAnnotations.Key<br>或是Fluent API的Entity&lt;T&gt;.HasKey來指定<br>如果是複合索引，Attribute方式需再加上Column來指定欄位的順序<br>Fluent API則是傳入一個匿名型別</p>
+<p>外部索引<br>如果類別之間有一對多的關系，會自動生成Foreign Key<br>欄位名稱是導覽屬性加上底線再加上對應主索引的欄位名稱<br>可以透過System.ComponentModel.DataAnnotations.Schema.ForeignKey來指定<br>或是透過Fluent API的Entity&lt;T&gt;.Hasxxx().Withxxx來指定<br>xxx可以是Optional(0或多個)、Required(1或多個)、Many(多個)</p>
+<p>資料型態<br>實值型別會是not null<br>參考型別會是null<br>nullable型別會是null<br>可以透過System.ComponentModel.DataAnnotations.Required來設定不可空值<br>或是透過Fluent API的Entity&lt;T&gt;().IsRequired()來指定不可空值，IsOptional指定可以空值</p>
+<p>也可以透過System.ComponentModel.DataAnnotations.Schema.Column來明確指定對應的格式<br>或是透過Fluent API的Entity&lt;T&gt;().Property().HasColumnType來指定對應的格式<br>或是IsUnicode來指定是否為Unicode</p>
+<div><table border="1" style="width: 100%px;"><tbody><tr><td width=":50%">C#</td><td width=":50%">SQL Server</td><td>nullable</td></tr><tr><td>byte</td><td>tinyint</td><td>NOT NULL</td></tr><tr><td>short</td><td>smallint</td><td>NOT NULL</td></tr><tr><td>int</td><td>int</td><td>NOT NULL</td></tr><tr><td>long</td><td>bigint</td><td>NOT NULL</td></tr><tr><td>float</td><td>real</td><td>NOT NULL</td></tr><tr><td>double</td><td>float</td><td>NOT NULL</td></tr><tr><td>decimal</td><td>decimal(18,2)</td><td>NOT NULL</td></tr><tr><td>string</td><td>nvarchar(max)</td><td>NULL</td></tr><tr><td>byte[]</td><td>varbinary(max)</td><td>NOT NULL</td></tr><tr><td>bool</td><td>bit</td><td>NOT NULL</td></tr><tr><td>datetime</td><td>datetime</td><td>NOT NULL</td></tr></tbody></table></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/20/Entity-Framework-筆記/">Entity Framework 筆記</a></h1>
+  
+
+      
+        <time datetime="2014-10-20T02:53:00.000Z">2014-10-20 10:53:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>[Code First]</p>
+<p>1.&nbsp;<a href="http://blog.developer.idv.tw/2014/10/entity-framework-code-first.html" target="_blank" rel="noopener">Entity Framework Code First 預設對應規則</a></p>
+<p>2.&nbsp;<a href="http://blog.developer.idv.tw/2014/10/entity-framework-code-first_27.html" target="_blank" rel="noopener">Entity Framework Code First 對應規則設定</a></p>
+<p>3.&nbsp;<a href="http://blog.developer.idv.tw/2014/10/entity-framework-code-first-fluent-api.html" target="_blank" rel="noopener">Entity Framework Code First 組織Fluent API 設定</a></p>
+<p>4.&nbsp;<a href="http://blog.developer.idv.tw/2014/10/entity-framework-code-first_31.html" target="_blank" rel="noopener">Entity Framework Code First 資料庫初始化設定</a></p>
+<p>5.&nbsp;<a href="http://blog.developer.idv.tw/2014/11/entity-framework-code-first.html" target="_blank" rel="noopener">Entity Framework Code First 一對一關聯設定</a></p>
+<p>6.&nbsp;<a href="http://blog.developer.idv.tw/2014/11/entity-framework-code-first_25.html" target="_blank" rel="noopener">Entity Framework Code First 一對多關聯設定</a></p>
+<p>7.&nbsp;<a href="http://blog.developer.idv.tw/2014/11/entity-framework-code-first_95.html" target="_blank" rel="noopener">Entity Framework Code First 多對多關聯設定</a></p>
+<p>8.&nbsp;<a href="http://blog.developer.idv.tw/2014/11/entity-framework-code-first-complex-type.html" target="_blank" rel="noopener">Entity Framework Code First Complex Type</a></p>
+<p>9.&nbsp;<a href="http://blog.developer.idv.tw/2014/11/entity-framework-code-first_26.html" target="_blank" rel="noopener">Entity Framework Code First 繼承對應設定</a></p>
+<p>[DbContext]</p>
+<p>1. <a href="http://blog.developer.idv.tw/2014/12/entity-framework-dbcontext.html" target="_blank" rel="noopener">Entity Framework DbContext 新增、修改、刪除、查詢</a></p>
+<p>2. <a href="http://blog.developer.idv.tw/2014/12/entity-framework-dbcontext_17.html" target="_blank" rel="noopener">Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</a></p>
+<p>3. <a href="http://blog.developer.idv.tw/2014/12/entity-framework-dbcontext-change.html" target="_blank" rel="noopener">Entity Framework DbContext Change Tracker API</a></p>
+<p>4. <a href="http://blog.developer.idv.tw/2014/12/entity-framework-dbcontext-validation.html" target="_blank" rel="noopener">Entity Framework DbContext Validation API</a></p>
+<p>5. <a href="http://blog.developer.idv.tw/2014/12/entity-framework-dbcontext_18.html" target="_blank" rel="noopener">Entity Framework DbContext SqlQuery、ExecuteSqlCommand</a></p>
+<p>參考書籍</p>
+<p><a href="http://shop.oreilly.com/product/0636920022220.do" target="_blank" rel="noopener">Programming Entity Framework: Code First</a><br>ISBN:978-1-4493-1294-7</p>
+<p><a href="http://shop.oreilly.com/product/0636920022237.do" target="_blank" rel="noopener">Programming Entity Framework: DbContext</a><br>ISBN:978-1-4493-1296-1</p>
+<p><a href="http://shop.oreilly.com/product/9780596807252.do" target="_blank" rel="noopener">Programming Entity Framework, 2nd Edition</a><br>ISBN:978-0-596-80726-9</p>
+<p>參考資料</p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/01/ladda-bootstrap-套件/">ladda-bootstrap 套件</a></h1>
+  
+
+      
+        <time datetime="2014-10-01T06:33:00.000Z">2014-10-01 14:33:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件<br><a href="http://msurguy.github.io/ladda-bootstrap/" target="_blank" rel="noopener">官網</a>上有很詳細的使用範例<br>透過NuGet就可以安裝</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div><br>可以看到套件相依於spin.js<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png" alt></a></div>
+
+<p>使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別</p>
+<div><pre class="brush:html">&lt;button id=”btn1” class=”btn btn-primary ladda-button” data-style=”expand-left”&gt;<br>    &lt;span class=”ladda-label”&gt;button&lt;/span&gt;<br>&lt;/button&gt;<br></pre></div><br>另外透過data-style來指定動畫效果<br>data-style=”expand-left”<br>data-style=”expand-right”<br>data-style=”expand-up”<br>data-style=”expand-down”<br>data-style=”zoom-in”<br>data-style=”zoom-out”<br>data-style=”slide-left”<br>data-style=”slide-right”<br>data-style=”slide-up”<br>data-style=”slide-down”<br>data-style=”contract”<br><br>最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件<br>呼叫物件的start來開始動畫<br>呼叫物件的stop來停止動畫<br><div><pre class="brush:javascript">$(function () {<br>    $(“#btn1”).click(function () {<br>        var obj = Ladda.create(this);<br>        obj.start();<br>        setTimeout(function () {<br>            obj.stop();<br>        }, 1000);<br>    });<br>});<br></pre></div><br>spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好<br><br><div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/1fda8zcj/embedded/result,html,js" width="100%"></iframe></div>
+
+<p>相關資料<br><a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html" target="_blank" rel="noopener">Bootstrap button loading text</a><br><a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2014/10/spinjs.html" target="_blank" rel="noopener">spin.js 套件</a><br><a href="http://blog.developer.idv.tw/2014/10/spinjs.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/spinjs.html</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/01/spin-js-套件/">spin.js 套件</a></h1>
+  
+
+      
+        <time datetime="2014-10-01T06:05:00.000Z">2014-10-01 14:05:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>spin.js是一個簡單使用的Loading的動畫，<a href="http://fgnass.github.io/spin.js/" target="_blank" rel="noopener">官網</a>上有很清楚的使用範例<br>首先透過NuGet安裝spin.js套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div><br>網頁中放一個div來轉圈圈，再用一個按鈕來觸發事件<br><div><pre class="brush:html">&lt;div id=”div1”&gt;&lt;/div&gt;<br>&lt;input id=”btn1” type=”button” value=”click” /&gt;<br></pre></div><br>spin.js本身是無相依性的，這邊用JQuery只是用來綁定事件<br>呼叫Spinner物件的spin函式來啟用動畫，呼叫stop來停止動畫<br><div><pre class="brush:javascript">$(function () {<br>    $(“#btn1”).click(function () {<br>        spinner = new Spinner().spin($(“#div1”)[0]);<br>        setTimeout(function () {<br>            spinner.stop();<br>        }, 1000);<br>    });<br>});<br></pre></div>
+
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/as0419gq/embedded/result,html,js" width="100%"></iframe></div>
+
+<p>相關資料<br><a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html" target="_blank" rel="noopener">Bootstrap button loading text</a><br><a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html" target="_blank" rel="noopener">ladda-bootstrap 套件</a><br><a href="http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/10/01/Bootstrap-button-loading-text/">Bootstrap button loading text</a></h1>
+  
+
+      
+        <time datetime="2014-10-01T05:48:00.000Z">2014-10-01 13:48:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Bootstrap的Button上，加上data-loading-text的屬性，可以很簡單地做到clickonce的功能<br>透過JQuery來設定button的狀態<br>btn.button(“loading”)會顯示data-loading-text設定的文字，並且把button設為disabled<br>btn.button(“reset”)會恢復button的狀態</p>
+<p><div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/ebweydy3/embedded/result,html,js" width="100%"></iframe></div><br>相關資料<br><a href="http://blog.developer.idv.tw/2014/10/spinjs.html" target="_blank" rel="noopener">spin.js 套件</a><br><a href="http://blog.developer.idv.tw/2014/10/spinjs.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/spinjs.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html" target="_blank" rel="noopener">ladda-bootstrap 套件</a><br><a href="http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/29/TeamCity-發行-Octopus-部署套件/">TeamCity 發行 Octopus 部署套件</a></h1>
+  
+
+      
+        <time datetime="2014-09-29T09:37:00.000Z">2014-09-29 17:37:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先到Octopus建立一個專案</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-FDLLsc4giU4/VCkiHt_yQyI/AAAAAAAABrU/gvNiJ8w3SsI/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-FDLLsc4giU4/VCkiHt_yQyI/AAAAAAAABrU/gvNiJ8w3SsI/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>選擇發行套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Z8lhnIjJIxE/VCkiHiZxCGI/AAAAAAAABrc/XF7oPi2g3Mk/s1600/02.%E6%96%B0%E5%A2%9E%E6%AD%A5%E7%BD%B2Step.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-Z8lhnIjJIxE/VCkiHiZxCGI/AAAAAAAABrc/XF7oPi2g3Mk/s1600/02.%E6%96%B0%E5%A2%9E%E6%AD%A5%E7%BD%B2Step.png" alt></a></div><br>就可以找到剛建置出來的套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Cwnpf4xmYks/VCkiHjpMRdI/AAAAAAAABrY/IL4ip64ddY8/s1600/03.%E9%81%B8%E6%93%87%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Cwnpf4xmYks/VCkiHjpMRdI/AAAAAAAABrY/IL4ip64ddY8/s1600/03.%E9%81%B8%E6%93%87%E5%A5%97%E4%BB%B6.png" alt></a></div><br>回到TeamCity新增一個部署設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-2hVQBVI5FGg/VCkiIYd3vPI/AAAAAAAABrg/30Q4soZJvkU/s1600/04.%E6%96%B0%E5%A2%9E%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-2hVQBVI5FGg/VCkiIYd3vPI/AAAAAAAABrg/30Q4soZJvkU/s1600/04.%E6%96%B0%E5%A2%9E%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88.png" alt></a></div><br>在Trigger中新增一個建置完成觸發事件，指定到對應的專案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ROmAs_Tl5qY/VCkiIi3CO_I/AAAAAAAABrk/iNQEOH-dwKY/s1600/05.%E5%BB%BA%E7%BD%AETrigger%E6%96%B0%E5%A2%9E.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-ROmAs_Tl5qY/VCkiIi3CO_I/AAAAAAAABrk/iNQEOH-dwKY/s1600/05.%E5%BB%BA%E7%BD%AETrigger%E6%96%B0%E5%A2%9E.png" alt></a></div><br>在關聯性設定中，也把這個專案指定進來<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-IaQZvFCbfA4/VCkiItMFcII/AAAAAAAABro/ppW2dwwNADI/s1600/06.%E6%96%B0%E5%A2%9E%E9%97%9C%E8%81%AF.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-IaQZvFCbfA4/VCkiItMFcII/AAAAAAAABro/ppW2dwwNADI/s1600/06.%E6%96%B0%E5%A2%9E%E9%97%9C%E8%81%AF.png" alt></a></div><br>在版號的地方才能用%dep開頭的設定，取得這個專案目前的版號<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-mJjKvkDGHnE/VCkiI-EY_EI/AAAAAAAABrs/EL5AkEmhWyg/s1600/07.%E8%A8%AD%E5%AE%9A%E7%89%88%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-mJjKvkDGHnE/VCkiI-EY_EI/AAAAAAAABrs/EL5AkEmhWyg/s1600/07.%E8%A8%AD%E5%AE%9A%E7%89%88%E8%99%9F.png" alt></a></div><br>建置步驟選擇OctopusDeploy: Create release<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-N3IP4kF2I58/VCkiJNkJraI/AAAAAAAABrw/57LbhpwOkfs/s1600/08.%E9%81%B8%E6%93%87%E5%BB%BA%E7%BD%AE%E9%83%A8%E7%BD%B2.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-N3IP4kF2I58/VCkiJNkJraI/AAAAAAAABrw/57LbhpwOkfs/s1600/08.%E9%81%B8%E6%93%87%E5%BB%BA%E7%BD%AE%E9%83%A8%E7%BD%B2.png" alt></a></div><br>輸入Octopus URL和API Key<br>再輸入專案名稱和要連立版本的版號<br>如果要順便部署環境的話，就在Deploy To中輸入環境名稱<br>再把Wait for deployment to complete勾起來就行了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-O_2Habk45Yo/VCkiJQdQ-EI/AAAAAAAABr0/11DQQ0IDrPQ/s1600/09.%E8%A8%AD%E5%AE%9A%E5%BB%BA%E7%BD%AE.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-O_2Habk45Yo/VCkiJQdQ-EI/AAAAAAAABr0/11DQQ0IDrPQ/s1600/09.%E8%A8%AD%E5%AE%9A%E5%BB%BA%E7%BD%AE.png" alt></a></div><br>建置成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-l4WiqDvB-9M/VCkiJqUgMiI/AAAAAAAABr4/tR0CZlH9JCA/s1600/10.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-l4WiqDvB-9M/VCkiJqUgMiI/AAAAAAAABr4/tR0CZlH9JCA/s1600/10.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" alt></a></div><br>自動新增一個部署版本了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-EyAfvTISWyA/VCkiJ--PefI/AAAAAAAABr8/DDiX9HZ9I-4/s1600/11.%E7%99%BC%E8%A1%8C%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-EyAfvTISWyA/VCkiJ--PefI/AAAAAAAABr8/DDiX9HZ9I-4/s1600/11.%E7%99%BC%E8%A1%8C%E6%88%90%E5%8A%9F.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/29/TeamCity-打包-Octopus-部署套件/">TeamCity 打包 Octopus 部署套件</a></h1>
+  
+
+      
+        <time datetime="2014-09-29T08:48:00.000Z">2014-09-29 16:48:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先新建一個建置設定</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-1hnowCI7ZBM/VCkcK6DJ23I/AAAAAAAABpM/tcbGZTMFF7I/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-1hnowCI7ZBM/VCkcK6DJ23I/AAAAAAAABpM/tcbGZTMFF7I/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div>
+
+<p>設定SVN路徑</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-MbNEf3JsBJo/VCkcPahMcqI/AAAAAAAABpU/zj_3Q7qtu74/s1600/02.%E8%A8%AD%E5%AE%9Asvn.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-MbNEf3JsBJo/VCkcPahMcqI/AAAAAAAABpU/zj_3Q7qtu74/s1600/02.%E8%A8%AD%E5%AE%9Asvn.png" alt></a></div>
+
+<p>SVN的細部設定</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-j2ZooaYc4jU/VCkcXM4-fRI/AAAAAAAABpc/y22W60orsug/s1600/04.%E7%B4%B0%E9%83%A8%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-j2ZooaYc4jU/VCkcXM4-fRI/AAAAAAAABpc/y22W60orsug/s1600/04.%E7%B4%B0%E9%83%A8%E8%A8%AD%E5%AE%9A.png" alt></a></div>
+
+<p>取用trunk為根目錄</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SNggN_J2dx4/VCkcbDRKANI/AAAAAAAABpk/CnjPPxJyhcs/s1600/03.%E6%8C%87%E5%AE%9Atrunk.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-SNggN_J2dx4/VCkcbDRKANI/AAAAAAAABpk/CnjPPxJyhcs/s1600/03.%E6%8C%87%E5%AE%9Atrunk.png" alt></a></div><br>設定版號<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-58uT3yqTydA/VCkcfSDV4JI/AAAAAAAABps/BATMEcHU7zM/s1600/07.%E7%89%88%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-58uT3yqTydA/VCkcfSDV4JI/AAAAAAAABps/BATMEcHU7zM/s1600/07.%E7%89%88%E8%99%9F.png" alt></a></div><br>第一個建置步驟是NuGet Installer，選擇方案檔即可<br>如果有自訂的NuGet來源，要記得輸入<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ysXS6Jmxytc/VCkckW2udOI/AAAAAAAABp0/xOI5ZJgOsjM/s1600/05.%E5%A5%97%E4%BB%B6%E9%82%84%E5%8E%9F.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ysXS6Jmxytc/VCkckW2udOI/AAAAAAAABp0/xOI5ZJgOsjM/s1600/05.%E5%A5%97%E4%BB%B6%E9%82%84%E5%8E%9F.png" alt></a></div>
+
+<p>接下來可以建置專案了，勾選方案檔即可<br>在Run OctoPack這邊也勾選起來，輸入建置版號即可</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-umKldtIhOao/VCkcpdq-FAI/AAAAAAAABp8/k7DVLFr6_Yo/s1600/06.VS%E5%BB%BA%E7%BD%AE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-umKldtIhOao/VCkcpdq-FAI/AAAAAAAABp8/k7DVLFr6_Yo/s1600/06.VS%E5%BB%BA%E7%BD%AE.png" alt></a></div><br>建置成功就會得到打包好的套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-nz0WK09gIac/VCkcuMFYPtI/AAAAAAAABqE/Sg17Ph4-jqs/s1600/08.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-nz0WK09gIac/VCkcuMFYPtI/AAAAAAAABqE/Sg17Ph4-jqs/s1600/08.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" alt></a></div><div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/29/利用OctoPack套件打包Web專案/">利用OctoPack套件打包Web專案</a></h1>
+  
+
+      
+        <time datetime="2014-09-29T08:18:00.000Z">2014-09-29 16:18:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先開一個簡單的Web專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-At9zBC-g8H0/VCkVVV_qIlI/AAAAAAAABnc/FKQpNmjj5Pk/s1600/00.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-At9zBC-g8H0/VCkVVV_qIlI/AAAAAAAABnc/FKQpNmjj5Pk/s1600/00.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div>
+
+<p>透過NuGet安裝OctoPack套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-erYo_cgDq9M/VCkVaTdlNSI/AAAAAAAABnk/f9gARapVpLQ/s1600/01.%E5%AE%89%E8%A3%9DOctopack.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-erYo_cgDq9M/VCkVaTdlNSI/AAAAAAAABnk/f9gARapVpLQ/s1600/01.%E5%AE%89%E8%A3%9DOctopack.png" alt></a></div>
+
+<p>簡單寫一個批次檔來測試</p>
+<div><pre class="brush:shell">@echo off<br>set MSBUILD=”C:\Program Files (x86)\MSBuild\12.0\bin\amd64\msbuild.exe”<br>if not exist %MSBUILD% (<br> echo MSBuild not found<br> exit<br>)<br><br>%MSBUILD% WebApplication1.sln /p:Configuration=Release /p:RunOctoPack=true /m<br>pause<br></pre></div><br>編譯成功<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-JH4KBAfY3SI/VCkVj5U8T4I/AAAAAAAABns/xBUyl-VfTOI/s1600/02.%E7%B7%A8%E8%AD%AF%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-JH4KBAfY3SI/VCkVj5U8T4I/AAAAAAAABns/xBUyl-VfTOI/s1600/02.%E7%B7%A8%E8%AD%AF%E6%88%90%E5%8A%9F.png" alt></a></div><br>bin資料夾下就會多了一個打包好的套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ST78E_TEKD4/VCkVnb3VHZI/AAAAAAAABn0/VkwlN2x6Ml8/s1600/03.%E6%89%93%E5%8C%85%E7%9A%84%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ST78E_TEKD4/VCkVnb3VHZI/AAAAAAAABn0/VkwlN2x6Ml8/s1600/03.%E6%89%93%E5%8C%85%E7%9A%84%E5%A5%97%E4%BB%B6.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/29/TeamCity-安裝-Octopus-Deploy-Integration-套件/">TeamCity 安裝 Octopus Deploy Integration 套件</a></h1>
+  
+
+      
+        <time datetime="2014-09-29T06:46:00.000Z">2014-09-29 14:46:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先到官網下載TeamCity Plugin<br><a href="http://octopusdeploy.com/downloads" target="_blank" rel="noopener">http://octopusdeploy.com/downloads</a></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-XNxjbgrc77Q/VCj_gC3rSjI/AAAAAAAABms/w1bLqfUxOcs/s1600/01.%E5%AE%98%E7%B6%B2%E4%B8%8B%E8%BC%89.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-XNxjbgrc77Q/VCj_gC3rSjI/AAAAAAAABms/w1bLqfUxOcs/s1600/01.%E5%AE%98%E7%B6%B2%E4%B8%8B%E8%BC%89.png" alt></a></div>
+
+<p>把下載的zip檔，丟到TeamCity的Plugins資料夾下面</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-xoW5bvFoc8w/VCj_keKfYlI/AAAAAAAABm0/gMG9MFtcUbU/s1600/03.Plugins%E8%B3%87%E6%96%99%E5%A4%BE.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-xoW5bvFoc8w/VCj_keKfYlI/AAAAAAAABm0/gMG9MFtcUbU/s1600/03.Plugins%E8%B3%87%E6%96%99%E5%A4%BE.png" alt></a></div>
+
+<p>重新啟動TeamCity後，就可以在Plugin列表中看到Octopus Deploy Integration套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-c9eevtd_CIA/VCj_tFiOC2I/AAAAAAAABm8/Hqca2hI8jyk/s1600/04.Plugin%E5%88%97%E8%A1%A8.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-c9eevtd_CIA/VCj_tFiOC2I/AAAAAAAABm8/Hqca2hI8jyk/s1600/04.Plugin%E5%88%97%E8%A1%A8.png" alt></a></div>
+
+<p>在TeamCity的建置步驟中，會多出三個Runner<br>Create release是新增發行版本，也可以順便部署的指定的環境<br>Deploy release是部署指定版本<br>Promote是把現有的版本從指定的環境部署到其他環境</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-8sf6WLcQtJ0/VCkBHJGU0rI/AAAAAAAABnE/j8I-2xap158/s1600/06.TeamCity%E5%BB%BA%E7%BD%AE%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-8sf6WLcQtJ0/VCkBHJGU0rI/AAAAAAAABnE/j8I-2xap158/s1600/06.TeamCity%E5%BB%BA%E7%BD%AE%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png" alt></a></div>
+
+<p>在VS建置Runner中，也會多出一個OctoPack的設定項目<br>勾選後會在建置參數中加入/p:RunOctoPack=true</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ugwpKzT9x9Y/VCkBRaltmnI/AAAAAAAABnM/1uDWOhBxUKE/s1600/05.VS%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ugwpKzT9x9Y/VCkBRaltmnI/AAAAAAAABnM/1uDWOhBxUKE/s1600/05.VS%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png" alt></a></div>
+
+<p>參考資料<br>官網的說明和影片<br><a href="http://docs.octopusdeploy.com/display/OD/TeamCity" target="_blank" rel="noopener">http://docs.octopusdeploy.com/display/OD/TeamCity</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/18/NLog-Elmah/">NLog.Elmah</a></h1>
+  
+
+      
+        <time datetime="2014-09-18T09:33:00.000Z">2014-09-18 17:33:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去<br>Elmah的用法可以參考<a href="http://blog.developer.idv.tw/2014/09/elmah-error-logging-modules-and-handlers.html" target="_blank" rel="noopener">之前的筆記</a><br>在設定好Elmah之後，開始來安裝NLog.Elmah<br>首先透過NuGet來安裝套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div>
+
+<p>再來設定NLog來套用Elmah<br>主要是透過extensions來引用NLog.Elmah這個Assembly<br>就可以透過Elmah這個Target，把Log寫到Elmah去</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a>&gt;<br><br>    &lt;extensions&gt;<br>        &lt;add assembly=”NLog.Elmah”/&gt;<br>    &lt;/extensions&gt;<br><br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Elmah” name=”elmah”<br>                layout=”${longdate} ${uppercase:${level}} ${message}”/&gt;<br>    &lt;/targets&gt;<br><br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”elmah” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+
+<p>就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png" alt></a></div>
+
+<p>如果加上LogLevelAsType=”true”這個屬性</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a> autoReload=”true”&gt;<br><br>    &lt;extensions&gt;<br>        &lt;add assembly=”NLog.Elmah”/&gt;<br>    &lt;/extensions&gt;<br><br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Elmah” name=”elmah” LogLevelAsType=”true”<br>                layout=”${longdate} ${uppercase:${level}} ${message}”/&gt;<br>    &lt;/targets&gt;<br><br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”elmah” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+
+<p>elmah的Type中，就會顯示Log的Level</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-5IPBWRrWs40/VBqmqaOZQPI/AAAAAAAABmc/6xaTP0h0oeg/s1600/03.%E5%A2%9E%E5%8A%A0Type.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-5IPBWRrWs40/VBqmqaOZQPI/AAAAAAAABmc/6xaTP0h0oeg/s1600/03.%E5%A2%9E%E5%8A%A0Type.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/10/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/12/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

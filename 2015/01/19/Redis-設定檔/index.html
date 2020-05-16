@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Redis 設定檔 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Redis 設定檔">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Redis 設定檔</h1>
+  
+
+      
+        <time datetime="2015-01-19T11:13:00.000Z">2015-01-19 19:13:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>用來指派空間的單位簡寫，不區分大小寫</p>
+<h1 id="1k-gt-1000-bytes"><a href="#1k-gt-1000-bytes" class="headerlink" title="1k =&gt; 1000 bytes"></a>1k =&gt; 1000 bytes</h1><h1 id="1kb-gt-1024-bytes"><a href="#1kb-gt-1024-bytes" class="headerlink" title="1kb =&gt; 1024 bytes"></a>1kb =&gt; 1024 bytes</h1><h1 id="1m-gt-1000000-bytes"><a href="#1m-gt-1000000-bytes" class="headerlink" title="1m =&gt; 1000000 bytes"></a>1m =&gt; 1000000 bytes</h1><h1 id="1mb-gt-1024-1024-bytes"><a href="#1mb-gt-1024-1024-bytes" class="headerlink" title="1mb =&gt; 1024*1024 bytes"></a>1mb =&gt; 1024*1024 bytes</h1><h1 id="1g-gt-1000000000-bytes"><a href="#1g-gt-1000000000-bytes" class="headerlink" title="1g =&gt; 1000000000 bytes"></a>1g =&gt; 1000000000 bytes</h1><h1 id="1gb-gt-102410241024-bytes"><a href="#1gb-gt-102410241024-bytes" class="headerlink" title="1gb =&gt; 102410241024 bytes"></a>1gb =&gt; 1024<em>1024</em>1024 bytes</h1><p>伺服器埠號<br>port 6379</p>
+<p>繫結位址，預設是本機全部</p>
+<h1 id="bind-127-0-0-1"><a href="#bind-127-0-0-1" class="headerlink" title="bind 127.0.0.1"></a>bind 127.0.0.1</h1><p>Client連線閒置多久要切斷連線，單位為秒，0是不限制時間<br>timeout 0</p>
+<p>################################ 快照設定 &nbsp;#################################<br>第一個參數是秒數，第二個參數是異動次數<br>符合以下任一條件，就執行一次快照，產生dump.rdb</p>
+<p>save 900 1<br>save 300 10<br>save 60 10000</p>
+<p>產生快照檔時是否要壓縮檔案<br>rdbcompression yes</p>
+<p>快照檔案的檔名<br>dbfilename dump.rdb</p>
+<p>快照檔案的路徑<br>dir ./</p>
+<p>################################# 覆寫 #################################</p>
+<p>在slave的實體上，用來指定master的位址</p>
+<h1 id="slaveof-lt-masterip-gt-lt-masterport-gt"><a href="#slaveof-lt-masterip-gt-lt-masterport-gt" class="headerlink" title="slaveof &lt;masterip&gt; &lt;masterport&gt;"></a>slaveof &lt;masterip&gt; &lt;masterport&gt;</h1><p>如果master需要驗證密碼時設定</p>
+<h1 id="masterauth-lt-master-password-gt"><a href="#masterauth-lt-master-password-gt" class="headerlink" title="masterauth &lt;master-password&gt;"></a>masterauth &lt;master-password&gt;</h1><p>當slave和master斷線，或是正在同步中，是否回應Client端要求<br>設定成no會回應一個SYNC with master in progress的錯誤<br>slave-serve-stale-data yes</p>
+<p>設定slave是否唯讀<br>slave-read-only yes</p>
+<div><br></div>slave對master實體ping的時間間隔，單位是秒數<br># repl-ping-slave-period 10<br><br>master傳輸或是ping回應的時間間隔，單位是秒數<br># repl-timeout 60<br><br>slave和master同步後，是否要延遲同步，讓master合併小封包再一回氣同步到slave<br>效能較佳，但資料可能不同步<br>repl-disable-tcp-nodelay no<br><br>slave優先權，當master無法服務時，數字低的優先被提升為master<br>slave-priority 100<br><br>################################## 安全 ###################################<br><br>Client連線時是否需要密碼<br># requirepass foobared<br><br>重寫命令，設定成空字串來禁用命令<br># rename-command CONFIG “”<br><br>################################### 限制 ####################################<br><br>最大連線數<br># maxclients 10000<br><br>最大記憶體<br># maxmemory &lt;bytes&gt;<br><br>當記憶體達到上限，使用那一種刪除演算法<br># volatile-lru：使用LRU演算法刪除帶有過期標記的key<br># allkeys-lru：使用LRU演算法刪除任何Key<br># volatile-random：隨機移除一個帶有過期標記的Key<br># allkeys-random：隨機移除一個Key<br># volatile-ttl：移除快要過期的Key<br># noeviction：不移除Key，回應一個錯誤給Client端<br>預設為volatile-lru<br># maxmemory-policy volatile-lru<br><br>LRU演算法的樣本範圍<br># maxmemory-samples 3<br><div><br>############################## AOF模式 ##########################<br><br>是否啟用AOF持久化模式<br>appendonly no<br><br>AOF模式的檔案名稱<br># appendfilename appendonly.aof<br><br>AOF模式的寫入時機<br>no：由作業系統決定，性能最好，可靠性最低<br>everysec：每秒執行一次寫入<br>always：每次都寫入硬碟，效能最差<br># appendfsync always<br>appendfsync everysec<br># appendfsync no<br><br>在阻塞命令時阻止faync在主程序中被呼叫<br>no-appendfsync-on-rewrite no<br><br>AOF自動重寫設定，把重覆的命令合併以減少檔案大小<br>auto-aof-rewrite-percentage 100<br>auto-aof-rewrite-min-size 64mb<br><br>################################ LUA 腳本 &nbsp;###############################<br>lua腳本的最大執行時間，單位是毫秒<br>lua-time-limit 5000<br><br>################################## SLOW LOG ###################################<br>用來記錄超出執行時間的命令，單位為微秒，10000等於1秒<br>slowlog-log-slower-than 10000<br><br>slowlog的長度，超過設定長度後，最舊的會被移除<br>slowlog-max-len 128<br><br>############################### 進階設定 ###############################<br>設定hash的資料超過多少數量時，切換使用的數據結構<br>hash-max-ziplist-entries 512<br>hash-max-ziplist-value 64<br><br>設定list的資料超過多少數量時，切換使用的數據結構<br>list-max-ziplist-entries 512<br>list-max-ziplist-value 64<br><br>設定set的資料超過多少數量時，切換使用的數據結構<br>set-max-intset-entries 512<br><br>設定stored set的資料超過多少數量時，切換使用的數據結構<br>zset-max-ziplist-entries 128<br>zset-max-ziplist-value 64<br><br>hash是否使用延遲刷新機制，越多操作，越多刷新<br>activerehashing yes<br><br>第一個參數是強制限制，第二個參數是軟性限制，和軟性時間<br>當客戶輸出緩存達到限制時，會強制斷開連線<br>client-output-buffer-limit normal 0 0 0<br>client-output-buffer-limit slave 256mb 64mb 60<br>client-output-buffer-limit pubsub 32mb 8mb 60<br><br>背景任務執行頻率，範圍為1到500，預設為10<br>設定越大，CPU消耗越大，延遲越小<br>hz 10<br><br>啟用子行程重寫AOF檔案<br>aof-rewrite-incremental-fsync yes<br><br></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Redis/">Redis</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

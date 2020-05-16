@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 6 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/08/07/架設NuPeek-Symbol-NuGet-Server/">架設NuPeek Symbol &amp; NuGet Server</a></h1>
+  
+
+      
+        <time datetime="2015-08-07T06:47:00.000Z">2015-08-07 14:47:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先到Bitbucket下載NuPeek的原始碼回來<br><a href="https://bitbucket.org/thinkbeforecoding/nupeek" target="_blank" rel="noopener">https://bitbucket.org/thinkbeforecoding/nupeek</a></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-oQRiidn7woQ/VcRUEOkTHzI/AAAAAAAACYs/6-EfBRJj5dk/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-oQRiidn7woQ/VcRUEOkTHzI/AAAAAAAACYs/6-EfBRJj5dk/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png" alt></a></div><br>打開專案後，記得先改一下Symbols資料夾的名稱，不然會卡住<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-PR8hHSy2T8k/VcRUELObHvI/AAAAAAAACYk/3nHRJakSjWI/s1600/02.%25E6%259B%25B4%25E5%2590%258D%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-PR8hHSy2T8k/VcRUELObHvI/AAAAAAAACYk/3nHRJakSjWI/s1600/02.%25E6%259B%25B4%25E5%2590%258D%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png" alt></a></div><br>web.config中，也要把symbolsPath的值改成修改後的名稱<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-SE4iQc3tiRk/VcRUEOVlHII/AAAAAAAACYo/iyVluHcVMbs/s1600/03.%25E6%259B%25B4%25E6%2594%25B9%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-SE4iQc3tiRk/VcRUEOVlHII/AAAAAAAACYo/iyVluHcVMbs/s1600/03.%25E6%259B%25B4%25E6%2594%25B9%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" alt></a></div><br>佈署的Server後，首頁會有相關的資訊<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-N2dx5rrJZoA/VcRUEg5yZvI/AAAAAAAACYw/3ngpW204hMU/s1600/04.%25E9%25A6%2596%25E9%25A0%2581.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-N2dx5rrJZoA/VcRUEg5yZvI/AAAAAAAACYw/3ngpW204hMU/s1600/04.%25E9%25A6%2596%25E9%25A0%2581.png" alt></a></div><br>在Visual Studio中的工具-&gt;選項-&gt;偵錯-&gt;一般，改用來源伺服器支援<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-2E822hTBCzA/VcRUEyZbAUI/AAAAAAAACY8/63nyAVu3Oqw/s1600/05.%25E4%25BE%2586%25E6%25BA%2590%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-2E822hTBCzA/VcRUEyZbAUI/AAAAAAAACY8/63nyAVu3Oqw/s1600/05.%25E4%25BE%2586%25E6%25BA%2590%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8.png" alt></a></div><br>在Visual Studio中的工具-&gt;選項-&gt;偵錯-&gt;符號，新增SymbolServer位置<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-171ZsRPe9fA/VcRUE5-ZggI/AAAAAAAACY4/r4f_T4B9vko/s1600/06.%25E8%25A8%25AD%25E5%25AE%259Asymbol.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-171ZsRPe9fA/VcRUE5-ZggI/AAAAAAAACY4/r4f_T4B9vko/s1600/06.%25E8%25A8%25AD%25E5%25AE%259Asymbol.png" alt></a></div><br>Symbol推送到NuPeek後，在程式碼中下個中斷點<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-tjJyCp9Z_Y0/VcRUFN0nfJI/AAAAAAAACZA/CsERo4TzUNs/s1600/07.%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-tjJyCp9Z_Y0/VcRUFN0nfJI/AAAAAAAACZA/CsERo4TzUNs/s1600/07.%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png" alt></a></div><br>透過Fillder可以看到下載Symbol符號和Source<br>符號快取資料夾中也可以看到下載的資料<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-YoZEmEC8L_M/VcRUFr50hMI/AAAAAAAACZE/r4Cm7K-fVFE/s1600/08.%25E4%25B8%258B%25E8%25BC%2589%25E7%25AC%25A6%25E8%2599%259F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-YoZEmEC8L_M/VcRUFr50hMI/AAAAAAAACZE/r4Cm7K-fVFE/s1600/08.%25E4%25B8%258B%25E8%25BC%2589%25E7%25AC%25A6%25E8%2599%259F.png" alt></a></div><br>F11進入函式後，可以看到符號的Source是在符號快取資料夾中取得<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-4S1fUEVs4aM/VcRUF1oPMJI/AAAAAAAACZg/gzltljDWqUY/s1600/09.%25E9%2580%25B2%25E5%2585%25A5%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-4S1fUEVs4aM/VcRUF1oPMJI/AAAAAAAACZg/gzltljDWqUY/s1600/09.%25E9%2580%25B2%25E5%2585%25A5%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/07/03/Sublime-Text-3-Package-HTML-CSS-JS-Prettify/">[Sublime Text 3 Package] HTML-CSS-JS Prettify</a></h1>
+  
+
+      
+        <time datetime="2015-07-03T08:37:00.000Z">2015-07-03 16:37:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>HTML-CSS-JS Prettify套件是用來格式化html文件的工具<br>一樣按下Ctrl + Shift&nbsp;+ P透過Pageage Control來安裝套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-T9xlzy_ldYM/VZZJjIIlW9I/AAAAAAAACXk/ekC6uQ_sMYI/s1600/01.install%2Bpackage.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-T9xlzy_ldYM/VZZJjIIlW9I/AAAAAAAACXk/ekC6uQ_sMYI/s1600/01.install%2Bpackage.png" alt></a></div><br>找到HTML-CSS-JS PRettify套件按下Enter即可<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-aaHozB7QiKg/VZZJjH-vu5I/AAAAAAAACXo/HfQqJtO2nO8/s1600/02.htmlcssjs%25E5%25A5%2597%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-aaHozB7QiKg/VZZJjH-vu5I/AAAAAAAACXo/HfQqJtO2nO8/s1600/02.htmlcssjs%25E5%25A5%2597%25E4%25BB%25B6.png" alt></a></div><br>套件需要透過Node來格式化文件，所以需要確定Node執行檔的路徑<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-ZIQo-oOuuDg/VZZJjJ2VcXI/AAAAAAAACXs/lm1kcnRjuFI/s1600/03.%25E8%25A8%25AD%25E5%25AE%259Anodejs%25E8%25B7%25AF%25E5%25BE%2591.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-ZIQo-oOuuDg/VZZJjJ2VcXI/AAAAAAAACXs/lm1kcnRjuFI/s1600/03.%25E8%25A8%25AD%25E5%25AE%259Anodejs%25E8%25B7%25AF%25E5%25BE%2591.png" alt></a></div><br>確定node.exe執行檔的路徑即可<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-LFnjhIHYh6I/VZZJjzkQH8I/AAAAAAAACXw/Z5U0KfZ5C3k/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5NodJS%25E8%25B7%25AF%25E5%25BE%2591.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-LFnjhIHYh6I/VZZJjzkQH8I/AAAAAAAACXw/Z5U0KfZ5C3k/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5NodJS%25E8%25B7%25AF%25E5%25BE%2591.png" alt></a></div><br>準備一份html文件，按下Ctrl&nbsp;+ Shift&nbsp;+ H快速鍵<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-dbffjR23Gzk/VZZJkFkfxaI/AAAAAAAACX0/SeWf0YZl564/s1600/05.html%25E6%2596%2587%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-dbffjR23Gzk/VZZJkFkfxaI/AAAAAAAACX0/SeWf0YZl564/s1600/05.html%25E6%2596%2587%25E4%25BB%25B6.png" alt></a></div><br>即可完成格式化<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-wfzQJ8kNlOI/VZZJkVkxzlI/AAAAAAAACX4/4phj-dXYKr0/s1600/06.%25E6%25A0%25BC%25E5%25BC%258F%25E5%258C%2596%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-wfzQJ8kNlOI/VZZJkVkxzlI/AAAAAAAACX4/4phj-dXYKr0/s1600/06.%25E6%25A0%25BC%25E5%25BC%258F%25E5%258C%2596%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/07/03/Sublime-Text-3-Package-Emmet/">[Sublime Text 3 Package] Emmet</a></h1>
+  
+
+      
+        <time datetime="2015-07-03T07:34:00.000Z">2015-07-03 15:34:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Emmet套件是用來快速產生HTML和CSS tag的工具，語法如下</p>
+<div><table>            <tbody><tr>                <td>&gt;</td>                <td>子層元素</td>            </tr><tr>                <td>+</td>                <td>同層元素</td>            </tr><tr>                <td>^</td>                <td>上層元素</td>            </tr><tr>                <td>#</td>                <td>id</td>            </tr><tr>                <td>.</td>                <td>class</td>            </tr><tr>                <td>[]</td>                <td>屬性</td>            </tr><tr>                <td>{}</td>                <td>文字內容</td>            </tr><tr>                <td>()</td>                <td>群組</td>            </tr><tr>                <td>*</td>                <td>重覆數量，後面接數字可以指定要重覆多少個數的元素</td>            </tr><tr>                <td>$</td>                <td>排序數字，多個$符號會產生多位數的排序數字，前面補零</td>            </tr><tr>                <td>lorem</td>                <td>亂數文字，後面接數字可以指定幾個字的文字，不接數字的話則是一整個句子</td>            </tr></tbody></table></div><div><br>按下Ctrl + Shift&nbsp;+ P 叫出命令視窗，輸入Instal Package，選擇安裝套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-RXRQlvTImrA/VZY6RvHqogI/AAAAAAAACXE/beyRzp0QOdI/s1600/01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-RXRQlvTImrA/VZY6RvHqogI/AAAAAAAACXE/beyRzp0QOdI/s1600/01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png" alt></a></div><br>輸入emmet按下enter即可安裝<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-x9ggQilI3S0/VZY6Rh9QDJI/AAAAAAAACXU/LqzkEKondZg/s1600/02.%25E9%2581%25B8%25E6%2593%2587emmet.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-x9ggQilI3S0/VZY6Rh9QDJI/AAAAAAAACXU/LqzkEKondZg/s1600/02.%25E9%2581%25B8%25E6%2593%2587emmet.png" alt></a></div><br>安裝完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-NJPkD0s5oqI/VZY6RlDbh4I/AAAAAAAACXQ/hCrHH8EBA5g/s1600/03.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-NJPkD0s5oqI/VZY6RlDbh4I/AAAAAAAACXQ/hCrHH8EBA5g/s1600/03.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>開一個新檔案來試試，輸入html:5&gt;div#header+div#content+div#footer後，按下tab鍵<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Ud9bZo64rQ4/VZY6SYGOTAI/AAAAAAAACXM/Tv_tOrYIaDw/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5zencode.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-Ud9bZo64rQ4/VZY6SYGOTAI/AAAAAAAACXM/Tv_tOrYIaDw/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5zencode.png" alt></a></div><br>就會自動展開成html元素<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-y6ncW6qrNgc/VZY6SfUtxzI/AAAAAAAACXY/GqmDW0_SKgY/s1600/05.%25E6%258C%2589%25E4%25B8%258Btab.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-y6ncW6qrNgc/VZY6SfUtxzI/AAAAAAAACXY/GqmDW0_SKgY/s1600/05.%25E6%258C%2589%25E4%25B8%258Btab.png" alt></a></div><br></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/07/03/Sublime-Text-3-Package-ConvertToUTF8/">[Sublime Text 3 Package] ConvertToUTF8</a></h1>
+  
+
+      
+        <time datetime="2015-07-03T05:45:00.000Z">2015-07-03 13:45:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Sublime Text 3 預設不支援中文編碼，所以需要安裝ConvertToUTF8套件來解決這個問題<br>按下Ctrl&nbsp;+ Shift&nbsp;+ P叫出命令視窗，輸入Install Package，選擇Package Control: Install Package</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-B1rAv6zEp1A/VZYg570fO3I/AAAAAAAACWA/egNm6XGSRMQ/s1600/1.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-B1rAv6zEp1A/VZYg570fO3I/AAAAAAAACWA/egNm6XGSRMQ/s1600/1.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png" alt></a></div><br>在命令列中輸入UTF8，選擇ConvertToUTF8套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-lj_t3nvfC-o/VZYg6NFAqYI/AAAAAAAACWI/_0qVzfrva04/s1600/2.%25E9%2581%25B8%25E6%2593%2587UTF8.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-lj_t3nvfC-o/VZYg6NFAqYI/AAAAAAAACWI/_0qVzfrva04/s1600/2.%25E9%2581%25B8%25E6%2593%2587UTF8.png" alt></a></div><br>左下角會顯示正在安裝套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-1tDQP_IsDnA/VZYg6cyipbI/AAAAAAAACWM/tiRVWfXO7A0/s1600/3.%25E5%25AE%2589%25E8%25A3%259DUTF8%25E5%25A5%2597%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-1tDQP_IsDnA/VZYg6cyipbI/AAAAAAAACWM/tiRVWfXO7A0/s1600/3.%25E5%25AE%2589%25E8%25A3%259DUTF8%25E5%25A5%2597%25E4%25BB%25B6.png" alt></a></div><br>安裝完成後打開套件預設設定值<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-cLmFa_brOHo/VZYg6jSAJNI/AAAAAAAACWQ/osdZHOQjirg/s1600/6.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-cLmFa_brOHo/VZYg6jSAJNI/AAAAAAAACWQ/osdZHOQjirg/s1600/6.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" alt></a></div><br>將預設設定值複制後打開套件個人設定值<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-6P8MALErcg8/VZYg5FetwEI/AAAAAAAACV0/cuC0b1NOOIs/s1600/07.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2580%258B%25E4%25BA%25BA%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-6P8MALErcg8/VZYg5FetwEI/AAAAAAAACV0/cuC0b1NOOIs/s1600/07.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2580%258B%25E4%25BA%25BA%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" alt></a></div><br>調整BIG5編碼順序放到GBK前面後存檔<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-L5m5ZtnSchg/VZYg5KY5mUI/AAAAAAAACV8/OJC66EPLfoU/s1600/08.%25E4%25BA%25A4%25E6%258F%259Bbig5.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-L5m5ZtnSchg/VZYg5KY5mUI/AAAAAAAACV8/OJC66EPLfoU/s1600/08.%25E4%25BA%25A4%25E6%258F%259Bbig5.png" alt></a></div><br>透過File&gt;Set File Encoding to選單可以調整檔案編碼<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-IzjtdWTprmM/VZYg5PmLWWI/AAAAAAAACV4/ZH6_gG2LGdQ/s1600/09.%25E5%2588%2587%25E6%258F%259B%25E7%25B7%25A8%25E7%25A2%25BC.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-IzjtdWTprmM/VZYg5PmLWWI/AAAAAAAACV4/ZH6_gG2LGdQ/s1600/09.%25E5%2588%2587%25E6%258F%259B%25E7%25B7%25A8%25E7%25A2%25BC.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/07/03/Sublime-Text-3-個人設定檔/">Sublime Text 3 個人設定檔</a></h1>
+  
+
+      
+        <time datetime="2015-07-03T02:30:00.000Z">2015-07-03 10:30:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>預設的設定值在Preferences&gt;Settings-Default</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-BHtrsMvmUSc/VZXzTQv_MKI/AAAAAAAACVo/taqlyOEkpa8/s1600/01.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-BHtrsMvmUSc/VZXzTQv_MKI/AAAAAAAACVo/taqlyOEkpa8/s1600/01.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" alt></a></div><div><br></div><div>打開後會有所有設定的說明和設定值，這個檔案是唯讀的JSON檔案</div><div>如果要變更設定，需要打開Preferences&gt;Settings-User</div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6FtW1vtnTW4/VZXzTeGHcgI/AAAAAAAACVg/A4Izoa5_Y5U/s1600/02.%25E5%2594%25AF%25E8%25AE%2580%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-6FtW1vtnTW4/VZXzTeGHcgI/AAAAAAAACVg/A4Izoa5_Y5U/s1600/02.%25E5%2594%25AF%25E8%25AE%2580%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png" alt></a></div><div><br></div><div>在這個檔案中把預設的設定值覆蓋即可</div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-z-2bKW2AXyk/VZXzTSxadGI/AAAAAAAACVk/d-nB7KIDDTY/s1600/03.%25E6%2588%2591%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-z-2bKW2AXyk/VZXzTSxadGI/AAAAAAAACVk/d-nB7KIDDTY/s1600/03.%25E6%2588%2591%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png" alt></a></div><div><br></div><div><br></div><div><pre class="brush:xml">{<br>    “font_size”: 16,<br>    “translate_tabs_to_spaces”: true,<br>    “word_wrap”: false,<br>    “highlight_line”: true,<br>    “highlight_modified_tabs”: true,<br>    “show_encoding”: true,<br>    “show_line_endings”: true,<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/06/27/Sublime-Text-3-安裝-Package-Control/">Sublime Text 3 安裝 Package Control</a></h1>
+  
+
+      
+        <time datetime="2015-06-27T06:52:00.000Z">2015-06-27 14:52:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>來到 Package Control 官網，選擇Installation</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-9EHy-0yFlmI/VY5HZM-iefI/AAAAAAAACUM/dcc_k7VFRHc/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%2598%25E7%25B6%25B2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-9EHy-0yFlmI/VY5HZM-iefI/AAAAAAAACUM/dcc_k7VFRHc/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%2598%25E7%25B6%25B2.png" alt></a></div><br>選擇要安裝的版本，把下面的語法複制起來<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-VK54ChzDu3w/VY5HZGlK2vI/AAAAAAAACUc/yeo4iQMNvVg/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E7%2589%2588%25E6%259C%25AC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-VK54ChzDu3w/VY5HZGlK2vI/AAAAAAAACUc/yeo4iQMNvVg/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E7%2589%2588%25E6%259C%25AC.png" alt></a></div><br>打開Sublime Text，按下Ctrl&nbsp;+ `打開控制台，將剛複制的語法貼上去，按Enter執行<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-s3kOUX0c8OY/VY5HZDay4OI/AAAAAAAACUQ/LstUNWDBtdw/s1600/03.%25E8%25B2%25BC%25E4%25B8%258A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-s3kOUX0c8OY/VY5HZDay4OI/AAAAAAAACUQ/LstUNWDBtdw/s1600/03.%25E8%25B2%25BC%25E4%25B8%258A.png" alt></a></div><br>接下來按下Ctrl&nbsp;+ Shift&nbsp;+ P，打開命令列，可以看到多了Package Control相關的指令<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-4ZTY7d_jUzA/VY5HZwfgM_I/AAAAAAAACUs/GYvz6m_4Ha4/s1600/04.install%2Bpackage.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-4ZTY7d_jUzA/VY5HZwfgM_I/AAAAAAAACUs/GYvz6m_4Ha4/s1600/04.install%2Bpackage.png" alt></a></div><br>接下來安裝個套件，選擇Install Package，切換到可安裝的套件列表<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-v4yQdfOFx7w/VY5HaBoz5WI/AAAAAAAACUo/k0p5uampu9o/s1600/05.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2590%258D%25E7%25A8%25B1%25E5%2588%2597%25E8%25A1%25A8.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-v4yQdfOFx7w/VY5HaBoz5WI/AAAAAAAACUo/k0p5uampu9o/s1600/05.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2590%258D%25E7%25A8%25B1%25E5%2588%2597%25E8%25A1%25A8.png" alt></a></div><br>輸入utf8，找到ConvertToUTF8，點擊後安裝<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-qBvotxZBRkY/VY5HbOFQASI/AAAAAAAACU4/9qSlwdMpDyM/s1600/6.utf8%25E5%25A5%2597%25E4%25BB%25B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-qBvotxZBRkY/VY5HbOFQASI/AAAAAAAACU4/9qSlwdMpDyM/s1600/6.utf8%25E5%25A5%2597%25E4%25BB%25B6.png" alt></a></div><br>安裝完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-z-XYbMu9E5I/VY5HaffK6kI/AAAAAAAACUw/mQafH9uK53Y/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-z-XYbMu9E5I/VY5HaffK6kI/AAAAAAAACUw/mQafH9uK53Y/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png" alt></a></div><br>檔案會以UTF8方式儲存<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-doitiURlOiI/VY5INc1kAWI/AAAAAAAACU8/sPL64QgfpNE/s1600/08.utf%25E6%25B8%25AC%25E8%25A9%25A6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-doitiURlOiI/VY5INc1kAWI/AAAAAAAACU8/sPL64QgfpNE/s1600/08.utf%25E6%25B8%25AC%25E8%25A9%25A6.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/06/27/安裝Sublime-Text-3/">安裝Sublime Text 3</a></h1>
+  
+
+      
+        <time datetime="2015-06-27T06:30:00.000Z">2015-06-27 14:30:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>先到官網下載安裝程式</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-JDVMIAWkA7U/VY5ClXt9JII/AAAAAAAACTI/TXN2R2wq1Xw/s1600/0.%25E5%25AE%2598%25E7%25B6%25B2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-JDVMIAWkA7U/VY5ClXt9JII/AAAAAAAACTI/TXN2R2wq1Xw/s1600/0.%25E5%25AE%2598%25E7%25B6%25B2.png" alt></a></div><br>雙擊安裝程式後開始安裝<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-o8f1QZyUwDM/VY5ClU17nyI/AAAAAAAACTE/81X6hvBlp7A/s1600/01.%2B%25E5%25AE%2589%25E8%25A3%259D.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-o8f1QZyUwDM/VY5ClU17nyI/AAAAAAAACTE/81X6hvBlp7A/s1600/01.%2B%25E5%25AE%2589%25E8%25A3%259D.png" alt></a></div><br>選擇安裝路徑<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-99ARoptqIks/VY5Cleq6hRI/AAAAAAAACTw/MzM7dJJX_Ek/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-99ARoptqIks/VY5Cleq6hRI/AAAAAAAACTw/MzM7dJJX_Ek/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png" alt></a></div><br>勾選加入滑鼠右鍵<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-eyfiB5CBKfc/VY5CmEaoIBI/AAAAAAAACTo/JE3Lp2bwzH4/s1600/03.%25E5%258B%25BE%25E9%2581%25B8%25E5%258A%25A0%25E5%2585%25A5%25E6%25BB%2591%25E9%25BC%25A0%25E5%258F%25B3%25E9%258D%25B5.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-eyfiB5CBKfc/VY5CmEaoIBI/AAAAAAAACTo/JE3Lp2bwzH4/s1600/03.%25E5%258B%25BE%25E9%2581%25B8%25E5%258A%25A0%25E5%2585%25A5%25E6%25BB%2591%25E9%25BC%25A0%25E5%258F%25B3%25E9%258D%25B5.png" alt></a></div><br>安裝資訊確認<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-DY9wtfPk6gI/VY5CmWFpA6I/AAAAAAAACTg/0No4B7wFAs4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B3%2587%25E8%25A8%258A%25E7%25A2%25BA%25E8%25AA%258D.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-DY9wtfPk6gI/VY5CmWFpA6I/AAAAAAAACTg/0No4B7wFAs4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B3%2587%25E8%25A8%258A%25E7%25A2%25BA%25E8%25AA%258D.png" alt></a></div><br>開始安裝<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-xjtQwqsAO34/VY5CmjhzZWI/AAAAAAAACTk/eRL1DWM3aqU/s1600/05.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-xjtQwqsAO34/VY5CmjhzZWI/AAAAAAAACTk/eRL1DWM3aqU/s1600/05.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png" alt></a></div><br>完成安裝<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-xDVthGscTUg/VY5Cm-7D7SI/AAAAAAAACTs/9tRYL2nJ-io/s1600/06.%25E5%25AE%258C%25E6%2588%2590%25E5%25AE%2589%25E8%25A3%259D.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-xDVthGscTUg/VY5Cm-7D7SI/AAAAAAAACTs/9tRYL2nJ-io/s1600/06.%25E5%25AE%258C%25E6%2588%2590%25E5%25AE%2589%25E8%25A3%259D.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/06/27/Sublime-Text-3-學習筆記/">Sublime Text 3 學習筆記</a></h1>
+  
+
+      
+        <time datetime="2015-06-27T06:22:00.000Z">2015-06-27 14:22:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>1. <a href="http://blog.developer.idv.tw/2015/06/sublime-text-3_27.html" target="_blank" rel="noopener">安裝Sublime Text 3</a><br><a href="http://blog.developer.idv.tw/2015/06/sublime-text-3_27.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/06/sublime-text-3_27.html</a></p>
+<p>2. <a href="http://blog.developer.idv.tw/2015/06/sublime-text-3_36.html" target="_blank" rel="noopener">Sublime Text 3 安裝Package Control</a><br><a href="http://blog.developer.idv.tw/2015/06/sublime-text-3_36.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/06/sublime-text-3_36.html</a></p>
+<p>3. <a href="http://blog.developer.idv.tw/2015/07/sublime-text-3.html" target="_blank" rel="noopener">Sublime Text 3 個人設定檔</a><br><a href="http://blog.developer.idv.tw/2015/07/sublime-text-3.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/07/sublime-text-3.html</a></p>
+<p>4. <a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-converttoutf8.html" target="_blank" rel="noopener">[Sublime Text 3 Package] ConvertToUTF8</a><br><a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-converttoutf8.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/07/sublime-text-3-package-converttoutf8.html</a></p>
+<p>5. <a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-emmet.html" target="_blank" rel="noopener">[Sublime Text 3 Package] Emmet</a><br><a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-emmet.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/07/sublime-text-3-package-emmet.html</a></p>
+<p>6. <a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-html-css-js.html" target="_blank" rel="noopener">[Sublime Text 3 Package] HTML-CSS-JS Prettify</a><br><a href="http://blog.developer.idv.tw/2015/07/sublime-text-3-package-html-css-js.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2015/07/sublime-text-3-package-html-css-js.html</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="http://docs.sublimetext.tw/" target="_blank" rel="noopener">Sublime Text 手冊</a></p>
+<p><a href="http://zh.lucida.me/blog/sublime-text-complete-guide/" target="_blank" rel="noopener">Sublime Text 全程指南</a></p>
+<p><a href="http://blog.miniasp.com/post/2014/01/07/Useful-tool-Sublime-Text-3-Quick-Start.aspx" target="_blank" rel="noopener">Sublime Text 3 新手上路：必要的安裝、設定與基本使用教學</a></p>
+<p><span style="font-family: monospace; white-space: pre-wrap;"><a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/#" target="_blank" rel="noopener">Table of Contents - Sublime Text Unofficial Documentation</a></span></p>
+<p><a href="http://www.sublimetext.com/docs/3/" target="_blank" rel="noopener">Sublime Text 3 Documentation</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/05/20/Frame-Hijacking-防止其他站台用Frame包住自家的網站/">Frame Hijacking 防止其他站台用Frame包住自家的網站</a></h1>
+  
+
+      
+        <time datetime="2015-05-20T07:37:00.000Z">2015-05-20 15:37:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>建立簡單的三個站台</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png" alt></a></div><br>w1.aaa.com<br><div><pre class="brush:html">&lt;%@ Page Language=”C#” AutoEventWireup=”true” CodeBehind=”default.aspx.cs” Inherits=”w1._default” %&gt;<br><br>&lt;!DOCTYPE html&gt;<br><br>&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml&quot;</a>&gt;<br>&lt;head runat=”server”&gt;<br>    &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>    &lt;title&gt;&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;form id=”form1” runat=”server”&gt;<br>        &lt;div&gt;<br>            w1<br>        &lt;/div&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></pre></div><br>w2.bbb.com<br><div><pre class="brush:html">&lt;%@ Page Language=”C#” AutoEventWireup=”true” CodeBehind=”default.aspx.cs” Inherits=”w2._default” %&gt;<br><br>&lt;!DOCTYPE html&gt;<br><br>&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml&quot;</a>&gt;<br>&lt;head runat=”server”&gt;<br>    &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>    &lt;title&gt;&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;form id=”form1” runat=”server”&gt;<br>        &lt;div&gt;<br>            w2<br>        &lt;/div&gt;<br>        &lt;br /&gt;<br>        &lt;div&gt;<br>            &lt;iframe src=”<a href="http://w1.aaa.com&quot;" target="_blank" rel="noopener">http://w1.aaa.com&quot;</a> /&gt;<br>        &lt;/div&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></pre></div><br>w3.ccc.com<br><div><pre class="brush:html">&lt;%@ Page Language=”C#” AutoEventWireup=”true” CodeBehind=”default.aspx.cs” Inherits=”w3._default” %&gt;<br><br>&lt;!DOCTYPE html&gt;<br><br>&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;" target="_blank" rel="noopener">http://www.w3.org/1999/xhtml&quot;</a>&gt;<br>&lt;head runat=”server”&gt;<br>    &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>    &lt;title&gt;&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;form id=”form1” runat=”server”&gt;<br>        &lt;div&gt;<br>            w3<br>        &lt;/div&gt;<br>        &lt;br /&gt;<br>        &lt;div&gt;<br>            &lt;iframe src=”<a href="http://w1.aaa.com&quot;" target="_blank" rel="noopener">http://w1.aaa.com&quot;</a> /&gt;<br>        &lt;/div&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></pre></div><br>在w2和w3這兩個站台中，都可以用iframe把w1給包進來<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-EY9jXx5UoIQ/VVw5hdRt0dI/AAAAAAAACSU/jkT1ziiQbnM/s1600/01.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-EY9jXx5UoIQ/VVw5hdRt0dI/AAAAAAAACSU/jkT1ziiQbnM/s1600/01.png" alt></a></div><br>在w1站台中加入一個全域header<br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;!–<br>  如需如何設定 ASP.NET 應用程式的詳細資訊，請造訪<br>  <a href="http://go.microsoft.com/fwlink/?LinkId=169433" target="_blank" rel="noopener">http://go.microsoft.com/fwlink/?LinkId=169433</a><br>  –&gt;<br>&lt;configuration&gt;<br><br>    &lt;system.web&gt;<br>        &lt;compilation debug=”true” targetFramework=”4.5” /&gt;<br>        &lt;httpRuntime targetFramework=”4.5” /&gt;<br>    &lt;/system.web&gt;<br><br>    &lt;system.webServer&gt;<br>        &lt;httpProtocol&gt;<br>            &lt;customHeaders&gt;<br>                &lt;add name=”X-Frame-Options” value=”SAMEORIGIN” /&gt;<br>            &lt;/customHeaders&gt;<br>        &lt;/httpProtocol&gt;<br>    &lt;/system.webServer&gt;<br><br>&lt;/configuration&gt;<br></pre></div><br>w2和w3就不能用frame包住w1了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-eRytF-lcF0E/VVw5hYAycJI/AAAAAAAACSY/mS_zuElzmTs/s1600/02%25E5%2590%258C%25E6%25BA%2590.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-eRytF-lcF0E/VVw5hYAycJI/AAAAAAAACSY/mS_zuElzmTs/s1600/02%25E5%2590%258C%25E6%25BA%2590.png" alt></a></div><br>改用Content-Security-Policy<br>需要注意網站的通訊協定，如果有http和https的差別，就需要把通訊協定也明確指出<br><div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;!–<br>  如需如何設定 ASP.NET 應用程式的詳細資訊，請造訪<br>  <a href="http://go.microsoft.com/fwlink/?LinkId=169433" target="_blank" rel="noopener">http://go.microsoft.com/fwlink/?LinkId=169433</a><br>  –&gt;<br>&lt;configuration&gt;<br><br>    &lt;system.web&gt;<br>        &lt;compilation debug=”true” targetFramework=”4.5” /&gt;<br>        &lt;httpRuntime targetFramework=”4.5” /&gt;<br>    &lt;/system.web&gt;<br><br>    &lt;system.webServer&gt;<br>        &lt;httpProtocol&gt;<br>            &lt;customHeaders&gt;<br>                &lt;add name=”Content-Security-Policy” value=”frame-ancestors ‘self’ <a href="http://w2.bbb.com&quot;" target="_blank" rel="noopener">http://w2.bbb.com&quot;</a> /&gt;<br>            &lt;/customHeaders&gt;<br>        &lt;/httpProtocol&gt;<br>    &lt;/system.webServer&gt;<br><br>&lt;/configuration&gt;<br></pre></div><br>就可以指定特定的站台可以用frame包住w1<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-cc1A2CO6z9M/VVw5iLqWHfI/AAAAAAAACSg/FqUsiMlo-Qk/s1600/04CSP.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-cc1A2CO6z9M/VVw5iLqWHfI/AAAAAAAACSg/FqUsiMlo-Qk/s1600/04CSP.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2015/04/21/申請Google-API/">申請Google API</a></h1>
+  
+
+      
+        <time datetime="2015-04-21T08:23:00.000Z">2015-04-21 16:23:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先進到Google Console頁面<br><a href="https://console.developers.google.com/" target="_blank" rel="noopener">https://console.developers.google.com/</a></p>
+<p>登入google帳號</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-jRAsU5bHt1Y/VTYIp-OGA4I/AAAAAAAACRE/REV4lLL9vV4/s1600/01.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-jRAsU5bHt1Y/VTYIp-OGA4I/AAAAAAAACRE/REV4lLL9vV4/s1600/01.%E7%99%BB%E5%85%A5%E5%B8%B3%E8%99%9F.png" alt></a></div><br>如果之前沒建過專案的話，需要先建立專案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-g6E2ZF4L-NQ/VTYIpsqqQCI/AAAAAAAACRI/l_d4fMWOXiY/s1600/02.%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-g6E2ZF4L-NQ/VTYIpsqqQCI/AAAAAAAACRI/l_d4fMWOXiY/s1600/02.%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88.png" alt></a></div><br>輸入專案名稱後，按下建立專案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-H_W5hJgUueA/VTYIpqpS2RI/AAAAAAAACRA/fhoyVXnA8E8/s1600/03.%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-H_W5hJgUueA/VTYIpqpS2RI/AAAAAAAACRA/fhoyVXnA8E8/s1600/03.%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88.png" alt></a></div><br>先啟用API，這邊用Youtube Data API來當例子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-c241WnttL90/VTYIqQ0seLI/AAAAAAAACRM/Dmp9oKLYfAg/s1600/04.youtube%2Bapi.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-c241WnttL90/VTYIqQ0seLI/AAAAAAAACRM/Dmp9oKLYfAg/s1600/04.youtube%2Bapi.png" alt></a></div><br>啟用API<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-THEurV1HVik/VTYIqqoXfDI/AAAAAAAACRQ/HwLxgv53wvI/s1600/05.%E5%95%9F%E7%94%A8api.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-THEurV1HVik/VTYIqqoXfDI/AAAAAAAACRQ/HwLxgv53wvI/s1600/05.%E5%95%9F%E7%94%A8api.png" alt></a></div><br>接下來要用設定同意畫面，選擇電子郵件和輸入產品名稱就可以了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-8fHQUGNCI5E/VTYIqykLyGI/AAAAAAAACRU/nkLryYLB0qE/s1600/06.%E5%90%8C%E6%84%8F%E7%95%AB%E9%9D%A2.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-8fHQUGNCI5E/VTYIqykLyGI/AAAAAAAACRU/nkLryYLB0qE/s1600/06.%E5%90%8C%E6%84%8F%E7%95%AB%E9%9D%A2.png" alt></a></div><br>再來要取得API的存取資料，這邊用OAuth為例<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-mvIEA3eWWW8/VTYIrHd65cI/AAAAAAAACRY/AC2lnpCTbGA/s1600/07.%E6%86%91%E8%AD%89.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-mvIEA3eWWW8/VTYIrHd65cI/AAAAAAAACRY/AC2lnpCTbGA/s1600/07.%E6%86%91%E8%AD%89.png" alt></a></div><br>選擇已安裝的應用程式<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-LfDyJXsdLeY/VTYIrQx6wUI/AAAAAAAACRc/Vdkka2-1vKY/s1600/08.%E5%BB%BA%E7%AB%8B%E6%86%91%E8%AD%89.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-LfDyJXsdLeY/VTYIrQx6wUI/AAAAAAAACRc/Vdkka2-1vKY/s1600/08.%E5%BB%BA%E7%AB%8B%E6%86%91%E8%AD%89.png" alt></a></div><br>API Key建立完成<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Q1ceKqfWzko/VTYIrp7wBnI/AAAAAAAACRg/I4qsbPX7YJk/s1600/09.%E6%86%91%E8%AD%89%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%88%90.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-Q1ceKqfWzko/VTYIrp7wBnI/AAAAAAAACRg/I4qsbPX7YJk/s1600/09.%E6%86%91%E8%AD%89%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%88%90.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/5/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/7/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

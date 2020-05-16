@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 12 頁 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/18/NLog-Database-Target/">NLog Database Target</a></h1>
+  
+
+      
+        <time datetime="2014-09-18T05:36:00.000Z">2014-09-18 13:36:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>NLog要把Log存到資料庫的話，可以透過Database這個taget</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a> autoReload=”true”&gt;<br>    &lt;targets&gt;<br>        &lt;target xsi:type=”Database” name=”db”<br>                connectionString=”data source=(localdb)\v11.0;database=LogDB; trusted_connection=true;”<br>                commandText=”INSERT INTO NLog_Error(ThreadId, MachineName, LogName, LogLevel, LogMessage, CallSite, Exception, Stacktrace) VALUES (@ThreadId, @MachineName, @LogName, @LogLevel, @LogMessage, @CallSite, @Exception, @Stacktrace);”&gt;<br>            &lt;parameter name=”@ThreadId” layout=”${threadid}”/&gt;<br>            &lt;parameter name=”@MachineName” layout=”${machinename}”/&gt;<br>            &lt;parameter name=”@LogName” layout=”${logger}”/&gt;<br>            &lt;parameter name=”@LogLevel” layout=”${level}”/&gt;<br>            &lt;parameter name=”@LogMessage” layout=”${message}”/&gt;<br>            &lt;parameter name=”@CallSite” layout=”${callsite:filename=true}”/&gt;<br>            &lt;parameter name=”@Exception” layout=”${exception}”/&gt;<br>            &lt;parameter name=”@stacktrace” layout=”${stacktrace}”/&gt;<br>        &lt;/target&gt;<br>    &lt;/targets&gt;<br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”db” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;</pre></div>
+
+<p>資料庫的Table Schema</p>
+<div><pre class="brush:sql">USE LogDB<br>GO<br><br>IF OBJECT_ID(‘NLog_Error’) IS NOT NULL<br>DROP TABLE NLog_Error<br>GO<br><br>CREATE TABLE NLog_Error<br>(<br> LogId   INT    NOT NULL IDENTITY(1,1) PRIMARY KEY,<br> ThreadId  INT    NOT NULL,<br> MachineName  VARCHAR(255) NOT NULL,<br> LogName   VARCHAR(255) NOT NULL,<br> LogLevel  VARCHAR(5)  NOT NULL,<br> LogMessage  VARCHAR(MAX) NOT NULL,<br> CallSite  VARCHAR(1024) NOT NULL,<br> Exception  VARCHAR(1024) NOT NULL,<br> Stacktrace  VARCHAR(1024) NOT NULL,<br> CreateDateTime DATETIME NOT NULL DEFAULT(GETDATE())<br>)<br>GO<br><br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/09/16/Elmah-Error-Logging-Modules-and-Handlers/">Elmah (Error Logging Modules and Handlers)</a></h1>
+  
+
+      
+        <time datetime="2014-09-16T09:40:00.000Z">2014-09-16 17:40:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Elmah - Error Logging Modules and Handlers<br>是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式<br>先開一個簡單的Web專案</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>透過NuGet安裝Elmah套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png" alt></a></div><br>從設定檔上可以看到包含四個模組<br><div><pre class="brush:xml">&lt;configSections&gt;<br>    &lt;sectionGroup name=”elmah”&gt;<br>        &lt;section name=”security” requirePermission=”false” type=”Elmah.SecuritySectionHandler, Elmah” /&gt;<br>        &lt;section name=”errorLog” requirePermission=”false” type=”Elmah.ErrorLogSectionHandler, Elmah” /&gt;<br>        &lt;section name=”errorMail” requirePermission=”false” type=”Elmah.ErrorMailSectionHandler, Elmah” /&gt;<br>        &lt;section name=”errorFilter” requirePermission=”false” type=”Elmah.ErrorFilterSectionHandler, Elmah” /&gt;<br>    &lt;/sectionGroup&gt;<br>&lt;/configSections&gt;<br></pre></div><br>security，用來設定是否允許遠端讀取elmah.axd，<br>errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory<br>errorMail，用來把Log送出EMail通知<br>errorFilter，用來過濾Log<br><br>elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png" alt></a></div>
+
+<p>如果要把記錄存在資料庫的話，以下用SQL Server為例子<br>首先到<a href="https://code.google.com/p/elmah/source/browse/src/Elmah.SqlServer/SQLServer.sql" target="_blank" rel="noopener">官網取得資料表結構</a><br>或是透過NuGet安裝Elmah.SqlServer套件</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png" alt></a></div><br>就可以在App_Readme資料夾下找到SQL檔案<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png" alt></a></div><br>不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png" alt></a></div><br>準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png" alt></a></div>透過errorLog設定Log寫到SQL Server<br><div><pre class="brush:xml">&lt;elmah&gt;<br>    &lt;security allowRemoteAccess=”false” /&gt;<br>    &lt;errorLog type=”Elmah.SqlErrorLog, Elmah” connectionString=”data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true” /&gt;<br>&lt;/elmah&gt;<br></pre></div><br>隨便丟個錯誤出來<br><div><pre class="brush:csharp">namespace WebApplication1<br>{<br>    public partial class WebForm1 : System.Web.UI.Page<br>    {<br>        protected void Page_Load(object sender, EventArgs e)<br>        {<br>            throw new Exception(“test”);<br>        }<br>    }<br>}<br></pre></div><br>資料庫就有記錄了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-aKiCFXWZg8g/VBgFF1EB-uI/AAAAAAAABl4/EFzUy-mrPDg/s1600/08.%E9%8C%AF%E8%AA%A4%E8%A8%98%E9%8C%84.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-aKiCFXWZg8g/VBgFF1EB-uI/AAAAAAAABl4/EFzUy-mrPDg/s1600/08.%E9%8C%AF%E8%AA%A4%E8%A8%98%E9%8C%84.png" alt></a></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/28/個人常用Log格式筆記/">個人常用Log格式筆記</a></h1>
+  
+
+      
+        <time datetime="2014-08-28T10:35:00.000Z">2014-08-28 18:35:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>個人常用的Log格式，在此記錄一下</p>
+<div><pre class="brush:xml">&lt;?xml version=”1.0” encoding=”utf-8” ?&gt;<br>&lt;nlog xmlns=”<a href="http://www.nlog-project.org/schemas/NLog.xsd&quot;" target="_blank" rel="noopener">http://www.nlog-project.org/schemas/NLog.xsd&quot;</a><br>      xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a> autoReload=”true”&gt;<br><br>    &lt;!–<br>  See <a href="https://github.com/nlog/nlog/wiki/Configuration-file" target="_blank" rel="noopener">https://github.com/nlog/nlog/wiki/Configuration-file</a><br>  for information on customizing logging rules and outputs.<br>   –&gt;<br>    &lt;targets async=”true”&gt;<br>        &lt;default-wrapper xsi:type=”BufferingWrapper” bufferSize=”500” flushTimeout=”3000” /&gt;<br><br>        &lt;target xsi:type=”Chainsaw” name=”console” address=”udp4://127.0.0.1:7071”<br>                layout=”${longdate} ${uppercase:${level}} ${message}” /&gt;<br><br>        &lt;target xsi:type=”File” name=”file” fileName=”D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log”<br>                  layout=”${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}” /&gt;</pre><pre class="brush:xml">    &lt;/targets&gt;<br><br>    &lt;rules&gt;<br>        &lt;logger name=”*” minlevel=”Trace” writeTo=”console,file” /&gt;<br>    &lt;/rules&gt;<br>&lt;/nlog&gt;<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/26/Select2套件搭配MVC專案/">Select2套件搭配MVC專案</a></h1>
+  
+
+      
+        <time datetime="2014-08-26T06:55:00.000Z">2014-08-26 14:55:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先開一個MVC專案</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt></a></div><br>透過NuGet引用Select2.js套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png" alt></a></div><br>因為MVC使用Bootstrap框架，所以需要搭配<a href="http://zh-tw.cdnjs.com/libraries/select2" target="_blank" rel="noopener">select2-bootstrap.css</a>來修正畫面的輸出<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png" alt></a></div><br>新增一個HomeModel用來傳遞資料<br><div><pre class="brush:csharp">public class HomeModel<br>{<br>    public IEnumerable&lt;int&gt; DataList { get; set; }<br>}<br></pre><div><br>在Controler中透過ViewBag，傳入一個MultiSelectList<br><div><pre class="brush:csharp">public ActionResult Index()<br>{<br>    this.ViewBag.DataList = new MultiSelectList(<br>        new List&lt;SelectListItem&gt;()<br>        {<br>            new SelectListItem{ Text=”aaa”, Value=”1”},<br>            new SelectListItem{ Text=”bbb”, Value=”2”},<br>            new SelectListItem{ Text=”ccc”, Value=”3”},<br>        }, “Value”, “Text”);<br><br>    return View();<br>}<br></pre><div><br>在View中透過@Html.ListBoxFor輸出下拉選單<br><div><pre class="brush:html">@using WebApplication1.ViewModels<br>@model HomeModel<br>@{<br>    ViewBag.Title = “Index”;<br>}<br><br>&lt;h2&gt;Index&lt;/h2&gt;<br><br>&lt;div class=”form-horizontal”&gt;<br>    &lt;div class=”form-group”&gt;<br>        @Html.LabelFor(x =&gt; x.DataList, new { @class = “col-md-2 label-control” })<br>        &lt;div class=”col-md-10”&gt;<br>            @Html.ListBoxFor(x =&gt; x.DataList, null, new { @class = “form-control” })<br>        &lt;/div&gt;<br>    &lt;/div&gt;<br>&lt;/div&gt;<br><br>@section scripts<br>{<br>    &lt;script type=”text/javascript”&gt;<br>        $(“#DataList”).select2();<br>    &lt;/script&gt;<br>}<br></pre><div><br>Select2套件在MVC專案中的樣子<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-jLL1ZTwa2T0/U_wuzJYxXzI/AAAAAAAABkY/lo1mxsr9FoE/s1600/04.%E4%BD%BF%E7%94%A8%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-jLL1ZTwa2T0/U_wuzJYxXzI/AAAAAAAABkY/lo1mxsr9FoE/s1600/04.%E4%BD%BF%E7%94%A8%E5%A5%97%E4%BB%B6.png" alt></a></div><br>如果是編輯頁面，初始化要有值的話，只要在model上面指定值<br><div><pre class="brush:csharp">public ActionResult Edit(int? id)<br>{<br>    this.ViewBag.DataList = new MultiSelectList(<br>        new List&lt;SelectListItem&gt;()<br>    {<br>        new SelectListItem{ Text=”aaa”, Value=”1”},<br>        new SelectListItem{ Text=”bbb”, Value=”2”},<br>        new SelectListItem{ Text=”ccc”, Value=”3”},<br>    }, “Value”, “Text”);<br><br>    HomeModel model = new HomeModel { DataList = new int[] { 1, 3 } };<br>    return View(model);<br>}<br></pre><div><br>初始化的時後就有值了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-e7HSmAPFZ5w/U_wvHzhWuGI/AAAAAAAABkg/pAJ7ku5ZnpU/s1600/05.%E7%B7%A8%E8%BC%AF%E9%A0%81%E9%9D%A2.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-e7HSmAPFZ5w/U_wvHzhWuGI/AAAAAAAABkg/pAJ7ku5ZnpU/s1600/05.%E7%B7%A8%E8%BC%AF%E9%A0%81%E9%9D%A2.png" alt></a></div>
+
+<p></p></div></div></div></div></div></div></div></div><p></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/22/Select2-套件基本用法/">Select2 套件基本用法</a></h1>
+  
+
+      
+        <time datetime="2014-08-22T06:43:00.000Z">2014-08-22 14:43:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Select2 套件是一個加強下拉選單的套件，官網提供了許多詳細的示範<br>這裡用一個簡單的例子來介紹這個套件<br>首先開一個Web專案</p>
+<p><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/--1rBcMtW1Y0/U_bkynIQwNI/AAAAAAAABic/OlnDplvnK8I/s1600/01.%E9%96%8B%E5%B0%88%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/--1rBcMtW1Y0/U_bkynIQwNI/AAAAAAAABic/OlnDplvnK8I/s1600/01.%E9%96%8B%E5%B0%88%E6%A1%88.png" alt></a></div><br>用一個html頁面來練習</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-ToVRuf067nQ/U_bk416LpLI/AAAAAAAABik/Nsn2uLwtv3E/s1600/02.%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-ToVRuf067nQ/U_bk416LpLI/AAAAAAAABik/Nsn2uLwtv3E/s1600/02.%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2.png" alt></a></div><br>透過NuGet新增select2.js套件</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-LsOCKW5DqQc/U_bk_S6qg0I/AAAAAAAABis/y5G7T6NOi9U/s1600/03.select2%E5%A5%97%E4%BB%B6.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-LsOCKW5DqQc/U_bk_S6qg0I/AAAAAAAABis/y5G7T6NOi9U/s1600/03.select2%E5%A5%97%E4%BB%B6.png" alt></a></div><br>select2.js套件包含了CSS和JavaScript和語系</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Hy2TdLfmd7s/U_blD22Tm9I/AAAAAAAABi0/vvZC8707Vl4/s1600/04.%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-Hy2TdLfmd7s/U_blD22Tm9I/AAAAAAAABi0/vvZC8707Vl4/s1600/04.%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B.png" alt></a></div><br>在html裡面引用CSS和JavaScript，該套件相依於JQuery，最低版本1.7以上</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lKdMrr5EHxA/U_blHcBAGQI/AAAAAAAABi8/9EF63xjvhCc/s1600/05.%E5%BC%95%E5%85%A5%E6%AA%94%E6%A1%88.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lKdMrr5EHxA/U_blHcBAGQI/AAAAAAAABi8/9EF63xjvhCc/s1600/05.%E5%BC%95%E5%85%A5%E6%AA%94%E6%A1%88.png" alt></a></div><br>手動輸入一個下拉選單</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-pz9TUisEjcc/U_blLbXR6jI/AAAAAAAABjE/4VypAffM6h8/s1600/06.%E5%8A%A0%E5%85%A5%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-pz9TUisEjcc/U_blLbXR6jI/AAAAAAAABjE/4VypAffM6h8/s1600/06.%E5%8A%A0%E5%85%A5%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE.png" alt></a></div><br>一般的下拉選單看起來像這個樣子</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-rXD3i6ufPks/U_blO9ka_eI/AAAAAAAABjM/WNgZSkYrBF4/s1600/07.%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-rXD3i6ufPks/U_blO9ka_eI/AAAAAAAABjM/WNgZSkYrBF4/s1600/07.%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>透過JQuery啟用select2</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-GBLzgQcd89M/U_blSWWuvlI/AAAAAAAABjU/KBZSwC8Jd2o/s1600/08.%E5%8A%A0%E5%85%A5JQuery.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-GBLzgQcd89M/U_blSWWuvlI/AAAAAAAABjU/KBZSwC8Jd2o/s1600/08.%E5%8A%A0%E5%85%A5JQuery.png" alt></a></div><br>看起來漂亮多了，而已還有查詢過濾的功能</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-EoqcBDY_4Ho/U_blWRJoSyI/AAAAAAAABjc/xnp3Qs6hpmg/s1600/09.%E5%A5%97%E4%BB%B6select2%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-EoqcBDY_4Ho/U_blWRJoSyI/AAAAAAAABjc/xnp3Qs6hpmg/s1600/09.%E5%A5%97%E4%BB%B6select2%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>加入多選屬性</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-BRgdJ_TQ1lI/U_blaO3szHI/AAAAAAAABjk/reLmSAgoFe0/s1600/10.%E5%8A%A0%E5%85%A5%E5%A4%9A%E9%81%B8.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-BRgdJ_TQ1lI/U_blaO3szHI/AAAAAAAABjk/reLmSAgoFe0/s1600/10.%E5%8A%A0%E5%85%A5%E5%A4%9A%E9%81%B8.png" alt></a></div><br>Select2套件的多選功能</p>
+<p><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-5tm6ArFLpfI/U_bld8UpKyI/AAAAAAAABjs/Nha7t2csK6M/s1600/11.%E5%A4%9A%E9%81%B8%E7%9A%84%E6%A8%A3%E5%AD%90.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-5tm6ArFLpfI/U_bld8UpKyI/AAAAAAAABjs/Nha7t2csK6M/s1600/11.%E5%A4%9A%E9%81%B8%E7%9A%84%E6%A8%A3%E5%AD%90.png" alt></a></div><br>參考資料</p>
+<p><a href="http://ivaynberg.github.io/select2/" target="_blank" rel="noopener">Select2 官網</a></p>
+<p><a href="http://zh-tw.cdnjs.com/libraries/select2" target="_blank" rel="noopener">Select 2 CDN</a></p>
+<p><a href="http://fk.github.io/select2-bootstrap-css/" target="_blank" rel="noopener">Select2 Bootstrap 3 CSS</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/19/密碼複雜度/">密碼複雜度</a></h1>
+  
+
+      
+        <time datetime="2014-08-19T08:57:00.000Z">2014-08-19 16:57:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>密碼複雜度利用Regular Expression可以簡單地完成<br>先用一個簡單的例子，6~12個英數字混合的規則</div><div><pre class="brush:html">&lt;div&gt;<br>    &lt;asp:TextBox ID=”Tbx_Password” runat=”server” /&gt;<br>    &lt;asp:Button ID=”Btn_Save” Text=”Save” OnClick=”Btn_Save_Click” runat=”server” /&gt;<br>    &lt;asp:RequiredFieldValidator ID=”Rfv_Password” ControlToValidate=”Tbx_Password”<br>        ErrorMessage=”密碼不可空白” SetFocusOnError=”true” Text=”密碼不可空白” ForeColor=”Red”<br>        Display=”Dynamic” runat=”server” /&gt;<br>    &lt;asp:RegularExpressionValidator ID=”Reg_Password” ControlToValidate=”Tbx_Password”<br>        ValidationExpression=”^(?!.<em>[oO0])(?=.</em>[a-zA-Z])(?=.<em>[\d])(?!.</em>[\d][\d][\d]).{6,12}$”<br>        ErrorMessage=”密碼長度6~12英數混合” Text=”密碼長度6~12英數混合” SetFocusOnError=”true”<br>        ForeColor=”Red” Display=”Dynamic” runat=”server” /&gt;<br>&lt;/div&gt;<br></pre></div><br><div><table><tbody><tr><td>^</td><td>開頭符號</td></tr><tr><td>(?=.<em>[a-zA-Z])</em></td><td>最少一個英文字</td></tr><tr><td>(?=.[\d])</td><td>最少一個數字</td></tr><tr><td>.{6,12}</td><td>6~12長度</td></tr><tr><td>$</td><td>結尾符號</td></tr></tbody></table></div><br><div>利用群組的功能還可以組合出更多的規則<br><table><tbody><tr><td>(?=.<em>[!@#$%^&amp;</em>])</td><td>最少一個符號</td></tr><tr><td>(?=.<em>[\d][\d])</em></td><td>連續兩個數字</td></tr><tr><td>(?=.[a-z][a-z])</td><td>連續兩個小寫英文</td></tr><tr><td>(?!.<em>[\d][\d][\d])</em></td><td>禁止連續三個數字</td></tr><tr><td>(?!.[oO0])</td><td>禁止小寫的o和大寫的O和數字的0</td></tr></tbody></table></div><br><div>如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用</div><br><div><pre class="brush:csharp">protected void Btn_Save_Click(object sender, EventArgs e)<br>{<br>    Regex reg = new Regex(@”^(?!.<em>[oO0])(?=.</em>[a-zA-Z])(?=.<em>[\d])(?!.</em>[\d][\d][\d]).{6,12}$”);<br>    if (reg.IsMatch(Tbx_Password.Text))<br>    {<br>        Response.Write(“Match”);<br>    }<br>    else<br>    {<br>        Response.Write(“Not Match”);<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/06/AutoMapper-全域設定/">AutoMapper 全域設定</a></h1>
+  
+
+      
+        <time datetime="2014-08-06T05:32:00.000Z">2014-08-06 13:32:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>AutoMapper可以把物件的對應設定集中在一個設定檔裡面，然後用Profile來做群組分類<br>用一個簡單的MVC網站來做例子</div><br><div>首先是HomeModel物件</div><div><pre class="brush:csharp">public class HomeModel<br>{<br>    public int ModelId { get; set; }<br>    public string ModelName { get; set; }<br>}<br></pre></div><br><div>再來是HomeViewModel物件</div><div><pre class="brush:csharp">public class HomeViewModel<br>{<br>    public int ViewModelId { get; set; }<br>    public string ViewModelName { get; set; }<br>}<br></pre></div><br><div>接下來在App_Start裡面新增一個AutoMapperConfig檔案</div><div><pre class="brush:csharp">public class AutoMapperConfig<br>{<br>    public static void Configure()<br>    {<br>        Mapper.Initialize(x =&gt;<br>            {<br>                x.AddProfile&lt;HomeProfile&gt;();<br>            });<br>    }<br><br>    private class HomeProfile : Profile<br>    {<br>        protected override void Configure()<br>        {<br>            Mapper.CreateMap&lt;HomeModel, HomeViewModel&gt;()<br>                .ForMember(dest =&gt; dest.ViewModelId, opt =&gt; opt.MapFrom(src =&gt; src.ModelId))<br>                .ForMember(dest =&gt; dest.ViewModelName, opt =&gt; opt.MapFrom(src =&gt; src.ModelName));<br><br>            Mapper.CreateMap&lt;HomeViewModel, HomeModel&gt;()<br>                .ForMember(dest =&gt; dest.ModelId, opt =&gt; opt.MapFrom(src =&gt; src.ViewModelId))<br>                .ForMember(dest =&gt; dest.ModelName, opt =&gt; opt.MapFrom(src =&gt; src.ViewModelName));<br>        }<br>    }<br>}<br></pre></div><br><div>然後在Global.asax中呼叫就行了</div><div><pre class="brush:csharp">public class MvcApplication : System.Web.HttpApplication<br>{<br>    protected void Application_Start()<br>    {<br>        AreaRegistration.RegisterAllAreas();<br>        RouteConfig.RegisterRoutes(RouteTable.Routes);<br>        AutoMapperConfig.Configure();<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/05/AutoMapper-自訂對應關系/">AutoMapper 自訂對應關系</a></h1>
+  
+
+      
+        <time datetime="2014-08-05T10:18:00.000Z">2014-08-05 18:18:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換<br>但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明</div><br><div>首先是來源的Model物件</div><div><pre class="brush:csharp">public class DemoModel<br>{<br>    public int CustId { get; set; }<br>    public string CustName { get; set; }<br>    public bool CustGender { get; set; }<br>}<br></pre></div><br><div>再來是要轉換的ViewModel物件</div><div><pre class="brush:csharp">public class DemoViewModel<br>{<br>    public int Id { get; set; }<br>    public string Name { get; set; }<br>    public string FullName { get; set; }<br>    public string Gender { get; set; }<br>    public DateTime Date { get; set; }<br>}<br></pre></div><br><div>轉換的設定方式<br>Ignore是用來略過對應，不給值<br>MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值<br>ResolveUsing是指定自訂的型別轉換方式<br>UseValue是在轉換的過程中直接給值<br>NullSubstitute是在原始值為空的時後才給值<br>Condition傳入一個條件為true才給值</div><div><pre class="brush:csharp">public class Class1<br>{<br>    public void GetViewModel()<br>    {<br>        Mapper.CreateMap&lt;DemoModel, DemoViewModel&gt;()<br>            .ForMember(dest =&gt; dest.Id, opt =&gt; opt.Ignore())<br>            .ForMember(dest =&gt; dest.Name, opt =&gt; opt.MapFrom(src =&gt; src.CustName))<br>            .ForMember(dest =&gt; dest.FullName, opt =&gt; opt.MapFrom(src =&gt; string.Format(“{0}:{1}”, src.CustId, src.CustName)))<br>            .ForMember(dest =&gt; dest.Gender, opt =&gt; opt.ResolveUsing&lt;GenderResolver&gt;().FromMember(src =&gt; src.CustGender))<br>            .ForMember(dest =&gt; dest.Date, opt =&gt; opt.UseValue&lt;DateTime&gt;(DateTime.Now));<br><br>        DemoModel model = new DemoModel<br>        {<br>            CustId = 123,<br>            CustName = “abc”,<br>            CustGender = true<br>        };<br><br>        DemoViewModel viewModel = Mapper.Map&lt;DemoModel, DemoViewModel&gt;(model);<br>        Console.WriteLine(“id:{0}, name:{1}, fullname:{2}, gender:{3}, date:{4}”, viewModel.Id, viewModel.Name, viewModel.FullName, viewModel.Date, viewModel.Gender);<br>    }<br><br>    private class GenderResolver : ValueResolver&lt;bool, string&gt;<br>    {<br>        protected override string ResolveCore(bool source)<br>        {<br>            return source ? “男” : “女”;<br>        }<br>    }<br>}<br></pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/05/AutoMapper-簡單用法/">AutoMapper 簡單用法</a></h1>
+  
+
+      
+        <time datetime="2014-08-05T09:06:00.000Z">2014-08-05 17:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <div>AutoMapper是一個用來處理類別之間轉換的套件，以下用個Model和ViewModel的轉換當例子<br><br>首先是一個簡單的Model</div><div><pre class="brush:csharp">public class DemoModel<br>{<br>    public int Id { get; set; }<br>    public string Name { get; set; }<br>}<br></pre></div><div><br>再來是對應的ViewModel</div><div><pre class="brush:csharp">public class DemoViewModel<br>{<br>    public int Id { get; set; }<br>    public string Name { get; set; }<br>}<br></pre></div><div><br>兩個類別要轉換的一般寫法</div><div><pre class="brush:csharp">private static void V1()<br>{<br>    DemoModel c1 = new DemoModel()<br>    {<br>        Id = 123,<br>        Name = “abc”<br>    };<br><br>    DemoViewModel c2 = new DemoViewModel<br>    {<br>        Id = c1.Id,<br>        Name = c1.Name<br>    };<br><br>    Console.WriteLine(“id:{0}, name:{1}”, c2.Id, c2.Name);<br>}<br></pre></div><div><br>使用AutoMapper之後的寫法</div><div><pre class="brush:csharp">private static void V2()<br>{<br>    Mapper.CreateMap&lt;DemoModel, DemoViewModel&gt;();<br>    DemoModel c1 = new DemoModel<br>    {<br>        Id = 123,<br>        Name = “abc”<br>    };<br><br>    DemoViewModel c2 = Mapper.Map&lt;DemoModel, DemoViewModel&gt;(c1);<br>    Console.WriteLine(“id:{0}, name:{1}”, c2.Id, c2.Name);<br>}</pre></div><br><div>AutoMapper用來把DataReader轉成IEnumerable也很簡單，以北風資料庫的Customers為例子</div><div>首先是轉換後的CustViewModel</div><div><pre class="brush:csharp">public class CustViewModel<br>{<br>    public int CustomerID { get; set; }<br>    public string CompanyName { get; set; }<br>    public string City { get; set; }<br>    public string Region { get; set; }<br>    public string PostalCode { get; set; }<br>    public string Country { get; set; }<br>    public string Phone { get; set; }<br>    public string Fax { get; set; }<br>}</pre></div><br><div>取得資料列表</div><div><pre class="brush:csharp">public static IEnumerable&lt;CustViewModel&gt; GetList()<br>{<br>    Mapper.CreateMap&lt;IDataReader, IEnumerable&lt;CustViewModel&gt;&gt;();<br>    string connString = @”data source=(localdb)\v11.0; initial catalog=Northwind; trusted_connection=true;”;<br>    using (SqlConnection conn = new SqlConnection(connString))<br>    {<br>        SqlCommand cmd = new SqlCommand(“select * from customers”, conn);<br>        conn.Open();<br>        SqlDataReader dtr = cmd.ExecuteReader();<br>        return Mapper.Map&lt;IDataReader, IEnumerable&lt;CustViewModel&gt;&gt;(dtr);<br>    }<br>}</pre></div>
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/05/AutoMapper-筆記/">AutoMapper 筆記</a></h1>
+  
+
+      
+        <time datetime="2014-08-05T09:06:00.000Z">2014-08-05 17:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>1. <a href="http://blog.developer.idv.tw/2014/08/automapper_5.html" target="_blank" rel="noopener">AutoMapper 簡單用法</a><br><a href="http://blog.developer.idv.tw/2014/08/automapper_5.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/08/automapper_5.html</a></p>
+<p>2. <a href="http://blog.developer.idv.tw/2014/08/automapper_60.html" target="_blank" rel="noopener">AutoMapper 自訂對應關系</a><br><a href="http://blog.developer.idv.tw/2014/08/automapper_60.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/08/automapper_60.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2014/08/automapper_6.html" target="_blank" rel="noopener">3. AutoMapper 全域設定</a><br><a href="http://blog.developer.idv.tw/2014/08/automapper_6.html" target="_blank" rel="noopener">http://blog.developer.idv.tw/2014/08/automapper_6.html</a></p>
+<p>參考資源</p>
+<p><a href="https://github.com/AutoMapper/AutoMapper/wiki" target="_blank" rel="noopener">AutoMapper 官方文件</a></p>
+
+      
+    </div>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/11/" class="alignleft prev">上一頁</a>
+  
+  
+    <a href="/page/13/" class="alignright next">下一頁</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+

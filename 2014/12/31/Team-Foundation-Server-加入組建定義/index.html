@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Team Foundation Server 加入組建定義 › Xian&#39;s 學習筆記</title>
+  <meta name="author" content="李明憲">
+  
+  <meta name="description" content="記錄自已學習的筆記備忘錄">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Team Foundation Server 加入組建定義">
+  <meta property="og:site_name" content="Xian&#39;s 學習筆記">
+
+  
+    <meta property="og:image" content>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Xian&#39;s 學習筆記" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TH9DF4B');</script>
+  <!-- End Google Tag Manager -->
+</head>
+</html>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TH9DF4B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Xian&#39;s 學習筆記</a></h1>
+  <h2><a href="/">千里之行 始於足下</a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Team Foundation Server 加入組建定義</h1>
+  
+
+      
+        <time datetime="2014-12-31T11:06:00.000Z">2014-12-31 19:06:00</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>打開Team Explorer，點擊組建</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png" alt></a></div><br>新增組建定義<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png" alt></a></div><br>組建定義名稱<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png" alt></a></div><br>觸發程序用來設定何時執行這個建置<br>連續整合是每當程式碼簽入時就會觸發<br>累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響<br>閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查<br>排程可以設定固定時間啟動建置<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png" alt></a></div><br>來源設定用來設定原始碼從何而來<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>組建預設值用來設定建置成功後的產品要輸出到什麼地方<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png" alt></a></div><br>流程是用來設定建置的動作和細部的設定<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png" alt></a></div><br>保留原則用來設定不同建置結果下是否要保留建置出來的產品<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png" alt></a></div><br>設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義<br>在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png" alt></a></div><br>手動執行之前，可以設定一下這一次的組建的控制器和代理<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png" alt></a></div><br>雙擊組建定義，可以叫出組建記錄<br><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png" target="_blank" rel="noopener"><img src="http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png" alt></a></div><br>雙擊組建記錄，可以看該次組建的結果<br>這次組建失敗，原因是少了Microsoft.WebApplication.targets<br><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png" target="_blank" rel="noopener"><img src="http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png" alt></a></div><br>可以手動複製這個資料夾到組建伺服器上相同的位置<br>比較簡單的方式是安裝Visual Studio Shell轉散發套件<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png" alt></a></div><br>就會有相關的檔案了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png" target="_blank" rel="noopener"><img src="http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png" alt></a></div><br>再執行一次就建置成功了<br><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" target="_blank" rel="noopener"><img src="http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png" alt></a></div>
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Team-Foundation-Server/">Team Foundation Server</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:www.developer.idv.tw">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/14/certbot/">certbot</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/28/kubeadm-install/">kubeadm install</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-container/">docker container</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-images/">docker images</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/10/docker-command/">docker command</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/ADFS/" style="font-size: 12px;">ADFS</a> <a href="/tags/ASP-NET/" style="font-size: 11.33px;">ASP.NET</a> <a href="/tags/Android/" style="font-size: 10.67px;">Android</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/AngularJS套件/" style="font-size: 12px;">AngularJS套件</a> <a href="/tags/AutoMapper/" style="font-size: 12.67px;">AutoMapper</a> <a href="/tags/Bootstrap/" style="font-size: 10.67px;">Bootstrap</a> <a href="/tags/Build-Server/" style="font-size: 10.67px;">Build Server</a> <a href="/tags/BuildAgent/" style="font-size: 10px;">BuildAgent</a> <a href="/tags/C/" style="font-size: 19.33px;">C#</a> <a href="/tags/Claims-Base/" style="font-size: 12.67px;">Claims Base</a> <a href="/tags/Code-Analysis/" style="font-size: 10px;">Code Analysis</a> <a href="/tags/Code-Coverage/" style="font-size: 10px;">Code Coverage</a> <a href="/tags/Code-First/" style="font-size: 16px;">Code First</a> <a href="/tags/DbContext/" style="font-size: 13.33px;">DbContext</a> <a href="/tags/Elmah/" style="font-size: 10px;">Elmah</a> <a href="/tags/Entity-Framework/" style="font-size: 17.33px;">Entity Framework</a> <a href="/tags/FxCop/" style="font-size: 10.67px;">FxCop</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/JSON/" style="font-size: 18.67px;">JSON</a> <a href="/tags/Jenkins/" style="font-size: 14.67px;">Jenkins</a> <a href="/tags/Knockout/" style="font-size: 14px;">Knockout</a> <a href="/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Migrate/" style="font-size: 10px;">Migrate</a> <a href="/tags/NLog/" style="font-size: 18px;">NLog</a> <a href="/tags/NodeJS/" style="font-size: 12px;">NodeJS</a> <a href="/tags/NuGet/" style="font-size: 18.67px;">NuGet</a> <a href="/tags/NuGet套件/" style="font-size: 12.67px;">NuGet套件</a> <a href="/tags/Octopus/" style="font-size: 16px;">Octopus</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Remote-Debug/" style="font-size: 10.67px;">Remote Debug</a> <a href="/tags/SQL-Server/" style="font-size: 11.33px;">SQL Server</a> <a href="/tags/SSO/" style="font-size: 12px;">SSO</a> <a href="/tags/Select2/" style="font-size: 10.67px;">Select2</a> <a href="/tags/Source-Monitor/" style="font-size: 10px;">Source Monitor</a> <a href="/tags/StyleCop/" style="font-size: 14.67px;">StyleCop</a> <a href="/tags/Sublime-Text-3/" style="font-size: 14px;">Sublime Text 3</a> <a href="/tags/Symbol/" style="font-size: 10.67px;">Symbol</a> <a href="/tags/Team-Foundation-Server/" style="font-size: 15.33px;">Team Foundation Server</a> <a href="/tags/TeamCity/" style="font-size: 18px;">TeamCity</a> <a href="/tags/TypeScript/" style="font-size: 10.67px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 14px;">Unit Test</a> <a href="/tags/XDT-Transform/" style="font-size: 11.33px;">XDT Transform</a> <a href="/tags/app-config/" style="font-size: 10px;">app.config</a> <a href="/tags/arr/" style="font-size: 10px;">arr</a> <a href="/tags/design-pattern/" style="font-size: 10.67px;">design pattern</a> <a href="/tags/docker/" style="font-size: 11.33px;">docker</a> <a href="/tags/git/" style="font-size: 10.67px;">git</a> <a href="/tags/gogs/" style="font-size: 13.33px;">gogs</a> <a href="/tags/iis/" style="font-size: 10.67px;">iis</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/nginx/" style="font-size: 10.67px;">nginx</a> <a href="/tags/pdb/" style="font-size: 10px;">pdb</a> <a href="/tags/spin/" style="font-size: 10px;">spin</a> <a href="/tags/spin-js/" style="font-size: 10px;">spin.js</a> <a href="/tags/visual-studio/" style="font-size: 11.33px;">visual studio</a> <a href="/tags/windows-service/" style="font-size: 14.67px;">windows service</a> <a href="/tags/茶包射手/" style="font-size: 10.67px;">茶包射手</a> <a href="/tags/遠端偵錯/" style="font-size: 10.67px;">遠端偵錯</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 李明憲
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+
