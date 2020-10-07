@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Windows Service 筆記 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html
+    ">
+
+
+<meta property="og:title" content="Windows Service 筆記" />
+<meta property="og:description" content="Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/" />
+<meta property="article:published_time" content="2014-01-28T14:31:00+00:00" />
+<meta property="article:modified_time" content="2014-01-28T14:31:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows Service 筆記"/>
+<meta name="twitter:description" content="Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html"/>
+
+<meta itemprop="name" content="Windows Service 筆記">
+<meta itemprop="description" content="Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html">
+<meta itemprop="datePublished" content="2014-01-28T14:31:00+00:00" />
+<meta itemprop="dateModified" content="2014-01-28T14:31:00+00:00" />
+<meta itemprop="wordCount" content="22">
+
+
+
+<meta itemprop="keywords" content="C#,windows service," />
+
+<link rel="canonical" href="http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Windows Service 筆記</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 28, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows Service</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows service</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p><a href="https://www.blogger.com/goog_359828883">Windows Service 開發</a>
+<a href="http://blog.developer.idv.tw/2014/01/windows-service.html">http://blog.developer.idv.tw/2014/01/windows-service.html</a></p>
+<p><a href="https://www.blogger.com/goog_359828889">Windows Service 本機偵錯方式</a>
+<a href="http://blog.developer.idv.tw/2014/01/windows-service_20.html">http://blog.developer.idv.tw/2014/01/windows-service_20.html</a></p>
+<p><a href="https://www.blogger.com/goog_359828894">Windows Service 遠端偵錯方式</a>
+<a href="http://blog.developer.idv.tw/2014/01/windows-service_8048.html">http://blog.developer.idv.tw/2014/01/windows-service_8048.html</a></p>
+<p><a href="https://www.blogger.com/goog_359828899">Windows Service 啟動參數</a>
+<a href="http://blog.developer.idv.tw/2014/01/windows-service_6343.html">http://blog.developer.idv.tw/2014/01/windows-service_6343.html</a></p>
+<p><a href="https://www.blogger.com/goog_359828904">Windows Service 控制介面</a>
+<a href="http://blog.developer.idv.tw/2014/01/windows-service_3882.html">http://blog.developer.idv.tw/2014/01/windows-service_3882.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2016/01/topshelf.html">TopShelf</a>
+<a href="http://blog.developer.idv.tw/2016/01/topshelf.html">http://blog.developer.idv.tw/2016/01/topshelf.html</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Windows%20Service%20%e7%ad%86%e8%a8%98&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f
+			&title=Windows%20Service%20%e7%ad%86%e8%a8%98&summary=Windows%20Service%20%e9%96%8b%e7%99%bc%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f01%2fwindows-service.html%0aWindows%20Service%20%e6%9c%ac%e6%a9%9f%e5%81%b5%e9%8c%af%e6%96%b9%e5%bc%8f%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f01%2fwindows-service_20.html%0aWindows%20Service%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e6%96%b9%e5%bc%8f%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f01%2fwindows-service_8048.html%0aWindows%20Service%20%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f01%2fwindows-service_6343.html%0aWindows%20Service%20%e6%8e%a7%e5%88%b6%e4%bb%8b%e9%9d%a2%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f01%2fwindows-service_3882.html%0aTopShelf%20http%3a%2f%2fblog.developer.idv.tw%2f2016%2f01%2ftopshelf.html&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Windows%20Service%20%e7%ad%86%e8%a8%98&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop 中文環境設定 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &lt;StyleCopSettings Version=&#34;105&#34;&gt; &lt;Analyzers&gt; &lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&gt; &lt;Rules&gt; &lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;/Rules&gt; &lt;AnalyzerSettings /&gt; &lt;/Analyzer&gt; &lt;/Analyzers&gt; &lt;/StyleCopSettings&gt; 
+    ">
+
+
+<meta property="og:title" content="StyleCop 中文環境設定" />
+<meta property="og:description" content="Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &lt;StyleCopSettings Version=&#34;105&#34;&gt; &lt;Analyzers&gt; &lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&gt; &lt;Rules&gt; &lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;/Rules&gt; &lt;AnalyzerSettings /&gt; &lt;/Analyzer&gt; &lt;/Analyzers&gt; &lt;/StyleCopSettings&gt; " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/" />
+<meta property="article:published_time" content="2014-07-07T16:51:00+00:00" />
+<meta property="article:modified_time" content="2014-07-07T16:51:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop 中文環境設定"/>
+<meta name="twitter:description" content="Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &lt;StyleCopSettings Version=&#34;105&#34;&gt; &lt;Analyzers&gt; &lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&gt; &lt;Rules&gt; &lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;/Rules&gt; &lt;AnalyzerSettings /&gt; &lt;/Analyzer&gt; &lt;/Analyzers&gt; &lt;/StyleCopSettings&gt; "/>
+
+<meta itemprop="name" content="StyleCop 中文環境設定">
+<meta itemprop="description" content="Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &lt;StyleCopSettings Version=&#34;105&#34;&gt; &lt;Analyzers&gt; &lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&gt; &lt;Rules&gt; &lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;/Rules&gt; &lt;AnalyzerSettings /&gt; &lt;/Analyzer&gt; &lt;/Analyzers&gt; &lt;/StyleCopSettings&gt; ">
+<meta itemprop="datePublished" content="2014-07-07T16:51:00+00:00" />
+<meta itemprop="dateModified" content="2014-07-07T16:51:00+00:00" />
+<meta itemprop="wordCount" content="43">
+
+
+
+<meta itemprop="keywords" content="StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop 中文環境設定</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jul 7, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則</p>
+<p>首先在專案上按右鍵，選擇StyleCop Settings</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)</div>
+在Rules中的Documentation Rules中，再打開Element Documentation
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)</div>
+取消SA1630 DocumentationTextMustContainWhitespace
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)</div>
+取消SA1650 ElementDocumentationMustBeSpelledCorrectly
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)</div>
+設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)</div>
+內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已
+<div><pre class="brush:xml">&lt;StyleCopSettings Version="105"&gt;
+    &lt;Analyzers&gt;
+        &lt;Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules"&gt;
+            &lt;Rules&gt;
+                &lt;Rule Name="DocumentationTextMustContainWhitespace"&gt;
+                    &lt;RuleSettings&gt;
+                        &lt;BooleanProperty Name="Enabled"&gt;False&lt;/BooleanProperty&gt;
+                    &lt;/RuleSettings&gt;
+                &lt;/Rule&gt;
+                &lt;Rule Name="ElementDocumentationMustBeSpelledCorrectly"&gt;
+                    &lt;RuleSettings&gt;
+                        &lt;BooleanProperty Name="Enabled"&gt;False&lt;/BooleanProperty&gt;
+                    &lt;/RuleSettings&gt;
+                &lt;/Rule&gt;
+            &lt;/Rules&gt;
+            &lt;AnalyzerSettings /&gt;
+        &lt;/Analyzer&gt;
+    &lt;/Analyzers&gt;
+&lt;/StyleCopSettings&gt;
+</pre></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20%e4%b8%ad%e6%96%87%e7%92%b0%e5%a2%83%e8%a8%ad%e5%ae%9a&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f
+			&title=StyleCop%20%e4%b8%ad%e6%96%87%e7%92%b0%e5%a2%83%e8%a8%ad%e5%ae%9a&summary=Stylecop%e4%bd%bf%e7%94%a8%e4%b8%80%e6%ae%b5%e6%99%82%e9%96%93%e5%be%8c%ef%bc%8c%e6%84%9f%e8%a6%ba%e6%9c%89%e5%85%a9%e5%80%8b%e9%a0%90%e8%a8%ad%e8%a6%8f%e5%89%87%e4%b8%8d%e5%a4%aa%e9%81%a9%e5%90%88%e4%b8%ad%e6%96%87%e7%92%b0%e5%a2%83%ef%bc%8c%e6%89%80%e4%bb%a5%e5%80%8b%e4%ba%ba%e6%9c%83%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%ad%e5%8f%96%e6%b6%88%e9%80%99%e5%85%a9%e6%a2%9d%e8%a6%8f%e5%89%87%0a%e9%a6%96%e5%85%88%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e6%93%87StyleCop%20Settings%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-34eXH7WWiD0%2fU7pdzXekbgI%2fAAAAAAAABgs%2fbnrXu5C4jkk%2fs1600%2f01.%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-34eXH7WWiD0%2fU7pdzXekbgI%2fAAAAAAAABgs%2fbnrXu5C4jkk%2fs1600%2f01.%25E8%25A8%25AD%25E5%25AE%259A.png%29%20%e5%9c%a8Rules%e4%b8%ad%e7%9a%84Documentation%20Rules%e4%b8%ad%ef%bc%8c%e5%86%8d%e6%89%93%e9%96%8bElement%20Documentation%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-cs3042c1How%2fU7pdzXgvvJI%2fAAAAAAAABhI%2f_83uHNC8X2A%2fs1600%2f02.%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-cs3042c1How%2fU7pdzXgvvJI%2fAAAAAAAABhI%2f_83uHNC8X2A%2fs1600%2f02.%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%20%e5%8f%96%e6%b6%88SA1630%20DocumentationTextMustContainWhitespace%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-81-MVHrilwI%2fU7pehwbCa6I%2fAAAAAAAABhM%2fCqJfG8KK2nk%2fs1600%2f03.SA1630.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-81-MVHrilwI%2fU7pehwbCa6I%2fAAAAAAAABhM%2fCqJfG8KK2nk%2fs1600%2f03.SA1630.png%29%20%e5%8f%96%e6%b6%88SA1650%20ElementDocumentationMustBeSpelledCorrectly%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MqmnKPxdPvI%2fU7peqPbdq_I%2fAAAAAAAABhU%2fK6hrfHfMCs0%2fs1600%2f04.SA1650.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MqmnKPxdPvI%2fU7peqPbdq_I%2fAAAAAAAABhU%2fK6hrfHfMCs0%2fs1600%2f04.SA1650.png%29%20%e8%a8%ad%e5%ae%9a%e5%a5%bd%e6%8c%89OK%e5%be%8c%ef%bc%8c%e5%b0%88%e6%a1%88%e4%b8%8b%e9%9d%a2%e5%b0%b1%e6%9c%83%e5%a4%9a%e5%87%ba%e4%b8%80%e5%80%8b%e9%9a%b1%e8%97%8f%e6%aa%94%ef%bc%8c%e6%aa%94%e5%90%8d%e7%82%baSettings.StyleCop%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-FdbCL8bUzX8%2fU7pe2nDlO-I%2fAAAAAAAABhc%2frvkpRQFm3Ls%2fs1600%2f05.%25E9%259A%25B1%25E8%2597%258F%25E6%25AA%2594.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-FdbCL8bUzX8%2fU7pe2nDlO-I%2fAAAAAAAABhc%2frvkpRQFm3Ls%2fs1600%2f05.%25E9%259A%25B1%25E8%2597%258F%25E6%25AA%2594.png%29%20%e5%85%a7%e5%ae%b9%e6%98%afXML%e6%a0%bc%e5%bc%8f%e7%9a%84%e6%96%87%e4%bb%b6%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%9c%8b%e7%9a%84%e5%87%ba%e4%be%86%ef%bc%8c%e5%b0%b1%e6%98%af%e6%8a%8a%e9%82%a3%e5%85%a9%e6%a2%9d%e8%a6%8f%e5%89%87%e9%97%9c%e9%96%89%e8%80%8c%e5%b7%b2%20%26lt%3bStyleCopSettings%20Version%3d%22105%22%26gt%3b%20%26lt%3bAnalyzers%26gt%3b%20%26lt%3bAnalyzer%20AnalyzerId%3d%22StyleCop.CSharp.DocumentationRules%22%26gt%3b%20%26lt%3bRules%26gt%3b%20%26lt%3bRule%20Name%3d%22DocumentationTextMustContainWhitespace%22%26gt%3b%20%26lt%3bRuleSettings%26gt%3b%20%26lt%3bBooleanProperty%20Name%3d%22Enabled%22%26gt%3bFalse%26lt%3b%2fBooleanProperty%26gt%3b%20%26lt%3b%2fRuleSettings%26gt%3b%20%26lt%3b%2fRule%26gt%3b%20%26lt%3bRule%20Name%3d%22ElementDocumentationMustBeSpelledCorrectly%22%26gt%3b%20%26lt%3bRuleSettings%26gt%3b%20%26lt%3bBooleanProperty%20Name%3d%22Enabled%22%26gt%3bFalse%26lt%3b%2fBooleanProperty%26gt%3b%20%26lt%3b%2fRuleSettings%26gt%3b%20%26lt%3b%2fRule%26gt%3b%20%26lt%3b%2fRules%26gt%3b%20%26lt%3bAnalyzerSettings%20%2f%26gt%3b%20%26lt%3b%2fAnalyzer%26gt%3b%20%26lt%3b%2fAnalyzers%26gt%3b%20%26lt%3b%2fStyleCopSettings%26gt%3b%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20%e4%b8%ad%e6%96%87%e7%92%b0%e5%a2%83%e8%a8%ad%e5%ae%9a&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f07%2fstylecop-%25E4%25B8%25AD%25E6%2596%2587%25E7%2592%25B0%25E5%25A2%2583%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

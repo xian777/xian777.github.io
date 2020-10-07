@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity 整合 StyleCop | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  
+    ">
+
+
+<meta property="og:title" content="TeamCity 整合 StyleCop" />
+<meta property="og:description" content="先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/" />
+<meta property="article:published_time" content="2014-06-06T14:10:00+00:00" />
+<meta property="article:modified_time" content="2014-06-06T14:10:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity 整合 StyleCop"/>
+<meta name="twitter:description" content="先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  "/>
+
+<meta itemprop="name" content="TeamCity 整合 StyleCop">
+<meta itemprop="description" content="先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  ">
+<meta itemprop="datePublished" content="2014-06-06T14:10:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-06T14:10:00+00:00" />
+<meta itemprop="wordCount" content="35">
+
+
+
+<meta itemprop="keywords" content="StyleCop,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity 整合 StyleCop</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 6, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    9 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>先打開管理頁面的Plugin List，選擇<a href="http://confluence.jetbrains.com/display/TW/TeamCity+Plugins">Available Plugin</a></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)</div>
+找到StyleCop Runner
+<div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)</div>
+</div><div>下載最新版本的StyleCop Plugin
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)</div>
+</div><div>
+</div><div>把檔案解壓縮後會得到不帶版本號的Stylecop.zip
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)</div>
+</div><div>
+打開管理頁面的PluginList，點擊Upload plugin zip連結</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)</div>
+</div><div>選擇剛解壓縮出來的Stylecop.zip
+上傳到Plugins資料夾下面</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)</div>
+</div><div>重新啟動TeamCity服務</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)</div>
+</div><div>Plugin列表中可以看到StyleCop套件的資訊</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)</div>
+</div><div>Build Step中就可以選擇StyleCop這個Runner
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)</div>輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)</div>
+預設會把找到的問題當做錯誤，造成建置失敗
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)</div>
+可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制
+另一個方法是勾選Treat errors as warnings，把錯誤當成警告
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)</div>
+建置結果會順利通過，但有檢查到的數量顯示
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)</div>
+點選該筆建置內容，就會看到StyleCop的詳細資料
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)</div>
+</div><div>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%20%e6%95%b4%e5%90%88%20StyleCop&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f
+			&title=TeamCity%20%e6%95%b4%e5%90%88%20StyleCop&summary=%e5%85%88%e6%89%93%e9%96%8b%e7%ae%a1%e7%90%86%e9%a0%81%e9%9d%a2%e7%9a%84Plugin%20List%ef%bc%8c%e9%81%b8%e6%93%87Available%20Plugin%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-oDy7ga_ahsU%2fU5FaL4uSbTI%2fAAAAAAAABbI%2fbTAKqhJ56MQ%2fs1600%2f00.AvailablePlugin.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-oDy7ga_ahsU%2fU5FaL4uSbTI%2fAAAAAAAABbI%2fbTAKqhJ56MQ%2fs1600%2f00.AvailablePlugin.png%29%20%e6%89%be%e5%88%b0StyleCop%20Runner%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Y0Omog127jg%2fU5FUq4nBNBI%2fAAAAAAAABZU%2fzO4XKx93Lxs%2fs1600%2f01.Download.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Y0Omog127jg%2fU5FUq4nBNBI%2fAAAAAAAABZU%2fzO4XKx93Lxs%2fs1600%2f01.Download.png%29%20%e4%b8%8b%e8%bc%89%e6%9c%80%e6%96%b0%e7%89%88%e6%9c%ac%e7%9a%84StyleCop%20Plugin%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ivWisnEKuWc%2fU5FUvySNMtI%2fAAAAAAAABZc%2faQ4RiKU-5Bo%2fs1600%2f02.DW.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ivWisnEKuWc%2fU5FUvySNMtI%2fAAAAAAAABZc%2faQ4RiKU-5Bo%2fs1600%2f02.DW.png%29%20%20%e6%8a%8a%e6%aa%94%e6%a1%88%e8%a7%a3%e5%a3%93%e7%b8%ae%e5%be%8c%e6%9c%83%e5%be%97%e5%88%b0%e4%b8%8d%e5%b8%b6%e7%89%88%e6%9c%ac%e8%99%9f%e7%9a%84Stylecop.zip%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-3HndiN2ipLY%2fU5FU5j_9pvI%2fAAAAAAAABZk%2f01PnJvAMqqc%2fs1600%2f03.%25E8%25A7%25A3%25E5%25A3%2593%25E7%25B8%25AE.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-3HndiN2ipLY%2fU5FU5j_9pvI%2fAAAAAAAABZk%2f01PnJvAMqqc%2fs1600%2f03.%25E8%25A7%25A3%25E5%25A3%2593%25E7%25B8%25AE.png%29%20%20%e6%89%93%e9%96%8b%e7%ae%a1%e7%90%86%e9%a0%81%e9%9d%a2%e7%9a%84PluginList%ef%bc%8c%e9%bb%9e%e6%93%8aUpload%20plugin%20zip%e9%80%a3%e7%b5%90%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ZjTZdgwWpyc%2fU5FVDXCQCwI%2fAAAAAAAABZs%2foZOweJhsvoU%2fs1600%2f04.PluginList.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ZjTZdgwWpyc%2fU5FVDXCQCwI%2fAAAAAAAABZs%2foZOweJhsvoU%2fs1600%2f04.PluginList.png%29%20%e9%81%b8%e6%93%87%e5%89%9b%e8%a7%a3%e5%a3%93%e7%b8%ae%e5%87%ba%e4%be%86%e7%9a%84Stylecop.zip%20%e4%b8%8a%e5%82%b3%e5%88%b0Plugins%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%8b%e9%9d%a2%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-fMJo2RjNF1U%2fU5FVbVB5FEI%2fAAAAAAAABZ0%2f83_2pD59O64%2fs1600%2f05.Upload.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-fMJo2RjNF1U%2fU5FVbVB5FEI%2fAAAAAAAABZ0%2f83_2pD59O64%2fs1600%2f05.Upload.png%29%20%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95TeamCity%e6%9c%8d%e5%8b%99%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-3pEb8Sw8AXs%2fU5FVrYnQCEI%2fAAAAAAAABZ8%2fEY91_ySL0WI%2fs1600%2f06.Restart.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-3pEb8Sw8AXs%2fU5FVrYnQCEI%2fAAAAAAAABZ8%2fEY91_ySL0WI%2fs1600%2f06.Restart.png%29%20Plugin%e5%88%97%e8%a1%a8%e4%b8%ad%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0StyleCop%e5%a5%97%e4%bb%b6%e7%9a%84%e8%b3%87%e8%a8%8a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-4boCfNRDupM%2fU5FVwJcK6xI%2fAAAAAAAABaE%2fNBUmGkfZgeI%2fs1600%2f07.AvailablePlugin.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-4boCfNRDupM%2fU5FVwJcK6xI%2fAAAAAAAABaE%2fNBUmGkfZgeI%2fs1600%2f07.AvailablePlugin.png%29%20Build%20Step%e4%b8%ad%e5%b0%b1%e5%8f%af%e4%bb%a5%e9%81%b8%e6%93%87StyleCop%e9%80%99%e5%80%8bRunner%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-avk9twecrxM%2fU5FWpaYUPoI%2fAAAAAAAABaQ%2f88_LXNHQWGE%2fs1600%2f08.BuildStep.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-avk9twecrxM%2fU5FWpaYUPoI%2fAAAAAAAABaQ%2f88_LXNHQWGE%2fs1600%2f08.BuildStep.png%29%e8%bc%b8%e5%85%a5%e9%81%b8%e6%93%87%e8%a6%81%e6%aa%a2%e6%9f%a5%e7%9a%84%e6%aa%94%e6%a1%88%e8%b7%af%e5%be%91%e5%92%8cStyleCop.dll%e7%9a%84%e8%b7%af%e5%be%91%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Ei7SIMcLMug%2fU5FXaI7eU0I%2fAAAAAAAABaY%2fony7YCKBOg4%2fs1600%2f09.Setting.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Ei7SIMcLMug%2fU5FXaI7eU0I%2fAAAAAAAABaY%2fony7YCKBOg4%2fs1600%2f09.Setting.png%29%20%e9%a0%90%e8%a8%ad%e6%9c%83%e6%8a%8a%e6%89%be%e5%88%b0%e7%9a%84%e5%95%8f%e9%a1%8c%e7%95%b6%e5%81%9a%e9%8c%af%e8%aa%a4%ef%bc%8c%e9%80%a0%e6%88%90%e5%bb%ba%e7%bd%ae%e5%a4%b1%e6%95%97%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Dt_BfUwJBrY%2fU5FYOQXn35I%2fAAAAAAAABak%2fsLzXeq4qBFc%2fs1600%2f10.Error.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Dt_BfUwJBrY%2fU5FYOQXn35I%2fAAAAAAAABak%2fsLzXeq4qBFc%2fs1600%2f10.Error.png%29%20%e5%8f%af%e4%bb%a5%e4%bf%ae%e6%94%b9Max%20Viloations%ef%bc%8c%e9%80%99%e6%98%af%e6%9c%80%e5%a4%a7%e5%95%8f%e9%a1%8c%e6%95%b8%e7%9a%84%e6%95%b8%e9%87%8f%ef%bc%8c%e8%b6%85%e9%81%8e%e5%b0%b1%e5%a4%b1%e6%95%97%ef%bc%8c%e8%b2%a0%e6%95%b8%e7%82%ba%e4%b8%8d%e9%99%90%e5%88%b6%20%e5%8f%a6%e4%b8%80%e5%80%8b%e6%96%b9%e6%b3%95%e6%98%af%e5%8b%be%e9%81%b8Treat%20errors%20as%20warnings%ef%bc%8c%e6%8a%8a%e9%8c%af%e8%aa%a4%e7%95%b6%e6%88%90%e8%ad%a6%e5%91%8a%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-kcKgpBM4Egw%2fU5FYUjd0VXI%2fAAAAAAAABas%2fREIcyjgbnoo%2fs1600%2f11.Warn.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-kcKgpBM4Egw%2fU5FYUjd0VXI%2fAAAAAAAABas%2fREIcyjgbnoo%2fs1600%2f11.Warn.png%29%20%e5%bb%ba%e7%bd%ae%e7%b5%90%e6%9e%9c%e6%9c%83%e9%a0%86%e5%88%a9%e9%80%9a%e9%81%8e%ef%bc%8c%e4%bd%86%e6%9c%89%e6%aa%a2%e6%9f%a5%e5%88%b0%e7%9a%84%e6%95%b8%e9%87%8f%e9%a1%af%e7%a4%ba%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-pR918wQlwpo%2fU5FYc5uSooI%2fAAAAAAAABa0%2ffL2NrOd53uQ%2fs1600%2f12.Warb.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-pR918wQlwpo%2fU5FYc5uSooI%2fAAAAAAAABa0%2ffL2NrOd53uQ%2fs1600%2f12.Warb.png%29%20%e9%bb%9e%e9%81%b8%e8%a9%b2%e7%ad%86%e5%bb%ba%e7%bd%ae%e5%85%a7%e5%ae%b9%ef%bc%8c%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0StyleCop%e7%9a%84%e8%a9%b3%e7%b4%b0%e8%b3%87%e6%96%99%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-NyrSWvNkOE0%2fU5FYgh8O-hI%2fAAAAAAAABa8%2ftpdrcCrEjww%2fs1600%2f13.Detail.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-NyrSWvNkOE0%2fU5FYgh8O-hI%2fAAAAAAAABa8%2ftpdrcCrEjww%2fs1600%2f13.Detail.png%29%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%20%e6%95%b4%e5%90%88%20StyleCop&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fteamcity-%25E6%2595%25B4%25E5%2590%2588-stylecop%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

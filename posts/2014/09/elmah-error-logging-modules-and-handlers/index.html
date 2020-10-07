@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Elmah (Error Logging Modules and Handlers) | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &lt;configSections&gt; &lt;sectionGroup name=&#34;elmah&#34;&gt; &lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&gt; &lt;/sectionGroup&gt; &lt;/configSections&gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &lt;elmah&gt; &lt;security allowRemoteAccess=&#34;false&#34; /&gt; &lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;
+    ">
+
+
+<meta property="og:title" content="Elmah (Error Logging Modules and Handlers)" />
+<meta property="og:description" content="Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &lt;configSections&gt; &lt;sectionGroup name=&#34;elmah&#34;&gt; &lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&gt; &lt;/sectionGroup&gt; &lt;/configSections&gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &lt;elmah&gt; &lt;security allowRemoteAccess=&#34;false&#34; /&gt; &lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/09/elmah-error-logging-modules-and-handlers/" />
+<meta property="article:published_time" content="2014-09-16T17:40:00+00:00" />
+<meta property="article:modified_time" content="2014-09-16T17:40:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elmah (Error Logging Modules and Handlers)"/>
+<meta name="twitter:description" content="Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &lt;configSections&gt; &lt;sectionGroup name=&#34;elmah&#34;&gt; &lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&gt; &lt;/sectionGroup&gt; &lt;/configSections&gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &lt;elmah&gt; &lt;security allowRemoteAccess=&#34;false&#34; /&gt; &lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;"/>
+
+<meta itemprop="name" content="Elmah (Error Logging Modules and Handlers)">
+<meta itemprop="description" content="Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &lt;configSections&gt; &lt;sectionGroup name=&#34;elmah&#34;&gt; &lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&gt; &lt;/sectionGroup&gt; &lt;/configSections&gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &lt;elmah&gt; &lt;security allowRemoteAccess=&#34;false&#34; /&gt; &lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;">
+<meta itemprop="datePublished" content="2014-09-16T17:40:00+00:00" />
+<meta itemprop="dateModified" content="2014-09-16T17:40:00+00:00" />
+<meta itemprop="wordCount" content="99">
+
+
+
+<meta itemprop="keywords" content="Elmah," />
+
+<link rel="canonical" href="http://example.org/posts/2014/09/elmah-error-logging-modules-and-handlers/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Elmah (Error Logging Modules and Handlers)</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Sep 16, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/elmah">Elmah</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/elmah">Elmah</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Elmah - Error Logging Modules and Handlers
+是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式
+先開一個簡單的Web專案</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)</div>
+透過NuGet安裝Elmah套件
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)</div>
+從設定檔上可以看到包含四個模組
+<div><pre class="brush:xml">&lt;configSections&gt;
+    &lt;sectionGroup name="elmah"&gt;
+        &lt;section name="security" requirePermission="false" type="Elmah.SecuritySectionHandler, Elmah" /&gt;
+        &lt;section name="errorLog" requirePermission="false" type="Elmah.ErrorLogSectionHandler, Elmah" /&gt;
+        &lt;section name="errorMail" requirePermission="false" type="Elmah.ErrorMailSectionHandler, Elmah" /&gt;
+        &lt;section name="errorFilter" requirePermission="false" type="Elmah.ErrorFilterSectionHandler, Elmah" /&gt;
+    &lt;/sectionGroup&gt;
+&lt;/configSections&gt;
+</pre></div>
+security，用來設定是否允許遠端讀取elmah.axd，
+errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory
+errorMail，用來把Log送出EMail通知
+errorFilter，用來過濾Log
+<p>elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)</div>
+<p>如果要把記錄存在資料庫的話，以下用SQL Server為例子
+首先到<a href="https://code.google.com/p/elmah/source/browse/src/Elmah.SqlServer/SQLServer.sql">官網取得資料表結構</a>
+或是透過NuGet安裝Elmah.SqlServer套件</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)</div>
+就可以在App_Readme資料夾下找到SQL檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)</div>
+不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)</div>
+準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)</div>透過errorLog設定Log寫到SQL Server
+<div><pre class="brush:xml">&lt;elmah&gt;
+    &lt;security allowRemoteAccess="false" /&gt;
+    &lt;errorLog type="Elmah.SqlErrorLog, Elmah" connectionString="data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true" /&gt;
+&lt;/elmah&gt;
+</pre></div>
+隨便丟個錯誤出來
+<div><pre class="brush:csharp">namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            throw new Exception("test");
+        }
+    }
+}
+</pre></div>
+資料庫就有記錄了
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-aKiCFXWZg8g/VBgFF1EB-uI/AAAAAAAABl4/EFzUy-mrPDg/s1600/08.%E9%8C%AF%E8%AA%A4%E8%A8%98%E9%8C%84.png)](http://2.bp.blogspot.com/-aKiCFXWZg8g/VBgFF1EB-uI/AAAAAAAABl4/EFzUy-mrPDg/s1600/08.%E9%8C%AF%E8%AA%A4%E8%A8%98%E9%8C%84.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Elmah%20%28Error%20Logging%20Modules%20and%20Handlers%29&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f
+			&title=Elmah%20%28Error%20Logging%20Modules%20and%20Handlers%29&summary=Elmah%20-%20Error%20Logging%20Modules%20and%20Handlers%20%e6%98%af%e4%b8%80%e5%80%8b%e5%b0%87%e6%9c%aa%e8%99%95%e7%90%86%e7%9a%84Error%e8%a8%98%e9%8c%84%e8%b5%b7%e4%be%86%e7%9a%84%e6%a8%a1%e7%b5%84%ef%bc%8c%e5%92%8c%e5%8c%85%e5%90%ab%e4%b8%80%e5%80%8b%e9%a1%af%e7%a4%baLog%e7%9a%84%e8%99%95%e7%90%86%e5%b8%b8%e5%bc%8f%20%e5%85%88%e9%96%8b%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84Web%e5%b0%88%e6%a1%88%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-TyswIpyTOZA%2fVBgAA5BWvHI%2fAAAAAAAABlE%2fNWJLVmrVZFc%2fs1600%2f01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-TyswIpyTOZA%2fVBgAA5BWvHI%2fAAAAAAAABlE%2fNWJLVmrVZFc%2fs1600%2f01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png%29%20%e9%80%8f%e9%81%8eNuGet%e5%ae%89%e8%a3%9dElmah%e5%a5%97%e4%bb%b6%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-RWj6U08DY2Q%2fVBgAAxYwTpI%2fAAAAAAAABlA%2fS2JQbGbvSk0%2fs1600%2f02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-RWj6U08DY2Q%2fVBgAAxYwTpI%2fAAAAAAAABlA%2fS2JQbGbvSk0%2fs1600%2f02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%20%e5%be%9e%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%b8%8a%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e5%8c%85%e5%90%ab%e5%9b%9b%e5%80%8b%e6%a8%a1%e7%b5%84%20%26lt%3bconfigSections%26gt%3b%20%26lt%3bsectionGroup%20name%3d%22elmah%22%26gt%3b%20%26lt%3bsection%20name%3d%22security%22%20requirePermission%3d%22false%22%20type%3d%22Elmah.SecuritySectionHandler%2c%20Elmah%22%20%2f%26gt%3b%20%26lt%3bsection%20name%3d%22errorLog%22%20requirePermission%3d%22false%22%20type%3d%22Elmah.ErrorLogSectionHandler%2c%20Elmah%22%20%2f%26gt%3b%20%26lt%3bsection%20name%3d%22errorMail%22%20requirePermission%3d%22false%22%20type%3d%22Elmah.ErrorMailSectionHandler%2c%20Elmah%22%20%2f%26gt%3b%20%26lt%3bsection%20name%3d%22errorFilter%22%20requirePermission%3d%22false%22%20type%3d%22Elmah.ErrorFilterSectionHandler%2c%20Elmah%22%20%2f%26gt%3b%20%26lt%3b%2fsectionGroup%26gt%3b%20%26lt%3b%2fconfigSections%26gt%3b%20%20security%ef%bc%8c%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e6%98%af%e5%90%a6%e5%85%81%e8%a8%b1%e9%81%a0%e7%ab%af%e8%ae%80%e5%8f%96elmah.axd%ef%bc%8c%20errorLog%ef%bc%8c%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9aLog%e8%a6%81%e5%ad%98%e5%9c%a8%e4%bb%80%e9%ba%bc%e5%9c%b0%e6%96%b9%ef%bc%8c%e4%be%8b%e5%a6%82XML%e6%88%96DB%ef%bc%8c%e9%a0%90%e8%a8%ad%e6%98%afMemory%20errorMail%ef%bc%8c%e7%94%a8%e4%be%86%e6%8a%8aLog%e9%80%81%e5%87%baEMail%e9%80%9a%e7%9f%a5%20errorFilter%ef%bc%8c%e7%94%a8%e4%be%86%e9%81%8e%e6%bf%beLog%20elmah.axd%e6%98%af%e7%94%a8%e4%be%86%e9%a1%af%e7%a4%baLog%e7%9a%84%e8%99%95%e7%90%86%e5%b8%b8%e5%bc%8f%ef%bc%8c%e5%a6%82%e6%9e%9c%e5%85%81%e8%a8%b1%e9%81%a0%e7%ab%af%e5%ad%98%e5%8f%96%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%9c%a8%e5%ae%89%e5%85%a8%e6%80%a7%e4%b8%8a%e8%a6%81%e7%89%b9%e5%88%a5%e6%b3%a8%e6%84%8f%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-_Ps8vplqOuY%2fVBgBnFqEfmI%2fAAAAAAAABlQ%2fMDIVTYN3ufQ%2fs1600%2f03.Elmah.axd.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-_Ps8vplqOuY%2fVBgBnFqEfmI%2fAAAAAAAABlQ%2fMDIVTYN3ufQ%2fs1600%2f03.Elmah.axd.png%29%20%e5%a6%82%e6%9e%9c%e8%a6%81%e6%8a%8a%e8%a8%98%e9%8c%84%e5%ad%98%e5%9c%a8%e8%b3%87%e6%96%99%e5%ba%ab%e7%9a%84%e8%a9%b1%ef%bc%8c%e4%bb%a5%e4%b8%8b%e7%94%a8SQL%20Server%e7%82%ba%e4%be%8b%e5%ad%90%20%e9%a6%96%e5%85%88%e5%88%b0%e5%ae%98%e7%b6%b2%e5%8f%96%e5%be%97%e8%b3%87%e6%96%99%e8%a1%a8%e7%b5%90%e6%a7%8b%20%e6%88%96%e6%98%af%e9%80%8f%e9%81%8eNuGet%e5%ae%89%e8%a3%9dElmah.SqlServer%e5%a5%97%e4%bb%b6%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-sb1kLHepB98%2fVBgCV60F_-I%2fAAAAAAAABlY%2fwAbY9vnHuwc%2fs1600%2f04.elmah.sqlserver.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-sb1kLHepB98%2fVBgCV60F_-I%2fAAAAAAAABlY%2fwAbY9vnHuwc%2fs1600%2f04.elmah.sqlserver.png%29%20%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%9c%a8App_Readme%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%8b%e6%89%be%e5%88%b0SQL%e6%aa%94%e6%a1%88%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-_jDh4hF8WcM%2fVBgCeqV0q5I%2fAAAAAAAABlg%2fVbW97vrHEQo%2fs1600%2f05.sql%25E6%25AA%2594.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-_jDh4hF8WcM%2fVBgCeqV0q5I%2fAAAAAAAABlg%2fVbW97vrHEQo%2fs1600%2f05.sql%25E6%25AA%2594.png%29%20%e4%b8%8d%e9%81%8e%e6%9c%80%e5%a5%bd%e6%8a%8aNTEXT%e5%bd%a2%e6%85%8b%ef%bc%8c%e6%94%b9%e6%88%90NVARCHAR%28MAX%29%e6%af%94%e8%bc%83%e5%a5%bd%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-vde3bv6V62U%2fVBgCm2s-pKI%2fAAAAAAAABlo%2fFQNfBqMyUpQ%2fs1600%2f06.%25E6%2594%25B9%25E6%25AC%2584%25E4%25BD%258D.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-vde3bv6V62U%2fVBgCm2s-pKI%2fAAAAAAAABlo%2fFQNfBqMyUpQ%2fs1600%2f06.%25E6%2594%25B9%25E6%25AC%2584%25E4%25BD%258D.png%29%20%e6%ba%96%e5%82%99%e5%a5%bd%e8%b3%87%e6%96%99%e5%ba%ab%ef%bc%8c%e5%8c%85%e5%90%abELMAH_Error%e8%b3%87%e6%96%99%e8%a1%a8%e5%92%8c%e4%b8%89%e9%9a%bb%e9%a0%90%e5%84%b2%e7%a8%8b%e5%ba%8f%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-n9HDn_3aLM0%2fVBgDwExhESI%2fAAAAAAAABlw%2f-P7RYpLoBXA%2fs1600%2f07.%25E6%25BA%2596%25E5%2582%2599%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-n9HDn_3aLM0%2fVBgDwExhESI%2fAAAAAAAABlw%2f-P7RYpLoBXA%2fs1600%2f07.%25E6%25BA%2596%25E5%2582%2599%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png%29%e9%80%8f%e9%81%8eerrorLog%e8%a8%ad%e5%ae%9aLog%e5%af%ab%e5%88%b0SQL%20Server%20%26lt%3belmah%26gt%3b%20%26lt%3bsecurity%20allowRemoteAccess%3d%22false%22%20%2f%26gt%3b%20%26lt%3berrorLog%20type%3d%22Elmah.SqlErrorLog%2c%20Elmah%22%20connectionString%3d%22data%20source%3d%28localdb%29%5cv11.0%3b%20database%3dElmahDB%3b%20trusted_connection%3dtrue%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Elmah%20%28Error%20Logging%20Modules%20and%20Handlers%29&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2felmah-error-logging-modules-and-handlers%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

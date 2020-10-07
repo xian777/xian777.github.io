@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    安裝continuous Integration (CI) Server:TeamCity | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例 ](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)
+接下來一直按下一步就行了 ](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)
+安裝的路徑 ](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)
+安裝的項目，可單獨選擇Build Agent或Server ](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)
+設定檔的路徑 ](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)
+如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080 ](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)
+設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了 ](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)
+選擇TeamCity Server Service要用的帳號 ](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)
+選擇TeamCity Agent Service要用的帳號 ](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)
+啟動服務 ](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)
+到此安裝完成，按下Finish開始設定頁面 ](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)
+第一次執行時的頁面，按下Proceed按鈕執行初始化動作 ](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)
+等待初始化完成後，會跳出使用者授權頁面 ](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)
+輸入一組管理用的帳號 ](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)
+登入成功，接下來就可以開始來設定專案了 ](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)
+參考資料  TeamCity Edition Comparison Matrix  
+    ">
+
+
+<meta property="og:title" content="安裝continuous integration (CI) server:TeamCity" />
+<meta property="og:description" content="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例 ](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)
+接下來一直按下一步就行了 ](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)
+安裝的路徑 ](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)
+安裝的項目，可單獨選擇Build Agent或Server ](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)
+設定檔的路徑 ](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)
+如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080 ](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)
+設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了 ](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)
+選擇TeamCity Server Service要用的帳號 ](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)
+選擇TeamCity Agent Service要用的帳號 ](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)
+啟動服務 ](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)
+到此安裝完成，按下Finish開始設定頁面 ](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)
+第一次執行時的頁面，按下Proceed按鈕執行初始化動作 ](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)
+等待初始化完成後，會跳出使用者授權頁面 ](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)
+輸入一組管理用的帳號 ](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)
+登入成功，接下來就可以開始來設定專案了 ](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)
+參考資料  TeamCity Edition Comparison Matrix  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9Dcontinuous-integration-ci-server-teamcity/" />
+<meta property="article:published_time" content="2012-11-07T19:59:00+00:00" />
+<meta property="article:modified_time" content="2012-11-07T19:59:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="安裝continuous integration (CI) server:TeamCity"/>
+<meta name="twitter:description" content="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例 ](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)
+接下來一直按下一步就行了 ](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)
+安裝的路徑 ](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)
+安裝的項目，可單獨選擇Build Agent或Server ](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)
+設定檔的路徑 ](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)
+如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080 ](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)
+設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了 ](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)
+選擇TeamCity Server Service要用的帳號 ](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)
+選擇TeamCity Agent Service要用的帳號 ](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)
+啟動服務 ](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)
+到此安裝完成，按下Finish開始設定頁面 ](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)
+第一次執行時的頁面，按下Proceed按鈕執行初始化動作 ](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)
+等待初始化完成後，會跳出使用者授權頁面 ](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)
+輸入一組管理用的帳號 ](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)
+登入成功，接下來就可以開始來設定專案了 ](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)
+參考資料  TeamCity Edition Comparison Matrix  "/>
+
+<meta itemprop="name" content="安裝continuous integration (CI) server:TeamCity">
+<meta itemprop="description" content="首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例 ](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)
+接下來一直按下一步就行了 ](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)
+安裝的路徑 ](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)
+安裝的項目，可單獨選擇Build Agent或Server ](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)
+設定檔的路徑 ](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)
+如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080 ](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)
+設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了 ](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)
+選擇TeamCity Server Service要用的帳號 ](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)
+選擇TeamCity Agent Service要用的帳號 ](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)
+啟動服務 ](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)
+到此安裝完成，按下Finish開始設定頁面 ](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)
+第一次執行時的頁面，按下Proceed按鈕執行初始化動作 ](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)
+等待初始化完成後，會跳出使用者授權頁面 ](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)
+輸入一組管理用的帳號 ](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)
+登入成功，接下來就可以開始來設定專案了 ](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)
+參考資料  TeamCity Edition Comparison Matrix  ">
+<meta itemprop="datePublished" content="2012-11-07T19:59:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-07T19:59:00+00:00" />
+<meta itemprop="wordCount" content="40">
+
+
+
+<meta itemprop="keywords" content="Build Server,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9Dcontinuous-integration-ci-server-teamcity/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>安裝continuous Integration (CI) Server:TeamCity</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 7, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/build-server">Build Server</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/build-server">Build server</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先到teamcity的官網httpwwwjetbrainscomteamcitydownloadindexhtml下載合適平台的安裝檔這裡以windows平台為例">首先到<a href="http://www.jetbrains.com/teamcity/download/index.html">TeamCity的官網</a>下載合適平台的安裝檔，這裡以Windows平台為例</h2>
+<p><img src="http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png" alt="">](<a href="http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png">http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png</a>)</p>
+<h2 id="接下來一直按下一步就行了">接下來一直按下一步就行了</h2>
+<p><img src="http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png" alt="">](<a href="http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png">http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png</a>)</p>
+<h2 id="安裝的路徑">安裝的路徑</h2>
+<p><img src="http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png" alt="">](<a href="http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png">http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png</a>)</p>
+<h2 id="安裝的項目可單獨選擇build-agent或server">安裝的項目，可單獨選擇Build Agent或Server</h2>
+<p><img src="http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png" alt="">](<a href="http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png">http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png</a>)</p>
+<h2 id="設定檔的路徑">設定檔的路徑</h2>
+<p><img src="http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png" alt="">](<a href="http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png">http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png</a>)</p>
+<h2 id="如果安裝的機器上面已經有web伺服器的話預設的port就會改用8080">如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080</h2>
+<p><img src="http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png" alt="">](<a href="http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png">http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png</a>)</p>
+<h2 id="設定buildagent的環境基本上會自動偵測記住網域按下save就行了">設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了</h2>
+<p><img src="http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png" alt="">](<a href="http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png">http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png</a>)</p>
+<h2 id="選擇teamcity-server-service要用的帳號">選擇TeamCity Server Service要用的帳號</h2>
+<p><img src="http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png" alt="">](<a href="http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png">http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png</a>)</p>
+<h2 id="選擇teamcity-agent-service要用的帳號">選擇TeamCity Agent Service要用的帳號</h2>
+<p><img src="http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png" alt="">](<a href="http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png">http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png</a>)</p>
+<h2 id="啟動服務">啟動服務</h2>
+<p><img src="http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png" alt="">](<a href="http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png">http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png</a>)</p>
+<h2 id="到此安裝完成按下finish開始設定頁面">到此安裝完成，按下Finish開始設定頁面</h2>
+<p><img src="http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png" alt="">](<a href="http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png">http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png</a>)</p>
+<h2 id="第一次執行時的頁面按下proceed按鈕執行初始化動作">第一次執行時的頁面，按下Proceed按鈕執行初始化動作</h2>
+<p><img src="http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png" alt="">](<a href="http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png">http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png</a>)</p>
+<h2 id="等待初始化完成後會跳出使用者授權頁面">等待初始化完成後，會跳出使用者授權頁面</h2>
+<p><img src="http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png" alt="">](<a href="http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png">http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png</a>)</p>
+<h2 id="輸入一組管理用的帳號">輸入一組管理用的帳號</h2>
+<p><img src="http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png" alt="">](<a href="http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png">http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png</a>)</p>
+<h2 id="登入成功接下來就可以開始來設定專案了">登入成功，接下來就可以開始來設定專案了</h2>
+<p><img src="http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png" alt="">](<a href="http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png">http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png</a>)</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://www.jetbrains.com/teamcity/buy/edition_comparison.html">TeamCity Edition Comparison Matrix</a></li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%ae%89%e8%a3%9dcontinuous%20integration%20%28CI%29%20server%3aTeamCity&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f
+			&title=%e5%ae%89%e8%a3%9dcontinuous%20integration%20%28CI%29%20server%3aTeamCity&summary=%e9%a6%96%e5%85%88%e5%88%b0TeamCity%e7%9a%84%e5%ae%98%e7%b6%b2%e4%b8%8b%e8%bc%89%e5%90%88%e9%81%a9%e5%b9%b3%e5%8f%b0%e7%9a%84%e5%ae%89%e8%a3%9d%e6%aa%94%ef%bc%8c%e9%80%99%e8%a3%a1%e4%bb%a5Windows%e5%b9%b3%e5%8f%b0%e7%82%ba%e4%be%8b%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-AXLFKiOYCwo%2fUJpLk6nWQEI%2fAAAAAAAAAUI%2fPq6nhLyFBmo%2fs1600%2f01.Download.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e4%b8%80%e7%9b%b4%e6%8c%89%e4%b8%8b%e4%b8%80%e6%ad%a5%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-bIHMy3RoffA%2fUJpLlYIgjwI%2fAAAAAAAAAUQ%2fqYC73ihpSTc%2fs1600%2f02.Install.png%29%0a%e5%ae%89%e8%a3%9d%e7%9a%84%e8%b7%af%e5%be%91%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f--R9vNZrd0c4%2fUJpQ16_40uI%2fAAAAAAAAAWY%2fOd-LiFqEP-U%2fs1600%2f03.InstallPath.png%29%0a%e5%ae%89%e8%a3%9d%e7%9a%84%e9%a0%85%e7%9b%ae%ef%bc%8c%e5%8f%af%e5%96%ae%e7%8d%a8%e9%81%b8%e6%93%87Build%20Agent%e6%88%96Server%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-PXWB1fViYNo%2fUJpPYyre8vI%2fAAAAAAAAAWI%2fYJJCEISpev8%2fs1600%2f04.InstallItem.png%29%0a%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%9a%84%e8%b7%af%e5%be%91%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-xclD7A4hI5s%2fUJpPZahympI%2fAAAAAAAAAWQ%2fCVvhaGMYtts%2fs1600%2f05.AppPath.png%29%0a%e5%a6%82%e6%9e%9c%e5%ae%89%e8%a3%9d%e7%9a%84%e6%a9%9f%e5%99%a8%e4%b8%8a%e9%9d%a2%e5%b7%b2%e7%b6%93%e6%9c%89Web%e4%bc%ba%e6%9c%8d%e5%99%a8%e7%9a%84%e8%a9%b1%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%9a%84Port%e5%b0%b1%e6%9c%83%e6%94%b9%e7%94%a88080%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-hGBViNi4gSA%2fUJpLmB-UDII%2fAAAAAAAAAUY%2f0isL_frK7Uw%2fs1600%2f03.Port.png%29%0a%e8%a8%ad%e5%ae%9aBuildAgent%e7%9a%84%e7%92%b0%e5%a2%83%ef%bc%8c%e5%9f%ba%e6%9c%ac%e4%b8%8a%e6%9c%83%e8%87%aa%e5%8b%95%e5%81%b5%e6%b8%ac%ef%bc%8c%e8%a8%98%e4%bd%8f%e7%b6%b2%e5%9f%9f%ef%bc%8c%e6%8c%89%e4%b8%8bSave%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-whsaUg0yWpY%2fUJpRYUAHXfI%2fAAAAAAAAAWg%2fVu7tsT0mzSk%2fs1600%2f07.Config.png%29%0a%e9%81%b8%e6%93%87TeamCity%20Server%20Service%e8%a6%81%e7%94%a8%e7%9a%84%e5%b8%b3%e8%99%9f%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-zjQfaovl5qs%2fUJpLnMGHDNI%2fAAAAAAAAAUo%2firM35PeE5fs%2fs1600%2f05.Account.png%29%0a%e9%81%b8%e6%93%87TeamCity%20Agent%20Service%e8%a6%81%e7%94%a8%e7%9a%84%e5%b8%b3%e8%99%9f%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-oNK5Kj7vcuY%2fUJpLn2N21UI%2fAAAAAAAAAUw%2fHEisyuMEwII%2fs1600%2f06.AgentAccount.png%29%0a%e5%95%9f%e5%8b%95%e6%9c%8d%e5%8b%99%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-jepVzX5K58E%2fUJpLojQtS0I%2fAAAAAAAAAU4%2fU9C7b4ee1co%2fs1600%2f07.StartService.png%29%0a%e5%88%b0%e6%ad%a4%e5%ae%89%e8%a3%9d%e5%ae%8c%e6%88%90%ef%bc%8c%e6%8c%89%e4%b8%8bFinish%e9%96%8b%e5%a7%8b%e8%a8%ad%e5%ae%9a%e9%a0%81%e9%9d%a2%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-HtFXZHUHMQ8%2fUJpLpZd5AvI%2fAAAAAAAAAVA%2fG6P77ikRea0%2fs1600%2f08.ConfigOK.png%29%0a%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%9f%b7%e8%a1%8c%e6%99%82%e7%9a%84%e9%a0%81%e9%9d%a2%ef%bc%8c%e6%8c%89%e4%b8%8bProceed%e6%8c%89%e9%88%95%e5%9f%b7%e8%a1%8c%e5%88%9d%e5%a7%8b%e5%8c%96%e5%8b%95%e4%bd%9c%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-g3yN6FR9TjE%2fUJpLp9Ow6RI%2fAAAAAAAAAVI%2fRBxGhby_zSE%2fs1600%2f09.FirstStart.png%29%0a%e7%ad%89%e5%be%85%e5%88%9d%e5%a7%8b%e5%8c%96%e5%ae%8c%e6%88%90%e5%be%8c%ef%bc%8c%e6%9c%83%e8%b7%b3%e5%87%ba%e4%bd%bf%e7%94%a8%e8%80%85%e6%8e%88%e6%ac%8a%e9%a0%81%e9%9d%a2%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-L5ByFtFy_Y4%2fUJpLquKDRfI%2fAAAAAAAAAVQ%2f5DI2jjLBMy4%2fs1600%2f10.Authority.png%29%0a%e8%bc%b8%e5%85%a5%e4%b8%80%e7%b5%84%e7%ae%a1%e7%90%86%e7%94%a8%e7%9a%84%e5%b8%b3%e8%99%9f%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Ayhsa_UAN48%2fUJpLrb1JDoI%2fAAAAAAAAAVY%2fNl-NBuv3UlY%2fs1600%2f11.AdminAccount.png%29%0a%e7%99%bb%e5%85%a5%e6%88%90%e5%8a%9f%ef%bc%8c%e6%8e%a5%e4%b8%8b%e4%be%86%e5%b0%b1%e5%8f%af%e4%bb%a5%e9%96%8b%e5%a7%8b%e4%be%86%e8%a8%ad%e5%ae%9a%e5%b0%88%e6%a1%88%e4%ba%86%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-MkG9bg7OfcM%2fUJpLrzh3SDI%2fAAAAAAAAAVg%2fXVqnth93x3s%2fs1600%2f12.InstallOK.png%29%0a%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%20%20TeamCity%20Edition%20Comparison%20Matrix%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%ae%89%e8%a3%9dcontinuous%20integration%20%28CI%29%20server%3aTeamCity&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259Dcontinuous-integration-ci-server-teamcity%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Ladda-Bootstrap 套件 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&gt; &lt;span class=&#34;ladda-label&#34;&gt;button&lt;/span&gt; &lt;/button&gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html
+    ">
+
+
+<meta property="og:title" content="ladda-bootstrap 套件" />
+<meta property="og:description" content="ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&gt; &lt;span class=&#34;ladda-label&#34;&gt;button&lt;/span&gt; &lt;/button&gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/" />
+<meta property="article:published_time" content="2014-10-01T14:33:00+00:00" />
+<meta property="article:modified_time" content="2014-10-01T14:33:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ladda-bootstrap 套件"/>
+<meta name="twitter:description" content="ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&gt; &lt;span class=&#34;ladda-label&#34;&gt;button&lt;/span&gt; &lt;/button&gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html"/>
+
+<meta itemprop="name" content="ladda-bootstrap 套件">
+<meta itemprop="description" content="ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&gt; &lt;span class=&#34;ladda-label&#34;&gt;button&lt;/span&gt; &lt;/button&gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html">
+<meta itemprop="datePublished" content="2014-10-01T14:33:00+00:00" />
+<meta itemprop="dateModified" content="2014-10-01T14:33:00+00:00" />
+<meta itemprop="wordCount" content="61">
+
+
+
+<meta itemprop="keywords" content="NuGet套件,spin," />
+
+<link rel="canonical" href="http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Ladda-Bootstrap 套件</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 1, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">NuGet套件</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/spin">Spin</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">Nu get套件</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/spin">Spin</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件
+<a href="http://msurguy.github.io/ladda-bootstrap/">官網</a>上有很詳細的使用範例
+透過NuGet就可以安裝</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)</div>
+可以看到套件相依於spin.js
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)</div>
+<p>使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別</p>
+<div><pre class="brush:html">&lt;button id="btn1" class="btn btn-primary ladda-button" data-style="expand-left"&gt;
+    &lt;span class="ladda-label"&gt;button&lt;/span&gt;
+&lt;/button&gt;
+</pre></div>
+另外透過data-style來指定動畫效果
+data-style="expand-left"
+data-style="expand-right"
+data-style="expand-up"
+data-style="expand-down"
+data-style="zoom-in"
+data-style="zoom-out"
+data-style="slide-left"
+data-style="slide-right"
+data-style="slide-up"
+data-style="slide-down"
+data-style="contract"
+<p>最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件
+呼叫物件的start來開始動畫
+呼叫物件的stop來停止動畫</p>
+<div><pre class="brush:javascript">$(function () {
+    $("#btn1").click(function () {
+        var obj = Ladda.create(this);
+        obj.start();
+        setTimeout(function () {
+            obj.stop();
+        }, 1000);
+    });
+});
+</pre></div>
+spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/1fda8zcj/embedded/result,html,js" width="100%"></iframe></div>
+<p>相關資料
+<a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html">Bootstrap button loading text</a>
+<a href="http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html">http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html</a></p>
+<p><a href="http://blog.developer.idv.tw/2014/10/spinjs.html">spin.js 套件</a>
+<a href="http://blog.developer.idv.tw/2014/10/spinjs.html">http://blog.developer.idv.tw/2014/10/spinjs.html</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=ladda-bootstrap%20%e5%a5%97%e4%bb%b6&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f
+			&title=ladda-bootstrap%20%e5%a5%97%e4%bb%b6&summary=ladda-bootstrap%e7%94%a8%e5%b0%87spin.js%e6%95%b4%e5%90%88bootstrap%ef%bc%8c%e4%b8%a6%e5%8a%a0%e5%bc%b7%e5%8a%9f%e8%83%bd%e7%9a%84%e4%b8%80%e5%80%8b%e5%a5%97%e4%bb%b6%20%e5%ae%98%e7%b6%b2%e4%b8%8a%e6%9c%89%e5%be%88%e8%a9%b3%e7%b4%b0%e7%9a%84%e4%bd%bf%e7%94%a8%e7%af%84%e4%be%8b%20%e9%80%8f%e9%81%8eNuGet%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%ae%89%e8%a3%9d%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-IughOK48vhE%2fVCuejPlOPuI%2fAAAAAAAABtE%2fx5bf4Vtf7PY%2fs1600%2f01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-IughOK48vhE%2fVCuejPlOPuI%2fAAAAAAAABtE%2fx5bf4Vtf7PY%2fs1600%2f01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%20%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e5%a5%97%e4%bb%b6%e7%9b%b8%e4%be%9d%e6%96%bcspin.js%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-UqPTwSVmbmM%2fVCuenBELR-I%2fAAAAAAAABtM%2fiBFBfK9RyUo%2fs1600%2f02.%25E5%25A5%2597%25E4%25BB%25B6%25E7%259B%25B8%25E4%25BE%259D%25E6%2580%25A7.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-UqPTwSVmbmM%2fVCuenBELR-I%2fAAAAAAAABtM%2fiBFBfK9RyUo%2fs1600%2f02.%25E5%25A5%2597%25E4%25BB%25B6%25E7%259B%25B8%25E4%25BE%259D%25E6%2580%25A7.png%29%20%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f%e6%98%af%e5%9c%a8button%e4%b8%8a%ef%bc%8c%e5%8a%a0%e4%b8%8aladda-button%e7%9a%84css%e9%a1%9e%e5%88%a5%ef%bc%8c%e8%a6%81%e9%a1%af%e7%a4%ba%e7%9a%84%e6%96%87%e5%ad%97%e5%8a%a0%e4%b8%8aladda-label%e7%9a%84css%e9%a1%9e%e5%88%a5%0a%26lt%3bbutton%20id%3d%22btn1%22%20class%3d%22btn%20btn-primary%20ladda-button%22%20data-style%3d%22expand-left%22%26gt%3b%20%26lt%3bspan%20class%3d%22ladda-label%22%26gt%3bbutton%26lt%3b%2fspan%26gt%3b%20%26lt%3b%2fbutton%26gt%3b%20%20%e5%8f%a6%e5%a4%96%e9%80%8f%e9%81%8edata-style%e4%be%86%e6%8c%87%e5%ae%9a%e5%8b%95%e7%95%ab%e6%95%88%e6%9e%9c%20data-style%3d%22expand-left%22%20data-style%3d%22expand-right%22%20data-style%3d%22expand-up%22%20data-style%3d%22expand-down%22%20data-style%3d%22zoom-in%22%20data-style%3d%22zoom-out%22%20data-style%3d%22slide-left%22%20data-style%3d%22slide-right%22%20data-style%3d%22slide-up%22%20data-style%3d%22slide-down%22%20data-style%3d%22contract%22%20%e6%9c%80%e5%be%8c%e9%80%8f%e9%81%8eJavaScript%e4%be%86%e8%a7%b8%e7%99%bc%ef%bc%8c%e5%85%88%e7%94%a8Ladda.create%28element%29%e4%be%86%e5%8f%96%e5%be%97%e7%89%a9%e4%bb%b6%20%e5%91%bc%e5%8f%ab%e7%89%a9%e4%bb%b6%e7%9a%84start%e4%be%86%e9%96%8b%e5%a7%8b%e5%8b%95%e7%95%ab%20%e5%91%bc%e5%8f%ab%e7%89%a9%e4%bb%b6%e7%9a%84stop%e4%be%86%e5%81%9c%e6%ad%a2%e5%8b%95%e7%95%ab%0a%24%28function%20%28%29%20%7b%20%24%28%22%23btn1%22%29.click%28function%20%28%29%20%7b%20var%20obj%20%3d%20Ladda.create%28this%29%3b%20obj.start%28%29%3b%20setTimeout%28function%20%28%29%20%7b%20obj.stop%28%29%3b%20%7d%2c%201000%29%3b%20%7d%29%3b%20%7d%29%3b%20%20spin.js.2.0.1%e5%a5%bd%e5%83%8f%e5%92%8cladda%e4%b8%8d%e5%a4%aa%e5%92%8c%ef%bc%8c%e6%9c%80%e5%a5%bd%e5%85%88%e9%99%8d%e5%88%b0spin.js%201.3%e7%89%88%e5%b0%b1%e5%a5%bd%20%20%e7%9b%b8%e9%97%9c%e8%b3%87%e6%96%99%20Bootstrap%20button%20loading%20text%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f10%2fbootstrap-button-loading-text.html%0aspin.js%20%e5%a5%97%e4%bb%b6%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f10%2fspinjs.html&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=ladda-bootstrap%20%e5%a5%97%e4%bb%b6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fladda-bootstrap-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

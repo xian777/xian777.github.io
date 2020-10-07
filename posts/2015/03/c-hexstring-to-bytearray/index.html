@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    C# HexString to ByteArray | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &quot;0123456789abcdef&quot;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;gt; x % 2 == 0) .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }
+    ">
+
+
+<meta property="og:title" content="C# HexString to ByteArray" />
+<meta property="og:description" content="16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &quot;0123456789abcdef&quot;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;gt; x % 2 == 0) .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/03/c-hexstring-to-bytearray/" />
+<meta property="article:published_time" content="2015-03-04T15:43:00+00:00" />
+<meta property="article:modified_time" content="2015-03-04T15:43:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C# HexString to ByteArray"/>
+<meta name="twitter:description" content="16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &quot;0123456789abcdef&quot;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;gt; x % 2 == 0) .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }"/>
+
+<meta itemprop="name" content="C# HexString to ByteArray">
+<meta itemprop="description" content="16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &quot;0123456789abcdef&quot;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;gt; x % 2 == 0) .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }">
+<meta itemprop="datePublished" content="2015-03-04T15:43:00+00:00" />
+<meta itemprop="dateModified" content="2015-03-04T15:43:00+00:00" />
+<meta itemprop="wordCount" content="42">
+
+
+
+<meta itemprop="keywords" content="C#," />
+
+<link rel="canonical" href="http://example.org/posts/2015/03/c-hexstring-to-bytearray/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>C# HexString to ByteArray</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Mar 4, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>16進位的字串轉成ByteArray</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using System;
+    using System.Linq;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        string hexstring = &quot;0123456789abcdef&quot;;
+        byte[] byteArray = Enumerable.Range(0, hexstring.Length)
+            .Where(x =&amp;gt; x % 2 == 0)
+            .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16))
+            .ToArray();
+        Console.WriteLine(BitConverter.ToString(byteArray));
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=C%23%20HexString%20to%20ByteArray&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f
+			&title=C%23%20HexString%20to%20ByteArray&summary=16%e9%80%b2%e4%bd%8d%e7%9a%84%e5%ad%97%e4%b8%b2%e8%bd%89%e6%88%90ByteArray%0anamespace%20ConsoleApplication1%20%7b%20using%20System%3b%20using%20System.Linq%3b%20class%20Program%20%7b%20static%20void%20Main%28string%5b%5d%20args%29%20%7b%20string%20hexstring%20%3d%20%26quot%3b0123456789abcdef%26quot%3b%3b%20byte%5b%5d%20byteArray%20%3d%20Enumerable.Range%280%2c%20hexstring.Length%29%20.Where%28x%20%3d%26amp%3bgt%3b%20x%20%25%202%20%3d%3d%200%29%20.Select%28x%20%3d%26amp%3bgt%3b%20Convert.ToByte%28hexstring.Substring%28x%2c%202%29%2c%2016%29%29%20.ToArray%28%29%3b%20Console.WriteLine%28BitConverter.ToString%28byteArray%29%29%3b%20%7d%20%7d%20%20%7d&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=C%23%20HexString%20to%20ByteArray&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f03%2fc-hexstring-to-bytearray%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

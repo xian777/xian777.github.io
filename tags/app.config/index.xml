@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>app.config on My New Hugo Site</title>
+    <link>http://example.org/tags/app.config/</link>
+    <description>Recent content in app.config on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Aug 2012 17:58:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/app.config/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>app.config Transformations</title>
+      <link>http://example.org/posts/2012/08/app-config-transformations/</link>
+      <pubDate>Sat, 18 Aug 2012 17:58:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/08/app-config-transformations/</guid>
+      <description>前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035+Result.png)
+這是一個簡單的設定檔內容 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;ServerIP&amp;#34; value=&amp;#34;127.0.0.1&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&amp;#34;MyDB&amp;#34; providerName=&amp;#34;System.Data.SqlClient&amp;#34; connectionString=&amp;#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&amp;#34;/&amp;gt; &amp;lt;/connectionStrings&amp;gt; &amp;lt;/configuration&amp;gt; 在Debug組態的設定檔中，改變了設定檔的內容 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&amp;gt; &amp;lt;configuration xmlns:xdt=&amp;#34;http://schemas.microsoft.com/XML-Document-Transform&amp;#34;&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;ServerIP&amp;#34; value=&amp;#34;192.168.100.11&amp;#34; xdt:Transform=&amp;#34;SetAttribute&amp;#34; xdt:Locator=&amp;#34;Match(key)&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&amp;#34;MyDB&amp;#34; connectionString=&amp;#34;Data Source=192.</description>
+    </item>
+    
+  </channel>
+</rss>

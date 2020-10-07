@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gogs on My New Hugo Site</title>
+    <link>http://example.org/tags/gogs/</link>
+    <description>Recent content in gogs on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2016 23:14:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/gogs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gogs with application request routing</title>
+      <link>http://example.org/posts/2016/08/gogs-with-application-request-routing/</link>
+      <pubDate>Mon, 15 Aug 2016 23:14:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-with-application-request-routing/</guid>
+      <description>Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!</description>
+    </item>
+    
+    <item>
+      <title>Gogs 筆記</title>
+      <link>http://example.org/posts/2016/08/gogs-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Mon, 15 Aug 2016 21:59:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-%E7%AD%86%E8%A8%98/</guid>
+      <description>[Windows 版本]
+Gogs - Go Git Service on windows http://blog.developer.idv.tw/2016/08/gogs-go-git-service-on-windows.html
+Gogs run as windows service http://blog.developer.idv.tw/2016/08/gogs-run-as-windows-service.html
+Nginx run as windows service http://blog.developer.idv.tw/2016/08/nginx-run-as-windows-service.html
+Gogs with nginx reverse proxy http://blog.developer.idv.tw/2016/08/gogs-with-nginx-reverse-proxy.html
+Gogs with application request routing http://blog.developer.idv.tw/2016/08/gogs-with-application-request-routing.html
+svn migration to git</description>
+    </item>
+    
+    <item>
+      <title>Gogs with nginx reverse proxy</title>
+      <link>http://example.org/posts/2016/08/gogs-with-nginx-reverse-proxy/</link>
+      <pubDate>Mon, 15 Aug 2016 21:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-with-nginx-reverse-proxy/</guid>
+      <description>ngix新增一組站台設定
+[![](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png)](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png) 新增站台的DNS，為了測試方便所以建在本機的hosts [![](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png)](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png) 修改一下gogs的設定，把domain和ROOT_URL改成這組測試的網址 順便DISABLE_SSH = true [![](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png) 重新啟動gogs服務後，就可以用這組測試網址了 [!</description>
+    </item>
+    
+    <item>
+      <title>Nginx run as windows service</title>
+      <link>http://example.org/posts/2016/08/nginx-run-as-windows-service/</link>
+      <pubDate>Mon, 15 Aug 2016 21:09:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/nginx-run-as-windows-service/</guid>
+      <description>在官網下載Nginx編譯好的執行檔
+[![](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png)](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png) [下載nssm](https://nssm.cc/download)用來把nginx的執行檔註冊成一個服務[![](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png)](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png) 執行nssm install nginx設定好nginx執行檔的路徑和工作目錄[![](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png)](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png) 啟動nginx服務[![](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png)](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png) nginx啟動成功[![](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)  </description>
+    </item>
+    
+    <item>
+      <title>Gogs run as windows service</title>
+      <link>http://example.org/posts/2016/08/gogs-run-as-windows-service/</link>
+      <pubDate>Sun, 14 Aug 2016 16:21:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-run-as-windows-service/</guid>
+      <description>在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!</description>
+    </item>
+    
+    <item>
+      <title>Gogs - Go Git Service on windows</title>
+      <link>http://example.org/posts/2016/08/gogs-go-git-service-on-windows/</link>
+      <pubDate>Sun, 14 Aug 2016 15:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-go-git-service-on-windows/</guid>
+      <description>先到官網下載windodws版本編譯好的二進制壓縮檔
+[![](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png)](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png) 解壓縮後到資料夾下執行gogs web即可，預設Listen port是3000 [![](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png)](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png) 打開瀏覽器進入http://127.0.0.1:3000後，開始初始化設定 設定要使用的資料庫和專案放置的資料夾路徑 [![](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png)](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png) 勾選禁止註冊和登錄訪問限制 再建立一個管理員帳號就完成設定了
+[![](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png)](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png) 如果沒有勾選禁止註冊，右上角的登入旁邊就會有一個註冊的功能 [![](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png)](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png) 登入後先來建一個專案
+[![](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png)](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png) 輸入專案的名稱，把可見度勾成私有的，就必需有帳密才能下載專案
+[![](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png)](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png) 右上角的路徑是當初設定時所輸入的網址 [![](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png)](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png) 把專案取回來 [![](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png)](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png) 因為是私人專案所以需要輸入帳密 [![](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png)](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png) 新增一個測試專案 [![](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png)](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png) 把測試專案移到工作目錄後送交 [![](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png)](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png) 把測試專案推送到gogs [![](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png)](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png) 專案同步完成 [!</description>
+    </item>
+    
+  </channel>
+</rss>

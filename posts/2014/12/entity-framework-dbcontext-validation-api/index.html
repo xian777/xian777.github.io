@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework DbContext Validation API | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="先建一張資料表，並加上幾個Attribute當例子
+namespace ConsoleApplication1.Models { using System; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Table1&quot;)] public class Table1 { [Key] public int Table1Id { get; set; } [Required] [StringLength(10, MinimumLength = 2)] public string C1 { get; set; } [Range(10, 20)] public int C2 { get; set; } public DateTime D1 { get; set; } public DateTime D2 { get; set; } }  }  針對屬性驗證
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.
+    ">
+
+
+<meta property="og:title" content="Entity Framework DbContext Validation API" />
+<meta property="og:description" content="先建一張資料表，並加上幾個Attribute當例子
+namespace ConsoleApplication1.Models { using System; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Table1&quot;)] public class Table1 { [Key] public int Table1Id { get; set; } [Required] [StringLength(10, MinimumLength = 2)] public string C1 { get; set; } [Range(10, 20)] public int C2 { get; set; } public DateTime D1 { get; set; } public DateTime D2 { get; set; } }  }  針對屬性驗證
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/entity-framework-dbcontext-validation-api/" />
+<meta property="article:published_time" content="2014-12-18T15:46:00+00:00" />
+<meta property="article:modified_time" content="2014-12-18T15:46:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework DbContext Validation API"/>
+<meta name="twitter:description" content="先建一張資料表，並加上幾個Attribute當例子
+namespace ConsoleApplication1.Models { using System; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Table1&quot;)] public class Table1 { [Key] public int Table1Id { get; set; } [Required] [StringLength(10, MinimumLength = 2)] public string C1 { get; set; } [Range(10, 20)] public int C2 { get; set; } public DateTime D1 { get; set; } public DateTime D2 { get; set; } }  }  針對屬性驗證
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System."/>
+
+<meta itemprop="name" content="Entity Framework DbContext Validation API">
+<meta itemprop="description" content="先建一張資料表，並加上幾個Attribute當例子
+namespace ConsoleApplication1.Models { using System; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Table1&quot;)] public class Table1 { [Key] public int Table1Id { get; set; } [Required] [StringLength(10, MinimumLength = 2)] public string C1 { get; set; } [Range(10, 20)] public int C2 { get; set; } public DateTime D1 { get; set; } public DateTime D2 { get; set; } }  }  針對屬性驗證
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.">
+<meta itemprop="datePublished" content="2014-12-18T15:46:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-18T15:46:00+00:00" />
+<meta itemprop="wordCount" content="574">
+
+
+
+<meta itemprop="keywords" content="DbContext,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/entity-framework-dbcontext-validation-api/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework DbContext Validation API</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 18, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    6 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/dbcontext">DbContext</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/dbcontext">Db context</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>先建一張資料表，並加上幾個Attribute當例子</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+<pre><code>[Table(&quot;Table1&quot;)]
+public class Table1
+{
+    [Key]
+    public int Table1Id { get; set; }
+
+    [Required]
+    [StringLength(10, MinimumLength = 2)]
+    public string C1 { get; set; }
+
+    [Range(10, 20)]
+    public int C2 { get; set; }
+
+    public DateTime D1 { get; set; }
+
+    public DateTime D2 { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+針對屬性驗證</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            Table1 table1 = new Table1
+            {
+                C1 = &quot;a&quot;,
+                C2 = 1,
+                D1 = DateTime.Now,
+                D2 = DateTime.Now.AddDays(-1)
+            };
+
+            foreach (var item in db.Entry(table1).Property(x =&amp;gt; x.C1).GetValidationErrors())
+            {
+                Console.WriteLine(item.ErrorMessage);
+            }
+
+            foreach (var item in db.Entry(table1).Property(x =&amp;gt; x.C2).GetValidationErrors())
+            {
+                Console.WriteLine(item.ErrorMessage);
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+針對實體驗證</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            Table1 table1 = new Table1
+            {
+                C1 = &quot;a&quot;,
+                C2 = 1,
+                D1 = DateTime.Now,
+                D2 = DateTime.Now.AddDays(-1)
+            };
+
+            foreach (var item in db.Entry(table1).GetValidationResult().ValidationErrors)
+            {
+                Console.WriteLine(item.ErrorMessage);
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+針對DbContext驗證</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            Table1 table1 = new Table1
+            {
+                C1 = &quot;a&quot;,
+                C2 = 1,
+                D1 = DateTime.Now,
+                D2 = DateTime.Now.AddDays(-1)
+            };
+
+            db.Table1.Add(table1);
+            foreach (var result in db.GetValidationErrors())
+            {
+                foreach (var item in result.ValidationErrors)
+                {
+                    Console.WriteLine(item.ErrorMessage);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+輸出的畫面如下</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-609pUnv8j8U/VJJ_9ch4SYI/AAAAAAAAB0U/QV7isgRzPNI/s1600/01.png)](http://3.bp.blogspot.com/-609pUnv8j8U/VJJ_9ch4SYI/AAAAAAAAB0U/QV7isgRzPNI/s1600/01.png)</div>
+自定義驗證屬性規則，加入一個靜態類別，用來放自定義的驗證規則
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.ComponentModel.DataAnnotations;
+<pre><code>public static class MyCustomRule
+{
+    public static ValidationResult MyStringRule(string value)
+    {
+        if (value == &quot;a&quot;)
+        {
+            return new ValidationResult(&quot;字串不可為a&quot;);
+        }
+        else
+        {
+            return ValidationResult.Success;
+        }
+    }
+
+    public static ValidationResult MyIntRule(int value)
+    {
+        if (value == 1)
+        {
+            return new ValidationResult(&quot;數字不可為1&quot;);
+        }
+        else
+        {
+            return ValidationResult.Success;
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+在屬性上加入自定義的驗證規則</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+<pre><code>[Table(&quot;Table1&quot;)]
+public class Table1
+{
+    [Key]
+    public int Table1Id { get; set; }
+
+    [Required]
+    [StringLength(10, MinimumLength = 2)]
+    [CustomValidation(typeof(MyCustomRule), &quot;MyStringRule&quot;)]
+    public string C1 { get; set; }
+
+    [Range(10, 20)]
+    [CustomValidation(typeof(MyCustomRule), &quot;MyIntRule&quot;)]
+    public int C2 { get; set; }
+
+    public DateTime D1 { get; set; }
+
+    public DateTime D2 { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+驗證資料的時後，就會包含自定義的規則</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-WL8Il-n32Jk/VJKACUZv-DI/AAAAAAAAB0c/XTMlR3RudAY/s1600/02.png)](http://2.bp.blogspot.com/-WL8Il-n32Jk/VJKACUZv-DI/AAAAAAAAB0c/XTMlR3RudAY/s1600/02.png)</div>
+自定義驗證實體規則，在實體上實作IValidatableObject介面
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+<pre><code>[Table(&quot;Table1&quot;)]
+public class Table1 : IValidatableObject
+{
+    [Key]
+    public int Table1Id { get; set; }
+
+    [Required]
+    // [StringLength(10, MinimumLength = 2)]
+    public string C1 { get; set; }
+
+    // [Range(10, 20)]
+    public int C2 { get; set; }
+
+    public DateTime D1 { get; set; }
+
+    public DateTime D2 { get; set; }
+
+    public IEnumerable&amp;lt;ValidationResult&amp;gt; Validate(ValidationContext validationContext)
+    {
+        if (this.C1 == &quot;a&quot;)
+        {
+            yield return new ValidationResult(&quot;字串不可為a&quot;);
+        }
+
+        if (this.C2 == 1)
+        {
+            yield return new ValidationResult(&quot;數字不可為1&quot;);
+        }
+
+        if (this.D1 &amp;gt;= this.D2)
+        {
+            yield return new ValidationResult(&quot;d1不能大於d2&quot;);
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+自定義驗證DbContext規則，覆寫ValidateEntity函式</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Validation;
+<pre><code>public class DemoContext : DbContext
+{
+    public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }
+    public DbSet&amp;lt;Table2&amp;gt; Table2 { get; set; }
+
+    protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary&amp;lt;object, object&amp;gt; items)
+    {
+        var result = base.ValidateEntity(entityEntry, items);
+        var table1 = entityEntry.Entity as Table1;
+        if (table1 != null)
+        {
+            if (table1.C1 == &quot;a&quot;)
+            {
+                result.ValidationErrors.Add(new DbValidationError(&quot;C1&quot;, &quot;字串不可為a&quot;));
+            }
+
+            if (table1.C2 == 1)
+            {
+                result.ValidationErrors.Add(new DbValidationError(&quot;C2&quot;, &quot;數字不可為1&quot;));
+            }
+
+            if (table1.D1 &amp;gt;= table1.D2)
+            {
+                result.ValidationErrors.Add(new DbValidationError(&quot;D1&quot;, &quot;d1不能大於d2&quot;));
+            }
+        }
+
+        return result;
+    }
+}
+</code></pre>
+<p>}
+</pre></div>輸出的結果如下</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-qQ9gSatBC6c/VJKGMywO5NI/AAAAAAAAB0s/rEVP1WCzPyg/s1600/03.png)](http://4.bp.blogspot.com/-qQ9gSatBC6c/VJKGMywO5NI/AAAAAAAAB0s/rEVP1WCzPyg/s1600/03.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20DbContext%20Validation%20API&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f
+			&title=Entity%20Framework%20DbContext%20Validation%20API&summary=%e5%85%88%e5%bb%ba%e4%b8%80%e5%bc%b5%e8%b3%87%e6%96%99%e8%a1%a8%ef%bc%8c%e4%b8%a6%e5%8a%a0%e4%b8%8a%e5%b9%be%e5%80%8bAttribute%e7%95%b6%e4%be%8b%e5%ad%90%0anamespace%20ConsoleApplication1.Models%20%7b%20using%20System%3b%20using%20System.ComponentModel.DataAnnotations%3b%20using%20System.ComponentModel.DataAnnotations.Schema%3b%20%5bTable%28%26quot%3bTable1%26quot%3b%29%5d%20public%20class%20Table1%20%7b%20%5bKey%5d%20public%20int%20Table1Id%20%7b%20get%3b%20set%3b%20%7d%20%5bRequired%5d%20%5bStringLength%2810%2c%20MinimumLength%20%3d%202%29%5d%20public%20string%20C1%20%7b%20get%3b%20set%3b%20%7d%20%5bRange%2810%2c%2020%29%5d%20public%20int%20C2%20%7b%20get%3b%20set%3b%20%7d%20public%20DateTime%20D1%20%7b%20get%3b%20set%3b%20%7d%20public%20DateTime%20D2%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%7d%20%20%e9%87%9d%e5%b0%8d%e5%b1%ac%e6%80%a7%e9%a9%97%e8%ad%89%0anamespace%20ConsoleApplication1%20%7b%20using%20ConsoleApplication1.Models%3b%20using%20System%3b%20using%20System.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20DbContext%20Validation%20API&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-validation-api%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JSON筆記 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="JSON 筆記
+JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法 因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式
+JSON的內容主要有二種型態，一種是物件，一種是陣列 物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔 陣列用中括號包起來，每個資料之間用逗點分隔
+{ &#34;ID&#34;: 1, &#34;Name&#34;: &#34;JSON Demo&#34;, &#34;State&#34;: 2, &#34;Date&#34;: &#34;\/Date(13714 84800000)\/&#34;, &#34;Guid&#34;: &#34;7c52f0a4-a742-4898-a55c-583ab851b183&#34;, &#34;DataList&#34;: [ 1, 2, 3, 4, 5 ] }  JSON的資料型態有文字、數字、布林、NULL 文字:用雙引號包起來的內容 數字:包含整數和浮點數 布林: true / false 更多完整的介紹，可以參考官網或W3CSchool JSON官網介紹
+W3CSchool Learn JSON
+ 在.NET中內建兩種解析方式，但需要Framework 3.5以上
+System.Web.Extensions下面的JavaScriptSerializer JavaScriptSerializer 介紹 JavaScriptSerializer 用法 JavaScriptSerializer 轉換 IEnumerable 介面 JavaScriptSerializer 轉換 IDictionary 介面 JavaScriptSerializer 日期處理 JavaScriptSerializer ScriptIgnoreAttribute
+ System.Runtime.Serialization下面的DataContractJsonSerializer DataContractJsonSerializer 介紹 DataContractJsonSerializer 用法 DataContractJsonSerializer 轉換 IEnumerable 介面 DataContractJsonSerializer 轉換 IDictionary 介面 DataContractJsonSerializer 日期處理
+    ">
+
+
+<meta property="og:title" content="JSON筆記" />
+<meta property="og:description" content="JSON 筆記
+JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法 因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式
+JSON的內容主要有二種型態，一種是物件，一種是陣列 物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔 陣列用中括號包起來，每個資料之間用逗點分隔
+{ &#34;ID&#34;: 1, &#34;Name&#34;: &#34;JSON Demo&#34;, &#34;State&#34;: 2, &#34;Date&#34;: &#34;\/Date(13714 84800000)\/&#34;, &#34;Guid&#34;: &#34;7c52f0a4-a742-4898-a55c-583ab851b183&#34;, &#34;DataList&#34;: [ 1, 2, 3, 4, 5 ] }  JSON的資料型態有文字、數字、布林、NULL 文字:用雙引號包起來的內容 數字:包含整數和浮點數 布林: true / false 更多完整的介紹，可以參考官網或W3CSchool JSON官網介紹
+W3CSchool Learn JSON
+ 在.NET中內建兩種解析方式，但需要Framework 3.5以上
+System.Web.Extensions下面的JavaScriptSerializer JavaScriptSerializer 介紹 JavaScriptSerializer 用法 JavaScriptSerializer 轉換 IEnumerable 介面 JavaScriptSerializer 轉換 IDictionary 介面 JavaScriptSerializer 日期處理 JavaScriptSerializer ScriptIgnoreAttribute
+ System.Runtime.Serialization下面的DataContractJsonSerializer DataContractJsonSerializer 介紹 DataContractJsonSerializer 用法 DataContractJsonSerializer 轉換 IEnumerable 介面 DataContractJsonSerializer 轉換 IDictionary 介面 DataContractJsonSerializer 日期處理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/06/json%E7%AD%86%E8%A8%98/" />
+<meta property="article:published_time" content="2013-06-18T18:39:00+00:00" />
+<meta property="article:modified_time" content="2013-06-18T18:39:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JSON筆記"/>
+<meta name="twitter:description" content="JSON 筆記
+JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法 因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式
+JSON的內容主要有二種型態，一種是物件，一種是陣列 物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔 陣列用中括號包起來，每個資料之間用逗點分隔
+{ &#34;ID&#34;: 1, &#34;Name&#34;: &#34;JSON Demo&#34;, &#34;State&#34;: 2, &#34;Date&#34;: &#34;\/Date(13714 84800000)\/&#34;, &#34;Guid&#34;: &#34;7c52f0a4-a742-4898-a55c-583ab851b183&#34;, &#34;DataList&#34;: [ 1, 2, 3, 4, 5 ] }  JSON的資料型態有文字、數字、布林、NULL 文字:用雙引號包起來的內容 數字:包含整數和浮點數 布林: true / false 更多完整的介紹，可以參考官網或W3CSchool JSON官網介紹
+W3CSchool Learn JSON
+ 在.NET中內建兩種解析方式，但需要Framework 3.5以上
+System.Web.Extensions下面的JavaScriptSerializer JavaScriptSerializer 介紹 JavaScriptSerializer 用法 JavaScriptSerializer 轉換 IEnumerable 介面 JavaScriptSerializer 轉換 IDictionary 介面 JavaScriptSerializer 日期處理 JavaScriptSerializer ScriptIgnoreAttribute
+ System.Runtime.Serialization下面的DataContractJsonSerializer DataContractJsonSerializer 介紹 DataContractJsonSerializer 用法 DataContractJsonSerializer 轉換 IEnumerable 介面 DataContractJsonSerializer 轉換 IDictionary 介面 DataContractJsonSerializer 日期處理"/>
+
+<meta itemprop="name" content="JSON筆記">
+<meta itemprop="description" content="JSON 筆記
+JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法 因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式
+JSON的內容主要有二種型態，一種是物件，一種是陣列 物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔 陣列用中括號包起來，每個資料之間用逗點分隔
+{ &#34;ID&#34;: 1, &#34;Name&#34;: &#34;JSON Demo&#34;, &#34;State&#34;: 2, &#34;Date&#34;: &#34;\/Date(13714 84800000)\/&#34;, &#34;Guid&#34;: &#34;7c52f0a4-a742-4898-a55c-583ab851b183&#34;, &#34;DataList&#34;: [ 1, 2, 3, 4, 5 ] }  JSON的資料型態有文字、數字、布林、NULL 文字:用雙引號包起來的內容 數字:包含整數和浮點數 布林: true / false 更多完整的介紹，可以參考官網或W3CSchool JSON官網介紹
+W3CSchool Learn JSON
+ 在.NET中內建兩種解析方式，但需要Framework 3.5以上
+System.Web.Extensions下面的JavaScriptSerializer JavaScriptSerializer 介紹 JavaScriptSerializer 用法 JavaScriptSerializer 轉換 IEnumerable 介面 JavaScriptSerializer 轉換 IDictionary 介面 JavaScriptSerializer 日期處理 JavaScriptSerializer ScriptIgnoreAttribute
+ System.Runtime.Serialization下面的DataContractJsonSerializer DataContractJsonSerializer 介紹 DataContractJsonSerializer 用法 DataContractJsonSerializer 轉換 IEnumerable 介面 DataContractJsonSerializer 轉換 IDictionary 介面 DataContractJsonSerializer 日期處理">
+<meta itemprop="datePublished" content="2013-06-18T18:39:00+00:00" />
+<meta itemprop="dateModified" content="2013-06-18T18:39:00+00:00" />
+<meta itemprop="wordCount" content="109">
+
+
+
+<meta itemprop="keywords" content="JSON," />
+
+<link rel="canonical" href="http://example.org/posts/2013/06/json%E7%AD%86%E8%A8%98/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JSON筆記</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 18, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/json">JSON</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/json">J s o n</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>JSON 筆記</p>
+<p>JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法
+因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式</p>
+<p>JSON的內容主要有二種型態，一種是物件，一種是陣列
+物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔
+陣列用中括號包起來，每個資料之間用逗點分隔</p>
+<div><pre class="brush:javascript">{
+  "ID": 1,
+  "Name": "JSON Demo",
+  "State": 2,
+  "Date": "\/Date(13714 84800000)\/",
+  "Guid": "7c52f0a4-a742-4898-a55c-583ab851b183",
+  "DataList": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}
+</pre></div>
+JSON的資料型態有文字、數字、布林、NULL
+文字:用雙引號包起來的內容
+數字:包含整數和浮點數
+布林: true / false
+更多完整的介紹，可以參考官網或W3CSchool
+<p><a href="http://www.json.org/json-zh.html">JSON官網介紹</a></p>
+<p><a href="http://www.w3schools.com/json/default.asp">W3CSchool Learn JSON</a></p>
+<hr>
+<p>在.NET中內建兩種解析方式，但需要Framework 3.5以上</p>
+<p>System.Web.Extensions下面的JavaScriptSerializer
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer.html">JavaScriptSerializer 介紹</a>
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_18.html">JavaScriptSerializer 用法</a>
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-ienumerable.html">JavaScriptSerializer 轉換 IEnumerable 介面</a>
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer-idictionary.html">JavaScriptSerializer 轉換 IDictionary 介面</a>
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_19.html">JavaScriptSerializer 日期處理</a>
+<a href="http://blog.developer.idv.tw/2013/06/javascriptserializer_7623.html">JavaScriptSerializer ScriptIgnoreAttribute</a></p>
+<hr>
+<p>System.Runtime.Serialization下面的DataContractJsonSerializer
+<a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer.html">DataContractJsonSerializer 介紹</a>
+<a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_20.html">DataContractJsonSerializer 用法</a>
+<a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-ienumerable.html">DataContractJsonSerializer 轉換 IEnumerable 介面</a>
+<a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer-idictionary.html">DataContractJsonSerializer 轉換 IDictionary 介面</a>
+<a href="http://blog.developer.idv.tw/2013/06/datacontractjsonserializer_6717.html">DataContractJsonSerializer 日期處理</a></p>
+<hr>
+<p>另外還有一個好用的第三方套件JSON.Net
+<a href="http://blog.developer.idv.tw/2013/06/jsonnet_27.html">Json.Net 介紹</a>
+<a href="http://blog.developer.idv.tw/2013/06/jsonnet.html">Json.Net 用法</a>
+<a href="http://blog.developer.idv.tw/2013/06/jsonnet-ienumerable.html">Json.Net 轉換 IEnumerable 介面</a>
+<a href="http://blog.developer.idv.tw/2013/06/jsonnet-idictionary.html">Json.Net 轉換 IDictionary 介面</a>
+<a href="http://blog.developer.idv.tw/2013/07/jsonnet.html">Json.Net 日期處理</a></p>
+<hr>
+<p>另外介紹幾個好用的工具
+<a href="http://jsonviewer.stack.hu/">Online JSON Viewer</a>
+一個用來方便格式化JSON字串的網站</p>
+<p><a href="http://json2csharp.com/">JSON2CSharp</a>
+一個用來產生C#對應類別的網站</p>
+<p><a href="http://jsonclassgenerator.codeplex.com/">JSON C# Class Generator</a>
+一個用來產生C#對應類別的程式</p>
+<p><a href="http://jsonlint.com/">JSONLint - The JSON Validator</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=JSON%e7%ad%86%e8%a8%98&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f
+			&title=JSON%e7%ad%86%e8%a8%98&summary=JSON%20%e7%ad%86%e8%a8%98%0aJSON%e7%9a%84%e5%85%a8%e5%90%8d%e7%82%baJavaScript%20Object%20Notation%ef%bc%8c%e6%98%afJavaScript%e7%9a%84%e7%89%a9%e4%bb%b6%e8%a1%a8%e7%a4%ba%e6%b3%95%20%e5%9b%a0%e7%82%ba%e8%bc%95%e9%87%8f%e5%8c%96%ef%bc%8c%e6%98%93%e6%96%bc%e4%ba%ba%e9%96%b1%e8%ae%80%e5%92%8c%e7%b7%a8%e5%af%ab%ef%bc%8c%e4%b9%9f%e6%98%93%e6%96%bc%e6%a9%9f%e5%99%a8%e8%a7%a3%e6%9e%90%e5%92%8c%e7%94%9f%e6%88%90%e7%9a%84%e9%97%9c%e7%b3%bb%ef%bc%8c%e6%89%80%e4%bb%a5%e5%be%88%e5%ae%b9%e6%98%93%e5%9c%a8%e5%90%84%e7%a8%ae%e7%b6%b2%e7%b5%a1%e5%b9%b3%e5%8f%b0%e5%92%8c%e7%a8%8b%e5%ba%8f%e4%b9%8b%e9%96%93%e5%81%9a%e7%82%ba%e4%b8%80%e7%a8%ae%e8%b3%87%e6%96%99%e4%ba%a4%e6%8f%9b%e6%a0%bc%e5%bc%8f%0aJSON%e7%9a%84%e5%85%a7%e5%ae%b9%e4%b8%bb%e8%a6%81%e6%9c%89%e4%ba%8c%e7%a8%ae%e5%9e%8b%e6%85%8b%ef%bc%8c%e4%b8%80%e7%a8%ae%e6%98%af%e7%89%a9%e4%bb%b6%ef%bc%8c%e4%b8%80%e7%a8%ae%e6%98%af%e9%99%a3%e5%88%97%20%e7%89%a9%e4%bb%b6%e7%94%b1%e5%a4%a7%e6%8b%ac%e8%99%9f%e5%8c%85%e8%b5%b7%e4%be%86%ef%bc%8c%e5%b1%ac%e6%80%a7%e5%92%8c%e5%80%bc%e7%94%a8%e5%86%92%e8%99%9f%e4%be%86%e5%88%86%e9%9a%94%ef%bc%8c%e6%af%8f%e5%80%8b%e5%b1%ac%e6%80%a7%e4%b9%8b%e9%96%93%e7%94%a8%e9%80%97%e9%bb%9e%e5%88%86%e9%9a%94%20%e9%99%a3%e5%88%97%e7%94%a8%e4%b8%ad%e6%8b%ac%e8%99%9f%e5%8c%85%e8%b5%b7%e4%be%86%ef%bc%8c%e6%af%8f%e5%80%8b%e8%b3%87%e6%96%99%e4%b9%8b%e9%96%93%e7%94%a8%e9%80%97%e9%bb%9e%e5%88%86%e9%9a%94%0a%7b%20%22ID%22%3a%201%2c%20%22Name%22%3a%20%22JSON%20Demo%22%2c%20%22State%22%3a%202%2c%20%22Date%22%3a%20%22%5c%2fDate%2813714%2084800000%29%5c%2f%22%2c%20%22Guid%22%3a%20%227c52f0a4-a742-4898-a55c-583ab851b183%22%2c%20%22DataList%22%3a%20%5b%201%2c%202%2c%203%2c%204%2c%205%20%5d%20%7d%20%20JSON%e7%9a%84%e8%b3%87%e6%96%99%e5%9e%8b%e6%85%8b%e6%9c%89%e6%96%87%e5%ad%97%e3%80%81%e6%95%b8%e5%ad%97%e3%80%81%e5%b8%83%e6%9e%97%e3%80%81NULL%20%e6%96%87%e5%ad%97%3a%e7%94%a8%e9%9b%99%e5%bc%95%e8%99%9f%e5%8c%85%e8%b5%b7%e4%be%86%e7%9a%84%e5%85%a7%e5%ae%b9%20%e6%95%b8%e5%ad%97%3a%e5%8c%85%e5%90%ab%e6%95%b4%e6%95%b8%e5%92%8c%e6%b5%ae%e9%bb%9e%e6%95%b8%20%e5%b8%83%e6%9e%97%3a%20true%20%2f%20false%20%e6%9b%b4%e5%a4%9a%e5%ae%8c%e6%95%b4%e7%9a%84%e4%bb%8b%e7%b4%b9%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e6%88%96W3CSchool%20JSON%e5%ae%98%e7%b6%b2%e4%bb%8b%e7%b4%b9%0aW3CSchool%20Learn%20JSON%0a%20%e5%9c%a8.NET%e4%b8%ad%e5%85%a7%e5%bb%ba%e5%85%a9%e7%a8%ae%e8%a7%a3%e6%9e%90%e6%96%b9%e5%bc%8f%ef%bc%8c%e4%bd%86%e9%9c%80%e8%a6%81Framework%203.5%e4%bb%a5%e4%b8%8a%0aSystem.Web.Extensions%e4%b8%8b%e9%9d%a2%e7%9a%84JavaScriptSerializer%20JavaScriptSerializer%20%e4%bb%8b%e7%b4%b9%20JavaScriptSerializer%20%e7%94%a8%e6%b3%95%20JavaScriptSerializer%20%e8%bd%89%e6%8f%9b%20IEnumerable%20%e4%bb%8b%e9%9d%a2%20JavaScriptSerializer%20%e8%bd%89%e6%8f%9b%20IDictionary%20%e4%bb%8b%e9%9d%a2%20JavaScriptSerializer%20%e6%97%a5%e6%9c%9f%e8%99%95%e7%90%86%20JavaScriptSerializer%20ScriptIgnoreAttribute%0a%20System.Runtime.Serialization%e4%b8%8b%e9%9d%a2%e7%9a%84DataContractJsonSerializer%20DataContractJsonSerializer%20%e4%bb%8b%e7%b4%b9%20DataContractJsonSerializer%20%e7%94%a8%e6%b3%95%20DataContractJsonSerializer%20%e8%bd%89%e6%8f%9b%20IEnumerable%20%e4%bb%8b%e9%9d%a2%20DataContractJsonSerializer%20%e8%bd%89%e6%8f%9b%20IDictionary%20%e4%bb%8b%e9%9d%a2%20DataContractJsonSerializer%20%e6%97%a5%e6%9c%9f%e8%99%95%e7%90%86&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=JSON%e7%ad%86%e8%a8%98&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjson%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

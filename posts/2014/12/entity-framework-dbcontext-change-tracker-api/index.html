@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework DbContext Change Tracker API | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="DbSet有一個Local，是用來存放從資料庫中取得的資料
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); Console.WriteLine(db.Topic.Local.Count); db.Topic.Load(); Console.WriteLine(db.Topic.Local.Count); } } }  } 
+[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png) Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知 namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); db.
+    ">
+
+
+<meta property="og:title" content="Entity Framework DbContext Change Tracker API" />
+<meta property="og:description" content="DbSet有一個Local，是用來存放從資料庫中取得的資料
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); Console.WriteLine(db.Topic.Local.Count); db.Topic.Load(); Console.WriteLine(db.Topic.Local.Count); } } }  } 
+[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png) Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知 namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); db." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/entity-framework-dbcontext-change-tracker-api/" />
+<meta property="article:published_time" content="2014-12-17T18:21:00+00:00" />
+<meta property="article:modified_time" content="2014-12-17T18:21:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework DbContext Change Tracker API"/>
+<meta name="twitter:description" content="DbSet有一個Local，是用來存放從資料庫中取得的資料
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); Console.WriteLine(db.Topic.Local.Count); db.Topic.Load(); Console.WriteLine(db.Topic.Local.Count); } } }  } 
+[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png) Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知 namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); db."/>
+
+<meta itemprop="name" content="Entity Framework DbContext Change Tracker API">
+<meta itemprop="description" content="DbSet有一個Local，是用來存放從資料庫中取得的資料
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); Console.WriteLine(db.Topic.Local.Count); db.Topic.Load(); Console.WriteLine(db.Topic.Local.Count); } } }  } 
+[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png) Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知 namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); db.">
+<meta itemprop="datePublished" content="2014-12-17T18:21:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-17T18:21:00+00:00" />
+<meta itemprop="wordCount" content="318">
+
+
+
+<meta itemprop="keywords" content="DbContext,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/entity-framework-dbcontext-change-tracker-api/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework DbContext Change Tracker API</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 17, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/dbcontext">DbContext</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/dbcontext">Db context</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>DbSet有一個Local，是用來存放從資料庫中取得的資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+            Console.WriteLine(db.Topic.Local.Count);
+            db.Topic.Load();
+            Console.WriteLine(db.Topic.Local.Count);
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)</div>
+Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            db.Topic.Local.CollectionChanged += (s, a) =&amp;gt;
+            {
+                if (a.NewItems != null)
+                {
+                    foreach (Topic item in a.NewItems)
+                    {
+                        Console.WriteLine(&quot;Added:&quot; + item.TopicTitle);
+                    }
+                }
+
+                if (a.OldItems != null)
+                {
+                    foreach (Topic item in a.OldItems)
+                    {
+                        Console.WriteLine(&quot;Removed:&quot; + item.TopicTitle);
+                    }
+                }
+            };
+
+            Topic topic = new Topic { TopicTitle = &quot;abc&quot; };
+            db.Topic.Add(topic);
+            db.Topic.Remove(topic);
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-SKyRpTru4p4/VJFaB-AddFI/AAAAAAAABzQ/2Yak7QteYlg/s1600/02.png)](http://1.bp.blogspot.com/-SKyRpTru4p4/VJFaB-AddFI/AAAAAAAABzQ/2Yak7QteYlg/s1600/02.png)</div>
+當資料取出到DbContext之後，接下來的資料異動會透過EntityState來識別，當呼叫SaveChanges時，執行相對應的SQL處理
+Detached: 該實體尚未存在於DbContext中
+Unchanged: 該實體剛從資料庫取出或是呼叫過SaveChanges之後，還沒有任何異動
+Added: 該實體已經加入到DbContext中，但尚未呼叫SaveChanges
+Deleted: 該實體已從DbContext中刪除，但尚未呼叫SaveChanges
+Modifyied:該實體已在DbContext中更新過，但尚未調用SaveChanges
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            // 建立一個新實體，初始狀態會是Detached
+            Topic topic = new Topic() { TopicTitle = &quot;abc&quot; };
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+
+            // 呼叫Attach可以把資料附加進Local集合中，狀態會是UnChanged
+            db.Topic.Attach(topic);
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+
+            // 把實體加入DbSet後，狀態會是Added
+            db.Topic.Add(topic);
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+
+            // 呼叫SaveChanges後，狀態會是UnChanged
+            db.SaveChanges();
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+
+            // 異動資料後，狀態會是Modified
+            topic.TopicTitle = &quot;123&quot;;
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+
+            // 把實體從DbSet移除後，狀態會是Deleted
+            db.Topic.Remove(topic);
+            Console.WriteLine(&quot;{0}, {1}&quot;, db.Topic.Local.Count, db.Entry(topic).State);
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-9aIonFcLz1Y/VJFaB9ZSzbI/AAAAAAAABzM/MehYP1SWpVw/s1600/03.png)](http://1.bp.blogspot.com/-9aIonFcLz1Y/VJFaB9ZSzbI/AAAAAAAABzM/MehYP1SWpVw/s1600/03.png)</div>
+除了透過Entry取得實體的狀態外，還可以取得實體不同的值
+目前的值(Current Value)
+原始的值(Original Value)
+資料庫裡面的值(Database Value)
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            Topic topic = db.Topic.Find(1);
+            topic.TopicTitle = &quot;123&quot;;
+            db.Database.ExecuteSqlCommand(&quot;UPDATE Topic SET TopicTitle='456' WHERE TopicID=1&quot;);
+            Console.WriteLine(&quot;CurrentValue:{0}&quot;, db.Entry(topic).CurrentValues.GetValue&amp;lt;string&amp;gt;(&quot;TopicTitle&quot;));
+            Console.WriteLine(&quot;OriginalValue:{0}&quot;, db.Entry(topic).OriginalValues.GetValue&amp;lt;string&amp;gt;(&quot;TopicTitle&quot;));
+            Console.WriteLine(&quot;DatabaseValue:{0}&quot;, db.Entry(topic).GetDatabaseValues().GetValue&amp;lt;string&amp;gt;(&quot;TopicTitle&quot;));
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-kRdKg81HKhk/VJFaDLFWQ0I/AAAAAAAABzU/Z9Jsu8pjr-Q/s1600/04.png)](http://4.bp.blogspot.com/-kRdKg81HKhk/VJFaDLFWQ0I/AAAAAAAABzU/Z9Jsu8pjr-Q/s1600/04.png)</div>
+如果不想加入Tracker的話，可以呼叫AsNoTracking()即可
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            Console.WriteLine(db.Topic.Local.Count);
+            db.Topic.AsNoTracking().Load();
+            Console.WriteLine(db.Topic.Local.Count);
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-IZiN90RhCSk/VJFaD0j1PPI/AAAAAAAABzc/rSOXKf7Kuns/s1600/05.png"><img src="http://4.bp.blogspot.com/-IZiN90RhCSk/VJFaD0j1PPI/AAAAAAAABzc/rSOXKf7Kuns/s1600/05.png" alt=""></a></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20DbContext%20Change%20Tracker%20API&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f
+			&title=Entity%20Framework%20DbContext%20Change%20Tracker%20API&summary=DbSet%e6%9c%89%e4%b8%80%e5%80%8bLocal%ef%bc%8c%e6%98%af%e7%94%a8%e4%be%86%e5%ad%98%e6%94%be%e5%be%9e%e8%b3%87%e6%96%99%e5%ba%ab%e4%b8%ad%e5%8f%96%e5%be%97%e7%9a%84%e8%b3%87%e6%96%99%0anamespace%20ConsoleApplication1%20%7b%20using%20ConsoleApplication1.Models%3b%20using%20System%3b%20using%20System.Data.Entity%3b%20class%20Program%20%7b%20static%20void%20Main%28string%5b%5d%20args%29%20%7b%20%2f%2f%20%e5%88%9d%e5%a7%8b%e5%8c%96%e8%b3%87%e6%96%99%e5%ba%ab%20Database.SetInitializer%28new%20MyInit%28%29%29%3b%20using%20%28DemoContext%20db%20%3d%20new%20DemoContext%28%29%29%20%7b%20db.Database.Initialize%28false%29%3b%20Console.WriteLine%28db.Topic.Local.Count%29%3b%20db.Topic.Load%28%29%3b%20Console.WriteLine%28db.Topic.Local.Count%29%3b%20%7d%20%7d%20%7d%20%20%7d%20%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-nFIf_sip55A%2fVJFaB_gYo0I%2fAAAAAAAABzs%2fFxfhAybwr8Q%2fs1600%2f01.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-nFIf_sip55A%2fVJFaB_gYo0I%2fAAAAAAAABzs%2fFxfhAybwr8Q%2fs1600%2f01.png%29%20Local%e5%b1%ac%e6%80%a7%e6%98%af%e4%b8%80%e5%80%8bObservableCollection%ef%bc%8c%e5%8f%af%e4%bb%a5%e9%80%8f%e9%81%8eCollectionChanged%e4%ba%8b%e4%bb%b6%e4%be%86%e5%be%97%e5%88%b0Local%e9%9b%86%e5%90%88%e4%b8%ad%e7%99%bc%e7%94%9f%e8%ae%8a%e5%8c%96%e7%9a%84%e9%80%9a%e7%9f%a5%20namespace%20ConsoleApplication1%20%7b%20using%20ConsoleApplication1.Models%3b%20using%20System%3b%20using%20System.Data.Entity%3b%20class%20Program%20%7b%20static%20void%20Main%28string%5b%5d%20args%29%20%7b%20%2f%2f%20%e5%88%9d%e5%a7%8b%e5%8c%96%e8%b3%87%e6%96%99%e5%ba%ab%20Database.SetInitializer%28new%20MyInit%28%29%29%3b%20using%20%28DemoContext%20db%20%3d%20new%20DemoContext%28%29%29%20%7b%20db.Database.Initialize%28false%29%3b%20db.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20DbContext%20Change%20Tracker%20API&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-change-tracker-api%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

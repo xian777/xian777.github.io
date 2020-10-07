@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    AutoMapper 自訂對應關系 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換 但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明 首先是來源的Model物件public class DemoModel { public int CustId { get; set; } public string CustName { get; set; } public bool CustGender { get; set; } }  再來是要轉換的ViewModel物件public class DemoViewModel { public int Id { get; set; } public string Name { get; set; } public string FullName { get; set; } public string Gender { get; set; } public DateTime Date { get; set; } }  轉換的設定方式 Ignore是用來略過對應，不給值 MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值 ResolveUsing是指定自訂的型別轉換方式 UseValue是在轉換的過程中直接給值 NullSubstitute是在原始值為空的時後才給值 Condition傳入一個條件為true才給值public class Class1 { public void GetViewModel() { Mapper.
+    ">
+
+
+<meta property="og:title" content="AutoMapper 自訂對應關系" />
+<meta property="og:description" content="在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換 但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明 首先是來源的Model物件public class DemoModel { public int CustId { get; set; } public string CustName { get; set; } public bool CustGender { get; set; } }  再來是要轉換的ViewModel物件public class DemoViewModel { public int Id { get; set; } public string Name { get; set; } public string FullName { get; set; } public string Gender { get; set; } public DateTime Date { get; set; } }  轉換的設定方式 Ignore是用來略過對應，不給值 MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值 ResolveUsing是指定自訂的型別轉換方式 UseValue是在轉換的過程中直接給值 NullSubstitute是在原始值為空的時後才給值 Condition傳入一個條件為true才給值public class Class1 { public void GetViewModel() { Mapper." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/08/automapper-%E8%87%AA%E8%A8%82%E5%B0%8D%E6%87%89%E9%97%9C%E7%B3%BB/" />
+<meta property="article:published_time" content="2014-08-05T18:18:00+00:00" />
+<meta property="article:modified_time" content="2014-08-05T18:18:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AutoMapper 自訂對應關系"/>
+<meta name="twitter:description" content="在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換 但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明 首先是來源的Model物件public class DemoModel { public int CustId { get; set; } public string CustName { get; set; } public bool CustGender { get; set; } }  再來是要轉換的ViewModel物件public class DemoViewModel { public int Id { get; set; } public string Name { get; set; } public string FullName { get; set; } public string Gender { get; set; } public DateTime Date { get; set; } }  轉換的設定方式 Ignore是用來略過對應，不給值 MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值 ResolveUsing是指定自訂的型別轉換方式 UseValue是在轉換的過程中直接給值 NullSubstitute是在原始值為空的時後才給值 Condition傳入一個條件為true才給值public class Class1 { public void GetViewModel() { Mapper."/>
+
+<meta itemprop="name" content="AutoMapper 自訂對應關系">
+<meta itemprop="description" content="在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換 但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明 首先是來源的Model物件public class DemoModel { public int CustId { get; set; } public string CustName { get; set; } public bool CustGender { get; set; } }  再來是要轉換的ViewModel物件public class DemoViewModel { public int Id { get; set; } public string Name { get; set; } public string FullName { get; set; } public string Gender { get; set; } public DateTime Date { get; set; } }  轉換的設定方式 Ignore是用來略過對應，不給值 MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值 ResolveUsing是指定自訂的型別轉換方式 UseValue是在轉換的過程中直接給值 NullSubstitute是在原始值為空的時後才給值 Condition傳入一個條件為true才給值public class Class1 { public void GetViewModel() { Mapper.">
+<meta itemprop="datePublished" content="2014-08-05T18:18:00+00:00" />
+<meta itemprop="dateModified" content="2014-08-05T18:18:00+00:00" />
+<meta itemprop="wordCount" content="176">
+
+
+
+<meta itemprop="keywords" content="AutoMapper," />
+
+<link rel="canonical" href="http://example.org/posts/2014/08/automapper-%E8%87%AA%E8%A8%82%E5%B0%8D%E6%87%89%E9%97%9C%E7%B3%BB/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>AutoMapper 自訂對應關系</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 5, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/automapper">AutoMapper</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/automapper">Auto mapper</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換
+但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明</div>
+<div>首先是來源的Model物件</div><div><pre class="brush:csharp">public class DemoModel
+{
+    public int CustId { get; set; }
+    public string CustName { get; set; }
+    public bool CustGender { get; set; }
+}
+</pre></div>
+<div>再來是要轉換的ViewModel物件</div><div><pre class="brush:csharp">public class DemoViewModel
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string FullName { get; set; }
+    public string Gender { get; set; }
+    public DateTime Date { get; set; }
+}
+</pre></div>
+<div>轉換的設定方式
+Ignore是用來略過對應，不給值
+MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值
+ResolveUsing是指定自訂的型別轉換方式
+UseValue是在轉換的過程中直接給值
+NullSubstitute是在原始值為空的時後才給值
+Condition傳入一個條件為true才給值</div><div><pre class="brush:csharp">public class Class1
+{
+    public void GetViewModel()
+    {
+        Mapper.CreateMap&lt;DemoModel, DemoViewModel&gt;()
+            .ForMember(dest =&gt; dest.Id, opt =&gt; opt.Ignore())
+            .ForMember(dest =&gt; dest.Name, opt =&gt; opt.MapFrom(src =&gt; src.CustName))
+            .ForMember(dest =&gt; dest.FullName, opt =&gt; opt.MapFrom(src =&gt; string.Format("{0}:{1}", src.CustId, src.CustName)))
+            .ForMember(dest =&gt; dest.Gender, opt =&gt; opt.ResolveUsing&lt;GenderResolver&gt;().FromMember(src =&gt; src.CustGender))
+            .ForMember(dest =&gt; dest.Date, opt =&gt; opt.UseValue&lt;DateTime&gt;(DateTime.Now));
+<pre><code>    DemoModel model = new DemoModel
+    {
+        CustId = 123,
+        CustName = &quot;abc&quot;,
+        CustGender = true
+    };
+
+    DemoViewModel viewModel = Mapper.Map&amp;lt;DemoModel, DemoViewModel&amp;gt;(model);
+    Console.WriteLine(&quot;id:{0}, name:{1}, fullname:{2}, gender:{3}, date:{4}&quot;, viewModel.Id, viewModel.Name, viewModel.FullName, viewModel.Date, viewModel.Gender);
+}
+
+private class GenderResolver : ValueResolver&amp;lt;bool, string&amp;gt;
+{
+    protected override string ResolveCore(bool source)
+    {
+        return source ? &quot;男&quot; : &quot;女&quot;;
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=AutoMapper%20%e8%87%aa%e8%a8%82%e5%b0%8d%e6%87%89%e9%97%9c%e7%b3%bb&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f
+			&title=AutoMapper%20%e8%87%aa%e8%a8%82%e5%b0%8d%e6%87%89%e9%97%9c%e7%b3%bb&summary=%e5%9c%a8%e4%be%86%e6%ba%90%e5%92%8c%e7%9b%ae%e7%9a%84%e7%89%a9%e4%bb%b6%e4%b8%ad%ef%bc%8c%e5%a6%82%e6%9e%9c%e5%b1%ac%e6%80%a7%e5%90%8d%e7%a8%b1%e5%92%8c%e5%9e%8b%e6%85%8b%e9%83%bd%e7%9b%b8%e5%90%8c%e7%9a%84%e8%a9%b1%ef%bc%8cAutoMapper%e6%9c%83%e8%87%aa%e5%8b%95%e8%bd%89%e6%8f%9b%20%e4%bd%86%e9%80%9a%e5%b8%b8%e4%ba%8b%e6%83%85%e4%b8%8d%e6%9c%83%e9%80%99%e9%ba%bc%e5%96%ae%e7%b4%94%ef%bc%8c%e5%be%88%e5%a4%9a%e6%99%82%e5%be%8c%e6%88%91%e5%80%91%e6%9c%83%e9%9c%80%e8%a6%81%e6%8c%87%e5%ae%9a%e8%bd%89%e6%8f%9b%e7%9a%84%e6%96%b9%e5%bc%8f%ef%bc%8c%e7%94%a8%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e4%be%8b%e5%ad%90%e4%be%86%e8%aa%aa%e6%98%8e%20%e9%a6%96%e5%85%88%e6%98%af%e4%be%86%e6%ba%90%e7%9a%84Model%e7%89%a9%e4%bb%b6public%20class%20DemoModel%20%7b%20public%20int%20CustId%20%7b%20get%3b%20set%3b%20%7d%20public%20string%20CustName%20%7b%20get%3b%20set%3b%20%7d%20public%20bool%20CustGender%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%e5%86%8d%e4%be%86%e6%98%af%e8%a6%81%e8%bd%89%e6%8f%9b%e7%9a%84ViewModel%e7%89%a9%e4%bb%b6public%20class%20DemoViewModel%20%7b%20public%20int%20Id%20%7b%20get%3b%20set%3b%20%7d%20public%20string%20Name%20%7b%20get%3b%20set%3b%20%7d%20public%20string%20FullName%20%7b%20get%3b%20set%3b%20%7d%20public%20string%20Gender%20%7b%20get%3b%20set%3b%20%7d%20public%20DateTime%20Date%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%e8%bd%89%e6%8f%9b%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8f%20Ignore%e6%98%af%e7%94%a8%e4%be%86%e7%95%a5%e9%81%8e%e5%b0%8d%e6%87%89%ef%bc%8c%e4%b8%8d%e7%b5%a6%e5%80%bc%20MapFrom%e6%98%af%e7%94%a8%e4%be%86%e6%8c%87%e5%ae%9a%e5%b0%8d%e6%87%89%e7%9a%84%e5%b1%ac%e6%80%a7%e5%90%8d%e7%a8%b1%ef%bc%8c%e6%88%96%e6%98%af%e7%b5%84%e5%90%88%e5%a4%9a%e5%80%8b%e5%b1%ac%e6%80%a7%e5%80%bc%20ResolveUsing%e6%98%af%e6%8c%87%e5%ae%9a%e8%87%aa%e8%a8%82%e7%9a%84%e5%9e%8b%e5%88%a5%e8%bd%89%e6%8f%9b%e6%96%b9%e5%bc%8f%20UseValue%e6%98%af%e5%9c%a8%e8%bd%89%e6%8f%9b%e7%9a%84%e9%81%8e%e7%a8%8b%e4%b8%ad%e7%9b%b4%e6%8e%a5%e7%b5%a6%e5%80%bc%20NullSubstitute%e6%98%af%e5%9c%a8%e5%8e%9f%e5%a7%8b%e5%80%bc%e7%82%ba%e7%a9%ba%e7%9a%84%e6%99%82%e5%be%8c%e6%89%8d%e7%b5%a6%e5%80%bc%20Condition%e5%82%b3%e5%85%a5%e4%b8%80%e5%80%8b%e6%a2%9d%e4%bb%b6%e7%82%batrue%e6%89%8d%e7%b5%a6%e5%80%bcpublic%20class%20Class1%20%7b%20public%20void%20GetViewModel%28%29%20%7b%20Mapper.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=AutoMapper%20%e8%87%aa%e8%a8%82%e5%b0%8d%e6%87%89%e9%97%9c%e7%b3%bb&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2fautomapper-%25E8%2587%25AA%25E8%25A8%2582%25E5%25B0%258D%25E6%2587%2589%25E9%2597%259C%25E7%25B3%25BB%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NuGet Multiple Framework 建置 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下 Step1 每個版本建立一個方案檔 一般專案的命名為net20、net35、net40、net45&hellip; 其他類型的專案則再加上縮寫 Client Profile(client) WindowsPhone(wp) Silverlight(sl) CompactFramework(cf) 更多完整的資料請參考官網文件 http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)Step2 每一個版本建立一個專案檔[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png) [![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png) Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 **注意每個組態都要設定喔 **[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)Step4 依Framework版本，加上條件式編譯 using System; using System.Collections.Generic; #if NET35 || NET40 || NET45 using System.Linq; #endif
+using System.Text;
+#if NET40 || NET45 using System.Threading.Tasks; #endif
+namespace ClassLibrary1 { public class Class1 { } }
+Step5 手動建立nuget spec檔
+[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)&lt;?xml version=&#34;1.0&#34;?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;ClassLibrary1&lt;/id&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;authors&gt;xian&lt;/authors&gt; &lt;owners&gt;xian&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;Package description&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.
+    ">
+
+
+<meta property="og:title" content="NuGet Multiple Framework 建置" />
+<meta property="og:description" content="NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下 Step1 每個版本建立一個方案檔 一般專案的命名為net20、net35、net40、net45&hellip; 其他類型的專案則再加上縮寫 Client Profile(client) WindowsPhone(wp) Silverlight(sl) CompactFramework(cf) 更多完整的資料請參考官網文件 http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)Step2 每一個版本建立一個專案檔[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png) [![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png) Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 **注意每個組態都要設定喔 **[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)Step4 依Framework版本，加上條件式編譯 using System; using System.Collections.Generic; #if NET35 || NET40 || NET45 using System.Linq; #endif
+using System.Text;
+#if NET40 || NET45 using System.Threading.Tasks; #endif
+namespace ClassLibrary1 { public class Class1 { } }
+Step5 手動建立nuget spec檔
+[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)&lt;?xml version=&#34;1.0&#34;?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;ClassLibrary1&lt;/id&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;authors&gt;xian&lt;/authors&gt; &lt;owners&gt;xian&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;Package description&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/" />
+<meta property="article:published_time" content="2013-12-24T11:20:00+00:00" />
+<meta property="article:modified_time" content="2013-12-24T11:20:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NuGet Multiple Framework 建置"/>
+<meta name="twitter:description" content="NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下 Step1 每個版本建立一個方案檔 一般專案的命名為net20、net35、net40、net45&hellip; 其他類型的專案則再加上縮寫 Client Profile(client) WindowsPhone(wp) Silverlight(sl) CompactFramework(cf) 更多完整的資料請參考官網文件 http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)Step2 每一個版本建立一個專案檔[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png) [![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png) Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 **注意每個組態都要設定喔 **[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)Step4 依Framework版本，加上條件式編譯 using System; using System.Collections.Generic; #if NET35 || NET40 || NET45 using System.Linq; #endif
+using System.Text;
+#if NET40 || NET45 using System.Threading.Tasks; #endif
+namespace ClassLibrary1 { public class Class1 { } }
+Step5 手動建立nuget spec檔
+[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)&lt;?xml version=&#34;1.0&#34;?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;ClassLibrary1&lt;/id&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;authors&gt;xian&lt;/authors&gt; &lt;owners&gt;xian&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;Package description&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package."/>
+
+<meta itemprop="name" content="NuGet Multiple Framework 建置">
+<meta itemprop="description" content="NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下 Step1 每個版本建立一個方案檔 一般專案的命名為net20、net35、net40、net45&hellip; 其他類型的專案則再加上縮寫 Client Profile(client) WindowsPhone(wp) Silverlight(sl) CompactFramework(cf) 更多完整的資料請參考官網文件 http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)Step2 每一個版本建立一個專案檔[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png) [![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png) Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 **注意每個組態都要設定喔 **[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)Step4 依Framework版本，加上條件式編譯 using System; using System.Collections.Generic; #if NET35 || NET40 || NET45 using System.Linq; #endif
+using System.Text;
+#if NET40 || NET45 using System.Threading.Tasks; #endif
+namespace ClassLibrary1 { public class Class1 { } }
+Step5 手動建立nuget spec檔
+[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)&lt;?xml version=&#34;1.0&#34;?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;ClassLibrary1&lt;/id&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;authors&gt;xian&lt;/authors&gt; &lt;owners&gt;xian&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;Package description&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.">
+<meta itemprop="datePublished" content="2013-12-24T11:20:00+00:00" />
+<meta itemprop="dateModified" content="2013-12-24T11:20:00+00:00" />
+<meta itemprop="wordCount" content="181">
+
+
+
+<meta itemprop="keywords" content="NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NuGet Multiple Framework 建置</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 24, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下
+<p>Step1 每個版本建立一個方案檔
+一般專案的命名為net20、net35、net40、net45&hellip;
+其他類型的專案則再加上縮寫
+Client Profile(client)
+WindowsPhone(wp)
+Silverlight(sl)
+CompactFramework(cf)
+更多完整的資料請參考官網文件
+<a href="http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package">http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package</a></div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)</div><div>Step2 每一個版本建立一個專案檔</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)</div><span style="background-color: #fcfcfc; color: #333333; font-family: Consolas, 'Courier New'; font-size: 13.600000381469727px;">
+</span>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)</div>
+<div>Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 
+**<span style="color: red;">注意每個組態都要設定喔 </span>**</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)</div><div>Step4 依Framework版本，加上條件式編譯
+</div><div><pre class="brush:csharp">using System;
+using System.Collections.Generic;
+<p>#if NET35 || NET40 || NET45
+using System.Linq;
+#endif</p>
+<p>using System.Text;</p>
+<p>#if NET40 || NET45
+using System.Threading.Tasks;
+#endif</p>
+<p>namespace ClassLibrary1
+{
+public class Class1
+{
+}
+}</p>
+<p></pre></div><div>Step5 手動建立nuget spec檔</div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)</div><div><pre class="brush:xml">&lt;?xml version="1.0"?&gt;
+&lt;package &gt;
+  &lt;metadata&gt;
+    &lt;id&gt;ClassLibrary1&lt;/id&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;authors&gt;xian&lt;/authors&gt;
+    &lt;owners&gt;xian&lt;/owners&gt;
+    &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt;
+    &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt;
+    &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt;
+    &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt;
+    &lt;description&gt;Package description&lt;/description&gt;
+    &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt;
+    &lt;copyright&gt;Copyright 2013&lt;/copyright&gt;
+    &lt;tags&gt;Tag1 Tag2&lt;/tags&gt;
+    &lt;dependencies&gt;
+      &lt;dependency id="SampleDependency" version="1.0" /&gt;
+    &lt;/dependencies&gt;
+  &lt;/metadata&gt;
+  &lt;files&gt;
+        &lt;file src="ClassLibrary1\**\*.cs" exclude="ClassLibrary1\obj\**\*.cs" target="src" /&gt;
+  &lt;file src="ClassLibrary1\bin\Release\net20\ClassLibrary1.dll" target="lib\net20\ClassLibrary1.dll" /&gt;
+        &lt;file src="ClassLibrary1\bin\Release\net20\ClassLibrary1.pdb" target="lib\net20\ClassLibrary1.pdb" /&gt;
+  &lt;file src="ClassLibrary1\bin\Release\net35\ClassLibrary1.dll" target="lib\net35\ClassLibrary1.dll" /&gt;
+        &lt;file src="ClassLibrary1\bin\Release\net35\ClassLibrary1.pdb" target="lib\net35\ClassLibrary1.pdb" /&gt;
+        &lt;file src="ClassLibrary1\bin\Release\net40\ClassLibrary1.dll" target="lib\net40\ClassLibrary1.dll" /&gt;
+        &lt;file src="ClassLibrary1\bin\Release\net40\ClassLibrary1.pdb" target="lib\net40\ClassLibrary1.pdb" /&gt;
+  &lt;file src="ClassLibrary1\bin\Release\net45\ClassLibrary1.dll" target="lib\net45\ClassLibrary1.dll" /&gt;
+        &lt;file src="ClassLibrary1\bin\Release\net45\ClassLibrary1.pdb" target="lib\net45\ClassLibrary1.pdb" /&gt;
+    &lt;/files&gt;
+&lt;/package&gt;&nbsp;</pre></div>
+<div>Step6 加上測試用批次檔</div>
+<div><pre class="brush:xml">@echo off
+set MSBUILD=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe
+if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
+if not exist %MSBUILD% set MSBUILD=%WINDIR%\Microsoft.NET\Framework\v3.5\msbuild.exe
+if not exist %MSBUILD% (
+ echo MSBuild not found
+ exit
+) 
+<p>%MSBUILD% ClassLibrary1.net20.sln /property:Configuration=Release /m
+%MSBUILD% ClassLibrary1.net35.sln /property:Configuration=Release /m
+%MSBUILD% ClassLibrary1.net40.sln /property:Configuration=Release /m
+%MSBUILD% ClassLibrary1.net45.sln /property:Configuration=Release /m
+nuget pack ClassLibrary1.nuspec
+pause
+</pre></div><div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png"><img src="http://3.bp.blogspot.com/-h_G_GN51AHQ/Urj9BdN5UuI/AAAAAAAAA4Q/v3soOklBVm8/s1600/09.bat.png" alt=""></a></div></p>
+<p>瀏覽結果</div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png)](http://3.bp.blogspot.com/-Li3Okgdz5VM/Urj4nvEX7QI/AAAAAAAAA4E/6K0LQ1Bu9KY/s1600/08.packet.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NuGet%20Multiple%20Framework%20%e5%bb%ba%e7%bd%ae&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f
+			&title=NuGet%20Multiple%20Framework%20%e5%bb%ba%e7%bd%ae&summary=NuGet%e4%bd%bf%e7%94%a8%e4%b8%80%e6%ae%b5%e6%99%82%e9%96%93%e4%b9%8b%e5%be%8c%ef%bc%8c%e9%96%8b%e5%a7%8b%e7%a2%b0%e5%88%b0%e5%85%b1%e7%94%a8%e7%9a%84%e5%85%83%e4%bb%b6%ef%bc%8c%e5%9c%a8%e4%b8%8d%e5%90%8c%e5%b0%88%e6%a1%88%e7%9a%84Framework%e7%89%88%e6%9c%ac%e4%b8%8d%e5%90%8c%ef%bc%8c%e6%9c%83%e6%9c%89%e5%bc%95%e7%94%a8%e4%b8%8a%e7%9a%84%e5%9b%b0%e6%93%be%ef%bc%8c%e5%9c%a8%e7%b6%b2%e8%b7%af%e4%b8%8a%e6%89%be%e4%ba%86%e5%b9%be%e5%80%8b%e8%a7%a3%e6%b1%ba%e6%96%b9%e6%a1%88%ef%bc%8c%e5%af%a6%e4%bd%9c%e4%b9%8b%e5%be%8c%e5%80%8b%e4%ba%ba%e8%a6%ba%e7%9a%84%e6%af%94%e8%bc%83%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%b9%e6%b3%95%e5%a6%82%e4%b8%8b%20Step1%20%e6%af%8f%e5%80%8b%e7%89%88%e6%9c%ac%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8b%e6%96%b9%e6%a1%88%e6%aa%94%20%e4%b8%80%e8%88%ac%e5%b0%88%e6%a1%88%e7%9a%84%e5%91%bd%e5%90%8d%e7%82%banet20%e3%80%81net35%e3%80%81net40%e3%80%81net45%26hellip%3b%20%e5%85%b6%e4%bb%96%e9%a1%9e%e5%9e%8b%e7%9a%84%e5%b0%88%e6%a1%88%e5%89%87%e5%86%8d%e5%8a%a0%e4%b8%8a%e7%b8%ae%e5%af%ab%20Client%20Profile%28client%29%20WindowsPhone%28wp%29%20Silverlight%28sl%29%20CompactFramework%28cf%29%20%e6%9b%b4%e5%a4%9a%e5%ae%8c%e6%95%b4%e7%9a%84%e8%b3%87%e6%96%99%e8%ab%8b%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e6%96%87%e4%bb%b6%20http%3a%2f%2fdocs.nuget.org%2fdocs%2fcreating-packages%2fcreating-and-publishing-a-package%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Z_7Nwh3E004%2fUrj3_IOzGmI%2fAAAAAAAAA3Q%2fJSdtbB7ne1Q%2fs1600%2f01.sln.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Z_7Nwh3E004%2fUrj3_IOzGmI%2fAAAAAAAAA3Q%2fJSdtbB7ne1Q%2fs1600%2f01.sln.png%29%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-w46datk00Fw%2fUrj4AWcam2I%2fAAAAAAAAA3Y%2fA-GmHxGvsY0%2fs1600%2f02.sln.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-w46datk00Fw%2fUrj4AWcam2I%2fAAAAAAAAA3Y%2fA-GmHxGvsY0%2fs1600%2f02.sln.png%29Step2%20%e6%af%8f%e4%b8%80%e5%80%8b%e7%89%88%e6%9c%ac%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8b%e5%b0%88%e6%a1%88%e6%aa%94%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-GcIzkWZiGz0%2fUrj4QuT3lII%2fAAAAAAAAA3c%2fIbIp_s_gt8g%2fs1600%2f03.csproj.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-GcIzkWZiGz0%2fUrj4QuT3lII%2fAAAAAAAAA3c%2fIbIp_s_gt8g%2fs1600%2f03.csproj.png%29%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-wPPOHszWFcA%2fUrj4RmcGNvI%2fAAAAAAAAA3o%2fXBtd2ATXs14%2fs1600%2f04.csproj.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-wPPOHszWFcA%2fUrj4RmcGNvI%2fAAAAAAAAA3o%2fXBtd2ATXs14%2fs1600%2f04.csproj.png%29%20Step3%20%e6%af%8f%e4%b8%80%e5%80%8b%e5%b0%88%e6%a1%88%e6%aa%94%e9%81%b8%e6%93%87%e4%b8%8d%e5%90%8c%e7%9a%84Framework%ef%bc%8c%e4%bb%a5%e5%8f%8a%e6%a2%9d%e4%bb%b6%e5%bc%8f%e7%b7%a8%e8%ad%af%e7%ac%a6%e8%99%9f%e5%92%8c%e4%bf%ae%e6%94%b9%e8%bc%b8%e5%87%ba%e8%b7%af%e5%be%91%20%2a%2a%e6%b3%a8%e6%84%8f%e6%af%8f%e5%80%8b%e7%b5%84%e6%85%8b%e9%83%bd%e8%a6%81%e8%a8%ad%e5%ae%9a%e5%96%94%20%2a%2a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-B84By-NaVHE%2fUrj4ZL6TGpI%2fAAAAAAAAA3s%2fmZLbwfLGEHw%2fs1600%2f05.version.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-B84By-NaVHE%2fUrj4ZL6TGpI%2fAAAAAAAAA3s%2fmZLbwfLGEHw%2fs1600%2f05.version.png%29%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9Ka8GNPihf0%2fUrj4abt1ZLI%2fAAAAAAAAA34%2fjRp00XFmLv8%2fs1600%2f06.output.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9Ka8GNPihf0%2fUrj4abt1ZLI%2fAAAAAAAAA34%2fjRp00XFmLv8%2fs1600%2f06.output.png%29Step4%20%e4%be%9dFramework%e7%89%88%e6%9c%ac%ef%bc%8c%e5%8a%a0%e4%b8%8a%e6%a2%9d%e4%bb%b6%e5%bc%8f%e7%b7%a8%e8%ad%af%20using%20System%3b%20using%20System.Collections.Generic%3b%20%23if%20NET35%20%7c%7c%20NET40%20%7c%7c%20NET45%20using%20System.Linq%3b%20%23endif%0ausing%20System.Text%3b%0a%23if%20NET40%20%7c%7c%20NET45%20using%20System.Threading.Tasks%3b%20%23endif%0anamespace%20ClassLibrary1%20%7b%20public%20class%20Class1%20%7b%20%7d%20%7d%0aStep5%20%e6%89%8b%e5%8b%95%e5%bb%ba%e7%ab%8bnuget%20spec%e6%aa%94%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-_JkzDLOeeJc%2fUrj4jGQfcnI%2fAAAAAAAAA38%2fnPBreRhuDJA%2fs1600%2f07.spec.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-_JkzDLOeeJc%2fUrj4jGQfcnI%2fAAAAAAAAA38%2fnPBreRhuDJA%2fs1600%2f07.spec.png%29%26lt%3b%3fxml%20version%3d%221.0%22%3f%26gt%3b%20%26lt%3bpackage%20%26gt%3b%20%26lt%3bmetadata%26gt%3b%20%26lt%3bid%26gt%3bClassLibrary1%26lt%3b%2fid%26gt%3b%20%26lt%3bversion%26gt%3b1.0.0%26lt%3b%2fversion%26gt%3b%20%26lt%3bauthors%26gt%3bxian%26lt%3b%2fauthors%26gt%3b%20%26lt%3bowners%26gt%3bxian%26lt%3b%2fowners%26gt%3b%20%26lt%3blicenseUrl%26gt%3bhttp%3a%2f%2fLICENSE_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2flicenseUrl%26gt%3b%20%26lt%3bprojectUrl%26gt%3bhttp%3a%2f%2fPROJECT_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2fprojectUrl%26gt%3b%20%26lt%3biconUrl%26gt%3bhttp%3a%2f%2fICON_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2ficonUrl%26gt%3b%20%26lt%3brequireLicenseAcceptance%26gt%3bfalse%26lt%3b%2frequireLicenseAcceptance%26gt%3b%20%26lt%3bdescription%26gt%3bPackage%20description%26lt%3b%2fdescription%26gt%3b%20%26lt%3breleaseNotes%26gt%3bSummary%20of%20changes%20made%20in%20this%20release%20of%20the%20package.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NuGet%20Multiple%20Framework%20%e5%bb%ba%e7%bd%ae&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fnuget-multiple-framework-%25E5%25BB%25BA%25E7%25BD%25AE%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

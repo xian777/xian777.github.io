@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>arr on My New Hugo Site</title>
+    <link>http://example.org/tags/arr/</link>
+    <description>Recent content in arr on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2016 23:14:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/arr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gogs with application request routing</title>
+      <link>http://example.org/posts/2016/08/gogs-with-application-request-routing/</link>
+      <pubDate>Mon, 15 Aug 2016 23:14:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-with-application-request-routing/</guid>
+      <description>Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!</description>
+    </item>
+    
+  </channel>
+</rss>

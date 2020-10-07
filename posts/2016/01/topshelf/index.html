@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TopShelf | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&ldquo;MyService Start&rdquo;); }
+ public void Stop() { Console.WriteLine(&quot;My Service Stop&quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&gt; { x.Service&lt;MyService&gt;(s =&gt; { s.ConstructUsing(() =&gt; new MyService()); s.WhenStarted(svc =&gt; svc.Start()); s.WhenStopped(svc =&gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&quot;MyService&quot;); x.
+    ">
+
+
+<meta property="og:title" content="TopShelf" />
+<meta property="og:description" content="開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&ldquo;MyService Start&rdquo;); }
+ public void Stop() { Console.WriteLine(&quot;My Service Stop&quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&gt; { x.Service&lt;MyService&gt;(s =&gt; { s.ConstructUsing(() =&gt; new MyService()); s.WhenStarted(svc =&gt; svc.Start()); s.WhenStopped(svc =&gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&quot;MyService&quot;); x." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/01/topshelf/" />
+<meta property="article:published_time" content="2016-01-27T11:50:00+00:00" />
+<meta property="article:modified_time" content="2016-01-27T11:50:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TopShelf"/>
+<meta name="twitter:description" content="開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&ldquo;MyService Start&rdquo;); }
+ public void Stop() { Console.WriteLine(&quot;My Service Stop&quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&gt; { x.Service&lt;MyService&gt;(s =&gt; { s.ConstructUsing(() =&gt; new MyService()); s.WhenStarted(svc =&gt; svc.Start()); s.WhenStopped(svc =&gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&quot;MyService&quot;); x."/>
+
+<meta itemprop="name" content="TopShelf">
+<meta itemprop="description" content="開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&ldquo;MyService Start&rdquo;); }
+ public void Stop() { Console.WriteLine(&quot;My Service Stop&quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&gt; { x.Service&lt;MyService&gt;(s =&gt; { s.ConstructUsing(() =&gt; new MyService()); s.WhenStarted(svc =&gt; svc.Start()); s.WhenStopped(svc =&gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&quot;MyService&quot;); x.">
+<meta itemprop="datePublished" content="2016-01-27T11:50:00+00:00" />
+<meta itemprop="dateModified" content="2016-01-27T11:50:00+00:00" />
+<meta itemprop="wordCount" content="85">
+
+
+
+<meta itemprop="keywords" content="NuGet套件,windows service," />
+
+<link rel="canonical" href="http://example.org/posts/2016/01/topshelf/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TopShelf</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 27, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">NuGet套件</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows Service</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">Nu get套件</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows service</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記</p>
+<p>首先新增一個Console專案</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)</div>
+透過NuGet安裝TopShelf套件
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)</div>
+簡單地寫一個類別，包含Start和Stop兩個函式
+<div><pre class="brush:csharp">using System;
+<p>namespace ConsoleApplication1
+{
+class MyService
+{
+public void Start()
+{
+Console.WriteLine(&ldquo;MyService Start&rdquo;);
+}</p>
+<pre><code>    public void Stop()
+    {
+        Console.WriteLine(&quot;My Service Stop&quot;);
+    }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div>
+回到應用程式進入點開始配置服務</p>
+<div><pre class="brush:csharp">using Topshelf;
+<p>namespace ConsoleApplication1
+{
+class Program
+{
+static void Main(string[] args)
+{
+Topshelf.HostFactory.Run(x=&gt;
+{
+x.Service&lt;MyService&gt;(s =&gt;
+{
+s.ConstructUsing(() =&gt; new MyService());
+s.WhenStarted(svc =&gt; svc.Start());
+s.WhenStopped(svc =&gt; svc.Stop());
+});</p>
+<pre><code>            x.RunAsLocalSystem();
+            x.StartAutomatically();
+            x.SetServiceName(&quot;MyService&quot;);
+            x.SetDisplayName(&quot;MyService Display Name&quot;);
+            x.SetDescription(&quot;MyService Description&quot;);
+        });
+    }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div>
+本機執行的結果</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-GkrSRu9YLU4/Vqg_kHL4ehI/AAAAAAAADkg/LahcDKUIdWU/s1600/05.%25E6%259C%25AC%25E6%25A9%259F%25E5%259F%25B7%25E8%25A1%258C.png)](http://1.bp.blogspot.com/-GkrSRu9YLU4/Vqg_kHL4ehI/AAAAAAAADkg/LahcDKUIdWU/s1600/05.%25E6%259C%25AC%25E6%25A9%259F%25E5%259F%25B7%25E8%25A1%258C.png)</div>
+安裝服務只要在執行檔後面加上install參數就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-6rLO7_yoe6w/Vqg971lJ8GI/AAAAAAAADkM/uGAQ8bsxYb8/s1600/06.%25E5%25AE%2589%25E8%25A3%259D%25E6%259C%258D%25E5%258B%2599.png)](http://1.bp.blogspot.com/-6rLO7_yoe6w/Vqg971lJ8GI/AAAAAAAADkM/uGAQ8bsxYb8/s1600/06.%25E5%25AE%2589%25E8%25A3%259D%25E6%259C%258D%25E5%258B%2599.png)</div>
+服務就安裝好了
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-3cK_eEnf4kg/Vqg98D_gpwI/AAAAAAAADkU/TUBeL9FKSV8/s1600/07.%25E6%259C%258D%25E5%258B%2599%25E5%25AE%2589%25E8%25A3%259D.png)](http://4.bp.blogspot.com/-3cK_eEnf4kg/Vqg98D_gpwI/AAAAAAAADkU/TUBeL9FKSV8/s1600/07.%25E6%259C%258D%25E5%258B%2599%25E5%25AE%2589%25E8%25A3%259D.png)</div>
+解除安裝只要在執行檔後面加上uninstall參數就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-uA5zSmZopiQ/Vqg98MU_ArI/AAAAAAAADkY/YPSWE2dvc_A/s1600/08.%25E8%25A7%25A3%25E9%2599%25A4%25E5%25AE%2589%25E8%25A3%259D.png)](http://3.bp.blogspot.com/-uA5zSmZopiQ/Vqg98MU_ArI/AAAAAAAADkY/YPSWE2dvc_A/s1600/08.%25E8%25A7%25A3%25E9%2599%25A4%25E5%25AE%2589%25E8%25A3%259D.png)</div>
+更詳細的功能可以參考官網的文件
+[TopShlep官網](http://topshelf-project.com/)
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TopShelf&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f
+			&title=TopShelf&summary=%e9%96%8b%e7%99%bcWindows%20Service%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e7%82%ba%e4%ba%86%e9%96%8b%e7%99%bc%e6%96%b9%e4%be%bf%ef%bc%8c%e4%b9%8b%e5%89%8d%e9%83%bd%e7%94%a8%e4%b8%80%e4%ba%9b%e5%b0%8f%e6%8a%80%e5%b7%a7%e5%88%87%e6%8f%9b%e5%9c%a8%e6%9c%ac%e6%a9%9f%e7%9a%84Console%e6%a8%a1%e5%bc%8f%e5%92%8c%e4%bc%ba%e6%9c%8d%e5%99%a8%e7%9a%84Service%e6%a8%a1%e5%bc%8f%ef%bc%8c%e4%bd%86%e5%9c%a8%e6%97%a5%e5%be%8c%e7%b6%ad%e8%ad%b7%e7%9a%84%e6%99%82%e5%be%8c%e6%88%96%e6%98%af%e5%81%b5%e9%8c%af%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e7%b8%bd%e6%98%af%e4%b8%8d%e5%a4%aa%e6%96%b9%e4%be%bf%ef%bc%8c%e6%9c%80%e8%bf%91%e7%94%a8%e4%ba%86%e4%b8%80%e5%80%8b%e5%a5%bd%e7%94%a8%e7%9a%84%e5%a5%97%e4%bb%b6%e5%8f%abTopShelf%ef%bc%8c%e6%98%af%e4%b8%80%e5%80%8b%e7%94%a8%e4%be%86%e9%96%8b%e7%99%bcWindows%20Service%e7%9a%84%e6%a1%86%e6%9e%b6%ef%bc%8c%e5%af%a6%e5%9c%a8%e5%a4%aa%e5%a5%bd%e7%94%a8%e4%ba%86%ef%bc%8c%e6%89%80%e4%bb%a5%e8%a8%98%e9%8c%84%e4%b8%80%e4%b8%8b%e7%ad%86%e8%a8%98%0a%e9%a6%96%e5%85%88%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bConsole%e5%b0%88%e6%a1%88%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-b-j_Dv8q9Y0%2fVqg97bx32-I%2fAAAAAAAADkE%2fQVrxbWArdXg%2fs1600%2f01.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-b-j_Dv8q9Y0%2fVqg97bx32-I%2fAAAAAAAADkE%2fQVrxbWArdXg%2fs1600%2f01.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%20%e9%80%8f%e9%81%8eNuGet%e5%ae%89%e8%a3%9dTopShelf%e5%a5%97%e4%bb%b6%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-0rrhnPEnOBU%2fVqg97v3I74I%2fAAAAAAAADkQ%2f3I4zfXvgEYg%2fs1600%2f02.%2525E5%2525AE%252589%2525E8%2525A3%25259D%2525E5%2525A5%252597%2525E4%2525BB%2525B6.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-0rrhnPEnOBU%2fVqg97v3I74I%2fAAAAAAAADkQ%2f3I4zfXvgEYg%2fs1600%2f02.%2525E5%2525AE%252589%2525E8%2525A3%25259D%2525E5%2525A5%252597%2525E4%2525BB%2525B6.png%29%20%e7%b0%a1%e5%96%ae%e5%9c%b0%e5%af%ab%e4%b8%80%e5%80%8b%e9%a1%9e%e5%88%a5%ef%bc%8c%e5%8c%85%e5%90%abStart%e5%92%8cStop%e5%85%a9%e5%80%8b%e5%87%bd%e5%bc%8f%20using%20System%3b%20namespace%20ConsoleApplication1%20%7b%20class%20MyService%20%7b%20public%20void%20Start%28%29%20%7b%20Console.WriteLine%28%26ldquo%3bMyService%20Start%26rdquo%3b%29%3b%20%7d%0a%20public%20void%20Stop%28%29%20%7b%20Console.WriteLine%28%26quot%3bMy%20Service%20Stop%26quot%3b%29%3b%20%7d%20%7d%20%20%7d%0a%20%e5%9b%9e%e5%88%b0%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e9%80%b2%e5%85%a5%e9%bb%9e%e9%96%8b%e5%a7%8b%e9%85%8d%e7%bd%ae%e6%9c%8d%e5%8b%99%0ausing%20Topshelf%3b%20namespace%20ConsoleApplication1%20%7b%20class%20Program%20%7b%20static%20void%20Main%28string%5b%5d%20args%29%20%7b%20Topshelf.HostFactory.Run%28x%3d%26gt%3b%20%7b%20x.Service%26lt%3bMyService%26gt%3b%28s%20%3d%26gt%3b%20%7b%20s.ConstructUsing%28%28%29%20%3d%26gt%3b%20new%20MyService%28%29%29%3b%20s.WhenStarted%28svc%20%3d%26gt%3b%20svc.Start%28%29%29%3b%20s.WhenStopped%28svc%20%3d%26gt%3b%20svc.Stop%28%29%29%3b%20%7d%29%3b%0a%20x.RunAsLocalSystem%28%29%3b%20x.StartAutomatically%28%29%3b%20x.SetServiceName%28%26quot%3bMyService%26quot%3b%29%3b%20x.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TopShelf&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f01%2ftopshelf%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

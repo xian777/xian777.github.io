@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    安裝NuGet套件管理工具 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 NuGet是.NET平台上面的套件管理工具 主要用來安裝、更新、移除套件，套件中可能包含要參考的元件 使用的資料夾或檔案、設定檔、元件相依性等等 可以幫助我們省下不少時間和繁雜的工作
+http://nuget.codeplex.com 這裡有Source Code和其他的工具
+http://docs.nuget.org/ 這裡有相關的文件
+先安裝Vistual Studio Extension，選擇工具裡面的擴充功能和更新 ](http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png)
+選擇線上Visual Studio 組件庫，第一個就是NuGet Package Manager ](http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png)
+點擊下載就可以了 ](http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png)
+下載後會先跳出授權條款，選擇要安裝擴充功能的產品後按安裝 ](http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png)
+安裝中 ](http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png)
+安裝完成 ](http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png)
+安裝完後需要重新啟動Vistual Studio，按下「立即重新啟動」就好了 ](http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png)
+重新啟動後，在工具中就會多了一個程式庫套件管理員 ](http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png)
+也可以在專案中的參考上按右鍵，選擇管理NuGet套件 ](http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png)
+選擇要安裝的套件，以JQuery為例 ](http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png)
+按下下載後就會開始安裝該套件相關的檔案 ](http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png)
+安裝後的樣子 ](http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png)
+    ">
+
+
+<meta property="og:title" content="安裝NuGet套件管理工具" />
+<meta property="og:description" content="前言 NuGet是.NET平台上面的套件管理工具 主要用來安裝、更新、移除套件，套件中可能包含要參考的元件 使用的資料夾或檔案、設定檔、元件相依性等等 可以幫助我們省下不少時間和繁雜的工作
+http://nuget.codeplex.com 這裡有Source Code和其他的工具
+http://docs.nuget.org/ 這裡有相關的文件
+先安裝Vistual Studio Extension，選擇工具裡面的擴充功能和更新 ](http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png)
+選擇線上Visual Studio 組件庫，第一個就是NuGet Package Manager ](http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png)
+點擊下載就可以了 ](http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png)
+下載後會先跳出授權條款，選擇要安裝擴充功能的產品後按安裝 ](http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png)
+安裝中 ](http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png)
+安裝完成 ](http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png)
+安裝完後需要重新啟動Vistual Studio，按下「立即重新啟動」就好了 ](http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png)
+重新啟動後，在工具中就會多了一個程式庫套件管理員 ](http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png)
+也可以在專案中的參考上按右鍵，選擇管理NuGet套件 ](http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png)
+選擇要安裝的套件，以JQuery為例 ](http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png)
+按下下載後就會開始安裝該套件相關的檔案 ](http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png)
+安裝後的樣子 ](http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/10/%E5%AE%89%E8%A3%9Dnuget%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" />
+<meta property="article:published_time" content="2012-10-11T18:07:00+00:00" />
+<meta property="article:modified_time" content="2012-10-11T18:07:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="安裝NuGet套件管理工具"/>
+<meta name="twitter:description" content="前言 NuGet是.NET平台上面的套件管理工具 主要用來安裝、更新、移除套件，套件中可能包含要參考的元件 使用的資料夾或檔案、設定檔、元件相依性等等 可以幫助我們省下不少時間和繁雜的工作
+http://nuget.codeplex.com 這裡有Source Code和其他的工具
+http://docs.nuget.org/ 這裡有相關的文件
+先安裝Vistual Studio Extension，選擇工具裡面的擴充功能和更新 ](http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png)
+選擇線上Visual Studio 組件庫，第一個就是NuGet Package Manager ](http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png)
+點擊下載就可以了 ](http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png)
+下載後會先跳出授權條款，選擇要安裝擴充功能的產品後按安裝 ](http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png)
+安裝中 ](http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png)
+安裝完成 ](http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png)
+安裝完後需要重新啟動Vistual Studio，按下「立即重新啟動」就好了 ](http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png)
+重新啟動後，在工具中就會多了一個程式庫套件管理員 ](http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png)
+也可以在專案中的參考上按右鍵，選擇管理NuGet套件 ](http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png)
+選擇要安裝的套件，以JQuery為例 ](http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png)
+按下下載後就會開始安裝該套件相關的檔案 ](http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png)
+安裝後的樣子 ](http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png)"/>
+
+<meta itemprop="name" content="安裝NuGet套件管理工具">
+<meta itemprop="description" content="前言 NuGet是.NET平台上面的套件管理工具 主要用來安裝、更新、移除套件，套件中可能包含要參考的元件 使用的資料夾或檔案、設定檔、元件相依性等等 可以幫助我們省下不少時間和繁雜的工作
+http://nuget.codeplex.com 這裡有Source Code和其他的工具
+http://docs.nuget.org/ 這裡有相關的文件
+先安裝Vistual Studio Extension，選擇工具裡面的擴充功能和更新 ](http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png)
+選擇線上Visual Studio 組件庫，第一個就是NuGet Package Manager ](http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png)
+點擊下載就可以了 ](http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png)
+下載後會先跳出授權條款，選擇要安裝擴充功能的產品後按安裝 ](http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png)
+安裝中 ](http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png)
+安裝完成 ](http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png)
+安裝完後需要重新啟動Vistual Studio，按下「立即重新啟動」就好了 ](http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png)
+重新啟動後，在工具中就會多了一個程式庫套件管理員 ](http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png)
+也可以在專案中的參考上按右鍵，選擇管理NuGet套件 ](http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png)
+選擇要安裝的套件，以JQuery為例 ](http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png)
+按下下載後就會開始安裝該套件相關的檔案 ](http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png)
+安裝後的樣子 ](http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png)">
+<meta itemprop="datePublished" content="2012-10-11T18:07:00+00:00" />
+<meta itemprop="dateModified" content="2012-10-11T18:07:00+00:00" />
+<meta itemprop="wordCount" content="41">
+
+
+
+<meta itemprop="keywords" content="NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2012/10/%E5%AE%89%E8%A3%9Dnuget%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>安裝NuGet套件管理工具</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 11, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="前言">前言</h2>
+<p>NuGet是.NET平台上面的套件管理工具
+主要用來安裝、更新、移除套件，套件中可能包含要參考的元件
+使用的資料夾或檔案、設定檔、元件相依性等等
+可以幫助我們省下不少時間和繁雜的工作</p>
+<p><a href="http://nuget.codeplex.com/">http://nuget.codeplex.com</a>
+這裡有Source Code和其他的工具</p>
+<p><a href="http://docs.nuget.org/">http://docs.nuget.org/</a>
+這裡有相關的文件</p>
+<h2 id="先安裝vistual-studio-extension選擇工具裡面的擴充功能和更新">先安裝Vistual Studio Extension，選擇工具裡面的擴充功能和更新</h2>
+<p><img src="http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png" alt="">](<a href="http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png">http://4.bp.blogspot.com/-MUeMfNZgLEg/UHZ6DAcHfuI/AAAAAAAAAEw/UehHNPObctY/s1600/01.Install.png</a>)</p>
+<h2 id="選擇線上visual-studio-組件庫第一個就是nuget-package-manager">選擇線上Visual Studio 組件庫，第一個就是NuGet Package Manager</h2>
+<p><img src="http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png" alt="">](<a href="http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png">http://1.bp.blogspot.com/-T7tnB9XcbNE/UHZ6EOMz2EI/AAAAAAAAAE0/-xcg-R3x_eA/s1600/02.NuGet.png</a>)</p>
+<h2 id="點擊下載就可以了">點擊下載就可以了</h2>
+<p><img src="http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png" alt="">](<a href="http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png">http://4.bp.blogspot.com/-NZidbhMyTW8/UHZ6E9eXTfI/AAAAAAAAAE8/m_dEbkwiG_o/s1600/03.download.png</a>)</p>
+<h2 id="下載後會先跳出授權條款選擇要安裝擴充功能的產品後按安裝">下載後會先跳出授權條款，選擇要安裝擴充功能的產品後按安裝</h2>
+<p><img src="http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png" alt="">](<a href="http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png">http://3.bp.blogspot.com/-skigye0-uG8/UHZ6Fr3kPrI/AAAAAAAAAFE/sGnL5qxDLiU/s1600/04.Licenes.png</a>)</p>
+<h2 id="安裝中">安裝中</h2>
+<p><img src="http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png" alt="">](<a href="http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png">http://1.bp.blogspot.com/-fsigQj-SZXM/UHZ6GjGapHI/AAAAAAAAAFM/rcLavJDcF0M/s1600/05.Install.png</a>)</p>
+<h2 id="安裝完成">安裝完成</h2>
+<p><img src="http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png" alt="">](<a href="http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png">http://1.bp.blogspot.com/-DqosQ9bRxm8/UHZ6HYBlntI/AAAAAAAAAFU/fX9zzRxkHno/s1600/06.OK.png</a>)</p>
+<h2 id="安裝完後需要重新啟動vistual-studio按下立即重新啟動就好了">安裝完後需要重新啟動Vistual Studio，按下「立即重新啟動」就好了</h2>
+<p><img src="http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png" alt="">](<a href="http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png">http://2.bp.blogspot.com/-K2YO0NkYsRk/UHZ6IGHGkqI/AAAAAAAAAFg/NR6v74YiUJo/s1600/07.Msg.png</a>)</p>
+<h2 id="重新啟動後在工具中就會多了一個程式庫套件管理員">重新啟動後，在工具中就會多了一個程式庫套件管理員</h2>
+<p><img src="http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png" alt="">](<a href="http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png">http://4.bp.blogspot.com/-UFABkchM5Pw/UHZ6JNR9PbI/AAAAAAAAAFk/4Ts5mrE1FdM/s1600/07.toolbar.png</a>)</p>
+<h2 id="也可以在專案中的參考上按右鍵選擇管理nuget套件">也可以在專案中的參考上按右鍵，選擇管理NuGet套件</h2>
+<p><img src="http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png" alt="">](<a href="http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png">http://1.bp.blogspot.com/-1KGwG2VZIpw/UHZ6J8J0IsI/AAAAAAAAAFs/iepvy0TOAgw/s1600/08.toolbar2.png</a>)</p>
+<h2 id="選擇要安裝的套件以jquery為例">選擇要安裝的套件，以JQuery為例</h2>
+<p><img src="http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png" alt="">](<a href="http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png">http://1.bp.blogspot.com/-il5IZubxn0Q/UHeERNvfOsI/AAAAAAAAAGw/zE7t9a1OsKU/s1600/02.install.png</a>)</p>
+<h2 id="按下下載後就會開始安裝該套件相關的檔案">按下下載後就會開始安裝該套件相關的檔案</h2>
+<p><img src="http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png" alt="">](<a href="http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png">http://1.bp.blogspot.com/-JfubxHCmqiM/UHeETIUq3RI/AAAAAAAAAG4/ZmOCOd0Isfg/s1600/03.InstallOK.png</a>)</p>
+<h2 id="安裝後的樣子">安裝後的樣子</h2>
+<p><img src="http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png" alt="">](<a href="http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png">http://3.bp.blogspot.com/-NWG262i6zjk/UHaD66BbQKI/AAAAAAAAAGc/NRUS0g96X2o/s1600/11.installOK.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%ae%89%e8%a3%9dNuGet%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f
+			&title=%e5%ae%89%e8%a3%9dNuGet%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7&summary=%e5%89%8d%e8%a8%80%20NuGet%e6%98%af.NET%e5%b9%b3%e5%8f%b0%e4%b8%8a%e9%9d%a2%e7%9a%84%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%20%e4%b8%bb%e8%a6%81%e7%94%a8%e4%be%86%e5%ae%89%e8%a3%9d%e3%80%81%e6%9b%b4%e6%96%b0%e3%80%81%e7%a7%bb%e9%99%a4%e5%a5%97%e4%bb%b6%ef%bc%8c%e5%a5%97%e4%bb%b6%e4%b8%ad%e5%8f%af%e8%83%bd%e5%8c%85%e5%90%ab%e8%a6%81%e5%8f%83%e8%80%83%e7%9a%84%e5%85%83%e4%bb%b6%20%e4%bd%bf%e7%94%a8%e7%9a%84%e8%b3%87%e6%96%99%e5%a4%be%e6%88%96%e6%aa%94%e6%a1%88%e3%80%81%e8%a8%ad%e5%ae%9a%e6%aa%94%e3%80%81%e5%85%83%e4%bb%b6%e7%9b%b8%e4%be%9d%e6%80%a7%e7%ad%89%e7%ad%89%20%e5%8f%af%e4%bb%a5%e5%b9%ab%e5%8a%a9%e6%88%91%e5%80%91%e7%9c%81%e4%b8%8b%e4%b8%8d%e5%b0%91%e6%99%82%e9%96%93%e5%92%8c%e7%b9%81%e9%9b%9c%e7%9a%84%e5%b7%a5%e4%bd%9c%0ahttp%3a%2f%2fnuget.codeplex.com%20%e9%80%99%e8%a3%a1%e6%9c%89Source%20Code%e5%92%8c%e5%85%b6%e4%bb%96%e7%9a%84%e5%b7%a5%e5%85%b7%0ahttp%3a%2f%2fdocs.nuget.org%2f%20%e9%80%99%e8%a3%a1%e6%9c%89%e7%9b%b8%e9%97%9c%e7%9a%84%e6%96%87%e4%bb%b6%0a%e5%85%88%e5%ae%89%e8%a3%9dVistual%20Studio%20Extension%ef%bc%8c%e9%81%b8%e6%93%87%e5%b7%a5%e5%85%b7%e8%a3%a1%e9%9d%a2%e7%9a%84%e6%93%b4%e5%85%85%e5%8a%9f%e8%83%bd%e5%92%8c%e6%9b%b4%e6%96%b0%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-MUeMfNZgLEg%2fUHZ6DAcHfuI%2fAAAAAAAAAEw%2fUehHNPObctY%2fs1600%2f01.Install.png%29%0a%e9%81%b8%e6%93%87%e7%b7%9a%e4%b8%8aVisual%20Studio%20%e7%b5%84%e4%bb%b6%e5%ba%ab%ef%bc%8c%e7%ac%ac%e4%b8%80%e5%80%8b%e5%b0%b1%e6%98%afNuGet%20Package%20Manager%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-T7tnB9XcbNE%2fUHZ6EOMz2EI%2fAAAAAAAAAE0%2f-xcg-R3x_eA%2fs1600%2f02.NuGet.png%29%0a%e9%bb%9e%e6%93%8a%e4%b8%8b%e8%bc%89%e5%b0%b1%e5%8f%af%e4%bb%a5%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-NZidbhMyTW8%2fUHZ6E9eXTfI%2fAAAAAAAAAE8%2fm_dEbkwiG_o%2fs1600%2f03.download.png%29%0a%e4%b8%8b%e8%bc%89%e5%be%8c%e6%9c%83%e5%85%88%e8%b7%b3%e5%87%ba%e6%8e%88%e6%ac%8a%e6%a2%9d%e6%ac%be%ef%bc%8c%e9%81%b8%e6%93%87%e8%a6%81%e5%ae%89%e8%a3%9d%e6%93%b4%e5%85%85%e5%8a%9f%e8%83%bd%e7%9a%84%e7%94%a2%e5%93%81%e5%be%8c%e6%8c%89%e5%ae%89%e8%a3%9d%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-skigye0-uG8%2fUHZ6Fr3kPrI%2fAAAAAAAAAFE%2fsGnL5qxDLiU%2fs1600%2f04.Licenes.png%29%0a%e5%ae%89%e8%a3%9d%e4%b8%ad%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-fsigQj-SZXM%2fUHZ6GjGapHI%2fAAAAAAAAAFM%2frcLavJDcF0M%2fs1600%2f05.Install.png%29%0a%e5%ae%89%e8%a3%9d%e5%ae%8c%e6%88%90%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-DqosQ9bRxm8%2fUHZ6HYBlntI%2fAAAAAAAAAFU%2ffX9zzRxkHno%2fs1600%2f06.OK.png%29%0a%e5%ae%89%e8%a3%9d%e5%ae%8c%e5%be%8c%e9%9c%80%e8%a6%81%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95Vistual%20Studio%ef%bc%8c%e6%8c%89%e4%b8%8b%e3%80%8c%e7%ab%8b%e5%8d%b3%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95%e3%80%8d%e5%b0%b1%e5%a5%bd%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-K2YO0NkYsRk%2fUHZ6IGHGkqI%2fAAAAAAAAAFg%2fNR6v74YiUJo%2fs1600%2f07.Msg.png%29%0a%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95%e5%be%8c%ef%bc%8c%e5%9c%a8%e5%b7%a5%e5%85%b7%e4%b8%ad%e5%b0%b1%e6%9c%83%e5%a4%9a%e4%ba%86%e4%b8%80%e5%80%8b%e7%a8%8b%e5%bc%8f%e5%ba%ab%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%93%a1%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-UFABkchM5Pw%2fUHZ6JNR9PbI%2fAAAAAAAAAFk%2f4Ts5mrE1FdM%2fs1600%2f07.toolbar.png%29%0a%e4%b9%9f%e5%8f%af%e4%bb%a5%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%ad%e7%9a%84%e5%8f%83%e8%80%83%e4%b8%8a%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e6%93%87%e7%ae%a1%e7%90%86NuGet%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-1KGwG2VZIpw%2fUHZ6J8J0IsI%2fAAAAAAAAAFs%2fiepvy0TOAgw%2fs1600%2f08.toolbar2.png%29%0a%e9%81%b8%e6%93%87%e8%a6%81%e5%ae%89%e8%a3%9d%e7%9a%84%e5%a5%97%e4%bb%b6%ef%bc%8c%e4%bb%a5JQuery%e7%82%ba%e4%be%8b%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-il5IZubxn0Q%2fUHeERNvfOsI%2fAAAAAAAAAGw%2fzE7t9a1OsKU%2fs1600%2f02.install.png%29%0a%e6%8c%89%e4%b8%8b%e4%b8%8b%e8%bc%89%e5%be%8c%e5%b0%b1%e6%9c%83%e9%96%8b%e5%a7%8b%e5%ae%89%e8%a3%9d%e8%a9%b2%e5%a5%97%e4%bb%b6%e7%9b%b8%e9%97%9c%e7%9a%84%e6%aa%94%e6%a1%88%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-JfubxHCmqiM%2fUHeETIUq3RI%2fAAAAAAAAAG4%2fZmOCOd0Isfg%2fs1600%2f03.InstallOK.png%29%0a%e5%ae%89%e8%a3%9d%e5%be%8c%e7%9a%84%e6%a8%a3%e5%ad%90%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-NWG262i6zjk%2fUHaD66BbQKI%2fAAAAAAAAAGc%2fNRUS0g96X2o%2fs1600%2f11.installOK.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%ae%89%e8%a3%9dNuGet%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25AE%2589%25E8%25A3%259Dnuget%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

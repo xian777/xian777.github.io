@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    VS2012 Remote Debug 遠端偵錯 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上  [![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)首先下載Remote Tools for Visual Studio 2012 [![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)在伺服器上面安裝遠端偵錯工具  [![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png) 設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可 [![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png) 上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog.
+    ">
+
+
+<meta property="og:title" content="VS2012 Remote Debug 遠端偵錯" />
+<meta property="og:description" content="VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上  [![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)首先下載Remote Tools for Visual Studio 2012 [![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)在伺服器上面安裝遠端偵錯工具  [![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png) 設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可 [![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png) 上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/vs2012-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/" />
+<meta property="article:published_time" content="2012-12-25T12:03:00+00:00" />
+<meta property="article:modified_time" content="2012-12-25T12:03:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VS2012 Remote Debug 遠端偵錯"/>
+<meta name="twitter:description" content="VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上  [![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)首先下載Remote Tools for Visual Studio 2012 [![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)在伺服器上面安裝遠端偵錯工具  [![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png) 設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可 [![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png) 上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog."/>
+
+<meta itemprop="name" content="VS2012 Remote Debug 遠端偵錯">
+<meta itemprop="description" content="VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上  [![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)首先下載Remote Tools for Visual Studio 2012 [![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)在伺服器上面安裝遠端偵錯工具  [![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png) 設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可 [![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png) 上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog.">
+<meta itemprop="datePublished" content="2012-12-25T12:03:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-25T12:03:00+00:00" />
+<meta itemprop="wordCount" content="16">
+
+
+
+<meta itemprop="keywords" content="Remote Debug,遠端偵錯," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/vs2012-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>VS2012 Remote Debug 遠端偵錯</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 25, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    7 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/remote-debug">Remote Debug</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF">遠端偵錯</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/remote-debug">Remote debug</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF">遠端偵錯</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div class="separator" style="clear: both; text-align: left;">VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上 </div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)</div><div class="separator" style="clear: both; text-align: left;">首先下載Remote Tools for Visual Studio 2012</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)</div><div class="separator" style="clear: both; text-align: left;">在伺服器上面安裝遠端偵錯工具 </div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)</div><div class="separator" style="clear: both; text-align: left;">在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)</div>
+<div class="separator" style="clear: both; text-align: left;">設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)</div><div class="separator" style="clear: both; text-align: left;">
+</div>打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)</div>
+<div class="separator" style="clear: both; text-align: left;">上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog.developer.idv.tw/2012/09/aspnet.html)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=VS2012%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f
+			&title=VS2012%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&summary=VS2012%e7%9a%84%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e8%ae%8a%e7%9a%84%e7%b0%a1%e5%96%ae%e5%a4%9a%e4%ba%86%ef%bc%8c%e4%b8%8d%e5%86%8d%e9%9c%80%e8%a6%81%e9%a9%97%e8%ad%89%e8%ba%ab%e4%bb%bd%e5%b0%b1%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%ef%bc%8c%e4%bd%86%e7%9b%b8%e5%b0%8d%e7%9a%84%e4%bd%9c%e6%a5%ad%e7%b3%bb%e7%b5%b1%e9%9c%80%e8%a6%81%e6%9b%b4%e6%96%b0%e5%88%b0Server2008R2%e4%bb%a5%e4%b8%8a%20%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-lQq_Fp2n3AE%2fUNkege7WrMI%2fAAAAAAAAAjU%2fbjY8oAEdBfQ%2fs1600%2fVS2012RemoteDebug.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-lQq_Fp2n3AE%2fUNkege7WrMI%2fAAAAAAAAAjU%2fbjY8oAEdBfQ%2fs1600%2fVS2012RemoteDebug.png%29%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89Remote%20Tools%20for%20Visual%20Studio%202012%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-VqG02LMi9aE%2fUNkerTlrF5I%2fAAAAAAAAAjc%2fHxWTX18lW5w%2fs1600%2f01.Download.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-VqG02LMi9aE%2fUNkerTlrF5I%2fAAAAAAAAAjc%2fHxWTX18lW5w%2fs1600%2f01.Download.png%29%e5%9c%a8%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e9%9d%a2%e5%ae%89%e8%a3%9d%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e5%b7%a5%e5%85%b7%20%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-N2cnZ2-rzqM%2fUNkgRPNpyRI%2fAAAAAAAAAkE%2f4bLI0GskB50%2fs1600%2f02.InstallUI.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-N2cnZ2-rzqM%2fUNkgRPNpyRI%2fAAAAAAAAAkE%2f4bLI0GskB50%2fs1600%2f02.InstallUI.png%29%e5%9c%a8Server%e4%b8%8a%e5%ae%89%e8%a3%9d%e5%a5%bd%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e5%b7%a5%e5%85%b7%e5%be%8c%ef%bc%8c%e6%89%93%e9%96%8b%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e5%b7%a5%e5%85%b7%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ttJKtFGuWWY%2fUNkk8TCKtZI%2fAAAAAAAAAk8%2fd-NO1x5AcVg%2fs1600%2f03.Start.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ttJKtFGuWWY%2fUNkk8TCKtZI%2fAAAAAAAAAk8%2fd-NO1x5AcVg%2fs1600%2f03.Start.png%29%20%e8%a8%ad%e5%ae%9a%e6%88%90%e9%9d%9e%e9%a9%97%e8%ad%89%e6%a8%a1%e5%bc%8f%ef%bc%8c%e5%85%81%e8%a8%b1%e4%bb%bb%e4%bd%95%e4%bd%bf%e7%94%a8%e8%80%85%e5%9f%b7%e8%a1%8c%e5%81%b5%e9%8c%af%ef%bc%8c%e5%92%8c%e5%bb%b6%e9%95%b7%e9%96%92%e7%bd%ae%e6%99%82%e9%96%93%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-7wjO-1g8oRg%2fUNkkyfqDIuI%2fAAAAAAAAAk0%2fHeaygtT76r8%2fs1600%2f04.Connect.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-7wjO-1g8oRg%2fUNkkyfqDIuI%2fAAAAAAAAAk0%2fHeaygtT76r8%2fs1600%2f04.Connect.png%29%e6%89%93%e9%96%8bVS2012%ef%bc%8c%e9%99%84%e5%8a%a0%e5%9f%b7%e8%a1%8c%e7%b7%92%ef%bc%8c%e9%81%b8%e6%93%87%e9%81%a0%e7%ab%af%28%e9%9d%9e%e9%a9%97%e8%ad%89%29%ef%bc%8c%e8%bc%b8%e5%85%a5IP%e5%92%8cPort%e8%99%9f%ef%bc%8c%e6%89%be%e5%88%b0%e5%9f%b7%e8%a1%8c%e6%aa%94%e9%99%84%e5%8a%a0%e5%8d%b3%e5%8f%af%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-umj_9g07B-w%2fUNklLCMLIDI%2fAAAAAAAAAlE%2f-j_M1y-EV7I%2fs1600%2f05.Attach.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-umj_9g07B-w%2fUNklLCMLIDI%2fAAAAAAAAAlE%2f-j_M1y-EV7I%2fs1600%2f05.Attach.png%29%20%e4%b8%8a%e4%b8%80%e7%af%87%3a%20%5bVS2010%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%5d%28http%3a%2f%2fblog.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=VS2012%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fvs2012-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

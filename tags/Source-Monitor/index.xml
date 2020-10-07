@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Source Monitor on My New Hugo Site</title>
+    <link>http://example.org/tags/source-monitor/</link>
+    <description>Recent content in Source Monitor on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Apr 2014 15:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/source-monitor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TeamCity整合Source Monitor報表</title>
+      <link>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/</link>
+      <pubDate>Wed, 23 Apr 2014 15:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/</guid>
+      <description>Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt; &amp;lt;sourcemonitor_commands&amp;gt; &amp;lt;write_log&amp;gt;true&amp;lt;/write_log&amp;gt; &amp;lt;command&amp;gt; &amp;lt;project_file&amp;gt;SourceMonitor.smp&amp;lt;/project_file&amp;gt; &amp;lt;checkpoint_name&amp;gt;Baseline&amp;lt;/checkpoint_name&amp;gt; &amp;lt;project_language&amp;gt;C#&amp;lt;/project_language&amp;gt; &amp;lt;!-- 要分析專案的相對路徑 --&amp;gt; &amp;lt;source_directory&amp;gt;..&amp;lt;/source_directory&amp;gt; &amp;lt;source_subdirectory_list&amp;gt; &amp;lt;exclude_subdirectories&amp;gt;true&amp;lt;/exclude_subdirectories&amp;gt; &amp;lt;source_subtree&amp;gt;bin\&amp;lt;/source_subtree&amp;gt; &amp;lt;source_subdirectory&amp;gt;obj\&amp;lt;/source_subdirectory&amp;gt; &amp;lt;/source_subdirectory_list&amp;gt; &amp;lt;parse_utf8_files&amp;gt;True&amp;lt;/parse_utf8_files&amp;gt; &amp;lt;ignore_headers_footers&amp;gt;True&amp;lt;/ignore_headers_footers&amp;gt; &amp;lt;export&amp;gt; &amp;lt;!-- 最後輸出的檔名 --&amp;gt; &amp;lt;export_file&amp;gt;SourceMonitorReport.xml&amp;lt;/export_file&amp;gt; &amp;lt;export_type&amp;gt;2&amp;lt;/export_type&amp;gt; &amp;lt;/export&amp;gt; &amp;lt;/command&amp;gt; &amp;lt;/sourcemonitor_commands&amp;gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&amp;gt; &amp;lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&amp;gt; &amp;lt;xsl:output method=&#34;html&#34;/&amp;gt; &amp;lt;xsl:template match=&amp;rdquo;/&amp;quot;&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;rdquo;&amp;gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1.</description>
+    </item>
+    
+  </channel>
+</rss>

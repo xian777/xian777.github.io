@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>design pattern on My New Hugo Site</title>
+    <link>http://example.org/tags/design-pattern/</link>
+    <description>Recent content in design pattern on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 May 2014 18:12:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repostitory Pattern</title>
+      <link>http://example.org/posts/2014/05/repostitory-pattern/</link>
+      <pubDate>Wed, 28 May 2014 18:12:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/05/repostitory-pattern/</guid>
+      <description>Repository Pattern 是一個用來切割資料存取層和商業邏輯層的模式 針對資料的存取提供了基本的新增、修改、刪除、查詢等操作 返回的對象應該為IQueryable以供商業邏輯做更進一步的處理 這樣的好處是商業邏輯不直接處理資料的存取，方便之後抽換資料存取層，也方便單元測試 以下用一個簡單的留言版當例子透過ADO.NET和Entity Framework來存取資料 首先準備好留言版的資料庫，資料表就簡單的用GuestbookId和Message就好
+[![](http://3.bp.blogspot.com/-NkgUfftgZso/U4Wx3J8w7QI/AAAAAAAABW0/3iDzzqb62zA/s1600/01.DB.png)](http://3.bp.blogspot.com/-NkgUfftgZso/U4Wx3J8w7QI/AAAAAAAABW0/3iDzzqb62zA/s1600/01.DB.png) 定義一個Guestbook的Entity namespace WebApplication1.Models { using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Guestbook&amp;quot;)] public class Guestbook { [Key] public int GuestbookId { get; set; } public string Message { get; set; } }  }  順便定義一個DbContext
+namespace WebApplication1.Models { using System.Data.Entity; public class GuestbookContext : DbContext { public DbSet&amp;lt;Guestbook&amp;gt; Guestbook { get; set; } } }  定義一個IGuestbookRepository介面
+namespace WebApplication1.Repositories { using System; using System.</description>
+    </item>
+    
+    <item>
+      <title>IOC 控制反轉 &amp; DI 依賴注入</title>
+      <link>http://example.org/posts/2014/05/ioc-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%89-di-%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Tue, 20 May 2014 13:55:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/05/ioc-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%89-di-%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5/</guid>
+      <description>前言 IOC(Inversion of Control)中文翻譯為控制反轉，是物件導向中的一種設計原則，目的是用來減低物件之間的耦合度 先來看一段兩個物件協同工作的程式碼
+public class ObjA { private ObjB obj = new ObjB(); public void SomeAction() { obj.Work(); } } public class ObjB { public void Work() { Console.WriteLine(&amp;#34;objB Work&amp;#34;); } } 物件A透過物件B去完成一項工作，所以物件A之中需要明確地指定物件B的存在 也就是說在建立物件A的同時，物件B也同時建立起來了 再簡單一點的說法，沒有物件B就沒有物件A，物件A相依於物件B
+這段程式碼如果是萬年不變的邏輯，其實也無所謂 但如果相依的物件需要替換的時後，來看看會發生什麼事
+public class ObjA { private ObjC obj = new ObjC(); public void SomeAction() { obj.Action(); } } public class ObjC { public void Action() { Console.WriteLine(&amp;#34;objC Work&amp;#34;); } } 宣告的型態要改變，建立物件的類型也要改變，有可能連呼叫的方法都要改變 如果這份程式是自已最近寫的，那可能還會有點印象知道那幾個地方要改 如果一份年久失修又或是別人寫的，那可能需要很有勇氣地用全域取代的方式來修改 所以比較好的設計方式，是針對介面去寫程式</description>
+    </item>
+    
+  </channel>
+</rss>

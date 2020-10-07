@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jQuery on My New Hugo Site</title>
+    <link>http://example.org/tags/jquery/</link>
+    <description>Recent content in jQuery on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Aug 2013 18:50:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jQuery 陣列處理</title>
+      <link>http://example.org/posts/2013/08/jquery-%E9%99%A3%E5%88%97%E8%99%95%E7%90%86/</link>
+      <pubDate>Thu, 01 Aug 2013 18:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/jquery-%E9%99%A3%E5%88%97%E8%99%95%E7%90%86/</guid>
+      <description> .each(collection, callback) 迭代陣列元素  .grep(array, callback, [invert]) 過濾陣列 第三個參數用來設定傳回符合條件或是不符合條件的元素  .map(array, callback) 將陣列元素處理後回傳成新的陣列  .merge(array1, array2) 將array2合併到array1陣列中  .unique(array) 將陣列中重覆的項目移除  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 字串處理</title>
+      <link>http://example.org/posts/2013/08/jquery-%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86/</link>
+      <pubDate>Thu, 01 Aug 2013 17:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/jquery-%E5%AD%97%E4%B8%B2%E8%99%95%E7%90%86/</guid>
+      <description> .trim() 字串去空白  .param() 字串序例化  </description>
+    </item>
+    
+    <item>
+      <title>jQuery Ajax呼叫方式</title>
+      <link>http://example.org/posts/2013/08/jquery-ajax%E5%91%BC%E5%8F%AB%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 01 Aug 2013 17:06:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/jquery-ajax%E5%91%BC%E5%8F%AB%E6%96%B9%E5%BC%8F/</guid>
+      <description>.ajax({})為底層呼叫方式，參數如下 .ajaxSetup()則是用來設定參數的預設值  url 請求的URL  type 請求的方式，例如POST或是GET  data 請求的參數  dataType 指定回應的格式，有以下幾種格式 xml, html, json, jsonp, script, text  timeout 逾時的毫秒數，如果超出設定的時間，就會觸發error設定的callback函式  global 設定是否要觸發全域事件處理，啟用為true, 停用為false 預設是啟用狀態  contentType 指定請求的內容類型 預設為application/x-www-form-urlencoded，和表單發送的類型一樣  success 請求成功時呼叫的函式  error 請求失敗時呼叫的函式  complete 整個請求完成時呼叫的函式  beforeSend 發出請求之前呼叫的函式 可以用來執行請求前的操作，例如自訂標頭  urlasync 非同步為true, 同步為false 預設是非同步  processData 是否對傳送的資料做URL編碼，true為編碼，false為不編碼 預設是會編碼  ifModified 根據標頭的Last-Modified來判斷是否更新 預設為不檢查標頭  </description>
+    </item>
+    
+    <item>
+      <title>jQuery Ajax快捷方法</title>
+      <link>http://example.org/posts/2013/08/jquery-ajax%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 01 Aug 2013 15:38:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/jquery-ajax%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95/</guid>
+      <description>jsfiddle的echo網址，大部份都需要用POST方式才會有反應 所以例子中會有幾個方式沒有反應  .get() 發出Get要求  .post() 發出Post要求  .load() 以Get方式載入指定的網址  .getJSON() 以Get方式取得JSON資料  .getScript() 以Get方式取得Script指令  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 全域事件處理</title>
+      <link>http://example.org/posts/2013/08/jquery-%E5%85%A8%E5%9F%9F%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86/</link>
+      <pubDate>Thu, 01 Aug 2013 14:09:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/jquery-%E5%85%A8%E5%9F%9F%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86/</guid>
+      <description>jQuery v1.8之後，ajax全域事件只能綁定到document元素  .ajaxStart() ajax要求開始  .ajaxSend(event, jqXHR, ajaxOptions) 發出ajax要求  .ajaxSuccess(event, jqXHR, ajaxOptions, ThrownError) ajax要求成功的話就觸發這個事件  .ajaxError(event, XMLHttpRequest, ajaxOptions) ajax要求失敗的話就觸發這個事件  .ajaxComplete(event, XMLHttpRequest, ajaxOptions) ajax要求完成  .ajaxStop() ajax要求結束  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 樣式表操作</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%A8%A3%E5%BC%8F%E8%A1%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 30 Jul 2013 11:16:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%A8%A3%E5%BC%8F%E8%A1%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description> .addClass() 增加樣式類別  .removeClass() 移除樣式類別  .hasClass() 是否有指定的樣式類別  .toogleClass() 切換樣式類別  .css() 取得或設定指定的樣式  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 屬性操作</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 30 Jul 2013 10:49:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E6%93%8D%E4%BD%9C/</guid>
+      <description> .attr() 取得或設定屬性  .removeAttr() 移除屬性  .prop() 取得或設定屬性  .removeProp() 移除屬性  .attr()和.prop()的差異在1.6版本 對於bool值的屬性，例如checked, disabled, readonly, selected...，用prop會比較合適 </description>
+    </item>
+    
+    <item>
+      <title>jQuery 移除元素</title>
+      <link>http://example.org/posts/2013/07/jquery-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 29 Jul 2013 18:15:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</guid>
+      <description> .detach() 移除符合指定的選擇器元素，包含選擇器本身 被移除的元素原本繫結的事件，還原回去後並不會消失  .empty() 移除符合指定的選擇器元素，不包含選擇器本身 被移除的元素原本繫結的事件，還原回去後並不會消失  .remove() 移除符合指定的選擇器元素，包含選擇器本身 被移除的元素原本繫結的事件，還原回去後會消失  .unwrap() 移除符合指定的選擇器外層元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 替換元素</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%9B%BF%E6%8F%9B%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 29 Jul 2013 16:56:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%9B%BF%E6%8F%9B%E5%85%83%E7%B4%A0/</guid>
+      <description> .html() 在符合指定的選擇器元素內容中，取得或設定HTML結構  .text() 在符合指定的選擇器元素內容中，取得或設定純文字內容  .replaceWith() 將符合指定的選擇器元素，用指定的HTML結構取代  .replaceAll() 和replaceWith的效果一樣，差別在於主要的處理對象是新建的新元素 可以做串接的函式處理後，再取代符合的選擇器元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 附加元素</title>
+      <link>http://example.org/posts/2013/07/jquery-%E9%99%84%E5%8A%A0%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 29 Jul 2013 16:08:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E9%99%84%E5%8A%A0%E5%85%83%E7%B4%A0/</guid>
+      <description> .append() 將HTML結構插入到符合指定的選擇器內容的尾端  .appendTo() 和append的效果一樣，差別在於主要的處理對象是新建的新元素 可以做串接的函式處理後，再插入符合的選擇器內容尾端  .prepend() 將HTML結構插入的符合指定的選擇器內容的前端  .prependTo() 和prepend的效果一樣，差別在於主要的處理對象是新建的新元素 可以做串接的函式處理後，再插入符合的選擇器內容前端  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 插入元素</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 29 Jul 2013 12:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0/</guid>
+      <description> .after() 將指定的元素插入每一個符合的選擇器後面  .insertAfter() 和after的效果一樣，差別在於主要的處理對象是新建的新元素 可以做串接的函式處理後，再插入符合的選擇器後面  .before() 將指定的元素插入每一個符合的選擇器前面  .insertBefore() 和before的效果一樣，差別在於主要的對象是新建的新元素 可以做串接的函式處理後，再插入符合的選擇器前面  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 包裝元素</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%8C%85%E8%A3%9D%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 29 Jul 2013 11:13:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%8C%85%E8%A3%9D%E5%85%83%E7%B4%A0/</guid>
+      <description> .wrap() 每一個符合指定的選擇器元素都被封裝到指定的HTML結構中  .wrapAll() 將所有符合選擇器的元素封裝在一個指定的HTML結構中  .wrapInner() 每一個符合指定的選擇器元素內部都封裝一個指定的HTML結構  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 滑鼠事件</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%BB%91%E9%BC%A0%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Thu, 25 Jul 2013 16:23:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%BB%91%E9%BC%A0%E4%BA%8B%E4%BB%B6/</guid>
+      <description> .click() 在元素上單擊左鍵  .dblclick() 在元素上雙擊左鍵  .hover() 進入和離開元素時觸發  .mousedown() 在元素上按下滑鼠按鍵  .mouseenter() 進入元素時觸發  .mouseleave() 離開元素時觸發  .mousemove() 在元素上移動時觸發  .mouseout() 離開元素時觸發 支持Bubble Up  .mouseover() 進入元素時觸發 支持Bubble Up  .mouseup() 在元素上放開滑鼠按鍵  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 鍵盤事件</title>
+      <link>http://example.org/posts/2013/07/jquery-%E9%8D%B5%E7%9B%A4%E4%BA%8B%E4%BB%B6/</link>
+      <pubDate>Thu, 25 Jul 2013 16:05:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E9%8D%B5%E7%9B%A4%E4%BA%8B%E4%BB%B6/</guid>
+      <description> .keydown() 按下鍵盤  .keypress() 壓住鍵盤  .keyup() 放開鍵盤  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 事件繫結</title>
+      <link>http://example.org/posts/2013/07/jquery-%E4%BA%8B%E4%BB%B6%E7%B9%AB%E7%B5%90/</link>
+      <pubDate>Thu, 25 Jul 2013 15:48:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E4%BA%8B%E4%BB%B6%E7%B9%AB%E7%B5%90/</guid>
+      <description> .bind() 為一個元素綁定一個事件處理 執行多次會重覆綁定 動態生成元素綁定事件會有先後問題  .unbind() 從元素上移除一個之前綁定的事件處理  .live() 附加一個事件處理器到指定選擇器的元素上 version deprecated:1.7, remove:1.9  .die() 從元素移除之前用.live()綁定的事件 version deprecated:1.7, remove:1.9  .delegate() 指派事件處理 利用事件的Bubble Up特性，在上層元素掛上事件處理 V1.4.2以上適用  .undelegate() 解除事件指派 V1.4.2以上適用  .on() 繫結事件 v1.7以上適用  .off() 解除事件 v1.7以上適用  .trigger() 觸發事件  .one() 在元素上綁定一個事件處理函式 該處理函式只會執行一次，然後刪除自已  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 自定義效果</title>
+      <link>http://example.org/posts/2013/07/jquery-%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Fri, 19 Jul 2013 11:36:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%95%88%E6%9E%9C/</guid>
+      <description> .animate() 自訂動畫效果  .queue() 動畫效果只能影響數值效果 如要在動畫中改變非數值效果需放入佇列中執行  .dequeue() 繼續執行佇列之後的效果  .clearQueue() 移除佇列  .delay() 延遲效果  .finish() 結束動畫效果  .stop() 停止動畫效果  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 滑動效果</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%BB%91%E5%8B%95%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Mon, 15 Jul 2013 11:43:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%BB%91%E5%8B%95%E6%95%88%E6%9E%9C/</guid>
+      <description> .slideDown() 滑動顯示效果  .slideUp() 滑動隱藏效果  .slideToggle() 切換滑動顯示隱藏效果  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 漸變效果</title>
+      <link>http://example.org/posts/2013/07/jquery-%E6%BC%B8%E8%AE%8A%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Mon, 15 Jul 2013 11:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E6%BC%B8%E8%AE%8A%E6%95%88%E6%9E%9C/</guid>
+      <description> .fadeIn() 淡入效果  .fadeOut() 淡出效果  .fadeTo(duration, opacity) 切換透明度  .fadeToggle() 切換淡出淡入效果  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 基礎效果</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%9F%BA%E7%A4%8E%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Mon, 15 Jul 2013 11:22:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%9F%BA%E7%A4%8E%E6%95%88%E6%9E%9C/</guid>
+      <description> .hide() 隱藏元素  .show() 顯示元素  .toggle() 切換顯示隱藏元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 內容過濾語法</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%85%A7%E5%AE%B9%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</link>
+      <pubDate>Mon, 15 Jul 2013 11:08:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%85%A7%E5%AE%B9%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</guid>
+      <description> 內容過濾語法  範例 說明  :contains(foo) 包含foo文字的元素，區分大小寫  :empty 選取沒有子節點的元素  :has(E) 選取有E為子元素的元素  :parent 選取有子節點的元素  :hidden 選取隱藏元素  :visible 選取可見元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 表單元素語法</title>
+      <link>http://example.org/posts/2013/07/jquery-%E8%A1%A8%E5%96%AE%E5%85%83%E7%B4%A0%E8%AA%9E%E6%B3%95/</link>
+      <pubDate>Mon, 15 Jul 2013 11:08:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E8%A1%A8%E5%96%AE%E5%85%83%E7%B4%A0%E8%AA%9E%E6%B3%95/</guid>
+      <description> 表單元素語法  範例 說明  :button 任何按鈕，包含button、submit、reset  :checkbox 核取方塊元素  :checked 已核取的核取方塊或單選鈕  :disabled 已停用的表單元素  :enabled 可啟用的表單元素  :focus 按鈕  :file 選取所有檔案元素  :image 選取所有圖片元素  :input 選取所有輸入元素，包含text、select、textarea、button  :password 選取密碼元素  :radio 選取單選鈕元素  :reset 選取重置按鈕  :selected 選取被選取的選項  :submit 選取發送按鈕  :text 選取文字元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 子元素過濾語法</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%AD%90%E5%85%83%E7%B4%A0%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</link>
+      <pubDate>Mon, 15 Jul 2013 11:07:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%AD%90%E5%85%83%E7%B4%A0%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</guid>
+      <description> 子元素過濾語法  範例 說明  :first-child 第一個子元素  :first-of-type 同級元素之間的第一個相同的元素  :last-child 最後一個子元素  :last-of-type 同級元素之間的最後一個相同的元素  :nth-child(n) 第n個子元素且為指定的元素  :nth-last-child(n) 倒數第n個子元素  :nth-last-of-type(n) 倒數第n個指定的子元素  :nth-of-type(n) 第n個指定的子元素  :only-child 只有一個子節點的元素  :only-of-type 同級元素之間只有一個子節點的元素  </description>
+    </item>
+    
+    <item>
+      <title>jQuery 位置過濾語法</title>
+      <link>http://example.org/posts/2013/07/jquery-%E4%BD%8D%E7%BD%AE%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</link>
+      <pubDate>Fri, 12 Jul 2013 17:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E4%BD%8D%E7%BD%AE%E9%81%8E%E6%BF%BE%E8%AA%9E%E6%B3%95/</guid>
+      <description> 位置過濾語法，從一個位置索引從0開始計算  範例 說明  :first 第一個元素  :last 最後一個元素  :odd 奇數元素  :even 偶數元素  :eq(n) 第n個元素  :gt(n) 大於第n個元素  :lt(n) 小於第n個元素  :not() 反向選擇  :header h1~h6標題元素  :animated 正在執行動畫效果的元素   </description>
+    </item>
+    
+    <item>
+      <title>jQuery 屬性選擇器</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E9%81%B8%E6%93%87%E5%99%A8/</link>
+      <pubDate>Fri, 12 Jul 2013 17:38:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E9%81%B8%E6%93%87%E5%99%A8/</guid>
+      <description> 屬性選擇器  範例 說明  $(&#34;E[A]&#34;) 具有A屬性的元素E  $(&#34;E[A=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值為V  $(&#34;E[A^=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值開頭為V  $(&#34;E[A$=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值結尾為V  $(&#34;E[A*=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容包含V  $(&#34;E[A!=V]&#34;) 具有A屬性的元素E，且值內容不等於V  $(&#34;E[A|=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容的前綴為V或是V-  $(&#34;E[A~=&#39;V&#39;]&#34;) 具有A屬性的元素E，且用空格分隔的值中有V  $(&#34;E[A1=&#39;V1&#39;][A2=&#39;V2&#39;][A3=&#39;V3&#39;]...&#34;) 具有A屬性的元素E，且屬性符號多重串接   </description>
+    </item>
+    
+    <item>
+      <title>jQuery 層級選擇器</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%B1%A4%E7%B4%9A%E9%81%B8%E6%93%87%E5%99%A8/</link>
+      <pubDate>Fri, 12 Jul 2013 13:54:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%B1%A4%E7%B4%9A%E9%81%B8%E6%93%87%E5%99%A8/</guid>
+      <description> 層級選擇器  範例 說明  $(&#34;E F&#34;) 後代選擇器，找出在E元素的所有子元素裡面的所有F元素 遞迴子元素的子元素，效率較差   $(&#34;E&amp;gt;F&#34;) 子代選擇器，找出在E元素的第一層子元素中的所有F元素 只找子元素，效能較佳   $(&#34;E+F&#34;) 毗鄰選擇器，E元素之後同層級的第一個F元素  $(&#34;E~F&#34;) 鄰後選擇器，E元素之後同層級的所有F元素   </description>
+    </item>
+    
+    <item>
+      <title>jQuery 基本選擇器</title>
+      <link>http://example.org/posts/2013/07/jquery-%E5%9F%BA%E6%9C%AC%E9%81%B8%E6%93%87%E5%99%A8/</link>
+      <pubDate>Fri, 12 Jul 2013 13:46:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery-%E5%9F%BA%E6%9C%AC%E9%81%B8%E6%93%87%E5%99%A8/</guid>
+      <description> 基本選擇器  範例 說明  $(&#34;*&#34;) 選取所有元素  (&#34;#id&#34;) 符合id名稱的元素，因為id是唯一值，所以效能會比較好  $(&#34;.C&#34;) 符合CSS類別名稱C的所有元素  $(&#34;E&#34;) 符合E標籤的所有元素    </description>
+    </item>
+    
+    <item>
+      <title>jQuery筆記</title>
+      <link>http://example.org/posts/2013/07/jquery%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Tue, 02 Jul 2013 14:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/jquery%E7%AD%86%E8%A8%98/</guid>
+      <description>jQuery Selector 基本選擇器 層級選擇器 屬性選擇器 位置過濾語法 子元素過濾語法 內容過濾語法  表單元素語法
+jQuery Effects 基礎效果 漸變效果 滑動效果  自定義效果
+jQuery Events 事件繫結 鍵盤事件 滑鼠事件
+jQuery Manipulation 包裝元素 插入元素 附加元素 替換元素 移除元素 屬性操作 樣式表操作
+JQuery Ajax 全域事件處理 Ajax快捷方法 ajax 呼叫方式
+jQuery Utilities 字串處理 陣列處理
+jQuery Plugin
+學習資源
+jsfiddle http://jsfiddle.net/
+邊做邊學系列 http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery
+w3c school jQuery http://www.w3schools.com/jquery/
+jqapi http://jqapi.com/
+jQuery Cheatsheet http://oscarotero.com/jquery/
+learing jQuery http://learn.jquery.com/
+30天學會jQuery https://tutsplus.com/course/30-days-to-learn-jquery/
+推薦書籍 jQuery 實戰手冊(JQuery in Action) ISBN：9789861816388
+ 第二版ISBN：9789861811918 jQuery 開發實戰 ISBN：9866761932 jQuery核心詳解與實踐應用 ISBN：9789862571040</description>
+    </item>
+    
+  </channel>
+</rss>

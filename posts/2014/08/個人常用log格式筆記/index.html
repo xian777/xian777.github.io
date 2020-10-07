@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    個人常用Log格式筆記 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="個人常用的Log格式，在此記錄一下
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;!--  See https://github.com/nlog/nlog/wiki/Configuration-file for information on customizing logging rules and outputs. &ndash;&gt; &lt;targets async=&quot;true&rdquo;&gt; &lt;default-wrapper xsi:type=&quot;BufferingWrapper&rdquo; bufferSize=&quot;500&rdquo; flushTimeout=&quot;3000&rdquo; /&gt;
+ &amp;lt;target xsi:type=&quot;Chainsaw&quot; name=&quot;console&quot; address=&quot;udp4://127.0.0.1:7071&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot; /&amp;gt; &amp;lt;target xsi:type=&quot;File&quot; name=&quot;file&quot; fileName=&quot;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&quot; /&amp;gt;&lt;/pre&gt;&lt;pre class=&quot;brush:xml&quot;&gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;console,file&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;
+    ">
+
+
+<meta property="og:title" content="個人常用Log格式筆記" />
+<meta property="og:description" content="個人常用的Log格式，在此記錄一下
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;!--  See https://github.com/nlog/nlog/wiki/Configuration-file for information on customizing logging rules and outputs. &ndash;&gt; &lt;targets async=&quot;true&rdquo;&gt; &lt;default-wrapper xsi:type=&quot;BufferingWrapper&rdquo; bufferSize=&quot;500&rdquo; flushTimeout=&quot;3000&rdquo; /&gt;
+ &amp;lt;target xsi:type=&quot;Chainsaw&quot; name=&quot;console&quot; address=&quot;udp4://127.0.0.1:7071&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot; /&amp;gt; &amp;lt;target xsi:type=&quot;File&quot; name=&quot;file&quot; fileName=&quot;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&quot; /&amp;gt;&lt;/pre&gt;&lt;pre class=&quot;brush:xml&quot;&gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;console,file&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/" />
+<meta property="article:published_time" content="2014-08-28T18:35:00+00:00" />
+<meta property="article:modified_time" content="2014-08-28T18:35:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="個人常用Log格式筆記"/>
+<meta name="twitter:description" content="個人常用的Log格式，在此記錄一下
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;!--  See https://github.com/nlog/nlog/wiki/Configuration-file for information on customizing logging rules and outputs. &ndash;&gt; &lt;targets async=&quot;true&rdquo;&gt; &lt;default-wrapper xsi:type=&quot;BufferingWrapper&rdquo; bufferSize=&quot;500&rdquo; flushTimeout=&quot;3000&rdquo; /&gt;
+ &amp;lt;target xsi:type=&quot;Chainsaw&quot; name=&quot;console&quot; address=&quot;udp4://127.0.0.1:7071&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot; /&amp;gt; &amp;lt;target xsi:type=&quot;File&quot; name=&quot;file&quot; fileName=&quot;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&quot; /&amp;gt;&lt;/pre&gt;&lt;pre class=&quot;brush:xml&quot;&gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;console,file&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;"/>
+
+<meta itemprop="name" content="個人常用Log格式筆記">
+<meta itemprop="description" content="個人常用的Log格式，在此記錄一下
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;!--  See https://github.com/nlog/nlog/wiki/Configuration-file for information on customizing logging rules and outputs. &ndash;&gt; &lt;targets async=&quot;true&rdquo;&gt; &lt;default-wrapper xsi:type=&quot;BufferingWrapper&rdquo; bufferSize=&quot;500&rdquo; flushTimeout=&quot;3000&rdquo; /&gt;
+ &amp;lt;target xsi:type=&quot;Chainsaw&quot; name=&quot;console&quot; address=&quot;udp4://127.0.0.1:7071&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot; /&amp;gt; &amp;lt;target xsi:type=&quot;File&quot; name=&quot;file&quot; fileName=&quot;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&quot; /&amp;gt;&lt;/pre&gt;&lt;pre class=&quot;brush:xml&quot;&gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;console,file&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;">
+<meta itemprop="datePublished" content="2014-08-28T18:35:00+00:00" />
+<meta itemprop="dateModified" content="2014-08-28T18:35:00+00:00" />
+<meta itemprop="wordCount" content="54">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>個人常用Log格式筆記</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 28, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>個人常用的Log格式，在此記錄一下</p>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" autoReload="true"&gt;
+<pre><code>&amp;lt;!-- 
+</code></pre>
+<p>See <a href="https://github.com/nlog/nlog/wiki/Configuration-file">https://github.com/nlog/nlog/wiki/Configuration-file</a>
+for information on customizing logging rules and outputs.
+&ndash;&gt;
+&lt;targets async=&quot;true&rdquo;&gt;
+&lt;default-wrapper xsi:type=&quot;BufferingWrapper&rdquo; bufferSize=&quot;500&rdquo; flushTimeout=&quot;3000&rdquo; /&gt;</p>
+<pre><code>    &amp;lt;target xsi:type=&quot;Chainsaw&quot; name=&quot;console&quot; address=&quot;udp4://127.0.0.1:7071&quot;
+            layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot; /&amp;gt;
+
+    &amp;lt;target xsi:type=&quot;File&quot; name=&quot;file&quot; fileName=&quot;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&quot;
+              layout=&quot;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&quot; /&amp;gt;&lt;/pre&gt;&lt;pre class=&quot;brush:xml&quot;&gt;    &amp;lt;/targets&amp;gt;
+
+&amp;lt;rules&amp;gt;
+    &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;console,file&quot; /&amp;gt;
+&amp;lt;/rules&amp;gt;
+</code></pre>
+<p>&lt;/nlog&gt;
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%80%8b%e4%ba%ba%e5%b8%b8%e7%94%a8Log%e6%a0%bc%e5%bc%8f%e7%ad%86%e8%a8%98&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f
+			&title=%e5%80%8b%e4%ba%ba%e5%b8%b8%e7%94%a8Log%e6%a0%bc%e5%bc%8f%e7%ad%86%e8%a8%98&summary=%e5%80%8b%e4%ba%ba%e5%b8%b8%e7%94%a8%e7%9a%84Log%e6%a0%bc%e5%bc%8f%ef%bc%8c%e5%9c%a8%e6%ad%a4%e8%a8%98%e9%8c%84%e4%b8%80%e4%b8%8b%0a%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%22http%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%22%20xmlns%3axsi%3d%22http%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%22%20autoReload%3d%22true%22%26gt%3b%20%26amp%3blt%3b%21--%20%20See%20https%3a%2f%2fgithub.com%2fnlog%2fnlog%2fwiki%2fConfiguration-file%20for%20information%20on%20customizing%20logging%20rules%20and%20outputs.%20%26ndash%3b%26gt%3b%20%26lt%3btargets%20async%3d%26quot%3btrue%26rdquo%3b%26gt%3b%20%26lt%3bdefault-wrapper%20xsi%3atype%3d%26quot%3bBufferingWrapper%26rdquo%3b%20bufferSize%3d%26quot%3b500%26rdquo%3b%20flushTimeout%3d%26quot%3b3000%26rdquo%3b%20%2f%26gt%3b%0a%20%26amp%3blt%3btarget%20xsi%3atype%3d%26quot%3bChainsaw%26quot%3b%20name%3d%26quot%3bconsole%26quot%3b%20address%3d%26quot%3budp4%3a%2f%2f127.0.0.1%3a7071%26quot%3b%20layout%3d%26quot%3b%24%7blongdate%7d%20%24%7buppercase%3a%24%7blevel%7d%7d%20%24%7bmessage%7d%26quot%3b%20%2f%26amp%3bgt%3b%20%26amp%3blt%3btarget%20xsi%3atype%3d%26quot%3bFile%26quot%3b%20name%3d%26quot%3bfile%26quot%3b%20fileName%3d%26quot%3bD%3a%5cLogFiles%5cProj_Log%5c%24%7bshortdate%7d%5c%24%7bdate%3aformat%3dyyyy-MM-dd-HH%7d.log%26quot%3b%20layout%3d%26quot%3b%24%7blongdate%7d%20%24%7buppercase%3a%24%7blevel%7d%7d%20%24%7bmessage%7d%24%7bnewline%7d%24%7bonexception%3ainner%3d%24%7bnewline%7dException%3a%24%7bnewline%7d%24%7bexception%3aformat%3dToString%7d%24%7bnewline%7d%7dSTACKTRACE%3a%24%7bnewline%7d%24%7bstacktrace%3aformat%3dDetailedFlat%7d%26quot%3b%20%2f%26amp%3bgt%3b%26lt%3b%2fpre%26gt%3b%26lt%3bpre%20class%3d%26quot%3bbrush%3axml%26quot%3b%26gt%3b%20%26amp%3blt%3b%2ftargets%26amp%3bgt%3b%20%26amp%3blt%3brules%26amp%3bgt%3b%20%26amp%3blt%3blogger%20name%3d%26quot%3b%2a%26quot%3b%20minlevel%3d%26quot%3bTrace%26quot%3b%20writeTo%3d%26quot%3bconsole%2cfile%26quot%3b%20%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2frules%26amp%3bgt%3b%20%20%26lt%3b%2fnlog%26gt%3b&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%80%8b%e4%ba%ba%e5%b8%b8%e7%94%a8Log%e6%a0%bc%e5%bc%8f%e7%ad%86%e8%a8%98&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%2580%258B%25E4%25BA%25BA%25E5%25B8%25B8%25E7%2594%25A8log%25E6%25A0%25BC%25E5%25BC%258F%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

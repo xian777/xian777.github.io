@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Team Foundation Server 標準單一伺服器設定 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Team Foundation Server的幾種設定中，基本設字使用的是本機的SQL 2012 Express，所以功能比較少一點 這邊用標準設定來當例子，在開始使用這個組態精靈之前，需要先準備好SQL Server 執行環境需要網域帳號，並選取需要的服務Reporint Service、Analysis Service和全文檢索
+[![](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png) 在組態中心中選擇標準單一伺服器 [![](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 標準組態精靈的歡迎畫面 [![](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png) 輸入要用於SharePoint和SQL Server reporting Services的服務帳號 使用一個網域帳號，並且需要是這幾個服務機器上面的本機管理員群組 [![](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png) 這邊可以選擇是否要安裝SharePoint，如果安裝在同一台的話需要的硬體規格比較高，這邊先跳過去 [![](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png) 確認組態設定的畫面 [![](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png) 驗證成功的畫面，接下來按下設定就會開始把需要的功能都設定好 [![](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png) 設定中 [![](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png) 設定成功 [![](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png) 檢閱結果 [!
+    ">
+
+
+<meta property="og:title" content="Team Foundation Server 標準單一伺服器設定" />
+<meta property="og:description" content="Team Foundation Server的幾種設定中，基本設字使用的是本機的SQL 2012 Express，所以功能比較少一點 這邊用標準設定來當例子，在開始使用這個組態精靈之前，需要先準備好SQL Server 執行環境需要網域帳號，並選取需要的服務Reporint Service、Analysis Service和全文檢索
+[![](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png) 在組態中心中選擇標準單一伺服器 [![](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 標準組態精靈的歡迎畫面 [![](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png) 輸入要用於SharePoint和SQL Server reporting Services的服務帳號 使用一個網域帳號，並且需要是這幾個服務機器上面的本機管理員群組 [![](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png) 這邊可以選擇是否要安裝SharePoint，如果安裝在同一台的話需要的硬體規格比較高，這邊先跳過去 [![](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png) 確認組態設定的畫面 [![](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png) 驗證成功的畫面，接下來按下設定就會開始把需要的功能都設定好 [![](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png) 設定中 [![](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png) 設定成功 [![](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png) 檢閱結果 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/team-foundation-server-%E6%A8%99%E6%BA%96%E5%96%AE%E4%B8%80%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%A8%AD%E5%AE%9A/" />
+<meta property="article:published_time" content="2014-12-22T18:57:00+00:00" />
+<meta property="article:modified_time" content="2014-12-22T18:57:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Team Foundation Server 標準單一伺服器設定"/>
+<meta name="twitter:description" content="Team Foundation Server的幾種設定中，基本設字使用的是本機的SQL 2012 Express，所以功能比較少一點 這邊用標準設定來當例子，在開始使用這個組態精靈之前，需要先準備好SQL Server 執行環境需要網域帳號，並選取需要的服務Reporint Service、Analysis Service和全文檢索
+[![](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png) 在組態中心中選擇標準單一伺服器 [![](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 標準組態精靈的歡迎畫面 [![](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png) 輸入要用於SharePoint和SQL Server reporting Services的服務帳號 使用一個網域帳號，並且需要是這幾個服務機器上面的本機管理員群組 [![](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png) 這邊可以選擇是否要安裝SharePoint，如果安裝在同一台的話需要的硬體規格比較高，這邊先跳過去 [![](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png) 確認組態設定的畫面 [![](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png) 驗證成功的畫面，接下來按下設定就會開始把需要的功能都設定好 [![](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png) 設定中 [![](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png) 設定成功 [![](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png) 檢閱結果 [!"/>
+
+<meta itemprop="name" content="Team Foundation Server 標準單一伺服器設定">
+<meta itemprop="description" content="Team Foundation Server的幾種設定中，基本設字使用的是本機的SQL 2012 Express，所以功能比較少一點 這邊用標準設定來當例子，在開始使用這個組態精靈之前，需要先準備好SQL Server 執行環境需要網域帳號，並選取需要的服務Reporint Service、Analysis Service和全文檢索
+[![](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png) 在組態中心中選擇標準單一伺服器 [![](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 標準組態精靈的歡迎畫面 [![](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png) 輸入要用於SharePoint和SQL Server reporting Services的服務帳號 使用一個網域帳號，並且需要是這幾個服務機器上面的本機管理員群組 [![](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png) 這邊可以選擇是否要安裝SharePoint，如果安裝在同一台的話需要的硬體規格比較高，這邊先跳過去 [![](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png) 確認組態設定的畫面 [![](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png) 驗證成功的畫面，接下來按下設定就會開始把需要的功能都設定好 [![](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png) 設定中 [![](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png) 設定成功 [![](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png) 檢閱結果 [!">
+<meta itemprop="datePublished" content="2014-12-22T18:57:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-22T18:57:00+00:00" />
+<meta itemprop="wordCount" content="33">
+
+
+
+<meta itemprop="keywords" content="Team Foundation Server," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/team-foundation-server-%E6%A8%99%E6%BA%96%E5%96%AE%E4%B8%80%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%A8%AD%E5%AE%9A/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Team Foundation Server 標準單一伺服器設定</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 22, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team Foundation Server</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team foundation server</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Team Foundation Server的幾種設定中，基本設字使用的是本機的SQL 2012 Express，所以功能比較少一點
+這邊用標準設定來當例子，在開始使用這個組態精靈之前，需要先準備好SQL Server
+執行環境需要網域帳號，並選取需要的服務Reporint Service、Analysis Service和全文檢索</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)](http://4.bp.blogspot.com/-6_Z1vfAcISE/VJf3O7wq8_I/AAAAAAAAB2U/4re5mgi6iGI/s1600/01.SQL%E5%85%83%E4%BB%B6.png)</div>
+在組態中心中選擇標準單一伺服器
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://1.bp.blogspot.com/-R0seRNlWFd0/VJf3ah4KhtI/AAAAAAAAB2c/75dqoIxRaZk/s1600/02.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)</div>
+標準組態精靈的歡迎畫面
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)](http://1.bp.blogspot.com/-FXLDan8lgbw/VJf3eFi5puI/AAAAAAAAB2k/IPRd3ZsoCtA/s1600/03.%E6%AD%A1%E8%BF%8E%E7%95%AB%E9%9D%A2.png)</div>
+輸入要用於SharePoint和SQL Server reporting Services的服務帳號
+使用一個網域帳號，並且需要是這幾個服務機器上面的本機管理員群組
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)](http://4.bp.blogspot.com/-5KI5mPkqDN8/VJf3hmP2kiI/AAAAAAAAB2s/RS6ZgzXhJmE/s1600/04.%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9F.png)</div>
+這邊可以選擇是否要安裝SharePoint，如果安裝在同一台的話需要的硬體規格比較高，這邊先跳過去
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)](http://3.bp.blogspot.com/-sfWfclEOVZA/VJf3lMjEdfI/AAAAAAAAB20/VmYIYNEZ0uA/s1600/05.SharePoint.png)</div>
+確認組態設定的畫面
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)](http://2.bp.blogspot.com/-2cSUVrdSmkE/VJf3xocSm6I/AAAAAAAAB28/8fEtiP1RFXY/s1600/06.%E9%A9%97%E8%AD%89.png)</div>
+驗證成功的畫面，接下來按下設定就會開始把需要的功能都設定好
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-laqe8AMezMI/VJf31N1KURI/AAAAAAAAB3E/SuOKkukXWII/s1600/07.%E8%A8%AD%E5%AE%9A.png)</div>
+設定中
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)](http://1.bp.blogspot.com/-R8j6Dj7YJTo/VJf35uPZ0SI/AAAAAAAAB3M/8ksf-XzMc4g/s1600/08.%E8%A8%AD%E5%AE%9A%E4%B8%AD.png)</div>
+設定成功
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-KhM64UpoxFs/VJf39DcDyZI/AAAAAAAAB3U/w2rrwM2efpo/s1600/09.%E8%A8%AD%E5%AE%9A%E6%88%90%E5%8A%9F.png)</div>
+檢閱結果
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-PHlyy3_XnUo/VJf5A7FEELI/AAAAAAAAB3g/hO4_3N-v_5U/s1600/10.%E6%AA%A2%E9%96%B1%E7%B5%90%E6%9E%9C.png)](http://2.bp.blogspot.com/-PHlyy3_XnUo/VJf5A7FEELI/AAAAAAAAB3g/hO4_3N-v_5U/s1600/10.%E6%AA%A2%E9%96%B1%E7%B5%90%E6%9E%9C.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Team%20Foundation%20Server%20%e6%a8%99%e6%ba%96%e5%96%ae%e4%b8%80%e4%bc%ba%e6%9c%8d%e5%99%a8%e8%a8%ad%e5%ae%9a&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f
+			&title=Team%20Foundation%20Server%20%e6%a8%99%e6%ba%96%e5%96%ae%e4%b8%80%e4%bc%ba%e6%9c%8d%e5%99%a8%e8%a8%ad%e5%ae%9a&summary=Team%20Foundation%20Server%e7%9a%84%e5%b9%be%e7%a8%ae%e8%a8%ad%e5%ae%9a%e4%b8%ad%ef%bc%8c%e5%9f%ba%e6%9c%ac%e8%a8%ad%e5%ad%97%e4%bd%bf%e7%94%a8%e7%9a%84%e6%98%af%e6%9c%ac%e6%a9%9f%e7%9a%84SQL%202012%20Express%ef%bc%8c%e6%89%80%e4%bb%a5%e5%8a%9f%e8%83%bd%e6%af%94%e8%bc%83%e5%b0%91%e4%b8%80%e9%bb%9e%20%e9%80%99%e9%82%8a%e7%94%a8%e6%a8%99%e6%ba%96%e8%a8%ad%e5%ae%9a%e4%be%86%e7%95%b6%e4%be%8b%e5%ad%90%ef%bc%8c%e5%9c%a8%e9%96%8b%e5%a7%8b%e4%bd%bf%e7%94%a8%e9%80%99%e5%80%8b%e7%b5%84%e6%85%8b%e7%b2%be%e9%9d%88%e4%b9%8b%e5%89%8d%ef%bc%8c%e9%9c%80%e8%a6%81%e5%85%88%e6%ba%96%e5%82%99%e5%a5%bdSQL%20Server%20%e5%9f%b7%e8%a1%8c%e7%92%b0%e5%a2%83%e9%9c%80%e8%a6%81%e7%b6%b2%e5%9f%9f%e5%b8%b3%e8%99%9f%ef%bc%8c%e4%b8%a6%e9%81%b8%e5%8f%96%e9%9c%80%e8%a6%81%e7%9a%84%e6%9c%8d%e5%8b%99Reporint%20Service%e3%80%81Analysis%20Service%e5%92%8c%e5%85%a8%e6%96%87%e6%aa%a2%e7%b4%a2%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6_Z1vfAcISE%2fVJf3O7wq8_I%2fAAAAAAAAB2U%2f4re5mgi6iGI%2fs1600%2f01.SQL%25E5%2585%2583%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6_Z1vfAcISE%2fVJf3O7wq8_I%2fAAAAAAAAB2U%2f4re5mgi6iGI%2fs1600%2f01.SQL%25E5%2585%2583%25E4%25BB%25B6.png%29%20%e5%9c%a8%e7%b5%84%e6%85%8b%e4%b8%ad%e5%bf%83%e4%b8%ad%e9%81%b8%e6%93%87%e6%a8%99%e6%ba%96%e5%96%ae%e4%b8%80%e4%bc%ba%e6%9c%8d%e5%99%a8%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R0seRNlWFd0%2fVJf3ah4KhtI%2fAAAAAAAAB2c%2f75dqoIxRaZk%2fs1600%2f02.%25E7%25B5%2584%25E6%2585%258B%25E4%25B8%25AD%25E5%25BF%2583.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R0seRNlWFd0%2fVJf3ah4KhtI%2fAAAAAAAAB2c%2f75dqoIxRaZk%2fs1600%2f02.%25E7%25B5%2584%25E6%2585%258B%25E4%25B8%25AD%25E5%25BF%2583.png%29%20%e6%a8%99%e6%ba%96%e7%b5%84%e6%85%8b%e7%b2%be%e9%9d%88%e7%9a%84%e6%ad%a1%e8%bf%8e%e7%95%ab%e9%9d%a2%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-FXLDan8lgbw%2fVJf3eFi5puI%2fAAAAAAAAB2k%2fIPRd3ZsoCtA%2fs1600%2f03.%25E6%25AD%25A1%25E8%25BF%258E%25E7%2595%25AB%25E9%259D%25A2.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-FXLDan8lgbw%2fVJf3eFi5puI%2fAAAAAAAAB2k%2fIPRd3ZsoCtA%2fs1600%2f03.%25E6%25AD%25A1%25E8%25BF%258E%25E7%2595%25AB%25E9%259D%25A2.png%29%20%e8%bc%b8%e5%85%a5%e8%a6%81%e7%94%a8%e6%96%bcSharePoint%e5%92%8cSQL%20Server%20reporting%20Services%e7%9a%84%e6%9c%8d%e5%8b%99%e5%b8%b3%e8%99%9f%20%e4%bd%bf%e7%94%a8%e4%b8%80%e5%80%8b%e7%b6%b2%e5%9f%9f%e5%b8%b3%e8%99%9f%ef%bc%8c%e4%b8%a6%e4%b8%94%e9%9c%80%e8%a6%81%e6%98%af%e9%80%99%e5%b9%be%e5%80%8b%e6%9c%8d%e5%8b%99%e6%a9%9f%e5%99%a8%e4%b8%8a%e9%9d%a2%e7%9a%84%e6%9c%ac%e6%a9%9f%e7%ae%a1%e7%90%86%e5%93%a1%e7%be%a4%e7%b5%84%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-5KI5mPkqDN8%2fVJf3hmP2kiI%2fAAAAAAAAB2s%2fRS6ZgzXhJmE%2fs1600%2f04.%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259F.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-5KI5mPkqDN8%2fVJf3hmP2kiI%2fAAAAAAAAB2s%2fRS6ZgzXhJmE%2fs1600%2f04.%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259F.png%29%20%e9%80%99%e9%82%8a%e5%8f%af%e4%bb%a5%e9%81%b8%e6%93%87%e6%98%af%e5%90%a6%e8%a6%81%e5%ae%89%e8%a3%9dSharePoint%ef%bc%8c%e5%a6%82%e6%9e%9c%e5%ae%89%e8%a3%9d%e5%9c%a8%e5%90%8c%e4%b8%80%e5%8f%b0%e7%9a%84%e8%a9%b1%e9%9c%80%e8%a6%81%e7%9a%84%e7%a1%ac%e9%ab%94%e8%a6%8f%e6%a0%bc%e6%af%94%e8%bc%83%e9%ab%98%ef%bc%8c%e9%80%99%e9%82%8a%e5%85%88%e8%b7%b3%e9%81%8e%e5%8e%bb%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-sfWfclEOVZA%2fVJf3lMjEdfI%2fAAAAAAAAB20%2fVmYIYNEZ0uA%2fs1600%2f05.SharePoint.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-sfWfclEOVZA%2fVJf3lMjEdfI%2fAAAAAAAAB20%2fVmYIYNEZ0uA%2fs1600%2f05.SharePoint.png%29%20%e7%a2%ba%e8%aa%8d%e7%b5%84%e6%85%8b%e8%a8%ad%e5%ae%9a%e7%9a%84%e7%95%ab%e9%9d%a2%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-2cSUVrdSmkE%2fVJf3xocSm6I%2fAAAAAAAAB28%2f8fEtiP1RFXY%2fs1600%2f06.%25E9%25A9%2597%25E8%25AD%2589.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-2cSUVrdSmkE%2fVJf3xocSm6I%2fAAAAAAAAB28%2f8fEtiP1RFXY%2fs1600%2f06.%25E9%25A9%2597%25E8%25AD%2589.png%29%20%e9%a9%97%e8%ad%89%e6%88%90%e5%8a%9f%e7%9a%84%e7%95%ab%e9%9d%a2%ef%bc%8c%e6%8e%a5%e4%b8%8b%e4%be%86%e6%8c%89%e4%b8%8b%e8%a8%ad%e5%ae%9a%e5%b0%b1%e6%9c%83%e9%96%8b%e5%a7%8b%e6%8a%8a%e9%9c%80%e8%a6%81%e7%9a%84%e5%8a%9f%e8%83%bd%e9%83%bd%e8%a8%ad%e5%ae%9a%e5%a5%bd%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-laqe8AMezMI%2fVJf31N1KURI%2fAAAAAAAAB3E%2fSuOKkukXWII%2fs1600%2f07.%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-laqe8AMezMI%2fVJf31N1KURI%2fAAAAAAAAB3E%2fSuOKkukXWII%2fs1600%2f07.%25E8%25A8%25AD%25E5%25AE%259A.png%29%20%e8%a8%ad%e5%ae%9a%e4%b8%ad%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R8j6Dj7YJTo%2fVJf35uPZ0SI%2fAAAAAAAAB3M%2f8ksf-XzMc4g%2fs1600%2f08.%25E8%25A8%25AD%25E5%25AE%259A%25E4%25B8%25AD.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R8j6Dj7YJTo%2fVJf35uPZ0SI%2fAAAAAAAAB3M%2f8ksf-XzMc4g%2fs1600%2f08.%25E8%25A8%25AD%25E5%25AE%259A%25E4%25B8%25AD.png%29%20%e8%a8%ad%e5%ae%9a%e6%88%90%e5%8a%9f%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KhM64UpoxFs%2fVJf39DcDyZI%2fAAAAAAAAB3U%2fw2rrwM2efpo%2fs1600%2f09.%25E8%25A8%25AD%25E5%25AE%259A%25E6%2588%2590%25E5%258A%259F.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KhM64UpoxFs%2fVJf39DcDyZI%2fAAAAAAAAB3U%2fw2rrwM2efpo%2fs1600%2f09.%25E8%25A8%25AD%25E5%25AE%259A%25E6%2588%2590%25E5%258A%259F.png%29%20%e6%aa%a2%e9%96%b1%e7%b5%90%e6%9e%9c%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Team%20Foundation%20Server%20%e6%a8%99%e6%ba%96%e5%96%ae%e4%b8%80%e4%bc%ba%e6%9c%8d%e5%99%a8%e8%a8%ad%e5%ae%9a&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E6%25A8%2599%25E6%25BA%2596%25E5%2596%25AE%25E4%25B8%2580%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

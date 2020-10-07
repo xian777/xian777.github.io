@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Posts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="List of all articles in section- Posts">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/posts/" />
+<meta property="og:updated_time" content="2018-09-14T14:25:42+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/posts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1 class="title is-3">Posts</h1>
+</div>
+
+
+<div class="blog-brief">
+    <a href="/posts/2016/08/gogs-with-nginx-reverse-proxy/">
+        <h3 class="title is-4">
+            Gogs With Nginx Reverse Proxy
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-with-nginx-reverse-proxy/">
+                    <p class="subtitle info date">Aug 15, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-with-nginx-reverse-proxy/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/gogs">Gogs</a>
+            
+            <a class="tag is-rounded" href="/tags/nginx">Nginx</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/08/gogs-with-nginx-reverse-proxy/">
+                <p class="summary">
+                    ngix新增一組站台設定
+[![](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png)](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png) 新增站台的DNS，為了測試方便所以建在本機的hosts [![](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png)](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png) 修改一下gogs的設定，把domain和ROOT_URL改成這組測試的網址 順便DISABLE_SSH = true [![](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png) 重新啟動gogs服務後，就可以用這組測試網址了 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/08/gogs-with-nginx-reverse-proxy/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/08/nginx-run-as-windows-service/">
+        <h3 class="title is-4">
+            Nginx Run as Windows Service
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/08/nginx-run-as-windows-service/">
+                    <p class="subtitle info date">Aug 15, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/08/nginx-run-as-windows-service/">
+                    <p class="subtitle info">
+                        6 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/gogs">Gogs</a>
+            
+            <a class="tag is-rounded" href="/tags/nginx">Nginx</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/08/nginx-run-as-windows-service/">
+                <p class="summary">
+                    在官網下載Nginx編譯好的執行檔
+[![](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png)](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png) [下載nssm](https://nssm.cc/download)用來把nginx的執行檔註冊成一個服務[![](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png)](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png) 執行nssm install nginx設定好nginx執行檔的路徑和工作目錄[![](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png)](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png) 啟動nginx服務[![](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png)](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png) nginx啟動成功[![](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)  
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/08/nginx-run-as-windows-service/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/08/gogs-run-as-windows-service/">
+        <h3 class="title is-4">
+            Gogs Run as Windows Service
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-run-as-windows-service/">
+                    <p class="subtitle info date">Aug 14, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-run-as-windows-service/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/gogs">Gogs</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/08/gogs-run-as-windows-service/">
+                <p class="summary">
+                    在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/08/gogs-run-as-windows-service/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/08/gogs-go-git-service-on-windows/">
+        <h3 class="title is-4">
+            Gogs - Go Git Service on Windows
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-go-git-service-on-windows/">
+                    <p class="subtitle info date">Aug 14, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/08/gogs-go-git-service-on-windows/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/git">Git</a>
+            
+            <a class="tag is-rounded" href="/tags/gogs">Gogs</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/08/gogs-go-git-service-on-windows/">
+                <p class="summary">
+                    先到官網下載windodws版本編譯好的二進制壓縮檔
+[![](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png)](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png) 解壓縮後到資料夾下執行gogs web即可，預設Listen port是3000 [![](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png)](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png) 打開瀏覽器進入http://127.0.0.1:3000後，開始初始化設定 設定要使用的資料庫和專案放置的資料夾路徑 [![](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png)](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png) 勾選禁止註冊和登錄訪問限制 再建立一個管理員帳號就完成設定了
+[![](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png)](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png) 如果沒有勾選禁止註冊，右上角的登入旁邊就會有一個註冊的功能 [![](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png)](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png) 登入後先來建一個專案
+[![](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png)](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png) 輸入專案的名稱，把可見度勾成私有的，就必需有帳密才能下載專案
+[![](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png)](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png) 右上角的路徑是當初設定時所輸入的網址 [![](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png)](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png) 把專案取回來 [![](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png)](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png) 因為是私人專案所以需要輸入帳密 [![](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png)](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png) 新增一個測試專案 [![](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png)](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png) 把測試專案移到工作目錄後送交 [![](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png)](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png) 把測試專案推送到gogs [![](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png)](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png) 專案同步完成 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/08/gogs-go-git-service-on-windows/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/08/hello-net-core-1-0/">
+        <h3 class="title is-4">
+            Hello .NET Core 1.0
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/08/hello-net-core-1-0/">
+                    <p class="subtitle info date">Aug 14, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/08/hello-net-core-1-0/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/08/hello-net-core-1-0/">
+                <p class="summary">
+                    首先到官網按照步驟安裝SDK
+[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png) 使用dotnet new 命令來初始化一個專案
+[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png) dotnet restore:還原套件 dotnet build:建置專案 dotnet run:執行專案 [![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png) 打開http://127.0.01:5000就可以看到站台了
+[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png) dotnet publish: 發佈專案 帶入-output參數可以指發佈的路徑 [![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png) 發佈後的資料夾
+[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png) 使用dotnet命令來執行專案的dll [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/08/hello-net-core-1-0/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+
+
+
+
+<section class="section">
+    <nav class="pagination is-centered">
+
+        
+            <a class="pagination-previous is-dark" href="/posts/page/3/">Previous</a>
+        
+
+        
+            <a class="pagination-next" href="/posts/page/5/">Next page</a>
+        
+
+
+        <ul class="pagination-list">
+
+        
+
+            
+            
+
+                <li><a href="/posts/" class="pagination-link">1</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/3/" class="pagination-link">3</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/4/" class="pagination-link is-current">4</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/5/" class="pagination-link">5</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/52/" class="pagination-link">52</a></li>
+
+                
+                
+
+            
+
+        
+
+        </ul>
+    </nav>
+</section>
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

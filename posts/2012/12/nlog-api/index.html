@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog API | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="LogManager LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method   LogManager.GetLogger - 取得或建立指定的logger 建議建立Logger的方式，需要手動指定名稱 LogManager.GetCurrentClassLogger - 取得或建立目前類別名稱的logger 雖然比較方便，但底層是以StackTrace取得名稱，成本高很多 LogManager.Configuration - 取得或設定目前日誌的設定資訊 LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold   Logger NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log每個Method都有多個overloads用來最小化內存配置以提高日誌速度  Log() - 使用指定的格式和參數，將訊息寫入指定的級別 Trace() - 使用指定的格式和參數，將訊息寫入Trace級別 Debug() - 使用指定的格式和參數，將訊息寫入Debug級別 Info() - 使用指定的格式和參數，將訊息寫入Info級別 Warn() - 使用指定的格式和參數，將訊息寫入Warn級別 Erro() - 使用指定的格式和參數，將訊息寫入Error級別 Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別以下的方法和屬性用來檢查該層級的日誌是否啟用     IsEnabled() - 確定指定的級別日誌是否啟用
+  IsTraceEnabled - 確定Trace級別日誌是否啟用
+  IsDebugEnabled - 確定Debug級別日誌是否啟用
+  IsInfoEnabled - 確定Info級別日誌是否啟用
+  IsWarnEnabled - 確定Warn級別日誌是否啟用
+    ">
+
+
+<meta property="og:title" content="NLog API" />
+<meta property="og:description" content="LogManager LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method   LogManager.GetLogger - 取得或建立指定的logger 建議建立Logger的方式，需要手動指定名稱 LogManager.GetCurrentClassLogger - 取得或建立目前類別名稱的logger 雖然比較方便，但底層是以StackTrace取得名稱，成本高很多 LogManager.Configuration - 取得或設定目前日誌的設定資訊 LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold   Logger NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log每個Method都有多個overloads用來最小化內存配置以提高日誌速度  Log() - 使用指定的格式和參數，將訊息寫入指定的級別 Trace() - 使用指定的格式和參數，將訊息寫入Trace級別 Debug() - 使用指定的格式和參數，將訊息寫入Debug級別 Info() - 使用指定的格式和參數，將訊息寫入Info級別 Warn() - 使用指定的格式和參數，將訊息寫入Warn級別 Erro() - 使用指定的格式和參數，將訊息寫入Error級別 Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別以下的方法和屬性用來檢查該層級的日誌是否啟用     IsEnabled() - 確定指定的級別日誌是否啟用
+  IsTraceEnabled - 確定Trace級別日誌是否啟用
+  IsDebugEnabled - 確定Debug級別日誌是否啟用
+  IsInfoEnabled - 確定Info級別日誌是否啟用
+  IsWarnEnabled - 確定Warn級別日誌是否啟用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-api/" />
+<meta property="article:published_time" content="2012-12-30T23:02:00+00:00" />
+<meta property="article:modified_time" content="2012-12-30T23:02:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog API"/>
+<meta name="twitter:description" content="LogManager LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method   LogManager.GetLogger - 取得或建立指定的logger 建議建立Logger的方式，需要手動指定名稱 LogManager.GetCurrentClassLogger - 取得或建立目前類別名稱的logger 雖然比較方便，但底層是以StackTrace取得名稱，成本高很多 LogManager.Configuration - 取得或設定目前日誌的設定資訊 LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold   Logger NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log每個Method都有多個overloads用來最小化內存配置以提高日誌速度  Log() - 使用指定的格式和參數，將訊息寫入指定的級別 Trace() - 使用指定的格式和參數，將訊息寫入Trace級別 Debug() - 使用指定的格式和參數，將訊息寫入Debug級別 Info() - 使用指定的格式和參數，將訊息寫入Info級別 Warn() - 使用指定的格式和參數，將訊息寫入Warn級別 Erro() - 使用指定的格式和參數，將訊息寫入Error級別 Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別以下的方法和屬性用來檢查該層級的日誌是否啟用     IsEnabled() - 確定指定的級別日誌是否啟用
+  IsTraceEnabled - 確定Trace級別日誌是否啟用
+  IsDebugEnabled - 確定Debug級別日誌是否啟用
+  IsInfoEnabled - 確定Info級別日誌是否啟用
+  IsWarnEnabled - 確定Warn級別日誌是否啟用"/>
+
+<meta itemprop="name" content="NLog API">
+<meta itemprop="description" content="LogManager LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method   LogManager.GetLogger - 取得或建立指定的logger 建議建立Logger的方式，需要手動指定名稱 LogManager.GetCurrentClassLogger - 取得或建立目前類別名稱的logger 雖然比較方便，但底層是以StackTrace取得名稱，成本高很多 LogManager.Configuration - 取得或設定目前日誌的設定資訊 LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold   Logger NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log每個Method都有多個overloads用來最小化內存配置以提高日誌速度  Log() - 使用指定的格式和參數，將訊息寫入指定的級別 Trace() - 使用指定的格式和參數，將訊息寫入Trace級別 Debug() - 使用指定的格式和參數，將訊息寫入Debug級別 Info() - 使用指定的格式和參數，將訊息寫入Info級別 Warn() - 使用指定的格式和參數，將訊息寫入Warn級別 Erro() - 使用指定的格式和參數，將訊息寫入Error級別 Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別以下的方法和屬性用來檢查該層級的日誌是否啟用     IsEnabled() - 確定指定的級別日誌是否啟用
+  IsTraceEnabled - 確定Trace級別日誌是否啟用
+  IsDebugEnabled - 確定Debug級別日誌是否啟用
+  IsInfoEnabled - 確定Info級別日誌是否啟用
+  IsWarnEnabled - 確定Warn級別日誌是否啟用">
+<meta itemprop="datePublished" content="2012-12-30T23:02:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-30T23:02:00+00:00" />
+<meta itemprop="wordCount" content="191">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-api/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog API</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 30, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    7 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="logmanager">LogManager</h2>
+<div>LogManager是用來建立日誌和管理設定檔用的類別，有以下幾個Method</div><div>
+</div><div>
+<ul>
+<li>LogManager.GetLogger - 取得或建立指定的logger
+<span style="color: orange;">建議建立Logger的方式，需要手動指定名稱</span></li>
+<li>LogManager.GetCurrentClassLogger  - 取得或建立目前類別名稱的logger
+<span style="color: orange;">雖然比較方便，但底層是以StackTrace取得名稱，成本高很多</span></li>
+<li>LogManager.Configuration - 取得或設定目前日誌的設定資訊</li>
+<li>LogManaget.GlobalThreshold - 取得或設定全域日誌的threshold</li>
+</ul>
+<hr>
+<h2 id="logger">Logger</h2>
+<div>NLog.Logger類別是用來輸出Log用的，有以下幾個Method用來輸出不同層級的Log</div><div>每個Method都有多個overloads用來最小化內存配置以提高日誌速度</div><div><div>
+<ul>
+<li>Log() - 使用指定的格式和參數，將訊息寫入指定的級別</li>
+<li>Trace() - 使用指定的格式和參數，將訊息寫入Trace級別</li>
+<li>Debug() - 使用指定的格式和參數，將訊息寫入Debug級別</li>
+<li>Info() - 使用指定的格式和參數，將訊息寫入Info級別</li>
+<li>Warn() - 使用指定的格式和參數，將訊息寫入Warn級別</li>
+<li>Erro() - 使用指定的格式和參數，將訊息寫入Error級別</li>
+<li>Fatal() - 使用指定的格式和參數，將訊息寫入Fatal級別</div><div>以下的方法和屬性用來檢查該層級的日誌是否啟用</div><div></li>
+</ul>
+</div><div>
+<ul>
+<li>
+<p>IsEnabled() - 確定指定的級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsTraceEnabled - 確定Trace級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsDebugEnabled - 確定Debug級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsInfoEnabled - 確定Info級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsWarnEnabled - 確定Warn級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsErrorEnabled - 確定Error級別日誌是否啟用</p>
+</li>
+<li>
+<p>IsFatalEnabled - 確定Fatal級別日誌是否啟用</div><span id="internal-source-marker_0.8555412123391619" style="font-size: 16px; vertical-align: baseline;">除此之外，NLog還提供了一組方法來記錄Exception</span>
+<span style="font-size: 16px; vertical-align: baseline;">通過配置Layout Renderer的${exception}，可以取得很詳細的訊息</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">LogException() - 使用指定的格式和參數，將訊息和例外寫入指定的級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">TraceException() - 使用指定的格式和參數，將訊息和例外寫入Trace級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">DebugException() - 使用指定的格式和參數，將訊息和例外寫入Debug級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">InfoException() - 使用指定的格式和參數，將訊息和例外寫入Info級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">WarnException() - 使用指定的格式和參數，將訊息和例外寫曾Warn級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">ErrorException() - 使用指定的格式和參數，將訊息和例外寫曾Error級別</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">FatalException() - 使用指定的格式和參數，將訊息和例外寫曾Fatal級別</span><span style="font-size: 16px; vertical-align: baseline;"></span>
+<span style="font-size: 16px; vertical-align: baseline;">${exception}的詳細設定方式，請參考</span><a href="https://github.com/nlog/nlog/wiki/Exception-Layout-Renderer"><span style="color: #1155cc; font-size: 16px; vertical-align: baseline;">官網文件</span></a><span style="font-size: 16px; vertical-align: baseline;"></span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">format - 用逗號分隔的例外屬性例表，不區分大小寫
+Message, Type, ShortType, ToString, Method, StackTrace</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">innerFormat - 用逗號分隔的例外屬性例表，不區分大小寫
+Message, Type, ShortType, ToString, Method, StackTrace</span></p>
+</li>
+<li>
+<p><span style="vertical-align: baseline;">maxInnerExceptionLevel - 內部錯誤的最大層數</span><span style="font-size: 16px; vertical-align: baseline;"></span>
+<span style="font-size: 16px; vertical-align: baseline;">${onexception} - 用來輸出內部例外</span>
+<span style="font-size: 16px; vertical-align: baseline;"></span>
+<span style="font-size: 16px; vertical-align: baseline;">範例</span>
+<span style="font-size: 16px; vertical-align: baseline;">StackTrace：${exception:format=stacktrace}</span>
+<span style="font-size: 16px; vertical-align: baseline;">Exception Type：${exception:format=type}</span>
+<span style="font-size: 16px; vertical-align: baseline;">Exception Message：${exception:format=message}</span>
+<span style="font-size: 16px; vertical-align: baseline;">Inner  Exception  ：${onexception:${exception:format=type,message,method:maxInnerExceptionLevel=5:innerFormat=shortType,message,method}}</span></p>
+</li>
+</ul>
+<hr>
+<div>
+<h2 id="example">Example</h2>
+</div></div></div><div>最基本的使用範例，取得Logger並輸出了一個字串訊息</div><div>
+</div><div><pre class="brush:csharp">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NLog;
+<p>namespace NLogApp
+{
+class Program
+{
+static readonly Logger log = LogManager.GetLogger(&ldquo;Program&rdquo;);</p>
+<pre><code>    static void Main(string[] args)
+    {
+        log.Debug(&quot;Debug Message...&quot;);
+    }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div><div>如果需要更多細部控制，可以實例化一個LogEvent來調整屬性，再傳給logger輸出</div><div><pre class="brush:csharp">using System;
+using System.Globalization;
+using NLog;</p>
+<p>class MyClass
+{
+static Logger logger = LogManager.GetLogger(&ldquo;MyClass&rdquo;);</p>
+<pre><code>public void LogSomething()
+{
+    LogEventInfo myEvent = new LogEventInfo(LogLevel.Debug, &quot;&quot;, &quot;My debug message&quot;);
+    myEvent.LoggerName = logger.Name;
+    myEvent.Properties.Add(&quot;MyCustomValue&quot;, &quot;This is from MyClass&quot;);
+
+    logger.Log(myEvent);
+}
+</code></pre>
+<p>}
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20API&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f
+			&title=NLog%20API&summary=LogManager%20LogManager%e6%98%af%e7%94%a8%e4%be%86%e5%bb%ba%e7%ab%8b%e6%97%a5%e8%aa%8c%e5%92%8c%e7%ae%a1%e7%90%86%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%94%a8%e7%9a%84%e9%a1%9e%e5%88%a5%ef%bc%8c%e6%9c%89%e4%bb%a5%e4%b8%8b%e5%b9%be%e5%80%8bMethod%20%20%20LogManager.GetLogger%20-%20%e5%8f%96%e5%be%97%e6%88%96%e5%bb%ba%e7%ab%8b%e6%8c%87%e5%ae%9a%e7%9a%84logger%20%e5%bb%ba%e8%ad%b0%e5%bb%ba%e7%ab%8bLogger%e7%9a%84%e6%96%b9%e5%bc%8f%ef%bc%8c%e9%9c%80%e8%a6%81%e6%89%8b%e5%8b%95%e6%8c%87%e5%ae%9a%e5%90%8d%e7%a8%b1%20LogManager.GetCurrentClassLogger%c2%a0-%20%e5%8f%96%e5%be%97%e6%88%96%e5%bb%ba%e7%ab%8b%e7%9b%ae%e5%89%8d%e9%a1%9e%e5%88%a5%e5%90%8d%e7%a8%b1%e7%9a%84logger%20%e9%9b%96%e7%84%b6%e6%af%94%e8%bc%83%e6%96%b9%e4%be%bf%ef%bc%8c%e4%bd%86%e5%ba%95%e5%b1%a4%e6%98%af%e4%bb%a5StackTrace%e5%8f%96%e5%be%97%e5%90%8d%e7%a8%b1%ef%bc%8c%e6%88%90%e6%9c%ac%e9%ab%98%e5%be%88%e5%a4%9a%20LogManager.Configuration%20-%20%e5%8f%96%e5%be%97%e6%88%96%e8%a8%ad%e5%ae%9a%e7%9b%ae%e5%89%8d%e6%97%a5%e8%aa%8c%e7%9a%84%e8%a8%ad%e5%ae%9a%e8%b3%87%e8%a8%8a%20LogManaget.GlobalThreshold%20-%20%e5%8f%96%e5%be%97%e6%88%96%e8%a8%ad%e5%ae%9a%e5%85%a8%e5%9f%9f%e6%97%a5%e8%aa%8c%e7%9a%84threshold%20%20%20Logger%20NLog.Logger%e9%a1%9e%e5%88%a5%e6%98%af%e7%94%a8%e4%be%86%e8%bc%b8%e5%87%baLog%e7%94%a8%e7%9a%84%ef%bc%8c%e6%9c%89%e4%bb%a5%e4%b8%8b%e5%b9%be%e5%80%8bMethod%e7%94%a8%e4%be%86%e8%bc%b8%e5%87%ba%e4%b8%8d%e5%90%8c%e5%b1%a4%e7%b4%9a%e7%9a%84Log%e6%af%8f%e5%80%8bMethod%e9%83%bd%e6%9c%89%e5%a4%9a%e5%80%8boverloads%e7%94%a8%e4%be%86%e6%9c%80%e5%b0%8f%e5%8c%96%e5%85%a7%e5%ad%98%e9%85%8d%e7%bd%ae%e4%bb%a5%e6%8f%90%e9%ab%98%e6%97%a5%e8%aa%8c%e9%80%9f%e5%ba%a6%20%20Log%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5%e6%8c%87%e5%ae%9a%e7%9a%84%e7%b4%9a%e5%88%a5%20Trace%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Trace%e7%b4%9a%e5%88%a5%20Debug%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Debug%e7%b4%9a%e5%88%a5%20Info%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Info%e7%b4%9a%e5%88%a5%20Warn%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Warn%e7%b4%9a%e5%88%a5%20Erro%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Error%e7%b4%9a%e5%88%a5%20Fatal%28%29%20-%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a0%bc%e5%bc%8f%e5%92%8c%e5%8f%83%e6%95%b8%ef%bc%8c%e5%b0%87%e8%a8%8a%e6%81%af%e5%af%ab%e5%85%a5Fatal%e7%b4%9a%e5%88%a5%e4%bb%a5%e4%b8%8b%e7%9a%84%e6%96%b9%e6%b3%95%e5%92%8c%e5%b1%ac%e6%80%a7%e7%94%a8%e4%be%86%e6%aa%a2%e6%9f%a5%e8%a9%b2%e5%b1%a4%e7%b4%9a%e7%9a%84%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%20%20%20%20%20IsEnabled%28%29%20-%20%e7%a2%ba%e5%ae%9a%e6%8c%87%e5%ae%9a%e7%9a%84%e7%b4%9a%e5%88%a5%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%0a%20%20IsTraceEnabled%20-%20%e7%a2%ba%e5%ae%9aTrace%e7%b4%9a%e5%88%a5%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%0a%20%20IsDebugEnabled%20-%20%e7%a2%ba%e5%ae%9aDebug%e7%b4%9a%e5%88%a5%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%0a%20%20IsInfoEnabled%20-%20%e7%a2%ba%e5%ae%9aInfo%e7%b4%9a%e5%88%a5%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%0a%20%20IsWarnEnabled%20-%20%e7%a2%ba%e5%ae%9aWarn%e7%b4%9a%e5%88%a5%e6%97%a5%e8%aa%8c%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20API&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-api%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

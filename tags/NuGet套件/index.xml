@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NuGet套件 on My New Hugo Site</title>
+    <link>http://example.org/tags/nuget%E5%A5%97%E4%BB%B6/</link>
+    <description>Recent content in NuGet套件 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 May 2016 17:06:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/nuget%E5%A5%97%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C# 排程套件: Quartz</title>
+      <link>http://example.org/posts/2016/05/c-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6-quartz/</link>
+      <pubDate>Mon, 23 May 2016 17:06:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/05/c-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6-quartz/</guid>
+      <description>Quartz 套件 簡介 Quartz是個排程套件
+安裝 $ install-package Quartz 建立Job namespace ConsoleApplication1 { &amp;amp;nbsp; &amp;amp;nbsp; using System; &amp;amp;nbsp; &amp;amp;nbsp; using Quartz; &amp;amp;nbsp; &amp;amp;nbsp; [DisallowConcurrentExecution] &amp;amp;nbsp; &amp;amp;nbsp; internal class MyJob : IJob &amp;amp;nbsp; &amp;amp;nbsp; { &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; public void Execute(IJobExecutionContext context) &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; { &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; Console.WriteLine(&amp;#34;do job&amp;#34;); &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp; } &amp;amp;nbsp; &amp;amp;nbsp; } } 建立排程 namespace ConsoleApplication1 { &amp;amp;nbsp; &amp;amp;nbsp; using Quartz; &amp;amp;nbsp; &amp;amp;nbsp; using Quartz.</description>
+    </item>
+    
+    <item>
+      <title>ChartJS 簡單好用的圖表元件</title>
+      <link>http://example.org/posts/2016/03/chartjs-%E7%B0%A1%E5%96%AE%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%96%E8%A1%A8%E5%85%83%E4%BB%B6/</link>
+      <pubDate>Sat, 19 Mar 2016 11:36:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/03/chartjs-%E7%B0%A1%E5%96%AE%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%96%E8%A1%A8%E5%85%83%E4%BB%B6/</guid>
+      <description>正所謂一圖解千文，一張圖表可以更容易地看出資料背後所代表的意義 ChartJS是一套簡單好用基於HTML5的JS Library，提供六種圖表，使用方式還滿簡單地
+首先透過Nuget或Bower取得ChartJS
+$ Install-Package Chart.js $ Bower Install Chart.js  宣告一個canvas元素 &amp;lt;canvas id=&#34;myLine&#34; width=&#34;300&#34; height=&#34;400&#34;&amp;gt;&amp;lt;/canvas&amp;gt;  準備該適合該圖表的資料 把資料傳入該圖表即可 (function () {  var lineChartData = {
+ labels: [&amp;ldquo;January&amp;rdquo;, &amp;ldquo;February&amp;rdquo;, &amp;ldquo;March&amp;rdquo;, &amp;ldquo;April&amp;rdquo;, &amp;ldquo;May&amp;rdquo;, &amp;ldquo;June&amp;rdquo;, &amp;ldquo;July&amp;rdquo;],
+ datasets: [
+ {
+ fillColor: &amp;ldquo;rgba(220,220,220,0.5)&amp;rdquo;,
+ strokeColor: &amp;ldquo;rgba(220,220,220,1)&amp;rdquo;,
+ pointColor: &amp;ldquo;rgba(220,220,220,1)&amp;rdquo;,
+ pointStrokeColor: &amp;ldquo;#fff&amp;rdquo;,
+ data: [65, 59, 90, 81, 56, 55, 40]
+ },
+ {
+ fillColor: &amp;ldquo;rgba(151,187,205,0.5)&amp;rdquo;,</description>
+    </item>
+    
+    <item>
+      <title>TopShelf</title>
+      <link>http://example.org/posts/2016/01/topshelf/</link>
+      <pubDate>Wed, 27 Jan 2016 11:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/01/topshelf/</guid>
+      <description>開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&amp;ldquo;MyService Start&amp;rdquo;); }
+ public void Stop() { Console.WriteLine(&amp;quot;My Service Stop&amp;quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&amp;gt; { x.Service&amp;lt;MyService&amp;gt;(s =&amp;gt; { s.ConstructUsing(() =&amp;gt; new MyService()); s.WhenStarted(svc =&amp;gt; svc.Start()); s.WhenStopped(svc =&amp;gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&amp;quot;MyService&amp;quot;); x.</description>
+    </item>
+    
+    <item>
+      <title>ladda-bootstrap 套件</title>
+      <link>http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Wed, 01 Oct 2014 14:33:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/</guid>
+      <description>ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&amp;lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&amp;gt; &amp;lt;span class=&#34;ladda-label&#34;&amp;gt;button&amp;lt;/span&amp;gt; &amp;lt;/button&amp;gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html</description>
+    </item>
+    
+    <item>
+      <title>spin.js 套件</title>
+      <link>http://example.org/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Wed, 01 Oct 2014 14:05:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/</guid>
+      <description>spin.js是一個簡單使用的Loading的動畫，官網上有很清楚的使用範例 首先透過NuGet安裝spin.js套件
+[![](http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 網頁中放一個div來轉圈圈，再用一個按鈕來觸發事件 &amp;lt;div id=&#34;div1&#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;input id=&#34;btn1&#34; type=&#34;button&#34; value=&#34;click&#34; /&amp;gt;  spin.js本身是無相依性的，這邊用JQuery只是用來綁定事件 呼叫Spinner物件的spin函式來啟用動畫，呼叫stop來停止動畫 $(function () { $(&#34;#btn1&#34;).click(function () { spinner = new Spinner().spin($(&#34;#div1&#34;)[0]); setTimeout(function () { spinner.stop(); }, 1000); }); });   相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+ladda-bootstrap 套件 http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html</description>
+    </item>
+    
+  </channel>
+</rss>

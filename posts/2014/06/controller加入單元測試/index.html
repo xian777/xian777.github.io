@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Controller加入單元測試 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否
+首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests 依照MVC的習慣，加入一個Controllers資料夾 在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test 首先初始化一些要共用的變數 private Mock&lt;IGuestbookRepository&gt; repository; private GuestbookController ctrl; [TestInitialize] public void GuestbookControllerTestInitialize() { this.repository = new Mock&lt;IGuestbookRepository&gt;(); this.repository .Setup(x =&gt; x.Find(It.IsIn&lt;int&gt;(1))) .Returns(new Guestbook()); this.ctrl = new GuestbookController(this.repository.Object); } Index相關測試 [TestMethod] public void Index_GET_Return_ViewResult() { var view = this.ctrl.Index() as ViewResult; Assert.IsNotNull(view); } Create相關測試 [TestMethod] public void Create_GET_Return_ViewResult() { var view = this.ctrl.Create() as ViewResult; Assert.IsNotNull(view); } [TestMethod] public void Create_POST_Success_Return_RedirectToRouteResult() { var model = new Guestbook(); var view = this.
+    ">
+
+
+<meta property="og:title" content="Controller加入單元測試" />
+<meta property="og:description" content="前言 前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否
+首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests 依照MVC的習慣，加入一個Controllers資料夾 在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test 首先初始化一些要共用的變數 private Mock&lt;IGuestbookRepository&gt; repository; private GuestbookController ctrl; [TestInitialize] public void GuestbookControllerTestInitialize() { this.repository = new Mock&lt;IGuestbookRepository&gt;(); this.repository .Setup(x =&gt; x.Find(It.IsIn&lt;int&gt;(1))) .Returns(new Guestbook()); this.ctrl = new GuestbookController(this.repository.Object); } Index相關測試 [TestMethod] public void Index_GET_Return_ViewResult() { var view = this.ctrl.Index() as ViewResult; Assert.IsNotNull(view); } Create相關測試 [TestMethod] public void Create_GET_Return_ViewResult() { var view = this.ctrl.Create() as ViewResult; Assert.IsNotNull(view); } [TestMethod] public void Create_POST_Success_Return_RedirectToRouteResult() { var model = new Guestbook(); var view = this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/06/controller%E5%8A%A0%E5%85%A5%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6/" />
+<meta property="article:published_time" content="2014-06-04T11:43:00+00:00" />
+<meta property="article:modified_time" content="2014-06-04T11:43:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Controller加入單元測試"/>
+<meta name="twitter:description" content="前言 前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否
+首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests 依照MVC的習慣，加入一個Controllers資料夾 在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test 首先初始化一些要共用的變數 private Mock&lt;IGuestbookRepository&gt; repository; private GuestbookController ctrl; [TestInitialize] public void GuestbookControllerTestInitialize() { this.repository = new Mock&lt;IGuestbookRepository&gt;(); this.repository .Setup(x =&gt; x.Find(It.IsIn&lt;int&gt;(1))) .Returns(new Guestbook()); this.ctrl = new GuestbookController(this.repository.Object); } Index相關測試 [TestMethod] public void Index_GET_Return_ViewResult() { var view = this.ctrl.Index() as ViewResult; Assert.IsNotNull(view); } Create相關測試 [TestMethod] public void Create_GET_Return_ViewResult() { var view = this.ctrl.Create() as ViewResult; Assert.IsNotNull(view); } [TestMethod] public void Create_POST_Success_Return_RedirectToRouteResult() { var model = new Guestbook(); var view = this."/>
+
+<meta itemprop="name" content="Controller加入單元測試">
+<meta itemprop="description" content="前言 前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否
+首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests 依照MVC的習慣，加入一個Controllers資料夾 在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test 首先初始化一些要共用的變數 private Mock&lt;IGuestbookRepository&gt; repository; private GuestbookController ctrl; [TestInitialize] public void GuestbookControllerTestInitialize() { this.repository = new Mock&lt;IGuestbookRepository&gt;(); this.repository .Setup(x =&gt; x.Find(It.IsIn&lt;int&gt;(1))) .Returns(new Guestbook()); this.ctrl = new GuestbookController(this.repository.Object); } Index相關測試 [TestMethod] public void Index_GET_Return_ViewResult() { var view = this.ctrl.Index() as ViewResult; Assert.IsNotNull(view); } Create相關測試 [TestMethod] public void Create_GET_Return_ViewResult() { var view = this.ctrl.Create() as ViewResult; Assert.IsNotNull(view); } [TestMethod] public void Create_POST_Success_Return_RedirectToRouteResult() { var model = new Guestbook(); var view = this.">
+<meta itemprop="datePublished" content="2014-06-04T11:43:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-04T11:43:00+00:00" />
+<meta itemprop="wordCount" content="259">
+
+
+
+<meta itemprop="keywords" content="Unit Test," />
+
+<link rel="canonical" href="http://example.org/posts/2014/06/controller%E5%8A%A0%E5%85%A5%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Controller加入單元測試</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 4, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit Test</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit test</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="前言">前言</h1>
+<p>前面介紹過Repository Pattern用來隔離資料庫，和Autoface注入介面，接下來可以在Controller中寫一些測試項目來驗證流程正確與否</p>
+<h1 id="首先加入一個測試專案名稱為要測試的專案名稱後面加tests">首先加入一個測試專案，名稱為要測試的專案名稱後面加.Tests</h1>
+<p><img src="http://1.bp.blogspot.com/-OZinuFI1mHU/U46Vkhkz8aI/AAAAAAAABX8/jcka12CXCac/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png" alt="加入一個測試專案"></p>
+<h1 id="依照mvc的習慣加入一個controllers資料夾">依照MVC的習慣，加入一個Controllers資料夾</h1>
+<p>在資料夾下新增一個單元測試檔案，名稱為要測試的控制器名稱後面加Test
+<img src="http://4.bp.blogspot.com/-pYXbFulua7o/U46VpOARWdI/AAAAAAAABYE/KVYnuvxFJ4M/s1600/02.%E6%96%B0%E5%A2%9E%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6.png" alt="加入一個Controllers資料夾"></p>
+<h1 id="首先初始化一些要共用的變數">首先初始化一些要共用的變數</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">private</span> Mock&lt;IGuestbookRepository&gt; repository;
+<span style="color:#66d9ef">private</span> GuestbookController ctrl;
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestInitialize]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> GuestbookControllerTestInitialize()
+{
+    <span style="color:#66d9ef">this</span>.repository = <span style="color:#66d9ef">new</span> Mock&lt;IGuestbookRepository&gt;();
+    <span style="color:#66d9ef">this</span>.repository
+        .Setup(x =&gt; x.Find(It.IsIn&lt;<span style="color:#66d9ef">int</span>&gt;(<span style="color:#ae81ff">1</span>)))
+        .Returns(<span style="color:#66d9ef">new</span> Guestbook());
+    <span style="color:#66d9ef">this</span>.ctrl = <span style="color:#66d9ef">new</span> GuestbookController(<span style="color:#66d9ef">this</span>.repository.Object);
+}
+</code></pre></div><h1 id="index相關測試">Index相關測試</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Index_GET_Return_ViewResult()
+{
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Index() <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+</code></pre></div><h1 id="create相關測試">Create相關測試</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Create_GET_Return_ViewResult()
+{
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Create() <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Create_POST_Success_Return_RedirectToRouteResult()
+{
+    <span style="color:#66d9ef">var</span> model = <span style="color:#66d9ef">new</span> Guestbook();
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Create(model) <span style="color:#66d9ef">as</span> RedirectToRouteResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Create_POST_Fail_Return_ViewResult()
+{
+    <span style="color:#66d9ef">var</span> model = <span style="color:#66d9ef">new</span> Guestbook();
+    <span style="color:#66d9ef">this</span>.ctrl.ModelState.AddModelError(<span style="color:#e6db74">&#34;key&#34;</span>, <span style="color:#e6db74">&#34;message&#34;</span>);
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Create(model) <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+</code></pre></div><h1 id="edit相關測試">Edit相關測試</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Edit_GET_Null_ID_Return_HttpStatusCodeResult()
+{
+    <span style="color:#66d9ef">int?</span> id = <span style="color:#66d9ef">null</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Edit(id) <span style="color:#66d9ef">as</span> HttpStatusCodeResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Edit_GET_Invalid_ID_Return_HttpNotFoundResult()
+{
+    <span style="color:#66d9ef">int</span> id = <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Edit(id) <span style="color:#66d9ef">as</span> HttpNotFoundResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Edit_GET_Valid_ID_Return_ViewResult()
+{
+    <span style="color:#66d9ef">int</span> id = <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Edit(id) <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Edit_POST_Success_Return_RedirectToRouteResult()
+{
+    <span style="color:#66d9ef">var</span> model = <span style="color:#66d9ef">new</span> Guestbook();
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Edit(model) <span style="color:#66d9ef">as</span> RedirectToRouteResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Edit_POST_Fail_Return_ViewResult()
+{
+    <span style="color:#66d9ef">var</span> model = <span style="color:#66d9ef">new</span> Guestbook();
+    <span style="color:#66d9ef">this</span>.ctrl.ModelState.AddModelError(<span style="color:#e6db74">&#34;key&#34;</span>, <span style="color:#e6db74">&#34;message&#34;</span>);
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Edit(model) <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+</code></pre></div><h1 id="delete相關測試">Delete相關測試</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Delete_GET_Null_ID_Return_HttpStatusCodeResult()
+{
+    <span style="color:#66d9ef">int?</span> id = <span style="color:#66d9ef">null</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Delete(id) <span style="color:#66d9ef">as</span> HttpStatusCodeResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Delete_GET_Invalid_ID_Return_HttpNotFound()
+{
+    <span style="color:#66d9ef">int?</span> id = <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Delete(id) <span style="color:#66d9ef">as</span> HttpNotFoundResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Delete_GET_Valid_ID_Return_ViewResult()
+{
+    <span style="color:#66d9ef">int?</span> id = <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.Delete(id) <span style="color:#66d9ef">as</span> ViewResult;
+    Assert.IsNotNull(view);
+}
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">[TestMethod]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Delete_POST_Return_RedirectToRouteResult()
+{
+    <span style="color:#66d9ef">int</span> id = <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">var</span> view = <span style="color:#66d9ef">this</span>.ctrl.DeleteConfirmed(id) <span style="color:#66d9ef">as</span> RedirectToRouteResult;
+    Assert.IsNotNull(view);
+}
+</code></pre></div><h1 id="單元測試涵蓋率可以參考ncoverncrunch等工具">單元測試涵蓋率可以參考NCover、NCrunch等工具</h1>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Controller%e5%8a%a0%e5%85%a5%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f
+			&title=Controller%e5%8a%a0%e5%85%a5%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6&summary=%e5%89%8d%e8%a8%80%20%e5%89%8d%e9%9d%a2%e4%bb%8b%e7%b4%b9%e9%81%8eRepository%20Pattern%e7%94%a8%e4%be%86%e9%9a%94%e9%9b%a2%e8%b3%87%e6%96%99%e5%ba%ab%ef%bc%8c%e5%92%8cAutoface%e6%b3%a8%e5%85%a5%e4%bb%8b%e9%9d%a2%ef%bc%8c%e6%8e%a5%e4%b8%8b%e4%be%86%e5%8f%af%e4%bb%a5%e5%9c%a8Controller%e4%b8%ad%e5%af%ab%e4%b8%80%e4%ba%9b%e6%b8%ac%e8%a9%a6%e9%a0%85%e7%9b%ae%e4%be%86%e9%a9%97%e8%ad%89%e6%b5%81%e7%a8%8b%e6%ad%a3%e7%a2%ba%e8%88%87%e5%90%a6%0a%e9%a6%96%e5%85%88%e5%8a%a0%e5%85%a5%e4%b8%80%e5%80%8b%e6%b8%ac%e8%a9%a6%e5%b0%88%e6%a1%88%ef%bc%8c%e5%90%8d%e7%a8%b1%e7%82%ba%e8%a6%81%e6%b8%ac%e8%a9%a6%e7%9a%84%e5%b0%88%e6%a1%88%e5%90%8d%e7%a8%b1%e5%be%8c%e9%9d%a2%e5%8a%a0.Tests%20%e4%be%9d%e7%85%a7MVC%e7%9a%84%e7%bf%92%e6%85%a3%ef%bc%8c%e5%8a%a0%e5%85%a5%e4%b8%80%e5%80%8bControllers%e8%b3%87%e6%96%99%e5%a4%be%20%e5%9c%a8%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%8b%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6%e6%aa%94%e6%a1%88%ef%bc%8c%e5%90%8d%e7%a8%b1%e7%82%ba%e8%a6%81%e6%b8%ac%e8%a9%a6%e7%9a%84%e6%8e%a7%e5%88%b6%e5%99%a8%e5%90%8d%e7%a8%b1%e5%be%8c%e9%9d%a2%e5%8a%a0Test%20%e9%a6%96%e5%85%88%e5%88%9d%e5%a7%8b%e5%8c%96%e4%b8%80%e4%ba%9b%e8%a6%81%e5%85%b1%e7%94%a8%e7%9a%84%e8%ae%8a%e6%95%b8%20private%20Mock%26lt%3bIGuestbookRepository%26gt%3b%20repository%3b%20private%20GuestbookController%20ctrl%3b%20%5bTestInitialize%5d%20public%20void%20GuestbookControllerTestInitialize%28%29%20%7b%20this.repository%20%3d%20new%20Mock%26lt%3bIGuestbookRepository%26gt%3b%28%29%3b%20this.repository%20.Setup%28x%20%3d%26gt%3b%20x.Find%28It.IsIn%26lt%3bint%26gt%3b%281%29%29%29%20.Returns%28new%20Guestbook%28%29%29%3b%20this.ctrl%20%3d%20new%20GuestbookController%28this.repository.Object%29%3b%20%7d%20Index%e7%9b%b8%e9%97%9c%e6%b8%ac%e8%a9%a6%20%5bTestMethod%5d%20public%20void%20Index_GET_Return_ViewResult%28%29%20%7b%20var%20view%20%3d%20this.ctrl.Index%28%29%20as%20ViewResult%3b%20Assert.IsNotNull%28view%29%3b%20%7d%20Create%e7%9b%b8%e9%97%9c%e6%b8%ac%e8%a9%a6%20%5bTestMethod%5d%20public%20void%20Create_GET_Return_ViewResult%28%29%20%7b%20var%20view%20%3d%20this.ctrl.Create%28%29%20as%20ViewResult%3b%20Assert.IsNotNull%28view%29%3b%20%7d%20%5bTestMethod%5d%20public%20void%20Create_POST_Success_Return_RedirectToRouteResult%28%29%20%7b%20var%20model%20%3d%20new%20Guestbook%28%29%3b%20var%20view%20%3d%20this.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Controller%e5%8a%a0%e5%85%a5%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fcontroller%25E5%258A%25A0%25E5%2585%25A5%25E5%2596%25AE%25E5%2585%2583%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

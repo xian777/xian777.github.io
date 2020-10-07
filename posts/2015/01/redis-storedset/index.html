@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis StoredSet | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="指令說明ZADD將一個或多個元素加入有序集合ZCARD取得有序集合中的元素個數ZCOUNT取得有序集合中，score值在min到max的元素個數ZINCRBY設定有序集合中的成員score遞增值ZRANGE取得有序集合中指定位置範圍的元素ZRANGEBYSCORE取得有序集合中指定score範圍的元素ZRANK取得有序集合中元素從大到小的排列順序ZREM移除有序集合中一個或多個元素ZREMRANGEBYRANK移除有序集合中指定排名範圍的元素ZREMRANGEBYSCORE移除有序集合中指定score範圍的元素ZREVRANGE取得有序集合中指定位置範圍的元素 元素以遞減方式排列ZREVRANGEBYSCORE取得有序集合中指定score範圍的元素 元素以遞減方式排列ZREVRANK取得有序集合中元素從小到大的排列順序ZSCORE取得有序集點中元素的score值ZUNIONSTORE合併一個或多個有序集合的聯集 並把合併後的資料存成另一個有序集合ZINTERSTORE合併一個或多個有序集合的交集 並把合併後的資料存成另一個有序集合ZSCAN搜尋有序集合元素ZRANGEBYLEX取得有序集合中指定位置範圍的元素 當元素有相同的score時，用成員的字典順序排列ZLEXCOUNT取得有序集合中指定位置範圍的元素數量 當元素有相同的score時，用成員的字典順序排列ZREMRANGEBYLEX移除有序集合中指定排名範圍的元素 當元素有相同的score時，用成員的字典順序排列
+    ">
+
+
+<meta property="og:title" content="Redis StoredSet" />
+<meta property="og:description" content="指令說明ZADD將一個或多個元素加入有序集合ZCARD取得有序集合中的元素個數ZCOUNT取得有序集合中，score值在min到max的元素個數ZINCRBY設定有序集合中的成員score遞增值ZRANGE取得有序集合中指定位置範圍的元素ZRANGEBYSCORE取得有序集合中指定score範圍的元素ZRANK取得有序集合中元素從大到小的排列順序ZREM移除有序集合中一個或多個元素ZREMRANGEBYRANK移除有序集合中指定排名範圍的元素ZREMRANGEBYSCORE移除有序集合中指定score範圍的元素ZREVRANGE取得有序集合中指定位置範圍的元素 元素以遞減方式排列ZREVRANGEBYSCORE取得有序集合中指定score範圍的元素 元素以遞減方式排列ZREVRANK取得有序集合中元素從小到大的排列順序ZSCORE取得有序集點中元素的score值ZUNIONSTORE合併一個或多個有序集合的聯集 並把合併後的資料存成另一個有序集合ZINTERSTORE合併一個或多個有序集合的交集 並把合併後的資料存成另一個有序集合ZSCAN搜尋有序集合元素ZRANGEBYLEX取得有序集合中指定位置範圍的元素 當元素有相同的score時，用成員的字典順序排列ZLEXCOUNT取得有序集合中指定位置範圍的元素數量 當元素有相同的score時，用成員的字典順序排列ZREMRANGEBYLEX移除有序集合中指定排名範圍的元素 當元素有相同的score時，用成員的字典順序排列" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-storedset/" />
+<meta property="article:published_time" content="2015-01-21T16:08:00+00:00" />
+<meta property="article:modified_time" content="2015-01-21T16:08:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis StoredSet"/>
+<meta name="twitter:description" content="指令說明ZADD將一個或多個元素加入有序集合ZCARD取得有序集合中的元素個數ZCOUNT取得有序集合中，score值在min到max的元素個數ZINCRBY設定有序集合中的成員score遞增值ZRANGE取得有序集合中指定位置範圍的元素ZRANGEBYSCORE取得有序集合中指定score範圍的元素ZRANK取得有序集合中元素從大到小的排列順序ZREM移除有序集合中一個或多個元素ZREMRANGEBYRANK移除有序集合中指定排名範圍的元素ZREMRANGEBYSCORE移除有序集合中指定score範圍的元素ZREVRANGE取得有序集合中指定位置範圍的元素 元素以遞減方式排列ZREVRANGEBYSCORE取得有序集合中指定score範圍的元素 元素以遞減方式排列ZREVRANK取得有序集合中元素從小到大的排列順序ZSCORE取得有序集點中元素的score值ZUNIONSTORE合併一個或多個有序集合的聯集 並把合併後的資料存成另一個有序集合ZINTERSTORE合併一個或多個有序集合的交集 並把合併後的資料存成另一個有序集合ZSCAN搜尋有序集合元素ZRANGEBYLEX取得有序集合中指定位置範圍的元素 當元素有相同的score時，用成員的字典順序排列ZLEXCOUNT取得有序集合中指定位置範圍的元素數量 當元素有相同的score時，用成員的字典順序排列ZREMRANGEBYLEX移除有序集合中指定排名範圍的元素 當元素有相同的score時，用成員的字典順序排列"/>
+
+<meta itemprop="name" content="Redis StoredSet">
+<meta itemprop="description" content="指令說明ZADD將一個或多個元素加入有序集合ZCARD取得有序集合中的元素個數ZCOUNT取得有序集合中，score值在min到max的元素個數ZINCRBY設定有序集合中的成員score遞增值ZRANGE取得有序集合中指定位置範圍的元素ZRANGEBYSCORE取得有序集合中指定score範圍的元素ZRANK取得有序集合中元素從大到小的排列順序ZREM移除有序集合中一個或多個元素ZREMRANGEBYRANK移除有序集合中指定排名範圍的元素ZREMRANGEBYSCORE移除有序集合中指定score範圍的元素ZREVRANGE取得有序集合中指定位置範圍的元素 元素以遞減方式排列ZREVRANGEBYSCORE取得有序集合中指定score範圍的元素 元素以遞減方式排列ZREVRANK取得有序集合中元素從小到大的排列順序ZSCORE取得有序集點中元素的score值ZUNIONSTORE合併一個或多個有序集合的聯集 並把合併後的資料存成另一個有序集合ZINTERSTORE合併一個或多個有序集合的交集 並把合併後的資料存成另一個有序集合ZSCAN搜尋有序集合元素ZRANGEBYLEX取得有序集合中指定位置範圍的元素 當元素有相同的score時，用成員的字典順序排列ZLEXCOUNT取得有序集合中指定位置範圍的元素數量 當元素有相同的score時，用成員的字典順序排列ZREMRANGEBYLEX移除有序集合中指定排名範圍的元素 當元素有相同的score時，用成員的字典順序排列">
+<meta itemprop="datePublished" content="2015-01-21T16:08:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-21T16:08:00+00:00" />
+<meta itemprop="wordCount" content="8">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-storedset/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis StoredSet</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 21, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>ZADD</td><td>將一個或多個元素加入有序集合</td></tr><tr><td>ZCARD</td><td>取得有序集合中的元素個數</td></tr><tr><td>ZCOUNT</td><td>取得有序集合中，score值在min到max的元素個數</td></tr><tr><td>ZINCRBY</td><td>設定有序集合中的成員score遞增值</td></tr><tr><td>ZRANGE</td><td>取得有序集合中指定位置範圍的元素</td></tr><tr><td>ZRANGEBYSCORE</td><td>取得有序集合中指定score範圍的元素</td></tr><tr><td>ZRANK</td><td>取得有序集合中元素從大到小的排列順序</td></tr><tr><td>ZREM</td><td>移除有序集合中一個或多個元素</td></tr><tr><td>ZREMRANGEBYRANK</td><td>移除有序集合中指定排名範圍的元素</td></tr><tr><td>ZREMRANGEBYSCORE</td><td>移除有序集合中指定score範圍的元素</td></tr><tr><td>ZREVRANGE</td><td>取得有序集合中指定位置範圍的元素
+元素以遞減方式排列</td></tr><tr><td>ZREVRANGEBYSCORE</td><td>取得有序集合中指定score範圍的元素
+元素以遞減方式排列</td></tr><tr><td>ZREVRANK</td><td>取得有序集合中元素從小到大的排列順序</td></tr><tr><td>ZSCORE</td><td>取得有序集點中元素的score值</td></tr><tr><td>ZUNIONSTORE</td><td>合併一個或多個有序集合的聯集
+並把合併後的資料存成另一個有序集合</td></tr><tr><td>ZINTERSTORE</td><td>合併一個或多個有序集合的交集
+並把合併後的資料存成另一個有序集合</td></tr><tr><td>ZSCAN</td><td>搜尋有序集合元素</td></tr><tr><td>ZRANGEBYLEX</td><td>取得有序集合中指定位置範圍的元素
+當元素有相同的score時，用成員的字典順序排列</td></tr><tr><td>ZLEXCOUNT</td><td>取得有序集合中指定位置範圍的元素數量
+當元素有相同的score時，用成員的字典順序排列</td></tr><tr><td>ZREMRANGEBYLEX</td><td>移除有序集合中指定排名範圍的元素
+當元素有相同的score時，用成員的字典順序排列</td></tr></tbody></table>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20StoredSet&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f
+			&title=Redis%20StoredSet&summary=%e6%8c%87%e4%bb%a4%e8%aa%aa%e6%98%8eZADD%e5%b0%87%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8b%e5%85%83%e7%b4%a0%e5%8a%a0%e5%85%a5%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88ZCARD%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%e5%80%8b%e6%95%b8ZCOUNT%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%ef%bc%8cscore%e5%80%bc%e5%9c%a8min%e5%88%b0max%e7%9a%84%e5%85%83%e7%b4%a0%e5%80%8b%e6%95%b8ZINCRBY%e8%a8%ad%e5%ae%9a%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e6%88%90%e5%93%a1score%e9%81%9e%e5%a2%9e%e5%80%bcZRANGE%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0ZRANGEBYSCORE%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9ascore%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0ZRANK%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e5%85%83%e7%b4%a0%e5%be%9e%e5%a4%a7%e5%88%b0%e5%b0%8f%e7%9a%84%e6%8e%92%e5%88%97%e9%a0%86%e5%ba%8fZREM%e7%a7%bb%e9%99%a4%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8b%e5%85%83%e7%b4%a0ZREMRANGEBYRANK%e7%a7%bb%e9%99%a4%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e6%8e%92%e5%90%8d%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0ZREMRANGEBYSCORE%e7%a7%bb%e9%99%a4%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9ascore%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0ZREVRANGE%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0%20%e5%85%83%e7%b4%a0%e4%bb%a5%e9%81%9e%e6%b8%9b%e6%96%b9%e5%bc%8f%e6%8e%92%e5%88%97ZREVRANGEBYSCORE%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9ascore%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0%20%e5%85%83%e7%b4%a0%e4%bb%a5%e9%81%9e%e6%b8%9b%e6%96%b9%e5%bc%8f%e6%8e%92%e5%88%97ZREVRANK%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e5%85%83%e7%b4%a0%e5%be%9e%e5%b0%8f%e5%88%b0%e5%a4%a7%e7%9a%84%e6%8e%92%e5%88%97%e9%a0%86%e5%ba%8fZSCORE%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e9%bb%9e%e4%b8%ad%e5%85%83%e7%b4%a0%e7%9a%84score%e5%80%bcZUNIONSTORE%e5%90%88%e4%bd%b5%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8b%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e7%9a%84%e8%81%af%e9%9b%86%20%e4%b8%a6%e6%8a%8a%e5%90%88%e4%bd%b5%e5%be%8c%e7%9a%84%e8%b3%87%e6%96%99%e5%ad%98%e6%88%90%e5%8f%a6%e4%b8%80%e5%80%8b%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88ZINTERSTORE%e5%90%88%e4%bd%b5%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8b%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e7%9a%84%e4%ba%a4%e9%9b%86%20%e4%b8%a6%e6%8a%8a%e5%90%88%e4%bd%b5%e5%be%8c%e7%9a%84%e8%b3%87%e6%96%99%e5%ad%98%e6%88%90%e5%8f%a6%e4%b8%80%e5%80%8b%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88ZSCAN%e6%90%9c%e5%b0%8b%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e5%85%83%e7%b4%a0ZRANGEBYLEX%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0%20%e7%95%b6%e5%85%83%e7%b4%a0%e6%9c%89%e7%9b%b8%e5%90%8c%e7%9a%84score%e6%99%82%ef%bc%8c%e7%94%a8%e6%88%90%e5%93%a1%e7%9a%84%e5%ad%97%e5%85%b8%e9%a0%86%e5%ba%8f%e6%8e%92%e5%88%97ZLEXCOUNT%e5%8f%96%e5%be%97%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0%e6%95%b8%e9%87%8f%20%e7%95%b6%e5%85%83%e7%b4%a0%e6%9c%89%e7%9b%b8%e5%90%8c%e7%9a%84score%e6%99%82%ef%bc%8c%e7%94%a8%e6%88%90%e5%93%a1%e7%9a%84%e5%ad%97%e5%85%b8%e9%a0%86%e5%ba%8f%e6%8e%92%e5%88%97ZREMRANGEBYLEX%e7%a7%bb%e9%99%a4%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88%e4%b8%ad%e6%8c%87%e5%ae%9a%e6%8e%92%e5%90%8d%e7%af%84%e5%9c%8d%e7%9a%84%e5%85%83%e7%b4%a0%20%e7%95%b6%e5%85%83%e7%b4%a0%e6%9c%89%e7%9b%b8%e5%90%8c%e7%9a%84score%e6%99%82%ef%bc%8c%e7%94%a8%e6%88%90%e5%93%a1%e7%9a%84%e5%ad%97%e5%85%b8%e9%a0%86%e5%ba%8f%e6%8e%92%e5%88%97&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20StoredSet&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-storedset%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop 整合SVN | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="安裝SVNStyleCop 1. 首先下載SVNStyleCop安裝檔 2. 解壓縮後編輯SVNStyleCop.exe.config 3. 設定SVNSettings.StyleCop裡面要檢查的規則 4. 修改SVNStyleCop.exe.config裡面的路徑範本
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;configSections&gt; &lt;section name=&#34;svnStyleCopConfig&#34; type=&#34;SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop&#34; allowDefinition=&#34;Everywhere&#34; allowExeDefinition=&#34;MachineToApplication&#34; restartOnExternalChanges=&#34;true&#34; /&gt; &lt;/configSections&gt; &lt;svnStyleCopConfig tempFolder=&#34;Temp&#34;&gt; &lt;!-- 設定svnlook.exe執行檔位置 --&gt; &lt;svnLook location=&#34;C:\Program Files\VisualSVN Server\bin\svnlook.exe&#34; /&gt; &lt;styleCop settingsFile=&#34;SVNSettings.StyleCop&#34; maxViolationCount=&#34;20&#34; /&gt; &lt;!-- 設定專案路徑範本 --&gt; &lt;pathPatterns&gt; &lt;clear /&gt; &lt;add value=&#34;^trunk/.*\.cs$&#34;/&gt; &lt;add value=&#34;^branches/.*\.cs$&#34;/&gt; &lt;add value=&#34;^tags/.*\.cs$&#34;/&gt; &lt;/pathPatterns&gt; &lt;/svnStyleCopConfig&gt; &lt;/configuration&gt; 設定 1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑2\. 把批次檔的內容複製到SVN Repos的pre-commit hook[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)   參考資料 SVNStyleCop官網
+    ">
+
+
+<meta property="og:title" content="StyleCop 整合SVN" />
+<meta property="og:description" content="安裝SVNStyleCop 1. 首先下載SVNStyleCop安裝檔 2. 解壓縮後編輯SVNStyleCop.exe.config 3. 設定SVNSettings.StyleCop裡面要檢查的規則 4. 修改SVNStyleCop.exe.config裡面的路徑範本
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;configSections&gt; &lt;section name=&#34;svnStyleCopConfig&#34; type=&#34;SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop&#34; allowDefinition=&#34;Everywhere&#34; allowExeDefinition=&#34;MachineToApplication&#34; restartOnExternalChanges=&#34;true&#34; /&gt; &lt;/configSections&gt; &lt;svnStyleCopConfig tempFolder=&#34;Temp&#34;&gt; &lt;!-- 設定svnlook.exe執行檔位置 --&gt; &lt;svnLook location=&#34;C:\Program Files\VisualSVN Server\bin\svnlook.exe&#34; /&gt; &lt;styleCop settingsFile=&#34;SVNSettings.StyleCop&#34; maxViolationCount=&#34;20&#34; /&gt; &lt;!-- 設定專案路徑範本 --&gt; &lt;pathPatterns&gt; &lt;clear /&gt; &lt;add value=&#34;^trunk/.*\.cs$&#34;/&gt; &lt;add value=&#34;^branches/.*\.cs$&#34;/&gt; &lt;add value=&#34;^tags/.*\.cs$&#34;/&gt; &lt;/pathPatterns&gt; &lt;/svnStyleCopConfig&gt; &lt;/configuration&gt; 設定 1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑2\. 把批次檔的內容複製到SVN Repos的pre-commit hook[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)   參考資料 SVNStyleCop官網" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88svn/" />
+<meta property="article:published_time" content="2012-12-24T20:18:00+00:00" />
+<meta property="article:modified_time" content="2012-12-24T20:18:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop 整合SVN"/>
+<meta name="twitter:description" content="安裝SVNStyleCop 1. 首先下載SVNStyleCop安裝檔 2. 解壓縮後編輯SVNStyleCop.exe.config 3. 設定SVNSettings.StyleCop裡面要檢查的規則 4. 修改SVNStyleCop.exe.config裡面的路徑範本
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;configSections&gt; &lt;section name=&#34;svnStyleCopConfig&#34; type=&#34;SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop&#34; allowDefinition=&#34;Everywhere&#34; allowExeDefinition=&#34;MachineToApplication&#34; restartOnExternalChanges=&#34;true&#34; /&gt; &lt;/configSections&gt; &lt;svnStyleCopConfig tempFolder=&#34;Temp&#34;&gt; &lt;!-- 設定svnlook.exe執行檔位置 --&gt; &lt;svnLook location=&#34;C:\Program Files\VisualSVN Server\bin\svnlook.exe&#34; /&gt; &lt;styleCop settingsFile=&#34;SVNSettings.StyleCop&#34; maxViolationCount=&#34;20&#34; /&gt; &lt;!-- 設定專案路徑範本 --&gt; &lt;pathPatterns&gt; &lt;clear /&gt; &lt;add value=&#34;^trunk/.*\.cs$&#34;/&gt; &lt;add value=&#34;^branches/.*\.cs$&#34;/&gt; &lt;add value=&#34;^tags/.*\.cs$&#34;/&gt; &lt;/pathPatterns&gt; &lt;/svnStyleCopConfig&gt; &lt;/configuration&gt; 設定 1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑2\. 把批次檔的內容複製到SVN Repos的pre-commit hook[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)   參考資料 SVNStyleCop官網"/>
+
+<meta itemprop="name" content="StyleCop 整合SVN">
+<meta itemprop="description" content="安裝SVNStyleCop 1. 首先下載SVNStyleCop安裝檔 2. 解壓縮後編輯SVNStyleCop.exe.config 3. 設定SVNSettings.StyleCop裡面要檢查的規則 4. 修改SVNStyleCop.exe.config裡面的路徑範本
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;configSections&gt; &lt;section name=&#34;svnStyleCopConfig&#34; type=&#34;SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop&#34; allowDefinition=&#34;Everywhere&#34; allowExeDefinition=&#34;MachineToApplication&#34; restartOnExternalChanges=&#34;true&#34; /&gt; &lt;/configSections&gt; &lt;svnStyleCopConfig tempFolder=&#34;Temp&#34;&gt; &lt;!-- 設定svnlook.exe執行檔位置 --&gt; &lt;svnLook location=&#34;C:\Program Files\VisualSVN Server\bin\svnlook.exe&#34; /&gt; &lt;styleCop settingsFile=&#34;SVNSettings.StyleCop&#34; maxViolationCount=&#34;20&#34; /&gt; &lt;!-- 設定專案路徑範本 --&gt; &lt;pathPatterns&gt; &lt;clear /&gt; &lt;add value=&#34;^trunk/.*\.cs$&#34;/&gt; &lt;add value=&#34;^branches/.*\.cs$&#34;/&gt; &lt;add value=&#34;^tags/.*\.cs$&#34;/&gt; &lt;/pathPatterns&gt; &lt;/svnStyleCopConfig&gt; &lt;/configuration&gt; 設定 1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑2\. 把批次檔的內容複製到SVN Repos的pre-commit hook[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)   參考資料 SVNStyleCop官網">
+<meta itemprop="datePublished" content="2012-12-24T20:18:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-24T20:18:00+00:00" />
+<meta itemprop="wordCount" content="61">
+
+
+
+<meta itemprop="keywords" content="StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88svn/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop 整合SVN</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 24, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="安裝svnstylecop">安裝SVNStyleCop</h2>
+<p>1. 首先<a href="http://svnstylecop.codeplex.com/">下載SVNStyleCop安裝檔</a>
+2. 解壓縮後編輯SVNStyleCop.exe.config
+3. 設定SVNSettings.StyleCop裡面要檢查的規則
+4. 修改SVNStyleCop.exe.config裡面的路徑範本</p>
+<pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name="svnStyleCopConfig" type="SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop" allowDefinition="Everywhere" allowExeDefinition="MachineToApplication" restartOnExternalChanges="true" /&gt;
+    &lt;/configSections&gt;
+
+    &lt;svnStyleCopConfig tempFolder="Temp"&gt;
+        &lt;!-- 設定svnlook.exe執行檔位置 --&gt;
+        &lt;svnLook location="C:\Program Files\VisualSVN Server\bin\svnlook.exe" /&gt;
+        &lt;styleCop settingsFile="SVNSettings.StyleCop" maxViolationCount="20" /&gt;
+
+        &lt;!-- 設定專案路徑範本 --&gt;
+        &lt;pathPatterns&gt;
+            &lt;clear /&gt;
+            &lt;add value="^trunk/.*\.cs$"/&gt;
+   &lt;add value="^branches/.*\.cs$"/&gt;
+   &lt;add value="^tags/.*\.cs$"/&gt;
+        &lt;/pathPatterns&gt;
+    &lt;/svnStyleCopConfig&gt;
+
+&lt;/configuration&gt;</pre>
+<h2 id="設定">設定</h2>
+<div>1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑</div><div>2\. 把批次檔的內容複製到SVN Repos的pre-commit hook</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)</div><div>
+</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h3 id="參考資料">參考資料</h3>
+<p><a href="http://svnstylecop.codeplex.com/">SVNStyleCop官網</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20%e6%95%b4%e5%90%88SVN&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f
+			&title=StyleCop%20%e6%95%b4%e5%90%88SVN&summary=%e5%ae%89%e8%a3%9dSVNStyleCop%201.%20%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89SVNStyleCop%e5%ae%89%e8%a3%9d%e6%aa%94%202.%20%e8%a7%a3%e5%a3%93%e7%b8%ae%e5%be%8c%e7%b7%a8%e8%bc%afSVNStyleCop.exe.config%203.%20%e8%a8%ad%e5%ae%9aSVNSettings.StyleCop%e8%a3%a1%e9%9d%a2%e8%a6%81%e6%aa%a2%e6%9f%a5%e7%9a%84%e8%a6%8f%e5%89%87%204.%20%e4%bf%ae%e6%94%b9SVNStyleCop.exe.config%e8%a3%a1%e9%9d%a2%e7%9a%84%e8%b7%af%e5%be%91%e7%af%84%e6%9c%ac%0a%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bconfiguration%26gt%3b%20%26lt%3bconfigSections%26gt%3b%20%26lt%3bsection%20name%3d%22svnStyleCopConfig%22%20type%3d%22SVNStyleCop.SvnStyleCopConfigSection%2c%20SVNStyleCop%22%20allowDefinition%3d%22Everywhere%22%20allowExeDefinition%3d%22MachineToApplication%22%20restartOnExternalChanges%3d%22true%22%20%2f%26gt%3b%20%26lt%3b%2fconfigSections%26gt%3b%20%26lt%3bsvnStyleCopConfig%20tempFolder%3d%22Temp%22%26gt%3b%20%26lt%3b%21--%20%e8%a8%ad%e5%ae%9asvnlook.exe%e5%9f%b7%e8%a1%8c%e6%aa%94%e4%bd%8d%e7%bd%ae%20--%26gt%3b%20%26lt%3bsvnLook%20location%3d%22C%3a%5cProgram%20Files%5cVisualSVN%20Server%5cbin%5csvnlook.exe%22%20%2f%26gt%3b%20%26lt%3bstyleCop%20settingsFile%3d%22SVNSettings.StyleCop%22%20maxViolationCount%3d%2220%22%20%2f%26gt%3b%20%26lt%3b%21--%20%e8%a8%ad%e5%ae%9a%e5%b0%88%e6%a1%88%e8%b7%af%e5%be%91%e7%af%84%e6%9c%ac%20--%26gt%3b%20%26lt%3bpathPatterns%26gt%3b%20%26lt%3bclear%20%2f%26gt%3b%20%26lt%3badd%20value%3d%22%5etrunk%2f.%2a%5c.cs%24%22%2f%26gt%3b%20%26lt%3badd%20value%3d%22%5ebranches%2f.%2a%5c.cs%24%22%2f%26gt%3b%20%26lt%3badd%20value%3d%22%5etags%2f.%2a%5c.cs%24%22%2f%26gt%3b%20%26lt%3b%2fpathPatterns%26gt%3b%20%26lt%3b%2fsvnStyleCopConfig%26gt%3b%20%26lt%3b%2fconfiguration%26gt%3b%20%e8%a8%ad%e5%ae%9a%201%5c.%20%e7%b7%a8%e8%bc%af%e5%a3%93%e7%b8%ae%e6%aa%94%e4%b8%8b%e9%9d%a2%e7%9a%84pre-commit.cmd%ef%bc%8c%e4%bf%ae%e6%94%b9%e5%89%8d%e5%85%a9%e8%a1%8csvnlook.exe%e5%92%8cSVNStyleCop.exe%e7%9a%84%e8%b7%af%e5%be%912%5c.%20%e6%8a%8a%e6%89%b9%e6%ac%a1%e6%aa%94%e7%9a%84%e5%85%a7%e5%ae%b9%e8%a4%87%e8%a3%bd%e5%88%b0SVN%20Repos%e7%9a%84pre-commit%20hook%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-87zwTSTxMa0%2fUOPNcTue3SI%2fAAAAAAAAApY%2fzcxgaQcFXAs%2fs1600%2f01.Hook.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-87zwTSTxMa0%2fUOPNcTue3SI%2fAAAAAAAAApY%2fzcxgaQcFXAs%2fs1600%2f01.Hook.png%29%20%20%20%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%20SVNStyleCop%e5%ae%98%e7%b6%b2&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20%e6%95%b4%e5%90%88SVN&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E6%2595%25B4%25E5%2590%2588svn%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog 初體驗 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log首先讓環境簡單點，所以開一個主控台專案來當範例[![](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png) 接下來引用NLog最簡單的方式當然就是用NuGet安裝了如果對NuGet不熟的話，可以參考之前的[NuGet學習筆記](http://blog.developer.idv.tw/2012/12/nuget.html)NLog這個套件是NLog.dll元件本身 NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense) [![](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)安裝好後，專案中就會多了這三個東西 [![](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png) 打開設定檔，把註解拿掉，先使用預設值來體驗一下 詳細的設定方式，之後再介紹 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; &nbsp; &nbsp; &nbsp; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &nbsp; &nbsp; &lt;!-- &nbsp; See http://nlog-project.org/wiki/Configuration_file &nbsp; for information on customizing logging rules and outputs. &nbsp; &nbsp;--&gt; &nbsp; &nbsp; &lt;targets&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your targets here --&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=&#34;File&#34; name=&#34;f&#34; fileName=&#34;${basedir}/logs/${shortdate}.log&#34; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=&#34;${longdate} ${uppercase:${level}} ${message}&#34; /&gt; &nbsp; &nbsp; &lt;/targets&gt; &nbsp; &nbsp; &lt;rules&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!
+    ">
+
+
+<meta property="og:title" content="NLog 初體驗" />
+<meta property="og:description" content="先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log首先讓環境簡單點，所以開一個主控台專案來當範例[![](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png) 接下來引用NLog最簡單的方式當然就是用NuGet安裝了如果對NuGet不熟的話，可以參考之前的[NuGet學習筆記](http://blog.developer.idv.tw/2012/12/nuget.html)NLog這個套件是NLog.dll元件本身 NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense) [![](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)安裝好後，專案中就會多了這三個東西 [![](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png) 打開設定檔，把註解拿掉，先使用預設值來體驗一下 詳細的設定方式，之後再介紹 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; &nbsp; &nbsp; &nbsp; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &nbsp; &nbsp; &lt;!-- &nbsp; See http://nlog-project.org/wiki/Configuration_file &nbsp; for information on customizing logging rules and outputs. &nbsp; &nbsp;--&gt; &nbsp; &nbsp; &lt;targets&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your targets here --&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=&#34;File&#34; name=&#34;f&#34; fileName=&#34;${basedir}/logs/${shortdate}.log&#34; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=&#34;${longdate} ${uppercase:${level}} ${message}&#34; /&gt; &nbsp; &nbsp; &lt;/targets&gt; &nbsp; &nbsp; &lt;rules&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-%E5%88%9D%E9%AB%94%E9%A9%97/" />
+<meta property="article:published_time" content="2012-12-29T14:55:00+00:00" />
+<meta property="article:modified_time" content="2012-12-29T14:55:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog 初體驗"/>
+<meta name="twitter:description" content="先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log首先讓環境簡單點，所以開一個主控台專案來當範例[![](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png) 接下來引用NLog最簡單的方式當然就是用NuGet安裝了如果對NuGet不熟的話，可以參考之前的[NuGet學習筆記](http://blog.developer.idv.tw/2012/12/nuget.html)NLog這個套件是NLog.dll元件本身 NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense) [![](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)安裝好後，專案中就會多了這三個東西 [![](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png) 打開設定檔，把註解拿掉，先使用預設值來體驗一下 詳細的設定方式，之後再介紹 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; &nbsp; &nbsp; &nbsp; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &nbsp; &nbsp; &lt;!-- &nbsp; See http://nlog-project.org/wiki/Configuration_file &nbsp; for information on customizing logging rules and outputs. &nbsp; &nbsp;--&gt; &nbsp; &nbsp; &lt;targets&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your targets here --&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=&#34;File&#34; name=&#34;f&#34; fileName=&#34;${basedir}/logs/${shortdate}.log&#34; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=&#34;${longdate} ${uppercase:${level}} ${message}&#34; /&gt; &nbsp; &nbsp; &lt;/targets&gt; &nbsp; &nbsp; &lt;rules&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!"/>
+
+<meta itemprop="name" content="NLog 初體驗">
+<meta itemprop="description" content="先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log首先讓環境簡單點，所以開一個主控台專案來當範例[![](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png) 接下來引用NLog最簡單的方式當然就是用NuGet安裝了如果對NuGet不熟的話，可以參考之前的[NuGet學習筆記](http://blog.developer.idv.tw/2012/12/nuget.html)NLog這個套件是NLog.dll元件本身 NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense) [![](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)安裝好後，專案中就會多了這三個東西 [![](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png) 打開設定檔，把註解拿掉，先使用預設值來體驗一下 詳細的設定方式，之後再介紹 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; &nbsp; &nbsp; &nbsp; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &nbsp; &nbsp; &lt;!-- &nbsp; See http://nlog-project.org/wiki/Configuration_file &nbsp; for information on customizing logging rules and outputs. &nbsp; &nbsp;--&gt; &nbsp; &nbsp; &lt;targets&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your targets here --&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type=&#34;File&#34; name=&#34;f&#34; fileName=&#34;${basedir}/logs/${shortdate}.log&#34; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout=&#34;${longdate} ${uppercase:${level}} ${message}&#34; /&gt; &nbsp; &nbsp; &lt;/targets&gt; &nbsp; &nbsp; &lt;rules&gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;!">
+<meta itemprop="datePublished" content="2012-12-29T14:55:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-29T14:55:00+00:00" />
+<meta itemprop="wordCount" content="144">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-%E5%88%9D%E9%AB%94%E9%A9%97/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog 初體驗</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 29, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    8 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div class="separator" style="clear: both; text-align: left;">先簡單介紹一下如何安裝NLog這個套件，和使用預設的設定檔來寫出Log</div><div class="separator" style="clear: both; text-align: left;">首先讓環境簡單點，所以開一個主控台專案來當範例</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)](http://1.bp.blogspot.com/-kY84lmK8n-Y/UN6LxFGNSKI/AAAAAAAAAls/avloE2j0DDU/s1600/01.NLogApp.png)</div>
+<div class="separator" style="clear: both; text-align: left;">接下來引用NLog最簡單的方式當然就是用NuGet安裝了</div><div class="separator" style="clear: both; text-align: left;">如果對NuGet不熟的話，可以參考之前的[NuGet學習筆記](http://blog.developer.idv.tw/2012/12/nuget.html)</div><div class="separator" style="clear: both; text-align: left;"></div>NLog這個套件是NLog.dll元件本身
+NLog.Config這個套件是NLog.config和NLog.xsd(用來幫助在設定檔中的IntelliSense)
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)](http://1.bp.blogspot.com/-q64xvtDQs48/UN6NL4Ig1YI/AAAAAAAAAmU/ZbCqaqjTbi0/s1600/02.NugetInstall.png)</div><div class="separator" style="clear: both; text-align: left;">安裝好後，專案中就會多了這三個東西 </div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)](http://1.bp.blogspot.com/-JPz6V3bHo4Y/UN6NW6sNdhI/AAAAAAAAAmc/rLoiSFWHldA/s1600/03.SolutionExplorer.png)</div>
+<div class="separator" style="clear: both; text-align: left;">
+</div>打開設定檔，把註解拿掉，先使用預設值來體驗一下
+詳細的設定方式，之後再介紹
+<pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+&nbsp; &nbsp; &nbsp; xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+&nbsp; &nbsp; &lt;!--
+&nbsp; See http://nlog-project.org/wiki/Configuration_file
+&nbsp; for information on customizing logging rules and outputs.
+&nbsp; &nbsp;--&gt;
+&nbsp; &nbsp; &lt;targets&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your targets here --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;target xsi:type="File" name="f" fileName="${basedir}/logs/${shortdate}.log"
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; layout="${longdate} ${uppercase:${level}} ${message}" /&gt;
+&nbsp; &nbsp; &lt;/targets&gt;
+&nbsp; &nbsp; &lt;rules&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- add your logging rules here --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;logger name="*" minlevel="Trace" writeTo="f" /&gt;
+&nbsp; &nbsp; &lt;/rules&gt;
+&lt;/nlog&gt;
+</pre><div class="separator" style="clear: both; text-align: left;">
+</div>呼叫NLog的方式也很簡單，直接用LogManager來引用就行了
+寫Log的方式也很直覺，總共有六個層級，都寫一個試試看
+<pre class="brush:csharp">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NLog;
+
+namespace NLogApp
+{
+    class Program
+    {
+        // 引用NLog
+        static Logger log = LogManager.GetCurrentClassLogger();
+
+        static void Main(string[] args)
+        {
+            // 每個層級都寫一個試試看
+            log.Trace("trace");
+            log.Debug("debug");
+            log.Info("info");
+            log.Warn("warn");
+            log.Error("error");
+            log.Fatal("fatal");
+        }
+    }
+}
+</pre>
+<div class="separator" style="clear: both; text-align: left;">這裡需要注意一下，如果是App專案的話，NLog.config這個檔案的屬性</div><div class="separator" style="clear: both; text-align: left;">**複製到輸出目錄**要確定是在<span style="color: red;">永遠複製</span>這個選項</div><div class="separator" style="clear: both; text-align: left;">這樣Run的時後執行檔和設定檔在同一個目錄才會有作用</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png)](http://3.bp.blogspot.com/-U2koFg5VAUQ/UN6QZTwYOYI/AAAAAAAAAnE/DeKoWFDmy5Q/s1600/04.AlwaysCopy.png)</div>
+<div class="separator" style="clear: both; text-align: left;">編譯成功就執行一下，如果沒有權限問題的話，在執行檔下面就會寫出一個log檔</div><div class="separator" style="clear: both; text-align: left;">也會看到NLog.config複製到這裡</div><div class="separator" style="clear: both; text-align: left;">記得要按一下**方案總管**中的<span style="color: red;">顯示所有檔案</span>，才會看到不在專案中的檔案喔</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png)](http://3.bp.blogspot.com/-8LBc7LR-EfQ/UN6STe5OY-I/AAAAAAAAAng/PBiaW4bVHjM/s1600/05.Run.png)</div>
+<div class="separator" style="clear: both; text-align: left;">打開log檔，裡面就是剛寫的那六個層級的log，使用上就是這麼簡單 </div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png)](http://2.bp.blogspot.com/-F4aPx1fJk6M/UN6SiLQDzVI/AAAAAAAAAno/IZPWmFq2rzs/s1600/06.Log.png)</div>
+<div class="separator" style="clear: both; text-align: left;">下一篇:[NLog Config](http://blog.developer.idv.tw/2012/12/nlog-config.html)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20%e5%88%9d%e9%ab%94%e9%a9%97&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f
+			&title=NLog%20%e5%88%9d%e9%ab%94%e9%a9%97&summary=%e5%85%88%e7%b0%a1%e5%96%ae%e4%bb%8b%e7%b4%b9%e4%b8%80%e4%b8%8b%e5%a6%82%e4%bd%95%e5%ae%89%e8%a3%9dNLog%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%ef%bc%8c%e5%92%8c%e4%bd%bf%e7%94%a8%e9%a0%90%e8%a8%ad%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%be%86%e5%af%ab%e5%87%baLog%e9%a6%96%e5%85%88%e8%ae%93%e7%92%b0%e5%a2%83%e7%b0%a1%e5%96%ae%e9%bb%9e%ef%bc%8c%e6%89%80%e4%bb%a5%e9%96%8b%e4%b8%80%e5%80%8b%e4%b8%bb%e6%8e%a7%e5%8f%b0%e5%b0%88%e6%a1%88%e4%be%86%e7%95%b6%e7%af%84%e4%be%8b%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-kY84lmK8n-Y%2fUN6LxFGNSKI%2fAAAAAAAAAls%2favloE2j0DDU%2fs1600%2f01.NLogApp.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-kY84lmK8n-Y%2fUN6LxFGNSKI%2fAAAAAAAAAls%2favloE2j0DDU%2fs1600%2f01.NLogApp.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e5%bc%95%e7%94%a8NLog%e6%9c%80%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%b9%e5%bc%8f%e7%95%b6%e7%84%b6%e5%b0%b1%e6%98%af%e7%94%a8NuGet%e5%ae%89%e8%a3%9d%e4%ba%86%e5%a6%82%e6%9e%9c%e5%b0%8dNuGet%e4%b8%8d%e7%86%9f%e7%9a%84%e8%a9%b1%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e4%b9%8b%e5%89%8d%e7%9a%84%5bNuGet%e5%ad%b8%e7%bf%92%e7%ad%86%e8%a8%98%5d%28http%3a%2f%2fblog.developer.idv.tw%2f2012%2f12%2fnuget.html%29NLog%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e6%98%afNLog.dll%e5%85%83%e4%bb%b6%e6%9c%ac%e8%ba%ab%20NLog.Config%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e6%98%afNLog.config%e5%92%8cNLog.xsd%28%e7%94%a8%e4%be%86%e5%b9%ab%e5%8a%a9%e5%9c%a8%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%b8%ad%e7%9a%84IntelliSense%29%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-q64xvtDQs48%2fUN6NL4Ig1YI%2fAAAAAAAAAmU%2fZbCqaqjTbi0%2fs1600%2f02.NugetInstall.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-q64xvtDQs48%2fUN6NL4Ig1YI%2fAAAAAAAAAmU%2fZbCqaqjTbi0%2fs1600%2f02.NugetInstall.png%29%e5%ae%89%e8%a3%9d%e5%a5%bd%e5%be%8c%ef%bc%8c%e5%b0%88%e6%a1%88%e4%b8%ad%e5%b0%b1%e6%9c%83%e5%a4%9a%e4%ba%86%e9%80%99%e4%b8%89%e5%80%8b%e6%9d%b1%e8%a5%bf%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-JPz6V3bHo4Y%2fUN6NW6sNdhI%2fAAAAAAAAAmc%2frLoiSFWHldA%2fs1600%2f03.SolutionExplorer.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-JPz6V3bHo4Y%2fUN6NW6sNdhI%2fAAAAAAAAAmc%2frLoiSFWHldA%2fs1600%2f03.SolutionExplorer.png%29%20%e6%89%93%e9%96%8b%e8%a8%ad%e5%ae%9a%e6%aa%94%ef%bc%8c%e6%8a%8a%e8%a8%bb%e8%a7%a3%e6%8b%bf%e6%8e%89%ef%bc%8c%e5%85%88%e4%bd%bf%e7%94%a8%e9%a0%90%e8%a8%ad%e5%80%bc%e4%be%86%e9%ab%94%e9%a9%97%e4%b8%80%e4%b8%8b%20%e8%a9%b3%e7%b4%b0%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8f%ef%bc%8c%e4%b9%8b%e5%be%8c%e5%86%8d%e4%bb%8b%e7%b4%b9%20%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%22http%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%22%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20xmlns%3axsi%3d%22http%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%22%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3b%21--%20%26nbsp%3b%20See%20http%3a%2f%2fnlog-project.org%2fwiki%2fConfiguration_file%20%26nbsp%3b%20for%20information%20on%20customizing%20logging%20rules%20and%20outputs.%20%26nbsp%3b%20%26nbsp%3b--%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3btargets%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3b%21--%20add%20your%20targets%20here%20--%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3btarget%20xsi%3atype%3d%22File%22%20name%3d%22f%22%20fileName%3d%22%24%7bbasedir%7d%2flogs%2f%24%7bshortdate%7d.log%22%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20layout%3d%22%24%7blongdate%7d%20%24%7buppercase%3a%24%7blevel%7d%7d%20%24%7bmessage%7d%22%20%2f%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3b%2ftargets%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3brules%26gt%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26nbsp%3b%20%26lt%3b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20%e5%88%9d%e9%ab%94%e9%a9%97&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-%25E5%2588%259D%25E9%25AB%2594%25E9%25A9%2597%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

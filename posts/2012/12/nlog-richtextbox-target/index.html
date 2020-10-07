@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog RichTextBox Target | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog RichTextBox Target 將Log訊息寫到RichTextBox控制項如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger例如在表單建構式之後，或是在Form_Load事件之後不然還是會獨立建出一個RichTextBox出來 static Logger log; private void Form1_Load(object sender, EventArgs e) { // 需在Form_Load才取得Logger log = LogManager.GetCurrentClassLogger(); } 
+屬性 完整資料請參考[官網的RichTextBox Target文件](https://github.com/nlog/nlog/wiki/RichTextBox-target)   name - Target的名稱
+  layout - 輸出的格式
+  autoScroll - 是否自動捲動最下方
+  maxLines - 最大行數，超過會往上移動，移除最上方記錄
+  controlName - 控制項名稱
+  formName - 表單名稱
+  useDefaultRowColoringRules - Log文字是否使用預設的顏色非同步，自動捲動，最大20行，使用預設色系的設定檔&lt;?xml version=&quot;1.0&rdquo; encoding=&quot;utf-8&rdquo; ?&gt; &lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&rdquo; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&rdquo;&gt;
+&lt;!&ndash; See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs.
+    ">
+
+
+<meta property="og:title" content="NLog RichTextBox Target" />
+<meta property="og:description" content="NLog RichTextBox Target 將Log訊息寫到RichTextBox控制項如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger例如在表單建構式之後，或是在Form_Load事件之後不然還是會獨立建出一個RichTextBox出來 static Logger log; private void Form1_Load(object sender, EventArgs e) { // 需在Form_Load才取得Logger log = LogManager.GetCurrentClassLogger(); } 
+屬性 完整資料請參考[官網的RichTextBox Target文件](https://github.com/nlog/nlog/wiki/RichTextBox-target)   name - Target的名稱
+  layout - 輸出的格式
+  autoScroll - 是否自動捲動最下方
+  maxLines - 最大行數，超過會往上移動，移除最上方記錄
+  controlName - 控制項名稱
+  formName - 表單名稱
+  useDefaultRowColoringRules - Log文字是否使用預設的顏色非同步，自動捲動，最大20行，使用預設色系的設定檔&lt;?xml version=&quot;1.0&rdquo; encoding=&quot;utf-8&rdquo; ?&gt; &lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&rdquo; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&rdquo;&gt;
+&lt;!&ndash; See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-richtextbox-target/" />
+<meta property="article:published_time" content="2012-12-31T02:06:00+00:00" />
+<meta property="article:modified_time" content="2012-12-31T02:06:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog RichTextBox Target"/>
+<meta name="twitter:description" content="NLog RichTextBox Target 將Log訊息寫到RichTextBox控制項如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger例如在表單建構式之後，或是在Form_Load事件之後不然還是會獨立建出一個RichTextBox出來 static Logger log; private void Form1_Load(object sender, EventArgs e) { // 需在Form_Load才取得Logger log = LogManager.GetCurrentClassLogger(); } 
+屬性 完整資料請參考[官網的RichTextBox Target文件](https://github.com/nlog/nlog/wiki/RichTextBox-target)   name - Target的名稱
+  layout - 輸出的格式
+  autoScroll - 是否自動捲動最下方
+  maxLines - 最大行數，超過會往上移動，移除最上方記錄
+  controlName - 控制項名稱
+  formName - 表單名稱
+  useDefaultRowColoringRules - Log文字是否使用預設的顏色非同步，自動捲動，最大20行，使用預設色系的設定檔&lt;?xml version=&quot;1.0&rdquo; encoding=&quot;utf-8&rdquo; ?&gt; &lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&rdquo; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&rdquo;&gt;
+&lt;!&ndash; See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs."/>
+
+<meta itemprop="name" content="NLog RichTextBox Target">
+<meta itemprop="description" content="NLog RichTextBox Target 將Log訊息寫到RichTextBox控制項如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger例如在表單建構式之後，或是在Form_Load事件之後不然還是會獨立建出一個RichTextBox出來 static Logger log; private void Form1_Load(object sender, EventArgs e) { // 需在Form_Load才取得Logger log = LogManager.GetCurrentClassLogger(); } 
+屬性 完整資料請參考[官網的RichTextBox Target文件](https://github.com/nlog/nlog/wiki/RichTextBox-target)   name - Target的名稱
+  layout - 輸出的格式
+  autoScroll - 是否自動捲動最下方
+  maxLines - 最大行數，超過會往上移動，移除最上方記錄
+  controlName - 控制項名稱
+  formName - 表單名稱
+  useDefaultRowColoringRules - Log文字是否使用預設的顏色非同步，自動捲動，最大20行，使用預設色系的設定檔&lt;?xml version=&quot;1.0&rdquo; encoding=&quot;utf-8&rdquo; ?&gt; &lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&rdquo; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&rdquo;&gt;
+&lt;!&ndash; See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs.">
+<meta itemprop="datePublished" content="2012-12-31T02:06:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-31T02:06:00+00:00" />
+<meta itemprop="wordCount" content="85">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-richtextbox-target/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog RichTextBox Target</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 31, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog-richtextbox-target">NLog RichTextBox Target</h2>
+<div>將Log訊息寫到RichTextBox控制項</div><div>如果有現成的就指定控制項名稱，但需注意要在表單建立之後再取得Logger</div><div>例如在表單建構式之後，或是在Form_Load事件之後</div><div>不然還是會獨立建出一個RichTextBox出來</div><div>
+</div><div><pre class="brush:csharp">static Logger log;
+<p>private void Form1_Load(object sender, EventArgs e)
+{
+// 需在Form_Load才取得Logger
+log = LogManager.GetCurrentClassLogger();
+}
+</pre></div></p>
+<h2 id="屬性">屬性</h2>
+<div>完整資料請參考[官網的RichTextBox Target文件](https://github.com/nlog/nlog/wiki/RichTextBox-target)</div><div>
+<ul>
+<li>
+<p>name - Target的名稱</p>
+</li>
+<li>
+<p>layout - 輸出的格式</p>
+</li>
+<li>
+<p>autoScroll - 是否自動捲動最下方</p>
+</li>
+<li>
+<p>maxLines - 最大行數，超過會往上移動，移除最上方記錄</p>
+</li>
+<li>
+<p>controlName - 控制項名稱</p>
+</li>
+<li>
+<p>formName - 表單名稱</p>
+</li>
+<li>
+<p>useDefaultRowColoringRules - Log文字是否使用預設的顏色<div>非同步，自動捲動，最大20行，使用預設色系的設定檔</div></div><div><pre class="brush:xml">&lt;?xml version=&quot;1.0&rdquo; encoding=&quot;utf-8&rdquo; ?&gt;
+&lt;nlog xmlns=&quot;http://www.nlog-project.org/schemas/NLog.xsd&rdquo;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&rdquo;&gt;</p>
+<p>&lt;!&ndash;
+See <a href="http://nlog-project.org/wiki/Configuration_file">http://nlog-project.org/wiki/Configuration_file</a>
+for information on customizing logging rules and outputs.
+&ndash;&gt;
+&lt;targets async=&quot;true&rdquo;&gt;
+&lt;target xsi:type=&quot;RichTextBox&rdquo; name=&quot;f&rdquo;
+autoScroll=&quot;true&rdquo;
+maxLines=&quot;20&rdquo;
+formName=&quot;Form1&rdquo;
+controlName=&quot;richTextBox1&rdquo;
+useDefaultRowColoringRules=&quot;true&rdquo;
+layout=&quot;${longdate} ${uppercase:${level}} ${message}&rdquo;  /&gt;
+&lt;/targets&gt;
+&lt;rules&gt;
+&lt;logger name=&rdquo;*&rdquo; minlevel=&quot;Trace&rdquo; writeTo=&quot;f&rdquo; /&gt;
+&lt;/rules&gt;
+&lt;/nlog&gt;
+</pre></div><div></p>
+</li>
+</ul>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20RichTextBox%20Target&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f
+			&title=NLog%20RichTextBox%20Target&summary=NLog%20RichTextBox%20Target%20%e5%b0%87Log%e8%a8%8a%e6%81%af%e5%af%ab%e5%88%b0RichTextBox%e6%8e%a7%e5%88%b6%e9%a0%85%e5%a6%82%e6%9e%9c%e6%9c%89%e7%8f%be%e6%88%90%e7%9a%84%e5%b0%b1%e6%8c%87%e5%ae%9a%e6%8e%a7%e5%88%b6%e9%a0%85%e5%90%8d%e7%a8%b1%ef%bc%8c%e4%bd%86%e9%9c%80%e6%b3%a8%e6%84%8f%e8%a6%81%e5%9c%a8%e8%a1%a8%e5%96%ae%e5%bb%ba%e7%ab%8b%e4%b9%8b%e5%be%8c%e5%86%8d%e5%8f%96%e5%be%97Logger%e4%be%8b%e5%a6%82%e5%9c%a8%e8%a1%a8%e5%96%ae%e5%bb%ba%e6%a7%8b%e5%bc%8f%e4%b9%8b%e5%be%8c%ef%bc%8c%e6%88%96%e6%98%af%e5%9c%a8Form_Load%e4%ba%8b%e4%bb%b6%e4%b9%8b%e5%be%8c%e4%b8%8d%e7%84%b6%e9%82%84%e6%98%af%e6%9c%83%e7%8d%a8%e7%ab%8b%e5%bb%ba%e5%87%ba%e4%b8%80%e5%80%8bRichTextBox%e5%87%ba%e4%be%86%20static%20Logger%20log%3b%20private%20void%20Form1_Load%28object%20sender%2c%20EventArgs%20e%29%20%7b%20%2f%2f%20%e9%9c%80%e5%9c%a8Form_Load%e6%89%8d%e5%8f%96%e5%be%97Logger%20log%20%3d%20LogManager.GetCurrentClassLogger%28%29%3b%20%7d%20%0a%e5%b1%ac%e6%80%a7%20%e5%ae%8c%e6%95%b4%e8%b3%87%e6%96%99%e8%ab%8b%e5%8f%83%e8%80%83%5b%e5%ae%98%e7%b6%b2%e7%9a%84RichTextBox%20Target%e6%96%87%e4%bb%b6%5d%28https%3a%2f%2fgithub.com%2fnlog%2fnlog%2fwiki%2fRichTextBox-target%29%20%20%20name%20-%20Target%e7%9a%84%e5%90%8d%e7%a8%b1%0a%20%20layout%20-%20%e8%bc%b8%e5%87%ba%e7%9a%84%e6%a0%bc%e5%bc%8f%0a%20%20autoScroll%20-%20%e6%98%af%e5%90%a6%e8%87%aa%e5%8b%95%e6%8d%b2%e5%8b%95%e6%9c%80%e4%b8%8b%e6%96%b9%0a%20%20maxLines%20-%20%e6%9c%80%e5%a4%a7%e8%a1%8c%e6%95%b8%ef%bc%8c%e8%b6%85%e9%81%8e%e6%9c%83%e5%be%80%e4%b8%8a%e7%a7%bb%e5%8b%95%ef%bc%8c%e7%a7%bb%e9%99%a4%e6%9c%80%e4%b8%8a%e6%96%b9%e8%a8%98%e9%8c%84%0a%20%20controlName%20-%20%e6%8e%a7%e5%88%b6%e9%a0%85%e5%90%8d%e7%a8%b1%0a%20%20formName%20-%20%e8%a1%a8%e5%96%ae%e5%90%8d%e7%a8%b1%0a%20%20useDefaultRowColoringRules%20-%20Log%e6%96%87%e5%ad%97%e6%98%af%e5%90%a6%e4%bd%bf%e7%94%a8%e9%a0%90%e8%a8%ad%e7%9a%84%e9%a1%8f%e8%89%b2%e9%9d%9e%e5%90%8c%e6%ad%a5%ef%bc%8c%e8%87%aa%e5%8b%95%e6%8d%b2%e5%8b%95%ef%bc%8c%e6%9c%80%e5%a4%a720%e8%a1%8c%ef%bc%8c%e4%bd%bf%e7%94%a8%e9%a0%90%e8%a8%ad%e8%89%b2%e7%b3%bb%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%26lt%3b%3fxml%20version%3d%26quot%3b1.0%26rdquo%3b%20encoding%3d%26quot%3butf-8%26rdquo%3b%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%26quot%3bhttp%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%26rdquo%3b%20xmlns%3axsi%3d%26quot%3bhttp%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%26rdquo%3b%26gt%3b%0a%26lt%3b%21%26ndash%3b%20See%20http%3a%2f%2fnlog-project.org%2fwiki%2fConfiguration_file%20for%20information%20on%20customizing%20logging%20rules%20and%20outputs.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20RichTextBox%20Target&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-richtextbox-target%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

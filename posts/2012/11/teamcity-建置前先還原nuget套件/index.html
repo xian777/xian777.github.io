@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity 建置前先還原NuGet套件 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下 ](http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png)
+一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原 在方案檔上按右鍵就會看到這個選項了 ](http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png)
+按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示 ](http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png)
+按下是(Y)之前，就會多出一個.nuget的方案資料夾 ](http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png)
+還要允許NuGet在建置期間下載遺漏的套件 ](http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png)
+把.nuget這個方案資料夾加入Source Control ](http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png)
+先在TeamCity中安裝NuGet Command Line工具 ](http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png)
+新增一個Build Step，選擇NuGet Installer 選擇NuGet的版本，和輸入NuGet的來源 如果使用的套件是從NuGet官網來的，那直接保持空白 如果會使用其他來源的套件，就要在此輸入網址 再輸入方案檔的相對路徑就行了 ](http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png)
+再來要把NuGet Install這個動作，放到編譯之前 所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply ](http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png)
+再次建置就成功了 ](http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png)
+    ">
+
+
+<meta property="og:title" content="TeamCity 建置前先還原NuGet套件" />
+<meta property="og:description" content="當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下 ](http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png)
+一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原 在方案檔上按右鍵就會看到這個選項了 ](http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png)
+按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示 ](http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png)
+按下是(Y)之前，就會多出一個.nuget的方案資料夾 ](http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png)
+還要允許NuGet在建置期間下載遺漏的套件 ](http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png)
+把.nuget這個方案資料夾加入Source Control ](http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png)
+先在TeamCity中安裝NuGet Command Line工具 ](http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png)
+新增一個Build Step，選擇NuGet Installer 選擇NuGet的版本，和輸入NuGet的來源 如果使用的套件是從NuGet官網來的，那直接保持空白 如果會使用其他來源的套件，就要在此輸入網址 再輸入方案檔的相對路徑就行了 ](http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png)
+再來要把NuGet Install這個動作，放到編譯之前 所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply ](http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png)
+再次建置就成功了 ](http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%89%8D%E5%85%88%E9%82%84%E5%8E%9Fnuget%E5%A5%97%E4%BB%B6/" />
+<meta property="article:published_time" content="2012-11-13T22:13:00+00:00" />
+<meta property="article:modified_time" content="2012-11-13T22:13:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity 建置前先還原NuGet套件"/>
+<meta name="twitter:description" content="當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下 ](http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png)
+一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原 在方案檔上按右鍵就會看到這個選項了 ](http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png)
+按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示 ](http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png)
+按下是(Y)之前，就會多出一個.nuget的方案資料夾 ](http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png)
+還要允許NuGet在建置期間下載遺漏的套件 ](http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png)
+把.nuget這個方案資料夾加入Source Control ](http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png)
+先在TeamCity中安裝NuGet Command Line工具 ](http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png)
+新增一個Build Step，選擇NuGet Installer 選擇NuGet的版本，和輸入NuGet的來源 如果使用的套件是從NuGet官網來的，那直接保持空白 如果會使用其他來源的套件，就要在此輸入網址 再輸入方案檔的相對路徑就行了 ](http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png)
+再來要把NuGet Install這個動作，放到編譯之前 所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply ](http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png)
+再次建置就成功了 ](http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png)"/>
+
+<meta itemprop="name" content="TeamCity 建置前先還原NuGet套件">
+<meta itemprop="description" content="當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下 ](http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png)
+一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原 在方案檔上按右鍵就會看到這個選項了 ](http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png)
+按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示 ](http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png)
+按下是(Y)之前，就會多出一個.nuget的方案資料夾 ](http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png)
+還要允許NuGet在建置期間下載遺漏的套件 ](http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png)
+把.nuget這個方案資料夾加入Source Control ](http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png)
+先在TeamCity中安裝NuGet Command Line工具 ](http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png)
+新增一個Build Step，選擇NuGet Installer 選擇NuGet的版本，和輸入NuGet的來源 如果使用的套件是從NuGet官網來的，那直接保持空白 如果會使用其他來源的套件，就要在此輸入網址 再輸入方案檔的相對路徑就行了 ](http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png)
+再來要把NuGet Install這個動作，放到編譯之前 所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply ](http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png)
+再次建置就成功了 ](http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png)">
+<meta itemprop="datePublished" content="2012-11-13T22:13:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-13T22:13:00+00:00" />
+<meta itemprop="wordCount" content="35">
+
+
+
+<meta itemprop="keywords" content="NuGet,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%89%8D%E5%85%88%E9%82%84%E5%8E%9Fnuget%E5%A5%97%E4%BB%B6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity 建置前先還原NuGet套件</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 13, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="當專案開始使用nuget來管理套件時預設套件會安裝在方案檔所在目錄的packages資料夾下">當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下</h2>
+<p><img src="http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png" alt="">](<a href="http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png">http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png</a>)</p>
+<h2 id="一般不會把這個套件這個資料夾加入原始檔控制以節省空間而會在vistual-studio中啟用套件還原">一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原</h2>
+<p>在方案檔上按右鍵就會看到這個選項了
+<img src="http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png" alt="">](<a href="http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png">http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png</a>)</p>
+<h2 id="按下後會有一個提示訊息主要是會新增一個方案資料夾的提示">按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示</h2>
+<p><img src="http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png" alt="">](<a href="http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png">http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png</a>)</p>
+<h2 id="按下是y之前就會多出一個nuget的方案資料夾">按下是(Y)之前，就會多出一個.nuget的方案資料夾</h2>
+<p><img src="http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png" alt="">](<a href="http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png">http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png</a>)</p>
+<h2 id="還要允許nuget在建置期間下載遺漏的套件">還要允許NuGet在建置期間下載遺漏的套件</h2>
+<p><img src="http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png" alt="">](<a href="http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png">http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png</a>)</p>
+<h2 id="把nuget這個方案資料夾加入source-control">把.nuget這個方案資料夾加入Source Control</h2>
+<p><img src="http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png" alt="">](<a href="http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png">http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png</a>)</p>
+<h2 id="先在teamcity中安裝nuget-command-line工具">先在TeamCity中安裝NuGet Command Line工具</h2>
+<p><img src="http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png" alt="">](<a href="http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png">http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png</a>)</p>
+<h2 id="新增一個build-step選擇nuget-installer">新增一個Build Step，選擇NuGet Installer</h2>
+<p>選擇NuGet的版本，和輸入NuGet的來源
+如果使用的套件是從NuGet官網來的，那直接保持空白
+如果會使用其他來源的套件，就要在此輸入網址
+再輸入方案檔的相對路徑就行了
+<img src="http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png" alt="">](<a href="http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png">http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png</a>)</p>
+<h2 id="再來要把nuget-install這個動作放到編譯之前">再來要把NuGet Install這個動作，放到編譯之前</h2>
+<p>所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply
+<img src="http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png" alt="">](<a href="http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png">http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png</a>)</p>
+<h2 id="再次建置就成功了">再次建置就成功了</h2>
+<p><img src="http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png" alt="">](<a href="http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png">http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%20%e5%bb%ba%e7%bd%ae%e5%89%8d%e5%85%88%e9%82%84%e5%8e%9fNuGet%e5%a5%97%e4%bb%b6&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f
+			&title=TeamCity%20%e5%bb%ba%e7%bd%ae%e5%89%8d%e5%85%88%e9%82%84%e5%8e%9fNuGet%e5%a5%97%e4%bb%b6&summary=%e7%95%b6%e5%b0%88%e6%a1%88%e9%96%8b%e5%a7%8b%e4%bd%bf%e7%94%a8NuGet%e4%be%86%e7%ae%a1%e7%90%86%e5%a5%97%e4%bb%b6%e6%99%82%ef%bc%8c%e9%a0%90%e8%a8%ad%e5%a5%97%e4%bb%b6%e6%9c%83%e5%ae%89%e8%a3%9d%e5%9c%a8%e6%96%b9%e6%a1%88%e6%aa%94%e6%89%80%e5%9c%a8%e7%9b%ae%e9%8c%84%e7%9a%84packages%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%8b%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Fb-XAssHj4w%2fUKJTn5RDetI%2fAAAAAAAAAbc%2f0mO3150CpWQ%2fs1600%2f01.Packages.png%29%0a%e4%b8%80%e8%88%ac%e4%b8%8d%e6%9c%83%e6%8a%8a%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e9%80%99%e5%80%8b%e8%b3%87%e6%96%99%e5%a4%be%e5%8a%a0%e5%85%a5%e5%8e%9f%e5%a7%8b%e6%aa%94%e6%8e%a7%e5%88%b6%e4%bb%a5%e7%af%80%e7%9c%81%e7%a9%ba%e9%96%93%ef%bc%8c%e8%80%8c%e6%9c%83%e5%9c%a8Vistual%20Studio%e4%b8%ad%e5%95%9f%e7%94%a8%e5%a5%97%e4%bb%b6%e9%82%84%e5%8e%9f%20%e5%9c%a8%e6%96%b9%e6%a1%88%e6%aa%94%e4%b8%8a%e6%8c%89%e5%8f%b3%e9%8d%b5%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0%e9%80%99%e5%80%8b%e9%81%b8%e9%a0%85%e4%ba%86%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-dyZVt873N58%2fUKJTobl3ClI%2fAAAAAAAAAbk%2fNhajJ3Li0bg%2fs1600%2f02.PackageRestore.png%29%0a%e6%8c%89%e4%b8%8b%e5%be%8c%e6%9c%83%e6%9c%89%e4%b8%80%e5%80%8b%e6%8f%90%e7%a4%ba%e8%a8%8a%e6%81%af%ef%bc%8c%e4%b8%bb%e8%a6%81%e6%98%af%e6%9c%83%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e6%96%b9%e6%a1%88%e8%b3%87%e6%96%99%e5%a4%be%e7%9a%84%e6%8f%90%e7%a4%ba%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-6K_7ZRaH-U0%2fUKJTo96X_eI%2fAAAAAAAAAbs%2fF67Lyeec0TM%2fs1600%2f03.AlertMsg.png%29%0a%e6%8c%89%e4%b8%8b%e6%98%af%28Y%29%e4%b9%8b%e5%89%8d%ef%bc%8c%e5%b0%b1%e6%9c%83%e5%a4%9a%e5%87%ba%e4%b8%80%e5%80%8b.nuget%e7%9a%84%e6%96%b9%e6%a1%88%e8%b3%87%e6%96%99%e5%a4%be%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-y91qsRmScLI%2fUKJTpo9UQUI%2fAAAAAAAAAb0%2f6o_pDPgV6-A%2fs1600%2f04.NuGetDir.png%29%0a%e9%82%84%e8%a6%81%e5%85%81%e8%a8%b1NuGet%e5%9c%a8%e5%bb%ba%e7%bd%ae%e6%9c%9f%e9%96%93%e4%b8%8b%e8%bc%89%e9%81%ba%e6%bc%8f%e7%9a%84%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-HcrmcbS0_2c%2fUKJTqBojMQI%2fAAAAAAAAAb8%2ftwadrgujphw%2fs1600%2f05.AllowDownload.png%29%0a%e6%8a%8a.nuget%e9%80%99%e5%80%8b%e6%96%b9%e6%a1%88%e8%b3%87%e6%96%99%e5%a4%be%e5%8a%a0%e5%85%a5Source%20Control%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-rGNsuEcMug8%2fUKJTqeyIARI%2fAAAAAAAAAcE%2fX_gwllNs14o%2fs1600%2f06.NuGetSVNDir.png%29%0a%e5%85%88%e5%9c%a8TeamCity%e4%b8%ad%e5%ae%89%e8%a3%9dNuGet%20Command%20Line%e5%b7%a5%e5%85%b7%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-D5zrJvyfRKE%2fUKJTq18pInI%2fAAAAAAAAAcM%2fikPaGWFbePw%2fs1600%2f07.AddNuGetExe.png%29%0a%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bBuild%20Step%ef%bc%8c%e9%81%b8%e6%93%87NuGet%20Installer%20%e9%81%b8%e6%93%87NuGet%e7%9a%84%e7%89%88%e6%9c%ac%ef%bc%8c%e5%92%8c%e8%bc%b8%e5%85%a5NuGet%e7%9a%84%e4%be%86%e6%ba%90%20%e5%a6%82%e6%9e%9c%e4%bd%bf%e7%94%a8%e7%9a%84%e5%a5%97%e4%bb%b6%e6%98%af%e5%be%9eNuGet%e5%ae%98%e7%b6%b2%e4%be%86%e7%9a%84%ef%bc%8c%e9%82%a3%e7%9b%b4%e6%8e%a5%e4%bf%9d%e6%8c%81%e7%a9%ba%e7%99%bd%20%e5%a6%82%e6%9e%9c%e6%9c%83%e4%bd%bf%e7%94%a8%e5%85%b6%e4%bb%96%e4%be%86%e6%ba%90%e7%9a%84%e5%a5%97%e4%bb%b6%ef%bc%8c%e5%b0%b1%e8%a6%81%e5%9c%a8%e6%ad%a4%e8%bc%b8%e5%85%a5%e7%b6%b2%e5%9d%80%20%e5%86%8d%e8%bc%b8%e5%85%a5%e6%96%b9%e6%a1%88%e6%aa%94%e7%9a%84%e7%9b%b8%e5%b0%8d%e8%b7%af%e5%be%91%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f--zcz92kuTII%2fUKJTrZfOVWI%2fAAAAAAAAAcU%2fVjDyBdBpBLU%2fs1600%2f08.PreInstall.png%29%0a%e5%86%8d%e4%be%86%e8%a6%81%e6%8a%8aNuGet%20Install%e9%80%99%e5%80%8b%e5%8b%95%e4%bd%9c%ef%bc%8c%e6%94%be%e5%88%b0%e7%b7%a8%e8%ad%af%e4%b9%8b%e5%89%8d%20%e6%89%80%e4%bb%a5%e6%8c%89%e4%b8%80%e4%b8%8bReorder%20build%20steps%ef%bc%8c%e7%84%b6%e5%be%8c%e7%94%a8%e6%8b%96%e6%9b%b3%e7%9a%84%e6%96%b9%e5%bc%8f%e8%aa%bf%e6%95%b4%e6%ad%a5%e9%a9%9f%e5%be%8c%e6%8c%89Apply%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-3BcMkxmRzyc%2fUKJTsEam9hI%2fAAAAAAAAAcc%2fUj9RBGmTYP8%2fs1600%2f09.ReOrderStep.png%29%0a%e5%86%8d%e6%ac%a1%e5%bb%ba%e7%bd%ae%e5%b0%b1%e6%88%90%e5%8a%9f%e4%ba%86%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hTTzcZcJpos%2fUKJTtmr7FLI%2fAAAAAAAAAck%2fMQKYRgqxUJ0%2fs1600%2f10.BuildSuccess.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%20%e5%bb%ba%e7%bd%ae%e5%89%8d%e5%85%88%e9%82%84%e5%8e%9fNuGet%e5%a5%97%e4%bb%b6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25BB%25BA%25E7%25BD%25AE%25E5%2589%258D%25E5%2585%2588%25E9%2582%2584%25E5%258E%259Fnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

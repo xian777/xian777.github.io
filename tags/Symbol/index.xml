@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Symbol on My New Hugo Site</title>
+    <link>http://example.org/tags/symbol/</link>
+    <description>Recent content in Symbol on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Aug 2015 14:47:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/symbol/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>架設NuPeek Symbol &amp; NuGet Server</title>
+      <link>http://example.org/posts/2015/08/%E6%9E%B6%E8%A8%ADnupeek-symbol-nuget-server/</link>
+      <pubDate>Fri, 07 Aug 2015 14:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/%E6%9E%B6%E8%A8%ADnupeek-symbol-nuget-server/</guid>
+      <description>首先到Bitbucket下載NuPeek的原始碼回來 https://bitbucket.org/thinkbeforecoding/nupeek
+[![](http://2.bp.blogspot.com/-oQRiidn7woQ/VcRUEOkTHzI/AAAAAAAACYs/6-EfBRJj5dk/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png)](http://2.bp.blogspot.com/-oQRiidn7woQ/VcRUEOkTHzI/AAAAAAAACYs/6-EfBRJj5dk/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png) 打開專案後，記得先改一下Symbols資料夾的名稱，不然會卡住 [![](http://2.bp.blogspot.com/-PR8hHSy2T8k/VcRUELObHvI/AAAAAAAACYk/3nHRJakSjWI/s1600/02.%25E6%259B%25B4%25E5%2590%258D%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png)](http://2.bp.blogspot.com/-PR8hHSy2T8k/VcRUELObHvI/AAAAAAAACYk/3nHRJakSjWI/s1600/02.%25E6%259B%25B4%25E5%2590%258D%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png) web.config中，也要把symbolsPath的值改成修改後的名稱 [![](http://1.bp.blogspot.com/-SE4iQc3tiRk/VcRUEOVlHII/AAAAAAAACYo/iyVluHcVMbs/s1600/03.%25E6%259B%25B4%25E6%2594%25B9%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png)](http://1.bp.blogspot.com/-SE4iQc3tiRk/VcRUEOVlHII/AAAAAAAACYo/iyVluHcVMbs/s1600/03.%25E6%259B%25B4%25E6%2594%25B9%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png) 佈署的Server後，首頁會有相關的資訊 [![](http://1.bp.blogspot.com/-N2dx5rrJZoA/VcRUEg5yZvI/AAAAAAAACYw/3ngpW204hMU/s1600/04.%25E9%25A6%2596%25E9%25A0%2581.png)](http://1.bp.blogspot.com/-N2dx5rrJZoA/VcRUEg5yZvI/AAAAAAAACYw/3ngpW204hMU/s1600/04.%25E9%25A6%2596%25E9%25A0%2581.png) 在Visual Studio中的工具-&amp;gt;選項-&amp;gt;偵錯-&amp;gt;一般，改用來源伺服器支援 [![](http://2.bp.blogspot.com/-2E822hTBCzA/VcRUEyZbAUI/AAAAAAAACY8/63nyAVu3Oqw/s1600/05.%25E4%25BE%2586%25E6%25BA%2590%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8.png)](http://2.bp.blogspot.com/-2E822hTBCzA/VcRUEyZbAUI/AAAAAAAACY8/63nyAVu3Oqw/s1600/05.%25E4%25BE%2586%25E6%25BA%2590%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8.png) 在Visual Studio中的工具-&amp;gt;選項-&amp;gt;偵錯-&amp;gt;符號，新增SymbolServer位置 [![](http://1.bp.blogspot.com/-171ZsRPe9fA/VcRUE5-ZggI/AAAAAAAACY4/r4f_T4B9vko/s1600/06.%25E8%25A8%25AD%25E5%25AE%259Asymbol.png)](http://1.bp.blogspot.com/-171ZsRPe9fA/VcRUE5-ZggI/AAAAAAAACY4/r4f_T4B9vko/s1600/06.%25E8%25A8%25AD%25E5%25AE%259Asymbol.png) Symbol推送到NuPeek後，在程式碼中下個中斷點 [![](http://1.bp.blogspot.com/-tjJyCp9Z_Y0/VcRUFN0nfJI/AAAAAAAACZA/CsERo4TzUNs/s1600/07.%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png)](http://1.bp.blogspot.com/-tjJyCp9Z_Y0/VcRUFN0nfJI/AAAAAAAACZA/CsERo4TzUNs/s1600/07.%25E4%25B8%25AD%25E6%2596%25B7%25E9%25BB%259E.png) 透過Fillder可以看到下載Symbol符號和Source 符號快取資料夾中也可以看到下載的資料 [![](http://1.bp.blogspot.com/-YoZEmEC8L_M/VcRUFr50hMI/AAAAAAAACZE/r4Cm7K-fVFE/s1600/08.%25E4%25B8%258B%25E8%25BC%2589%25E7%25AC%25A6%25E8%2599%259F.png)](http://1.bp.blogspot.com/-YoZEmEC8L_M/VcRUFr50hMI/AAAAAAAACZE/r4Cm7K-fVFE/s1600/08.%25E4%25B8%258B%25E8%25BC%2589%25E7%25AC%25A6%25E8%2599%259F.png) F11進入函式後，可以看到符號的Source是在符號快取資料夾中取得 [!</description>
+    </item>
+    
+    <item>
+      <title>架設SymbolSource.Server</title>
+      <link>http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/</link>
+      <pubDate>Sun, 21 Oct 2012 17:19:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/</guid>
+      <description>首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &amp;lt;add key=&amp;#34;SrcSrvPath&amp;#34; value=&amp;#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&amp;#34; /&amp;gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   </description>
+    </item>
+    
+  </channel>
+</rss>

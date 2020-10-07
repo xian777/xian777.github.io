@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JQuery 事件繫結 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content=" .bind() 為一個元素綁定一個事件處理 執行多次會重覆綁定 動態生成元素綁定事件會有先後問題  .unbind() 從元素上移除一個之前綁定的事件處理  .live() 附加一個事件處理器到指定選擇器的元素上 version deprecated:1.7, remove:1.9  .die() 從元素移除之前用.live()綁定的事件 version deprecated:1.7, remove:1.9  .delegate() 指派事件處理 利用事件的Bubble Up特性，在上層元素掛上事件處理 V1.4.2以上適用  .undelegate() 解除事件指派 V1.4.2以上適用  .on() 繫結事件 v1.7以上適用  .off() 解除事件 v1.7以上適用  .trigger() 觸發事件  .one() 在元素上綁定一個事件處理函式 該處理函式只會執行一次，然後刪除自已  
+    ">
+
+
+<meta property="og:title" content="jQuery 事件繫結" />
+<meta property="og:description" content=" .bind() 為一個元素綁定一個事件處理 執行多次會重覆綁定 動態生成元素綁定事件會有先後問題  .unbind() 從元素上移除一個之前綁定的事件處理  .live() 附加一個事件處理器到指定選擇器的元素上 version deprecated:1.7, remove:1.9  .die() 從元素移除之前用.live()綁定的事件 version deprecated:1.7, remove:1.9  .delegate() 指派事件處理 利用事件的Bubble Up特性，在上層元素掛上事件處理 V1.4.2以上適用  .undelegate() 解除事件指派 V1.4.2以上適用  .on() 繫結事件 v1.7以上適用  .off() 解除事件 v1.7以上適用  .trigger() 觸發事件  .one() 在元素上綁定一個事件處理函式 該處理函式只會執行一次，然後刪除自已  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/07/jquery-%E4%BA%8B%E4%BB%B6%E7%B9%AB%E7%B5%90/" />
+<meta property="article:published_time" content="2013-07-25T15:48:00+00:00" />
+<meta property="article:modified_time" content="2013-07-25T15:48:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jQuery 事件繫結"/>
+<meta name="twitter:description" content=" .bind() 為一個元素綁定一個事件處理 執行多次會重覆綁定 動態生成元素綁定事件會有先後問題  .unbind() 從元素上移除一個之前綁定的事件處理  .live() 附加一個事件處理器到指定選擇器的元素上 version deprecated:1.7, remove:1.9  .die() 從元素移除之前用.live()綁定的事件 version deprecated:1.7, remove:1.9  .delegate() 指派事件處理 利用事件的Bubble Up特性，在上層元素掛上事件處理 V1.4.2以上適用  .undelegate() 解除事件指派 V1.4.2以上適用  .on() 繫結事件 v1.7以上適用  .off() 解除事件 v1.7以上適用  .trigger() 觸發事件  .one() 在元素上綁定一個事件處理函式 該處理函式只會執行一次，然後刪除自已  "/>
+
+<meta itemprop="name" content="jQuery 事件繫結">
+<meta itemprop="description" content=" .bind() 為一個元素綁定一個事件處理 執行多次會重覆綁定 動態生成元素綁定事件會有先後問題  .unbind() 從元素上移除一個之前綁定的事件處理  .live() 附加一個事件處理器到指定選擇器的元素上 version deprecated:1.7, remove:1.9  .die() 從元素移除之前用.live()綁定的事件 version deprecated:1.7, remove:1.9  .delegate() 指派事件處理 利用事件的Bubble Up特性，在上層元素掛上事件處理 V1.4.2以上適用  .undelegate() 解除事件指派 V1.4.2以上適用  .on() 繫結事件 v1.7以上適用  .off() 解除事件 v1.7以上適用  .trigger() 觸發事件  .one() 在元素上綁定一個事件處理函式 該處理函式只會執行一次，然後刪除自已  ">
+<meta itemprop="datePublished" content="2013-07-25T15:48:00+00:00" />
+<meta itemprop="dateModified" content="2013-07-25T15:48:00+00:00" />
+<meta itemprop="wordCount" content="35">
+
+
+
+<meta itemprop="keywords" content="jQuery," />
+
+<link rel="canonical" href="http://example.org/posts/2013/07/jquery-%E4%BA%8B%E4%BB%B6%E7%B9%AB%E7%B5%90/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JQuery 事件繫結</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jul 25, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jquery">JQuery</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jquery">J query</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div><table border="1"><tbody><tr>            <td>.bind()</td>            <td>為一個元素綁定一個事件處理
+執行多次會重覆綁定
+動態生成元素綁定事件會有先後問題</td>        </tr><tr>            <td>.unbind()</td>            <td>從元素上移除一個之前綁定的事件處理</td>        </tr><tr>            <td>.live()</td>            <td>附加一個事件處理器到指定選擇器的元素上
+version deprecated:1.7, remove:1.9</td>        </tr><tr>            <td>.die()</td>            <td>從元素移除之前用.live()綁定的事件
+version deprecated:1.7, remove:1.9</td>        </tr><tr>            <td>.delegate()</td>            <td>指派事件處理
+利用事件的Bubble Up特性，在上層元素掛上事件處理
+V1.4.2以上適用</td>        </tr><tr>            <td>.undelegate()</td>            <td>解除事件指派
+V1.4.2以上適用</td>        </tr><tr>            <td>.on()</td>            <td>繫結事件
+v1.7以上適用</td>        </tr><tr>            <td>.off()</td>            <td>解除事件
+v1.7以上適用</td>        </tr><tr>            <td>.trigger()</td>            <td>觸發事件</td>        </tr><tr>            <td>.one()</td>            <td>在元素上綁定一個事件處理函式
+該處理函式只會執行一次，然後刪除自已</td>        </tr></tbody></table></div>
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="500" src="http://jsfiddle.net/KMQun/embedded/js,html,result/presentation" width="100%"></iframe></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=jQuery%20%e4%ba%8b%e4%bb%b6%e7%b9%ab%e7%b5%90&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f
+			&title=jQuery%20%e4%ba%8b%e4%bb%b6%e7%b9%ab%e7%b5%90&summary=%20.bind%28%29%20%e7%82%ba%e4%b8%80%e5%80%8b%e5%85%83%e7%b4%a0%e7%b6%81%e5%ae%9a%e4%b8%80%e5%80%8b%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20%e5%9f%b7%e8%a1%8c%e5%a4%9a%e6%ac%a1%e6%9c%83%e9%87%8d%e8%a6%86%e7%b6%81%e5%ae%9a%20%e5%8b%95%e6%85%8b%e7%94%9f%e6%88%90%e5%85%83%e7%b4%a0%e7%b6%81%e5%ae%9a%e4%ba%8b%e4%bb%b6%e6%9c%83%e6%9c%89%e5%85%88%e5%be%8c%e5%95%8f%e9%a1%8c%20%20.unbind%28%29%20%e5%be%9e%e5%85%83%e7%b4%a0%e4%b8%8a%e7%a7%bb%e9%99%a4%e4%b8%80%e5%80%8b%e4%b9%8b%e5%89%8d%e7%b6%81%e5%ae%9a%e7%9a%84%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20%20.live%28%29%20%e9%99%84%e5%8a%a0%e4%b8%80%e5%80%8b%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%e5%99%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e9%81%b8%e6%93%87%e5%99%a8%e7%9a%84%e5%85%83%e7%b4%a0%e4%b8%8a%20version%20deprecated%3a1.7%2c%20remove%3a1.9%20%20.die%28%29%20%e5%be%9e%e5%85%83%e7%b4%a0%e7%a7%bb%e9%99%a4%e4%b9%8b%e5%89%8d%e7%94%a8.live%28%29%e7%b6%81%e5%ae%9a%e7%9a%84%e4%ba%8b%e4%bb%b6%20version%20deprecated%3a1.7%2c%20remove%3a1.9%20%20.delegate%28%29%20%e6%8c%87%e6%b4%be%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20%e5%88%a9%e7%94%a8%e4%ba%8b%e4%bb%b6%e7%9a%84Bubble%20Up%e7%89%b9%e6%80%a7%ef%bc%8c%e5%9c%a8%e4%b8%8a%e5%b1%a4%e5%85%83%e7%b4%a0%e6%8e%9b%e4%b8%8a%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20V1.4.2%e4%bb%a5%e4%b8%8a%e9%81%a9%e7%94%a8%20%20.undelegate%28%29%20%e8%a7%a3%e9%99%a4%e4%ba%8b%e4%bb%b6%e6%8c%87%e6%b4%be%20V1.4.2%e4%bb%a5%e4%b8%8a%e9%81%a9%e7%94%a8%20%20.on%28%29%20%e7%b9%ab%e7%b5%90%e4%ba%8b%e4%bb%b6%20v1.7%e4%bb%a5%e4%b8%8a%e9%81%a9%e7%94%a8%20%20.off%28%29%20%e8%a7%a3%e9%99%a4%e4%ba%8b%e4%bb%b6%20v1.7%e4%bb%a5%e4%b8%8a%e9%81%a9%e7%94%a8%20%20.trigger%28%29%20%e8%a7%b8%e7%99%bc%e4%ba%8b%e4%bb%b6%20%20.one%28%29%20%e5%9c%a8%e5%85%83%e7%b4%a0%e4%b8%8a%e7%b6%81%e5%ae%9a%e4%b8%80%e5%80%8b%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%e5%87%bd%e5%bc%8f%20%e8%a9%b2%e8%99%95%e7%90%86%e5%87%bd%e5%bc%8f%e5%8f%aa%e6%9c%83%e5%9f%b7%e8%a1%8c%e4%b8%80%e6%ac%a1%ef%bc%8c%e7%84%b6%e5%be%8c%e5%88%aa%e9%99%a4%e8%87%aa%e5%b7%b2%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=jQuery%20%e4%ba%8b%e4%bb%b6%e7%b9%ab%e7%b5%90&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E4%25BA%258B%25E4%25BB%25B6%25E7%25B9%25AB%25E7%25B5%2590%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

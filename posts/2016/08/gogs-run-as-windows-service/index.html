@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Gogs Run as Windows Service | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!
+    ">
+
+
+<meta property="og:title" content="Gogs run as windows service" />
+<meta property="og:description" content="在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/08/gogs-run-as-windows-service/" />
+<meta property="article:published_time" content="2016-08-14T16:21:00+00:00" />
+<meta property="article:modified_time" content="2016-08-14T16:21:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gogs run as windows service"/>
+<meta name="twitter:description" content="在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!"/>
+
+<meta itemprop="name" content="Gogs run as windows service">
+<meta itemprop="description" content="在官網的說明文件中有很詳細的介紹，記錄一下設定的方式
+ [![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png) 要注意的是設定檔的位置 一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini 但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了 之後升級的時後才不會覆蓋掉自定義的設定 [![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png) 所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔 打開命令列工具，透過sc命令新增一個服務 $sc create gogs start= auto binPath= &#34;&#34;D:\gogs\gogs.exe&#34; web --config &#34;D:\gogs\custom\conf\app.ini&#34;&#34; 再透過net命令啟動服務 [![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png) gogs服務已啟動 [!">
+<meta itemprop="datePublished" content="2016-08-14T16:21:00+00:00" />
+<meta itemprop="dateModified" content="2016-08-14T16:21:00+00:00" />
+<meta itemprop="wordCount" content="23">
+
+
+
+<meta itemprop="keywords" content="gogs," />
+
+<link rel="canonical" href="http://example.org/posts/2016/08/gogs-run-as-windows-service/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Gogs Run as Windows Service</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 14, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/gogs">Gogs</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/gogs">Gogs</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>在<a href="https://gogs.io/docs/installation/run_as_windows_service">官網的說明文件</a>中有很詳細的介紹，記錄一下設定的方式</p>
+<div class="separator" style="clear: both; text-align: center;"></div>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zukzoZW1jNw/V7AoqLHfc5I/AAAAAAAAD10/M1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB/s1600/01.png)</div><div class="separator" style="clear: both; text-align: center;"></div>
+要注意的是設定檔的位置
+一開始透過網頁初始化的時後，會新增一個自定義的設定文件在custom/conf/app.ini
+但是gogs預設的設定檔位置則是在conf/app.ini，已經編譯在二進位檔裡面了
+之後升級的時後才不會覆蓋掉自定義的設定
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)](https://4.bp.blogspot.com/-l7J3l9ssUNU/V7AoqD-4MhI/AAAAAAAAD14/eQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB/s1600/02.png)</div>
+所以在註冊服務的時後，設定檔路徑要使用自定義的設定檔
+打開命令列工具，透過sc命令新增一個服務
+$sc create gogs start= auto binPath= ""D:\gogs\gogs.exe" web --config "D:\gogs\custom\conf\app.ini""
+再透過net命令啟動服務
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)](https://2.bp.blogspot.com/-nc36vEiq4r0/V7AoqMA5idI/AAAAAAAAD1w/mveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB/s1600/03.png)</div>
+gogs服務已啟動
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-WhxSujJgC_Y/V7AoqniCSmI/AAAAAAAAD18/DadvnNTSKZY9BAc_sWButuYQl0D2W_OgACLcB/s1600/04.png)](https://1.bp.blogspot.com/-WhxSujJgC_Y/V7AoqniCSmI/AAAAAAAAD18/DadvnNTSKZY9BAc_sWButuYQl0D2W_OgACLcB/s1600/04.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Gogs%20run%20as%20windows%20service&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f
+			&title=Gogs%20run%20as%20windows%20service&summary=%e5%9c%a8%e5%ae%98%e7%b6%b2%e7%9a%84%e8%aa%aa%e6%98%8e%e6%96%87%e4%bb%b6%e4%b8%ad%e6%9c%89%e5%be%88%e8%a9%b3%e7%b4%b0%e7%9a%84%e4%bb%8b%e7%b4%b9%ef%bc%8c%e8%a8%98%e9%8c%84%e4%b8%80%e4%b8%8b%e8%a8%ad%e5%ae%9a%e7%9a%84%e6%96%b9%e5%bc%8f%0a%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-zukzoZW1jNw%2fV7AoqLHfc5I%2fAAAAAAAAD10%2fM1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB%2fs1600%2f01.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-zukzoZW1jNw%2fV7AoqLHfc5I%2fAAAAAAAAD10%2fM1QecGVWQz8rGHyY5U27Ej3KE61TVFtxwCLcB%2fs1600%2f01.png%29%20%e8%a6%81%e6%b3%a8%e6%84%8f%e7%9a%84%e6%98%af%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%9a%84%e4%bd%8d%e7%bd%ae%20%e4%b8%80%e9%96%8b%e5%a7%8b%e9%80%8f%e9%81%8e%e7%b6%b2%e9%a0%81%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e8%87%aa%e5%ae%9a%e7%be%a9%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%87%e4%bb%b6%e5%9c%a8custom%2fconf%2fapp.ini%20%e4%bd%86%e6%98%afgogs%e9%a0%90%e8%a8%ad%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%bd%8d%e7%bd%ae%e5%89%87%e6%98%af%e5%9c%a8conf%2fapp.ini%ef%bc%8c%e5%b7%b2%e7%b6%93%e7%b7%a8%e8%ad%af%e5%9c%a8%e4%ba%8c%e9%80%b2%e4%bd%8d%e6%aa%94%e8%a3%a1%e9%9d%a2%e4%ba%86%20%e4%b9%8b%e5%be%8c%e5%8d%87%e7%b4%9a%e7%9a%84%e6%99%82%e5%be%8c%e6%89%8d%e4%b8%8d%e6%9c%83%e8%a6%86%e8%93%8b%e6%8e%89%e8%87%aa%e5%ae%9a%e7%be%a9%e7%9a%84%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-l7J3l9ssUNU%2fV7AoqD-4MhI%2fAAAAAAAAD14%2feQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB%2fs1600%2f02.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-l7J3l9ssUNU%2fV7AoqD-4MhI%2fAAAAAAAAD14%2feQKBYVgrziUFDkkR7832drzz2AlWWfejwCLcB%2fs1600%2f02.png%29%20%e6%89%80%e4%bb%a5%e5%9c%a8%e8%a8%bb%e5%86%8a%e6%9c%8d%e5%8b%99%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e8%a8%ad%e5%ae%9a%e6%aa%94%e8%b7%af%e5%be%91%e8%a6%81%e4%bd%bf%e7%94%a8%e8%87%aa%e5%ae%9a%e7%be%a9%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%20%e6%89%93%e9%96%8b%e5%91%bd%e4%bb%a4%e5%88%97%e5%b7%a5%e5%85%b7%ef%bc%8c%e9%80%8f%e9%81%8esc%e5%91%bd%e4%bb%a4%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e6%9c%8d%e5%8b%99%20%24sc%20create%20gogs%20start%3d%20auto%20binPath%3d%20%22%22D%3a%5cgogs%5cgogs.exe%22%20web%20--config%20%22D%3a%5cgogs%5ccustom%5cconf%5capp.ini%22%22%20%e5%86%8d%e9%80%8f%e9%81%8enet%e5%91%bd%e4%bb%a4%e5%95%9f%e5%8b%95%e6%9c%8d%e5%8b%99%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-nc36vEiq4r0%2fV7AoqMA5idI%2fAAAAAAAAD1w%2fmveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB%2fs1600%2f03.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-nc36vEiq4r0%2fV7AoqMA5idI%2fAAAAAAAAD1w%2fmveYHwW6ris0kQ70u6frrYcPyVKIk_IrwCLcB%2fs1600%2f03.png%29%20gogs%e6%9c%8d%e5%8b%99%e5%b7%b2%e5%95%9f%e5%8b%95%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Gogs%20run%20as%20windows%20service&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-run-as-windows-service%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

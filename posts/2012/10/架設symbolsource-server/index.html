@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    架設SymbolSource.Server | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &lt;add key=&#34;SrcSrvPath&#34; value=&#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&#34; /&gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   
+    ">
+
+
+<meta property="og:title" content="架設SymbolSource.Server" />
+<meta property="og:description" content="首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &lt;add key=&#34;SrcSrvPath&#34; value=&#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&#34; /&gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/" />
+<meta property="article:published_time" content="2012-10-21T17:19:00+00:00" />
+<meta property="article:modified_time" content="2012-10-21T17:19:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="架設SymbolSource.Server"/>
+<meta name="twitter:description" content="首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &lt;add key=&#34;SrcSrvPath&#34; value=&#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&#34; /&gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   "/>
+
+<meta itemprop="name" content="架設SymbolSource.Server">
+<meta itemprop="description" content="首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &lt;add key=&#34;SrcSrvPath&#34; value=&#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&#34; /&gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   ">
+<meta itemprop="datePublished" content="2012-10-21T17:19:00+00:00" />
+<meta itemprop="dateModified" content="2012-10-21T17:19:00+00:00" />
+<meta itemprop="wordCount" content="56">
+
+
+
+<meta itemprop="keywords" content="NuGet,pdb,Symbol," />
+
+<link rel="canonical" href="http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>架設SymbolSource.Server</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 21, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/pdb">Pdb</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/symbol">Symbol</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/pdb">Pdb</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/symbol">Symbol</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先要先安裝debugging-tools-for-windowshttpmsdnmicrosoftcomen-uswindowshardwaregg463009">首先要先安裝<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463009">Debugging Tools for Windows</a></h2>
+<p><img src="http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png" alt="">](<a href="http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png">http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png</a>)</p>
+<h2 id="記住這個安裝路徑等下會用到">記住這個安裝路徑，等下會用到</h2>
+<p><img src="http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png" alt="">](<a href="http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png">http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png</a>)</p>
+<h2 id="選擇安裝debugging-tool-for-windows一直按下一步就好了">選擇安裝Debugging Tool for Windows，一直按下一步就好了</h2>
+<p><img src="http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png" alt="">](<a href="http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png">http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png</a>)</p>
+<h2 id="接下來開始安裝symbolsourceserver">接下來開始安裝SymbolSource.Server</h2>
+<h2 id="先開一個mvc專案">先開一個MVC專案</h2>
+<p><img src="http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png" alt="">](<a href="http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png">http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png</a>)</p>
+<h2 id="選擇空白範本">選擇空白範本</h2>
+<p><img src="http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png" alt="">](<a href="http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png">http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png</a>)</p>
+<h2 id="用nuget安裝symbolsourceserverbasic套件">用Nuget安裝SymbolSource.Server.Basic套件</h2>
+<p><img src="http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png" alt="">](<a href="http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png">http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png</a>)</p>
+<h2 id="打開webconfig找到srcsrvpath修改成剛安裝的路徑">打開web.config，找到SrcSrvPath，修改成剛安裝的路徑</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;SrcSrvPath&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="按f5執行就會看到如下的畫面">按F5執行，就會看到如下的畫面</h2>
+<h2 id="一個是symbol的位置一個是套件發佈用的位置">一個是Symbol的位置，一個是套件發佈用的位置</h2>
+<p><img src="http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png" alt="">](<a href="http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png">http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png</a>)</p>
+<h2 id="設定一下偵錯選項">設定一下偵錯選項</h2>
+<ol>
+<li>取消「啟用Just My Code的勾勾」</li>
+<li>勾選「啟用來源伺服器支援」
+把套件和Symbol發佈之後就可以偵錯了
+<img src="http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png" alt="">](<a href="http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png">http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png</a>)</li>
+</ol>
+<h2 id="再新增一個symbol位置指向到伺服器路徑之後發佈套件和symbol就可以偵錯了">再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了</h2>
+<p><img src="http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png" alt="">](<a href="http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png">http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png</a>)</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://www.symbolsource.org/Public/Blog/View/2012-03-13/Releasing_the_community_edition_of_SymbolSource">Setting it up your own symbol and source server</a></li>
+<li><a href="http://blogs.realdolmen.com/experts/2012/08/07/setting-up-your-own-symbolsource-server-step-by-step/">Setting up your own SymbolSource Server: step-by-step </a></li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e6%9e%b6%e8%a8%adSymbolSource.Server&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f
+			&title=%e6%9e%b6%e8%a8%adSymbolSource.Server&summary=%e9%a6%96%e5%85%88%e8%a6%81%e5%85%88%e5%ae%89%e8%a3%9dDebugging%20Tools%20for%20Windows%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-KzKeCG8zNjk%2fUIO4-cYGgII%2fAAAAAAAAAKU%2fwGhW5z4HeaQ%2fs1600%2f00.download.png%29%0a%e8%a8%98%e4%bd%8f%e9%80%99%e5%80%8b%e5%ae%89%e8%a3%9d%e8%b7%af%e5%be%91%ef%bc%8c%e7%ad%89%e4%b8%8b%e6%9c%83%e7%94%a8%e5%88%b0%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-QKH8P_Fpovo%2fUIO4J4JlA_I%2fAAAAAAAAAJk%2f5Yxs5DDK09I%2fs1600%2f00.Path.png%29%0a%e9%81%b8%e6%93%87%e5%ae%89%e8%a3%9dDebugging%20Tool%20for%20Windows%ef%bc%8c%e4%b8%80%e7%9b%b4%e6%8c%89%e4%b8%8b%e4%b8%80%e6%ad%a5%e5%b0%b1%e5%a5%bd%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-eQQb6sjiNqE%2fUIO4JNm7ZzI%2fAAAAAAAAAJc%2fClovhmG2kzU%2fs1600%2f00.DebuggingTool.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e9%96%8b%e5%a7%8b%e5%ae%89%e8%a3%9dSymbolSource.Server%20%e5%85%88%e9%96%8b%e4%b8%80%e5%80%8bMVC%e5%b0%88%e6%a1%88%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-weYfPMU9dLY%2fUIO4Koyl5eI%2fAAAAAAAAAJs%2f6Jp_tUUv1eQ%2fs1600%2f01.NewProject.png%29%0a%e9%81%b8%e6%93%87%e7%a9%ba%e7%99%bd%e7%af%84%e6%9c%ac%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-2fqKnGX6JNA%2fUIO4LMBQMSI%2fAAAAAAAAAJ0%2fsBdNebIBvDo%2fs1600%2f02.ProjectSetting.png%29%0a%e7%94%a8Nuget%e5%ae%89%e8%a3%9dSymbolSource.Server.Basic%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-vAS8yuexXc4%2fUIO4Lr-AvLI%2fAAAAAAAAAJ8%2fAqZbH0BG-mg%2fs1600%2f03.SymbolSourceServer.png%29%0a%e6%89%93%e9%96%8bweb.config%ef%bc%8c%e6%89%be%e5%88%b0SrcSrvPath%ef%bc%8c%e4%bf%ae%e6%94%b9%e6%88%90%e5%89%9b%e5%ae%89%e8%a3%9d%e7%9a%84%e8%b7%af%e5%be%91%20%26lt%3badd%20key%3d%26%2334%3bSrcSrvPath%26%2334%3b%20value%3d%26%2334%3bC%3a%5cProgram%20Files%20%28x86%29%5cWindows%20Kits%5c8.0%5cDebuggers%5cx64%5csrcsrv%26%2334%3b%20%2f%26gt%3b%20%e6%8c%89F5%e5%9f%b7%e8%a1%8c%ef%bc%8c%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0%e5%a6%82%e4%b8%8b%e7%9a%84%e7%95%ab%e9%9d%a2%20%e4%b8%80%e5%80%8b%e6%98%afSymbol%e7%9a%84%e4%bd%8d%e7%bd%ae%ef%bc%8c%e4%b8%80%e5%80%8b%e6%98%af%e5%a5%97%e4%bb%b6%e7%99%bc%e4%bd%88%e7%94%a8%e7%9a%84%e4%bd%8d%e7%bd%ae%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-3aEpzPPQ66g%2fUIO4MDpaxbI%2fAAAAAAAAAKE%2fqXzukxnN2mU%2fs1600%2f04.DefaultPage.png%29%0a%e8%a8%ad%e5%ae%9a%e4%b8%80%e4%b8%8b%e5%81%b5%e9%8c%af%e9%81%b8%e9%a0%85%20%20%e5%8f%96%e6%b6%88%e3%80%8c%e5%95%9f%e7%94%a8Just%20My%20Code%e7%9a%84%e5%8b%be%e5%8b%be%e3%80%8d%20%e5%8b%be%e9%81%b8%e3%80%8c%e5%95%9f%e7%94%a8%e4%be%86%e6%ba%90%e4%bc%ba%e6%9c%8d%e5%99%a8%e6%94%af%e6%8f%b4%e3%80%8d%20%e6%8a%8a%e5%a5%97%e4%bb%b6%e5%92%8cSymbol%e7%99%bc%e4%bd%88%e4%b9%8b%e5%be%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%81%b5%e9%8c%af%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-dypoFu3nhYk%2fUIO4Ms8TdjI%2fAAAAAAAAAKM%2feC0J2y1De5Q%2fs1600%2f05.Setting.png%29%20%20%e5%86%8d%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bSymbol%e4%bd%8d%e7%bd%ae%ef%bc%8c%e6%8c%87%e5%90%91%e5%88%b0%e4%bc%ba%e6%9c%8d%e5%99%a8%e8%b7%af%e5%be%91%ef%bc%8c%e4%b9%8b%e5%be%8c%e7%99%bc%e4%bd%88%e5%a5%97%e4%bb%b6%e5%92%8cSymbol%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%81%b5%e9%8c%af%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-7qcGV2EU9d8%2fUIO9MgH6h1I%2fAAAAAAAAAKs%2fhuq9yb8Emso%2fs1600%2f06.Symbol.png%29%0a%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%20%20Setting%20it%20up%20your%20own%20symbol%20and%20source%20server%20Setting%20up%20your%20own%20SymbolSource%20Server%3a%20step-by-step%20%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e6%9e%b6%e8%a8%adSymbolSource.Server&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADsymbolsource-server%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

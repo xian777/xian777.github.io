@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog Mail Target | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog Mail Target 透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員 屬性 完整的資料請參考[官網Mail Target文件](https://github.com/nlog/nlog/wiki/Mail-target)   html - 是否為HTML格式的郵件，預設為false encoding - 郵件編碼，預設為UTF8 subject - 郵件主題 to - 收件者 bcc - 密件副本 cc - 副本 from - 寄件者 body - 郵件內容，預設為${message} smtpUserName - 郵件主機寄信帳號 enableSsl - 是否啟用SSL通訊協定 smtpPassword - 郵件主密寄信密碼 smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None smtpServer - 郵件主機位址 smtpPort - 郵件主機埠號，預設為25  一個簡單的範例，發生Error層級以上的Log，就寄信給管理員&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;!--  See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs.
+    ">
+
+
+<meta property="og:title" content="NLog Mail Target" />
+<meta property="og:description" content="NLog Mail Target 透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員 屬性 完整的資料請參考[官網Mail Target文件](https://github.com/nlog/nlog/wiki/Mail-target)   html - 是否為HTML格式的郵件，預設為false encoding - 郵件編碼，預設為UTF8 subject - 郵件主題 to - 收件者 bcc - 密件副本 cc - 副本 from - 寄件者 body - 郵件內容，預設為${message} smtpUserName - 郵件主機寄信帳號 enableSsl - 是否啟用SSL通訊協定 smtpPassword - 郵件主密寄信密碼 smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None smtpServer - 郵件主機位址 smtpPort - 郵件主機埠號，預設為25  一個簡單的範例，發生Error層級以上的Log，就寄信給管理員&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;!--  See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-mail-target/" />
+<meta property="article:published_time" content="2012-12-31T01:07:00+00:00" />
+<meta property="article:modified_time" content="2012-12-31T01:07:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog Mail Target"/>
+<meta name="twitter:description" content="NLog Mail Target 透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員 屬性 完整的資料請參考[官網Mail Target文件](https://github.com/nlog/nlog/wiki/Mail-target)   html - 是否為HTML格式的郵件，預設為false encoding - 郵件編碼，預設為UTF8 subject - 郵件主題 to - 收件者 bcc - 密件副本 cc - 副本 from - 寄件者 body - 郵件內容，預設為${message} smtpUserName - 郵件主機寄信帳號 enableSsl - 是否啟用SSL通訊協定 smtpPassword - 郵件主密寄信密碼 smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None smtpServer - 郵件主機位址 smtpPort - 郵件主機埠號，預設為25  一個簡單的範例，發生Error層級以上的Log，就寄信給管理員&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;!--  See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs."/>
+
+<meta itemprop="name" content="NLog Mail Target">
+<meta itemprop="description" content="NLog Mail Target 透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員 屬性 完整的資料請參考[官網Mail Target文件](https://github.com/nlog/nlog/wiki/Mail-target)   html - 是否為HTML格式的郵件，預設為false encoding - 郵件編碼，預設為UTF8 subject - 郵件主題 to - 收件者 bcc - 密件副本 cc - 副本 from - 寄件者 body - 郵件內容，預設為${message} smtpUserName - 郵件主機寄信帳號 enableSsl - 是否啟用SSL通訊協定 smtpPassword - 郵件主密寄信密碼 smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None smtpServer - 郵件主機位址 smtpPort - 郵件主機埠號，預設為25  一個簡單的範例，發生Error層級以上的Log，就寄信給管理員&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;!--  See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs.">
+<meta itemprop="datePublished" content="2012-12-31T01:07:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-31T01:07:00+00:00" />
+<meta itemprop="wordCount" content="90">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-mail-target/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog Mail Target</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 31, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog-mail-target">NLog Mail Target</h2>
+<div>透過郵件把Log寄出，例如Error和Fatal等級的Log可以考慮直接寄出給管理員</div>
+<h2 id="屬性">屬性</h2>
+<div>完整的資料請參考[官網Mail Target文件](https://github.com/nlog/nlog/wiki/Mail-target)</div><div>
+</div><div>
+<ul>
+<li>html - 是否為HTML格式的郵件，預設為false</li>
+<li>encoding - 郵件編碼，預設為UTF8</li>
+<li>subject - 郵件主題</li>
+<li>to - 收件者</li>
+<li>bcc - 密件副本</li>
+<li>cc - 副本</li>
+<li>from - 寄件者</li>
+<li>body - 郵件內容，預設為${message}</li>
+<li>smtpUserName - 郵件主機寄信帳號</li>
+<li>enableSsl - 是否啟用SSL通訊協定</li>
+<li>smtpPassword - 郵件主密寄信密碼</li>
+<li>smtpAuthentication - 郵件主機驗證模組，Basci、None、Ntml，預設為None</li>
+<li>smtpServer -  郵件主機位址</li>
+<li>smtpPort - 郵件主機埠號，預設為25</div><div></li>
+</ul>
+</div><div>一個簡單的範例，發生Error層級以上的Log，就寄信給管理員</div><div><pre class="brush:csharp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+<pre><code>&amp;lt;!-- 
+</code></pre>
+<p>See <a href="http://nlog-project.org/wiki/Configuration_file">http://nlog-project.org/wiki/Configuration_file</a>
+for information on customizing logging rules and outputs.
+&ndash;&gt;
+&lt;targets&gt;
+&lt;target xsi:type=&quot;Mail&rdquo; name=&quot;MailAlarm&rdquo;
+smtpServer=&quot;郵件主機位置&rdquo;
+smtpPort=&quot;25&rdquo;
+subject=&quot;${machineName}於${longdate}發生問題&rdquo;
+from=&quot;寄信人Mail&rdquo;
+to=&quot;收信人Mail&rdquo;
+body=&quot;${longdate} ${uppercase:${level}} ${message}&rdquo; /&gt;
+&lt;/targets&gt;
+&lt;rules&gt;
+&lt;logger name=&rdquo;*&rdquo; minlevel=&quot;Error&rdquo; writeTo=&quot;MailAlarm&rdquo; /&gt;
+&lt;/rules&gt;
+&lt;/nlog&gt;
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20Mail%20Target&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f
+			&title=NLog%20Mail%20Target&summary=NLog%20Mail%20Target%20%e9%80%8f%e9%81%8e%e9%83%b5%e4%bb%b6%e6%8a%8aLog%e5%af%84%e5%87%ba%ef%bc%8c%e4%be%8b%e5%a6%82Error%e5%92%8cFatal%e7%ad%89%e7%b4%9a%e7%9a%84Log%e5%8f%af%e4%bb%a5%e8%80%83%e6%85%ae%e7%9b%b4%e6%8e%a5%e5%af%84%e5%87%ba%e7%b5%a6%e7%ae%a1%e7%90%86%e5%93%a1%20%e5%b1%ac%e6%80%a7%20%e5%ae%8c%e6%95%b4%e7%9a%84%e8%b3%87%e6%96%99%e8%ab%8b%e5%8f%83%e8%80%83%5b%e5%ae%98%e7%b6%b2Mail%20Target%e6%96%87%e4%bb%b6%5d%28https%3a%2f%2fgithub.com%2fnlog%2fnlog%2fwiki%2fMail-target%29%20%20%20html%20-%20%e6%98%af%e5%90%a6%e7%82%baHTML%e6%a0%bc%e5%bc%8f%e7%9a%84%e9%83%b5%e4%bb%b6%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%82%bafalse%20encoding%20-%20%e9%83%b5%e4%bb%b6%e7%b7%a8%e7%a2%bc%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%82%baUTF8%20subject%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e9%a1%8c%20to%20-%20%e6%94%b6%e4%bb%b6%e8%80%85%20bcc%20-%20%e5%af%86%e4%bb%b6%e5%89%af%e6%9c%ac%20cc%20-%20%e5%89%af%e6%9c%ac%20from%20-%20%e5%af%84%e4%bb%b6%e8%80%85%20body%20-%20%e9%83%b5%e4%bb%b6%e5%85%a7%e5%ae%b9%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%82%ba%24%7bmessage%7d%20smtpUserName%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e6%a9%9f%e5%af%84%e4%bf%a1%e5%b8%b3%e8%99%9f%20enableSsl%20-%20%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8SSL%e9%80%9a%e8%a8%8a%e5%8d%94%e5%ae%9a%20smtpPassword%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e5%af%86%e5%af%84%e4%bf%a1%e5%af%86%e7%a2%bc%20smtpAuthentication%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e6%a9%9f%e9%a9%97%e8%ad%89%e6%a8%a1%e7%b5%84%ef%bc%8cBasci%e3%80%81None%e3%80%81Ntml%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%82%baNone%20smtpServer%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e6%a9%9f%e4%bd%8d%e5%9d%80%20smtpPort%20-%20%e9%83%b5%e4%bb%b6%e4%b8%bb%e6%a9%9f%e5%9f%a0%e8%99%9f%ef%bc%8c%e9%a0%90%e8%a8%ad%e7%82%ba25%20%20%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e7%af%84%e4%be%8b%ef%bc%8c%e7%99%bc%e7%94%9fError%e5%b1%a4%e7%b4%9a%e4%bb%a5%e4%b8%8a%e7%9a%84Log%ef%bc%8c%e5%b0%b1%e5%af%84%e4%bf%a1%e7%b5%a6%e7%ae%a1%e7%90%86%e5%93%a1%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%22http%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%22%20xmlns%3axsi%3d%22http%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%22%26gt%3b%20%26amp%3blt%3b%21--%20%20See%20http%3a%2f%2fnlog-project.org%2fwiki%2fConfiguration_file%20for%20information%20on%20customizing%20logging%20rules%20and%20outputs.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20Mail%20Target&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-mail-target%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

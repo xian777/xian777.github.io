@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StyleCop on My New Hugo Site</title>
+    <link>http://example.org/tags/stylecop/</link>
+    <description>Recent content in StyleCop on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jun 2016 14:12:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/stylecop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>StyleCop SA1208 排列Using時先放置System指示詞</title>
+      <link>http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/</link>
+      <pubDate>Tue, 07 Jun 2016 14:12:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/</guid>
+      <description>在使用組合管理Using-&amp;gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&amp;gt;選項-&amp;gt;文字編輯器-&amp;gt;C#-&amp;gt;進階- 排序Usning時先放置System指示詞勾起來就行了</description>
+    </item>
+    
+    <item>
+      <title>StyleCop 中文環境設定</title>
+      <link>http://example.org/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Mon, 07 Jul 2014 16:51:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/</guid>
+      <description>Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &amp;lt;StyleCopSettings Version=&#34;105&#34;&amp;gt; &amp;lt;Analyzers&amp;gt; &amp;lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&amp;gt; &amp;lt;Rules&amp;gt; &amp;lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&amp;gt; &amp;lt;RuleSettings&amp;gt; &amp;lt;BooleanProperty Name=&#34;Enabled&#34;&amp;gt;False&amp;lt;/BooleanProperty&amp;gt; &amp;lt;/RuleSettings&amp;gt; &amp;lt;/Rule&amp;gt; &amp;lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&amp;gt; &amp;lt;RuleSettings&amp;gt; &amp;lt;BooleanProperty Name=&#34;Enabled&#34;&amp;gt;False&amp;lt;/BooleanProperty&amp;gt; &amp;lt;/RuleSettings&amp;gt; &amp;lt;/Rule&amp;gt; &amp;lt;/Rules&amp;gt; &amp;lt;AnalyzerSettings /&amp;gt; &amp;lt;/Analyzer&amp;gt; &amp;lt;/Analyzers&amp;gt; &amp;lt;/StyleCopSettings&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>TeamCity 整合 StyleCop</title>
+      <link>http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/</link>
+      <pubDate>Fri, 06 Jun 2014 14:10:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/</guid>
+      <description>先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  </description>
+    </item>
+    
+    <item>
+      <title>StyleCop 常見問題與修正方法</title>
+      <link>http://example.org/posts/2013/01/stylecop-%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%E8%88%87%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Fri, 11 Jan 2013 16:55:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/01/stylecop-%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%E8%88%87%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/</guid>
+      <description>1. 單一頁面檢查方法 在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面
+[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)  2. 沒有檔頭宣告 錯誤訊息 The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+修正方法 程式碼第一行加上檔頭宣告，格式如下
+[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png) 如果是自動產生的檔案，可用auto-generated標籤略過 // &amp;lt;auto-generated /&amp;gt;  3. 縮排格式不正確 錯誤訊息 Tabs are not allowed. Use spaces instead.
+修正方法 工具&amp;ndash;&amp;gt;選項&amp;ndash;&amp;gt;文字編輯器&amp;ndash;&amp;gt;所有語言&amp;ndash;&amp;gt;定位點 定位點和縮排大小都設定成4，並選擇插入空格的方式 開啟原始碼，使用CTRL+k, d重整程式碼即可
+[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)  4. Using指示詞位置 錯誤訊息 All using directives must be placed inside of the namespace.
+修正方法 把所有using指示詞剪下，放到namespace下面</description>
+    </item>
+    
+    <item>
+      <title>StyleCop 整合SVN</title>
+      <link>http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88svn/</link>
+      <pubDate>Mon, 24 Dec 2012 20:18:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88svn/</guid>
+      <description>安裝SVNStyleCop 1. 首先下載SVNStyleCop安裝檔 2. 解壓縮後編輯SVNStyleCop.exe.config 3. 設定SVNSettings.StyleCop裡面要檢查的規則 4. 修改SVNStyleCop.exe.config裡面的路徑範本
+&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;configSections&amp;gt; &amp;lt;section name=&#34;svnStyleCopConfig&#34; type=&#34;SVNStyleCop.SvnStyleCopConfigSection, SVNStyleCop&#34; allowDefinition=&#34;Everywhere&#34; allowExeDefinition=&#34;MachineToApplication&#34; restartOnExternalChanges=&#34;true&#34; /&amp;gt; &amp;lt;/configSections&amp;gt; &amp;lt;svnStyleCopConfig tempFolder=&#34;Temp&#34;&amp;gt; &amp;lt;!-- 設定svnlook.exe執行檔位置 --&amp;gt; &amp;lt;svnLook location=&#34;C:\Program Files\VisualSVN Server\bin\svnlook.exe&#34; /&amp;gt; &amp;lt;styleCop settingsFile=&#34;SVNSettings.StyleCop&#34; maxViolationCount=&#34;20&#34; /&amp;gt; &amp;lt;!-- 設定專案路徑範本 --&amp;gt; &amp;lt;pathPatterns&amp;gt; &amp;lt;clear /&amp;gt; &amp;lt;add value=&#34;^trunk/.*\.cs$&#34;/&amp;gt; &amp;lt;add value=&#34;^branches/.*\.cs$&#34;/&amp;gt; &amp;lt;add value=&#34;^tags/.*\.cs$&#34;/&amp;gt; &amp;lt;/pathPatterns&amp;gt; &amp;lt;/svnStyleCopConfig&amp;gt; &amp;lt;/configuration&amp;gt; 設定 1\. 編輯壓縮檔下面的pre-commit.cmd，修改前兩行svnlook.exe和SVNStyleCop.exe的路徑2\. 把批次檔的內容複製到SVN Repos的pre-commit hook[![](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)](http://3.bp.blogspot.com/-87zwTSTxMa0/UOPNcTue3SI/AAAAAAAAApY/zcxgaQcFXAs/s1600/01.Hook.png)   參考資料 SVNStyleCop官網</description>
+    </item>
+    
+    <item>
+      <title>StyleCop 整合專案設定</title>
+      <link>http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88%E5%B0%88%E6%A1%88%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Mon, 24 Dec 2012 20:17:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/stylecop-%E6%95%B4%E5%90%88%E5%B0%88%E6%A1%88%E8%A8%AD%E5%AE%9A/</guid>
+      <description>首先卸載專案
+如果要讓沒通過規則的警告變成錯誤，可以在專案中加入StyleCopTreatErrorsAsWarnings這個屬性
+&amp;lt;PropertyGroup&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;Configuration Condition=&#34; &#39;$(Configuration)&#39; == &#39;&#39; &#34;&amp;gt;Debug&amp;lt;/Configuration&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;Platform Condition=&#34; &#39;$(Platform)&#39; == &#39;&#39; &#34;&amp;gt;AnyCPU&amp;lt;/Platform&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;ProjectGuid&amp;gt;{6F76C2E4-57EF-4A46-9A41-E7A9653F5EF9}&amp;lt;/ProjectGuid&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;OutputType&amp;gt;Exe&amp;lt;/OutputType&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;AppDesignerFolder&amp;gt;Properties&amp;lt;/AppDesignerFolder&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;RootNamespace&amp;gt;DemoApp&amp;lt;/RootNamespace&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;AssemblyName&amp;gt;DemoApp&amp;lt;/AssemblyName&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;TargetFrameworkVersion&amp;gt;v4.5&amp;lt;/TargetFrameworkVersion&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;FileAlignment&amp;gt;512&amp;lt;/FileAlignment&amp;gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;lt;StyleCopTreatErrorsAsWarnings&amp;gt;false&amp;lt;/StyleCopTreatErrorsAsWarnings&amp;gt; &amp;lt;/PropertyGroup&amp;gt;  如果要編譯的時後，也做規則驗證，可以在最下面加入一個StyleCop.targets
+&amp;lt;Import Project=&#34;$(MSBuildToolsPath)\Microsoft.CSharp.targets&#34; /&amp;gt; &amp;lt;Import Project=&#34;$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets&#34; /&amp;gt;  參考資料
+http://blogs.msdn.com/b/sourceanalysis/archive/2008/05/24/source-analysis-msbuild-integration.aspx</description>
+    </item>
+    
+    <item>
+      <title>StyleCop 程式碼風格和常見警告訊息</title>
+      <link>http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E5%B8%B8%E8%A6%8B%E8%AD%A6%E5%91%8A%E8%A8%8A%E6%81%AF/</link>
+      <pubDate>Mon, 24 Dec 2012 20:01:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E5%B8%B8%E8%A6%8B%E8%AD%A6%E5%91%8A%E8%A8%8A%E6%81%AF/</guid>
+      <description>每個檔案的最上面，都加一個檔頭 // &amp;lt;copyright company=&amp;quot;CompanyName&amp;rdquo; file=&amp;quot;NameOfFile.cs&amp;rdquo;&amp;gt; // Company copyright tag. // &amp;lt;/copyright&amp;gt;
+XML註解 建構式以Initializes a new instance of the xxx class開頭 解構式以Finalizes an instance of the xxx class開頭 屬性以Gets or sets開頭 註解文字最少兩個字以上，並用空格分隔 註解文字斷行要用para分隔 程式碼撰寫順序 程式碼撰寫順序: public -&amp;amp;gt; internal -&amp;amp;gt; protected internal -&amp;amp;gt; protected -&amp;amp;gt; private 程式碼元素撰寫順序: Fields -&amp;amp;gt; Constructor -&amp;amp;gt; Event-&amp;amp;gt; Property -&amp;amp;gt; Method
+大小寫規則 Camel Case:私有的內部變數、成員變數、參數 Pascal Case:公開的屬性、方法、事件&amp;hellip; 其他 using 放到namespace下面 需使用明確的存取修飾詞 程式碼中多餘的空白行 變數不用使用底線
+常見錯誤 SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</description>
+    </item>
+    
+    <item>
+      <title>StyleCop 程式碼風格和一致性規則檢查工具</title>
+      <link>http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7%E8%A6%8F%E5%89%87%E6%AA%A2%E6%9F%A5%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Mon, 24 Dec 2012 19:54:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7%E8%A6%8F%E5%89%87%E6%AA%A2%E6%9F%A5%E5%B7%A5%E5%85%B7/</guid>
+      <description>StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com 首先下載msi格式的安裝檔[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png) 下載回來後一直按下一步就行了[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png) 等幾分鐘才能跑完[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png) 打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png) 工作清單就會出現一堆不符合的警告在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 [![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png) 如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png) 就會跳出StyleCop的說明手冊[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png) 在專案上面按右鍵，可以選擇設定[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png) 顯示的設定介面[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png) 專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值  [!</description>
+    </item>
+    
+  </channel>
+</rss>

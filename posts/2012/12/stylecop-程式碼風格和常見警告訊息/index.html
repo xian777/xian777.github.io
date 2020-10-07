@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop 程式碼風格和常見警告訊息 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="每個檔案的最上面，都加一個檔頭 // &lt;copyright company=&quot;CompanyName&rdquo; file=&quot;NameOfFile.cs&rdquo;&gt; // Company copyright tag. // &lt;/copyright&gt;
+XML註解 建構式以Initializes a new instance of the xxx class開頭 解構式以Finalizes an instance of the xxx class開頭 屬性以Gets or sets開頭 註解文字最少兩個字以上，並用空格分隔 註解文字斷行要用para分隔 程式碼撰寫順序 程式碼撰寫順序: public -&amp;gt; internal -&amp;gt; protected internal -&amp;gt; protected -&amp;gt; private 程式碼元素撰寫順序: Fields -&amp;gt; Constructor -&amp;gt; Event-&amp;gt; Property -&amp;gt; Method
+大小寫規則 Camel Case:私有的內部變數、成員變數、參數 Pascal Case:公開的屬性、方法、事件&hellip; 其他 using 放到namespace下面 需使用明確的存取修飾詞 程式碼中多餘的空白行 變數不用使用底線
+常見錯誤 SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+    ">
+
+
+<meta property="og:title" content="StyleCop 程式碼風格和常見警告訊息" />
+<meta property="og:description" content="每個檔案的最上面，都加一個檔頭 // &lt;copyright company=&quot;CompanyName&rdquo; file=&quot;NameOfFile.cs&rdquo;&gt; // Company copyright tag. // &lt;/copyright&gt;
+XML註解 建構式以Initializes a new instance of the xxx class開頭 解構式以Finalizes an instance of the xxx class開頭 屬性以Gets or sets開頭 註解文字最少兩個字以上，並用空格分隔 註解文字斷行要用para分隔 程式碼撰寫順序 程式碼撰寫順序: public -&amp;gt; internal -&amp;gt; protected internal -&amp;gt; protected -&amp;gt; private 程式碼元素撰寫順序: Fields -&amp;gt; Constructor -&amp;gt; Event-&amp;gt; Property -&amp;gt; Method
+大小寫規則 Camel Case:私有的內部變數、成員變數、參數 Pascal Case:公開的屬性、方法、事件&hellip; 其他 using 放到namespace下面 需使用明確的存取修飾詞 程式碼中多餘的空白行 變數不用使用底線
+常見錯誤 SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E5%B8%B8%E8%A6%8B%E8%AD%A6%E5%91%8A%E8%A8%8A%E6%81%AF/" />
+<meta property="article:published_time" content="2012-12-24T20:01:00+00:00" />
+<meta property="article:modified_time" content="2012-12-24T20:01:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop 程式碼風格和常見警告訊息"/>
+<meta name="twitter:description" content="每個檔案的最上面，都加一個檔頭 // &lt;copyright company=&quot;CompanyName&rdquo; file=&quot;NameOfFile.cs&rdquo;&gt; // Company copyright tag. // &lt;/copyright&gt;
+XML註解 建構式以Initializes a new instance of the xxx class開頭 解構式以Finalizes an instance of the xxx class開頭 屬性以Gets or sets開頭 註解文字最少兩個字以上，並用空格分隔 註解文字斷行要用para分隔 程式碼撰寫順序 程式碼撰寫順序: public -&amp;gt; internal -&amp;gt; protected internal -&amp;gt; protected -&amp;gt; private 程式碼元素撰寫順序: Fields -&amp;gt; Constructor -&amp;gt; Event-&amp;gt; Property -&amp;gt; Method
+大小寫規則 Camel Case:私有的內部變數、成員變數、參數 Pascal Case:公開的屬性、方法、事件&hellip; 其他 using 放到namespace下面 需使用明確的存取修飾詞 程式碼中多餘的空白行 變數不用使用底線
+常見錯誤 SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file."/>
+
+<meta itemprop="name" content="StyleCop 程式碼風格和常見警告訊息">
+<meta itemprop="description" content="每個檔案的最上面，都加一個檔頭 // &lt;copyright company=&quot;CompanyName&rdquo; file=&quot;NameOfFile.cs&rdquo;&gt; // Company copyright tag. // &lt;/copyright&gt;
+XML註解 建構式以Initializes a new instance of the xxx class開頭 解構式以Finalizes an instance of the xxx class開頭 屬性以Gets or sets開頭 註解文字最少兩個字以上，並用空格分隔 註解文字斷行要用para分隔 程式碼撰寫順序 程式碼撰寫順序: public -&amp;gt; internal -&amp;gt; protected internal -&amp;gt; protected -&amp;gt; private 程式碼元素撰寫順序: Fields -&amp;gt; Constructor -&amp;gt; Event-&amp;gt; Property -&amp;gt; Method
+大小寫規則 Camel Case:私有的內部變數、成員變數、參數 Pascal Case:公開的屬性、方法、事件&hellip; 其他 using 放到namespace下面 需使用明確的存取修飾詞 程式碼中多餘的空白行 變數不用使用底線
+常見錯誤 SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file.">
+<meta itemprop="datePublished" content="2012-12-24T20:01:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-24T20:01:00+00:00" />
+<meta itemprop="wordCount" content="145">
+
+
+
+<meta itemprop="keywords" content="StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E5%B8%B8%E8%A6%8B%E8%AD%A6%E5%91%8A%E8%A8%8A%E6%81%AF/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop 程式碼風格和常見警告訊息</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 24, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>每個檔案的最上面，都加一個檔頭
+    // &lt;copyright company=&quot;CompanyName&rdquo; file=&quot;NameOfFile.cs&rdquo;&gt;
+    //     Company copyright tag.
+    // &lt;/copyright&gt;</p>
+<p>XML註解
+    建構式以Initializes a new instance of the xxx class開頭
+    解構式以Finalizes an instance of the xxx class開頭
+    屬性以Gets or sets開頭
+    註解文字最少兩個字以上，並用空格分隔
+    註解文字斷行要用para分隔
+   
+程式碼撰寫順序
+    程式碼撰寫順序: public -&amp;gt; internal -&amp;gt; protected internal -&amp;gt; protected -&amp;gt; private
+    程式碼元素撰寫順序: Fields -&amp;gt; Constructor -&amp;gt; Event-&amp;gt; Property -&amp;gt; Method</p>
+<p>大小寫規則
+    Camel Case:私有的內部變數、成員變數、參數
+    Pascal Case:公開的屬性、方法、事件&hellip;
+   
+其他
+    using 放到namespace下面
+    需使用明確的存取修飾詞
+    程式碼中多餘的空白行
+    變數不用使用底線</p>
+<p>常見錯誤
+    SA1633 : CSharp.Documentation : The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+    在第一行加入檔頭資訊
+   
+    SA1200 : CSharp.Ordering : All using directives must be placed inside of the namespace.
+    Using 放到namespace區段下面</p>
+<p>    SA1027 : CSharp.Spacing : Tabs are not allowed. Use spaces instead.
+    工具-&amp;gt;選項-&amp;gt;文字編輯器-&amp;gt;所有語言-&amp;gt;定位點-&amp;gt;插入空格</p>
+<p>    SA1400 : CSharp.Maintainability : The class must have an access modifier.
+    加入明確存取修飾詞</p>
+<p>    SA1600 : CSharp.Documentation : The class must have a documentation header.
+    加入XML Document註解</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e5%b8%b8%e8%a6%8b%e8%ad%a6%e5%91%8a%e8%a8%8a%e6%81%af&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f
+			&title=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e5%b8%b8%e8%a6%8b%e8%ad%a6%e5%91%8a%e8%a8%8a%e6%81%af&summary=%e6%af%8f%e5%80%8b%e6%aa%94%e6%a1%88%e7%9a%84%e6%9c%80%e4%b8%8a%e9%9d%a2%ef%bc%8c%e9%83%bd%e5%8a%a0%e4%b8%80%e5%80%8b%e6%aa%94%e9%a0%ad%20%2f%2f%20%26lt%3bcopyright%20company%3d%26quot%3bCompanyName%26rdquo%3b%20file%3d%26quot%3bNameOfFile.cs%26rdquo%3b%26gt%3b%20%2f%2f%c2%a0Company%20copyright%20tag.%20%2f%2f%20%26lt%3b%2fcopyright%26gt%3b%0aXML%e8%a8%bb%e8%a7%a3%20%e5%bb%ba%e6%a7%8b%e5%bc%8f%e4%bb%a5Initializes%20a%20new%20instance%20of%20the%20xxx%20class%e9%96%8b%e9%a0%ad%20%e8%a7%a3%e6%a7%8b%e5%bc%8f%e4%bb%a5Finalizes%20an%20instance%20of%20the%20xxx%20class%e9%96%8b%e9%a0%ad%20%e5%b1%ac%e6%80%a7%e4%bb%a5Gets%20or%20sets%e9%96%8b%e9%a0%ad%20%e8%a8%bb%e8%a7%a3%e6%96%87%e5%ad%97%e6%9c%80%e5%b0%91%e5%85%a9%e5%80%8b%e5%ad%97%e4%bb%a5%e4%b8%8a%ef%bc%8c%e4%b8%a6%e7%94%a8%e7%a9%ba%e6%a0%bc%e5%88%86%e9%9a%94%20%e8%a8%bb%e8%a7%a3%e6%96%87%e5%ad%97%e6%96%b7%e8%a1%8c%e8%a6%81%e7%94%a8para%e5%88%86%e9%9a%94%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e6%92%b0%e5%af%ab%e9%a0%86%e5%ba%8f%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e6%92%b0%e5%af%ab%e9%a0%86%e5%ba%8f%3a%20public%20-%26amp%3bgt%3b%20internal%20-%26amp%3bgt%3b%20protected%20internal%20-%26amp%3bgt%3b%20protected%20-%26amp%3bgt%3b%20private%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%85%83%e7%b4%a0%e6%92%b0%e5%af%ab%e9%a0%86%e5%ba%8f%3a%20Fields%20-%26amp%3bgt%3b%20Constructor%20-%26amp%3bgt%3b%20Event-%26amp%3bgt%3b%20Property%20-%26amp%3bgt%3b%20Method%0a%e5%a4%a7%e5%b0%8f%e5%af%ab%e8%a6%8f%e5%89%87%20Camel%20Case%3a%e7%a7%81%e6%9c%89%e7%9a%84%e5%85%a7%e9%83%a8%e8%ae%8a%e6%95%b8%e3%80%81%e6%88%90%e5%93%a1%e8%ae%8a%e6%95%b8%e3%80%81%e5%8f%83%e6%95%b8%20Pascal%20Case%3a%e5%85%ac%e9%96%8b%e7%9a%84%e5%b1%ac%e6%80%a7%e3%80%81%e6%96%b9%e6%b3%95%e3%80%81%e4%ba%8b%e4%bb%b6%26hellip%3b%20%e5%85%b6%e4%bb%96%20using%20%e6%94%be%e5%88%b0namespace%e4%b8%8b%e9%9d%a2%20%e9%9c%80%e4%bd%bf%e7%94%a8%e6%98%8e%e7%a2%ba%e7%9a%84%e5%ad%98%e5%8f%96%e4%bf%ae%e9%a3%be%e8%a9%9e%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%b8%ad%e5%a4%9a%e9%a4%98%e7%9a%84%e7%a9%ba%e7%99%bd%e8%a1%8c%20%e8%ae%8a%e6%95%b8%e4%b8%8d%e7%94%a8%e4%bd%bf%e7%94%a8%e5%ba%95%e7%b7%9a%0a%e5%b8%b8%e8%a6%8b%e9%8c%af%e8%aa%a4%20SA1633%20%3a%20CSharp.Documentation%20%3a%20The%20file%20has%20no%20header%2c%20the%20header%20Xml%20is%20invalid%2c%20or%20the%20header%20is%20not%20located%20at%20the%20top%20of%20the%20file.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e5%b8%b8%e8%a6%8b%e8%ad%a6%e5%91%8a%e8%a8%8a%e6%81%af&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E5%25B8%25B8%25E8%25A6%258B%25E8%25AD%25A6%25E5%2591%258A%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

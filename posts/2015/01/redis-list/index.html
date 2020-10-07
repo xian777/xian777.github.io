@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis List | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="指令說明BLPOP阻塞式指令，從開頭彈出內容BRPOP阻塞式指令，從尾端彈出內容BRPOPLPUSH阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部LINDEX取得List中指定位置的內容LINSERT配合AFTER和BEFORE來決定插入指定位置的前面或後面LLEN取得List的長度LPOP從開頭彈出資料LPUSH從開頭加入資料LPUSHX從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功LRANGE取得指定範圍內的資料LREM移除和指定內容相同的元素和個數LSET設定指定的資料LTRIM只保留指定範圍內的資料，不在指定範圍的資料全部移除RPOP從尾部彈出資料RPOPLPUSH從尾部彈出資料，並把彈出的資料加入一個List的頭部RPUSH從尾部加入資料RPUSHX從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功
+    ">
+
+
+<meta property="og:title" content="Redis List" />
+<meta property="og:description" content="指令說明BLPOP阻塞式指令，從開頭彈出內容BRPOP阻塞式指令，從尾端彈出內容BRPOPLPUSH阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部LINDEX取得List中指定位置的內容LINSERT配合AFTER和BEFORE來決定插入指定位置的前面或後面LLEN取得List的長度LPOP從開頭彈出資料LPUSH從開頭加入資料LPUSHX從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功LRANGE取得指定範圍內的資料LREM移除和指定內容相同的元素和個數LSET設定指定的資料LTRIM只保留指定範圍內的資料，不在指定範圍的資料全部移除RPOP從尾部彈出資料RPOPLPUSH從尾部彈出資料，並把彈出的資料加入一個List的頭部RPUSH從尾部加入資料RPUSHX從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-list/" />
+<meta property="article:published_time" content="2015-01-20T11:42:00+00:00" />
+<meta property="article:modified_time" content="2015-01-20T11:42:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis List"/>
+<meta name="twitter:description" content="指令說明BLPOP阻塞式指令，從開頭彈出內容BRPOP阻塞式指令，從尾端彈出內容BRPOPLPUSH阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部LINDEX取得List中指定位置的內容LINSERT配合AFTER和BEFORE來決定插入指定位置的前面或後面LLEN取得List的長度LPOP從開頭彈出資料LPUSH從開頭加入資料LPUSHX從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功LRANGE取得指定範圍內的資料LREM移除和指定內容相同的元素和個數LSET設定指定的資料LTRIM只保留指定範圍內的資料，不在指定範圍的資料全部移除RPOP從尾部彈出資料RPOPLPUSH從尾部彈出資料，並把彈出的資料加入一個List的頭部RPUSH從尾部加入資料RPUSHX從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功"/>
+
+<meta itemprop="name" content="Redis List">
+<meta itemprop="description" content="指令說明BLPOP阻塞式指令，從開頭彈出內容BRPOP阻塞式指令，從尾端彈出內容BRPOPLPUSH阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部LINDEX取得List中指定位置的內容LINSERT配合AFTER和BEFORE來決定插入指定位置的前面或後面LLEN取得List的長度LPOP從開頭彈出資料LPUSH從開頭加入資料LPUSHX從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功LRANGE取得指定範圍內的資料LREM移除和指定內容相同的元素和個數LSET設定指定的資料LTRIM只保留指定範圍內的資料，不在指定範圍的資料全部移除RPOP從尾部彈出資料RPOPLPUSH從尾部彈出資料，並把彈出的資料加入一個List的頭部RPUSH從尾部加入資料RPUSHX從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功">
+<meta itemprop="datePublished" content="2015-01-20T11:42:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-20T11:42:00+00:00" />
+<meta itemprop="wordCount" content="1">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-list/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis List</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 20, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>BLPOP</td><td>阻塞式指令，從開頭彈出內容</td></tr><tr><td>BRPOP</td><td>阻塞式指令，從尾端彈出內容</td></tr><tr><td>BRPOPLPUSH</td><td>阻塞式指令，從尾端彈出內容，並把彈出的內容加入一個List的頭部</td></tr><tr><td>LINDEX</td><td>取得List中指定位置的內容</td></tr><tr><td>LINSERT</td><td>配合AFTER和BEFORE來決定插入指定位置的前面或後面</td></tr><tr><td>LLEN</td><td>取得List的長度</td></tr><tr><td>LPOP</td><td>從開頭彈出資料</td></tr><tr><td>LPUSH</td><td>從開頭加入資料</td></tr><tr><td>LPUSHX</td><td>從開頭加入資料，只有當鍵值存在並且是一個List的時後才成功</td></tr><tr><td>LRANGE</td><td>取得指定範圍內的資料</td></tr><tr><td>LREM</td><td>移除和指定內容相同的元素和個數</td></tr><tr><td>LSET</td><td>設定指定的資料</td></tr><tr><td>LTRIM</td><td>只保留指定範圍內的資料，不在指定範圍的資料全部移除</td></tr><tr><td>RPOP</td><td>從尾部彈出資料</td></tr><tr><td>RPOPLPUSH</td><td>從尾部彈出資料，並把彈出的資料加入一個List的頭部</td></tr><tr><td>RPUSH</td><td>從尾部加入資料</td></tr><tr><td>RPUSHX</td><td>從尾部加入資料，只有當鍵值存在並且是一個List的時後才成功</td></tr></tbody></table>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20List&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f
+			&title=Redis%20List&summary=%e6%8c%87%e4%bb%a4%e8%aa%aa%e6%98%8eBLPOP%e9%98%bb%e5%a1%9e%e5%bc%8f%e6%8c%87%e4%bb%a4%ef%bc%8c%e5%be%9e%e9%96%8b%e9%a0%ad%e5%bd%88%e5%87%ba%e5%85%a7%e5%ae%b9BRPOP%e9%98%bb%e5%a1%9e%e5%bc%8f%e6%8c%87%e4%bb%a4%ef%bc%8c%e5%be%9e%e5%b0%be%e7%ab%af%e5%bd%88%e5%87%ba%e5%85%a7%e5%ae%b9BRPOPLPUSH%e9%98%bb%e5%a1%9e%e5%bc%8f%e6%8c%87%e4%bb%a4%ef%bc%8c%e5%be%9e%e5%b0%be%e7%ab%af%e5%bd%88%e5%87%ba%e5%85%a7%e5%ae%b9%ef%bc%8c%e4%b8%a6%e6%8a%8a%e5%bd%88%e5%87%ba%e7%9a%84%e5%85%a7%e5%ae%b9%e5%8a%a0%e5%85%a5%e4%b8%80%e5%80%8bList%e7%9a%84%e9%a0%ad%e9%83%a8LINDEX%e5%8f%96%e5%be%97List%e4%b8%ad%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%9a%84%e5%85%a7%e5%ae%b9LINSERT%e9%85%8d%e5%90%88AFTER%e5%92%8cBEFORE%e4%be%86%e6%b1%ba%e5%ae%9a%e6%8f%92%e5%85%a5%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%9a%84%e5%89%8d%e9%9d%a2%e6%88%96%e5%be%8c%e9%9d%a2LLEN%e5%8f%96%e5%be%97List%e7%9a%84%e9%95%b7%e5%ba%a6LPOP%e5%be%9e%e9%96%8b%e9%a0%ad%e5%bd%88%e5%87%ba%e8%b3%87%e6%96%99LPUSH%e5%be%9e%e9%96%8b%e9%a0%ad%e5%8a%a0%e5%85%a5%e8%b3%87%e6%96%99LPUSHX%e5%be%9e%e9%96%8b%e9%a0%ad%e5%8a%a0%e5%85%a5%e8%b3%87%e6%96%99%ef%bc%8c%e5%8f%aa%e6%9c%89%e7%95%b6%e9%8d%b5%e5%80%bc%e5%ad%98%e5%9c%a8%e4%b8%a6%e4%b8%94%e6%98%af%e4%b8%80%e5%80%8bList%e7%9a%84%e6%99%82%e5%be%8c%e6%89%8d%e6%88%90%e5%8a%9fLRANGE%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9a%e7%af%84%e5%9c%8d%e5%85%a7%e7%9a%84%e8%b3%87%e6%96%99LREM%e7%a7%bb%e9%99%a4%e5%92%8c%e6%8c%87%e5%ae%9a%e5%85%a7%e5%ae%b9%e7%9b%b8%e5%90%8c%e7%9a%84%e5%85%83%e7%b4%a0%e5%92%8c%e5%80%8b%e6%95%b8LSET%e8%a8%ad%e5%ae%9a%e6%8c%87%e5%ae%9a%e7%9a%84%e8%b3%87%e6%96%99LTRIM%e5%8f%aa%e4%bf%9d%e7%95%99%e6%8c%87%e5%ae%9a%e7%af%84%e5%9c%8d%e5%85%a7%e7%9a%84%e8%b3%87%e6%96%99%ef%bc%8c%e4%b8%8d%e5%9c%a8%e6%8c%87%e5%ae%9a%e7%af%84%e5%9c%8d%e7%9a%84%e8%b3%87%e6%96%99%e5%85%a8%e9%83%a8%e7%a7%bb%e9%99%a4RPOP%e5%be%9e%e5%b0%be%e9%83%a8%e5%bd%88%e5%87%ba%e8%b3%87%e6%96%99RPOPLPUSH%e5%be%9e%e5%b0%be%e9%83%a8%e5%bd%88%e5%87%ba%e8%b3%87%e6%96%99%ef%bc%8c%e4%b8%a6%e6%8a%8a%e5%bd%88%e5%87%ba%e7%9a%84%e8%b3%87%e6%96%99%e5%8a%a0%e5%85%a5%e4%b8%80%e5%80%8bList%e7%9a%84%e9%a0%ad%e9%83%a8RPUSH%e5%be%9e%e5%b0%be%e9%83%a8%e5%8a%a0%e5%85%a5%e8%b3%87%e6%96%99RPUSHX%e5%be%9e%e5%b0%be%e9%83%a8%e5%8a%a0%e5%85%a5%e8%b3%87%e6%96%99%ef%bc%8c%e5%8f%aa%e6%9c%89%e7%95%b6%e9%8d%b5%e5%80%bc%e5%ad%98%e5%9c%a8%e4%b8%a6%e4%b8%94%e6%98%af%e4%b8%80%e5%80%8bList%e7%9a%84%e6%99%82%e5%be%8c%e6%89%8d%e6%88%90%e5%8a%9f&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20List&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-list%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

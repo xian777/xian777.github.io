@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    AngularJS NgProgress 套件 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="安裝指令 &lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;bower install ngprogress`&lt;/pre&gt; # 加入css和js &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app/components/ngProgress/ngProgress.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;ngProgress.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; # 載入模組 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app = angular.module(&lt;span class=&quot;hljs-string&quot;&gt;&#39;progressApp&#39;&lt;/span&gt;, [&lt;span class=&quot;hljs-string&quot;&gt;&#39;ngProgress&#39;&lt;/span&gt;]);`&lt;/pre&gt; # 注入控制器 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; MainCtrl = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($scope, $timeout, ngProgressFactory)&lt;/span&gt; {&lt;/span&gt;}`&lt;/pre&gt; # 建立進度條物件 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar = ngProgressFactory.createInstance();`&lt;/pre&gt; # 啟動進度條 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar.start(); $timeout($scope.progressbar.complete(), &lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);`&lt;/pre&gt; # API &lt;pre class=&quot;prettyprint&quot;&gt;`-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;start:&lt;/span&gt; 啟動進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setHeight:&lt;/span&gt; 設定進度條高度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setColor:&lt;/span&gt; 設定進度條顏色 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;status:&lt;/span&gt; 進度條狀態 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;stop:&lt;/span&gt; 停止進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;set:&lt;/span&gt; 設定進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;reset:&lt;/span&gt; 重設進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;complete:&lt;/span&gt; 完成進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setParent:&lt;/span&gt; 設定進度條上層原素 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;getDomElement:&lt;/span&gt; 取得進度條元素&lt;/span&gt;  相關連結 ngProgress 官網 ngProgress GitHub
+    ">
+
+
+<meta property="og:title" content="AngularJS ngProgress 套件" />
+<meta property="og:description" content="安裝指令 &lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;bower install ngprogress`&lt;/pre&gt; # 加入css和js &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app/components/ngProgress/ngProgress.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;ngProgress.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; # 載入模組 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app = angular.module(&lt;span class=&quot;hljs-string&quot;&gt;&#39;progressApp&#39;&lt;/span&gt;, [&lt;span class=&quot;hljs-string&quot;&gt;&#39;ngProgress&#39;&lt;/span&gt;]);`&lt;/pre&gt; # 注入控制器 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; MainCtrl = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($scope, $timeout, ngProgressFactory)&lt;/span&gt; {&lt;/span&gt;}`&lt;/pre&gt; # 建立進度條物件 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar = ngProgressFactory.createInstance();`&lt;/pre&gt; # 啟動進度條 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar.start(); $timeout($scope.progressbar.complete(), &lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);`&lt;/pre&gt; # API &lt;pre class=&quot;prettyprint&quot;&gt;`-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;start:&lt;/span&gt; 啟動進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setHeight:&lt;/span&gt; 設定進度條高度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setColor:&lt;/span&gt; 設定進度條顏色 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;status:&lt;/span&gt; 進度條狀態 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;stop:&lt;/span&gt; 停止進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;set:&lt;/span&gt; 設定進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;reset:&lt;/span&gt; 重設進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;complete:&lt;/span&gt; 完成進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setParent:&lt;/span&gt; 設定進度條上層原素 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;getDomElement:&lt;/span&gt; 取得進度條元素&lt;/span&gt;  相關連結 ngProgress 官網 ngProgress GitHub" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/04/angularjs-ngprogress-%E5%A5%97%E4%BB%B6/" />
+<meta property="article:published_time" content="2016-04-08T17:39:00+00:00" />
+<meta property="article:modified_time" content="2016-04-08T17:39:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AngularJS ngProgress 套件"/>
+<meta name="twitter:description" content="安裝指令 &lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;bower install ngprogress`&lt;/pre&gt; # 加入css和js &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app/components/ngProgress/ngProgress.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;ngProgress.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; # 載入模組 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app = angular.module(&lt;span class=&quot;hljs-string&quot;&gt;&#39;progressApp&#39;&lt;/span&gt;, [&lt;span class=&quot;hljs-string&quot;&gt;&#39;ngProgress&#39;&lt;/span&gt;]);`&lt;/pre&gt; # 注入控制器 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; MainCtrl = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($scope, $timeout, ngProgressFactory)&lt;/span&gt; {&lt;/span&gt;}`&lt;/pre&gt; # 建立進度條物件 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar = ngProgressFactory.createInstance();`&lt;/pre&gt; # 啟動進度條 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar.start(); $timeout($scope.progressbar.complete(), &lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);`&lt;/pre&gt; # API &lt;pre class=&quot;prettyprint&quot;&gt;`-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;start:&lt;/span&gt; 啟動進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setHeight:&lt;/span&gt; 設定進度條高度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setColor:&lt;/span&gt; 設定進度條顏色 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;status:&lt;/span&gt; 進度條狀態 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;stop:&lt;/span&gt; 停止進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;set:&lt;/span&gt; 設定進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;reset:&lt;/span&gt; 重設進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;complete:&lt;/span&gt; 完成進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setParent:&lt;/span&gt; 設定進度條上層原素 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;getDomElement:&lt;/span&gt; 取得進度條元素&lt;/span&gt;  相關連結 ngProgress 官網 ngProgress GitHub"/>
+
+<meta itemprop="name" content="AngularJS ngProgress 套件">
+<meta itemprop="description" content="安裝指令 &lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;bower install ngprogress`&lt;/pre&gt; # 加入css和js &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app/components/ngProgress/ngProgress.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;ngProgress.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; # 載入模組 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app = angular.module(&lt;span class=&quot;hljs-string&quot;&gt;&#39;progressApp&#39;&lt;/span&gt;, [&lt;span class=&quot;hljs-string&quot;&gt;&#39;ngProgress&#39;&lt;/span&gt;]);`&lt;/pre&gt; # 注入控制器 &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; MainCtrl = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($scope, $timeout, ngProgressFactory)&lt;/span&gt; {&lt;/span&gt;}`&lt;/pre&gt; # 建立進度條物件 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar = ngProgressFactory.createInstance();`&lt;/pre&gt; # 啟動進度條 &lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar.start(); $timeout($scope.progressbar.complete(), &lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);`&lt;/pre&gt; # API &lt;pre class=&quot;prettyprint&quot;&gt;`-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;start:&lt;/span&gt; 啟動進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setHeight:&lt;/span&gt; 設定進度條高度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setColor:&lt;/span&gt; 設定進度條顏色 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;status:&lt;/span&gt; 進度條狀態 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;stop:&lt;/span&gt; 停止進度條 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;set:&lt;/span&gt; 設定進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;reset:&lt;/span&gt; 重設進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;complete:&lt;/span&gt; 完成進度 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setParent:&lt;/span&gt; 設定進度條上層原素 &lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;getDomElement:&lt;/span&gt; 取得進度條元素&lt;/span&gt;  相關連結 ngProgress 官網 ngProgress GitHub">
+<meta itemprop="datePublished" content="2016-04-08T17:39:00+00:00" />
+<meta itemprop="dateModified" content="2016-04-08T17:39:00+00:00" />
+<meta itemprop="wordCount" content="123">
+
+
+
+<meta itemprop="keywords" content="AngularJS套件," />
+
+<link rel="canonical" href="http://example.org/posts/2016/04/angularjs-ngprogress-%E5%A5%97%E4%BB%B6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>AngularJS NgProgress 套件</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 8, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/angularjs%E5%A5%97%E4%BB%B6">AngularJS套件</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/angularjs%E5%A5%97%E4%BB%B6">Angular j s套件</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="安裝指令">安裝指令</h1>
+<pre><code>&lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;bower install ngprogress`&lt;/pre&gt;
+
+# 加入css和js
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app/components/ngProgress/ngProgress.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;ngProgress.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt;
+
+# 載入模組
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app = angular.module(&lt;span class=&quot;hljs-string&quot;&gt;'progressApp'&lt;/span&gt;, [&lt;span class=&quot;hljs-string&quot;&gt;'ngProgress'&lt;/span&gt;]);`&lt;/pre&gt;
+
+# 注入控制器
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; MainCtrl = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($scope, $timeout, ngProgressFactory)&lt;/span&gt; {&lt;/span&gt;}`&lt;/pre&gt;
+
+# 建立進度條物件
+&lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar = ngProgressFactory.createInstance();`&lt;/pre&gt;
+
+# 啟動進度條
+&lt;pre class=&quot;prettyprint&quot;&gt;`$scope.progressbar.start();
+$timeout($scope.progressbar.complete(), &lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);`&lt;/pre&gt;
+
+# API
+&lt;pre class=&quot;prettyprint&quot;&gt;`-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;start:&lt;/span&gt; 啟動進度條
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setHeight:&lt;/span&gt; 設定進度條高度
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setColor:&lt;/span&gt; 設定進度條顏色
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;status:&lt;/span&gt; 進度條狀態
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;stop:&lt;/span&gt; 停止進度條
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;set:&lt;/span&gt; 設定進度
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;reset:&lt;/span&gt; 重設進度
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;complete:&lt;/span&gt; 完成進度
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;setParent:&lt;/span&gt; 設定進度條上層原素
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;hljs-symbol&quot;&gt;getDomElement:&lt;/span&gt; 取得進度條元素&lt;/span&gt;
+</code></pre>
+<h1 id="相關連結">相關連結</h1>
+<p><a href="http://victorbjelkholm.github.io/ngProgress/#demo" title="ngProgress 官網">ngProgress 官網</a>
+<a href="https://github.com/victorbjelkholm/ngprogress" title="ngProgress GitHub">ngProgress GitHub</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=AngularJS%20ngProgress%20%e5%a5%97%e4%bb%b6&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f
+			&title=AngularJS%20ngProgress%20%e5%a5%97%e4%bb%b6&summary=%e5%ae%89%e8%a3%9d%e6%8c%87%e4%bb%a4%20%26lt%3bspan%20class%3d%26quot%3bhljs-variable%26quot%3b%26gt%3b%24%20%26lt%3b%2fspan%26gt%3bbower%20install%20ngprogress%60%26lt%3b%2fpre%26gt%3b%20%23%20%e5%8a%a0%e5%85%a5css%e5%92%8cjs%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60%26lt%3bspan%20class%3d%26quot%3bhljs-tag%26quot%3b%26gt%3b%26amp%3blt%3b%26lt%3bspan%20class%3d%26quot%3bhljs-title%26quot%3b%26gt%3bscript%26lt%3b%2fspan%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-attribute%26quot%3b%26gt%3bsrc%26lt%3b%2fspan%26gt%3b%3d%26lt%3bspan%20class%3d%26quot%3bhljs-value%26quot%3b%26gt%3b%26quot%3bapp%2fcomponents%2fngProgress%2fngProgress.min.js%26quot%3b%26lt%3b%2fspan%26gt%3b%26amp%3bgt%3b%26lt%3b%2fspan%26gt%3b%26lt%3bspan%20class%3d%26quot%3bjavascript%26quot%3b%26gt%3b%26lt%3b%2fspan%26gt%3b%26lt%3bspan%20class%3d%26quot%3bhljs-tag%26quot%3b%26gt%3b%26amp%3blt%3b%2f%26lt%3bspan%20class%3d%26quot%3bhljs-title%26quot%3b%26gt%3bscript%26lt%3b%2fspan%26gt%3b%26amp%3bgt%3b%26lt%3b%2fspan%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-tag%26quot%3b%26gt%3b%26amp%3blt%3b%26lt%3bspan%20class%3d%26quot%3bhljs-title%26quot%3b%26gt%3blink%26lt%3b%2fspan%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-attribute%26quot%3b%26gt%3brel%26lt%3b%2fspan%26gt%3b%3d%26lt%3bspan%20class%3d%26quot%3bhljs-value%26quot%3b%26gt%3b%26quot%3bstylesheet%26quot%3b%26lt%3b%2fspan%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-attribute%26quot%3b%26gt%3bhref%26lt%3b%2fspan%26gt%3b%3d%26lt%3bspan%20class%3d%26quot%3bhljs-value%26quot%3b%26gt%3b%26quot%3bngProgress.css%26quot%3b%26lt%3b%2fspan%26gt%3b%26amp%3bgt%3b%26lt%3b%2fspan%26gt%3b%60%26lt%3b%2fpre%26gt%3b%20%23%20%e8%bc%89%e5%85%a5%e6%a8%a1%e7%b5%84%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60%26lt%3bspan%20class%3d%26quot%3bhljs-keyword%26quot%3b%26gt%3bvar%26lt%3b%2fspan%26gt%3b%20app%20%3d%20angular.module%28%26lt%3bspan%20class%3d%26quot%3bhljs-string%26quot%3b%26gt%3b%27progressApp%27%26lt%3b%2fspan%26gt%3b%2c%20%5b%26lt%3bspan%20class%3d%26quot%3bhljs-string%26quot%3b%26gt%3b%27ngProgress%27%26lt%3b%2fspan%26gt%3b%5d%29%3b%60%26lt%3b%2fpre%26gt%3b%20%23%20%e6%b3%a8%e5%85%a5%e6%8e%a7%e5%88%b6%e5%99%a8%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60%26lt%3bspan%20class%3d%26quot%3bhljs-keyword%26quot%3b%26gt%3bvar%26lt%3b%2fspan%26gt%3b%20MainCtrl%20%3d%20%26lt%3bspan%20class%3d%26quot%3bhljs-function%26quot%3b%26gt%3b%26lt%3bspan%20class%3d%26quot%3bhljs-keyword%26quot%3b%26gt%3bfunction%26lt%3b%2fspan%26gt%3b%26lt%3bspan%20class%3d%26quot%3bhljs-params%26quot%3b%26gt%3b%28%24scope%2c%20%24timeout%2c%20ngProgressFactory%29%26lt%3b%2fspan%26gt%3b%20%7b%26lt%3b%2fspan%26gt%3b%7d%60%26lt%3b%2fpre%26gt%3b%20%23%20%e5%bb%ba%e7%ab%8b%e9%80%b2%e5%ba%a6%e6%a2%9d%e7%89%a9%e4%bb%b6%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60%24scope.progressbar%20%3d%20ngProgressFactory.createInstance%28%29%3b%60%26lt%3b%2fpre%26gt%3b%20%23%20%e5%95%9f%e5%8b%95%e9%80%b2%e5%ba%a6%e6%a2%9d%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60%24scope.progressbar.start%28%29%3b%20%24timeout%28%24scope.progressbar.complete%28%29%2c%20%26lt%3bspan%20class%3d%26quot%3bhljs-number%26quot%3b%26gt%3b1000%26lt%3b%2fspan%26gt%3b%29%3b%60%26lt%3b%2fpre%26gt%3b%20%23%20API%20%26lt%3bpre%20class%3d%26quot%3bprettyprint%26quot%3b%26gt%3b%60-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bstart%3a%26lt%3b%2fspan%26gt%3b%20%e5%95%9f%e5%8b%95%e9%80%b2%e5%ba%a6%e6%a2%9d%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bsetHeight%3a%26lt%3b%2fspan%26gt%3b%20%e8%a8%ad%e5%ae%9a%e9%80%b2%e5%ba%a6%e6%a2%9d%e9%ab%98%e5%ba%a6%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bsetColor%3a%26lt%3b%2fspan%26gt%3b%20%e8%a8%ad%e5%ae%9a%e9%80%b2%e5%ba%a6%e6%a2%9d%e9%a1%8f%e8%89%b2%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bstatus%3a%26lt%3b%2fspan%26gt%3b%20%e9%80%b2%e5%ba%a6%e6%a2%9d%e7%8b%80%e6%85%8b%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bstop%3a%26lt%3b%2fspan%26gt%3b%20%e5%81%9c%e6%ad%a2%e9%80%b2%e5%ba%a6%e6%a2%9d%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bset%3a%26lt%3b%2fspan%26gt%3b%20%e8%a8%ad%e5%ae%9a%e9%80%b2%e5%ba%a6%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3breset%3a%26lt%3b%2fspan%26gt%3b%20%e9%87%8d%e8%a8%ad%e9%80%b2%e5%ba%a6%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bcomplete%3a%26lt%3b%2fspan%26gt%3b%20%e5%ae%8c%e6%88%90%e9%80%b2%e5%ba%a6%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bsetParent%3a%26lt%3b%2fspan%26gt%3b%20%e8%a8%ad%e5%ae%9a%e9%80%b2%e5%ba%a6%e6%a2%9d%e4%b8%8a%e5%b1%a4%e5%8e%9f%e7%b4%a0%20%26lt%3b%2fspan%26gt%3b-%26lt%3bspan%20class%3d%26quot%3bruby%26quot%3b%26gt%3b%20%26lt%3bspan%20class%3d%26quot%3bhljs-symbol%26quot%3b%26gt%3bgetDomElement%3a%26lt%3b%2fspan%26gt%3b%20%e5%8f%96%e5%be%97%e9%80%b2%e5%ba%a6%e6%a2%9d%e5%85%83%e7%b4%a0%26lt%3b%2fspan%26gt%3b%20%20%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90%20ngProgress%20%e5%ae%98%e7%b6%b2%20ngProgress%20GitHub&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=AngularJS%20ngProgress%20%e5%a5%97%e4%bb%b6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f04%2fangularjs-ngprogress-%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

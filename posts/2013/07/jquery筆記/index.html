@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JQuery筆記 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="jQuery Selector 基本選擇器 層級選擇器 屬性選擇器 位置過濾語法 子元素過濾語法 內容過濾語法  表單元素語法
+jQuery Effects 基礎效果 漸變效果 滑動效果  自定義效果
+jQuery Events 事件繫結 鍵盤事件 滑鼠事件
+jQuery Manipulation 包裝元素 插入元素 附加元素 替換元素 移除元素 屬性操作 樣式表操作
+JQuery Ajax 全域事件處理 Ajax快捷方法 ajax 呼叫方式
+jQuery Utilities 字串處理 陣列處理
+jQuery Plugin
+學習資源
+jsfiddle http://jsfiddle.net/
+邊做邊學系列 http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery
+w3c school jQuery http://www.w3schools.com/jquery/
+jqapi http://jqapi.com/
+jQuery Cheatsheet http://oscarotero.com/jquery/
+learing jQuery http://learn.jquery.com/
+30天學會jQuery https://tutsplus.com/course/30-days-to-learn-jquery/
+推薦書籍 jQuery 實戰手冊(JQuery in Action) ISBN：9789861816388
+ 第二版ISBN：9789861811918 jQuery 開發實戰 ISBN：9866761932 jQuery核心詳解與實踐應用 ISBN：9789862571040
+    ">
+
+
+<meta property="og:title" content="jQuery筆記" />
+<meta property="og:description" content="jQuery Selector 基本選擇器 層級選擇器 屬性選擇器 位置過濾語法 子元素過濾語法 內容過濾語法  表單元素語法
+jQuery Effects 基礎效果 漸變效果 滑動效果  自定義效果
+jQuery Events 事件繫結 鍵盤事件 滑鼠事件
+jQuery Manipulation 包裝元素 插入元素 附加元素 替換元素 移除元素 屬性操作 樣式表操作
+JQuery Ajax 全域事件處理 Ajax快捷方法 ajax 呼叫方式
+jQuery Utilities 字串處理 陣列處理
+jQuery Plugin
+學習資源
+jsfiddle http://jsfiddle.net/
+邊做邊學系列 http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery
+w3c school jQuery http://www.w3schools.com/jquery/
+jqapi http://jqapi.com/
+jQuery Cheatsheet http://oscarotero.com/jquery/
+learing jQuery http://learn.jquery.com/
+30天學會jQuery https://tutsplus.com/course/30-days-to-learn-jquery/
+推薦書籍 jQuery 實戰手冊(JQuery in Action) ISBN：9789861816388
+ 第二版ISBN：9789861811918 jQuery 開發實戰 ISBN：9866761932 jQuery核心詳解與實踐應用 ISBN：9789862571040" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/07/jquery%E7%AD%86%E8%A8%98/" />
+<meta property="article:published_time" content="2013-07-02T14:47:00+00:00" />
+<meta property="article:modified_time" content="2013-07-02T14:47:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jQuery筆記"/>
+<meta name="twitter:description" content="jQuery Selector 基本選擇器 層級選擇器 屬性選擇器 位置過濾語法 子元素過濾語法 內容過濾語法  表單元素語法
+jQuery Effects 基礎效果 漸變效果 滑動效果  自定義效果
+jQuery Events 事件繫結 鍵盤事件 滑鼠事件
+jQuery Manipulation 包裝元素 插入元素 附加元素 替換元素 移除元素 屬性操作 樣式表操作
+JQuery Ajax 全域事件處理 Ajax快捷方法 ajax 呼叫方式
+jQuery Utilities 字串處理 陣列處理
+jQuery Plugin
+學習資源
+jsfiddle http://jsfiddle.net/
+邊做邊學系列 http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery
+w3c school jQuery http://www.w3schools.com/jquery/
+jqapi http://jqapi.com/
+jQuery Cheatsheet http://oscarotero.com/jquery/
+learing jQuery http://learn.jquery.com/
+30天學會jQuery https://tutsplus.com/course/30-days-to-learn-jquery/
+推薦書籍 jQuery 實戰手冊(JQuery in Action) ISBN：9789861816388
+ 第二版ISBN：9789861811918 jQuery 開發實戰 ISBN：9866761932 jQuery核心詳解與實踐應用 ISBN：9789862571040"/>
+
+<meta itemprop="name" content="jQuery筆記">
+<meta itemprop="description" content="jQuery Selector 基本選擇器 層級選擇器 屬性選擇器 位置過濾語法 子元素過濾語法 內容過濾語法  表單元素語法
+jQuery Effects 基礎效果 漸變效果 滑動效果  自定義效果
+jQuery Events 事件繫結 鍵盤事件 滑鼠事件
+jQuery Manipulation 包裝元素 插入元素 附加元素 替換元素 移除元素 屬性操作 樣式表操作
+JQuery Ajax 全域事件處理 Ajax快捷方法 ajax 呼叫方式
+jQuery Utilities 字串處理 陣列處理
+jQuery Plugin
+學習資源
+jsfiddle http://jsfiddle.net/
+邊做邊學系列 http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery
+w3c school jQuery http://www.w3schools.com/jquery/
+jqapi http://jqapi.com/
+jQuery Cheatsheet http://oscarotero.com/jquery/
+learing jQuery http://learn.jquery.com/
+30天學會jQuery https://tutsplus.com/course/30-days-to-learn-jquery/
+推薦書籍 jQuery 實戰手冊(JQuery in Action) ISBN：9789861816388
+ 第二版ISBN：9789861811918 jQuery 開發實戰 ISBN：9866761932 jQuery核心詳解與實踐應用 ISBN：9789862571040">
+<meta itemprop="datePublished" content="2013-07-02T14:47:00+00:00" />
+<meta itemprop="dateModified" content="2013-07-02T14:47:00+00:00" />
+<meta itemprop="wordCount" content="72">
+
+
+
+<meta itemprop="keywords" content="jQuery," />
+
+<link rel="canonical" href="http://example.org/posts/2013/07/jquery%E7%AD%86%E8%A8%98/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JQuery筆記</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jul 2, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jquery">JQuery</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jquery">J query</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>jQuery Selector
+<a href="http://blog.developer.idv.tw/2013/07/jquery_12.html">基本選擇器</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_9662.html">層級選擇器</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_1006.html">屬性選擇器</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_915.html">位置過濾語法</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_15.html">子元素過濾語法</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_226.html">內容過濾語法 </a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_7651.html">表單元素語法</a></p>
+<p>jQuery Effects
+<a href="http://blog.developer.idv.tw/2013/07/jquery_9507.html">基礎效果</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_4021.html">漸變效果</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_6426.html">滑動效果 </a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_19.html">自定義效果</a></p>
+<p>jQuery Events
+<a href="http://blog.developer.idv.tw/2013/07/jquery_25.html">事件繫結</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_8666.html">鍵盤事件</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_8540.html">滑鼠事件</a></p>
+<p>jQuery Manipulation
+<a href="http://blog.developer.idv.tw/2013/07/jquery_29.html">包裝元素</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_8409.html">插入元素</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_8249.html">附加元素</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_732.html">替換元素</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_1417.html">移除元素</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_30.html">屬性操作</a>
+<a href="http://blog.developer.idv.tw/2013/07/jquery_7236.html">樣式表操作</a></p>
+<p>JQuery Ajax
+<a href="http://blog.developer.idv.tw/2013/08/jquery.html">全域事件處理</a>
+<a href="http://blog.developer.idv.tw/2013/08/jquery_1.html">Ajax快捷方法</a>
+<a href="http://blog.developer.idv.tw/2013/08/jquery-ajax.html">ajax 呼叫方式</a></p>
+<p>jQuery Utilities
+<a href="http://blog.developer.idv.tw/2013/08/jquery_6585.html">字串處理</a>
+<a href="http://blog.developer.idv.tw/2013/08/jquery_9873.html">陣列處理</a></p>
+<p>jQuery Plugin</p>
+<p>學習資源</p>
+<p>jsfiddle
+<a href="http://jsfiddle.net/">http://jsfiddle.net/</a></p>
+<p>邊做邊學系列
+<a href="http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery">http://msdn.microsoft.com/zh-tw/asp.net/dd310332.aspx#jQuery</a></p>
+<p>w3c school jQuery
+<a href="http://www.w3schools.com/jquery/">http://www.w3schools.com/jquery/</a></p>
+<p>jqapi
+<a href="http://jqapi.com/">http://jqapi.com/</a></p>
+<p>jQuery Cheatsheet
+<a href="http://oscarotero.com/jquery/">http://oscarotero.com/jquery/</a></p>
+<p>learing jQuery
+<a href="http://learn.jquery.com/">http://learn.jquery.com/</a></p>
+<p>30天學會jQuery
+<a href="https://tutsplus.com/course/30-days-to-learn-jquery/">https://tutsplus.com/course/30-days-to-learn-jquery/</a></p>
+<p>推薦書籍
+jQuery 實戰手冊(JQuery in Action)
+ISBN：9789861816388</p>
+<div>
+</div><div>第二版</div><div>ISBN：9789861811918</div>
+jQuery 開發實戰
+ISBN：9866761932
+<p>jQuery核心詳解與實踐應用
+ISBN：9789862571040</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=jQuery%e7%ad%86%e8%a8%98&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f
+			&title=jQuery%e7%ad%86%e8%a8%98&summary=jQuery%20Selector%20%e5%9f%ba%e6%9c%ac%e9%81%b8%e6%93%87%e5%99%a8%20%e5%b1%a4%e7%b4%9a%e9%81%b8%e6%93%87%e5%99%a8%20%e5%b1%ac%e6%80%a7%e9%81%b8%e6%93%87%e5%99%a8%20%e4%bd%8d%e7%bd%ae%e9%81%8e%e6%bf%be%e8%aa%9e%e6%b3%95%20%e5%ad%90%e5%85%83%e7%b4%a0%e9%81%8e%e6%bf%be%e8%aa%9e%e6%b3%95%20%e5%85%a7%e5%ae%b9%e9%81%8e%e6%bf%be%e8%aa%9e%e6%b3%95%20%20%e8%a1%a8%e5%96%ae%e5%85%83%e7%b4%a0%e8%aa%9e%e6%b3%95%0ajQuery%20Effects%20%e5%9f%ba%e7%a4%8e%e6%95%88%e6%9e%9c%20%e6%bc%b8%e8%ae%8a%e6%95%88%e6%9e%9c%20%e6%bb%91%e5%8b%95%e6%95%88%e6%9e%9c%20%20%e8%87%aa%e5%ae%9a%e7%be%a9%e6%95%88%e6%9e%9c%0ajQuery%20Events%20%e4%ba%8b%e4%bb%b6%e7%b9%ab%e7%b5%90%20%e9%8d%b5%e7%9b%a4%e4%ba%8b%e4%bb%b6%20%e6%bb%91%e9%bc%a0%e4%ba%8b%e4%bb%b6%0ajQuery%20Manipulation%20%e5%8c%85%e8%a3%9d%e5%85%83%e7%b4%a0%20%e6%8f%92%e5%85%a5%e5%85%83%e7%b4%a0%20%e9%99%84%e5%8a%a0%e5%85%83%e7%b4%a0%20%e6%9b%bf%e6%8f%9b%e5%85%83%e7%b4%a0%20%e7%a7%bb%e9%99%a4%e5%85%83%e7%b4%a0%20%e5%b1%ac%e6%80%a7%e6%93%8d%e4%bd%9c%20%e6%a8%a3%e5%bc%8f%e8%a1%a8%e6%93%8d%e4%bd%9c%0aJQuery%20Ajax%20%e5%85%a8%e5%9f%9f%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20Ajax%e5%bf%ab%e6%8d%b7%e6%96%b9%e6%b3%95%20ajax%20%e5%91%bc%e5%8f%ab%e6%96%b9%e5%bc%8f%0ajQuery%20Utilities%20%e5%ad%97%e4%b8%b2%e8%99%95%e7%90%86%20%e9%99%a3%e5%88%97%e8%99%95%e7%90%86%0ajQuery%20Plugin%0a%e5%ad%b8%e7%bf%92%e8%b3%87%e6%ba%90%0ajsfiddle%20http%3a%2f%2fjsfiddle.net%2f%0a%e9%82%8a%e5%81%9a%e9%82%8a%e5%ad%b8%e7%b3%bb%e5%88%97%20http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2fasp.net%2fdd310332.aspx%23jQuery%0aw3c%20school%20jQuery%20http%3a%2f%2fwww.w3schools.com%2fjquery%2f%0ajqapi%20http%3a%2f%2fjqapi.com%2f%0ajQuery%20Cheatsheet%20http%3a%2f%2foscarotero.com%2fjquery%2f%0alearing%20jQuery%20http%3a%2f%2flearn.jquery.com%2f%0a30%e5%a4%a9%e5%ad%b8%e6%9c%83jQuery%20https%3a%2f%2ftutsplus.com%2fcourse%2f30-days-to-learn-jquery%2f%0a%e6%8e%a8%e8%96%a6%e6%9b%b8%e7%b1%8d%20jQuery%20%e5%af%a6%e6%88%b0%e6%89%8b%e5%86%8a%28JQuery%20in%20Action%29%20ISBN%ef%bc%9a9789861816388%0a%20%e7%ac%ac%e4%ba%8c%e7%89%88ISBN%ef%bc%9a9789861811918%20jQuery%20%e9%96%8b%e7%99%bc%e5%af%a6%e6%88%b0%20ISBN%ef%bc%9a9866761932%20jQuery%e6%a0%b8%e5%bf%83%e8%a9%b3%e8%a7%a3%e8%88%87%e5%af%a6%e8%b8%90%e6%87%89%e7%94%a8%20ISBN%ef%bc%9a9789862571040&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=jQuery%e7%ad%86%e8%a8%98&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

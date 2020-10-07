@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework Code First 組織Fluent API 設定 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多
+可以透過EntityTypeConfiguration&lt;T&gt;來分類 一般的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id) .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity) .HasColumnName(&quot;sid&quot;) .HasColumnType(&quot;bigint&quot;); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1) .IsRequired() .HasMaxLength(10) .IsFixedLength() .IsUnicode(false); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1) .HasPrecision(18, 2); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1) .IsRowVersion(); }  }
+分類後的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Configurations.Add(new Table1Configuration()); } private class Table1Configuration : EntityTypeConfiguration&amp;lt;Table1&amp;gt; { public Table1Configuration() { this.
+    ">
+
+
+<meta property="og:title" content="Entity Framework Code First 組織Fluent API 設定" />
+<meta property="og:description" content="Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多
+可以透過EntityTypeConfiguration&lt;T&gt;來分類 一般的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id) .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity) .HasColumnName(&quot;sid&quot;) .HasColumnType(&quot;bigint&quot;); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1) .IsRequired() .HasMaxLength(10) .IsFixedLength() .IsUnicode(false); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1) .HasPrecision(18, 2); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1) .IsRowVersion(); }  }
+分類後的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Configurations.Add(new Table1Configuration()); } private class Table1Configuration : EntityTypeConfiguration&amp;lt;Table1&amp;gt; { public Table1Configuration() { this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/10/entity-framework-code-first-%E7%B5%84%E7%B9%94fluent-api-%E8%A8%AD%E5%AE%9A/" />
+<meta property="article:published_time" content="2014-10-27T18:16:00+00:00" />
+<meta property="article:modified_time" content="2014-10-27T18:16:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework Code First 組織Fluent API 設定"/>
+<meta name="twitter:description" content="Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多
+可以透過EntityTypeConfiguration&lt;T&gt;來分類 一般的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id) .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity) .HasColumnName(&quot;sid&quot;) .HasColumnType(&quot;bigint&quot;); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1) .IsRequired() .HasMaxLength(10) .IsFixedLength() .IsUnicode(false); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1) .HasPrecision(18, 2); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1) .IsRowVersion(); }  }
+分類後的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Configurations.Add(new Table1Configuration()); } private class Table1Configuration : EntityTypeConfiguration&amp;lt;Table1&amp;gt; { public Table1Configuration() { this."/>
+
+<meta itemprop="name" content="Entity Framework Code First 組織Fluent API 設定">
+<meta itemprop="description" content="Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多
+可以透過EntityTypeConfiguration&lt;T&gt;來分類 一般的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id) .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity) .HasColumnName(&quot;sid&quot;) .HasColumnType(&quot;bigint&quot;); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1) .IsRequired() .HasMaxLength(10) .IsFixedLength() .IsUnicode(false); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1) .HasPrecision(18, 2); modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1) .IsRowVersion(); }  }
+分類後的設定方式public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Configurations.Add(new Table1Configuration()); } private class Table1Configuration : EntityTypeConfiguration&amp;lt;Table1&amp;gt; { public Table1Configuration() { this.">
+<meta itemprop="datePublished" content="2014-10-27T18:16:00+00:00" />
+<meta itemprop="dateModified" content="2014-10-27T18:16:00+00:00" />
+<meta itemprop="wordCount" content="108">
+
+
+
+<meta itemprop="keywords" content="Code First,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/10/entity-framework-code-first-%E7%B5%84%E7%B9%94fluent-api-%E8%A8%AD%E5%AE%9A/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework Code First 組織Fluent API 設定</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 27, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/code-first">Code First</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/code-first">Code first</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多</p>
+<div>可以透過EntityTypeConfiguration&lt;T&gt;來分類</div><div>
+一般的設定方式</div><div><pre class="brush:csharp">public class DemoContext : DbContext
+{
+    public DbSet&lt;Table1&gt; Table1 { get; set; }
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired()
+        .HasMaxLength(10)
+        .IsFixedLength()
+        .IsUnicode(false);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1)
+        .HasPrecision(18, 2);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1)
+        .IsRowVersion();
+}
+</code></pre>
+<p>}</pre></p>
+</div><div>分類後的設定方式</div><div><pre class="brush:csharp">public class DemoContext : DbContext
+{
+    public DbSet&lt;Table1&gt; Table1 { get; set; }
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Configurations.Add(new Table1Configuration());
+}
+
+private class Table1Configuration : EntityTypeConfiguration&amp;lt;Table1&amp;gt;
+{
+    public Table1Configuration()
+    {
+        this.ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+        this.Property(x =&amp;gt; x.id)
+            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+            .HasColumnName(&quot;sid&quot;)
+            .HasColumnType(&quot;bigint&quot;);
+        this.Property(x =&amp;gt; x.s1)
+            .IsRequired()
+            .HasMaxLength(10)
+            .IsFixedLength()
+            .IsUnicode(false);
+        this.Property(x =&amp;gt; x.c1)
+            .HasPrecision(18, 2);
+        this.Property(x =&amp;gt; x.t1)
+            .IsRowVersion();
+    }
+}
+</code></pre>
+<p>}</pre></p>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20Code%20First%20%e7%b5%84%e7%b9%94Fluent%20API%20%e8%a8%ad%e5%ae%9a&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f
+			&title=Entity%20Framework%20Code%20First%20%e7%b5%84%e7%b9%94Fluent%20API%20%e8%a8%ad%e5%ae%9a&summary=Fluent%20API%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%e7%9a%84%e5%8a%9f%e8%83%bd%e6%af%94%e8%bc%83%e5%a4%9a%ef%bc%8c%e4%bd%86%e6%af%8f%e4%b8%80%e5%80%8b%e6%ac%84%e4%bd%8d%e5%b0%b1%e8%a6%81%e5%af%ab%e4%b8%80%e8%a1%8c%ef%bc%8c%e8%b6%8a%e5%a4%a7%e7%9a%84%e5%b0%88%e6%a1%88%e8%a8%ad%e5%ae%9a%e5%b0%b1%e6%9c%83%e8%b6%8a%e5%a4%9a%0a%e5%8f%af%e4%bb%a5%e9%80%8f%e9%81%8eEntityTypeConfiguration%26lt%3bT%26gt%3b%e4%be%86%e5%88%86%e9%a1%9e%20%e4%b8%80%e8%88%ac%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8fpublic%20class%20DemoContext%20%3a%20DbContext%20%7b%20public%20DbSet%26lt%3bTable1%26gt%3b%20Table1%20%7b%20get%3b%20set%3b%20%7d%20protected%20override%20void%20OnModelCreating%28DbModelBuilder%20modelBuilder%29%20%7b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.ToTable%28%26quot%3bTable1%26quot%3b%29.HasKey%28x%20%3d%26amp%3bgt%3b%20x.id%29%3b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.Property%28x%20%3d%26amp%3bgt%3b%20x.id%29%20.HasDatabaseGeneratedOption%28DatabaseGeneratedOption.Identity%29%20.HasColumnName%28%26quot%3bsid%26quot%3b%29%20.HasColumnType%28%26quot%3bbigint%26quot%3b%29%3b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.Property%28x%20%3d%26amp%3bgt%3b%20x.s1%29%20.IsRequired%28%29%20.HasMaxLength%2810%29%20.IsFixedLength%28%29%20.IsUnicode%28false%29%3b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.Property%28x%20%3d%26amp%3bgt%3b%20x.c1%29%20.HasPrecision%2818%2c%202%29%3b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.Property%28x%20%3d%26amp%3bgt%3b%20x.t1%29%20.IsRowVersion%28%29%3b%20%7d%20%20%7d%0a%e5%88%86%e9%a1%9e%e5%be%8c%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8fpublic%20class%20DemoContext%20%3a%20DbContext%20%7b%20public%20DbSet%26lt%3bTable1%26gt%3b%20Table1%20%7b%20get%3b%20set%3b%20%7d%20protected%20override%20void%20OnModelCreating%28DbModelBuilder%20modelBuilder%29%20%7b%20modelBuilder.Configurations.Add%28new%20Table1Configuration%28%29%29%3b%20%7d%20private%20class%20Table1Configuration%20%3a%20EntityTypeConfiguration%26amp%3blt%3bTable1%26amp%3bgt%3b%20%7b%20public%20Table1Configuration%28%29%20%7b%20this.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20Code%20First%20%e7%b5%84%e7%b9%94Fluent%20API%20%e8%a8%ad%e5%ae%9a&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E7%25B5%2584%25E7%25B9%2594fluent-api-%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

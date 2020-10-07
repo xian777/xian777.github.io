@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis Set | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="指令說明SADD將一或多個元性加入集合SCARD取得集合中元素的數量SDIFF取得集合中的差集SDIFFSTORE取得集合中的差集，並將結果存到另一個集合SINTER取得集合中的合集SINTERSTORE取得集合中的合集，並將結果存到另一個集合SISMEMBER判斷集合中是否有指定的元素SMEMBERS取得集合中的所有元素SMOVE將集合中的元素移動到另一個集合SPOP隨機取得集合中的元素，並移除該元素SRANDMEMBER隨機取得集合中的元素，不移除該元素SREM移除集合中的一個或多個元素SUNION取得集合中的聯集SUNIONSTORE取得集合中的聯集，並將結果存到另一個集合SSCAN搜尋集合中的元素
+    ">
+
+
+<meta property="og:title" content="Redis Set" />
+<meta property="og:description" content="指令說明SADD將一或多個元性加入集合SCARD取得集合中元素的數量SDIFF取得集合中的差集SDIFFSTORE取得集合中的差集，並將結果存到另一個集合SINTER取得集合中的合集SINTERSTORE取得集合中的合集，並將結果存到另一個集合SISMEMBER判斷集合中是否有指定的元素SMEMBERS取得集合中的所有元素SMOVE將集合中的元素移動到另一個集合SPOP隨機取得集合中的元素，並移除該元素SRANDMEMBER隨機取得集合中的元素，不移除該元素SREM移除集合中的一個或多個元素SUNION取得集合中的聯集SUNIONSTORE取得集合中的聯集，並將結果存到另一個集合SSCAN搜尋集合中的元素" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-set/" />
+<meta property="article:published_time" content="2015-01-20T11:54:00+00:00" />
+<meta property="article:modified_time" content="2015-01-20T11:54:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis Set"/>
+<meta name="twitter:description" content="指令說明SADD將一或多個元性加入集合SCARD取得集合中元素的數量SDIFF取得集合中的差集SDIFFSTORE取得集合中的差集，並將結果存到另一個集合SINTER取得集合中的合集SINTERSTORE取得集合中的合集，並將結果存到另一個集合SISMEMBER判斷集合中是否有指定的元素SMEMBERS取得集合中的所有元素SMOVE將集合中的元素移動到另一個集合SPOP隨機取得集合中的元素，並移除該元素SRANDMEMBER隨機取得集合中的元素，不移除該元素SREM移除集合中的一個或多個元素SUNION取得集合中的聯集SUNIONSTORE取得集合中的聯集，並將結果存到另一個集合SSCAN搜尋集合中的元素"/>
+
+<meta itemprop="name" content="Redis Set">
+<meta itemprop="description" content="指令說明SADD將一或多個元性加入集合SCARD取得集合中元素的數量SDIFF取得集合中的差集SDIFFSTORE取得集合中的差集，並將結果存到另一個集合SINTER取得集合中的合集SINTERSTORE取得集合中的合集，並將結果存到另一個集合SISMEMBER判斷集合中是否有指定的元素SMEMBERS取得集合中的所有元素SMOVE將集合中的元素移動到另一個集合SPOP隨機取得集合中的元素，並移除該元素SRANDMEMBER隨機取得集合中的元素，不移除該元素SREM移除集合中的一個或多個元素SUNION取得集合中的聯集SUNIONSTORE取得集合中的聯集，並將結果存到另一個集合SSCAN搜尋集合中的元素">
+<meta itemprop="datePublished" content="2015-01-20T11:54:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-20T11:54:00+00:00" />
+<meta itemprop="wordCount" content="1">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-set/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis Set</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 20, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>SADD</td><td>將一或多個元性加入集合</td></tr><tr><td>SCARD</td><td>取得集合中元素的數量</td></tr><tr><td>SDIFF</td><td>取得集合中的差集</td></tr><tr><td>SDIFFSTORE</td><td>取得集合中的差集，並將結果存到另一個集合</td></tr><tr><td>SINTER</td><td>取得集合中的合集</td></tr><tr><td>SINTERSTORE</td><td>取得集合中的合集，並將結果存到另一個集合</td></tr><tr><td>SISMEMBER</td><td>判斷集合中是否有指定的元素</td></tr><tr><td>SMEMBERS</td><td>取得集合中的所有元素</td></tr><tr><td>SMOVE</td><td>將集合中的元素移動到另一個集合</td></tr><tr><td>SPOP</td><td>隨機取得集合中的元素，並移除該元素</td></tr><tr><td>SRANDMEMBER</td><td>隨機取得集合中的元素，不移除該元素</td></tr><tr><td>SREM</td><td>移除集合中的一個或多個元素</td></tr><tr><td>SUNION</td><td>取得集合中的聯集</td></tr><tr><td>SUNIONSTORE</td><td>取得集合中的聯集，並將結果存到另一個集合</td></tr><tr><td>SSCAN</td><td>搜尋集合中的元素</td></tr></tbody></table>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20Set&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f
+			&title=Redis%20Set&summary=%e6%8c%87%e4%bb%a4%e8%aa%aa%e6%98%8eSADD%e5%b0%87%e4%b8%80%e6%88%96%e5%a4%9a%e5%80%8b%e5%85%83%e6%80%a7%e5%8a%a0%e5%85%a5%e9%9b%86%e5%90%88SCARD%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e5%85%83%e7%b4%a0%e7%9a%84%e6%95%b8%e9%87%8fSDIFF%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%b7%ae%e9%9b%86SDIFFSTORE%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%b7%ae%e9%9b%86%ef%bc%8c%e4%b8%a6%e5%b0%87%e7%b5%90%e6%9e%9c%e5%ad%98%e5%88%b0%e5%8f%a6%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88SINTER%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%90%88%e9%9b%86SINTERSTORE%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%90%88%e9%9b%86%ef%bc%8c%e4%b8%a6%e5%b0%87%e7%b5%90%e6%9e%9c%e5%ad%98%e5%88%b0%e5%8f%a6%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88SISMEMBER%e5%88%a4%e6%96%b7%e9%9b%86%e5%90%88%e4%b8%ad%e6%98%af%e5%90%a6%e6%9c%89%e6%8c%87%e5%ae%9a%e7%9a%84%e5%85%83%e7%b4%a0SMEMBERS%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e5%85%83%e7%b4%a0SMOVE%e5%b0%87%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%e7%a7%bb%e5%8b%95%e5%88%b0%e5%8f%a6%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88SPOP%e9%9a%a8%e6%a9%9f%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%ef%bc%8c%e4%b8%a6%e7%a7%bb%e9%99%a4%e8%a9%b2%e5%85%83%e7%b4%a0SRANDMEMBER%e9%9a%a8%e6%a9%9f%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%ef%bc%8c%e4%b8%8d%e7%a7%bb%e9%99%a4%e8%a9%b2%e5%85%83%e7%b4%a0SREM%e7%a7%bb%e9%99%a4%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8b%e5%85%83%e7%b4%a0SUNION%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e8%81%af%e9%9b%86SUNIONSTORE%e5%8f%96%e5%be%97%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e8%81%af%e9%9b%86%ef%bc%8c%e4%b8%a6%e5%b0%87%e7%b5%90%e6%9e%9c%e5%ad%98%e5%88%b0%e5%8f%a6%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88SSCAN%e6%90%9c%e5%b0%8b%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20Set&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-set%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

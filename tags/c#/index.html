@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    C# | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A description for the meta tag of the site
+    ">
+
+
+<meta property="og:title" content="C#" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/tags/c#/" />
+<meta property="og:updated_time" content="2016-06-07T14:12:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C#"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="C#">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/tags/c#/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1>C#</h1>
+</div>
+
+<div class="blog-brief">
+    <a href="/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/">
+        <h3 class="title is-4">
+            StyleCop SA1208 排列Using時先放置System指示詞
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/">
+                    <p class="subtitle info date">Jun 7, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/stylecop">StyleCop</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/">
+                <p class="summary">
+                    在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階- 排序Usning時先放置System指示詞勾起來就行了
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2015/03/c-hexstring-to-bytearray/">
+        <h3 class="title is-4">
+            C# HexString to ByteArray
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2015/03/c-hexstring-to-bytearray/">
+                    <p class="subtitle info date">Mar 4, 2015
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2015/03/c-hexstring-to-bytearray/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2015/03/c-hexstring-to-bytearray/">
+                <p class="summary">
+                    16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &#34;0123456789abcdef&#34;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;gt; x % 2 == 0) .Select(x =&amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2015/03/c-hexstring-to-bytearray/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/">
+        <h3 class="title is-4">
+            C# 多國語系
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/">
+                    <p class="subtitle info date">Apr 7, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/">
+                    <p class="subtitle info">
+                        5 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/">
+                <p class="summary">
+                    C#的語系格式為languagecode2-country/regioncode2 可用以下列的語法列舉出所有語系 foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures)) { Console.WriteLine(ci.Name); }  在.NET3.5之前簡中為zh-CHS，繁中為zh-CHT 在NET4.0之後簡中為zh-Hans，繁中為zh-Hant在C#中影響目前語系的屬性有二個 Thread.CurrentThread.CurrentCulture影響的是控制台中的設定 [![](http://3.bp.blogspot.com/-yAGbJRIJZFk/U0JM_0G_KvI/AAAAAAAABIE/yihmCUKpkbw/s1600/01.%E6%8E%A7%E5%88%B6%E5%8F%B0.png)](http://3.bp.blogspot.com/-yAGbJRIJZFk/U0JM_0G_KvI/AAAAAAAABIE/yihmCUKpkbw/s1600/01.%E6%8E%A7%E5%88%B6%E5%8F%B0.png) 例如日期、數字、貨幣的顯示格式[![](http://3.bp.blogspot.com/-am2qr9Txbm4/U0JNC5e2TdI/AAAAAAAABIM/EWAZZGoXLSM/s1600/02.%E6%A0%BC%E5%BC%8F.png)](http://3.bp.blogspot.com/-am2qr9Txbm4/U0JNC5e2TdI/AAAAAAAABIM/EWAZZGoXLSM/s1600/02.%E6%A0%BC%E5%BC%8F.png) Thread.CurrentThread.CurrentUICulture影響的則是要選用那個語系的資源檔在ASP.NET中可以透過設定檔來啟用多國語系 &lt;system.web&gt; &lt;globalization culture=&#34;auto&#34; uiCulture=&#34;auto&#34; /&gt; &lt;/system.web&gt;  就會自動以Http通訊協定中的Accept-Language的順序來選擇語系 [![](http://3.bp.blogspot.com/-79chB1gPP78/U0JNMI80AsI/AAAAAAAABIU/FszxyUony9U/s1600/03.AcceptLanguage.png)](http://3.bp.blogspot.com/-79chB1gPP78/U0JNMI80AsI/AAAAAAAABIU/FszxyUony9U/s1600/03.AcceptLanguage.png) 以ASP.NET WebForm為例，可以利用兩個特殊的資料夾 App_GlobalResources裡面的資源檔是全域的 App_LocalResources裡面的資源檔則是只有該層目錄下有效 將資源檔的名稱取成和Page一樣，就可以在頁面中使用GetLocalResourceObject取出資源檔中的值 [![](http://2.bp.blogspot.com/-UOsyS9PleYY/U0JNUJfjIaI/AAAAAAAABIc/0iWHhGU_GeI/s1600/04.LocalResources.png)](http://2.bp.blogspot.com/-UOsyS9PleYY/U0JNUJfjIaI/AAAAAAAABIc/0iWHhGU_GeI/s1600/04.LocalResources.png) namespace WebApplication1 { public partial class Default : System.Web.UI.Page { protected void Page_Load(object sender, EventArgs e) { Object s1 = this.GetLocalResourceObject(&#34;s1&#34;); Response.Write(s1.ToString()); } } }  除了依瀏覽器的設定來選擇語系之外，也可以強制指定語系 比較常見的情況是讓使用者自行選擇語系後用cookie或session記住 然後在AcquireRequestState事件中取代目前的指定語系 namespace WebApplication1 { public class Global : System.Web.HttpApplication { protected void Application_Start(object sender, EventArgs e) { }  protected void Application_AcquireRequestState(object sender, EventArgs e) { HttpCookie cookie = this.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/">
+        <h3 class="title is-4">
+            Windows Service 筆記
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/">
+                    <p class="subtitle info date">Jan 28, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/">
+                <p class="summary">
+                    Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/">
+        <h3 class="title is-4">
+            Windows Service 控制介面
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/">
+                    <p class="subtitle info">
+                        3 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/">
+                <p class="summary">
+                    ServiceController這個類別可以用來控制Service的狀態 詳細的資訊請參考MSDN上面的文件
+新增一個Windows Form應用程式來當範例
+[![](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png) 首先要先參考System.ServiceProcess這個元件 [![](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png)](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png) 簡單拉兩個按鈕來控制啟動或停止服務 [![](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png)](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png) 在Button Click事件中，透過ServiceController來切換狀態 private void Btn_Start_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(&#34;Service1&#34;)) { // 設定一個 Timeout 時間，若超過 30 秒啟動不成功就宣告失敗 TimeSpan timeout = TimeSpan.FromMilliseconds(1000 * 30);  // 啟動服務 objSC.Start(); // 設定該服務必須在timeout時間內切換到Running狀態 objSC.WaitForStatus(ServiceControllerStatus.Running, timeout); }  }
+private void Btn_Stop_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(“Service1”)) { // 若該服務不是「停用」的狀態，才將其停止運作，否則會引發 Exception
+if (objSC.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/">
+        <h3 class="title is-4">
+            Windows Service 啟動參數
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/">
+                    <p class="subtitle info">
+                        4 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/">
+                <p class="summary">
+                    Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&#34;System&#34;); RegistryKey currentControlSet = System.OpenSubKey(&#34;CurrentControlSet&#34;); RegistryKey services = currentControlSet.OpenSubKey(&#34;Services&#34;); RegistryKey service = services.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+        <h3 class="title is-4">
+            Windows Service 遠端偵錯方式
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                <p class="summary">
+                    通常在本機開發的時後都是沒有問題的，會發生問題都是佈署到正式環境後才會發生=&#34;= 而用一般遠端偵錯的方式，都是已經啟動服務成功才能下中斷點 如果問題出在啟動失敗的話，就中斷不到 這種情境可以加入System.Diagnostics.Debugger.Launch(); 讓應用程式等待偵錯工具的連入後才會繼續執行下去
+using System.ServiceProcess; namespace MyService { public partial class Service1 : ServiceBase { private NowTimeReporter reporter = new NowTimeReporter();
+ public Service1() { InitializeComponent(); // 偵錯中斷用 System.Diagnostics.Debugger.Launch(); } protected override void OnStart(string[] args) { this.reporter.Start(); } protected override void OnStop() { this.reporter.Stop(); } }  }  執行start.bat來啟動服務
+net start Service1  就會跳出選擇偵錯工具的畫面，這裡先不選擇 [![](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png)](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png) 回到本機，選擇工具-&gt;附加執行緒，選擇遠端和輸入IP，再選擇執行檔，然後附加就行了 [![](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png)](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png) 到Server中上放開偵錯工具選擇畫面 [![](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png)](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png) 就會停在System.Diagnostics.Debugger.Launch();這一行
+[![](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png)](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png) 在本機也可以用這種偵錯方式，就不用到應用程式進入點去動手腳 只要讓服務啟動，再選擇偵錯工具連入就行了 [![](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png)](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png) 
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/">
+        <h3 class="title is-4">
+            Windows Service 本機偵錯方式
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/">
+                    <p class="subtitle info">
+                        3 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/">
+                <p class="summary">
+                    Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &lt;summary&gt; /// 應用程式的主要進入點。 /// &lt;/summary&gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+        <h3 class="title is-4">
+            Windows Service 本機偵錯方式
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                    <p class="subtitle info">
+                        3 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">
+                <p class="summary">
+                    Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &lt;summary&gt; /// 應用程式的主要進入點。 /// &lt;/summary&gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = “yyyy/MM/dd HH:mm:ss”;
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+        <h3 class="title is-4">
+            Windows Service 開發
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                    <p class="subtitle info">
+                        17 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                <p class="summary">
+                    Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。 用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹
+ 首先開一個新專案，名稱為MyService[![](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png)](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png) 在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案[![](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png) 先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務using System.ServiceProcess; namespace MyService { static class Program { /// &lt;summary&gt; /// 應用程式的主要進入點。 /// &lt;/summary&gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }
+再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件using System.ServiceProcess;
+namespace MyService { public partial class Service1 : ServiceBase { public Service1() { InitializeComponent(); }
+ protected override void OnStart(string[] args) { } protected override void OnStop() { } }  }
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    DataContractJsonSerializer 用法 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;
+    ">
+
+
+<meta property="og:title" content="DataContractJsonSerializer 用法" />
+<meta property="og:description" content="首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/" />
+<meta property="article:published_time" content="2013-06-20T15:15:00+00:00" />
+<meta property="article:modified_time" content="2013-06-20T15:15:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DataContractJsonSerializer 用法"/>
+<meta name="twitter:description" content="首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;"/>
+
+<meta itemprop="name" content="DataContractJsonSerializer 用法">
+<meta itemprop="description" content="首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;">
+<meta itemprop="datePublished" content="2013-06-20T15:15:00+00:00" />
+<meta itemprop="dateModified" content="2013-06-20T15:15:00+00:00" />
+<meta itemprop="wordCount" content="147">
+
+
+
+<meta itemprop="keywords" content="C#,JSON," />
+
+<link rel="canonical" href="http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>DataContractJsonSerializer 用法</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 20, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/json">JSON</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/json">J s o n</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>首先需要先定義資料類別
+[DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別
+[DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序
+[IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程</div><div><pre class="brush:csharp">[DataContract]
+public class JsonData
+{
+    [DataMember(Name = "ID", Order = 0)]
+    public int Id { get; set; }
+<pre><code>[DataMember(Order = 1)]
+public string Name { get; set; }
+
+[DataMember(Order = 2)]
+public DateTime Today { get; set; }
+
+[DataMember(Order=3)]
+public bool IsBool { get; set; }
+
+[IgnoreDataMember()]
+public string UnlessField { get; set; }
+</code></pre>
+<p>}
+</pre></div></p>
+<div>初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 </div><div><pre class="brush:csharp">// 淮備序列化的類別資料
+JsonData d1 = new JsonData()
+{
+    Id = 1,
+    Name = "data",
+    Today = DateTime.Now,
+    IsBool = true,
+    UnlessField = "沒用到的欄位"
+};
+<p>// 初始化DataContractJsonSerializer類別
+DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(JsonData));
+string jsonString = string.Empty;
+</pre></div></p>
+<div>序列化資料使用WriteObject寫入Stream
+再用Encoding取得json字串 </div><div><pre class="brush:csharp">// 序列化資料
+using (MemoryStream ms = new MemoryStream())
+{
+    dcjs.WriteObject(ms, d1);
+    jsonString = Encoding.UTF8.GetString(ms.ToArray());
+    Console.WriteLine(jsonString);
+}
+</pre></div>
+<div>反序列化資料先用Encoding取得取得Byte Array讀入Stream
+再用ReadObject讀出資料型別</div><div><pre class="brush:csharp">// 反序列化資料
+using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+{
+    JsonData d2 = dcjs.ReadObject(ms) as JsonData;
+    Console.WriteLine(
+        "Id:{0}, Name:{1}, Today:{2}, IsBool:{3}, UnlessField:{4}",
+        d2.Id,
+        d2.Name,
+        d2.Today,
+        d2.IsBool,
+        d2.UnlessField);
+}
+</pre></div><div>
+執行結果如下
+1\. 日期的部份加入了時區的資料，所以反序列化回來後不用再手動加上ToLocalTime函數
+2.&nbsp; 標記為IgnoreDataMember的欄位並沒有參考序列化的過程，反序列化回來後是空字串
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-eBsCYgXxTuk/UcKrNqc_bBI/AAAAAAAAAvg/4fo00gDjWwA/s1600/04.1.png)](http://4.bp.blogspot.com/-eBsCYgXxTuk/UcKrNqc_bBI/AAAAAAAAAvg/4fo00gDjWwA/s1600/04.1.png)</div></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=DataContractJsonSerializer%20%e7%94%a8%e6%b3%95&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f
+			&title=DataContractJsonSerializer%20%e7%94%a8%e6%b3%95&summary=%e9%a6%96%e5%85%88%e9%9c%80%e8%a6%81%e5%85%88%e5%ae%9a%e7%be%a9%e8%b3%87%e6%96%99%e9%a1%9e%e5%88%a5%20%5bDataContract%5d%28http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fsystem.runtime.serialization.datacontractattribute.aspx%29%e7%94%a8%e4%be%86%e6%a8%99%e8%a8%98%e9%a1%9e%e5%88%a5%20%5bDataMember%5d%28http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fsystem.runtime.serialization.datamemberattribute.aspx%29%e7%94%a8%e4%be%86%e6%a8%99%e8%a8%98%e5%b1%ac%e6%80%a7%ef%bc%8cName%e5%8f%af%e4%bb%a5%e7%94%a8%e4%be%86%e8%ae%8a%e6%9b%b4%e5%ba%8f%e5%88%97%e5%8c%96%e5%be%8c%e7%9a%84%e5%90%8d%e7%a8%b1%ef%bc%8cOrder%e5%89%87%e6%98%af%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e9%a0%86%e5%ba%8f%20%5bIgnoreDataMember%5d%28http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fsystem.runtime.serialization.ignoredatamemberattribute.aspx%29%e7%94%a8%e4%be%86%e6%a8%99%e8%a8%98%e5%b1%ac%e6%80%a7%ef%bc%8c%e8%a1%a8%e7%a4%ba%e4%b8%8d%e5%8f%83%e8%88%87%e5%ba%8f%e5%88%97%e5%8c%96%e9%81%8e%e7%a8%8b%5bDataContract%5d%20public%20class%20JsonData%20%7b%20%5bDataMember%28Name%20%3d%20%22ID%22%2c%20Order%20%3d%200%29%5d%20public%20int%20Id%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%20%3d%201%29%5d%20public%20string%20Name%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%20%3d%202%29%5d%20public%20DateTime%20Today%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%3d3%29%5d%20public%20bool%20IsBool%20%7b%20get%3b%20set%3b%20%7d%20%5bIgnoreDataMember%28%29%5d%20public%20string%20UnlessField%20%7b%20get%3b%20set%3b%20%7d%20%20%7d%20%0a%e5%88%9d%e5%a7%8b%e5%8c%96DataContractJsonSerializer%e9%a1%9e%e5%88%a5%e6%99%82%ef%bc%8c%e9%9c%80%e5%82%b3%e5%85%a5%e8%a6%81%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e8%b3%87%e6%96%99%e5%9e%8b%e5%88%a5%20%2f%2f%20%e6%b7%ae%e5%82%99%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e9%a1%9e%e5%88%a5%e8%b3%87%e6%96%99%20JsonData%20d1%20%3d%20new%20JsonData%28%29%20%7b%20Id%20%3d%201%2c%20Name%20%3d%20%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=DataContractJsonSerializer%20%e7%94%a8%e6%b3%95&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E7%2594%25A8%25E6%25B3%2595%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

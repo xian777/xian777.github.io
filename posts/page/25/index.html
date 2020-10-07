@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Posts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="List of all articles in section- Posts">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/posts/" />
+<meta property="og:updated_time" content="2018-09-14T14:25:42+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/posts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1 class="title is-3">Posts</h1>
+</div>
+
+
+<div class="blog-brief">
+    <a href="/posts/2014/07/server2008r2-system%E4%BD%94%E7%94%A880port%E7%9A%84%E5%95%8F%E9%A1%8C/">
+        <h3 class="title is-4">
+            Server2008R2 System佔用80Port的問題
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/07/server2008r2-system%E4%BD%94%E7%94%A880port%E7%9A%84%E5%95%8F%E9%A1%8C/">
+                    <p class="subtitle info date">Jul 7, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/07/server2008r2-system%E4%BD%94%E7%94%A880port%E7%9A%84%E5%95%8F%E9%A1%8C/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/%E8%8C%B6%E5%8C%85%E5%B0%84%E6%89%8B">茶包射手</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/07/server2008r2-system%E4%BD%94%E7%94%A880port%E7%9A%84%E5%95%8F%E9%A1%8C/">
+                <p class="summary">
+                    最近常碰到80Port被作業系統佔用的問題，原因大部份都是不正常關機引起來 每隔一段時間要找解法，總是忘了一些關鍵字，所以在此備忘一下
+首先打開命令字元，透過netstat的-o選項，可以顯示出佔用的PID 小技巧是透過管線用findstr過濾80 port，資料會更清楚一些 netstat -nao | findstr 80
+[![](http://4.bp.blogspot.com/-SSuCyUSsSnw/U7pgnq53qPI/AAAAAAAABho/hg6SklZ9agY/s1600/01.pid.png)](http://4.bp.blogspot.com/-SSuCyUSsSnw/U7pgnq53qPI/AAAAAAAABho/hg6SklZ9agY/s1600/01.pid.png) 打開工作管理員，可以看到PID4是SYSTEM [![](http://2.bp.blogspot.com/-9GhaTmuwWkI/U7phN98gW7I/AAAAAAAABhw/5m-VC4rZZAA/s1600/04.task.png)](http://2.bp.blogspot.com/-9GhaTmuwWkI/U7phN98gW7I/AAAAAAAABhw/5m-VC4rZZAA/s1600/04.task.png) 先用net stop http關閉http服務 [![](http://2.bp.blogspot.com/-AIUUtYYITAY/U7phTeHe4tI/AAAAAAAABh4/A0yys6zFSa4/s1600/02.stop.png)](http://2.bp.blogspot.com/-AIUUtYYITAY/U7phTeHe4tI/AAAAAAAABh4/A0yys6zFSa4/s1600/02.stop.png) 再用sc config http start= disabled就行了 注意等號和值之間必須空一格 然後重開機就解決囉
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/07/server2008r2-system%E4%BD%94%E7%94%A880port%E7%9A%84%E5%95%8F%E9%A1%8C/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/">
+        <h3 class="title is-4">
+            StyleCop 中文環境設定
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/">
+                    <p class="subtitle info date">Jul 7, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/stylecop">StyleCop</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/">
+                <p class="summary">
+                    Stylecop使用一段時間後，感覺有兩個預設規則不太適合中文環境，所以個人會在專案中取消這兩條規則
+首先在專案上按右鍵，選擇StyleCop Settings
+[![](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-34eXH7WWiD0/U7pdzXekbgI/AAAAAAAABgs/bnrXu5C4jkk/s1600/01.%E8%A8%AD%E5%AE%9A.png) 在Rules中的Documentation Rules中，再打開Element Documentation [![](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-cs3042c1How/U7pdzXgvvJI/AAAAAAAABhI/_83uHNC8X2A/s1600/02.%25E9%25A0%2585%25E7%259B%25AE.png) 取消SA1630 DocumentationTextMustContainWhitespace [![](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png)](http://3.bp.blogspot.com/-81-MVHrilwI/U7pehwbCa6I/AAAAAAAABhM/CqJfG8KK2nk/s1600/03.SA1630.png) 取消SA1650 ElementDocumentationMustBeSpelledCorrectly [![](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png)](http://1.bp.blogspot.com/-MqmnKPxdPvI/U7peqPbdq_I/AAAAAAAABhU/K6hrfHfMCs0/s1600/04.SA1650.png) 設定好按OK後，專案下面就會多出一個隱藏檔，檔名為Settings.StyleCop [![](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png)](http://2.bp.blogspot.com/-FdbCL8bUzX8/U7pe2nDlO-I/AAAAAAAABhc/rvkpRQFm3Ls/s1600/05.%E9%9A%B1%E8%97%8F%E6%AA%94.png) 內容是XML格式的文件，可以看的出來，就是把那兩條規則關閉而已 &lt;StyleCopSettings Version=&#34;105&#34;&gt; &lt;Analyzers&gt; &lt;Analyzer AnalyzerId=&#34;StyleCop.CSharp.DocumentationRules&#34;&gt; &lt;Rules&gt; &lt;Rule Name=&#34;DocumentationTextMustContainWhitespace&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;Rule Name=&#34;ElementDocumentationMustBeSpelledCorrectly&#34;&gt; &lt;RuleSettings&gt; &lt;BooleanProperty Name=&#34;Enabled&#34;&gt;False&lt;/BooleanProperty&gt; &lt;/RuleSettings&gt; &lt;/Rule&gt; &lt;/Rules&gt; &lt;AnalyzerSettings /&gt; &lt;/Analyzer&gt; &lt;/Analyzers&gt; &lt;/StyleCopSettings&gt; 
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/07/stylecop-%E4%B8%AD%E6%96%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/">
+        <h3 class="title is-4">
+            Visual Studio 資料庫專案
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/">
+                    <p class="subtitle info date">Jun 17, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/sql-server">SQL Server</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/">
+                <p class="summary">
+                    首先開一個新專案，選擇SQL Server資料庫專案
+[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png) 匯入的方式有三種，這邊用現有的資料庫當例子 [![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png) 輸入要匯入的資料庫連線資料 [![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png) 接下來需要一點時間來把資料庫物件轉成對應的檔案 [![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png) 匯入成功後會得到一堆物件定義的檔案 [![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png) 接下來用新增一個資料表當例子 [![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png) 輸入要新增的資料表的名稱 [![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 簡單建立幾個欄位，完成後存檔 [![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png) 編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署 這邊用直接發行的方式來部署 [![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png) 輸入要部署的目標伺服器的連線字串後按下發行 [![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png) 順利發行成功 [![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png) 目標伺服器上就可以看到新增的資料表囉 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/06/sql-server-%E8%B3%87%E6%96%99%E5%B1%A4%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/">
+        <h3 class="title is-4">
+            SQL Server 資料層應用程式
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/06/sql-server-%E8%B3%87%E6%96%99%E5%B1%A4%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/">
+                    <p class="subtitle info date">Jun 17, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/06/sql-server-%E8%B3%87%E6%96%99%E5%B1%A4%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/">
+                    <p class="subtitle info">
+                        11 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/sql-server">SQL Server</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/06/sql-server-%E8%B3%87%E6%96%99%E5%B1%A4%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/">
+                <p class="summary">
+                    為了方便練習，所以透過SQL LocalDB建立兩個執行個體[![](http://1.bp.blogspot.com/-PYm-vP7F9SQ/U5_tXS5y79I/AAAAAAAABbY/QPu4WEiLHPY/s1600/01.%25E5%25BB%25BA%25E7%2592%25B0%25E5%25A2%2583.png)](http://1.bp.blogspot.com/-PYm-vP7F9SQ/U5_tXS5y79I/AAAAAAAABbY/QPu4WEiLHPY/s1600/01.%25E5%25BB%25BA%25E7%2592%25B0%25E5%25A2%2583.png) 再來建立一個練習用的資料庫，這裡用北風資料庫為例子[![](http://4.bp.blogspot.com/-QazOoP4b4vU/U5_tXe_J0JI/AAAAAAAABbk/pq6cEvQRC8w/s1600/02.%25E5%258C%2597%25E9%25A2%25A8%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png)](http://4.bp.blogspot.com/-QazOoP4b4vU/U5_tXe_J0JI/AAAAAAAABbk/pq6cEvQRC8w/s1600/02.%25E5%258C%2597%25E9%25A2%25A8%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB.png) 首先把資料庫註冊成資料層應用程式[![](http://1.bp.blogspot.com/-e0MTcSY8jTM/U5_tXfsjfyI/AAAAAAAABbw/Pufq3ukfQOQ/s1600/03.%25E8%25A8%25BB%25E5%2586%258A.png)](http://1.bp.blogspot.com/-e0MTcSY8jTM/U5_tXfsjfyI/AAAAAAAABbw/Pufq3ukfQOQ/s1600/03.%25E8%25A8%25BB%25E5%2586%258A.png) 設定屬性 [![](http://1.bp.blogspot.com/-Pl3r-mf7M_s/U5_tXxN09nI/AAAAAAAABbo/FdNbbjp1-P8/s1600/04.%25E8%25A8%25BB%25E5%2586%258A%25E5%25B1%25AC%25E6%2580%25A7.png)](http://1.bp.blogspot.com/-Pl3r-mf7M_s/U5_tXxN09nI/AAAAAAAABbo/FdNbbjp1-P8/s1600/04.%25E8%25A8%25BB%25E5%2586%258A%25E5%25B1%25AC%25E6%2580%25A7.png) 驗證與摘要 [![](http://4.bp.blogspot.com/-c4VmOP54fdc/U5_tYMrk4pI/AAAAAAAABeY/uCabHv_R9SA/s1600/05.%25E8%25A8%25BB%25E5%2586%258A%25E6%2591%2598%25E8%25A6%2581.png)](http://4.bp.blogspot.com/-c4VmOP54fdc/U5_tYMrk4pI/AAAAAAAABeY/uCabHv_R9SA/s1600/05.%25E8%25A8%25BB%25E5%2586%258A%25E6%2591%2598%25E8%25A6%2581.png) 註冊完成 [![](http://4.bp.blogspot.com/-VFcJVLC0KFU/U5_tYT_tj-I/AAAAAAAABb4/a8aRtT07uE4/s1600/06.%25E8%25A8%25BB%25E5%2586%258A%25E5%25AE%258C%25E6%2588%2590.png)](http://4.bp.blogspot.com/-VFcJVLC0KFU/U5_tYT_tj-I/AAAAAAAABb4/a8aRtT07uE4/s1600/06.%25E8%25A8%25BB%25E5%2586%258A%25E5%25AE%258C%25E6%2588%2590.png) 再來擷取資料層應用程式，不用註冊也可以直接擷取[![](http://1.bp.blogspot.com/-RSIBOQZNGCM/U5_tY546YjI/AAAAAAAABec/W0PK5ycOF_k/s1600/07.%25E6%2593%25B7%25E5%258F%2596.png)](http://1.bp.blogspot.com/-RSIBOQZNGCM/U5_tY546YjI/AAAAAAAABec/W0PK5ycOF_k/s1600/07.%25E6%2593%25B7%25E5%258F%2596.png) 選擇檔案輸出的路徑和檔名 [![](http://3.bp.blogspot.com/-LLMbv0HkHOE/U5_tZNY6SaI/AAAAAAAABcM/spVOVImkRGk/s1600/08.%25E6%2593%25B7%25E5%258F%2596%25E5%25B1%25AC%25E6%2580%25A7.png)](http://3.bp.blogspot.com/-LLMbv0HkHOE/U5_tZNY6SaI/AAAAAAAABcM/spVOVImkRGk/s1600/08.%25E6%2593%25B7%25E5%258F%2596%25E5%25B1%25AC%25E6%2580%25A7.png) 驗證與摘要 [![](http://4.bp.blogspot.com/-61wr623zbFM/U5_tZRMNqLI/AAAAAAAABcU/WeBsHrL7iwY/s1600/09.%25E6%2593%25B7%25E5%258F%2596%25E6%2591%2598%25E8%25A6%2581.png)](http://4.bp.blogspot.com/-61wr623zbFM/U5_tZRMNqLI/AAAAAAAABcU/WeBsHrL7iwY/s1600/09.%25E6%2593%25B7%25E5%258F%2596%25E6%2591%2598%25E8%25A6%2581.png) 封裝完成 [![](http://4.bp.blogspot.com/-cLyszCK0cvA/U5_tZ8t6XyI/AAAAAAAABck/OAtx5RDGruQ/s1600/10.%25E6%2593%25B7%25E5%258F%2596%25E5%25AE%258C%25E6%2588%2590.png)](http://4.bp.blogspot.com/-cLyszCK0cvA/U5_tZ8t6XyI/AAAAAAAABck/OAtx5RDGruQ/s1600/10.%25E6%2593%25B7%25E5%258F%2596%25E5%25AE%258C%25E6%2588%2590.png) 再來把擷取出來的檔案部署到第二個環境[![](http://4.bp.blogspot.com/-HW0bgK0INAE/U5_taIk8hfI/AAAAAAAABeI/MdQ6LrTAvcc/s1600/11.%25E9%2583%25A8%25E7%25BD%25B2.png)](http://4.bp.blogspot.com/-HW0bgK0INAE/U5_taIk8hfI/AAAAAAAABeI/MdQ6LrTAvcc/s1600/11.%25E9%2583%25A8%25E7%25BD%25B2.png) 選擇剛輸出的檔案 [![](http://4.bp.blogspot.com/-hD5cEqITLcM/U5_taFULOqI/AAAAAAAABcg/mxhSAzjH0wA/s1600/12.%25E9%2583%25A8%25E6%259A%2591%25E9%2581%25B8%25E6%25AA%2594.png)](http://4.bp.blogspot.com/-hD5cEqITLcM/U5_taFULOqI/AAAAAAAABcg/mxhSAzjH0wA/s1600/12.%25E9%2583%25A8%25E6%259A%2591%25E9%2581%25B8%25E6%25AA%2594.png) 設定要部署的資料庫名稱 [![](http://3.bp.blogspot.com/--HEJU57mtNU/U5_taRjuiiI/AAAAAAAABc0/u6ZaFtAdBiA/s1600/13.%25E9%2583%25A8%25E7%25BD%25B2%25E5%2590%258D%25E7%25A8%25B1.png)](http://3.bp.blogspot.com/--HEJU57mtNU/U5_taRjuiiI/AAAAAAAABc0/u6ZaFtAdBiA/s1600/13.%25E9%2583%25A8%25E7%25BD%25B2%25E5%2590%258D%25E7%25A8%25B1.png) 部署摘要 [![](http://3.bp.blogspot.com/-kAAdV8Uf_WE/U5_tazOwtdI/AAAAAAAABco/st3V2Dhj1zk/s1600/14.%25E9%2583%25A8%25E7%25BD%25B2%25E6%2591%2598%25E8%25A6%2581.png)](http://3.bp.blogspot.com/-kAAdV8Uf_WE/U5_tazOwtdI/AAAAAAAABco/st3V2Dhj1zk/s1600/14.%25E9%2583%25A8%25E7%25BD%25B2%25E6%2591%2598%25E8%25A6%2581.png) 部署完成 [![](http://4.bp.blogspot.com/-h_FTGXGLzVA/U5_tbOrYbXI/AAAAAAAABc8/0bFQzE8Av30/s1600/15.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25AE%258C%25E6%2588%2590.png)](http://4.bp.blogspot.com/-h_FTGXGLzVA/U5_tbOrYbXI/AAAAAAAABc8/0bFQzE8Av30/s1600/15.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25AE%258C%25E6%2588%2590.png) 第二個環境也有北風資料庫了 [![](http://2.bp.blogspot.com/-KhTDtavtW30/U5_tbfNVwCI/AAAAAAAABeQ/RIxgYNMd3z8/s1600/16.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png)](http://2.bp.blogspot.com/-KhTDtavtW30/U5_tbfNVwCI/AAAAAAAABeQ/RIxgYNMd3z8/s1600/16.%25E9%2583%25A8%25E7%25BD%25B2%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png) 再來異動第一個環境的資料庫的schema，這裡用新增一個資料表當例子 [![](http://4.bp.blogspot.com/-Z9Ah5th7ysI/U5_tcFWAAFI/AAAAAAAABdI/9CNike4If7w/s1600/17.%25E6%2596%25B0%25E5%25A2%259E%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://4.bp.blogspot.com/-Z9Ah5th7ysI/U5_tcFWAAFI/AAAAAAAABdI/9CNike4If7w/s1600/17.%25E6%2596%25B0%25E5%25A2%259E%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 再擷取一次資料層應用程式 [![](http://2.bp.blogspot.com/-aefoQHvcJwA/U5_tcsH9hwI/AAAAAAAABdc/kYcdxZRIwEg/s1600/18-1.%25E5%2586%258D%25E6%2593%25B7%25E5%258F%2596%25E4%25B8%2580%25E6%25AC%25A1.png)](http://2.bp.blogspot.com/-aefoQHvcJwA/U5_tcsH9hwI/AAAAAAAABdc/kYcdxZRIwEg/s1600/18-1.%25E5%2586%258D%25E6%2593%25B7%25E5%258F%2596%25E4%25B8%2580%25E6%25AC%25A1.png) 在第二個環境上用升級的方式匯入 [![](http://3.bp.blogspot.com/-fmVxwKzU1Zk/U5_tcqyqHTI/AAAAAAAABdU/xYCAJbOrZVw/s1600/18-2.%25E5%258D%2587%25E7%25B4%259A.png)](http://3.bp.blogspot.com/-fmVxwKzU1Zk/U5_tcqyqHTI/AAAAAAAABdU/xYCAJbOrZVw/s1600/18-2.%25E5%258D%2587%25E7%25B4%259A.png) 選擇剛匯出的檔案 [![](http://1.bp.blogspot.com/-0dr008Hag30/U5_tdDzNlDI/AAAAAAAABeU/QFWzbi0JWZY/s1600/19.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E6%25AA%2594.png)](http://1.bp.blogspot.com/-0dr008Hag30/U5_tdDzNlDI/AAAAAAAABeU/QFWzbi0JWZY/s1600/19.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E6%25AA%2594.png) 這邊的尚未變更指的是從上次建立資料層應用程式後都沒有變更Schema 而不是和要升級的檔案比對的結果 [![](http://3.bp.blogspot.com/-u0kKhoucR7Q/U5_tdQeE3MI/AAAAAAAABeA/IRpxqd8w-Z4/s1600/20.%25E5%258D%2587%25E7%25B4%259A%25E5%2581%25B5%25E6%25B8%25AC%25E7%25B5%2590%25E6%259E%259C.png)](http://3.bp.blogspot.com/-u0kKhoucR7Q/U5_tdQeE3MI/AAAAAAAABeA/IRpxqd8w-Z4/s1600/20.%25E5%258D%2587%25E7%25B4%259A%25E5%2581%25B5%25E6%25B8%25AC%25E7%25B5%2590%25E6%259E%259C.png) 升級選項 [![](http://1.bp.blogspot.com/-WZ8HUXKankM/U5_tdzT3F1I/AAAAAAAABdo/Vldgx3uqvPs/s1600/21.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E9%25A0%2585.png)](http://1.bp.blogspot.com/-WZ8HUXKankM/U5_tdzT3F1I/AAAAAAAABdo/Vldgx3uqvPs/s1600/21.%25E5%258D%2587%25E7%25B4%259A%25E9%2581%25B8%25E9%25A0%2585.png) 升級計畫[![](http://4.bp.blogspot.com/-BDKkSYVWaHE/U5_td354TOI/AAAAAAAABd8/54GfkmMNWwU/s1600/22.%25E5%258D%2587%25E7%25B4%259A%25E8%25A8%2588%25E5%258A%2583.png)](http://4.bp.blogspot.com/-BDKkSYVWaHE/U5_td354TOI/AAAAAAAABd8/54GfkmMNWwU/s1600/22.%25E5%258D%2587%25E7%25B4%259A%25E8%25A8%2588%25E5%258A%2583.png) 升級摘要 [![](http://4.bp.blogspot.com/-Mw0clAb-f5Q/U5_teYqP2zI/AAAAAAAABd0/Gwo6zt5Tr2c/s1600/23.%25E5%258D%2587%25E7%25B4%259A%25E6%2591%2598%25E8%25A6%2581.png)](http://4.bp.blogspot.com/-Mw0clAb-f5Q/U5_teYqP2zI/AAAAAAAABd0/Gwo6zt5Tr2c/s1600/23.%25E5%258D%2587%25E7%25B4%259A%25E6%2591%2598%25E8%25A6%2581.png) 升級完成 [![](http://3.bp.blogspot.com/-IE5yhPETFqQ/U5_telmV4VI/AAAAAAAABd4/Lse01AvDSkQ/s1600/24.%25E5%258D%2587%25E7%25B4%259A%25E5%25AE%258C%25E6%2588%2590.png)](http://3.bp.blogspot.com/-IE5yhPETFqQ/U5_telmV4VI/AAAAAAAABd4/Lse01AvDSkQ/s1600/24.%25E5%258D%2587%25E7%25B4%259A%25E5%25AE%258C%25E6%2588%2590.png) 升級後可以看到新增的資料表 [![](http://4.bp.blogspot.com/-va77B4s-mHI/U5_te15PgUI/AAAAAAAABeM/Wp1USWOjwS4/s1600/25.%25E5%258D%2587%25E7%25B4%259A%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png)](http://4.bp.blogspot.com/-va77B4s-mHI/U5_te15PgUI/AAAAAAAABeM/Wp1USWOjwS4/s1600/25.%25E5%258D%2587%25E7%25B4%259A%25E5%25BE%258C%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png) 
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/06/sql-server-%E8%B3%87%E6%96%99%E5%B1%A4%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/">
+        <h3 class="title is-4">
+            TeamCity 整合 StyleCop
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/">
+                    <p class="subtitle info date">Jun 6, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/">
+                    <p class="subtitle info">
+                        9 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/stylecop">StyleCop</a>
+            
+            <a class="tag is-rounded" href="/tags/teamcity">TeamCity</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/">
+                <p class="summary">
+                    先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+
+
+
+
+<section class="section">
+    <nav class="pagination is-centered">
+
+        
+            <a class="pagination-previous is-dark" href="/posts/page/24/">Previous</a>
+        
+
+        
+            <a class="pagination-next" href="/posts/page/26/">Next page</a>
+        
+
+
+        <ul class="pagination-list">
+
+        
+
+            
+            
+
+                <li><a href="/posts/" class="pagination-link">1</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/24/" class="pagination-link">24</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/25/" class="pagination-link is-current">25</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/26/" class="pagination-link">26</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/52/" class="pagination-link">52</a></li>
+
+                
+                
+
+            
+
+        
+
+        </ul>
+    </nav>
+</section>
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

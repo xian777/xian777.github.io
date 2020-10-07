@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Gogs With Application Request Routing | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!
+    ">
+
+
+<meta property="og:title" content="Gogs with application request routing" />
+<meta property="og:description" content="Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/08/gogs-with-application-request-routing/" />
+<meta property="article:published_time" content="2016-08-15T23:14:00+00:00" />
+<meta property="article:modified_time" content="2016-08-15T23:14:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gogs with application request routing"/>
+<meta name="twitter:description" content="Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!"/>
+
+<meta itemprop="name" content="Gogs with application request routing">
+<meta itemprop="description" content="Application Request Route的使用方式可以參考以前的筆記 透過Application Request Route來做SSL offloading http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html
+預設的站台只繫結http 80 port
+[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png) 安裝好ARR後，新增一組Server Farm [![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png) 新增一台伺服器，httpPort改成3000 [![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png) 新增一條URL Rewrite規則 [![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png) 使用規則運算式: .* [![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png) 路由到剛設定的伺服器陣列 [![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png) 新增一組測試網址 [![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png) 瀏覽測試網址，http port 80 會路由到gogs的port 3000 [!">
+<meta itemprop="datePublished" content="2016-08-15T23:14:00+00:00" />
+<meta itemprop="dateModified" content="2016-08-15T23:14:00+00:00" />
+<meta itemprop="wordCount" content="33">
+
+
+
+<meta itemprop="keywords" content="arr,gogs," />
+
+<link rel="canonical" href="http://example.org/posts/2016/08/gogs-with-application-request-routing/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Gogs With Application Request Routing</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 15, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/arr">Arr</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/gogs">Gogs</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/arr">Arr</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/gogs">Gogs</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Application Request Route的使用方式可以參考以前的筆記
+<a href="http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html">透過Application Request Route來做SSL offloading</a>
+<a href="http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html">http://blog.developer.idv.tw/2016/05/application-request-routessl-offloading_8.html</a></p>
+<p>預設的站台只繫結http 80 port</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)](https://1.bp.blogspot.com/-RTDUH6_NBvI/V7HcIB-tOFI/AAAAAAAAD3I/0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB/s1600/01.png)</div>
+安裝好ARR後，新增一組Server Farm
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-BUQI0vG1O2s/V7HcIGM-NCI/AAAAAAAAD3Q/BDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB/s1600/02.png)</div>
+新增一台伺服器，httpPort改成3000
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)](https://2.bp.blogspot.com/-2iQGlC2nMUE/V7HcIBCzN4I/AAAAAAAAD3M/63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB/s1600/03.png)</div>
+新增一條URL Rewrite規則
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)](https://4.bp.blogspot.com/-X64dGenYaKM/V7HcIY_tM7I/AAAAAAAAD3U/9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB/s1600/04.png)</div>
+使用規則運算式: .*
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)](https://1.bp.blogspot.com/-FD4P_AUW1x8/V7HcIpYTCnI/AAAAAAAAD3Y/NlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB/s1600/05.png)</div>
+路由到剛設定的伺服器陣列
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)](https://1.bp.blogspot.com/-03Fe7Z8Vc0M/V7HcIrI03dI/AAAAAAAAD3c/0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB/s1600/06.png)</div>
+新增一組測試網址
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)](https://3.bp.blogspot.com/-PMDL1lmoQkI/V7HcI264_DI/AAAAAAAAD3g/IhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB/s1600/07.png)</div>
+瀏覽測試網址，http port 80 會路由到gogs的port 3000
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-cBz_me155kY/V7HcJMSQtdI/AAAAAAAAD3k/jDB8V0C-uhkXo2o_0WjMDq-otZYSGDblQCLcB/s1600/08.png)](https://2.bp.blogspot.com/-cBz_me155kY/V7HcJMSQtdI/AAAAAAAAD3k/jDB8V0C-uhkXo2o_0WjMDq-otZYSGDblQCLcB/s1600/08.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Gogs%20with%20application%20request%20routing&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f
+			&title=Gogs%20with%20application%20request%20routing&summary=Application%20Request%20Route%e7%9a%84%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e4%bb%a5%e5%89%8d%e7%9a%84%e7%ad%86%e8%a8%98%20%e9%80%8f%e9%81%8eApplication%20Request%20Route%e4%be%86%e5%81%9aSSL%20offloading%20http%3a%2f%2fblog.developer.idv.tw%2f2016%2f05%2fapplication-request-routessl-offloading_8.html%0a%e9%a0%90%e8%a8%ad%e7%9a%84%e7%ab%99%e5%8f%b0%e5%8f%aa%e7%b9%ab%e7%b5%90http%2080%20port%0a%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-RTDUH6_NBvI%2fV7HcIB-tOFI%2fAAAAAAAAD3I%2f0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB%2fs1600%2f01.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-RTDUH6_NBvI%2fV7HcIB-tOFI%2fAAAAAAAAD3I%2f0SxH-OjlwCkC20MVjaMgHZ55V6XCFHh5ACLcB%2fs1600%2f01.png%29%20%e5%ae%89%e8%a3%9d%e5%a5%bdARR%e5%be%8c%ef%bc%8c%e6%96%b0%e5%a2%9e%e4%b8%80%e7%b5%84Server%20Farm%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-BUQI0vG1O2s%2fV7HcIGM-NCI%2fAAAAAAAAD3Q%2fBDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB%2fs1600%2f02.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-BUQI0vG1O2s%2fV7HcIGM-NCI%2fAAAAAAAAD3Q%2fBDTR_cOmalMu9JgL8HD8LgMDYTWZDuwNgCLcB%2fs1600%2f02.png%29%20%e6%96%b0%e5%a2%9e%e4%b8%80%e5%8f%b0%e4%bc%ba%e6%9c%8d%e5%99%a8%ef%bc%8chttpPort%e6%94%b9%e6%88%903000%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-2iQGlC2nMUE%2fV7HcIBCzN4I%2fAAAAAAAAD3M%2f63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB%2fs1600%2f03.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-2iQGlC2nMUE%2fV7HcIBCzN4I%2fAAAAAAAAD3M%2f63hu2Ct49McJocI0wdU0YEg7XDHIX0vywCLcB%2fs1600%2f03.png%29%20%e6%96%b0%e5%a2%9e%e4%b8%80%e6%a2%9dURL%20Rewrite%e8%a6%8f%e5%89%87%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-X64dGenYaKM%2fV7HcIY_tM7I%2fAAAAAAAAD3U%2f9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB%2fs1600%2f04.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-X64dGenYaKM%2fV7HcIY_tM7I%2fAAAAAAAAD3U%2f9lFevWOGQigbzFaZDbi-dTq_R9GTgskzACLcB%2fs1600%2f04.png%29%20%e4%bd%bf%e7%94%a8%e8%a6%8f%e5%89%87%e9%81%8b%e7%ae%97%e5%bc%8f%3a%20.%2a%20%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-FD4P_AUW1x8%2fV7HcIpYTCnI%2fAAAAAAAAD3Y%2fNlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB%2fs1600%2f05.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-FD4P_AUW1x8%2fV7HcIpYTCnI%2fAAAAAAAAD3Y%2fNlDxlJt4rcAYefwLWIFOugguupLnjwixACLcB%2fs1600%2f05.png%29%20%e8%b7%af%e7%94%b1%e5%88%b0%e5%89%9b%e8%a8%ad%e5%ae%9a%e7%9a%84%e4%bc%ba%e6%9c%8d%e5%99%a8%e9%99%a3%e5%88%97%20%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-03Fe7Z8Vc0M%2fV7HcIrI03dI%2fAAAAAAAAD3c%2f0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB%2fs1600%2f06.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-03Fe7Z8Vc0M%2fV7HcIrI03dI%2fAAAAAAAAD3c%2f0gO3EuOxOJMoXDxkSnPkEZbyiUtTa8WjgCLcB%2fs1600%2f06.png%29%20%e6%96%b0%e5%a2%9e%e4%b8%80%e7%b5%84%e6%b8%ac%e8%a9%a6%e7%b6%b2%e5%9d%80%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-PMDL1lmoQkI%2fV7HcI264_DI%2fAAAAAAAAD3g%2fIhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB%2fs1600%2f07.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-PMDL1lmoQkI%2fV7HcI264_DI%2fAAAAAAAAD3g%2fIhKetCNMxBwnF3MMbHKU59mP2LlCno4jACLcB%2fs1600%2f07.png%29%20%e7%80%8f%e8%a6%bd%e6%b8%ac%e8%a9%a6%e7%b6%b2%e5%9d%80%ef%bc%8chttp%20port%2080%20%e6%9c%83%e8%b7%af%e7%94%b1%e5%88%b0gogs%e7%9a%84port%203000%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Gogs%20with%20application%20request%20routing&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fgogs-with-application-request-routing%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

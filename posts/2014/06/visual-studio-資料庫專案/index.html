@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Visual Studio 資料庫專案 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先開一個新專案，選擇SQL Server資料庫專案
+[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png) 匯入的方式有三種，這邊用現有的資料庫當例子 [![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png) 輸入要匯入的資料庫連線資料 [![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png) 接下來需要一點時間來把資料庫物件轉成對應的檔案 [![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png) 匯入成功後會得到一堆物件定義的檔案 [![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png) 接下來用新增一個資料表當例子 [![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png) 輸入要新增的資料表的名稱 [![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 簡單建立幾個欄位，完成後存檔 [![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png) 編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署 這邊用直接發行的方式來部署 [![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png) 輸入要部署的目標伺服器的連線字串後按下發行 [![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png) 順利發行成功 [![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png) 目標伺服器上就可以看到新增的資料表囉 [!
+    ">
+
+
+<meta property="og:title" content="Visual Studio 資料庫專案" />
+<meta property="og:description" content="首先開一個新專案，選擇SQL Server資料庫專案
+[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png) 匯入的方式有三種，這邊用現有的資料庫當例子 [![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png) 輸入要匯入的資料庫連線資料 [![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png) 接下來需要一點時間來把資料庫物件轉成對應的檔案 [![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png) 匯入成功後會得到一堆物件定義的檔案 [![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png) 接下來用新增一個資料表當例子 [![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png) 輸入要新增的資料表的名稱 [![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 簡單建立幾個欄位，完成後存檔 [![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png) 編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署 這邊用直接發行的方式來部署 [![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png) 輸入要部署的目標伺服器的連線字串後按下發行 [![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png) 順利發行成功 [![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png) 目標伺服器上就可以看到新增的資料表囉 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/" />
+<meta property="article:published_time" content="2014-06-17T18:06:00+00:00" />
+<meta property="article:modified_time" content="2014-06-17T18:06:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visual Studio 資料庫專案"/>
+<meta name="twitter:description" content="首先開一個新專案，選擇SQL Server資料庫專案
+[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png) 匯入的方式有三種，這邊用現有的資料庫當例子 [![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png) 輸入要匯入的資料庫連線資料 [![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png) 接下來需要一點時間來把資料庫物件轉成對應的檔案 [![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png) 匯入成功後會得到一堆物件定義的檔案 [![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png) 接下來用新增一個資料表當例子 [![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png) 輸入要新增的資料表的名稱 [![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 簡單建立幾個欄位，完成後存檔 [![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png) 編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署 這邊用直接發行的方式來部署 [![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png) 輸入要部署的目標伺服器的連線字串後按下發行 [![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png) 順利發行成功 [![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png) 目標伺服器上就可以看到新增的資料表囉 [!"/>
+
+<meta itemprop="name" content="Visual Studio 資料庫專案">
+<meta itemprop="description" content="首先開一個新專案，選擇SQL Server資料庫專案
+[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png) 匯入的方式有三種，這邊用現有的資料庫當例子 [![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png) 輸入要匯入的資料庫連線資料 [![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png) 接下來需要一點時間來把資料庫物件轉成對應的檔案 [![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png) 匯入成功後會得到一堆物件定義的檔案 [![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png) 接下來用新增一個資料表當例子 [![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png) 輸入要新增的資料表的名稱 [![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png) 簡單建立幾個欄位，完成後存檔 [![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png) 編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署 這邊用直接發行的方式來部署 [![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png) 輸入要部署的目標伺服器的連線字串後按下發行 [![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png) 順利發行成功 [![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png) 目標伺服器上就可以看到新增的資料表囉 [!">
+<meta itemprop="datePublished" content="2014-06-17T18:06:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-17T18:06:00+00:00" />
+<meta itemprop="wordCount" content="26">
+
+
+
+<meta itemprop="keywords" content="SQL Server," />
+
+<link rel="canonical" href="http://example.org/posts/2014/06/visual-studio-%E8%B3%87%E6%96%99%E5%BA%AB%E5%B0%88%E6%A1%88/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Visual Studio 資料庫專案</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 17, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/sql-server">SQL Server</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/sql-server">S q l server</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>首先開一個新專案，選擇SQL Server資料庫專案</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-TqYagomYUG0/U6APChmvlvI/AAAAAAAABes/SYUg_DQmxyo/s1600/01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png)</div>
+匯入的方式有三種，這邊用現有的資料庫當例子
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)](http://4.bp.blogspot.com/-vzW-ukm2OxE/U6APVp7OrNI/AAAAAAAABfQ/k4iepZU_0wA/s1600/02.%25E5%258C%25AF%25E5%2585%25A5.png)</div>
+輸入要匯入的資料庫連線資料
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)](http://3.bp.blogspot.com/-hOsS_RXJajE/U6APVdfAZmI/AAAAAAAABfY/oO2HQNcDcUM/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E9%2580%25A3%25E7%25B7%259A.png)</div>
+接下來需要一點時間來把資料庫物件轉成對應的檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/--FHHY35xyxo/U6APVKJMJtI/AAAAAAAABe4/co7hQ7vvirM/s1600/04.%25E5%258C%25AF%25E5%2585%25A5%25E5%25AE%258C%25E6%2588%2590.png)</div>
+匯入成功後會得到一堆物件定義的檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-LRIOtxZZ1io/U6AQunB6iUI/AAAAAAAABgE/fwmTcRpphhY/s1600/05.1%E5%AE%8C%E6%88%90%E7%9A%84%E6%A8%A3%E5%AD%90.png)</div>
+接下來用新增一個資料表當例子
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)](http://2.bp.blogspot.com/-uthvGT3J7kE/U6APV0bF4II/AAAAAAAABfE/UbHIjLCztf0/s1600/05.%25E5%258A%25A0%25E5%2585%25A5%25E6%2596%25B0%25E9%25A0%2585%25E7%259B%25AE.png)</div>
+輸入要新增的資料表的名稱
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://3.bp.blogspot.com/-Pg61sJvN6Ko/U6APWOvui2I/AAAAAAAABfM/HdF5U5Fkf6c/s1600/06.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)</div>
+簡單建立幾個欄位，完成後存檔
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)](http://4.bp.blogspot.com/-ZbQe18CtgaA/U6APXuQ8xVI/AAAAAAAABfo/BBqGe5A_qpE/s1600/07.%25E7%25B7%25A8%25E8%25BC%25AF%25E6%25A0%25BC%25E5%25BC%258F.png)</div>
+編譯後可以得到一個dacpac檔案，就可以拿到目標伺服器上面去部署
+這邊用直接發行的方式來部署
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)](http://2.bp.blogspot.com/-rw7LiyRoGBw/U6APXP14k2I/AAAAAAAABfs/0iGLFw2aaD0/s1600/08.%25E7%2599%25BC%25E8%25A1%258C.png)</div>
+輸入要部署的目標伺服器的連線字串後按下發行
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)](http://3.bp.blogspot.com/-1T2G9FZjoDg/U6APXYXEBsI/AAAAAAAABf4/rHo2_CktK-Q/s1600/09.%25E7%2599%25BC%25E8%25A1%258C%25E8%25A8%25AD%25E5%25AE%259A.png)</div>
+順利發行成功
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)](http://4.bp.blogspot.com/-N2DmfwTtiT4/U6APX4WCNXI/AAAAAAAABf0/0rkjS3envR0/s1600/10.%25E7%2599%25BC%25E8%25A1%258C%25E6%2588%2590%25E5%258A%259F.png)</div>
+目標伺服器上就可以看到新增的資料表囉
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-n2Lc4etDMPI/U6APYsuqOII/AAAAAAAABf8/7lmXxHj4WfU/s1600/11.%25E6%2596%25B0%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)](http://1.bp.blogspot.com/-n2Lc4etDMPI/U6APYsuqOII/AAAAAAAABf8/7lmXxHj4WfU/s1600/11.%25E6%2596%25B0%25E8%25B3%2587%25E6%2596%2599%25E8%25A1%25A8.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Visual%20Studio%20%e8%b3%87%e6%96%99%e5%ba%ab%e5%b0%88%e6%a1%88&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f
+			&title=Visual%20Studio%20%e8%b3%87%e6%96%99%e5%ba%ab%e5%b0%88%e6%a1%88&summary=%e9%a6%96%e5%85%88%e9%96%8b%e4%b8%80%e5%80%8b%e6%96%b0%e5%b0%88%e6%a1%88%ef%bc%8c%e9%81%b8%e6%93%87SQL%20Server%e8%b3%87%e6%96%99%e5%ba%ab%e5%b0%88%e6%a1%88%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-TqYagomYUG0%2fU6APChmvlvI%2fAAAAAAAABes%2fSYUg_DQmxyo%2fs1600%2f01.%2525E9%252596%25258B%2525E6%252596%2525B0%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-TqYagomYUG0%2fU6APChmvlvI%2fAAAAAAAABes%2fSYUg_DQmxyo%2fs1600%2f01.%2525E9%252596%25258B%2525E6%252596%2525B0%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%20%e5%8c%af%e5%85%a5%e7%9a%84%e6%96%b9%e5%bc%8f%e6%9c%89%e4%b8%89%e7%a8%ae%ef%bc%8c%e9%80%99%e9%82%8a%e7%94%a8%e7%8f%be%e6%9c%89%e7%9a%84%e8%b3%87%e6%96%99%e5%ba%ab%e7%95%b6%e4%be%8b%e5%ad%90%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-vzW-ukm2OxE%2fU6APVp7OrNI%2fAAAAAAAABfQ%2fk4iepZU_0wA%2fs1600%2f02.%2525E5%25258C%2525AF%2525E5%252585%2525A5.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-vzW-ukm2OxE%2fU6APVp7OrNI%2fAAAAAAAABfQ%2fk4iepZU_0wA%2fs1600%2f02.%2525E5%25258C%2525AF%2525E5%252585%2525A5.png%29%20%e8%bc%b8%e5%85%a5%e8%a6%81%e5%8c%af%e5%85%a5%e7%9a%84%e8%b3%87%e6%96%99%e5%ba%ab%e9%80%a3%e7%b7%9a%e8%b3%87%e6%96%99%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hOsS_RXJajE%2fU6APVdfAZmI%2fAAAAAAAABfY%2foO2HQNcDcUM%2fs1600%2f03.%2525E8%2525A8%2525AD%2525E5%2525AE%25259A%2525E8%2525B3%252587%2525E6%252596%252599%2525E5%2525BA%2525AB%2525E9%252580%2525A3%2525E7%2525B7%25259A.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hOsS_RXJajE%2fU6APVdfAZmI%2fAAAAAAAABfY%2foO2HQNcDcUM%2fs1600%2f03.%2525E8%2525A8%2525AD%2525E5%2525AE%25259A%2525E8%2525B3%252587%2525E6%252596%252599%2525E5%2525BA%2525AB%2525E9%252580%2525A3%2525E7%2525B7%25259A.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e9%9c%80%e8%a6%81%e4%b8%80%e9%bb%9e%e6%99%82%e9%96%93%e4%be%86%e6%8a%8a%e8%b3%87%e6%96%99%e5%ba%ab%e7%89%a9%e4%bb%b6%e8%bd%89%e6%88%90%e5%b0%8d%e6%87%89%e7%9a%84%e6%aa%94%e6%a1%88%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f--FHHY35xyxo%2fU6APVKJMJtI%2fAAAAAAAABe4%2fco7hQ7vvirM%2fs1600%2f04.%2525E5%25258C%2525AF%2525E5%252585%2525A5%2525E5%2525AE%25258C%2525E6%252588%252590.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f--FHHY35xyxo%2fU6APVKJMJtI%2fAAAAAAAABe4%2fco7hQ7vvirM%2fs1600%2f04.%2525E5%25258C%2525AF%2525E5%252585%2525A5%2525E5%2525AE%25258C%2525E6%252588%252590.png%29%20%e5%8c%af%e5%85%a5%e6%88%90%e5%8a%9f%e5%be%8c%e6%9c%83%e5%be%97%e5%88%b0%e4%b8%80%e5%a0%86%e7%89%a9%e4%bb%b6%e5%ae%9a%e7%be%a9%e7%9a%84%e6%aa%94%e6%a1%88%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-LRIOtxZZ1io%2fU6AQunB6iUI%2fAAAAAAAABgE%2ffwmTcRpphhY%2fs1600%2f05.1%25E5%25AE%258C%25E6%2588%2590%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-LRIOtxZZ1io%2fU6AQunB6iUI%2fAAAAAAAABgE%2ffwmTcRpphhY%2fs1600%2f05.1%25E5%25AE%258C%25E6%2588%2590%25E7%259A%2584%25E6%25A8%25A3%25E5%25AD%2590.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e7%94%a8%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e8%b3%87%e6%96%99%e8%a1%a8%e7%95%b6%e4%be%8b%e5%ad%90%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-uthvGT3J7kE%2fU6APV0bF4II%2fAAAAAAAABfE%2fUbHIjLCztf0%2fs1600%2f05.%2525E5%25258A%2525A0%2525E5%252585%2525A5%2525E6%252596%2525B0%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-uthvGT3J7kE%2fU6APV0bF4II%2fAAAAAAAABfE%2fUbHIjLCztf0%2fs1600%2f05.%2525E5%25258A%2525A0%2525E5%252585%2525A5%2525E6%252596%2525B0%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%20%e8%bc%b8%e5%85%a5%e8%a6%81%e6%96%b0%e5%a2%9e%e7%9a%84%e8%b3%87%e6%96%99%e8%a1%a8%e7%9a%84%e5%90%8d%e7%a8%b1%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Pg61sJvN6Ko%2fU6APWOvui2I%2fAAAAAAAABfM%2fHdF5U5Fkf6c%2fs1600%2f06.%2525E5%25258A%2525A0%2525E5%252585%2525A5%2525E8%2525B3%252587%2525E6%252596%252599%2525E8%2525A1%2525A8.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Pg61sJvN6Ko%2fU6APWOvui2I%2fAAAAAAAABfM%2fHdF5U5Fkf6c%2fs1600%2f06.%2525E5%25258A%2525A0%2525E5%252585%2525A5%2525E8%2525B3%252587%2525E6%252596%252599%2525E8%2525A1%2525A8.png%29%20%e7%b0%a1%e5%96%ae%e5%bb%ba%e7%ab%8b%e5%b9%be%e5%80%8b%e6%ac%84%e4%bd%8d%ef%bc%8c%e5%ae%8c%e6%88%90%e5%be%8c%e5%ad%98%e6%aa%94%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ZbQe18CtgaA%2fU6APXuQ8xVI%2fAAAAAAAABfo%2fBBqGe5A_qpE%2fs1600%2f07.%2525E7%2525B7%2525A8%2525E8%2525BC%2525AF%2525E6%2525A0%2525BC%2525E5%2525BC%25258F.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ZbQe18CtgaA%2fU6APXuQ8xVI%2fAAAAAAAABfo%2fBBqGe5A_qpE%2fs1600%2f07.%2525E7%2525B7%2525A8%2525E8%2525BC%2525AF%2525E6%2525A0%2525BC%2525E5%2525BC%25258F.png%29%20%e7%b7%a8%e8%ad%af%e5%be%8c%e5%8f%af%e4%bb%a5%e5%be%97%e5%88%b0%e4%b8%80%e5%80%8bdacpac%e6%aa%94%e6%a1%88%ef%bc%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e6%8b%bf%e5%88%b0%e7%9b%ae%e6%a8%99%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e9%9d%a2%e5%8e%bb%e9%83%a8%e7%bd%b2%20%e9%80%99%e9%82%8a%e7%94%a8%e7%9b%b4%e6%8e%a5%e7%99%bc%e8%a1%8c%e7%9a%84%e6%96%b9%e5%bc%8f%e4%be%86%e9%83%a8%e7%bd%b2%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-rw7LiyRoGBw%2fU6APXP14k2I%2fAAAAAAAABfs%2f0iGLFw2aaD0%2fs1600%2f08.%2525E7%252599%2525BC%2525E8%2525A1%25258C.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-rw7LiyRoGBw%2fU6APXP14k2I%2fAAAAAAAABfs%2f0iGLFw2aaD0%2fs1600%2f08.%2525E7%252599%2525BC%2525E8%2525A1%25258C.png%29%20%e8%bc%b8%e5%85%a5%e8%a6%81%e9%83%a8%e7%bd%b2%e7%9a%84%e7%9b%ae%e6%a8%99%e4%bc%ba%e6%9c%8d%e5%99%a8%e7%9a%84%e9%80%a3%e7%b7%9a%e5%ad%97%e4%b8%b2%e5%be%8c%e6%8c%89%e4%b8%8b%e7%99%bc%e8%a1%8c%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1T2G9FZjoDg%2fU6APXYXEBsI%2fAAAAAAAABf4%2frHo2_CktK-Q%2fs1600%2f09.%2525E7%252599%2525BC%2525E8%2525A1%25258C%2525E8%2525A8%2525AD%2525E5%2525AE%25259A.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1T2G9FZjoDg%2fU6APXYXEBsI%2fAAAAAAAABf4%2frHo2_CktK-Q%2fs1600%2f09.%2525E7%252599%2525BC%2525E8%2525A1%25258C%2525E8%2525A8%2525AD%2525E5%2525AE%25259A.png%29%20%e9%a0%86%e5%88%a9%e7%99%bc%e8%a1%8c%e6%88%90%e5%8a%9f%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-N2DmfwTtiT4%2fU6APX4WCNXI%2fAAAAAAAABf0%2f0rkjS3envR0%2fs1600%2f10.%2525E7%252599%2525BC%2525E8%2525A1%25258C%2525E6%252588%252590%2525E5%25258A%25259F.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-N2DmfwTtiT4%2fU6APX4WCNXI%2fAAAAAAAABf0%2f0rkjS3envR0%2fs1600%2f10.%2525E7%252599%2525BC%2525E8%2525A1%25258C%2525E6%252588%252590%2525E5%25258A%25259F.png%29%20%e7%9b%ae%e6%a8%99%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e6%96%b0%e5%a2%9e%e7%9a%84%e8%b3%87%e6%96%99%e8%a1%a8%e5%9b%89%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Visual%20Studio%20%e8%b3%87%e6%96%99%e5%ba%ab%e5%b0%88%e6%a1%88&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fvisual-studio-%25E8%25B3%2587%25E6%2596%2599%25E5%25BA%25AB%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

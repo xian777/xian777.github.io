@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog Config | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog設定檔位置 NLog的設定檔有幾個位置，參考官網文件如下
+ 應用程式的標準設定檔(app.config或是web.config) 執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動 應用程式所在目錄的app.exe.nlog 每個專案都要手動指定檔名比較麻煩點 應用程式所在目錄的NLog.config 建議使用的設定檔方式 Nlog.dll所在目錄的NLog.dll.config 和第三種方式差不多，還是選擇比較常見的第三種方式吧 環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案 設在這種神秘的地方，應該會被扁吧在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式   NLog設定檔元素 Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定 rules - 定義Log的路由規則，Log的過濾條件也在這裡設定 extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組 include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用 variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料   NLog設定檔自動重讀 NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效 如果要自動重讀的話，需要設定一個屬性autoReload=&quot;true&quot;才能生效
+&lt;nlog autoreload=&#34;true&#34;&gt; ... &lt;/nlog&gt;   NLog設定檔疑難排解 有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限這時後可以利用NLog內部的Log來查詢原因  throwExceptions - 設定是否要引發錯誤 NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false internalLogFile - 設定內部錯誤要輸出的文件位置 直接給一個檔名就好，會輸出在執行檔所在目錄下面 internalLogLevel - 設定內部錯誤要輸出的層級 基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息 internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗 如果不想寫檔，又有Console可以用的話，那就設定為true吧 internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流 為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr  上一篇 : [NLog 初體驗](http://blog.
+    ">
+
+
+<meta property="og:title" content="NLog Config" />
+<meta property="og:description" content="NLog設定檔位置 NLog的設定檔有幾個位置，參考官網文件如下
+ 應用程式的標準設定檔(app.config或是web.config) 執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動 應用程式所在目錄的app.exe.nlog 每個專案都要手動指定檔名比較麻煩點 應用程式所在目錄的NLog.config 建議使用的設定檔方式 Nlog.dll所在目錄的NLog.dll.config 和第三種方式差不多，還是選擇比較常見的第三種方式吧 環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案 設在這種神秘的地方，應該會被扁吧在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式   NLog設定檔元素 Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定 rules - 定義Log的路由規則，Log的過濾條件也在這裡設定 extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組 include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用 variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料   NLog設定檔自動重讀 NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效 如果要自動重讀的話，需要設定一個屬性autoReload=&quot;true&quot;才能生效
+&lt;nlog autoreload=&#34;true&#34;&gt; ... &lt;/nlog&gt;   NLog設定檔疑難排解 有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限這時後可以利用NLog內部的Log來查詢原因  throwExceptions - 設定是否要引發錯誤 NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false internalLogFile - 設定內部錯誤要輸出的文件位置 直接給一個檔名就好，會輸出在執行檔所在目錄下面 internalLogLevel - 設定內部錯誤要輸出的層級 基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息 internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗 如果不想寫檔，又有Console可以用的話，那就設定為true吧 internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流 為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr  上一篇 : [NLog 初體驗](http://blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-config/" />
+<meta property="article:published_time" content="2012-12-29T16:27:00+00:00" />
+<meta property="article:modified_time" content="2012-12-29T16:27:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog Config"/>
+<meta name="twitter:description" content="NLog設定檔位置 NLog的設定檔有幾個位置，參考官網文件如下
+ 應用程式的標準設定檔(app.config或是web.config) 執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動 應用程式所在目錄的app.exe.nlog 每個專案都要手動指定檔名比較麻煩點 應用程式所在目錄的NLog.config 建議使用的設定檔方式 Nlog.dll所在目錄的NLog.dll.config 和第三種方式差不多，還是選擇比較常見的第三種方式吧 環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案 設在這種神秘的地方，應該會被扁吧在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式   NLog設定檔元素 Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定 rules - 定義Log的路由規則，Log的過濾條件也在這裡設定 extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組 include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用 variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料   NLog設定檔自動重讀 NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效 如果要自動重讀的話，需要設定一個屬性autoReload=&quot;true&quot;才能生效
+&lt;nlog autoreload=&#34;true&#34;&gt; ... &lt;/nlog&gt;   NLog設定檔疑難排解 有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限這時後可以利用NLog內部的Log來查詢原因  throwExceptions - 設定是否要引發錯誤 NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false internalLogFile - 設定內部錯誤要輸出的文件位置 直接給一個檔名就好，會輸出在執行檔所在目錄下面 internalLogLevel - 設定內部錯誤要輸出的層級 基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息 internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗 如果不想寫檔，又有Console可以用的話，那就設定為true吧 internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流 為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr  上一篇 : [NLog 初體驗](http://blog."/>
+
+<meta itemprop="name" content="NLog Config">
+<meta itemprop="description" content="NLog設定檔位置 NLog的設定檔有幾個位置，參考官網文件如下
+ 應用程式的標準設定檔(app.config或是web.config) 執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動 應用程式所在目錄的app.exe.nlog 每個專案都要手動指定檔名比較麻煩點 應用程式所在目錄的NLog.config 建議使用的設定檔方式 Nlog.dll所在目錄的NLog.dll.config 和第三種方式差不多，還是選擇比較常見的第三種方式吧 環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案 設在這種神秘的地方，應該會被扁吧在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式   NLog設定檔元素 Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目  targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定 rules - 定義Log的路由規則，Log的過濾條件也在這裡設定 extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組 include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用 variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料   NLog設定檔自動重讀 NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效 如果要自動重讀的話，需要設定一個屬性autoReload=&quot;true&quot;才能生效
+&lt;nlog autoreload=&#34;true&#34;&gt; ... &lt;/nlog&gt;   NLog設定檔疑難排解 有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限這時後可以利用NLog內部的Log來查詢原因  throwExceptions - 設定是否要引發錯誤 NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false internalLogFile - 設定內部錯誤要輸出的文件位置 直接給一個檔名就好，會輸出在執行檔所在目錄下面 internalLogLevel - 設定內部錯誤要輸出的層級 基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息 internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗 如果不想寫檔，又有Console可以用的話，那就設定為true吧 internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流 為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr  上一篇 : [NLog 初體驗](http://blog.">
+<meta itemprop="datePublished" content="2012-12-29T16:27:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-29T16:27:00+00:00" />
+<meta itemprop="wordCount" content="66">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-config/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog Config</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 29, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    6 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog設定檔位置">NLog設定檔位置</h2>
+<p>NLog的設定檔有幾個位置，參考<a href="https://github.com/nlog/nlog/wiki/Configuration-file">官網文件</a>如下</p>
+<ol>
+<li>應用程式的標準設定檔(app.config或是web.config)
+<span style="color: orange;">執行過程中如果需要修改NLog的配置，會造成應用程式重新啟動</span></li>
+<li>應用程式所在目錄的app.exe.nlog
+<span style="color: orange;">每個專案都要手動指定檔名比較麻煩點</span></li>
+<li>應用程式所在目錄的NLog.config
+<span style="color: red;">建議使用的設定檔方式</span></li>
+<li>Nlog.dll所在目錄的NLog.dll.config
+<span style="color: orange;">和第三種方式差不多，還是選擇比較常見的第三種方式吧</span></li>
+<li>環境變數NLOG_GLOBAL_CONFIG_FILE指定的檔案
+<span style="color: orange;">設在這種神秘的地方，應該會被扁吧</span><div>在ASP.NET或是Windows Form應用程式中有點差異，其他的專案類型有幾種方式不能用，所以建議使用最通用的第三種方式</div></li>
+</ol>
+<hr>
+<h2 id="nlog設定檔元素">NLog設定檔元素</h2>
+<div>Nlog的設定檔有以下五種元素，前兩種是必要項目，後三種是可選項目</div><div>
+<ol>
+<li>targets - 定義Log的輸出目標，輸出格式的Layout也在這裡設定</li>
+<li>rules - 定義Log的路由規則，Log的過濾條件也在這裡設定</li>
+<li>extensions - 定義擴充元件，包含NLog擴充模組和自定義的擴充模組</li>
+<li>include - 引用外部設定檔，簡化設定檔的複雜度和重覆利用</li>
+<li>variable - 定義設定檔中自行設定的變數，可以統一和簡化設定檔資料</div><div></li>
+</ol>
+<hr>
+<h2 id="nlog設定檔自動重讀">NLog設定檔自動重讀</h2>
+<p>NLog的設定檔，在執行過程中預設是不會重讀的，每個修改都需要重新啟動應用程式才能生效
+如果要自動重讀的話，需要設定一個屬性autoReload=&quot;true&quot;才能生效</p>
+<pre class="brush:xml">&lt;nlog autoreload="true"&gt;
+   ...
+&lt;/nlog&gt;
+</pre></div>
+<hr>
+<h2 id="nlog設定檔疑難排解">NLog設定檔疑難排解</h2>
+<div>有時後就算設好了設定檔，Log還是沒有寫出來，最常見的原因是權限問題造成的問題</div><div>例如ASP.NET的w3wp.exe沒有指定資料夾寫檔案的權限</div><div>這時後可以利用NLog內部的Log來查詢原因</div><div>
+<ol>
+<li>throwExceptions - 設定是否要引發錯誤
+<span style="color: orange;">NLog會吃掉所有內部引發的錯誤，要找問題時可以設為true，找到之後應該設回false</span></li>
+<li>internalLogFile - 設定內部錯誤要輸出的文件位置
+<span style="color: orange;">直接給一個檔名就好，會輸出在執行檔所在目錄下面</span></li>
+<li>internalLogLevel - 設定內部錯誤要輸出的層級
+<span style="color: orange;">基本上要找的是Error訊息比較簡潔點，不設定的話會輸出所有詳細訊息</span></li>
+<li>internalLogToConsole - 設定內部錯誤是否要輸出到Console視窗
+<span style="color: orange;">如果不想寫檔，又有Console可以用的話，那就設定為true吧</span></li>
+<li>internalLogToConsoleError - 設定內部錯誤是否要輸出到stderr串流
+<span style="color: orange;">為了不要和應用程式正常訊息混在一起，可以把錯誤訊息重導向到stderr</span><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png"><img src="http://3.bp.blogspot.com/-3xE3_wOWE3M/UN6pAVTohrI/AAAAAAAAAos/s4mfqjO6UQc/s1600/01.+InternalError.png" alt=""></a></div><div></li>
+</ol>
+</div></div><div class="separator" style="clear: both; text-align: left;">上一篇 : [NLog 初體驗](http://blog.developer.idv.tw/2012/12/nlog.html)</div>下一篇 : [NLog Targets](http://blog.developer.idv.tw/2012/12/nlog-targets.html)
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20Config&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f
+			&title=NLog%20Config&summary=NLog%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%bd%8d%e7%bd%ae%20NLog%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e6%9c%89%e5%b9%be%e5%80%8b%e4%bd%8d%e7%bd%ae%ef%bc%8c%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e6%96%87%e4%bb%b6%e5%a6%82%e4%b8%8b%0a%20%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e7%9a%84%e6%a8%99%e6%ba%96%e8%a8%ad%e5%ae%9a%e6%aa%94%28app.config%e6%88%96%e6%98%afweb.config%29%20%e5%9f%b7%e8%a1%8c%e9%81%8e%e7%a8%8b%e4%b8%ad%e5%a6%82%e6%9e%9c%e9%9c%80%e8%a6%81%e4%bf%ae%e6%94%b9NLog%e7%9a%84%e9%85%8d%e7%bd%ae%ef%bc%8c%e6%9c%83%e9%80%a0%e6%88%90%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95%20%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e6%89%80%e5%9c%a8%e7%9b%ae%e9%8c%84%e7%9a%84app.exe.nlog%20%e6%af%8f%e5%80%8b%e5%b0%88%e6%a1%88%e9%83%bd%e8%a6%81%e6%89%8b%e5%8b%95%e6%8c%87%e5%ae%9a%e6%aa%94%e5%90%8d%e6%af%94%e8%bc%83%e9%ba%bb%e7%85%a9%e9%bb%9e%20%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e6%89%80%e5%9c%a8%e7%9b%ae%e9%8c%84%e7%9a%84NLog.config%20%e5%bb%ba%e8%ad%b0%e4%bd%bf%e7%94%a8%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e6%96%b9%e5%bc%8f%20Nlog.dll%e6%89%80%e5%9c%a8%e7%9b%ae%e9%8c%84%e7%9a%84NLog.dll.config%20%e5%92%8c%e7%ac%ac%e4%b8%89%e7%a8%ae%e6%96%b9%e5%bc%8f%e5%b7%ae%e4%b8%8d%e5%a4%9a%ef%bc%8c%e9%82%84%e6%98%af%e9%81%b8%e6%93%87%e6%af%94%e8%bc%83%e5%b8%b8%e8%a6%8b%e7%9a%84%e7%ac%ac%e4%b8%89%e7%a8%ae%e6%96%b9%e5%bc%8f%e5%90%a7%20%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8NLOG_GLOBAL_CONFIG_FILE%e6%8c%87%e5%ae%9a%e7%9a%84%e6%aa%94%e6%a1%88%20%e8%a8%ad%e5%9c%a8%e9%80%99%e7%a8%ae%e7%a5%9e%e7%a7%98%e7%9a%84%e5%9c%b0%e6%96%b9%ef%bc%8c%e6%87%89%e8%a9%b2%e6%9c%83%e8%a2%ab%e6%89%81%e5%90%a7%e5%9c%a8ASP.NET%e6%88%96%e6%98%afWindows%20Form%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e4%b8%ad%e6%9c%89%e9%bb%9e%e5%b7%ae%e7%95%b0%ef%bc%8c%e5%85%b6%e4%bb%96%e7%9a%84%e5%b0%88%e6%a1%88%e9%a1%9e%e5%9e%8b%e6%9c%89%e5%b9%be%e7%a8%ae%e6%96%b9%e5%bc%8f%e4%b8%8d%e8%83%bd%e7%94%a8%ef%bc%8c%e6%89%80%e4%bb%a5%e5%bb%ba%e8%ad%b0%e4%bd%bf%e7%94%a8%e6%9c%80%e9%80%9a%e7%94%a8%e7%9a%84%e7%ac%ac%e4%b8%89%e7%a8%ae%e6%96%b9%e5%bc%8f%20%20%20NLog%e8%a8%ad%e5%ae%9a%e6%aa%94%e5%85%83%e7%b4%a0%20Nlog%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e6%9c%89%e4%bb%a5%e4%b8%8b%e4%ba%94%e7%a8%ae%e5%85%83%e7%b4%a0%ef%bc%8c%e5%89%8d%e5%85%a9%e7%a8%ae%e6%98%af%e5%bf%85%e8%a6%81%e9%a0%85%e7%9b%ae%ef%bc%8c%e5%be%8c%e4%b8%89%e7%a8%ae%e6%98%af%e5%8f%af%e9%81%b8%e9%a0%85%e7%9b%ae%20%20targets%20-%20%e5%ae%9a%e7%be%a9Log%e7%9a%84%e8%bc%b8%e5%87%ba%e7%9b%ae%e6%a8%99%ef%bc%8c%e8%bc%b8%e5%87%ba%e6%a0%bc%e5%bc%8f%e7%9a%84Layout%e4%b9%9f%e5%9c%a8%e9%80%99%e8%a3%a1%e8%a8%ad%e5%ae%9a%20rules%20-%20%e5%ae%9a%e7%be%a9Log%e7%9a%84%e8%b7%af%e7%94%b1%e8%a6%8f%e5%89%87%ef%bc%8cLog%e7%9a%84%e9%81%8e%e6%bf%be%e6%a2%9d%e4%bb%b6%e4%b9%9f%e5%9c%a8%e9%80%99%e8%a3%a1%e8%a8%ad%e5%ae%9a%20extensions%20-%20%e5%ae%9a%e7%be%a9%e6%93%b4%e5%85%85%e5%85%83%e4%bb%b6%ef%bc%8c%e5%8c%85%e5%90%abNLog%e6%93%b4%e5%85%85%e6%a8%a1%e7%b5%84%e5%92%8c%e8%87%aa%e5%ae%9a%e7%be%a9%e7%9a%84%e6%93%b4%e5%85%85%e6%a8%a1%e7%b5%84%20include%20-%20%e5%bc%95%e7%94%a8%e5%a4%96%e9%83%a8%e8%a8%ad%e5%ae%9a%e6%aa%94%ef%bc%8c%e7%b0%a1%e5%8c%96%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%9a%84%e8%a4%87%e9%9b%9c%e5%ba%a6%e5%92%8c%e9%87%8d%e8%a6%86%e5%88%a9%e7%94%a8%20variable%20-%20%e5%ae%9a%e7%be%a9%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%b8%ad%e8%87%aa%e8%a1%8c%e8%a8%ad%e5%ae%9a%e7%9a%84%e8%ae%8a%e6%95%b8%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%b5%b1%e4%b8%80%e5%92%8c%e7%b0%a1%e5%8c%96%e8%a8%ad%e5%ae%9a%e6%aa%94%e8%b3%87%e6%96%99%20%20%20NLog%e8%a8%ad%e5%ae%9a%e6%aa%94%e8%87%aa%e5%8b%95%e9%87%8d%e8%ae%80%20NLog%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%ef%bc%8c%e5%9c%a8%e5%9f%b7%e8%a1%8c%e9%81%8e%e7%a8%8b%e4%b8%ad%e9%a0%90%e8%a8%ad%e6%98%af%e4%b8%8d%e6%9c%83%e9%87%8d%e8%ae%80%e7%9a%84%ef%bc%8c%e6%af%8f%e5%80%8b%e4%bf%ae%e6%94%b9%e9%83%bd%e9%9c%80%e8%a6%81%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e6%89%8d%e8%83%bd%e7%94%9f%e6%95%88%20%e5%a6%82%e6%9e%9c%e8%a6%81%e8%87%aa%e5%8b%95%e9%87%8d%e8%ae%80%e7%9a%84%e8%a9%b1%ef%bc%8c%e9%9c%80%e8%a6%81%e8%a8%ad%e5%ae%9a%e4%b8%80%e5%80%8b%e5%b1%ac%e6%80%a7autoReload%3d%26quot%3btrue%26quot%3b%e6%89%8d%e8%83%bd%e7%94%9f%e6%95%88%0a%26lt%3bnlog%20autoreload%3d%22true%22%26gt%3b%20...%20%26lt%3b%2fnlog%26gt%3b%20%20%20NLog%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%96%91%e9%9b%a3%e6%8e%92%e8%a7%a3%20%e6%9c%89%e6%99%82%e5%be%8c%e5%b0%b1%e7%ae%97%e8%a8%ad%e5%a5%bd%e4%ba%86%e8%a8%ad%e5%ae%9a%e6%aa%94%ef%bc%8cLog%e9%82%84%e6%98%af%e6%b2%92%e6%9c%89%e5%af%ab%e5%87%ba%e4%be%86%ef%bc%8c%e6%9c%80%e5%b8%b8%e8%a6%8b%e7%9a%84%e5%8e%9f%e5%9b%a0%e6%98%af%e6%ac%8a%e9%99%90%e5%95%8f%e9%a1%8c%e9%80%a0%e6%88%90%e7%9a%84%e5%95%8f%e9%a1%8c%e4%be%8b%e5%a6%82ASP.NET%e7%9a%84w3wp.exe%e6%b2%92%e6%9c%89%e6%8c%87%e5%ae%9a%e8%b3%87%e6%96%99%e5%a4%be%e5%af%ab%e6%aa%94%e6%a1%88%e7%9a%84%e6%ac%8a%e9%99%90%e9%80%99%e6%99%82%e5%be%8c%e5%8f%af%e4%bb%a5%e5%88%a9%e7%94%a8NLog%e5%85%a7%e9%83%a8%e7%9a%84Log%e4%be%86%e6%9f%a5%e8%a9%a2%e5%8e%9f%e5%9b%a0%20%20throwExceptions%20-%c2%a0%e8%a8%ad%e5%ae%9a%e6%98%af%e5%90%a6%e8%a6%81%e5%bc%95%e7%99%bc%e9%8c%af%e8%aa%a4%20NLog%e6%9c%83%e5%90%83%e6%8e%89%e6%89%80%e6%9c%89%e5%85%a7%e9%83%a8%e5%bc%95%e7%99%bc%e7%9a%84%e9%8c%af%e8%aa%a4%ef%bc%8c%e8%a6%81%e6%89%be%e5%95%8f%e9%a1%8c%e6%99%82%e5%8f%af%e4%bb%a5%e8%a8%ad%e7%82%batrue%ef%bc%8c%e6%89%be%e5%88%b0%e4%b9%8b%e5%be%8c%e6%87%89%e8%a9%b2%e8%a8%ad%e5%9b%9efalse%20internalLogFile%20-%20%e8%a8%ad%e5%ae%9a%e5%85%a7%e9%83%a8%e9%8c%af%e8%aa%a4%e8%a6%81%e8%bc%b8%e5%87%ba%e7%9a%84%e6%96%87%e4%bb%b6%e4%bd%8d%e7%bd%ae%20%e7%9b%b4%e6%8e%a5%e7%b5%a6%e4%b8%80%e5%80%8b%e6%aa%94%e5%90%8d%e5%b0%b1%e5%a5%bd%ef%bc%8c%e6%9c%83%e8%bc%b8%e5%87%ba%e5%9c%a8%e5%9f%b7%e8%a1%8c%e6%aa%94%e6%89%80%e5%9c%a8%e7%9b%ae%e9%8c%84%e4%b8%8b%e9%9d%a2%20internalLogLevel%20-%20%e8%a8%ad%e5%ae%9a%e5%85%a7%e9%83%a8%e9%8c%af%e8%aa%a4%e8%a6%81%e8%bc%b8%e5%87%ba%e7%9a%84%e5%b1%a4%e7%b4%9a%20%e5%9f%ba%e6%9c%ac%e4%b8%8a%e8%a6%81%e6%89%be%e7%9a%84%e6%98%afError%e8%a8%8a%e6%81%af%e6%af%94%e8%bc%83%e7%b0%a1%e6%bd%94%e9%bb%9e%ef%bc%8c%e4%b8%8d%e8%a8%ad%e5%ae%9a%e7%9a%84%e8%a9%b1%e6%9c%83%e8%bc%b8%e5%87%ba%e6%89%80%e6%9c%89%e8%a9%b3%e7%b4%b0%e8%a8%8a%e6%81%af%20internalLogToConsole%20-%20%e8%a8%ad%e5%ae%9a%e5%85%a7%e9%83%a8%e9%8c%af%e8%aa%a4%e6%98%af%e5%90%a6%e8%a6%81%e8%bc%b8%e5%87%ba%e5%88%b0Console%e8%a6%96%e7%aa%97%20%e5%a6%82%e6%9e%9c%e4%b8%8d%e6%83%b3%e5%af%ab%e6%aa%94%ef%bc%8c%e5%8f%88%e6%9c%89Console%e5%8f%af%e4%bb%a5%e7%94%a8%e7%9a%84%e8%a9%b1%ef%bc%8c%e9%82%a3%e5%b0%b1%e8%a8%ad%e5%ae%9a%e7%82%batrue%e5%90%a7%20internalLogToConsoleError%20-%20%e8%a8%ad%e5%ae%9a%e5%85%a7%e9%83%a8%e9%8c%af%e8%aa%a4%e6%98%af%e5%90%a6%e8%a6%81%e8%bc%b8%e5%87%ba%e5%88%b0stderr%e4%b8%b2%e6%b5%81%20%e7%82%ba%e4%ba%86%e4%b8%8d%e8%a6%81%e5%92%8c%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e6%ad%a3%e5%b8%b8%e8%a8%8a%e6%81%af%e6%b7%b7%e5%9c%a8%e4%b8%80%e8%b5%b7%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%e9%87%8d%e5%b0%8e%e5%90%91%e5%88%b0stderr%20%20%e4%b8%8a%e4%b8%80%e7%af%87%20%3a%20%5bNLog%20%e5%88%9d%e9%ab%94%e9%a9%97%5d%28http%3a%2f%2fblog.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20Config&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-config%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

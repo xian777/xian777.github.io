@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Hello .NET Core 1.0 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先到官網按照步驟安裝SDK
+[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png) 使用dotnet new 命令來初始化一個專案
+[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png) dotnet restore:還原套件 dotnet build:建置專案 dotnet run:執行專案 [![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png) 打開http://127.0.01:5000就可以看到站台了
+[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png) dotnet publish: 發佈專案 帶入-output參數可以指發佈的路徑 [![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png) 發佈後的資料夾
+[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png) 使用dotnet命令來執行專案的dll [!
+    ">
+
+
+<meta property="og:title" content="Hello .NET Core 1.0" />
+<meta property="og:description" content="首先到官網按照步驟安裝SDK
+[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png) 使用dotnet new 命令來初始化一個專案
+[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png) dotnet restore:還原套件 dotnet build:建置專案 dotnet run:執行專案 [![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png) 打開http://127.0.01:5000就可以看到站台了
+[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png) dotnet publish: 發佈專案 帶入-output參數可以指發佈的路徑 [![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png) 發佈後的資料夾
+[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png) 使用dotnet命令來執行專案的dll [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/08/hello-net-core-1-0/" />
+<meta property="article:published_time" content="2016-08-14T12:05:00+00:00" />
+<meta property="article:modified_time" content="2016-08-14T12:05:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hello .NET Core 1.0"/>
+<meta name="twitter:description" content="首先到官網按照步驟安裝SDK
+[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png) 使用dotnet new 命令來初始化一個專案
+[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png) dotnet restore:還原套件 dotnet build:建置專案 dotnet run:執行專案 [![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png) 打開http://127.0.01:5000就可以看到站台了
+[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png) dotnet publish: 發佈專案 帶入-output參數可以指發佈的路徑 [![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png) 發佈後的資料夾
+[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png) 使用dotnet命令來執行專案的dll [!"/>
+
+<meta itemprop="name" content="Hello .NET Core 1.0">
+<meta itemprop="description" content="首先到官網按照步驟安裝SDK
+[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png) 使用dotnet new 命令來初始化一個專案
+[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png) dotnet restore:還原套件 dotnet build:建置專案 dotnet run:執行專案 [![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png) 打開http://127.0.01:5000就可以看到站台了
+[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png) dotnet publish: 發佈專案 帶入-output參數可以指發佈的路徑 [![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png) 發佈後的資料夾
+[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png) 使用dotnet命令來執行專案的dll [!">
+<meta itemprop="datePublished" content="2016-08-14T12:05:00+00:00" />
+<meta itemprop="dateModified" content="2016-08-14T12:05:00+00:00" />
+<meta itemprop="wordCount" content="24">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="canonical" href="http://example.org/posts/2016/08/hello-net-core-1-0/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Hello .NET Core 1.0</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 14, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>首先到<a href="https://www.microsoft.com/net/core#windows">官網</a>按照步驟安裝SDK</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)](https://2.bp.blogspot.com/-8cuW-kzgdOA/V6_aFBAfQ5I/AAAAAAAADz4/BK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB/s1600/01.png)</div>
+<p>使用dotnet new 命令來初始化一個專案</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)](https://2.bp.blogspot.com/-bHmStXZF-Yc/V6_aFE7U2HI/AAAAAAAADz8/FWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB/s1600/02.png)</div>
+dotnet restore:還原套件
+dotnet build:建置專案
+dotnet run:執行專案
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NQgyN2ZYFsU/V6_aFGcGTmI/AAAAAAAADz0/u6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB/s1600/03.png)</div>
+<p>打開http://127.0.01:5000就可以看到站台了</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)](https://2.bp.blogspot.com/--vN4i89yLj0/V6_aFdNvrpI/AAAAAAAAD0A/Rry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB/s1600/04.png)</div>
+dotnet publish: 發佈專案
+帶入-output參數可以指發佈的路徑
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)](https://2.bp.blogspot.com/-bLopWepOecU/V6_aFqVQhzI/AAAAAAAAD0E/EUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB/s1600/05.png)</div>
+<p>發佈後的資料夾</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)](https://1.bp.blogspot.com/-tCreZAN8ees/V6_aFvJt6yI/AAAAAAAAD0I/yCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB/s1600/07.png)</div>
+使用dotnet命令來執行專案的dll
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-hq4N5cTjojk/V6_aF10BTGI/AAAAAAAAD0M/wRFrhYttj9UVrlYhi1tGAARZkbaQO3XaACLcB/s1600/08.png)](https://1.bp.blogspot.com/-hq4N5cTjojk/V6_aF10BTGI/AAAAAAAAD0M/wRFrhYttj9UVrlYhi1tGAARZkbaQO3XaACLcB/s1600/08.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Hello%20.NET%20Core%201.0&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f
+			&title=Hello%20.NET%20Core%201.0&summary=%e9%a6%96%e5%85%88%e5%88%b0%e5%ae%98%e7%b6%b2%e6%8c%89%e7%85%a7%e6%ad%a5%e9%a9%9f%e5%ae%89%e8%a3%9dSDK%0a%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-8cuW-kzgdOA%2fV6_aFBAfQ5I%2fAAAAAAAADz4%2fBK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB%2fs1600%2f01.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-8cuW-kzgdOA%2fV6_aFBAfQ5I%2fAAAAAAAADz4%2fBK4Nf_FlkBsQNDMzAGhUQooLGDlon56bwCLcB%2fs1600%2f01.png%29%20%e4%bd%bf%e7%94%a8dotnet%20new%20%e5%91%bd%e4%bb%a4%e4%be%86%e5%88%9d%e5%a7%8b%e5%8c%96%e4%b8%80%e5%80%8b%e5%b0%88%e6%a1%88%0a%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-bHmStXZF-Yc%2fV6_aFE7U2HI%2fAAAAAAAADz8%2fFWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB%2fs1600%2f02.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-bHmStXZF-Yc%2fV6_aFE7U2HI%2fAAAAAAAADz8%2fFWvCy2ny7w49Ft8B-KhfcI4WjsvwFIhbQCLcB%2fs1600%2f02.png%29%20dotnet%20restore%3a%e9%82%84%e5%8e%9f%e5%a5%97%e4%bb%b6%20dotnet%20build%3a%e5%bb%ba%e7%bd%ae%e5%b0%88%e6%a1%88%20dotnet%20run%3a%e5%9f%b7%e8%a1%8c%e5%b0%88%e6%a1%88%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-NQgyN2ZYFsU%2fV6_aFGcGTmI%2fAAAAAAAADz0%2fu6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB%2fs1600%2f03.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-NQgyN2ZYFsU%2fV6_aFGcGTmI%2fAAAAAAAADz0%2fu6mszI4_3HwObdE8_Yi0uAwHLFyzwZ7ggCLcB%2fs1600%2f03.png%29%20%e6%89%93%e9%96%8bhttp%3a%2f%2f127.0.01%3a5000%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e7%ab%99%e5%8f%b0%e4%ba%86%0a%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f--vN4i89yLj0%2fV6_aFdNvrpI%2fAAAAAAAAD0A%2fRry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB%2fs1600%2f04.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f--vN4i89yLj0%2fV6_aFdNvrpI%2fAAAAAAAAD0A%2fRry3hJLTG4kweQbP29448yzqsmgp0nD7wCLcB%2fs1600%2f04.png%29%20dotnet%20publish%3a%20%e7%99%bc%e4%bd%88%e5%b0%88%e6%a1%88%20%e5%b8%b6%e5%85%a5-output%e5%8f%83%e6%95%b8%e5%8f%af%e4%bb%a5%e6%8c%87%e7%99%bc%e4%bd%88%e7%9a%84%e8%b7%af%e5%be%91%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-bLopWepOecU%2fV6_aFqVQhzI%2fAAAAAAAAD0E%2fEUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB%2fs1600%2f05.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-bLopWepOecU%2fV6_aFqVQhzI%2fAAAAAAAAD0E%2fEUhpOmrE-IMrqHU4l_qWgF-JuHN-w6PBgCLcB%2fs1600%2f05.png%29%20%e7%99%bc%e4%bd%88%e5%be%8c%e7%9a%84%e8%b3%87%e6%96%99%e5%a4%be%0a%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-tCreZAN8ees%2fV6_aFvJt6yI%2fAAAAAAAAD0I%2fyCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB%2fs1600%2f07.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-tCreZAN8ees%2fV6_aFvJt6yI%2fAAAAAAAAD0I%2fyCKsFT8w_YQjqBMeEhW5ky0TpCqVycU6wCLcB%2fs1600%2f07.png%29%20%e4%bd%bf%e7%94%a8dotnet%e5%91%bd%e4%bb%a4%e4%be%86%e5%9f%b7%e8%a1%8c%e5%b0%88%e6%a1%88%e7%9a%84dll%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Hello%20.NET%20Core%201.0&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f08%2fhello-net-core-1-0%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    App.config Transformations | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035&#43;Result.png)
+這是一個簡單的設定檔內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;127.0.0.1&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;/&gt; &lt;/connectionStrings&gt; &lt;/configuration&gt; 在Debug組態的設定檔中，改變了設定檔的內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt; &lt;configuration xmlns:xdt=&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;192.168.100.11&#34; xdt:Transform=&#34;SetAttribute&#34; xdt:Locator=&#34;Match(key)&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; connectionString=&#34;Data Source=192.
+    ">
+
+
+<meta property="og:title" content="app.config Transformations" />
+<meta property="og:description" content="前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035&#43;Result.png)
+這是一個簡單的設定檔內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;127.0.0.1&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;/&gt; &lt;/connectionStrings&gt; &lt;/configuration&gt; 在Debug組態的設定檔中，改變了設定檔的內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt; &lt;configuration xmlns:xdt=&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;192.168.100.11&#34; xdt:Transform=&#34;SetAttribute&#34; xdt:Locator=&#34;Match(key)&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; connectionString=&#34;Data Source=192." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/08/app-config-transformations/" />
+<meta property="article:published_time" content="2012-08-18T17:58:00+00:00" />
+<meta property="article:modified_time" content="2012-08-18T17:58:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="app.config Transformations"/>
+<meta name="twitter:description" content="前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035&#43;Result.png)
+這是一個簡單的設定檔內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;127.0.0.1&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;/&gt; &lt;/connectionStrings&gt; &lt;/configuration&gt; 在Debug組態的設定檔中，改變了設定檔的內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt; &lt;configuration xmlns:xdt=&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;192.168.100.11&#34; xdt:Transform=&#34;SetAttribute&#34; xdt:Locator=&#34;Match(key)&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; connectionString=&#34;Data Source=192."/>
+
+<meta itemprop="name" content="app.config Transformations">
+<meta itemprop="description" content="前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035&#43;Result.png)
+這是一個簡單的設定檔內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;127.0.0.1&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;/&gt; &lt;/connectionStrings&gt; &lt;/configuration&gt; 在Debug組態的設定檔中，改變了設定檔的內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt; &lt;configuration xmlns:xdt=&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;192.168.100.11&#34; xdt:Transform=&#34;SetAttribute&#34; xdt:Locator=&#34;Match(key)&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; connectionString=&#34;Data Source=192.">
+<meta itemprop="datePublished" content="2012-08-18T17:58:00+00:00" />
+<meta itemprop="dateModified" content="2012-08-18T17:58:00+00:00" />
+<meta itemprop="wordCount" content="144">
+
+
+
+<meta itemprop="keywords" content="app.config,XDT Transform," />
+
+<link rel="canonical" href="http://example.org/posts/2012/08/app-config-transformations/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>App.config Transformations</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 18, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/app.config">App.config</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/xdt-transform">XDT Transform</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/app.config">App.config</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/xdt-transform">X d t transform</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="前言">前言</h1>
+<p>使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助
+但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案
+那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究
+最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD
+結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了</p>
+<h2 id="首先先下載slowcheetah這個套件">首先先下載SlowCheetah這個套件</h2>
+<p><img src="http://2.bp.blogspot.com/-qYHWl1ly1h8/UC9h5CNSEvI/AAAAAAAAAAk/LCxj2KxwLYk/s640/01.SlowCheetah.png" alt=""></p>
+<h2 id="安裝並重新啟動後在appconfig上面點右鍵會出現這個add-transform功能選項">安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項</h2>
+<p><img src="http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s640/02.AddTransform.png" alt="">](<a href="http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png">http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png</a>)</p>
+<h2 id="按下後會跳出一個警告視窗提示會修改你的專案檔來完成appconfig的轉換功能">按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能</h2>
+<p><img src="http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s640/03.Alert.png" alt="">](<a href="http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png">http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png</a>)</p>
+<h2 id="按下是後-會自動幫你依組態新增出對應的config檔案">按下「是」後 ，會自動幫你依組態新增出對應的config檔案</h2>
+<p><img src="http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s400/035+Result.png" alt="">](<a href="http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035+Result.png">http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035+Result.png</a>)</p>
+<h2 id="這是一個簡單的設定檔內容">這是一個簡單的設定檔內容</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+<span style="color:#f92672">&lt;configuration&gt;</span>
+ <span style="color:#f92672">&lt;appSettings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;ServerIP&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span> <span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/appSettings&gt;</span>
+ <span style="color:#f92672">&lt;connectionStrings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;MyDB&#34;</span> <span style="color:#a6e22e">providerName=</span><span style="color:#e6db74">&#34;System.Data.SqlClient&#34;</span>
+    <span style="color:#a6e22e">connectionString=</span><span style="color:#e6db74">&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;</span><span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/connectionStrings&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span>
+</code></pre></div><h2 id="在debug組態的設定檔中改變了設定檔的內容">在Debug組態的設定檔中，改變了設定檔的內容</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+<span style="color:#75715e">&lt;!– For more information on using transformations
+</span><span style="color:#75715e">     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt;</span>
+<span style="color:#f92672">&lt;configuration</span> <span style="color:#a6e22e">xmlns:xdt=</span><span style="color:#e6db74">&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;</span><span style="color:#f92672">&gt;</span>
+ <span style="color:#f92672">&lt;appSettings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;ServerIP&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;192.168.100.11&#34;</span>
+    <span style="color:#a6e22e">xdt:Transform=</span><span style="color:#e6db74">&#34;SetAttribute&#34;</span> <span style="color:#a6e22e">xdt:Locator=</span><span style="color:#e6db74">&#34;Match(key)&#34;</span> <span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/appSettings&gt;</span>
+ <span style="color:#f92672">&lt;connectionStrings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;MyDB&#34;</span> <span style="color:#a6e22e">connectionString=</span><span style="color:#e6db74">&#34;Data Source=192.168.100.11;Initial Catalog=DemoDB;uid=ooo;pwd=xxx;&#34;</span>
+    <span style="color:#a6e22e">xdt:Transform=</span><span style="color:#e6db74">&#34;SetAttribute&#34;</span> <span style="color:#a6e22e">xdt:Locator=</span><span style="color:#e6db74">&#34;Match(key)&#34;</span> <span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/connectionStrings&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span> 
+</code></pre></div><h2 id="在release組態中也是改變了設定檔的內容">在Release組態中也是改變了設定檔的內容</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+<span style="color:#75715e">&lt;!– For more information on using transformations
+</span><span style="color:#75715e">     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt;</span>
+<span style="color:#f92672">&lt;configuration</span> <span style="color:#a6e22e">xmlns:xdt=</span><span style="color:#e6db74">&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;</span><span style="color:#f92672">&gt;</span>
+ <span style="color:#f92672">&lt;appSettings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;ServerIP&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;10.8.200.11&#34;</span>
+    <span style="color:#a6e22e">xdt:Transform=</span><span style="color:#e6db74">&#34;SetAttribute&#34;</span> <span style="color:#a6e22e">xdt:Locator=</span><span style="color:#e6db74">&#34;Match(key)&#34;</span> <span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/appSettings&gt;</span>
+
+ <span style="color:#f92672">&lt;connectionStrings&gt;</span>
+  <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;MyDB&#34;</span> <span style="color:#a6e22e">connectionString=</span><span style="color:#e6db74">&#34;Data Source=10.8.200.11;Initial Catalog=DemoDB;uid=###;pwd=***;&#34;</span>
+    <span style="color:#a6e22e">xdt:Transform=</span><span style="color:#e6db74">&#34;SetAttribute&#34;</span> <span style="color:#a6e22e">xdt:Locator=</span><span style="color:#e6db74">&#34;Match(key)&#34;</span> <span style="color:#f92672">/&gt;</span>
+ <span style="color:#f92672">&lt;/connectionStrings&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span>
+</code></pre></div><h2 id="參考連結">參考連結：</h2>
+<p><a href="http://stackoverflow.com/questions/3004210/app-config-transformation-for-projects-which-are-not-web-projects-in-visual-stud">App.Config Transformation for projects which are not Web Projects in Visual Studio 2010? </a>
+<a href="http://visualstudiogallery.msdn.microsoft.com/69023d00-a4f9-4a34-a6cd-7e854ba318b5">SlowCheetah - XML Transforms </a>
+<a href="http://msdn.microsoft.com/zh-tw/library/dd465326.aspx">使用 Visual Studio 之 Web 應用程式專案部署的 Web.config 轉換語法 </a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=app.config%20Transformations&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f
+			&title=app.config%20Transformations&summary=%e5%89%8d%e8%a8%80%20%e4%bd%bf%e7%94%a8%e9%81%8e%e5%85%a7%e5%bb%ba%e7%9a%84web.config%20transform%e5%8a%9f%e8%83%bd%ef%bc%8c%e5%b0%8d%e6%96%bc%e4%bd%88%e7%bd%b2%e4%b8%8d%e5%90%8c%e7%92%b0%e5%a2%83%e6%99%82%e6%9b%b4%e6%96%b0%e8%a8%ad%e5%ae%9a%e6%aa%94%e5%85%a7%e5%ae%b9%e5%be%88%e6%9c%89%e5%b9%ab%e5%8a%a9%20%e4%bd%86app.config%e4%b8%a6%e6%b2%92%e6%9c%89%e9%80%99%e6%a8%a3%e7%9a%84%e5%8a%9f%e8%83%bd%ef%bc%8c%e4%b9%8b%e5%89%8d%e6%90%9c%e5%b0%8b%e4%ba%86%e4%b8%80%e4%ba%9b%e8%a7%a3%e6%b3%95%ef%bc%8c%e5%a4%a7%e9%83%a8%e4%bb%bd%e6%98%af%e8%87%aa%e8%a1%8c%e4%bf%ae%e6%94%b9%e5%b0%88%e6%a1%88%e6%aa%94%ef%bc%8c%e4%b8%a6%e5%88%a9%e7%94%a8MSBuild%e4%be%86%e8%bd%89%e6%8f%9bXML%e6%aa%94%e6%a1%88%20%e9%82%a3%e4%b8%80%e6%ac%a1%e7%a0%94%e7%a9%b6%e5%88%b0%e9%a0%ad%e6%9a%88%e7%9c%bc%e8%8a%b1%e9%82%84%e6%90%9e%e4%b8%8d%e5%ae%9a%ef%bc%8c%e5%b0%b1%e6%9a%ab%e6%99%82%e6%94%be%e4%b8%8b%ef%bc%8c%e6%94%b9%e5%a4%a9%e5%a2%83%e7%95%8c%e6%9c%89%e6%89%80%e6%8f%90%e5%8d%87%e5%86%8d%e4%be%86%e7%a0%94%e7%a9%b6%20%e6%9c%80%e8%bf%91%e5%8f%88%e6%83%b3%e5%88%b0%e9%80%99%e5%80%8b%e5%95%8f%e9%a1%8c%ef%bc%8c%e8%b6%81%e8%91%97%e5%a4%b1%e7%9c%a0%e7%9a%84%e6%99%82%e5%be%8c%e5%86%8d%e4%be%86%e6%91%b8%e4%b8%80%e4%b8%8b%ef%bc%8c%e6%87%89%e8%a9%b2%e5%8f%af%e4%bb%a5%e5%be%88%e5%bf%ab%e5%b0%b1%e7%9d%a1%e8%91%97XD%20%e7%b5%90%e6%9e%9c%e6%89%be%e5%88%b0%e4%ba%86%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%ef%bc%8c%e7%94%a8%e6%bb%91%e9%bc%a0%e9%bb%9e%e4%b8%80%e9%bb%9e%e5%b0%b1%e6%90%9e%e5%ae%9a%e4%ba%86%ef%bc%8c%e4%bd%bf%e7%94%a8%e4%b8%8a%e6%96%b9%e4%be%bf%e5%a4%9a%e4%ba%86%0a%e9%a6%96%e5%85%88%e5%85%88%e4%b8%8b%e8%bc%89SlowCheetah%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%20%e5%ae%89%e8%a3%9d%e4%b8%a6%e9%87%8d%e6%96%b0%e5%95%9f%e5%8b%95%e5%be%8c%ef%bc%8c%e5%9c%a8app.config%e4%b8%8a%e9%9d%a2%e9%bb%9e%e5%8f%b3%e9%8d%b5%ef%bc%8c%e6%9c%83%e5%87%ba%e7%8f%be%e9%80%99%e5%80%8bAdd%20Transform%e5%8a%9f%e8%83%bd%e9%81%b8%e9%a0%85%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-eD-oI9lRbjQ%2fUC9h51R2VZI%2fAAAAAAAAAAo%2fRL1zOHSjxrU%2fs1600%2f02.AddTransform.png%29%0a%e6%8c%89%e4%b8%8b%e5%be%8c%ef%bc%8c%e6%9c%83%e8%b7%b3%e5%87%ba%e4%b8%80%e5%80%8b%e8%ad%a6%e5%91%8a%e8%a6%96%e7%aa%97%ef%bc%8c%e6%8f%90%e7%a4%ba%e6%9c%83%e4%bf%ae%e6%94%b9%e4%bd%a0%e7%9a%84%e5%b0%88%e6%a1%88%e6%aa%94%e4%be%86%e5%ae%8c%e6%88%90app.config%e7%9a%84%e8%bd%89%e6%8f%9b%e5%8a%9f%e8%83%bd%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hZFwvWz7Jn4%2fUC9h6tFmWtI%2fAAAAAAAAAAs%2fZmaHtC_mDzo%2fs1600%2f03.Alert.png%29%0a%e6%8c%89%e4%b8%8b%e3%80%8c%e6%98%af%e3%80%8d%e5%be%8c%20%ef%bc%8c%e6%9c%83%e8%87%aa%e5%8b%95%e5%b9%ab%e4%bd%a0%e4%be%9d%e7%b5%84%e6%85%8b%e6%96%b0%e5%a2%9e%e5%87%ba%e5%b0%8d%e6%87%89%e7%9a%84config%e6%aa%94%e6%a1%88%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-dyVGcKN93PQ%2fUC9lbptDKlI%2fAAAAAAAAABc%2fheOoWKUG5Cs%2fs1600%2f035%2bResult.png%29%0a%e9%80%99%e6%98%af%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e5%85%a7%e5%ae%b9%20%26lt%3b%3fxml%20version%3d%26%2334%3b1.0%26%2334%3b%20encoding%3d%26%2334%3butf-8%26%2334%3b%20%3f%26gt%3b%20%26lt%3bconfiguration%26gt%3b%20%26lt%3bappSettings%26gt%3b%20%26lt%3badd%20key%3d%26%2334%3bServerIP%26%2334%3b%20value%3d%26%2334%3b127.0.0.1%26%2334%3b%20%2f%26gt%3b%20%26lt%3b%2fappSettings%26gt%3b%20%26lt%3bconnectionStrings%26gt%3b%20%26lt%3badd%20name%3d%26%2334%3bMyDB%26%2334%3b%20providerName%3d%26%2334%3bSystem.Data.SqlClient%26%2334%3b%20connectionString%3d%26%2334%3bData%20Source%3d%28local%29%3bInitial%20Catalog%3dDemoDB%3bIntegrated%20Security%3dTrue%26%2334%3b%2f%26gt%3b%20%26lt%3b%2fconnectionStrings%26gt%3b%20%26lt%3b%2fconfiguration%26gt%3b%20%e5%9c%a8Debug%e7%b5%84%e6%85%8b%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e4%b8%ad%ef%bc%8c%e6%94%b9%e8%ae%8a%e4%ba%86%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%9a%84%e5%85%a7%e5%ae%b9%20%26lt%3b%3fxml%20version%3d%26%2334%3b1.0%26%2334%3b%20encoding%3d%26%2334%3butf-8%26%2334%3b%20%3f%26gt%3b%20%26lt%3b%21%e2%80%93%20For%20more%20information%20on%20using%20transformations%20see%20the%20web.config%20examples%20at%20http%3a%2f%2fgo.microsoft.com%2ffwlink%2f%3fLinkId%3d214134%5c.%20%e2%80%93%26gt%3b%20%26lt%3bconfiguration%20xmlns%3axdt%3d%26%2334%3bhttp%3a%2f%2fschemas.microsoft.com%2fXML-Document-Transform%26%2334%3b%26gt%3b%20%26lt%3bappSettings%26gt%3b%20%26lt%3badd%20key%3d%26%2334%3bServerIP%26%2334%3b%20value%3d%26%2334%3b192.168.100.11%26%2334%3b%20xdt%3aTransform%3d%26%2334%3bSetAttribute%26%2334%3b%20xdt%3aLocator%3d%26%2334%3bMatch%28key%29%26%2334%3b%20%2f%26gt%3b%20%26lt%3b%2fappSettings%26gt%3b%20%26lt%3bconnectionStrings%26gt%3b%20%26lt%3badd%20name%3d%26%2334%3bMyDB%26%2334%3b%20connectionString%3d%26%2334%3bData%20Source%3d192.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=app.config%20Transformations&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f08%2fapp-config-transformations%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

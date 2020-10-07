@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Unit Test 程式結構 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="先新增一個測試專案 ](http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png)
+可以看到主要元件是Microsoft.VisualStudio.QualityTools.UnitTestFramework ](http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)
+該元件中常用的Attribute如下    屬性 說明     TestClass 用來識別內含測試方法的類別   TestMethod 用來識別測試方法，測試方法必須放置在測試類別中   AssemblyInitialize 用於該組件所有的測試之前，用來配置此組件所佔用的資源   ClassInitialize 用於測試類別的所有測試之前，用來配置該測試類別所使用的資源   TestInitialize 用於測試方法執行之前，用來配置該測試方法中所使用的資源   TestCleanup 用於測試方法執行完成之後，用來釋放該測試方法所佔用的資源   ClassCleanup 用於測試類別中所有的測試完成之後，用來釋放該測試類別所佔用的資源   AssemblyCleanup 用於該組件所有測試類別完成測試之後，用來釋放此組件所佔用的資源    using System; using Microsoft.VisualStudio.TestTools.UnitTesting; namespace UnitTestProject1 { [TestClass] public class UnitTest1 { [TestClass()] public sealed class DivideClassTest { [AssemblyInitialize()] public static void MyAssemblyInitialize(TestContext context) { Console.
+    ">
+
+
+<meta property="og:title" content="Unit Test 程式結構" />
+<meta property="og:description" content="先新增一個測試專案 ](http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png)
+可以看到主要元件是Microsoft.VisualStudio.QualityTools.UnitTestFramework ](http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)
+該元件中常用的Attribute如下    屬性 說明     TestClass 用來識別內含測試方法的類別   TestMethod 用來識別測試方法，測試方法必須放置在測試類別中   AssemblyInitialize 用於該組件所有的測試之前，用來配置此組件所佔用的資源   ClassInitialize 用於測試類別的所有測試之前，用來配置該測試類別所使用的資源   TestInitialize 用於測試方法執行之前，用來配置該測試方法中所使用的資源   TestCleanup 用於測試方法執行完成之後，用來釋放該測試方法所佔用的資源   ClassCleanup 用於測試類別中所有的測試完成之後，用來釋放該測試類別所佔用的資源   AssemblyCleanup 用於該組件所有測試類別完成測試之後，用來釋放此組件所佔用的資源    using System; using Microsoft.VisualStudio.TestTools.UnitTesting; namespace UnitTestProject1 { [TestClass] public class UnitTest1 { [TestClass()] public sealed class DivideClassTest { [AssemblyInitialize()] public static void MyAssemblyInitialize(TestContext context) { Console." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/unit-test-%E7%A8%8B%E5%BC%8F%E7%B5%90%E6%A7%8B/" />
+<meta property="article:published_time" content="2014-04-24T16:37:00+00:00" />
+<meta property="article:modified_time" content="2014-04-24T16:37:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unit Test 程式結構"/>
+<meta name="twitter:description" content="先新增一個測試專案 ](http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png)
+可以看到主要元件是Microsoft.VisualStudio.QualityTools.UnitTestFramework ](http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)
+該元件中常用的Attribute如下    屬性 說明     TestClass 用來識別內含測試方法的類別   TestMethod 用來識別測試方法，測試方法必須放置在測試類別中   AssemblyInitialize 用於該組件所有的測試之前，用來配置此組件所佔用的資源   ClassInitialize 用於測試類別的所有測試之前，用來配置該測試類別所使用的資源   TestInitialize 用於測試方法執行之前，用來配置該測試方法中所使用的資源   TestCleanup 用於測試方法執行完成之後，用來釋放該測試方法所佔用的資源   ClassCleanup 用於測試類別中所有的測試完成之後，用來釋放該測試類別所佔用的資源   AssemblyCleanup 用於該組件所有測試類別完成測試之後，用來釋放此組件所佔用的資源    using System; using Microsoft.VisualStudio.TestTools.UnitTesting; namespace UnitTestProject1 { [TestClass] public class UnitTest1 { [TestClass()] public sealed class DivideClassTest { [AssemblyInitialize()] public static void MyAssemblyInitialize(TestContext context) { Console."/>
+
+<meta itemprop="name" content="Unit Test 程式結構">
+<meta itemprop="description" content="先新增一個測試專案 ](http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png)
+可以看到主要元件是Microsoft.VisualStudio.QualityTools.UnitTestFramework ](http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)
+該元件中常用的Attribute如下    屬性 說明     TestClass 用來識別內含測試方法的類別   TestMethod 用來識別測試方法，測試方法必須放置在測試類別中   AssemblyInitialize 用於該組件所有的測試之前，用來配置此組件所佔用的資源   ClassInitialize 用於測試類別的所有測試之前，用來配置該測試類別所使用的資源   TestInitialize 用於測試方法執行之前，用來配置該測試方法中所使用的資源   TestCleanup 用於測試方法執行完成之後，用來釋放該測試方法所佔用的資源   ClassCleanup 用於測試類別中所有的測試完成之後，用來釋放該測試類別所佔用的資源   AssemblyCleanup 用於該組件所有測試類別完成測試之後，用來釋放此組件所佔用的資源    using System; using Microsoft.VisualStudio.TestTools.UnitTesting; namespace UnitTestProject1 { [TestClass] public class UnitTest1 { [TestClass()] public sealed class DivideClassTest { [AssemblyInitialize()] public static void MyAssemblyInitialize(TestContext context) { Console.">
+<meta itemprop="datePublished" content="2014-04-24T16:37:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-24T16:37:00+00:00" />
+<meta itemprop="wordCount" content="105">
+
+
+
+<meta itemprop="keywords" content="Unit Test," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/unit-test-%E7%A8%8B%E5%BC%8F%E7%B5%90%E6%A7%8B/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Unit Test 程式結構</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 24, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit Test</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit test</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="先新增一個測試專案">先新增一個測試專案</h1>
+<p><img src="http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png" alt="測試專案">](<a href="http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png">http://1.bp.blogspot.com/-TqMLm4sU89c/U1jM698OU3I/AAAAAAAABU4/SZc98f6b7kY/s1600/01.%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png</a>)</p>
+<h1 id="可以看到主要元件是microsoftvisualstudioqualitytoolsunittestframework">可以看到主要元件是Microsoft.VisualStudio.QualityTools.UnitTestFramework</h1>
+<p><img src="http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png" alt="UnitTestFramework">](<a href="http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png">http://4.bp.blogspot.com/-ePU5ykFwprU/U1jM-8lYv-I/AAAAAAAABVA/FjaE9kfddxY/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png</a>)</p>
+<h1 id="該元件中常用的attribute如下">該元件中常用的Attribute如下</h1>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestClass</td>
+<td>用來識別內含測試方法的類別</td>
+</tr>
+<tr>
+<td>TestMethod</td>
+<td>用來識別測試方法，測試方法必須放置在測試類別中</td>
+</tr>
+<tr>
+<td>AssemblyInitialize</td>
+<td>用於該組件所有的測試之前，用來配置此組件所佔用的資源</td>
+</tr>
+<tr>
+<td>ClassInitialize</td>
+<td>用於測試類別的所有測試之前，用來配置該測試類別所使用的資源</td>
+</tr>
+<tr>
+<td>TestInitialize</td>
+<td>用於測試方法執行之前，用來配置該測試方法中所使用的資源</td>
+</tr>
+<tr>
+<td>TestCleanup</td>
+<td>用於測試方法執行完成之後，用來釋放該測試方法所佔用的資源</td>
+</tr>
+<tr>
+<td>ClassCleanup</td>
+<td>用於測試類別中所有的測試完成之後，用來釋放該測試類別所佔用的資源</td>
+</tr>
+<tr>
+<td>AssemblyCleanup</td>
+<td>用於該組件所有測試類別完成測試之後，用來釋放此組件所佔用的資源</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> Microsoft.VisualStudio.TestTools.UnitTesting;
+
+<span style="color:#66d9ef">namespace</span> UnitTestProject1
+{
+<span style="color:#a6e22e">    [TestClass]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UnitTest1</span>
+    {
+<span style="color:#a6e22e">        [TestClass()]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DivideClassTest</span>
+        {
+<span style="color:#a6e22e">            [AssemblyInitialize()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> MyAssemblyInitialize(TestContext context)
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyAssemblyInitialize &#34;</span> + context.TestName);
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [ClassInitialize()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> MyClassInitialize(TestContext context)
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyClassInitialize &#34;</span> + context.TestName);
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [TestInitialize()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> MyTestInitialize()
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyTestInitialize&#34;</span>);
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [TestMethod]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TestMethod1()
+            {
+                Assert.Inconclusive();
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [TestCleanup()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> MyTestCleanup()
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyTestCleanup&#34;</span>);
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [ClassCleanup()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> MyClassCleanup()
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyClassCleanup&#34;</span>);
+            }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">            [AssemblyCleanup()]</span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> MyAssemblyCleanup()
+            {
+                Console.WriteLine(<span style="color:#e6db74">&#34;MyAssemblyCleanup&#34;</span>);
+            }
+        }
+    }
+}
+</code></pre></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Unit%20Test%20%e7%a8%8b%e5%bc%8f%e7%b5%90%e6%a7%8b&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f
+			&title=Unit%20Test%20%e7%a8%8b%e5%bc%8f%e7%b5%90%e6%a7%8b&summary=%e5%85%88%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e6%b8%ac%e8%a9%a6%e5%b0%88%e6%a1%88%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-TqMLm4sU89c%2fU1jM698OU3I%2fAAAAAAAABU4%2fSZc98f6b7kY%2fs1600%2f01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png%29%0a%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e4%b8%bb%e8%a6%81%e5%85%83%e4%bb%b6%e6%98%afMicrosoft.VisualStudio.QualityTools.UnitTestFramework%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ePU5ykFwprU%2fU1jM-8lYv-I%2fAAAAAAAABVA%2fFjaE9kfddxY%2fs1600%2f02.%25E6%2596%25B9%25E6%25A1%2588%25E7%25B8%25BD%25E7%25AE%25A1.png%29%0a%e8%a9%b2%e5%85%83%e4%bb%b6%e4%b8%ad%e5%b8%b8%e7%94%a8%e7%9a%84Attribute%e5%a6%82%e4%b8%8b%20%20%20%20%e5%b1%ac%e6%80%a7%20%e8%aa%aa%e6%98%8e%20%20%20%20%20TestClass%20%e7%94%a8%e4%be%86%e8%ad%98%e5%88%a5%e5%85%a7%e5%90%ab%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e7%9a%84%e9%a1%9e%e5%88%a5%20%20%20TestMethod%20%e7%94%a8%e4%be%86%e8%ad%98%e5%88%a5%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%ef%bc%8c%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e5%bf%85%e9%a0%88%e6%94%be%e7%bd%ae%e5%9c%a8%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e4%b8%ad%20%20%20AssemblyInitialize%20%e7%94%a8%e6%96%bc%e8%a9%b2%e7%b5%84%e4%bb%b6%e6%89%80%e6%9c%89%e7%9a%84%e6%b8%ac%e8%a9%a6%e4%b9%8b%e5%89%8d%ef%bc%8c%e7%94%a8%e4%be%86%e9%85%8d%e7%bd%ae%e6%ad%a4%e7%b5%84%e4%bb%b6%e6%89%80%e4%bd%94%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20ClassInitialize%20%e7%94%a8%e6%96%bc%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e7%9a%84%e6%89%80%e6%9c%89%e6%b8%ac%e8%a9%a6%e4%b9%8b%e5%89%8d%ef%bc%8c%e7%94%a8%e4%be%86%e9%85%8d%e7%bd%ae%e8%a9%b2%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e6%89%80%e4%bd%bf%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20TestInitialize%20%e7%94%a8%e6%96%bc%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e5%9f%b7%e8%a1%8c%e4%b9%8b%e5%89%8d%ef%bc%8c%e7%94%a8%e4%be%86%e9%85%8d%e7%bd%ae%e8%a9%b2%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e4%b8%ad%e6%89%80%e4%bd%bf%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20TestCleanup%20%e7%94%a8%e6%96%bc%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e5%9f%b7%e8%a1%8c%e5%ae%8c%e6%88%90%e4%b9%8b%e5%be%8c%ef%bc%8c%e7%94%a8%e4%be%86%e9%87%8b%e6%94%be%e8%a9%b2%e6%b8%ac%e8%a9%a6%e6%96%b9%e6%b3%95%e6%89%80%e4%bd%94%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20ClassCleanup%20%e7%94%a8%e6%96%bc%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e4%b8%ad%e6%89%80%e6%9c%89%e7%9a%84%e6%b8%ac%e8%a9%a6%e5%ae%8c%e6%88%90%e4%b9%8b%e5%be%8c%ef%bc%8c%e7%94%a8%e4%be%86%e9%87%8b%e6%94%be%e8%a9%b2%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e6%89%80%e4%bd%94%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20AssemblyCleanup%20%e7%94%a8%e6%96%bc%e8%a9%b2%e7%b5%84%e4%bb%b6%e6%89%80%e6%9c%89%e6%b8%ac%e8%a9%a6%e9%a1%9e%e5%88%a5%e5%ae%8c%e6%88%90%e6%b8%ac%e8%a9%a6%e4%b9%8b%e5%be%8c%ef%bc%8c%e7%94%a8%e4%be%86%e9%87%8b%e6%94%be%e6%ad%a4%e7%b5%84%e4%bb%b6%e6%89%80%e4%bd%94%e7%94%a8%e7%9a%84%e8%b3%87%e6%ba%90%20%20%20%20using%20System%3b%20using%20Microsoft.VisualStudio.TestTools.UnitTesting%3b%20namespace%20UnitTestProject1%20%7b%20%5bTestClass%5d%20public%20class%20UnitTest1%20%7b%20%5bTestClass%28%29%5d%20public%20sealed%20class%20DivideClassTest%20%7b%20%5bAssemblyInitialize%28%29%5d%20public%20static%20void%20MyAssemblyInitialize%28TestContext%20context%29%20%7b%20Console.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Unit%20Test%20%e7%a8%8b%e5%bc%8f%e7%b5%90%e6%a7%8b&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-%25E7%25A8%258B%25E5%25BC%258F%25E7%25B5%2590%25E6%25A7%258B%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

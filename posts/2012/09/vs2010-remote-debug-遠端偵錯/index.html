@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    VS2010 Remote Debug 遠端偵錯 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用
+首先先從簡單的防火牆設定開始 http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx
+ 本機防火牆設定 遠端偵錯 DCOM:TCP 135 遠端偵錯 DCOM UDP IPSec UDP:500,4500 允許Vistual Studio接收網路訊息 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe  在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息 
+選擇解除了就會幫你打開相對應的Port 
+ 遠端防火牆設定 遠端偵錯 DCOM TCP 135 IPSec 遠端偵錯 DCOM UDP 500, 4500 遠端偵錯檔案及印表機 TCP 139, 445 遠端偵錯檔案及印表機 UDP 137, 138 為 Visual Studio msvcmon.exe 處理序新增例外 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE  在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單 
+再來就是問題比較多的帳號權限問題 http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx
+ 重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同 重點2:如果您要以不同的使用者帳戶執行  剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯 但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡 也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端 而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號 開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號 所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具
+    ">
+
+
+<meta property="og:title" content="VS2010 Remote Debug 遠端偵錯" />
+<meta property="og:description" content="前言 很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用
+首先先從簡單的防火牆設定開始 http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx
+ 本機防火牆設定 遠端偵錯 DCOM:TCP 135 遠端偵錯 DCOM UDP IPSec UDP:500,4500 允許Vistual Studio接收網路訊息 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe  在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息 
+選擇解除了就會幫你打開相對應的Port 
+ 遠端防火牆設定 遠端偵錯 DCOM TCP 135 IPSec 遠端偵錯 DCOM UDP 500, 4500 遠端偵錯檔案及印表機 TCP 139, 445 遠端偵錯檔案及印表機 UDP 137, 138 為 Visual Studio msvcmon.exe 處理序新增例外 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE  在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單 
+再來就是問題比較多的帳號權限問題 http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx
+ 重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同 重點2:如果您要以不同的使用者帳戶執行  剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯 但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡 也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端 而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號 開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號 所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/09/vs2010-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/" />
+<meta property="article:published_time" content="2012-09-28T15:09:00+00:00" />
+<meta property="article:modified_time" content="2012-09-28T15:09:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VS2010 Remote Debug 遠端偵錯"/>
+<meta name="twitter:description" content="前言 很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用
+首先先從簡單的防火牆設定開始 http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx
+ 本機防火牆設定 遠端偵錯 DCOM:TCP 135 遠端偵錯 DCOM UDP IPSec UDP:500,4500 允許Vistual Studio接收網路訊息 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe  在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息 
+選擇解除了就會幫你打開相對應的Port 
+ 遠端防火牆設定 遠端偵錯 DCOM TCP 135 IPSec 遠端偵錯 DCOM UDP 500, 4500 遠端偵錯檔案及印表機 TCP 139, 445 遠端偵錯檔案及印表機 UDP 137, 138 為 Visual Studio msvcmon.exe 處理序新增例外 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE  在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單 
+再來就是問題比較多的帳號權限問題 http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx
+ 重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同 重點2:如果您要以不同的使用者帳戶執行  剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯 但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡 也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端 而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號 開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號 所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具"/>
+
+<meta itemprop="name" content="VS2010 Remote Debug 遠端偵錯">
+<meta itemprop="description" content="前言 很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用
+首先先從簡單的防火牆設定開始 http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx
+ 本機防火牆設定 遠端偵錯 DCOM:TCP 135 遠端偵錯 DCOM UDP IPSec UDP:500,4500 允許Vistual Studio接收網路訊息 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe  在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息 
+選擇解除了就會幫你打開相對應的Port 
+ 遠端防火牆設定 遠端偵錯 DCOM TCP 135 IPSec 遠端偵錯 DCOM UDP 500, 4500 遠端偵錯檔案及印表機 TCP 139, 445 遠端偵錯檔案及印表機 UDP 137, 138 為 Visual Studio msvcmon.exe 處理序新增例外 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE  在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單 
+再來就是問題比較多的帳號權限問題 http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx
+ 重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同 重點2:如果您要以不同的使用者帳戶執行  剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯 但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡 也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端 而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號 開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號 所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具">
+<meta itemprop="datePublished" content="2012-09-28T15:09:00+00:00" />
+<meta itemprop="dateModified" content="2012-09-28T15:09:00+00:00" />
+<meta itemprop="wordCount" content="68">
+
+
+
+<meta itemprop="keywords" content="Remote Debug,遠端偵錯," />
+
+<link rel="canonical" href="http://example.org/posts/2012/09/vs2010-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>VS2010 Remote Debug 遠端偵錯</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Sep 28, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/remote-debug">Remote Debug</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF">遠端偵錯</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/remote-debug">Remote debug</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF">遠端偵錯</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="前言">前言</h2>
+<p>很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用</p>
+<h2 id="首先先從簡單的防火牆設定開始">首先先從簡單的防火牆設定開始</h2>
+<p><a href="http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx">http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx</a></p>
+<ul>
+<li>本機防火牆設定</li>
+<li>遠端偵錯 DCOM:TCP 135</li>
+<li>遠端偵錯 DCOM UDP IPSec UDP:500,4500</li>
+<li>允許Vistual Studio接收網路訊息</li>
+<li>SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe</li>
+</ul>
+<h2 id="在附加執行緒的時後如果本機的防火牆設定沒開預設就會跳出這個訊息">在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息</h2>
+<p><a href="http://4.bp.blogspot.com/-RkY1C_Z9hx4/UGU9hlLUyHI/AAAAAAAAAEA/mMsKP-1gfnc/s1600/msg1.png"><img src="http://4.bp.blogspot.com/-RkY1C_Z9hx4/UGU9hlLUyHI/AAAAAAAAAEA/mMsKP-1gfnc/s1600/msg1.png" alt=""></a></p>
+<h2 id="選擇解除了就會幫你打開相對應的port">選擇解除了就會幫你打開相對應的Port</h2>
+<p><a href="http://2.bp.blogspot.com/-9R6ifqiBrq0/UGU8yzpglxI/AAAAAAAAADw/kn03FHW8aKk/s1600/firewallStatus.png"><img src="http://2.bp.blogspot.com/-9R6ifqiBrq0/UGU8yzpglxI/AAAAAAAAADw/kn03FHW8aKk/s1600/firewallStatus.png" alt=""></a></p>
+<ul>
+<li>遠端防火牆設定</li>
+<li>遠端偵錯 DCOM TCP 135</li>
+<li>IPSec 遠端偵錯 DCOM UDP 500, 4500</li>
+<li>遠端偵錯檔案及印表機 TCP 139, 445</li>
+<li>遠端偵錯檔案及印表機 UDP 137, 138</li>
+<li>為 Visual Studio msvcmon.exe 處理序新增例外</li>
+<li>SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE</li>
+</ul>
+<h2 id="在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單">在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單</h2>
+<p><a href="http://3.bp.blogspot.com/-wZ9f9Ucf-1M/UGU9RCFmc0I/AAAAAAAAAD4/rT6Fs1QMwc0/s1600/firewall.png"><img src="http://3.bp.blogspot.com/-wZ9f9Ucf-1M/UGU9RCFmc0I/AAAAAAAAAD4/rT6Fs1QMwc0/s1600/firewall.png" alt=""></a></p>
+<h2 id="再來就是問題比較多的帳號權限問題">再來就是問題比較多的帳號權限問題</h2>
+<p><a href="http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx">http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx</a></p>
+<ul>
+<li>重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同</li>
+<li>重點2:如果您要以不同的使用者帳戶執行</li>
+</ul>
+<p>剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯
+但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡
+也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端
+而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號
+開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號
+所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具</p>
+<p><a href="http://3.bp.blogspot.com/-H14pjWnipTQ/UGVJ_ViNXmI/AAAAAAAAAEQ/4T26B06elIU/s1600/step1.png"><img src="http://3.bp.blogspot.com/-H14pjWnipTQ/UGVJ_ViNXmI/AAAAAAAAAEQ/4T26B06elIU/s1600/step1.png" alt=""></a></p>
+<h2 id="接下來在本機在vistual-studio的連結上使用shift--右鍵然後選擇以不同的身份者執行">接下來在本機，在Vistual Studio的連結上使用Shift + 右鍵，然後選擇以不同的身份者執行</h2>
+<p><a href="http://4.bp.blogspot.com/-2QxyK1q7644/UGVLoI2J1TI/AAAAAAAAAEY/IUDLZLvRWTY/s1600/step2.png"><img src="http://4.bp.blogspot.com/-2QxyK1q7644/UGVLoI2J1TI/AAAAAAAAAEY/IUDLZLvRWTY/s1600/step2.png" alt=""></a></p>
+<h2 id="再來就是輸入本機的administrator和密碼當然密碼要改成和遠端的一樣接下來就附加緒在限定詞中輸入ip就可以了">再來就是輸入本機的.\Administrator和密碼，當然密碼要改成和遠端的一樣，接下來就附加緒，在限定詞中輸入IP就可以了</h2>
+<p><a href="http://4.bp.blogspot.com/-DkoPcZevzJw/UGVLpBiPyPI/AAAAAAAAAEc/cU1_yv5fPtM/s1600/step3.png"><img src="http://4.bp.blogspot.com/-DkoPcZevzJw/UGVLpBiPyPI/AAAAAAAAAEc/cU1_yv5fPtM/s1600/step3.png" alt=""></a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=VS2010%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f
+			&title=VS2010%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&summary=%e5%89%8d%e8%a8%80%20%e5%be%88%e5%a4%9a%e6%99%82%e5%be%8c%e7%89%b9%e5%88%a5%e6%98%af%e8%a8%ad%e5%ae%9a%e6%aa%94%e7%9a%84%e5%8e%9f%e5%9b%a0%ef%bc%8c%e7%9b%b4%e6%8e%a5%e5%9c%a8%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%e7%9a%84%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e9%9d%a2%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%ef%bc%8c%e6%af%94%e8%bc%83%e5%ae%b9%e6%98%93%e6%89%be%e5%88%b0%e5%95%8f%e9%a1%8c%e9%bb%9e%ef%bc%8c%e4%bd%86ASP.NET%e7%9a%84%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e4%b9%8b%e5%89%8d%e4%b8%80%e7%9b%b4%e6%90%9e%e4%b8%8d%e5%ae%9a%ef%bc%8c%e5%be%8c%e4%be%86%e7%88%ac%e4%ba%86%e8%a8%b1%e5%a4%9a%e6%96%87%e4%b8%a6%e5%81%9a%e4%ba%86%e5%a4%9a%e6%ac%a1%e7%9a%84%e8%a9%a6%e9%a9%97%e5%be%8c%e6%89%8d%e6%90%9e%e5%ae%9a%ef%bc%8c%e4%b8%bb%e8%a6%81%e5%95%8f%e9%a1%8c%e5%88%86%e6%88%90%e5%85%a9%e5%80%8b%e9%83%a8%e4%bb%bd%ef%bc%8c%e9%98%b2%e7%81%ab%e7%89%86%e7%9a%84%e8%a8%ad%e5%ae%9a%e7%9b%b8%e5%b0%8d%e4%be%86%e8%aa%aa%e6%af%94%e8%bc%83%e7%b0%a1%e5%96%ae%ef%bc%8c%e5%a4%a7%e9%83%a8%e4%bb%bd%e9%83%bd%e6%98%af%e5%b8%b3%e8%99%9f%e6%ac%8a%e9%99%90%e7%9a%84%e5%95%8f%e9%a1%8c%e6%af%94%e8%bc%83%e9%ba%bb%e7%85%a9%ef%bc%8c%e5%9c%a8%e6%ad%a4%e8%a8%98%e9%8c%84%e4%b8%80%e4%b8%8b%ef%bc%8c%e4%bb%a5%e4%be%9b%e6%97%a5%e5%be%8c%e8%80%81%e5%b9%b4%e7%99%a1%e5%91%86%e7%9a%84%e6%99%82%e5%be%8c%e6%9c%8d%e7%94%a8%0a%e9%a6%96%e5%85%88%e5%85%88%e5%be%9e%e7%b0%a1%e5%96%ae%e7%9a%84%e9%98%b2%e7%81%ab%e7%89%86%e8%a8%ad%e5%ae%9a%e9%96%8b%e5%a7%8b%20http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fee126350%2528v%3dvs.100%2529.aspx%0a%20%e6%9c%ac%e6%a9%9f%e9%98%b2%e7%81%ab%e7%89%86%e8%a8%ad%e5%ae%9a%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%20DCOM%3aTCP%20135%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%20DCOM%20UDP%20IPSec%20UDP%3a500%2c4500%20%e5%85%81%e8%a8%b1Vistual%20Studio%e6%8e%a5%e6%94%b6%e7%b6%b2%e8%b7%af%e8%a8%8a%e6%81%af%20SystemDrive%3a%5cProgram%20Files%5cMicrosoft%20Visual%20Studio%2010.0%5cCommon7%5cIDE%5cdevenv.exe%20%20%e5%9c%a8%e9%99%84%e5%8a%a0%e5%9f%b7%e8%a1%8c%e7%b7%92%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%a6%82%e6%9e%9c%e6%9c%ac%e6%a9%9f%e7%9a%84%e9%98%b2%e7%81%ab%e7%89%86%e8%a8%ad%e5%ae%9a%e6%b2%92%e9%96%8b%ef%bc%8c%e9%a0%90%e8%a8%ad%e5%b0%b1%e6%9c%83%e8%b7%b3%e5%87%ba%e9%80%99%e5%80%8b%e8%a8%8a%e6%81%af%20%0a%e9%81%b8%e6%93%87%e8%a7%a3%e9%99%a4%e4%ba%86%e5%b0%b1%e6%9c%83%e5%b9%ab%e4%bd%a0%e6%89%93%e9%96%8b%e7%9b%b8%e5%b0%8d%e6%87%89%e7%9a%84Port%20%0a%20%e9%81%a0%e7%ab%af%e9%98%b2%e7%81%ab%e7%89%86%e8%a8%ad%e5%ae%9a%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%20DCOM%20TCP%20135%20IPSec%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%20DCOM%20UDP%20500%2c%204500%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e6%aa%94%e6%a1%88%e5%8f%8a%e5%8d%b0%e8%a1%a8%e6%a9%9f%20TCP%20139%2c%20445%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e6%aa%94%e6%a1%88%e5%8f%8a%e5%8d%b0%e8%a1%a8%e6%a9%9f%20UDP%20137%2c%20138%20%e7%82%ba%20Visual%20Studio%20msvcmon.exe%20%e8%99%95%e7%90%86%e5%ba%8f%e6%96%b0%e5%a2%9e%e4%be%8b%e5%a4%96%20SystemDrive%3a%5cProgram%20Files%5cMicrosoft%20Visual%20Studio%2010.0%5cCommon7%5cIDE%20%20%e5%9c%a8%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e9%9d%a2%e4%bd%bf%e7%94%a8%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%e5%b7%a5%e5%85%b7%e7%b5%84%e6%85%8b%e7%b2%be%e9%9d%88%e9%80%b2%e8%a1%8c%e8%a8%ad%e5%ae%9a%e6%af%94%e8%bc%83%e7%b0%a1%e5%96%ae%20%0a%e5%86%8d%e4%be%86%e5%b0%b1%e6%98%af%e5%95%8f%e9%a1%8c%e6%af%94%e8%bc%83%e5%a4%9a%e7%9a%84%e5%b8%b3%e8%99%9f%e6%ac%8a%e9%99%90%e5%95%8f%e9%a1%8c%20http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2f9y5b4b4f.aspx%0a%20%e9%87%8d%e9%bb%9e1%3a%e6%af%8f%e5%8f%b0%e9%9b%bb%e8%85%a6%e4%b8%8a%e9%83%bd%e5%bf%85%e9%a0%88%e6%9c%89%e6%9c%ac%e6%a9%9f%e4%bd%bf%e7%94%a8%e8%80%85%e5%b8%b3%e6%88%b6%ef%bc%8c%e8%80%8c%e4%b8%94%e5%85%a9%e5%80%8b%e5%b8%b3%e6%88%b6%e7%9a%84%e4%bd%bf%e7%94%a8%e8%80%85%e5%90%8d%e7%a8%b1%e5%92%8c%e5%af%86%e7%a2%bc%e9%83%bd%e5%bf%85%e9%a0%88%e7%9b%b8%e5%90%8c%20%e9%87%8d%e9%bb%9e2%3a%e5%a6%82%e6%9e%9c%e6%82%a8%e8%a6%81%e4%bb%a5%e4%b8%8d%e5%90%8c%e7%9a%84%e4%bd%bf%e7%94%a8%e8%80%85%e5%b8%b3%e6%88%b6%e5%9f%b7%e8%a1%8c%20%20%e5%89%9b%e9%96%8b%e5%a7%8b%e6%88%91%e6%98%af%e5%9c%a8%e6%9c%ac%e6%a9%9f%e5%92%8c%e9%81%a0%e7%ab%af%e9%83%bd%e5%8f%a6%e5%a4%96%e9%96%8b%e4%b8%80%e5%80%8b%e5%b8%b3%e8%99%9f%ef%bc%8c%e5%af%86%e7%a2%bc%e9%83%bd%e4%b8%80%e6%a8%a3%ef%bc%8c%e5%9c%a8%e5%85%a7%e9%83%a8%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%e4%b8%ad%e9%a0%86%e5%88%a9%e5%9f%b7%e8%a1%8c%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af%20%e4%bd%86%e5%be%8c%e4%be%86%e6%8f%9b%e4%ba%86%e7%b7%9a%e4%b8%8a%e7%92%b0%e5%a2%83%ef%bc%8c%e5%8d%bb%e5%8f%88%e7%99%bc%e7%94%9f%e5%b8%b3%e8%99%9f%e6%ac%8a%e9%99%90%e5%95%8f%e9%a1%8c%ef%bc%8c%e5%86%8d%e5%a4%9a%e7%88%ac%e4%b8%80%e4%ba%9b%e6%96%87%e5%be%8c%ef%bc%8c%e6%89%8d%e7%99%bc%e7%8f%be%e5%95%8f%e9%a1%8c%e5%9c%a8%e9%80%99%e8%a3%a1%20%e4%b9%9f%e5%b0%b1%e6%98%af%e8%aa%aa%e6%9c%ac%e6%a9%9f%e9%99%84%e5%8a%a0%e5%9f%b7%e8%a1%8c%e7%b7%92%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e7%94%a8%e7%9a%84%e6%98%af%e6%89%93%e9%96%8bVisual%20Studio%e7%9a%84%e5%b8%b3%e8%99%9f%e9%80%a3%e7%b7%9a%e5%88%b0%e9%81%a0%e7%ab%af%20%e8%80%8c%e9%81%a0%e7%ab%af%e6%8e%a5%e6%94%b6%e9%80%a3%e7%b7%9a%e5%be%8c%e4%b9%9f%e8%a6%81%e9%80%a3%e5%9b%9e%e4%be%86%e6%9c%ac%e6%a9%9f%ef%bc%8c%e7%94%a8%e7%9a%84%e6%98%af%e6%89%93%e9%96%8bmsvsmon%e7%9a%84%e5%b8%b3%e8%99%9f%20%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%e9%9a%a8%e4%be%bf%e6%90%9e%e9%83%bd%e6%b2%92%e9%97%9c%e7%b3%bb%ef%bc%8c%e4%bd%86%e7%b7%9a%e4%b8%8a%e7%92%b0%e5%a2%83%e5%b0%b1%e4%b8%8d%e8%83%bd%e4%ba%82%e5%8b%95%e4%ba%86%ef%bc%8c%e6%9b%b4%e4%bd%95%e6%b3%81%e6%98%af%e5%8a%a0%e5%b8%b3%e8%99%9f%20%e6%89%80%e4%bb%a5%e6%9c%80%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%b9%e6%b3%95%ef%bc%8c%e5%b0%b1%e6%98%af%e4%bd%bf%e7%94%a8%e9%81%a0%e7%ab%af%e7%9a%84%e7%ae%a1%e7%90%86%e5%93%a1%e5%b8%b3%e8%99%9f%ef%bc%8c%e7%84%b6%e5%be%8c%e8%ae%93%e6%9c%ac%e6%a9%9f%e4%be%86%e9%85%8d%e5%90%88%e9%81%a0%e7%ab%af%e7%9a%84%e5%af%86%e7%a2%bc%ef%bc%8c%e9%a6%96%e5%85%88%e9%96%8b%e5%95%9f%e9%81%a0%e7%ab%af%e7%9a%84%e5%81%b5%e9%8c%af%e5%b7%a5%e5%85%b7&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=VS2010%20Remote%20Debug%20%e9%81%a0%e7%ab%af%e5%81%b5%e9%8c%af&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f09%2fvs2010-remote-debug-%25E9%2581%25A0%25E7%25AB%25AF%25E5%2581%25B5%25E9%258C%25AF%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis Key | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="指令說明DEL刪除指定的KeyDUMP將指定key的內容匯出二進位內容 配合RESTORE指令可以把資料還原EXISTS判斷指定的Key是否存在EXPIRE用來設定Key的過期時間，單位是秒EXPIREAT用來設定Key的過期時間，單位是秒，UNIX時間戳記KEYS用來查詢目前Redis實體上的Key 可配合pattern查詢MIGRATE搬移資料到不同的Redis執行個體MOVE將指定的Key值搬到同一個Redis執行個體的不同資料庫OBJECT用來顯示該Key值的特性 OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數 OBJECT ENCODING &lt;key&gt; 取得該key的編碼 OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數PERSIST取消KEY上面的過期時間PEXPIRE用來設定Key的過期時間，單位是毫秒PEXPIREAT用來設定Key的過期時間，單位是毫秒，UNIX時間戳記PTTL取得Key到期的剩餘時間，單位是毫秒RANDOMKEY隨機取得一個KeyRENAME更名Key的名稱，如果新名稱已存在會覆蓋RENAMENX當key的新名稱不存在時，才更名Key的名稱RESTORE配合DUMP指令匯出的二進位內容 用來把資料還原SORT排序指定key的內容 配合limit可限制筆數 TTL取得Key到期的剩餘時間，單位是秒TYPE取得指定Key的內容的資料型態SCAN搜尋Key，可配合pattern 返回結果是一個迭代的指標
+    ">
+
+
+<meta property="og:title" content="Redis Key" />
+<meta property="og:description" content="指令說明DEL刪除指定的KeyDUMP將指定key的內容匯出二進位內容 配合RESTORE指令可以把資料還原EXISTS判斷指定的Key是否存在EXPIRE用來設定Key的過期時間，單位是秒EXPIREAT用來設定Key的過期時間，單位是秒，UNIX時間戳記KEYS用來查詢目前Redis實體上的Key 可配合pattern查詢MIGRATE搬移資料到不同的Redis執行個體MOVE將指定的Key值搬到同一個Redis執行個體的不同資料庫OBJECT用來顯示該Key值的特性 OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數 OBJECT ENCODING &lt;key&gt; 取得該key的編碼 OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數PERSIST取消KEY上面的過期時間PEXPIRE用來設定Key的過期時間，單位是毫秒PEXPIREAT用來設定Key的過期時間，單位是毫秒，UNIX時間戳記PTTL取得Key到期的剩餘時間，單位是毫秒RANDOMKEY隨機取得一個KeyRENAME更名Key的名稱，如果新名稱已存在會覆蓋RENAMENX當key的新名稱不存在時，才更名Key的名稱RESTORE配合DUMP指令匯出的二進位內容 用來把資料還原SORT排序指定key的內容 配合limit可限制筆數 TTL取得Key到期的剩餘時間，單位是秒TYPE取得指定Key的內容的資料型態SCAN搜尋Key，可配合pattern 返回結果是一個迭代的指標" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-key/" />
+<meta property="article:published_time" content="2015-01-20T11:05:00+00:00" />
+<meta property="article:modified_time" content="2015-01-20T11:05:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis Key"/>
+<meta name="twitter:description" content="指令說明DEL刪除指定的KeyDUMP將指定key的內容匯出二進位內容 配合RESTORE指令可以把資料還原EXISTS判斷指定的Key是否存在EXPIRE用來設定Key的過期時間，單位是秒EXPIREAT用來設定Key的過期時間，單位是秒，UNIX時間戳記KEYS用來查詢目前Redis實體上的Key 可配合pattern查詢MIGRATE搬移資料到不同的Redis執行個體MOVE將指定的Key值搬到同一個Redis執行個體的不同資料庫OBJECT用來顯示該Key值的特性 OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數 OBJECT ENCODING &lt;key&gt; 取得該key的編碼 OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數PERSIST取消KEY上面的過期時間PEXPIRE用來設定Key的過期時間，單位是毫秒PEXPIREAT用來設定Key的過期時間，單位是毫秒，UNIX時間戳記PTTL取得Key到期的剩餘時間，單位是毫秒RANDOMKEY隨機取得一個KeyRENAME更名Key的名稱，如果新名稱已存在會覆蓋RENAMENX當key的新名稱不存在時，才更名Key的名稱RESTORE配合DUMP指令匯出的二進位內容 用來把資料還原SORT排序指定key的內容 配合limit可限制筆數 TTL取得Key到期的剩餘時間，單位是秒TYPE取得指定Key的內容的資料型態SCAN搜尋Key，可配合pattern 返回結果是一個迭代的指標"/>
+
+<meta itemprop="name" content="Redis Key">
+<meta itemprop="description" content="指令說明DEL刪除指定的KeyDUMP將指定key的內容匯出二進位內容 配合RESTORE指令可以把資料還原EXISTS判斷指定的Key是否存在EXPIRE用來設定Key的過期時間，單位是秒EXPIREAT用來設定Key的過期時間，單位是秒，UNIX時間戳記KEYS用來查詢目前Redis實體上的Key 可配合pattern查詢MIGRATE搬移資料到不同的Redis執行個體MOVE將指定的Key值搬到同一個Redis執行個體的不同資料庫OBJECT用來顯示該Key值的特性 OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數 OBJECT ENCODING &lt;key&gt; 取得該key的編碼 OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數PERSIST取消KEY上面的過期時間PEXPIRE用來設定Key的過期時間，單位是毫秒PEXPIREAT用來設定Key的過期時間，單位是毫秒，UNIX時間戳記PTTL取得Key到期的剩餘時間，單位是毫秒RANDOMKEY隨機取得一個KeyRENAME更名Key的名稱，如果新名稱已存在會覆蓋RENAMENX當key的新名稱不存在時，才更名Key的名稱RESTORE配合DUMP指令匯出的二進位內容 用來把資料還原SORT排序指定key的內容 配合limit可限制筆數 TTL取得Key到期的剩餘時間，單位是秒TYPE取得指定Key的內容的資料型態SCAN搜尋Key，可配合pattern 返回結果是一個迭代的指標">
+<meta itemprop="datePublished" content="2015-01-20T11:05:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-20T11:05:00+00:00" />
+<meta itemprop="wordCount" content="19">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-key/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis Key</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 20, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>DEL</td><td>刪除指定的Key</td></tr><tr><td>DUMP</td><td>將指定key的內容匯出二進位內容
+配合RESTORE指令可以把資料還原</td></tr><tr><td>EXISTS</td><td>判斷指定的Key是否存在</td></tr><tr><td>EXPIRE</td><td>用來設定Key的過期時間，單位是秒</td></tr><tr><td>EXPIREAT</td><td>用來設定Key的過期時間，單位是秒，UNIX時間戳記</td></tr><tr><td>KEYS</td><td>用來查詢目前Redis實體上的Key
+可配合pattern查詢</td></tr><tr><td>MIGRATE</td><td>搬移資料到不同的Redis執行個體</td></tr><tr><td>MOVE</td><td>將指定的Key值搬到同一個Redis執行個體的不同資料庫</td></tr><tr><td>OBJECT</td><td>用來顯示該Key值的特性
+OBJECT REFCOUNT &lt;key&gt; 取得該key的異動次數
+OBJECT ENCODING &lt;key&gt; 取得該key的編碼
+OBJECT IDLETIME &lt;key&gt; 取得該key未被存取的秒數</td></tr><tr><td>PERSIST</td><td>取消KEY上面的過期時間</td></tr><tr><td>PEXPIRE</td><td>用來設定Key的過期時間，單位是毫秒</td></tr><tr><td>PEXPIREAT</td><td>用來設定Key的過期時間，單位是毫秒，UNIX時間戳記</td></tr><tr><td>PTTL</td><td>取得Key到期的剩餘時間，單位是毫秒</td></tr><tr><td>RANDOMKEY</td><td>隨機取得一個Key</td></tr><tr><td>RENAME</td><td>更名Key的名稱，如果新名稱已存在會覆蓋</td></tr><tr><td>RENAMENX</td><td>當key的新名稱不存在時，才更名Key的名稱</td></tr><tr><td>RESTORE</td><td>配合DUMP指令匯出的二進位內容
+用來把資料還原</td></tr><tr><td>SORT</td><td>排序指定key的內容
+配合limit可限制筆數
+</td></tr><tr><td>TTL</td><td>取得Key到期的剩餘時間，單位是秒</td></tr><tr><td>TYPE</td><td>取得指定Key的內容的資料型態</td></tr><tr><td>SCAN</td><td>搜尋Key，可配合pattern
+返回結果是一個迭代的指標</td></tr></tbody></table>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20Key&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f
+			&title=Redis%20Key&summary=%e6%8c%87%e4%bb%a4%e8%aa%aa%e6%98%8eDEL%e5%88%aa%e9%99%a4%e6%8c%87%e5%ae%9a%e7%9a%84KeyDUMP%e5%b0%87%e6%8c%87%e5%ae%9akey%e7%9a%84%e5%85%a7%e5%ae%b9%e5%8c%af%e5%87%ba%e4%ba%8c%e9%80%b2%e4%bd%8d%e5%85%a7%e5%ae%b9%20%e9%85%8d%e5%90%88RESTORE%e6%8c%87%e4%bb%a4%e5%8f%af%e4%bb%a5%e6%8a%8a%e8%b3%87%e6%96%99%e9%82%84%e5%8e%9fEXISTS%e5%88%a4%e6%96%b7%e6%8c%87%e5%ae%9a%e7%9a%84Key%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8EXPIRE%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9aKey%e7%9a%84%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e7%a7%92EXPIREAT%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9aKey%e7%9a%84%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e7%a7%92%ef%bc%8cUNIX%e6%99%82%e9%96%93%e6%88%b3%e8%a8%98KEYS%e7%94%a8%e4%be%86%e6%9f%a5%e8%a9%a2%e7%9b%ae%e5%89%8dRedis%e5%af%a6%e9%ab%94%e4%b8%8a%e7%9a%84Key%20%e5%8f%af%e9%85%8d%e5%90%88pattern%e6%9f%a5%e8%a9%a2MIGRATE%e6%90%ac%e7%a7%bb%e8%b3%87%e6%96%99%e5%88%b0%e4%b8%8d%e5%90%8c%e7%9a%84Redis%e5%9f%b7%e8%a1%8c%e5%80%8b%e9%ab%94MOVE%e5%b0%87%e6%8c%87%e5%ae%9a%e7%9a%84Key%e5%80%bc%e6%90%ac%e5%88%b0%e5%90%8c%e4%b8%80%e5%80%8bRedis%e5%9f%b7%e8%a1%8c%e5%80%8b%e9%ab%94%e7%9a%84%e4%b8%8d%e5%90%8c%e8%b3%87%e6%96%99%e5%ba%abOBJECT%e7%94%a8%e4%be%86%e9%a1%af%e7%a4%ba%e8%a9%b2Key%e5%80%bc%e7%9a%84%e7%89%b9%e6%80%a7%20OBJECT%20REFCOUNT%20%26lt%3bkey%26gt%3b%20%e5%8f%96%e5%be%97%e8%a9%b2key%e7%9a%84%e7%95%b0%e5%8b%95%e6%ac%a1%e6%95%b8%20OBJECT%20ENCODING%20%26lt%3bkey%26gt%3b%20%e5%8f%96%e5%be%97%e8%a9%b2key%e7%9a%84%e7%b7%a8%e7%a2%bc%20OBJECT%20IDLETIME%20%26lt%3bkey%26gt%3b%20%e5%8f%96%e5%be%97%e8%a9%b2key%e6%9c%aa%e8%a2%ab%e5%ad%98%e5%8f%96%e7%9a%84%e7%a7%92%e6%95%b8PERSIST%e5%8f%96%e6%b6%88KEY%e4%b8%8a%e9%9d%a2%e7%9a%84%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93PEXPIRE%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9aKey%e7%9a%84%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e6%af%ab%e7%a7%92PEXPIREAT%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9aKey%e7%9a%84%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e6%af%ab%e7%a7%92%ef%bc%8cUNIX%e6%99%82%e9%96%93%e6%88%b3%e8%a8%98PTTL%e5%8f%96%e5%be%97Key%e5%88%b0%e6%9c%9f%e7%9a%84%e5%89%a9%e9%a4%98%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e6%af%ab%e7%a7%92RANDOMKEY%e9%9a%a8%e6%a9%9f%e5%8f%96%e5%be%97%e4%b8%80%e5%80%8bKeyRENAME%e6%9b%b4%e5%90%8dKey%e7%9a%84%e5%90%8d%e7%a8%b1%ef%bc%8c%e5%a6%82%e6%9e%9c%e6%96%b0%e5%90%8d%e7%a8%b1%e5%b7%b2%e5%ad%98%e5%9c%a8%e6%9c%83%e8%a6%86%e8%93%8bRENAMENX%e7%95%b6key%e7%9a%84%e6%96%b0%e5%90%8d%e7%a8%b1%e4%b8%8d%e5%ad%98%e5%9c%a8%e6%99%82%ef%bc%8c%e6%89%8d%e6%9b%b4%e5%90%8dKey%e7%9a%84%e5%90%8d%e7%a8%b1RESTORE%e9%85%8d%e5%90%88DUMP%e6%8c%87%e4%bb%a4%e5%8c%af%e5%87%ba%e7%9a%84%e4%ba%8c%e9%80%b2%e4%bd%8d%e5%85%a7%e5%ae%b9%20%e7%94%a8%e4%be%86%e6%8a%8a%e8%b3%87%e6%96%99%e9%82%84%e5%8e%9fSORT%e6%8e%92%e5%ba%8f%e6%8c%87%e5%ae%9akey%e7%9a%84%e5%85%a7%e5%ae%b9%20%e9%85%8d%e5%90%88limit%e5%8f%af%e9%99%90%e5%88%b6%e7%ad%86%e6%95%b8%20TTL%e5%8f%96%e5%be%97Key%e5%88%b0%e6%9c%9f%e7%9a%84%e5%89%a9%e9%a4%98%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e7%a7%92TYPE%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9aKey%e7%9a%84%e5%85%a7%e5%ae%b9%e7%9a%84%e8%b3%87%e6%96%99%e5%9e%8b%e6%85%8bSCAN%e6%90%9c%e5%b0%8bKey%ef%bc%8c%e5%8f%af%e9%85%8d%e5%90%88pattern%20%e8%bf%94%e5%9b%9e%e7%b5%90%e6%9e%9c%e6%98%af%e4%b8%80%e5%80%8b%e8%bf%ad%e4%bb%a3%e7%9a%84%e6%8c%87%e6%a8%99&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20Key&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-key%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

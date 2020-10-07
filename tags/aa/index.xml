@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aa on My New Hugo Site</title>
+    <link>http://example.org/tags/aa/</link>
+    <description>Recent content in aa on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Jun 2018 15:27:41 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/aa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker container</title>
+      <link>http://example.org/posts/2018/06/docker-container/</link>
+      <pubDate>Sun, 10 Jun 2018 15:27:41 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018/06/docker-container/</guid>
+      <description>建立一個新容器 $sudo docker create redis:3.2.10 啟動容器 $sudo docker start &amp;lt;guid&amp;gt; 建立並啟動容器 $sudo docker run redis:3.2.10 查詢本機容器 $sudo docker ps -a 對應本機port $sudo docker run -p 6379:6379 redis:3.2.10 對應本機硬碟 $sudo docker run -v /d/redis:/data redis:3.2.10 附加容器執行緒 $sudo docker attach &amp;lt;guid&amp;gt; 執行容器命令 $sudo docker exec -it &amp;lt;guid&amp;gt; bash 查詢容器資訊 $sudo docker inspect &amp;lt;guid&amp;gt; 暫停容器 $sudo docker pause &amp;lt;guid&amp;gt; 停止容器 $sudo docker stop &amp;lt;guid&amp;gt; 強制關閉容器 $sudo docker kill &amp;lt;guid&amp;gt; 刪除容器 $sudo rm &amp;lt;guid&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>docker command</title>
+      <link>http://example.org/posts/2018/06/docker-command/</link>
+      <pubDate>Sun, 10 Jun 2018 15:15:52 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018/06/docker-command/</guid>
+      <description>docker指令示意圖 檢查版本 $ sudo docker version Client: Version: 1.13.1 API version: 1.26 Go version: go1.6.2 Git commit: 092cba3 Built: Thu Nov 2 20:40:23 2017 OS/Arch: linux/amd64 Server: Version: 1.13.1 API version: 1.26 (minimum version 1.12) Go version: go1.6.2 Git commit: 092cba3 Built: Thu Nov 2 20:40:23 2017 OS/Arch: linux/amd64 Experimental: false Info $sudo docker info events $sudo docker events </description>
+    </item>
+    
+  </channel>
+</rss>

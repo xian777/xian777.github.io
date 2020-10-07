@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    SVN Global Ignore | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先是全域設定檔，位置在%AppData%\Subversion\config
+[![](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png) 搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了 [![](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png) 第二個地方是TortoiseSVN的設定 [![](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png) 一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能 [![](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png) 第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單 [![](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png) 如果沒設定過的話，需要手動新增一個設定
+[![](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png) 有svn:global-ignores的屬性可以設定，每一行代表一個設定 [![](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png) C#常用的忽略列表有
+#OS junk files [Tt]humbs.db #Visual Studio files [Bb]in [Oo]bj *.user *.suo *.[Cc]ache
+#NuGet packages *.nupkg
+SQL Server files *.mdf *.ldf
+    ">
+
+
+<meta property="og:title" content="SVN Global Ignore" />
+<meta property="og:description" content="首先是全域設定檔，位置在%AppData%\Subversion\config
+[![](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png) 搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了 [![](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png) 第二個地方是TortoiseSVN的設定 [![](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png) 一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能 [![](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png) 第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單 [![](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png) 如果沒設定過的話，需要手動新增一個設定
+[![](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png) 有svn:global-ignores的屬性可以設定，每一行代表一個設定 [![](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png) C#常用的忽略列表有
+#OS junk files [Tt]humbs.db #Visual Studio files [Bb]in [Oo]bj *.user *.suo *.[Cc]ache
+#NuGet packages *.nupkg
+SQL Server files *.mdf *.ldf" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/06/svn-global-ignore/" />
+<meta property="article:published_time" content="2014-06-04T15:16:00+00:00" />
+<meta property="article:modified_time" content="2014-06-04T15:16:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SVN Global Ignore"/>
+<meta name="twitter:description" content="首先是全域設定檔，位置在%AppData%\Subversion\config
+[![](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png) 搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了 [![](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png) 第二個地方是TortoiseSVN的設定 [![](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png) 一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能 [![](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png) 第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單 [![](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png) 如果沒設定過的話，需要手動新增一個設定
+[![](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png) 有svn:global-ignores的屬性可以設定，每一行代表一個設定 [![](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png) C#常用的忽略列表有
+#OS junk files [Tt]humbs.db #Visual Studio files [Bb]in [Oo]bj *.user *.suo *.[Cc]ache
+#NuGet packages *.nupkg
+SQL Server files *.mdf *.ldf"/>
+
+<meta itemprop="name" content="SVN Global Ignore">
+<meta itemprop="description" content="首先是全域設定檔，位置在%AppData%\Subversion\config
+[![](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png) 搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了 [![](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png) 第二個地方是TortoiseSVN的設定 [![](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png) 一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能 [![](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png) 第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單 [![](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png) 如果沒設定過的話，需要手動新增一個設定
+[![](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png) 有svn:global-ignores的屬性可以設定，每一行代表一個設定 [![](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png) C#常用的忽略列表有
+#OS junk files [Tt]humbs.db #Visual Studio files [Bb]in [Oo]bj *.user *.suo *.[Cc]ache
+#NuGet packages *.nupkg
+SQL Server files *.mdf *.ldf">
+<meta itemprop="datePublished" content="2014-06-04T15:16:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-04T15:16:00+00:00" />
+<meta itemprop="wordCount" content="35">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="canonical" href="http://example.org/posts/2014/06/svn-global-ignore/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>SVN Global Ignore</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 4, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>首先是全域設定檔，位置在%AppData%\Subversion\config</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)](http://2.bp.blogspot.com/-FM871yMVeAk/U47GlEqY72I/AAAAAAAABYU/64h9gk3UKdA/s1600/01.AppData.png)</div>
+搜尋global-ignores可以找到用空白做分隔符號的定義，把前面的註解拿掉就啟用了
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://3.bp.blogspot.com/-pFLsgz-iI1g/U47Gp5yQy-I/AAAAAAAABYc/oXGRy_TdFlU/s1600/02.%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A%E6%AA%94.png)</div>
+第二個地方是TortoiseSVN的設定
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-EAFVkbWuhgc/U47G0IU_feI/AAAAAAAABYk/KqVOEaHncNw/s1600/03.%E8%A8%AD%E5%AE%9A.png)</div>
+一樣是用空白做分隔符號的定義，如果全域設定檔啟用，將會覆蓋掉這裡的功能
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6sryhUbg0_s/U47G339iAhI/AAAAAAAABYs/HyHpafPFSqs/s1600/04.%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9.png)</div>
+第三個地方在專案上，透過TortoiseSVN的屬性來設定比較簡單
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)](http://3.bp.blogspot.com/-lnqmV1M5DBA/U47HF3bufYI/AAAAAAAABY0/6zOSvVNAkpI/s1600/05.%E5%B1%AC%E6%80%A7.png)</div>
+<p>如果沒設定過的話，需要手動新增一個設定</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)](http://4.bp.blogspot.com/-LElnfs052J8/U47HLdv-_vI/AAAAAAAABY8/2GVqjqwcQSc/s1600/06.%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7.png)</div>
+有svn:global-ignores的屬性可以設定，每一行代表一個設定
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)](http://3.bp.blogspot.com/-YXgcpmrROFs/U47HVQpk0TI/AAAAAAAABZE/Z97mqy1K5tY/s1600/07.GlobalIgnore.png)</div>
+<p>C#常用的忽略列表有</p>
+<div><pre class="brush:shell">#OS junk files
+[Tt]humbs.db
+<p>#Visual Studio files
+[Bb]in
+[Oo]bj
+*.user
+*.suo
+*.[Cc]ache</p>
+<p>#NuGet
+packages
+*.nupkg</p>
+<h1 id="sql-server-files">SQL Server files</h1>
+<p>*.mdf
+*.ldf
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=SVN%20Global%20Ignore&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f
+			&title=SVN%20Global%20Ignore&summary=%e9%a6%96%e5%85%88%e6%98%af%e5%85%a8%e5%9f%9f%e8%a8%ad%e5%ae%9a%e6%aa%94%ef%bc%8c%e4%bd%8d%e7%bd%ae%e5%9c%a8%25AppData%25%5cSubversion%5cconfig%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-FM871yMVeAk%2fU47GlEqY72I%2fAAAAAAAABYU%2f64h9gk3UKdA%2fs1600%2f01.AppData.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-FM871yMVeAk%2fU47GlEqY72I%2fAAAAAAAABYU%2f64h9gk3UKdA%2fs1600%2f01.AppData.png%29%20%e6%90%9c%e5%b0%8bglobal-ignores%e5%8f%af%e4%bb%a5%e6%89%be%e5%88%b0%e7%94%a8%e7%a9%ba%e7%99%bd%e5%81%9a%e5%88%86%e9%9a%94%e7%ac%a6%e8%99%9f%e7%9a%84%e5%ae%9a%e7%be%a9%ef%bc%8c%e6%8a%8a%e5%89%8d%e9%9d%a2%e7%9a%84%e8%a8%bb%e8%a7%a3%e6%8b%bf%e6%8e%89%e5%b0%b1%e5%95%9f%e7%94%a8%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-pFLsgz-iI1g%2fU47Gp5yQy-I%2fAAAAAAAABYc%2foXGRy_TdFlU%2fs1600%2f02.%25E5%2585%25A8%25E5%259F%259F%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-pFLsgz-iI1g%2fU47Gp5yQy-I%2fAAAAAAAABYc%2foXGRy_TdFlU%2fs1600%2f02.%25E5%2585%25A8%25E5%259F%259F%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png%29%20%e7%ac%ac%e4%ba%8c%e5%80%8b%e5%9c%b0%e6%96%b9%e6%98%afTortoiseSVN%e7%9a%84%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-EAFVkbWuhgc%2fU47G0IU_feI%2fAAAAAAAABYk%2fKqVOEaHncNw%2fs1600%2f03.%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-EAFVkbWuhgc%2fU47G0IU_feI%2fAAAAAAAABYk%2fKqVOEaHncNw%2fs1600%2f03.%25E8%25A8%25AD%25E5%25AE%259A.png%29%20%e4%b8%80%e6%a8%a3%e6%98%af%e7%94%a8%e7%a9%ba%e7%99%bd%e5%81%9a%e5%88%86%e9%9a%94%e7%ac%a6%e8%99%9f%e7%9a%84%e5%ae%9a%e7%be%a9%ef%bc%8c%e5%a6%82%e6%9e%9c%e5%85%a8%e5%9f%9f%e8%a8%ad%e5%ae%9a%e6%aa%94%e5%95%9f%e7%94%a8%ef%bc%8c%e5%b0%87%e6%9c%83%e8%a6%86%e8%93%8b%e6%8e%89%e9%80%99%e8%a3%a1%e7%9a%84%e5%8a%9f%e8%83%bd%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6sryhUbg0_s%2fU47G339iAhI%2fAAAAAAAABYs%2fHyHpafPFSqs%2fs1600%2f04.%25E8%25A8%25AD%25E5%25AE%259A%25E5%25AE%259A%25E7%25BE%25A9.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6sryhUbg0_s%2fU47G339iAhI%2fAAAAAAAABYs%2fHyHpafPFSqs%2fs1600%2f04.%25E8%25A8%25AD%25E5%25AE%259A%25E5%25AE%259A%25E7%25BE%25A9.png%29%20%e7%ac%ac%e4%b8%89%e5%80%8b%e5%9c%b0%e6%96%b9%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%ef%bc%8c%e9%80%8f%e9%81%8eTortoiseSVN%e7%9a%84%e5%b1%ac%e6%80%a7%e4%be%86%e8%a8%ad%e5%ae%9a%e6%af%94%e8%bc%83%e7%b0%a1%e5%96%ae%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-lnqmV1M5DBA%2fU47HF3bufYI%2fAAAAAAAABY0%2f6zOSvVNAkpI%2fs1600%2f05.%25E5%25B1%25AC%25E6%2580%25A7.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-lnqmV1M5DBA%2fU47HF3bufYI%2fAAAAAAAABY0%2f6zOSvVNAkpI%2fs1600%2f05.%25E5%25B1%25AC%25E6%2580%25A7.png%29%20%e5%a6%82%e6%9e%9c%e6%b2%92%e8%a8%ad%e5%ae%9a%e9%81%8e%e7%9a%84%e8%a9%b1%ef%bc%8c%e9%9c%80%e8%a6%81%e6%89%8b%e5%8b%95%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e8%a8%ad%e5%ae%9a%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-LElnfs052J8%2fU47HLdv-_vI%2fAAAAAAAABY8%2f2GVqjqwcQSc%2fs1600%2f06.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B1%25AC%25E6%2580%25A7.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-LElnfs052J8%2fU47HLdv-_vI%2fAAAAAAAABY8%2f2GVqjqwcQSc%2fs1600%2f06.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B1%25AC%25E6%2580%25A7.png%29%20%e6%9c%89svn%3aglobal-ignores%e7%9a%84%e5%b1%ac%e6%80%a7%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%ef%bc%8c%e6%af%8f%e4%b8%80%e8%a1%8c%e4%bb%a3%e8%a1%a8%e4%b8%80%e5%80%8b%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-YXgcpmrROFs%2fU47HVQpk0TI%2fAAAAAAAABZE%2fZ97mqy1K5tY%2fs1600%2f07.GlobalIgnore.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-YXgcpmrROFs%2fU47HVQpk0TI%2fAAAAAAAABZE%2fZ97mqy1K5tY%2fs1600%2f07.GlobalIgnore.png%29%20C%23%e5%b8%b8%e7%94%a8%e7%9a%84%e5%bf%bd%e7%95%a5%e5%88%97%e8%a1%a8%e6%9c%89%0a%23OS%20junk%20files%20%5bTt%5dhumbs.db%20%23Visual%20Studio%20files%20%5bBb%5din%20%5bOo%5dbj%20%2a.user%20%2a.suo%20%2a.%5bCc%5dache%0a%23NuGet%20packages%20%2a.nupkg%0aSQL%20Server%20files%20%2a.mdf%20%2a.ldf&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=SVN%20Global%20Ignore&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fsvn-global-ignore%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

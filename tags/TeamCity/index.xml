@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TeamCity on My New Hugo Site</title>
+    <link>http://example.org/tags/teamcity/</link>
+    <description>Recent content in TeamCity on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Sep 2014 17:37:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/teamcity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TeamCity 發行 Octopus 部署套件</title>
+      <link>http://example.org/posts/2014/09/teamcity-%E7%99%BC%E8%A1%8C-octopus-%E9%83%A8%E7%BD%B2%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Mon, 29 Sep 2014 17:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/09/teamcity-%E7%99%BC%E8%A1%8C-octopus-%E9%83%A8%E7%BD%B2%E5%A5%97%E4%BB%B6/</guid>
+      <description>先到Octopus建立一個專案
+[![](http://4.bp.blogspot.com/-FDLLsc4giU4/VCkiHt_yQyI/AAAAAAAABrU/gvNiJ8w3SsI/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://4.bp.blogspot.com/-FDLLsc4giU4/VCkiHt_yQyI/AAAAAAAABrU/gvNiJ8w3SsI/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 選擇發行套件 [![](http://2.bp.blogspot.com/-Z8lhnIjJIxE/VCkiHiZxCGI/AAAAAAAABrc/XF7oPi2g3Mk/s1600/02.%E6%96%B0%E5%A2%9E%E6%AD%A5%E7%BD%B2Step.png)](http://2.bp.blogspot.com/-Z8lhnIjJIxE/VCkiHiZxCGI/AAAAAAAABrc/XF7oPi2g3Mk/s1600/02.%E6%96%B0%E5%A2%9E%E6%AD%A5%E7%BD%B2Step.png) 就可以找到剛建置出來的套件 [![](http://4.bp.blogspot.com/-Cwnpf4xmYks/VCkiHjpMRdI/AAAAAAAABrY/IL4ip64ddY8/s1600/03.%E9%81%B8%E6%93%87%E5%A5%97%E4%BB%B6.png)](http://4.bp.blogspot.com/-Cwnpf4xmYks/VCkiHjpMRdI/AAAAAAAABrY/IL4ip64ddY8/s1600/03.%E9%81%B8%E6%93%87%E5%A5%97%E4%BB%B6.png) 回到TeamCity新增一個部署設定 [![](http://1.bp.blogspot.com/-2hVQBVI5FGg/VCkiIYd3vPI/AAAAAAAABrg/30Q4soZJvkU/s1600/04.%E6%96%B0%E5%A2%9E%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-2hVQBVI5FGg/VCkiIYd3vPI/AAAAAAAABrg/30Q4soZJvkU/s1600/04.%E6%96%B0%E5%A2%9E%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88.png) 在Trigger中新增一個建置完成觸發事件，指定到對應的專案 [![](http://4.bp.blogspot.com/-ROmAs_Tl5qY/VCkiIi3CO_I/AAAAAAAABrk/iNQEOH-dwKY/s1600/05.%E5%BB%BA%E7%BD%AETrigger%E6%96%B0%E5%A2%9E.png)](http://4.bp.blogspot.com/-ROmAs_Tl5qY/VCkiIi3CO_I/AAAAAAAABrk/iNQEOH-dwKY/s1600/05.%E5%BB%BA%E7%BD%AETrigger%E6%96%B0%E5%A2%9E.png) 在關聯性設定中，也把這個專案指定進來 [![](http://4.bp.blogspot.com/-IaQZvFCbfA4/VCkiItMFcII/AAAAAAAABro/ppW2dwwNADI/s1600/06.%E6%96%B0%E5%A2%9E%E9%97%9C%E8%81%AF.png)](http://4.bp.blogspot.com/-IaQZvFCbfA4/VCkiItMFcII/AAAAAAAABro/ppW2dwwNADI/s1600/06.%E6%96%B0%E5%A2%9E%E9%97%9C%E8%81%AF.png) 在版號的地方才能用%dep開頭的設定，取得這個專案目前的版號 [![](http://3.bp.blogspot.com/-mJjKvkDGHnE/VCkiI-EY_EI/AAAAAAAABrs/EL5AkEmhWyg/s1600/07.%E8%A8%AD%E5%AE%9A%E7%89%88%E8%99%9F.png)](http://3.bp.blogspot.com/-mJjKvkDGHnE/VCkiI-EY_EI/AAAAAAAABrs/EL5AkEmhWyg/s1600/07.%E8%A8%AD%E5%AE%9A%E7%89%88%E8%99%9F.png) 建置步驟選擇OctopusDeploy: Create release [![](http://1.bp.blogspot.com/-N3IP4kF2I58/VCkiJNkJraI/AAAAAAAABrw/57LbhpwOkfs/s1600/08.%E9%81%B8%E6%93%87%E5%BB%BA%E7%BD%AE%E9%83%A8%E7%BD%B2.png)](http://1.bp.blogspot.com/-N3IP4kF2I58/VCkiJNkJraI/AAAAAAAABrw/57LbhpwOkfs/s1600/08.%E9%81%B8%E6%93%87%E5%BB%BA%E7%BD%AE%E9%83%A8%E7%BD%B2.png) 輸入Octopus URL和API Key 再輸入專案名稱和要連立版本的版號 如果要順便部署環境的話，就在Deploy To中輸入環境名稱 再把Wait for deployment to complete勾起來就行了 [![](http://1.bp.blogspot.com/-O_2Habk45Yo/VCkiJQdQ-EI/AAAAAAAABr0/11DQQ0IDrPQ/s1600/09.%E8%A8%AD%E5%AE%9A%E5%BB%BA%E7%BD%AE.png)](http://1.bp.blogspot.com/-O_2Habk45Yo/VCkiJQdQ-EI/AAAAAAAABr0/11DQQ0IDrPQ/s1600/09.%E8%A8%AD%E5%AE%9A%E5%BB%BA%E7%BD%AE.png) 建置成功 [![](http://1.bp.blogspot.com/-l4WiqDvB-9M/VCkiJqUgMiI/AAAAAAAABr4/tR0CZlH9JCA/s1600/10.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png)](http://1.bp.blogspot.com/-l4WiqDvB-9M/VCkiJqUgMiI/AAAAAAAABr4/tR0CZlH9JCA/s1600/10.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png) 自動新增一個部署版本了 [!</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 打包 Octopus 部署套件</title>
+      <link>http://example.org/posts/2014/09/teamcity-%E6%89%93%E5%8C%85-octopus-%E9%83%A8%E7%BD%B2%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Mon, 29 Sep 2014 16:48:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/09/teamcity-%E6%89%93%E5%8C%85-octopus-%E9%83%A8%E7%BD%B2%E5%A5%97%E4%BB%B6/</guid>
+      <description>首先新建一個建置設定
+[![](http://4.bp.blogspot.com/-1hnowCI7ZBM/VCkcK6DJ23I/AAAAAAAABpM/tcbGZTMFF7I/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://4.bp.blogspot.com/-1hnowCI7ZBM/VCkcK6DJ23I/AAAAAAAABpM/tcbGZTMFF7I/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 設定SVN路徑
+[![](http://4.bp.blogspot.com/-MbNEf3JsBJo/VCkcPahMcqI/AAAAAAAABpU/zj_3Q7qtu74/s1600/02.%E8%A8%AD%E5%AE%9Asvn.png)](http://4.bp.blogspot.com/-MbNEf3JsBJo/VCkcPahMcqI/AAAAAAAABpU/zj_3Q7qtu74/s1600/02.%E8%A8%AD%E5%AE%9Asvn.png) SVN的細部設定
+[![](http://4.bp.blogspot.com/-j2ZooaYc4jU/VCkcXM4-fRI/AAAAAAAABpc/y22W60orsug/s1600/04.%E7%B4%B0%E9%83%A8%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-j2ZooaYc4jU/VCkcXM4-fRI/AAAAAAAABpc/y22W60orsug/s1600/04.%E7%B4%B0%E9%83%A8%E8%A8%AD%E5%AE%9A.png) 取用trunk為根目錄
+[![](http://1.bp.blogspot.com/-SNggN_J2dx4/VCkcbDRKANI/AAAAAAAABpk/CnjPPxJyhcs/s1600/03.%E6%8C%87%E5%AE%9Atrunk.png)](http://1.bp.blogspot.com/-SNggN_J2dx4/VCkcbDRKANI/AAAAAAAABpk/CnjPPxJyhcs/s1600/03.%E6%8C%87%E5%AE%9Atrunk.png) 設定版號 [![](http://4.bp.blogspot.com/-58uT3yqTydA/VCkcfSDV4JI/AAAAAAAABps/BATMEcHU7zM/s1600/07.%E7%89%88%E8%99%9F.png)](http://4.bp.blogspot.com/-58uT3yqTydA/VCkcfSDV4JI/AAAAAAAABps/BATMEcHU7zM/s1600/07.%E7%89%88%E8%99%9F.png) 第一個建置步驟是NuGet Installer，選擇方案檔即可 如果有自訂的NuGet來源，要記得輸入 [![](http://2.bp.blogspot.com/-ysXS6Jmxytc/VCkckW2udOI/AAAAAAAABp0/xOI5ZJgOsjM/s1600/05.%E5%A5%97%E4%BB%B6%E9%82%84%E5%8E%9F.png)](http://2.bp.blogspot.com/-ysXS6Jmxytc/VCkckW2udOI/AAAAAAAABp0/xOI5ZJgOsjM/s1600/05.%E5%A5%97%E4%BB%B6%E9%82%84%E5%8E%9F.png) 接下來可以建置專案了，勾選方案檔即可 在Run OctoPack這邊也勾選起來，輸入建置版號即可
+[![](http://2.bp.blogspot.com/-umKldtIhOao/VCkcpdq-FAI/AAAAAAAABp8/k7DVLFr6_Yo/s1600/06.VS%E5%BB%BA%E7%BD%AE.png)](http://2.bp.blogspot.com/-umKldtIhOao/VCkcpdq-FAI/AAAAAAAABp8/k7DVLFr6_Yo/s1600/06.VS%E5%BB%BA%E7%BD%AE.png) 建置成功就會得到打包好的套件 [![](http://2.bp.blogspot.com/-nz0WK09gIac/VCkcuMFYPtI/AAAAAAAABqE/Sg17Ph4-jqs/s1600/08.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png)](http://2.bp.blogspot.com/-nz0WK09gIac/VCkcuMFYPtI/AAAAAAAABqE/Sg17Ph4-jqs/s1600/08.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png) </description>
+    </item>
+    
+    <item>
+      <title>TeamCity 安裝 Octopus Deploy Integration 套件</title>
+      <link>http://example.org/posts/2014/09/teamcity-%E5%AE%89%E8%A3%9D-octopus-deploy-integration-%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Mon, 29 Sep 2014 14:46:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/09/teamcity-%E5%AE%89%E8%A3%9D-octopus-deploy-integration-%E5%A5%97%E4%BB%B6/</guid>
+      <description>首先到官網下載TeamCity Plugin http://octopusdeploy.com/downloads
+[![](http://3.bp.blogspot.com/-XNxjbgrc77Q/VCj_gC3rSjI/AAAAAAAABms/w1bLqfUxOcs/s1600/01.%E5%AE%98%E7%B6%B2%E4%B8%8B%E8%BC%89.png)](http://3.bp.blogspot.com/-XNxjbgrc77Q/VCj_gC3rSjI/AAAAAAAABms/w1bLqfUxOcs/s1600/01.%E5%AE%98%E7%B6%B2%E4%B8%8B%E8%BC%89.png) 把下載的zip檔，丟到TeamCity的Plugins資料夾下面
+[![](http://4.bp.blogspot.com/-xoW5bvFoc8w/VCj_keKfYlI/AAAAAAAABm0/gMG9MFtcUbU/s1600/03.Plugins%E8%B3%87%E6%96%99%E5%A4%BE.png)](http://4.bp.blogspot.com/-xoW5bvFoc8w/VCj_keKfYlI/AAAAAAAABm0/gMG9MFtcUbU/s1600/03.Plugins%E8%B3%87%E6%96%99%E5%A4%BE.png) 重新啟動TeamCity後，就可以在Plugin列表中看到Octopus Deploy Integration套件
+[![](http://3.bp.blogspot.com/-c9eevtd_CIA/VCj_tFiOC2I/AAAAAAAABm8/Hqca2hI8jyk/s1600/04.Plugin%E5%88%97%E8%A1%A8.png)](http://3.bp.blogspot.com/-c9eevtd_CIA/VCj_tFiOC2I/AAAAAAAABm8/Hqca2hI8jyk/s1600/04.Plugin%E5%88%97%E8%A1%A8.png) 在TeamCity的建置步驟中，會多出三個Runner Create release是新增發行版本，也可以順便部署的指定的環境 Deploy release是部署指定版本 Promote是把現有的版本從指定的環境部署到其他環境
+[![](http://4.bp.blogspot.com/-8sf6WLcQtJ0/VCkBHJGU0rI/AAAAAAAABnE/j8I-2xap158/s1600/06.TeamCity%E5%BB%BA%E7%BD%AE%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png)](http://4.bp.blogspot.com/-8sf6WLcQtJ0/VCkBHJGU0rI/AAAAAAAABnE/j8I-2xap158/s1600/06.TeamCity%E5%BB%BA%E7%BD%AE%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png) 在VS建置Runner中，也會多出一個OctoPack的設定項目 勾選後會在建置參數中加入/p:RunOctoPack=true
+[![](http://2.bp.blogspot.com/-ugwpKzT9x9Y/VCkBRaltmnI/AAAAAAAABnM/1uDWOhBxUKE/s1600/05.VS%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-ugwpKzT9x9Y/VCkBRaltmnI/AAAAAAAABnM/1uDWOhBxUKE/s1600/05.VS%E6%96%B0%E5%A2%9E%E9%A0%85%E7%9B%AE.png) 參考資料 官網的說明和影片 http://docs.octopusdeploy.com/display/OD/TeamCity</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 整合 StyleCop</title>
+      <link>http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/</link>
+      <pubDate>Fri, 06 Jun 2014 14:10:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/06/teamcity-%E6%95%B4%E5%90%88-stylecop/</guid>
+      <description>先打開管理頁面的Plugin List，選擇Available Plugin
+[![](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png)](http://3.bp.blogspot.com/-oDy7ga_ahsU/U5FaL4uSbTI/AAAAAAAABbI/bTAKqhJ56MQ/s1600/00.AvailablePlugin.png) 找到StyleCop Runner [![](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png)](http://4.bp.blogspot.com/-Y0Omog127jg/U5FUq4nBNBI/AAAAAAAABZU/zO4XKx93Lxs/s1600/01.Download.png) 下載最新版本的StyleCop Plugin [![](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)](http://4.bp.blogspot.com/-ivWisnEKuWc/U5FUvySNMtI/AAAAAAAABZc/aQ4RiKU-5Bo/s1600/02.DW.png)  把檔案解壓縮後會得到不帶版本號的Stylecop.zip [![](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)](http://4.bp.blogspot.com/-3HndiN2ipLY/U5FU5j_9pvI/AAAAAAAABZk/01PnJvAMqqc/s1600/03.%E8%A7%A3%E5%A3%93%E7%B8%AE.png)  打開管理頁面的PluginList，點擊Upload plugin zip連結[![](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png)](http://4.bp.blogspot.com/-ZjTZdgwWpyc/U5FVDXCQCwI/AAAAAAAABZs/oZOweJhsvoU/s1600/04.PluginList.png) 選擇剛解壓縮出來的Stylecop.zip 上傳到Plugins資料夾下面[![](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png)](http://2.bp.blogspot.com/-fMJo2RjNF1U/U5FVbVB5FEI/AAAAAAAABZ0/83_2pD59O64/s1600/05.Upload.png) 重新啟動TeamCity服務[![](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png)](http://4.bp.blogspot.com/-3pEb8Sw8AXs/U5FVrYnQCEI/AAAAAAAABZ8/EY91_ySL0WI/s1600/06.Restart.png) Plugin列表中可以看到StyleCop套件的資訊[![](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png)](http://2.bp.blogspot.com/-4boCfNRDupM/U5FVwJcK6xI/AAAAAAAABaE/NBUmGkfZgeI/s1600/07.AvailablePlugin.png) Build Step中就可以選擇StyleCop這個Runner [![](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)](http://1.bp.blogspot.com/-avk9twecrxM/U5FWpaYUPoI/AAAAAAAABaQ/88_LXNHQWGE/s1600/08.BuildStep.png)輸入選擇要檢查的檔案路徑和StyleCop.dll的路徑[![](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png)](http://3.bp.blogspot.com/-Ei7SIMcLMug/U5FXaI7eU0I/AAAAAAAABaY/ony7YCKBOg4/s1600/09.Setting.png) 預設會把找到的問題當做錯誤，造成建置失敗 [![](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png)](http://4.bp.blogspot.com/-Dt_BfUwJBrY/U5FYOQXn35I/AAAAAAAABak/sLzXeq4qBFc/s1600/10.Error.png) 可以修改Max Viloations，這是最大問題數的數量，超過就失敗，負數為不限制 另一個方法是勾選Treat errors as warnings，把錯誤當成警告 [![](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png)](http://4.bp.blogspot.com/-kcKgpBM4Egw/U5FYUjd0VXI/AAAAAAAABas/REIcyjgbnoo/s1600/11.Warn.png) 建置結果會順利通過，但有檢查到的數量顯示 [![](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png)](http://4.bp.blogspot.com/-pR918wQlwpo/U5FYc5uSooI/AAAAAAAABa0/fL2NrOd53uQ/s1600/12.Warb.png) 點選該筆建置內容，就會看到StyleCop的詳細資料 [![](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)](http://2.bp.blogspot.com/-NyrSWvNkOE0/U5FYgh8O-hI/AAAAAAAABa8/tpdrcCrEjww/s1600/13.Detail.png)  </description>
+    </item>
+    
+    <item>
+      <title>TeamCity整合Source Monitor報表</title>
+      <link>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/</link>
+      <pubDate>Wed, 23 Apr 2014 15:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/</guid>
+      <description>Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt; &amp;lt;sourcemonitor_commands&amp;gt; &amp;lt;write_log&amp;gt;true&amp;lt;/write_log&amp;gt; &amp;lt;command&amp;gt; &amp;lt;project_file&amp;gt;SourceMonitor.smp&amp;lt;/project_file&amp;gt; &amp;lt;checkpoint_name&amp;gt;Baseline&amp;lt;/checkpoint_name&amp;gt; &amp;lt;project_language&amp;gt;C#&amp;lt;/project_language&amp;gt; &amp;lt;!-- 要分析專案的相對路徑 --&amp;gt; &amp;lt;source_directory&amp;gt;..&amp;lt;/source_directory&amp;gt; &amp;lt;source_subdirectory_list&amp;gt; &amp;lt;exclude_subdirectories&amp;gt;true&amp;lt;/exclude_subdirectories&amp;gt; &amp;lt;source_subtree&amp;gt;bin\&amp;lt;/source_subtree&amp;gt; &amp;lt;source_subdirectory&amp;gt;obj\&amp;lt;/source_subdirectory&amp;gt; &amp;lt;/source_subdirectory_list&amp;gt; &amp;lt;parse_utf8_files&amp;gt;True&amp;lt;/parse_utf8_files&amp;gt; &amp;lt;ignore_headers_footers&amp;gt;True&amp;lt;/ignore_headers_footers&amp;gt; &amp;lt;export&amp;gt; &amp;lt;!-- 最後輸出的檔名 --&amp;gt; &amp;lt;export_file&amp;gt;SourceMonitorReport.xml&amp;lt;/export_file&amp;gt; &amp;lt;export_type&amp;gt;2&amp;lt;/export_type&amp;gt; &amp;lt;/export&amp;gt; &amp;lt;/command&amp;gt; &amp;lt;/sourcemonitor_commands&amp;gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&amp;gt; &amp;lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&amp;gt; &amp;lt;xsl:output method=&#34;html&#34;/&amp;gt; &amp;lt;xsl:template match=&amp;rdquo;/&amp;quot;&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;rdquo;&amp;gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1.</description>
+    </item>
+    
+    <item>
+      <title>TeamCity整合Code Coverage報表</title>
+      <link>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88code-coverage%E5%A0%B1%E8%A1%A8/</link>
+      <pubDate>Tue, 22 Apr 2014 17:04:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88code-coverage%E5%A0%B1%E8%A1%A8/</guid>
+      <description>首先加入一個MSTest的Build Step[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png) 這裡以VS2013為例，選擇要執行單元測試的專案元件[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png) 拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png) 主要就是輸入Filter，+:加入，-:排除，注意不用輸入副檔名[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png) 建置成功後就會看到單元測試覆蓋率的報表了 [!</description>
+    </item>
+    
+    <item>
+      <title>TeamCity整合FxCop報表</title>
+      <link>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88fxcop%E5%A0%B1%E8%A1%A8/</link>
+      <pubDate>Tue, 22 Apr 2014 14:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88fxcop%E5%A0%B1%E8%A1%A8/</guid>
+      <description>FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;amp;id=8279)[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png) SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例 安裝好VS2013後，FxCop執行檔的路徑在 FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 在Build Step中新增一個FxCop Runner[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png) 設定內容主要是指定FxCop執行檔的路徑 和要分析的Assembly檔案位置 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 比較方便的方式是到Build Agent上面設定buildAgent.properties加入 system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop 就可以用Autodetect而不用指定路徑了 P.S. 注意跳脫符號 [![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)建置成功後就會多出一個FxCop的數據 [![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)  </description>
+    </item>
+    
+    <item>
+      <title>TeamCity 刪除特定的Nuget Package</title>
+      <link>http://example.org/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/</link>
+      <pubDate>Wed, 09 Oct 2013 11:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/</guid>
+      <description>因為設定上的問題，從TeamCity所生成管理的Nuget package的版本號碼會有衝突 所以需要把有問題的package先刪除 但TeamCity本身沒有直接支援刪除的功能，找到了一篇用reset api刪除的方式
+利用Filddler來執行rest api，網址為http://&amp;lt;teamcity&amp;gt;/httpAuth/app/rest/builds/id 最後的id為指定的建置版本，也是要刪除的版本 可以很容易的在一些設定頁面上，找一下網址後面的BuildId所帶的值來取得
+[![](http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png)](http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png) 使用Filddler執行DELETE方法，並在標頭中加入Authorization: Basic (UserName:Password)就行了
+[![](http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png)](http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png) 括號內的帳密需要用base64編碼，利用TextWizard來轉換就行了
+[![](http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png)](http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png)  參考連結 http://stackoverflow.com/questions/10218318/how-to-remove-a-specific-version-of-a-package-on-a-teamcity-nuget-feed
+Fiddler 下載</description>
+    </item>
+    
+    <item>
+      <title>continuous integration (CI) server:TeamCity 學習筆記</title>
+      <link>http://example.org/posts/2012/12/continuous-integration-ci-server-teamcity-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Sat, 01 Dec 2012 14:55:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/continuous-integration-ci-server-teamcity-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</guid>
+      <description>1. 安裝continuous integration (CI) server:TeamCity http://blog.developer.idv.tw/2012/11/teamcity.html
+2. TeamCity Migrate To SQL Server http://blog.developer.idv.tw/2012/11/teamcity-migrate-to-sql-server.html
+3. TeamCity 設定專案 http://blog.developer.idv.tw/2012/11/teamcity_13.html
+4. TeamCity 建置前先還原NuGet套件 http://blog.developer.idv.tw/2012/11/teamcity-nuget.html
+5. TeamCity 建置後打包和發佈套件 http://blog.developer.idv.tw/2012/11/teamcity_6277.html
+6. TeamCity 改用網域帳號LDAP登入 http://blog.developer.idv.tw/2012/11/teamcity-ldap.html
+7. TeamCity 安裝BuildAgent http://blog.developer.idv.tw/2012/11/teamcity-buildagent.html
+8. TeamCity刪除特定的Nuget Package http://blog.developer.idv.tw/2013/10/teamcity-nuget-package.html
+9. TeamCity整合FxCop報表 http://blog.developer.idv.tw/2014/04/teamcityfxcop.html
+10. TeamCity整合Code Coverage報表 http://blog.developer.idv.tw/2014/04/teamcitycode-coverage.html
+11.TeamCity整合Source Monitor報表 http://blog.developer.idv.tw/2014/04/teamcitysource-monitor.html
+12. TeamCity 整合 StyleCop http://blog.developer.idv.tw/2014/06/teamcity-stylecop.html
+13. TeamCity 安裝 Octopus Deploy Integration 套件 http://blog.developer.idv.tw/2014/09/teamcity-octopus-deploy-integration.html
+14. TeamCity 打包 Octopus 部署套件 http://blog.developer.idv.tw/2014/09/teamcity-octopack.html
+15. TeamCity 發行 Octopus 部署套件 http://blog.</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 安裝BuildAgent</title>
+      <link>http://example.org/posts/2012/11/teamcity-%E5%AE%89%E8%A3%9Dbuildagent/</link>
+      <pubDate>Thu, 29 Nov 2012 22:46:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-%E5%AE%89%E8%A3%9Dbuildagent/</guid>
+      <description>首先下載BuildAgent ](http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png)
+把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了 ](http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png)
+安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔 ](http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png)
+確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元 順利連線之後，約1~2分鐘，最下面就會出現authorizationToken ](http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png)
+登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了 ](http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png)
+等待一陣子，Connected就會有剛安裝的BuildAgent了 ](http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png)</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 改用網域帳號LDAP登入</title>
+      <link>http://example.org/posts/2012/11/teamcity-%E6%94%B9%E7%94%A8%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9Fldap%E7%99%BB%E5%85%A5/</link>
+      <pubDate>Thu, 29 Nov 2012 22:07:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-%E6%94%B9%E7%94%A8%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9Fldap%E7%99%BB%E5%85%A5/</guid>
+      <description>如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入 打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml ](http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png)
+裡面的auth-type節點中，預設會是DefaultLoginModule &amp;lt;login-module class=&amp;#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&amp;#34; /&amp;gt; 將模組改成LDAPLoginModule就行了 &amp;lt;login-module class=&amp;#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&amp;#34; /&amp;gt; 再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔 ](http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png)
+複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目 把example換成自已的網域名稱 #設定AD的位置 java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com #設定登入的時後，帳號格式不用包含\或是@ teamcity.auth.loginFilter=[^/\\\\@]+ #配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱 teamcity.auth.formatDN=example\\$login$  設定這三個項目，其他改用預設值，就可以用網域驗證了 登入後如果要同步帳號資料，可以再多加以下幾個選項  java.naming.security.principal=&amp;lt;username&amp;gt; java.naming.security.credentials=&amp;lt;password&amp;gt; teamcity.users.username=sAMAccountName teamcity.options.users.synchronize=true teamcity.users.filter=(objectClass=user) teamcity.users.property.displayName=displayName teamcity.users.property.email=mail 第一次登入的時後，會需要設定帳號成管理員 ](http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png)
+如果有問題，可以查一下log ](http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png)
+參考資料  Typical LDAP Configurations LDAP Integration How To Set Up Secure LDAP Authentication with TeamCity  </description>
+    </item>
+    
+    <item>
+      <title>TeamCity 建置後打包和發佈套件</title>
+      <link>http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%BE%8C%E6%89%93%E5%8C%85%E5%92%8C%E7%99%BC%E4%BD%88%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Tue, 13 Nov 2012 23:04:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%BE%8C%E6%89%93%E5%8C%85%E5%92%8C%E7%99%BC%E4%BD%88%E5%A5%97%E4%BB%B6/</guid>
+      <description>前言 接下來按照打包的方式來作業，新增一個Build Step為NuGetPack 選擇NuGet執行檔的版本，再選擇專案檔的路徑 Version是建置時後的版本，最後是輸出的資料夾 ](http://1.bp.blogspot.com/-Pyj4DdHcPGQ/UKJg1gT5ksI/AAAAAAAAAdI/iXtQOOhP51c/s1600/01.NugetPack.png)
+因為增加了套件輸出的路徑，所以回到General Settings 在Artifact paths也增加套件輸出的路徑 ](http://1.bp.blogspot.com/-QxFU1xxqx04/UKJhPtSoFqI/AAAAAAAAAdQ/9s6gOq3iZfM/s1600/02.ArtifactPaths.png)
+設定完成後再次建置，建置成功就會在Artifacts得到套件 ](http://3.bp.blogspot.com/-u8ub2aXW8pc/UKJhQFcK60I/AAAAAAAAAdY/GulIFxNyNPE/s1600/03.BuildSuccess.png)
+接下來再新增一個Build Step，選擇NuGetPublish 選擇NuGet執行檔的版本，輸入NuGet Server的網址和api key 再選擇要上傳的套件，下次建置的時後，就會一起發佈出去了 ](http://2.bp.blogspot.com/-Axp5HdttthA/UKJhQ3jst5I/AAAAAAAAAdg/hrhTgMC4uzU/s1600/04.Publish.png)</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 建置前先還原NuGet套件</title>
+      <link>http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%89%8D%E5%85%88%E9%82%84%E5%8E%9Fnuget%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Tue, 13 Nov 2012 22:13:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-%E5%BB%BA%E7%BD%AE%E5%89%8D%E5%85%88%E9%82%84%E5%8E%9Fnuget%E5%A5%97%E4%BB%B6/</guid>
+      <description>當專案開始使用NuGet來管理套件時，預設套件會安裝在方案檔所在目錄的packages資料夾下 ](http://1.bp.blogspot.com/-Fb-XAssHj4w/UKJTn5RDetI/AAAAAAAAAbc/0mO3150CpWQ/s1600/01.Packages.png)
+一般不會把這個套件這個資料夾加入原始檔控制以節省空間，而會在Vistual Studio中啟用套件還原 在方案檔上按右鍵就會看到這個選項了 ](http://1.bp.blogspot.com/-dyZVt873N58/UKJTobl3ClI/AAAAAAAAAbk/NhajJ3Li0bg/s1600/02.PackageRestore.png)
+按下後會有一個提示訊息，主要是會新增一個方案資料夾的提示 ](http://2.bp.blogspot.com/-6K_7ZRaH-U0/UKJTo96X_eI/AAAAAAAAAbs/F67Lyeec0TM/s1600/03.AlertMsg.png)
+按下是(Y)之前，就會多出一個.nuget的方案資料夾 ](http://4.bp.blogspot.com/-y91qsRmScLI/UKJTpo9UQUI/AAAAAAAAAb0/6o_pDPgV6-A/s1600/04.NuGetDir.png)
+還要允許NuGet在建置期間下載遺漏的套件 ](http://1.bp.blogspot.com/-HcrmcbS0_2c/UKJTqBojMQI/AAAAAAAAAb8/twadrgujphw/s1600/05.AllowDownload.png)
+把.nuget這個方案資料夾加入Source Control ](http://4.bp.blogspot.com/-rGNsuEcMug8/UKJTqeyIARI/AAAAAAAAAcE/X_gwllNs14o/s1600/06.NuGetSVNDir.png)
+先在TeamCity中安裝NuGet Command Line工具 ](http://2.bp.blogspot.com/-D5zrJvyfRKE/UKJTq18pInI/AAAAAAAAAcM/ikPaGWFbePw/s1600/07.AddNuGetExe.png)
+新增一個Build Step，選擇NuGet Installer 選擇NuGet的版本，和輸入NuGet的來源 如果使用的套件是從NuGet官網來的，那直接保持空白 如果會使用其他來源的套件，就要在此輸入網址 再輸入方案檔的相對路徑就行了 ](http://1.bp.blogspot.com/--zcz92kuTII/UKJTrZfOVWI/AAAAAAAAAcU/VjDyBdBpBLU/s1600/08.PreInstall.png)
+再來要把NuGet Install這個動作，放到編譯之前 所以按一下Reorder build steps，然後用拖曳的方式調整步驟後按Apply ](http://2.bp.blogspot.com/-3BcMkxmRzyc/UKJTsEam9hI/AAAAAAAAAcc/Uj9RBGmTYP8/s1600/09.ReOrderStep.png)
+再次建置就成功了 ](http://3.bp.blogspot.com/-hTTzcZcJpos/UKJTtmr7FLI/AAAAAAAAAck/MQKYRgqxUJ0/s1600/10.BuildSuccess.png)</description>
+    </item>
+    
+    <item>
+      <title>TeamCity 設定專案</title>
+      <link>http://example.org/posts/2012/11/teamcity-%E8%A8%AD%E5%AE%9A%E5%B0%88%E6%A1%88/</link>
+      <pubDate>Tue, 13 Nov 2012 20:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-%E8%A8%AD%E5%AE%9A%E5%B0%88%E6%A1%88/</guid>
+      <description>接下來開始設定專案，首先建立一個專案 ](http://2.bp.blogspot.com/-6Z--lc4grZs/UKI-cBf9wrI/AAAAAAAAAZQ/IxPCZASp194/s1600/01.DefaultPage.png)
+輸入專案名稱和說明後，按下Create就行了 ](http://2.bp.blogspot.com/-RZqV75lOXLw/UKI-c1lNXgI/AAAAAAAAAZY/xBnae98EbRs/s1600/02.CreateProject.png)
+接下來要開始設定Build Configuration，免費版只能建20個 ](http://3.bp.blogspot.com/-cgPFA7QHV_Q/UKI-dRMINHI/AAAAAAAAAZg/_HNZLVsbKBY/s1600/03.CreateProjectSuccess.png)
+第一步是設定一個名稱，這裡以Release Build為例 Build number format是自動版號的格式，除了每次建置會自動加1之外 因為接下來的版本控制會以SVN為例，所以加入了SVN的版號%build.vcs.number% Artifact Paths是最後產出檔案的路徑，先指向到Publish這個資料夾下面的zip檔 ](http://1.bp.blogspot.com/-0VQnfAkDWuM/UKJkDkGNBPI/AAAAAAAAAeE/Z_y0L8qvUb4/s1600/04.GeneralSetting.png)
+第二步是設定一個版本控制來取得原始碼 ](http://4.bp.blogspot.com/-UkgcJOZkncQ/UKI-emmKCZI/AAAAAAAAAZw/dr9l8W2sPHQ/s1600/05.AddSVN.png)
+下拉選單中有大部份Source Control的類型，這邊以SVN為例子 主要就是輸入路徑和帳號密碼就行了 ](http://1.bp.blogspot.com/-jJ6LldtRrGY/UKI-fGKSBpI/AAAAAAAAAZ4/O2YI_fnIPE4/s1600/06.ConfigSVN.png)
+Labeling Rules這邊設定的是從trunk分支到tags的動作，等下還會有更詳細的設定 Test Connection可以測試一下是否可以連線，沒問題的話就按下Save按鈕 ](http://2.bp.blogspot.com/-6GoA44nrcIU/UKI-f91HcEI/AAAAAAAAAaA/spum8XecZxc/s1600/07.LabelingRule.png)
+完成了一個VCS root的設定，順便編輯一下Checkout Rules 最簡單的用法就是每次只取出trunk的內容，並當成根目錄，就不會取出trunk和branches的資料了 ](http://3.bp.blogspot.com/-lhIOzEPYwGo/UKI-gphZzGI/AAAAAAAAAaI/cLETpRhADCE/s1600/08.AddCheckOutRule.png)
+接下來還有更詳細的設定 Clean all files before build是用來選擇是否在每次編譯之前都先清空svn的資料，重新下載 VCS Labeling mode是用來選擇，是否要在建置之後，來執行剛設定Labeling的動作 ](http://3.bp.blogspot.com/-QF04KvH5GD8/UKI-hhYbqxI/AAAAAAAAAaQ/QHHSjvDHF0U/s1600/09.AddCheckOutRuleOK.png)
+Build Step是用來設定建置方式，這邊選擇用方案檔的方式來建置專案 因為用到了Package這個target來封裝專案，所以需要選擇專案檔而不是方案檔 希望建置後封裝的檔案可以產出在前面設定Artifact Paths的路徑中，所以額外設了一個參數 如果一開始選擇用MSBuild來建置的話，參數的設定會更靈活 ](http://4.bp.blogspot.com/-HrWNHxrJr4k/UKJkQJN45nI/AAAAAAAAAeM/HBtGCa28xhs/s1600/10.SlnSetting.png) 
+到這裡已經設定好專案了，如果日後需要修改設定，可以直接按右邊的某一個步驟來調整 先按一下右上角的Run來跑跑看目前的設定正不正確，再按一下Build Configuration Home來看結果 ](http://1.bp.blogspot.com/-qC2tZAjzWIk/UKI-i2KJkpI/AAAAAAAAAag/kuJ0MGuRkK4/s1600/11.ConfigOK.png)
+可以看到這個專案的編譯記錄，目前編譯的版本，和SVN的送交記錄等等訊息 ](http://4.bp.blogspot.com/-32zzSpUlyws/UKJkcEg2LQI/AAAAAAAAAeU/W2FsTKGR3bQ/s1600/12.Run.png) 
+編譯成功，也正確產出檔案的話，在Artifacts會有檔案下載的連結 ](http://3.bp.blogspot.com/-pFj39zNIxV0/UKJkgEv6tRI/AAAAAAAAAec/Z_VC5mEObtQ/s1600/13.Artifacts.png) 
+參考資料  Continuous Integration &amp;amp; Build Server – TeamCity (二) 設定專案 Continuous builds with TeamCity   </description>
+    </item>
+    
+    <item>
+      <title>TeamCity Migrate To SQL Server</title>
+      <link>http://example.org/posts/2012/11/teamcity-migrate-to-sql-server/</link>
+      <pubDate>Thu, 08 Nov 2012 20:57:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/teamcity-migrate-to-sql-server/</guid>
+      <description>首先淮備好資料庫，例如一個名稱為TeamCity的DB ](http://2.bp.blogspot.com/-vkJGa93mgS8/UJud6ZDutdI/AAAAAAAAAXA/efJdpGCptNE/s1600/01.NewDB.png)
+建一個登入帳號，這裡帳號用bar，密碼用foo當範例 ](http://1.bp.blogspot.com/-WRh2WZcEgNM/UJud7G_MGSI/AAAAAAAAAXI/hipvEg4ZmNY/s1600/02.NewUser.png)
+給予db_owner的權限 ](http://3.bp.blogspot.com/-1mkS-zvnKaw/UJud7voFGwI/AAAAAAAAAXQ/IbcM34MqW_g/s1600/03.Owner.png)
+再來下載Database Driver，官網的文件中有介紹兩種Driver 但我試了半天都不行用，後來爬文找到更改連線字串的寫法就可以了 所以在這裡以Microsoft JDBC Driver來介紹 先去Microsoft Download Center 下載Driver ](http://1.bp.blogspot.com/-YNHb9XrRv9k/UJud8PN0l0I/AAAAAAAAAXY/-w8b5MtUqSk/s1600/04.Download.png)
+下載後解壓縮，把sqljdbc4.jar複製到這個神秘的地方 ](http://3.bp.blogspot.com/-whQq072tXfw/UJud8vAsOII/AAAAAAAAAXg/QhDweQyvu08/s1600/05.LibDir.png)
+再來編輯database.mssql.properties.dist這一個範本檔 ](http://1.bp.blogspot.com/-8eIjxlciydI/UJud9RDp2bI/AAAAAAAAAXo/LzrW7FDwNZA/s1600/06.DatabaseTemplate.png)
+官網的文件是把帳密打在後面，但試了半天就是不行 爬文的結果把帳密改寫在連線字串中就成功了，JAVA真是一種神秘的語言 ](http://2.bp.blogspot.com/-k2IyAF5GUFk/UJud91XM0HI/AAAAAAAAAXw/l4Jxv5E89a8/s1600/07.Config.png)
+TeamCity升級到7.1.2後，JDBC的設定不能用了，只好再試了一下另一種連線方式jtds-1.2.2 首先到此下載，jTDS - SQL Server and Sybase JDBC driver 我下載最新的版本，會有java.lang.UnsupportedClassVersionError的錯誤，換成1.2.2就好了 一樣把jtds-1.2.2.jar複製到lib/jdbc的資料夾 連線字串就可以照著範本的格式打了
+connectionUrl=jdbc:jtds:sqlserver://&amp;lt;hostname&amp;gt;:1433/&amp;lt;dbname&amp;gt; connectionProperties.user=&amp;lt;username&amp;gt; connectionProperties.password=&amp;lt;password&amp;gt; 參考資料  Migrating to an External Database  到此淮備工作就完成了，要開始轉移資料之前，要先把服務停下來 ](http://1.bp.blogspot.com/-ZO21PE08jw8/UJud-TBJl6I/AAAAAAAAAX4/3I9MMVD7KMw/s1600/08.StopService.png)
+然後打開一個cmd，輸入以下指令 set path=%path%;c:\TeamCity\jre\bin 這行是和設定JAVA_HOME這個神秘的全域變數同樣的效果 用來把Java Run Time的路徑包含進系統的path 因為我沒安裝JAVA環境，所以要指向到TeamCity自帶的jre路徑 但如果在執行過程中會發生無法開啟jvm.cfg這個錯誤訊息的話 把System32下面的Java.exe、Javaw.exe、Javaws.exe都砍掉就行了
+maintainDB.cmd migrate -T c:\ProgramData\JetBrains\TeamCity\config\database.mssql.properties.dist maintainDB.cmd是TeamCity自帶的資料庫維護工具，可以用來備份、還原、和搬移資料 這邊用的是migrate，把剛設定資料庫的設定檔用-T參考傳進去就行了 ](http://3.bp.blogspot.com/-6skME4p2u5U/UJud-95UhjI/AAAAAAAAAYA/L0Lezi6GN14/s1600/09.Cmd.png)
+順利的話，就會開始搬移資料進SQL Server，並且也會把剛剛的資料庫連線範本 複制成正式用的檔案database.properties ](http://3.bp.blogspot.com/-Y76ZKXqUFmY/UJumBkLtVVI/AAAAAAAAAYw/56KfkQqXhIQ/s1600/10.Success.png)</description>
+    </item>
+    
+    <item>
+      <title>安裝continuous integration (CI) server:TeamCity</title>
+      <link>http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9Dcontinuous-integration-ci-server-teamcity/</link>
+      <pubDate>Wed, 07 Nov 2012 19:59:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9Dcontinuous-integration-ci-server-teamcity/</guid>
+      <description>首先到TeamCity的官網下載合適平台的安裝檔，這裡以Windows平台為例 ](http://2.bp.blogspot.com/-AXLFKiOYCwo/UJpLk6nWQEI/AAAAAAAAAUI/Pq6nhLyFBmo/s1600/01.Download.png)
+接下來一直按下一步就行了 ](http://4.bp.blogspot.com/-bIHMy3RoffA/UJpLlYIgjwI/AAAAAAAAAUQ/qYC73ihpSTc/s1600/02.Install.png)
+安裝的路徑 ](http://4.bp.blogspot.com/--R9vNZrd0c4/UJpQ16_40uI/AAAAAAAAAWY/Od-LiFqEP-U/s1600/03.InstallPath.png)
+安裝的項目，可單獨選擇Build Agent或Server ](http://3.bp.blogspot.com/-PXWB1fViYNo/UJpPYyre8vI/AAAAAAAAAWI/YJJCEISpev8/s1600/04.InstallItem.png)
+設定檔的路徑 ](http://1.bp.blogspot.com/-xclD7A4hI5s/UJpPZahympI/AAAAAAAAAWQ/CVvhaGMYtts/s1600/05.AppPath.png)
+如果安裝的機器上面已經有Web伺服器的話，預設的Port就會改用8080 ](http://1.bp.blogspot.com/-hGBViNi4gSA/UJpLmB-UDII/AAAAAAAAAUY/0isL_frK7Uw/s1600/03.Port.png)
+設定BuildAgent的環境，基本上會自動偵測，記住網域，按下Save就行了 ](http://2.bp.blogspot.com/-whsaUg0yWpY/UJpRYUAHXfI/AAAAAAAAAWg/Vu7tsT0mzSk/s1600/07.Config.png)
+選擇TeamCity Server Service要用的帳號 ](http://3.bp.blogspot.com/-zjQfaovl5qs/UJpLnMGHDNI/AAAAAAAAAUo/irM35PeE5fs/s1600/05.Account.png)
+選擇TeamCity Agent Service要用的帳號 ](http://3.bp.blogspot.com/-oNK5Kj7vcuY/UJpLn2N21UI/AAAAAAAAAUw/HEisyuMEwII/s1600/06.AgentAccount.png)
+啟動服務 ](http://1.bp.blogspot.com/-jepVzX5K58E/UJpLojQtS0I/AAAAAAAAAU4/U9C7b4ee1co/s1600/07.StartService.png)
+到此安裝完成，按下Finish開始設定頁面 ](http://1.bp.blogspot.com/-HtFXZHUHMQ8/UJpLpZd5AvI/AAAAAAAAAVA/G6P77ikRea0/s1600/08.ConfigOK.png)
+第一次執行時的頁面，按下Proceed按鈕執行初始化動作 ](http://4.bp.blogspot.com/-g3yN6FR9TjE/UJpLp9Ow6RI/AAAAAAAAAVI/RBxGhby_zSE/s1600/09.FirstStart.png)
+等待初始化完成後，會跳出使用者授權頁面 ](http://2.bp.blogspot.com/-L5ByFtFy_Y4/UJpLquKDRfI/AAAAAAAAAVQ/5DI2jjLBMy4/s1600/10.Authority.png)
+輸入一組管理用的帳號 ](http://3.bp.blogspot.com/-Ayhsa_UAN48/UJpLrb1JDoI/AAAAAAAAAVY/Nl-NBuv3UlY/s1600/11.AdminAccount.png)
+登入成功，接下來就可以開始來設定專案了 ](http://3.bp.blogspot.com/-MkG9bg7OfcM/UJpLrzh3SDI/AAAAAAAAAVg/XVqnth93x3s/s1600/12.InstallOK.png)
+參考資料  TeamCity Edition Comparison Matrix  </description>
+    </item>
+    
+  </channel>
+</rss>

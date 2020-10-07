@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis 持久化 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用 RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案 所以一旦發生故障，損失的資料較多
+啟用RDB持久化
+save 900 1 save 300 10 save 60 10000 關閉RDB持久化
+save &quot;&rdquo; 設定是否可以壓縮 rdbcompression yes
+設定RDB的檔名 dbfilename dump.rdb
+設定檔案的資料夾位置 dir ./
+=============================================== AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整
+啟用AOF持久化
+appendonly no AOF檔案名稱
+appendfilename appendonly.aof AOF檔案寫入的方式
+appendfsync always appendfsync everysec
+appendfsync no 設定AOF檔案重整的時間 auto-aof-rewrite-percentage 100 auto-aof-rewrite-min-size 64mb
+    ">
+
+
+<meta property="og:title" content="Redis 持久化" />
+<meta property="og:description" content="Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用 RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案 所以一旦發生故障，損失的資料較多
+啟用RDB持久化
+save 900 1 save 300 10 save 60 10000 關閉RDB持久化
+save &quot;&rdquo; 設定是否可以壓縮 rdbcompression yes
+設定RDB的檔名 dbfilename dump.rdb
+設定檔案的資料夾位置 dir ./
+=============================================== AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整
+啟用AOF持久化
+appendonly no AOF檔案名稱
+appendfilename appendonly.aof AOF檔案寫入的方式
+appendfsync always appendfsync everysec
+appendfsync no 設定AOF檔案重整的時間 auto-aof-rewrite-percentage 100 auto-aof-rewrite-min-size 64mb" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-%E6%8C%81%E4%B9%85%E5%8C%96/" />
+<meta property="article:published_time" content="2015-01-21T16:26:00+00:00" />
+<meta property="article:modified_time" content="2015-01-21T16:26:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis 持久化"/>
+<meta name="twitter:description" content="Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用 RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案 所以一旦發生故障，損失的資料較多
+啟用RDB持久化
+save 900 1 save 300 10 save 60 10000 關閉RDB持久化
+save &quot;&rdquo; 設定是否可以壓縮 rdbcompression yes
+設定RDB的檔名 dbfilename dump.rdb
+設定檔案的資料夾位置 dir ./
+=============================================== AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整
+啟用AOF持久化
+appendonly no AOF檔案名稱
+appendfilename appendonly.aof AOF檔案寫入的方式
+appendfsync always appendfsync everysec
+appendfsync no 設定AOF檔案重整的時間 auto-aof-rewrite-percentage 100 auto-aof-rewrite-min-size 64mb"/>
+
+<meta itemprop="name" content="Redis 持久化">
+<meta itemprop="description" content="Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用 RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案 所以一旦發生故障，損失的資料較多
+啟用RDB持久化
+save 900 1 save 300 10 save 60 10000 關閉RDB持久化
+save &quot;&rdquo; 設定是否可以壓縮 rdbcompression yes
+設定RDB的檔名 dbfilename dump.rdb
+設定檔案的資料夾位置 dir ./
+=============================================== AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整
+啟用AOF持久化
+appendonly no AOF檔案名稱
+appendfilename appendonly.aof AOF檔案寫入的方式
+appendfsync always appendfsync everysec
+appendfsync no 設定AOF檔案重整的時間 auto-aof-rewrite-percentage 100 auto-aof-rewrite-min-size 64mb">
+<meta itemprop="datePublished" content="2015-01-21T16:26:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-21T16:26:00+00:00" />
+<meta itemprop="wordCount" content="45">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-%E6%8C%81%E4%B9%85%E5%8C%96/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis 持久化</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 21, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Redis有兩種持久化方式，一種是RDB，一種是Append，可同時使用
+RDB是定時快照，觸發條件發生時，會把當時記憶體的資料存成檔案
+所以一旦發生故障，損失的資料較多</p>
+<p>啟用RDB持久化</p>
+<h1 id="save-900-1">save 900 1</h1>
+<h1 id="save-300-10">save 300 10</h1>
+<h1 id="save-60-10000">save 60 10000</h1>
+<p>關閉RDB持久化</p>
+<h1 id="nbsp-save-">  save &quot;&rdquo;</h1>
+<p>設定是否可以壓縮
+rdbcompression yes</p>
+<p>設定RDB的檔名
+dbfilename dump.rdb</p>
+<p>設定檔案的資料夾位置
+dir ./</p>
+<p>===============================================
+AOF是把收到的指令，用純文字檔的方式附加到檔案中，資料持久化的效能較完整</p>
+<p>啟用AOF持久化</p>
+<h1 id="appendonly-no">appendonly no</h1>
+<p>AOF檔案名稱</p>
+<h1 id="appendfilename-appendonlyaof">appendfilename appendonly.aof</h1>
+<p>AOF檔案寫入的方式</p>
+<h1 id="appendfsync-always">appendfsync always</h1>
+<p>appendfsync everysec</p>
+<h1 id="appendfsync-no">appendfsync no</h1>
+<p>設定AOF檔案重整的時間
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20%e6%8c%81%e4%b9%85%e5%8c%96&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f
+			&title=Redis%20%e6%8c%81%e4%b9%85%e5%8c%96&summary=Redis%e6%9c%89%e5%85%a9%e7%a8%ae%e6%8c%81%e4%b9%85%e5%8c%96%e6%96%b9%e5%bc%8f%ef%bc%8c%e4%b8%80%e7%a8%ae%e6%98%afRDB%ef%bc%8c%e4%b8%80%e7%a8%ae%e6%98%afAppend%ef%bc%8c%e5%8f%af%e5%90%8c%e6%99%82%e4%bd%bf%e7%94%a8%20RDB%e6%98%af%e5%ae%9a%e6%99%82%e5%bf%ab%e7%85%a7%ef%bc%8c%e8%a7%b8%e7%99%bc%e6%a2%9d%e4%bb%b6%e7%99%bc%e7%94%9f%e6%99%82%ef%bc%8c%e6%9c%83%e6%8a%8a%e7%95%b6%e6%99%82%e8%a8%98%e6%86%b6%e9%ab%94%e7%9a%84%e8%b3%87%e6%96%99%e5%ad%98%e6%88%90%e6%aa%94%e6%a1%88%20%e6%89%80%e4%bb%a5%e4%b8%80%e6%97%a6%e7%99%bc%e7%94%9f%e6%95%85%e9%9a%9c%ef%bc%8c%e6%90%8d%e5%a4%b1%e7%9a%84%e8%b3%87%e6%96%99%e8%bc%83%e5%a4%9a%0a%e5%95%9f%e7%94%a8RDB%e6%8c%81%e4%b9%85%e5%8c%96%0asave%20900%201%20save%20300%2010%20save%2060%2010000%20%e9%97%9c%e9%96%89RDB%e6%8c%81%e4%b9%85%e5%8c%96%0asave%20%26quot%3b%26rdquo%3b%20%e8%a8%ad%e5%ae%9a%e6%98%af%e5%90%a6%e5%8f%af%e4%bb%a5%e5%a3%93%e7%b8%ae%20rdbcompression%20yes%0a%e8%a8%ad%e5%ae%9aRDB%e7%9a%84%e6%aa%94%e5%90%8d%20dbfilename%20dump.rdb%0a%e8%a8%ad%e5%ae%9a%e6%aa%94%e6%a1%88%e7%9a%84%e8%b3%87%e6%96%99%e5%a4%be%e4%bd%8d%e7%bd%ae%20dir%20.%2f%0a%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%20AOF%e6%98%af%e6%8a%8a%e6%94%b6%e5%88%b0%e7%9a%84%e6%8c%87%e4%bb%a4%ef%bc%8c%e7%94%a8%e7%b4%94%e6%96%87%e5%ad%97%e6%aa%94%e7%9a%84%e6%96%b9%e5%bc%8f%e9%99%84%e5%8a%a0%e5%88%b0%e6%aa%94%e6%a1%88%e4%b8%ad%ef%bc%8c%e8%b3%87%e6%96%99%e6%8c%81%e4%b9%85%e5%8c%96%e7%9a%84%e6%95%88%e8%83%bd%e8%bc%83%e5%ae%8c%e6%95%b4%0a%e5%95%9f%e7%94%a8AOF%e6%8c%81%e4%b9%85%e5%8c%96%0aappendonly%20no%20AOF%e6%aa%94%e6%a1%88%e5%90%8d%e7%a8%b1%0aappendfilename%20appendonly.aof%20AOF%e6%aa%94%e6%a1%88%e5%af%ab%e5%85%a5%e7%9a%84%e6%96%b9%e5%bc%8f%0aappendfsync%20always%20appendfsync%20everysec%0aappendfsync%20no%20%e8%a8%ad%e5%ae%9aAOF%e6%aa%94%e6%a1%88%e9%87%8d%e6%95%b4%e7%9a%84%e6%99%82%e9%96%93%20auto-aof-rewrite-percentage%20100%20auto-aof-rewrite-min-size%2064mb&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20%e6%8c%81%e4%b9%85%e5%8c%96&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E6%258C%2581%25E4%25B9%2585%25E5%258C%2596%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

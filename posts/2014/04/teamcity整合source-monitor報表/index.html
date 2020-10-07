@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity整合Source Monitor報表 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;sourcemonitor_commands&gt; &lt;write_log&gt;true&lt;/write_log&gt; &lt;command&gt; &lt;project_file&gt;SourceMonitor.smp&lt;/project_file&gt; &lt;checkpoint_name&gt;Baseline&lt;/checkpoint_name&gt; &lt;project_language&gt;C#&lt;/project_language&gt; &lt;!-- 要分析專案的相對路徑 --&gt; &lt;source_directory&gt;..&lt;/source_directory&gt; &lt;source_subdirectory_list&gt; &lt;exclude_subdirectories&gt;true&lt;/exclude_subdirectories&gt; &lt;source_subtree&gt;bin\&lt;/source_subtree&gt; &lt;source_subdirectory&gt;obj\&lt;/source_subdirectory&gt; &lt;/source_subdirectory_list&gt; &lt;parse_utf8_files&gt;True&lt;/parse_utf8_files&gt; &lt;ignore_headers_footers&gt;True&lt;/ignore_headers_footers&gt; &lt;export&gt; &lt;!-- 最後輸出的檔名 --&gt; &lt;export_file&gt;SourceMonitorReport.xml&lt;/export_file&gt; &lt;export_type&gt;2&lt;/export_type&gt; &lt;/export&gt; &lt;/command&gt; &lt;/sourcemonitor_commands&gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&gt; &lt;xsl:output method=&#34;html&#34;/&gt; &lt;xsl:template match=&rdquo;/&quot;&gt; &lt;html&gt; &lt;head&gt; &lt;style type=&quot;text/css&rdquo;&gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1.
+    ">
+
+
+<meta property="og:title" content="TeamCity整合Source Monitor報表" />
+<meta property="og:description" content="Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;sourcemonitor_commands&gt; &lt;write_log&gt;true&lt;/write_log&gt; &lt;command&gt; &lt;project_file&gt;SourceMonitor.smp&lt;/project_file&gt; &lt;checkpoint_name&gt;Baseline&lt;/checkpoint_name&gt; &lt;project_language&gt;C#&lt;/project_language&gt; &lt;!-- 要分析專案的相對路徑 --&gt; &lt;source_directory&gt;..&lt;/source_directory&gt; &lt;source_subdirectory_list&gt; &lt;exclude_subdirectories&gt;true&lt;/exclude_subdirectories&gt; &lt;source_subtree&gt;bin\&lt;/source_subtree&gt; &lt;source_subdirectory&gt;obj\&lt;/source_subdirectory&gt; &lt;/source_subdirectory_list&gt; &lt;parse_utf8_files&gt;True&lt;/parse_utf8_files&gt; &lt;ignore_headers_footers&gt;True&lt;/ignore_headers_footers&gt; &lt;export&gt; &lt;!-- 最後輸出的檔名 --&gt; &lt;export_file&gt;SourceMonitorReport.xml&lt;/export_file&gt; &lt;export_type&gt;2&lt;/export_type&gt; &lt;/export&gt; &lt;/command&gt; &lt;/sourcemonitor_commands&gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&gt; &lt;xsl:output method=&#34;html&#34;/&gt; &lt;xsl:template match=&rdquo;/&quot;&gt; &lt;html&gt; &lt;head&gt; &lt;style type=&quot;text/css&rdquo;&gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/" />
+<meta property="article:published_time" content="2014-04-23T15:40:00+00:00" />
+<meta property="article:modified_time" content="2014-04-23T15:40:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity整合Source Monitor報表"/>
+<meta name="twitter:description" content="Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;sourcemonitor_commands&gt; &lt;write_log&gt;true&lt;/write_log&gt; &lt;command&gt; &lt;project_file&gt;SourceMonitor.smp&lt;/project_file&gt; &lt;checkpoint_name&gt;Baseline&lt;/checkpoint_name&gt; &lt;project_language&gt;C#&lt;/project_language&gt; &lt;!-- 要分析專案的相對路徑 --&gt; &lt;source_directory&gt;..&lt;/source_directory&gt; &lt;source_subdirectory_list&gt; &lt;exclude_subdirectories&gt;true&lt;/exclude_subdirectories&gt; &lt;source_subtree&gt;bin\&lt;/source_subtree&gt; &lt;source_subdirectory&gt;obj\&lt;/source_subdirectory&gt; &lt;/source_subdirectory_list&gt; &lt;parse_utf8_files&gt;True&lt;/parse_utf8_files&gt; &lt;ignore_headers_footers&gt;True&lt;/ignore_headers_footers&gt; &lt;export&gt; &lt;!-- 最後輸出的檔名 --&gt; &lt;export_file&gt;SourceMonitorReport.xml&lt;/export_file&gt; &lt;export_type&gt;2&lt;/export_type&gt; &lt;/export&gt; &lt;/command&gt; &lt;/sourcemonitor_commands&gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&gt; &lt;xsl:output method=&#34;html&#34;/&gt; &lt;xsl:template match=&rdquo;/&quot;&gt; &lt;html&gt; &lt;head&gt; &lt;style type=&quot;text/css&rdquo;&gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1."/>
+
+<meta itemprop="name" content="TeamCity整合Source Monitor報表">
+<meta itemprop="description" content="Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png) 安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png) 先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;sourcemonitor_commands&gt; &lt;write_log&gt;true&lt;/write_log&gt; &lt;command&gt; &lt;project_file&gt;SourceMonitor.smp&lt;/project_file&gt; &lt;checkpoint_name&gt;Baseline&lt;/checkpoint_name&gt; &lt;project_language&gt;C#&lt;/project_language&gt; &lt;!-- 要分析專案的相對路徑 --&gt; &lt;source_directory&gt;..&lt;/source_directory&gt; &lt;source_subdirectory_list&gt; &lt;exclude_subdirectories&gt;true&lt;/exclude_subdirectories&gt; &lt;source_subtree&gt;bin\&lt;/source_subtree&gt; &lt;source_subdirectory&gt;obj\&lt;/source_subdirectory&gt; &lt;/source_subdirectory_list&gt; &lt;parse_utf8_files&gt;True&lt;/parse_utf8_files&gt; &lt;ignore_headers_footers&gt;True&lt;/ignore_headers_footers&gt; &lt;export&gt; &lt;!-- 最後輸出的檔名 --&gt; &lt;export_file&gt;SourceMonitorReport.xml&lt;/export_file&gt; &lt;export_type&gt;2&lt;/export_type&gt; &lt;/export&gt; &lt;/command&gt; &lt;/sourcemonitor_commands&gt;  因為輸出的是XML格式，所以需要透過XSL轉成HTML格式 先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png) SourceMonitor.xsl&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns=&#34;http://www.w3.org/TR/xhtml1/strict&#34;&gt; &lt;xsl:output method=&#34;html&#34;/&gt; &lt;xsl:template match=&rdquo;/&quot;&gt; &lt;html&gt; &lt;head&gt; &lt;style type=&quot;text/css&rdquo;&gt; /* Web20 Table Style written by Netway Media, http://www.netway-media.com */ table { border-collapse: collapse; border: 1px solid #666666; font: normal 11px verdana, arial, helvetica, sans-serif; color: #363636; background: #f6f6f6; text-align: left; } caption { text-align: center; font: bold 16px arial, helvetica, sans-serif; background: transparent; padding: 6px 4px 8px 0px; color: #CC00FF; text-transform: uppercase; } thead, tfoot { background: url(bg1.">
+<meta itemprop="datePublished" content="2014-04-23T15:40:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-23T15:40:00+00:00" />
+<meta itemprop="wordCount" content="553">
+
+
+
+<meta itemprop="keywords" content="Source Monitor,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88source-monitor%E5%A0%B1%E8%A1%A8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity整合Source Monitor報表</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 23, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    12 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/source-monitor">Source Monitor</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/source-monitor">Source monitor</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>Source Monitor是用來分析程式碼度量的工具，先到[官網](http://www.campwoodsw.com/sourcemonitor.html)下載</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)](http://1.bp.blogspot.com/-aUW-QXGVCtE/U1drxYfiw4I/AAAAAAAABSk/phO8_RBI2Os/s1600/01.%E4%B8%8B%E8%BC%89.png)</div>
+<div>安裝後的預設路徑為C:\Program Files (x86)\SourceMonitor</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)](http://4.bp.blogspot.com/-MKLglO_Layc/U1dr6iQoHSI/AAAAAAAABSs/JSEVH5l68VE/s1600/02.%E5%AE%89%E8%A3%9D%E8%B7%AF%E5%BE%91.png)</div>
+<div>先淮備一個用來產生報告的設定檔SourceMonitorCommands.xml</div>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;sourcemonitor_commands&gt;
+    &lt;write_log&gt;true&lt;/write_log&gt;
+    &lt;command&gt;
+        &lt;project_file&gt;SourceMonitor.smp&lt;/project_file&gt;
+        &lt;checkpoint_name&gt;Baseline&lt;/checkpoint_name&gt;
+        &lt;project_language&gt;C#&lt;/project_language&gt;
+        &lt;!-- 要分析專案的相對路徑 --&gt;
+        &lt;source_directory&gt;..&lt;/source_directory&gt;
+        &lt;source_subdirectory_list&gt;
+            &lt;exclude_subdirectories&gt;true&lt;/exclude_subdirectories&gt;
+            &lt;source_subtree&gt;bin\&lt;/source_subtree&gt;
+            &lt;source_subdirectory&gt;obj\&lt;/source_subdirectory&gt;
+        &lt;/source_subdirectory_list&gt;
+        &lt;parse_utf8_files&gt;True&lt;/parse_utf8_files&gt;
+        &lt;ignore_headers_footers&gt;True&lt;/ignore_headers_footers&gt;
+        &lt;export&gt;
+            &lt;!-- 最後輸出的檔名 --&gt;
+            &lt;export_file&gt;SourceMonitorReport.xml&lt;/export_file&gt;
+            &lt;export_type&gt;2&lt;/export_type&gt;
+        &lt;/export&gt;
+    &lt;/command&gt;
+&lt;/sourcemonitor_commands&gt;
+</pre></div>
+<div>因為輸出的是XML格式，所以需要透過XSL轉成HTML格式
+先下載轉換的工具[msxsl.exe](http://www.microsoft.com/en-us/download/details.aspx?id=21714)</div><div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)](http://4.bp.blogspot.com/-1zIhVE-ezj0/U1dsCkgZ1AI/AAAAAAAABS0/CSALVxR5RMw/s1600/03.%E4%B8%8B%E8%BC%89msxsl.png)</div>
+SourceMonitor.xsl</div><div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/TR/xhtml1/strict"&gt;
+  &lt;xsl:output method="html"/&gt;
+<p>&lt;xsl:template match=&rdquo;/&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type=&quot;text/css&rdquo;&gt;
+/*
+Web20 Table Style
+written by Netway Media, <a href="http://www.netway-media.com">http://www.netway-media.com</a>
+*/
+table
+{
+border-collapse: collapse;
+border: 1px solid #666666;
+font: normal 11px verdana, arial, helvetica, sans-serif;
+color: #363636;
+background: #f6f6f6;
+text-align: left;
+}
+caption
+{
+text-align: center;
+font: bold 16px arial, helvetica, sans-serif;
+background: transparent;
+padding: 6px 4px 8px 0px;
+color: #CC00FF;
+text-transform: uppercase;
+}
+thead, tfoot
+{
+background: url(bg1.png) repeat-x;
+text-align: left;
+height: 30px;
+}
+thead th, tfoot th
+{
+padding: 5px;
+}
+table a
+{
+color: #333333;
+text-decoration: none;
+}
+table a:hover
+{
+text-decoration: underline;
+}
+tr.odd
+{
+background: #f1f1f1;
+}
+tbody th, tbody td
+{
+padding: 5px;
+padding-left: 10px;
+}
+td.sectionheader
+{
+color: Navy;
+font-size: 20px;
+font-weigth: bold;
+text-align: center;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;xsl:apply-templates select=&rdquo;//SourceMonitorComplexitySummary&rdquo; /&gt;  <br>
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; The most complex methods &ndash;&gt;
+&lt;xsl:template match=&quot;SourceMonitorComplexitySummary&rdquo;&gt;
+&lt;table class=&quot;section-table&rdquo; cellpadding=&quot;2&rdquo; cellspacing=&quot;0&rdquo; border=&quot;0&rdquo; width=&quot;98%&quot;&gt;
+&lt;!&ndash;&lt;colgroup&gt;
+&lt;col width=&quot;300px&rdquo; /&gt;
+&lt;col width=&quot;50px&rdquo; /&gt;
+&lt;col /&gt;
+&lt;col width=&quot;50px&rdquo; /&gt;
+&lt;/colgroup&gt;&ndash;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;sectionheader&rdquo; colspan=&quot;4&rdquo;&gt;
+SourceMonitor - &lt;xsl:value-of select=&quot;count(MostComplexMethods/Method)&rdquo; /&gt; Most Complex Methods
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th class=&quot;header-label&rdquo;&gt;
+Complexity
+&lt;/th&gt;
+&lt;th class=&quot;header-label&rdquo;&gt;
+File
+&lt;/th&gt;
+&lt;th class=&quot;header-label&rdquo;&gt;
+Method
+&lt;/th&gt;     <br>
+&lt;th class=&quot;header-label&rdquo;&gt;
+Line
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;xsl:apply-templates select=&quot;MostComplexMethods/Method&rdquo; /&gt;
+&lt;/table&gt;</p>
+<pre><code>&amp;lt;br/&amp;gt;
+
+&amp;lt;!-- The most deeply nested code blocks --&amp;gt;
+&amp;lt;table class=&quot;section-table&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; width=&quot;98%&quot;&amp;gt;
+  &amp;lt;!--&amp;lt;colgroup&amp;gt;
+    &amp;lt;col width=&quot;50px&quot;/&amp;gt;
+    &amp;lt;col /&amp;gt;
+    &amp;lt;col width=&quot;50px&quot; /&amp;gt;
+  &amp;lt;/colgroup&amp;gt;--&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td class=&quot;sectionheader&quot; colspan=&quot;4&quot;&amp;gt;           
+       SourceMonitor - &amp;lt;xsl:value-of select=&quot;count(MostDeeplyNestedCode/Block)&quot; /&amp;gt; Most Deeply Nested Code Blocks
+    &amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;th class=&quot;header-label&quot;&amp;gt;
+      Depth
+    &amp;lt;/th&amp;gt;
+    &amp;lt;th class=&quot;header-label&quot;&amp;gt;
+      File
+    &amp;lt;/th&amp;gt;
+    &amp;lt;th class=&quot;header-label&quot;&amp;gt;
+      Line
+    &amp;lt;/th&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;xsl:apply-templates select=&quot;MostDeeplyNestedCode/Block&quot; /&amp;gt;
+&amp;lt;/table&amp;gt;
+</code></pre>
+<p>&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Complex Method List &ndash;&gt;
+&lt;xsl:template match=&quot;MostComplexMethods/Method&rdquo;&gt;
+&lt;tr&gt;
+&lt;xsl:if test=&quot;position() mod 2 = 1&rdquo;&gt;
+&lt;xsl:attribute name=&quot;class&rdquo;&gt;section-oddrow odd&lt;/xsl:attribute&gt;       <br>
+&lt;/xsl:if&gt;
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;Complexity&rdquo; /&gt;
+&lt;/td&gt;
+&lt;td &gt;
+&lt;xsl:value-of select=&quot;File&rdquo; /&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;Name&rdquo;/&gt;
+&lt;/td&gt;     <br>
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;Line&rdquo; /&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Deeply Nested Blocks List &ndash;&gt;
+&lt;xsl:template match=&quot;MostDeeplyNestedCode/Block&rdquo;&gt;
+&lt;tr&gt;
+&lt;xsl:if test=&quot;position() mod 2 = 1&rdquo;&gt;
+&lt;xsl:attribute name=&quot;class&rdquo;&gt;section-oddrow odd&lt;/xsl:attribute&gt;
+&lt;/xsl:if&gt;
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;Depth&rdquo; /&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;File&rdquo; /&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;xsl:value-of select=&quot;Line&rdquo; /&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;
+<span style="font-family: Times New Roman;"><span style="white-space: normal;">
+</span></span></pre></div>
+SourceMonitorSummaryGeneration.xsl</p>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+<p>&lt;!&mdash; SourceMonitor Summary Xml File Generation created by Eden Ridgway &ndash;&gt;
+&lt;xsl:output method=&quot;xml&rdquo;/&gt;</p>
+<p>&lt;xsl:template match=&rdquo;/&quot;&gt;
+&lt;xsl:apply-templates select=&rdquo;/sourcemonitor_metrics&rdquo; /&gt;
+&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Transform the results into a simpler more intuitive and summarised format &ndash;&gt;
+&lt;xsl:template match=&quot;sourcemonitor_metrics&rdquo;&gt;
+&lt;SourceMonitorComplexitySummary&gt;
+&lt;MostComplexMethods&gt;
+&lt;xsl:call-template name=&quot;MostComplexMethods&rdquo;/&gt;
+&lt;/MostComplexMethods&gt;</p>
+<pre><code>    &amp;lt;LinePerMethod&amp;gt;
+      &amp;lt;xsl:call-template name=&quot;LinesPerMethod&quot;/&amp;gt;
+    &amp;lt;/LinePerMethod&amp;gt;
+
+    &amp;lt;MostDeeplyNestedCode&amp;gt;
+      &amp;lt;xsl:call-template name=&quot;MostDeeplyNestedCode&quot;/&amp;gt;
+    &amp;lt;/MostDeeplyNestedCode&amp;gt;
+
+  &amp;lt;/SourceMonitorComplexitySummary&amp;gt;
+</code></pre>
+<p>&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Complexity Metrics &ndash;&gt;
+&lt;xsl:template name=&quot;MostComplexMethods&rdquo;&gt;
+&lt;xsl:for-each select=&rdquo;.//file&rdquo;&gt;
+&lt;xsl:sort select=&quot;metrics/metric[@id='M10&rsquo;]&rdquo; order=&quot;descending&rdquo; data-type=&quot;number&rdquo; /&gt;</p>
+<pre><code>  &amp;lt;xsl:choose&amp;gt;
+    &amp;lt;xsl:when test=&quot;position() &amp;amp;lt; 16&quot;&amp;gt;
+       &amp;lt;Method&amp;gt;
+          &amp;lt;File&amp;gt;&amp;lt;xsl:value-of select=&quot;@file_name&quot;/&amp;gt;&amp;lt;/File&amp;gt;
+          &amp;lt;Name&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M9']&quot;/&amp;gt;&amp;lt;/Name&amp;gt;
+          &amp;lt;Line&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M8']&quot;/&amp;gt;&amp;lt;/Line&amp;gt;
+          &amp;lt;Complexity&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M10']&quot;/&amp;gt;&amp;lt;/Complexity&amp;gt;
+       &amp;lt;/Method&amp;gt;
+    &amp;lt;/xsl:when&amp;gt;
+  &amp;lt;/xsl:choose&amp;gt;
+&amp;lt;/xsl:for-each&amp;gt;
+</code></pre>
+<p>&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Complexity Metrics &ndash;&gt;
+&lt;xsl:template name=&quot;LinesPerMethod&rdquo;&gt;
+&lt;xsl:for-each select=&rdquo;.//file&rdquo;&gt;
+&lt;xsl:sort select=&quot;metrics/metric[@id='M5&rsquo;]&rdquo; order=&quot;descending&rdquo; data-type=&quot;number&rdquo; /&gt;</p>
+<pre><code>  &amp;lt;xsl:choose&amp;gt;
+    &amp;lt;xsl:when test=&quot;position() &amp;amp;lt; 16&quot;&amp;gt;
+       &amp;lt;Method&amp;gt;
+          &amp;lt;File&amp;gt;&amp;lt;xsl:value-of select=&quot;@file_name&quot;/&amp;gt;&amp;lt;/File&amp;gt;
+          &amp;lt;Lines&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M5']&quot;/&amp;gt;&amp;lt;/Lines&amp;gt;
+       &amp;lt;/Method&amp;gt;
+    &amp;lt;/xsl:when&amp;gt;
+  &amp;lt;/xsl:choose&amp;gt;
+&amp;lt;/xsl:for-each&amp;gt;
+</code></pre>
+<p>&lt;/xsl:template&gt;</p>
+<p>&lt;!&ndash; Nesting Metrics &ndash;&gt;
+&lt;xsl:template name=&quot;MostDeeplyNestedCode&rdquo;&gt;
+&lt;xsl:for-each select=&rdquo;.//file&rdquo;&gt;
+&lt;xsl:sort select=&quot;metrics/metric[@id='M12&rsquo;]&rdquo; order=&quot;descending&rdquo; data-type=&quot;text&rdquo; /&gt;</p>
+<pre><code>    &amp;lt;xsl:choose&amp;gt;
+      &amp;lt;xsl:when test=&quot;position() &amp;amp;lt; 16&quot;&amp;gt;
+         &amp;lt;Block&amp;gt;
+            &amp;lt;File&amp;gt;&amp;lt;xsl:value-of select=&quot;@file_name&quot;/&amp;gt;&amp;lt;/File&amp;gt;
+            &amp;lt;Depth&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M12']&quot;/&amp;gt;&amp;lt;/Depth&amp;gt;
+            &amp;lt;Line&amp;gt;&amp;lt;xsl:value-of select=&quot;metrics/metric[@id='M11']&quot;/&amp;gt;&amp;lt;/Line&amp;gt;
+         &amp;lt;/Block&amp;gt;
+      &amp;lt;/xsl:when&amp;gt;
+    &amp;lt;/xsl:choose&amp;gt;
+&amp;lt;/xsl:for-each&amp;gt;
+</code></pre>
+<p>&lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p></pre></div></p>
+<div>透過批次檔得到HTML格式</div><div><pre class="brush:bash">SourceMonitor.exe /C SourceMonitorCommands.xml
+msxsl.exe SourceMonitorReport.xml SourceMonitorSummaryGeneration.xsl -o SourceMonitorSummaryGeneration.xml
+msxsl.exe SourceMonitorSummaryGeneration.xml SourceMonitor.xsl -o SourceMonitorResult.html
+</pre></div>
+<div>在TeamCity上面利用Command Line的Build Step來產出檔案
+方便請見所以建立一個SourceMonitor的資料夾，把相關的執行檔和設定檔都放進去</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-fB6efdi3sLY/U1dt1d9N2lI/AAAAAAAABTo/sM9uAiTT144/s1600/04.%E5%BB%BA%E7%BD%AE%E5%8B%95%E4%BD%9C.png)](http://2.bp.blogspot.com/-fB6efdi3sLY/U1dt1d9N2lI/AAAAAAAABTo/sM9uAiTT144/s1600/04.%E5%BB%BA%E7%BD%AE%E5%8B%95%E4%BD%9C.png)</div>
+<div>新增一個建置報告</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-d6YFhZeqscQ/U1dsmWfvj9I/AAAAAAAABTE/m8iJnDT3NjY/s1600/05.%E6%96%B0%E5%A2%9EBuild+Report.png)](http://3.bp.blogspot.com/-d6YFhZeqscQ/U1dsmWfvj9I/AAAAAAAABTE/m8iJnDT3NjY/s1600/05.%E6%96%B0%E5%A2%9EBuild+Report.png)</div>給一個用來識別的名稱和輸入產生的檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-HWTCgjCV7ao/U1dsw1-UY8I/AAAAAAAABTM/agiFf-B1Uqk/s1600/06.Build+Report.png)](http://1.bp.blogspot.com/-HWTCgjCV7ao/U1dsw1-UY8I/AAAAAAAABTM/agiFf-B1Uqk/s1600/06.Build+Report.png)</div>
+在一般設定中的Artifact Paths加入輸出的檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-M548qVSUE3s/U1dtAFUY41I/AAAAAAAABTU/mgfaj3i2UV8/s1600/07.%E4%B8%80%E8%88%AC%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-M548qVSUE3s/U1dtAFUY41I/AAAAAAAABTU/mgfaj3i2UV8/s1600/07.%E4%B8%80%E8%88%AC%E8%A8%AD%E5%AE%9A.png)</div>
+<div>設定正確的話，建置後就可以看到這個報表了</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-aMSRvswmn08/U1dtFFT5nKI/AAAAAAAABTc/ClKODzPaZFo/s1600/08.Report.png)](http://4.bp.blogspot.com/-aMSRvswmn08/U1dtFFT5nKI/AAAAAAAABTc/ClKODzPaZFo/s1600/08.Report.png)</div>
+<div>參考資料
+[CI Server 16 - 整合程式碼複雜度及深度報表 (Source Monitor)](http://ithelp.ithome.com.tw/question/10107051)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%e6%95%b4%e5%90%88Source%20Monitor%e5%a0%b1%e8%a1%a8&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f
+			&title=TeamCity%e6%95%b4%e5%90%88Source%20Monitor%e5%a0%b1%e8%a1%a8&summary=Source%20Monitor%e6%98%af%e7%94%a8%e4%be%86%e5%88%86%e6%9e%90%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%ba%a6%e9%87%8f%e7%9a%84%e5%b7%a5%e5%85%b7%ef%bc%8c%e5%85%88%e5%88%b0%5b%e5%ae%98%e7%b6%b2%5d%28http%3a%2f%2fwww.campwoodsw.com%2fsourcemonitor.html%29%e4%b8%8b%e8%bc%89%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-aUW-QXGVCtE%2fU1drxYfiw4I%2fAAAAAAAABSk%2fphO8_RBI2Os%2fs1600%2f01.%25E4%25B8%258B%25E8%25BC%2589.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-aUW-QXGVCtE%2fU1drxYfiw4I%2fAAAAAAAABSk%2fphO8_RBI2Os%2fs1600%2f01.%25E4%25B8%258B%25E8%25BC%2589.png%29%20%e5%ae%89%e8%a3%9d%e5%be%8c%e7%9a%84%e9%a0%90%e8%a8%ad%e8%b7%af%e5%be%91%e7%82%baC%3a%5cProgram%20Files%20%28x86%29%5cSourceMonitor%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-MKLglO_Layc%2fU1dr6iQoHSI%2fAAAAAAAABSs%2fJSEVH5l68VE%2fs1600%2f02.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-MKLglO_Layc%2fU1dr6iQoHSI%2fAAAAAAAABSs%2fJSEVH5l68VE%2fs1600%2f02.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png%29%20%e5%85%88%e6%b7%ae%e5%82%99%e4%b8%80%e5%80%8b%e7%94%a8%e4%be%86%e7%94%a2%e7%94%9f%e5%a0%b1%e5%91%8a%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94SourceMonitorCommands.xml%20%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%3f%26gt%3b%20%26lt%3bsourcemonitor_commands%26gt%3b%20%26lt%3bwrite_log%26gt%3btrue%26lt%3b%2fwrite_log%26gt%3b%20%26lt%3bcommand%26gt%3b%20%26lt%3bproject_file%26gt%3bSourceMonitor.smp%26lt%3b%2fproject_file%26gt%3b%20%26lt%3bcheckpoint_name%26gt%3bBaseline%26lt%3b%2fcheckpoint_name%26gt%3b%20%26lt%3bproject_language%26gt%3bC%23%26lt%3b%2fproject_language%26gt%3b%20%26lt%3b%21--%20%e8%a6%81%e5%88%86%e6%9e%90%e5%b0%88%e6%a1%88%e7%9a%84%e7%9b%b8%e5%b0%8d%e8%b7%af%e5%be%91%20--%26gt%3b%20%26lt%3bsource_directory%26gt%3b..%26lt%3b%2fsource_directory%26gt%3b%20%26lt%3bsource_subdirectory_list%26gt%3b%20%26lt%3bexclude_subdirectories%26gt%3btrue%26lt%3b%2fexclude_subdirectories%26gt%3b%20%26lt%3bsource_subtree%26gt%3bbin%5c%26lt%3b%2fsource_subtree%26gt%3b%20%26lt%3bsource_subdirectory%26gt%3bobj%5c%26lt%3b%2fsource_subdirectory%26gt%3b%20%26lt%3b%2fsource_subdirectory_list%26gt%3b%20%26lt%3bparse_utf8_files%26gt%3bTrue%26lt%3b%2fparse_utf8_files%26gt%3b%20%26lt%3bignore_headers_footers%26gt%3bTrue%26lt%3b%2fignore_headers_footers%26gt%3b%20%26lt%3bexport%26gt%3b%20%26lt%3b%21--%20%e6%9c%80%e5%be%8c%e8%bc%b8%e5%87%ba%e7%9a%84%e6%aa%94%e5%90%8d%20--%26gt%3b%20%26lt%3bexport_file%26gt%3bSourceMonitorReport.xml%26lt%3b%2fexport_file%26gt%3b%20%26lt%3bexport_type%26gt%3b2%26lt%3b%2fexport_type%26gt%3b%20%26lt%3b%2fexport%26gt%3b%20%26lt%3b%2fcommand%26gt%3b%20%26lt%3b%2fsourcemonitor_commands%26gt%3b%20%20%e5%9b%a0%e7%82%ba%e8%bc%b8%e5%87%ba%e7%9a%84%e6%98%afXML%e6%a0%bc%e5%bc%8f%ef%bc%8c%e6%89%80%e4%bb%a5%e9%9c%80%e8%a6%81%e9%80%8f%e9%81%8eXSL%e8%bd%89%e6%88%90HTML%e6%a0%bc%e5%bc%8f%20%e5%85%88%e4%b8%8b%e8%bc%89%e8%bd%89%e6%8f%9b%e7%9a%84%e5%b7%a5%e5%85%b7%5bmsxsl.exe%5d%28http%3a%2f%2fwww.microsoft.com%2fen-us%2fdownload%2fdetails.aspx%3fid%3d21714%29%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-1zIhVE-ezj0%2fU1dsCkgZ1AI%2fAAAAAAAABS0%2fCSALVxR5RMw%2fs1600%2f03.%25E4%25B8%258B%25E8%25BC%2589msxsl.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-1zIhVE-ezj0%2fU1dsCkgZ1AI%2fAAAAAAAABS0%2fCSALVxR5RMw%2fs1600%2f03.%25E4%25B8%258B%25E8%25BC%2589msxsl.png%29%20SourceMonitor.xsl%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bxsl%3astylesheet%20version%3d%221.0%22%20xmlns%3axsl%3d%22http%3a%2f%2fwww.w3.org%2f1999%2fXSL%2fTransform%22%20xmlns%3d%22http%3a%2f%2fwww.w3.org%2fTR%2fxhtml1%2fstrict%22%26gt%3b%20%26lt%3bxsl%3aoutput%20method%3d%22html%22%2f%26gt%3b%20%26lt%3bxsl%3atemplate%20match%3d%26rdquo%3b%2f%26quot%3b%26gt%3b%20%26lt%3bhtml%26gt%3b%20%26lt%3bhead%26gt%3b%20%26lt%3bstyle%20type%3d%26quot%3btext%2fcss%26rdquo%3b%26gt%3b%20%2f%2a%20Web20%20Table%20Style%20written%20by%20Netway%20Media%2c%20http%3a%2f%2fwww.netway-media.com%20%2a%2f%20table%20%7b%20border-collapse%3a%20collapse%3b%20border%3a%201px%20solid%20%23666666%3b%20font%3a%20normal%2011px%20verdana%2c%20arial%2c%20helvetica%2c%20sans-serif%3b%20color%3a%20%23363636%3b%20background%3a%20%23f6f6f6%3b%20text-align%3a%20left%3b%20%7d%20caption%20%7b%20text-align%3a%20center%3b%20font%3a%20bold%2016px%20arial%2c%20helvetica%2c%20sans-serif%3b%20background%3a%20transparent%3b%20padding%3a%206px%204px%208px%200px%3b%20color%3a%20%23CC00FF%3b%20text-transform%3a%20uppercase%3b%20%7d%20thead%2c%20tfoot%20%7b%20background%3a%20url%28bg1.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%e6%95%b4%e5%90%88Source%20Monitor%e5%a0%b1%e8%a1%a8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588source-monitor%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

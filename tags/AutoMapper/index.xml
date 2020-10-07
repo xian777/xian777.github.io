@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AutoMapper on My New Hugo Site</title>
+    <link>http://example.org/tags/automapper/</link>
+    <description>Recent content in AutoMapper on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Feb 2016 18:01:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/automapper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AutoMapper 4.2 API Update</title>
+      <link>http://example.org/posts/2016/02/automapper-4-2-api-update/</link>
+      <pubDate>Sun, 28 Feb 2016 18:01:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/02/automapper-4-2-api-update/</guid>
+      <description>AutoMapper 4.2版本之後，將Mapper靜態API類別標注為過時，改用MapperConfiguration來設定對應，記錄一下新的使用方式 首先宣告一個MapperConfiguration物件，並且設定類別對應關系  var config = new MapperConfiguration(cfg =&amp;amp;gt; cfg.CreateMap&amp;amp;lt;Order, OrderDto&amp;amp;gt;());`&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;使用的時後，透過CreateMapper建立一個IMapper物件 再透過IMapper物件來轉換類別&amp;lt;/div&amp;gt;&amp;lt;pre style=&amp;quot;background-color: #f7f7f7; border-radius: 3px; box-sizing: border-box; color: #333333; font-family: Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace; font-size: 13.6px; font-stretch: normal; line-height: 1.45; margin-bottom: 16px; overflow: auto; padding: 16px; word-wrap: normal;&amp;quot;&amp;gt;`var mapper = config.CreateMapper(); OrderDto dto = mapper.Map&amp;amp;lt;OrderDto&amp;amp;gt;(order); </description>
+    </item>
+    
+    <item>
+      <title>AutoMapper 全域設定</title>
+      <link>http://example.org/posts/2014/08/automapper-%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Wed, 06 Aug 2014 13:32:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/08/automapper-%E5%85%A8%E5%9F%9F%E8%A8%AD%E5%AE%9A/</guid>
+      <description>AutoMapper可以把物件的對應設定集中在一個設定檔裡面，然後用Profile來做群組分類 用一個簡單的MVC網站來做例子 首先是HomeModel物件public class HomeModel { public int ModelId { get; set; } public string ModelName { get; set; } }  再來是HomeViewModel物件public class HomeViewModel { public int ViewModelId { get; set; } public string ViewModelName { get; set; } }  接下來在App_Start裡面新增一個AutoMapperConfig檔案public class AutoMapperConfig { public static void Configure() { Mapper.Initialize(x =&amp;gt; { x.AddProfile&amp;lt;HomeProfile&amp;gt;(); }); } private class HomeProfile : Profile { protected override void Configure() { Mapper.CreateMap&amp;amp;lt;HomeModel, HomeViewModel&amp;amp;gt;() .</description>
+    </item>
+    
+    <item>
+      <title>AutoMapper 自訂對應關系</title>
+      <link>http://example.org/posts/2014/08/automapper-%E8%87%AA%E8%A8%82%E5%B0%8D%E6%87%89%E9%97%9C%E7%B3%BB/</link>
+      <pubDate>Tue, 05 Aug 2014 18:18:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/08/automapper-%E8%87%AA%E8%A8%82%E5%B0%8D%E6%87%89%E9%97%9C%E7%B3%BB/</guid>
+      <description>在來源和目的物件中，如果屬性名稱和型態都相同的話，AutoMapper會自動轉換 但通常事情不會這麼單純，很多時後我們會需要指定轉換的方式，用一個簡單的例子來說明 首先是來源的Model物件public class DemoModel { public int CustId { get; set; } public string CustName { get; set; } public bool CustGender { get; set; } }  再來是要轉換的ViewModel物件public class DemoViewModel { public int Id { get; set; } public string Name { get; set; } public string FullName { get; set; } public string Gender { get; set; } public DateTime Date { get; set; } }  轉換的設定方式 Ignore是用來略過對應，不給值 MapFrom是用來指定對應的屬性名稱，或是組合多個屬性值 ResolveUsing是指定自訂的型別轉換方式 UseValue是在轉換的過程中直接給值 NullSubstitute是在原始值為空的時後才給值 Condition傳入一個條件為true才給值public class Class1 { public void GetViewModel() { Mapper.</description>
+    </item>
+    
+    <item>
+      <title>AutoMapper 筆記</title>
+      <link>http://example.org/posts/2014/08/automapper-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Tue, 05 Aug 2014 17:06:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/08/automapper-%E7%AD%86%E8%A8%98/</guid>
+      <description>1. AutoMapper 簡單用法 http://blog.developer.idv.tw/2014/08/automapper_5.html
+2. AutoMapper 自訂對應關系 http://blog.developer.idv.tw/2014/08/automapper_60.html
+3. AutoMapper 全域設定 http://blog.developer.idv.tw/2014/08/automapper_6.html
+參考資源
+AutoMapper 官方文件</description>
+    </item>
+    
+    <item>
+      <title>AutoMapper 簡單用法</title>
+      <link>http://example.org/posts/2014/08/automapper-%E7%B0%A1%E5%96%AE%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Tue, 05 Aug 2014 17:06:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/08/automapper-%E7%B0%A1%E5%96%AE%E7%94%A8%E6%B3%95/</guid>
+      <description>AutoMapper是一個用來處理類別之間轉換的套件，以下用個Model和ViewModel的轉換當例子 首先是一個簡單的Modelpublic class DemoModel { public int Id { get; set; } public string Name { get; set; } }  再來是對應的ViewModelpublic class DemoViewModel { public int Id { get; set; } public string Name { get; set; } }  兩個類別要轉換的一般寫法private static void V1() { DemoModel c1 = new DemoModel() { Id = 123, Name = &amp;ldquo;abc&amp;rdquo; };
+DemoViewModel c2 = new DemoViewModel { Id = c1.Id, Name = c1.</description>
+    </item>
+    
+  </channel>
+</rss>

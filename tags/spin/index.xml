@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spin on My New Hugo Site</title>
+    <link>http://example.org/tags/spin/</link>
+    <description>Recent content in spin on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Oct 2014 14:33:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/spin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ladda-bootstrap 套件</title>
+      <link>http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Wed, 01 Oct 2014 14:33:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/ladda-bootstrap-%E5%A5%97%E4%BB%B6/</guid>
+      <description>ladda-bootstrap用將spin.js整合bootstrap，並加強功能的一個套件 官網上有很詳細的使用範例 透過NuGet就可以安裝
+[![](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-IughOK48vhE/VCuejPlOPuI/AAAAAAAABtE/x5bf4Vtf7PY/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 可以看到套件相依於spin.js [![](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png)](http://2.bp.blogspot.com/-UqPTwSVmbmM/VCuenBELR-I/AAAAAAAABtM/iBFBfK9RyUo/s1600/02.%E5%A5%97%E4%BB%B6%E7%9B%B8%E4%BE%9D%E6%80%A7.png) 使用方式是在button上，加上ladda-button的css類別，要顯示的文字加上ladda-label的css類別
+&amp;lt;button id=&#34;btn1&#34; class=&#34;btn btn-primary ladda-button&#34; data-style=&#34;expand-left&#34;&amp;gt; &amp;lt;span class=&#34;ladda-label&#34;&amp;gt;button&amp;lt;/span&amp;gt; &amp;lt;/button&amp;gt;  另外透過data-style來指定動畫效果 data-style=&#34;expand-left&#34; data-style=&#34;expand-right&#34; data-style=&#34;expand-up&#34; data-style=&#34;expand-down&#34; data-style=&#34;zoom-in&#34; data-style=&#34;zoom-out&#34; data-style=&#34;slide-left&#34; data-style=&#34;slide-right&#34; data-style=&#34;slide-up&#34; data-style=&#34;slide-down&#34; data-style=&#34;contract&#34; 最後透過JavaScript來觸發，先用Ladda.create(element)來取得物件 呼叫物件的start來開始動畫 呼叫物件的stop來停止動畫
+$(function () { $(&#34;#btn1&#34;).click(function () { var obj = Ladda.create(this); obj.start(); setTimeout(function () { obj.stop(); }, 1000); }); });  spin.js.2.0.1好像和ladda不太和，最好先降到spin.js 1.3版就好  相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+spin.js 套件 http://blog.developer.idv.tw/2014/10/spinjs.html</description>
+    </item>
+    
+  </channel>
+</rss>

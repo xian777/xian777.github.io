@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JQuery 陣列處理 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content=" .each(collection, callback) 迭代陣列元素  .grep(array, callback, [invert]) 過濾陣列 第三個參數用來設定傳回符合條件或是不符合條件的元素  .map(array, callback) 將陣列元素處理後回傳成新的陣列  .merge(array1, array2) 將array2合併到array1陣列中  .unique(array) 將陣列中重覆的項目移除  
+    ">
+
+
+<meta property="og:title" content="jQuery 陣列處理" />
+<meta property="og:description" content=" .each(collection, callback) 迭代陣列元素  .grep(array, callback, [invert]) 過濾陣列 第三個參數用來設定傳回符合條件或是不符合條件的元素  .map(array, callback) 將陣列元素處理後回傳成新的陣列  .merge(array1, array2) 將array2合併到array1陣列中  .unique(array) 將陣列中重覆的項目移除  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/08/jquery-%E9%99%A3%E5%88%97%E8%99%95%E7%90%86/" />
+<meta property="article:published_time" content="2013-08-01T18:50:00+00:00" />
+<meta property="article:modified_time" content="2013-08-01T18:50:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jQuery 陣列處理"/>
+<meta name="twitter:description" content=" .each(collection, callback) 迭代陣列元素  .grep(array, callback, [invert]) 過濾陣列 第三個參數用來設定傳回符合條件或是不符合條件的元素  .map(array, callback) 將陣列元素處理後回傳成新的陣列  .merge(array1, array2) 將array2合併到array1陣列中  .unique(array) 將陣列中重覆的項目移除  "/>
+
+<meta itemprop="name" content="jQuery 陣列處理">
+<meta itemprop="description" content=" .each(collection, callback) 迭代陣列元素  .grep(array, callback, [invert]) 過濾陣列 第三個參數用來設定傳回符合條件或是不符合條件的元素  .map(array, callback) 將陣列元素處理後回傳成新的陣列  .merge(array1, array2) 將array2合併到array1陣列中  .unique(array) 將陣列中重覆的項目移除  ">
+<meta itemprop="datePublished" content="2013-08-01T18:50:00+00:00" />
+<meta itemprop="dateModified" content="2013-08-01T18:50:00+00:00" />
+<meta itemprop="wordCount" content="16">
+
+
+
+<meta itemprop="keywords" content="jQuery," />
+
+<link rel="canonical" href="http://example.org/posts/2013/08/jquery-%E9%99%A3%E5%88%97%E8%99%95%E7%90%86/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JQuery 陣列處理</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 1, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jquery">JQuery</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jquery">J query</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div><table border="1"><tbody><tr>            <td>.each(collection, callback)</td>            <td>迭代陣列元素</td>        </tr><tr>            <td>.grep(array, callback, [invert])</td>            <td>過濾陣列
+第三個參數用來設定傳回符合條件或是不符合條件的元素</td>        </tr><tr>            <td>.map(array, callback)</td>            <td>將陣列元素處理後回傳成新的陣列</td>        </tr><tr>            <td>.merge(array1, array2)</td>            <td>將array2合併到array1陣列中</td>        </tr><tr>            <td>.unique(array)</td>            <td>將陣列中重覆的項目移除</td>        </tr></tbody></table></div>
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="500" src="http://jsfiddle.net/hs62W/embedded/js,html,result/presentation" width="100%"></iframe></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=jQuery%20%e9%99%a3%e5%88%97%e8%99%95%e7%90%86&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f
+			&title=jQuery%20%e9%99%a3%e5%88%97%e8%99%95%e7%90%86&summary=%20.each%28collection%2c%20callback%29%20%e8%bf%ad%e4%bb%a3%e9%99%a3%e5%88%97%e5%85%83%e7%b4%a0%20%20.grep%28array%2c%20callback%2c%20%5binvert%5d%29%20%e9%81%8e%e6%bf%be%e9%99%a3%e5%88%97%20%e7%ac%ac%e4%b8%89%e5%80%8b%e5%8f%83%e6%95%b8%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e5%82%b3%e5%9b%9e%e7%ac%a6%e5%90%88%e6%a2%9d%e4%bb%b6%e6%88%96%e6%98%af%e4%b8%8d%e7%ac%a6%e5%90%88%e6%a2%9d%e4%bb%b6%e7%9a%84%e5%85%83%e7%b4%a0%20%20.map%28array%2c%20callback%29%20%e5%b0%87%e9%99%a3%e5%88%97%e5%85%83%e7%b4%a0%e8%99%95%e7%90%86%e5%be%8c%e5%9b%9e%e5%82%b3%e6%88%90%e6%96%b0%e7%9a%84%e9%99%a3%e5%88%97%20%20.merge%28array1%2c%20array2%29%20%e5%b0%87array2%e5%90%88%e4%bd%b5%e5%88%b0array1%e9%99%a3%e5%88%97%e4%b8%ad%20%20.unique%28array%29%20%e5%b0%87%e9%99%a3%e5%88%97%e4%b8%ad%e9%87%8d%e8%a6%86%e7%9a%84%e9%a0%85%e7%9b%ae%e7%a7%bb%e9%99%a4%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=jQuery%20%e9%99%a3%e5%88%97%e8%99%95%e7%90%86&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fjquery-%25E9%2599%25A3%25E5%2588%2597%25E8%2599%2595%25E7%2590%2586%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

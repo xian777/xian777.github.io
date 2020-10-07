@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Posts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="List of all articles in section- Posts">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/posts/" />
+<meta property="og:updated_time" content="2018-09-14T14:25:42+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/posts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1 class="title is-3">Posts</h1>
+</div>
+
+
+<div class="blog-brief">
+    <a href="/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/">
+        <h3 class="title is-4">
+            透過Application Request Route來做SSL Offloading
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/">
+                    <p class="subtitle info date">May 8, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/">
+                <p class="summary">
+                    Application Request Route 越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法
+首先透過Web Platform Installer來安裝ARR [![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png) 搜尋Application Request Routing, 找到後點安裝就行了 [![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png) 重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能 [![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png) 先建立一個預設的站台來繫結https通訊協定 [![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png) 只有預設站台是HTTPS, 其他站台都是HTTP [![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png) 建立一組Server Farms [![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png) 建立一條路由規則來強制站台只能使用https通訊協定 [![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png) 建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台 [![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png) http就會自動轉向https囉 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/04/markdown%E8%AA%9E%E6%B3%95%E7%B0%A1%E4%BB%8B/">
+        <h3 class="title is-4">
+            Markdown語法簡介
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/04/markdown%E8%AA%9E%E6%B3%95%E7%B0%A1%E4%BB%8B/">
+                    <p class="subtitle info date">Apr 26, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/04/markdown%E8%AA%9E%E6%B3%95%E7%B0%A1%E4%BB%8B/">
+                    <p class="subtitle info">
+                        4 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/04/markdown%E8%AA%9E%E6%B3%95%E7%B0%A1%E4%BB%8B/">
+                <p class="summary">
+                    Markdown語法簡介 標題 &lt;span class=&#34;hljs-header&#34;&gt;# H1&lt;/span&gt; &lt;span class=&#34;hljs-header&#34;&gt;## H2&lt;/span&gt; &lt;span class=&#34;hljs-header&#34;&gt;### H3&lt;/span&gt; &lt;span class=&#34;hljs-header&#34;&gt;#### H4&lt;/span&gt; &lt;span class=&#34;hljs-header&#34;&gt;##### H5&lt;/span&gt; &lt;span class=&#34;hljs-header&#34;&gt;###### H6&lt;/span&gt;`&lt;/pre&gt; ## 換行與段落    一個換行字元會轉成換行&amp;lt;br /&amp;gt;
+  兩個換行字元會轉成段落&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;`第一段 第一行 第二行
+第二段 第一行 第二行`
+字體 `*斜體* **粗體** ***粗斜體*** ~~刪除線~~` 引言 `&gt; 用&gt;和一個空白表示 &gt;&gt; 多個&gt;表示嵌套` 水平分隔線 `三個以上的星號、連字號、底線表示 不能有空白或其他的文字 *** --- ___` 無序清單 `* 星號加空白 * 加Tab可嵌套清單 &#43; 加號也可以 - 減號也可以` 有序清單 `1\. 格式為一個數字加小數點加空白 2\. 數字本身順序不重要會自動遞增 1\. 一樣用加Tab可以嵌套` 超連結 `* [行內連結](https://www.google.com) * [帶標題的行內連結](https://www.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/04/markdown%E8%AA%9E%E6%B3%95%E7%B0%A1%E4%BB%8B/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dgitbook-cli%E5%A5%97%E4%BB%B6/">
+        <h3 class="title is-4">
+            安裝gitbook-Cli套件
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dgitbook-cli%E5%A5%97%E4%BB%B6/">
+                    <p class="subtitle info date">Apr 26, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dgitbook-cli%E5%A5%97%E4%BB%B6/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dgitbook-cli%E5%A5%97%E4%BB%B6/">
+                <p class="summary">
+                    安裝gitbook-cli套件 打開命令視窗 $ npm install gitbook-cli -g [![](https://4.bp.blogspot.com/-c2sNfkVb0Ak/Vx7Q4UEFNFI/AAAAAAAADu4/KufuhMsAEfYpYfUZKzENgKX0MuxujO37wCLcB/s1600/01.png)](https://4.bp.blogspot.com/-c2sNfkVb0Ak/Vx7Q4UEFNFI/AAAAAAAADu4/KufuhMsAEfYpYfUZKzENgKX0MuxujO37wCLcB/s1600/01.png) 到gitbook新增一本書 [![](https://4.bp.blogspot.com/-0gERcw00EKI/Vx7Q4c0qDPI/AAAAAAAADu8/YZ6P9jaunpwDpJ3wjHus68mESLDtunWOgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-0gERcw00EKI/Vx7Q4c0qDPI/AAAAAAAADu8/YZ6P9jaunpwDpJ3wjHus68mESLDtunWOgCLcB/s1600/02.png) 輸入書名 [![](https://1.bp.blogspot.com/-xaAtNiEzDck/Vx7Q4XnXYOI/AAAAAAAADvA/Tj8c6D9Npq0fYO9Lh411JQZ26HOOde-5wCLcB/s1600/03.png)](https://1.bp.blogspot.com/-xaAtNiEzDck/Vx7Q4XnXYOI/AAAAAAAADvA/Tj8c6D9Npq0fYO9Lh411JQZ26HOOde-5wCLcB/s1600/03.png) 進入設定頁面 [![](https://2.bp.blogspot.com/-SDs_CHuIDLM/Vx7Q4g_vBbI/AAAAAAAADvE/IiTyOM_CClMDyQTtaKrXjyf7BfjsnveLgCLcB/s1600/04.png)](https://2.bp.blogspot.com/-SDs_CHuIDLM/Vx7Q4g_vBbI/AAAAAAAADvE/IiTyOM_CClMDyQTtaKrXjyf7BfjsnveLgCLcB/s1600/04.png) 取得git路徑 https://git.gitbook.com/{username}/{bookname}.git [![](https://3.bp.blogspot.com/-BYik6CeSdIE/Vx7Q45JruuI/AAAAAAAADvI/Za1vyQhkd0Q1_ZfYLZUlxZW3Mlo_9y7WACLcB/s1600/05.png)](https://3.bp.blogspot.com/-BYik6CeSdIE/Vx7Q45JruuI/AAAAAAAADvI/Za1vyQhkd0Q1_ZfYLZUlxZW3Mlo_9y7WACLcB/s1600/05.png) 取得這本書的原始檔案 $ git clone https://git.gitbook.com/{username}/{bookname}.git bookdir [![](https://2.bp.blogspot.com/-Sb06atwi5qg/Vx7Q43FUJaI/AAAAAAAADvM/lUZKBoh0mgceJc05Ic2qZDmV4dynot7JACLcB/s1600/06.png)](https://2.bp.blogspot.com/-Sb06atwi5qg/Vx7Q43FUJaI/AAAAAAAADvM/lUZKBoh0mgceJc05Ic2qZDmV4dynot7JACLcB/s1600/06.png) 使用Visual Studio Code打開資料夾 [![](https://4.bp.blogspot.com/-5TFjL1ZKGY8/Vx7Q5K5CBgI/AAAAAAAADvQ/UwQz1vxI7SY_FE1nmIgNku3RFA_aof0HACLcB/s1600/07.png)](https://4.bp.blogspot.com/-5TFjL1ZKGY8/Vx7Q5K5CBgI/AAAAAAAADvQ/UwQz1vxI7SY_FE1nmIgNku3RFA_aof0HACLcB/s1600/07.png) 在本地端觀看編輯後的結果 $ gitbook serve [![](https://4.bp.blogspot.com/-AobZ7eNyvDQ/Vx7Q5dttWhI/AAAAAAAADvU/SLCiXw_8SzY-FycsUL_YtC4I5Rp2cVPbQCLcB/s1600/08.png)](https://4.bp.blogspot.com/-AobZ7eNyvDQ/Vx7Q5dttWhI/AAAAAAAADvU/SLCiXw_8SzY-FycsUL_YtC4I5Rp2cVPbQCLcB/s1600/08.png) 輸入此次異動的訊息 [![](https://2.bp.blogspot.com/-5CIEZEcRakU/Vx7Q5eBHCzI/AAAAAAAADvY/5G6x9gqc03I92n6QZemfkED_vb_dcr-CQCLcB/s1600/09.png)](https://2.bp.blogspot.com/-5CIEZEcRakU/Vx7Q5eBHCzI/AAAAAAAADvY/5G6x9gqc03I92n6QZemfkED_vb_dcr-CQCLcB/s1600/09.png) 同步記錄到gitbook [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dgitbook-cli%E5%A5%97%E4%BB%B6/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dnodejs/">
+        <h3 class="title is-4">
+            安裝NodeJS
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dnodejs/">
+                    <p class="subtitle info date">Apr 26, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dnodejs/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dnodejs/">
+                <p class="summary">
+                    安裝NodeJS 到官網下載安裝程式 [![](https://2.bp.blogspot.com/-zqxVXCYaHLs/Vx7QSctzWTI/AAAAAAAADuc/HWI51Qm2uEINknmIpbTsYxfe2oo3IsRRQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-zqxVXCYaHLs/Vx7QSctzWTI/AAAAAAAADuc/HWI51Qm2uEINknmIpbTsYxfe2oo3IsRRQCLcB/s1600/01.png) 雙擊安裝程式開始安裝 [![](https://4.bp.blogspot.com/-6CjssQgIWtw/Vx7QSc0KaSI/AAAAAAAADuU/be1BYXZTy2QHZk2AzKI9pCbrvzqGHyRLgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-6CjssQgIWtw/Vx7QSc0KaSI/AAAAAAAADuU/be1BYXZTy2QHZk2AzKI9pCbrvzqGHyRLgCLcB/s1600/02.png) 接受授權條款 [![](https://3.bp.blogspot.com/-B-4-D6NeuJQ/Vx7QSb2FSlI/AAAAAAAADuY/51OaG65vqXQHJb9YihIhybygHkxbi2vOgCLcB/s1600/03.png)](https://3.bp.blogspot.com/-B-4-D6NeuJQ/Vx7QSb2FSlI/AAAAAAAADuY/51OaG65vqXQHJb9YihIhybygHkxbi2vOgCLcB/s1600/03.png) 選擇安裝路徑 [![](https://3.bp.blogspot.com/-5YSHvoyPNI8/Vx7QS6gVlTI/AAAAAAAADug/L7kx6dFJVDkMXWSsCT_fZYE1GoruR1nbACLcB/s1600/04.png)](https://3.bp.blogspot.com/-5YSHvoyPNI8/Vx7QS6gVlTI/AAAAAAAADug/L7kx6dFJVDkMXWSsCT_fZYE1GoruR1nbACLcB/s1600/04.png) 自訂安裝設定(使用預設值即可) [![](https://3.bp.blogspot.com/-Hgc-P0PW0b0/Vx7QS4rOmaI/AAAAAAAADuk/XhCNfuRhs40Y0--kSPk6xL7oS_QGzAnmgCLcB/s1600/05.png)](https://3.bp.blogspot.com/-Hgc-P0PW0b0/Vx7QS4rOmaI/AAAAAAAADuk/XhCNfuRhs40Y0--kSPk6xL7oS_QGzAnmgCLcB/s1600/05.png) 準備安裝 [![](https://4.bp.blogspot.com/-oOaOfTe9LNk/Vx7QS5b6XBI/AAAAAAAADuo/iHvQK-XEeQQ23HMq41-wQGQJzq2kTQMUwCLcB/s1600/06.png)](https://4.bp.blogspot.com/-oOaOfTe9LNk/Vx7QS5b6XBI/AAAAAAAADuo/iHvQK-XEeQQ23HMq41-wQGQJzq2kTQMUwCLcB/s1600/06.png) 安裝中 [![](https://2.bp.blogspot.com/-ahztXiULWuA/Vx7QTIkbmoI/AAAAAAAADus/H8vEU_9ONZwQXsVpnphvUxffAdvYVCQaQCLcB/s1600/07.png)](https://2.bp.blogspot.com/-ahztXiULWuA/Vx7QTIkbmoI/AAAAAAAADus/H8vEU_9ONZwQXsVpnphvUxffAdvYVCQaQCLcB/s1600/07.png) 安裝完成 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9Dnodejs/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2016/04/%E5%AE%89%E8%A3%9D-git-for-windows/">
+        <h3 class="title is-4">
+            安裝 Git for Windows
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9D-git-for-windows/">
+                    <p class="subtitle info date">Apr 26, 2016
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2016/04/%E5%AE%89%E8%A3%9D-git-for-windows/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9D-git-for-windows/">
+                <p class="summary">
+                    安裝Git for Windows 先到官網下載安裝程式 [![](https://3.bp.blogspot.com/-dABrzIH45zw/Vx7Lj4gC5cI/AAAAAAAADto/wDSxRlU__z4yVizIPpKTtagkGm7rUvAnwCLcB/s1600/01.png)](https://3.bp.blogspot.com/-dABrzIH45zw/Vx7Lj4gC5cI/AAAAAAAADto/wDSxRlU__z4yVizIPpKTtagkGm7rUvAnwCLcB/s1600/01.png) 雙擊安裝程式開始安裝 [![](https://2.bp.blogspot.com/-SVZBAJjLuoE/Vx7Lj_iHLCI/AAAAAAAADtg/_aew6AjLcA4yEfmxyX56GDXH-ZEW5cQ6gCLcB/s1600/02.png)](https://2.bp.blogspot.com/-SVZBAJjLuoE/Vx7Lj_iHLCI/AAAAAAAADtg/_aew6AjLcA4yEfmxyX56GDXH-ZEW5cQ6gCLcB/s1600/02.png) 選擇安裝路徑 [![](https://3.bp.blogspot.com/-CDQWRrC3Q80/Vx7Lj28kIfI/AAAAAAAADtk/tzFzNQxljCcwA_wSR1qOqFbtKQm3SSsNwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-CDQWRrC3Q80/Vx7Lj28kIfI/AAAAAAAADtk/tzFzNQxljCcwA_wSR1qOqFbtKQm3SSsNwCLcB/s1600/03.png) 選擇安裝元件 [![](https://4.bp.blogspot.com/-TNr0zgsVlfk/Vx7LkdlY2pI/AAAAAAAADts/-PUOHdpv0okp8JmcIibS-NODMW0HqgJnwCLcB/s1600/04.png)](https://4.bp.blogspot.com/-TNr0zgsVlfk/Vx7LkdlY2pI/AAAAAAAADts/-PUOHdpv0okp8JmcIibS-NODMW0HqgJnwCLcB/s1600/04.png) 輸入開始功能表的資料夾名稱 [![](https://4.bp.blogspot.com/-rw5kaupPgmg/Vx7LkTpp1fI/AAAAAAAADtw/Vq_4V8FaOBIcO10mRbyW2GdFXk9BhwKZwCLcB/s1600/05.png)](https://4.bp.blogspot.com/-rw5kaupPgmg/Vx7LkTpp1fI/AAAAAAAADtw/Vq_4V8FaOBIcO10mRbyW2GdFXk9BhwKZwCLcB/s1600/05.png) 調整環境路徑 [![](https://3.bp.blogspot.com/-uDjSPyDBqw8/Vx7LkXz72OI/AAAAAAAADt0/8YHMNtcKx1UI4xUGhWm2gv828jj_E3Q1QCLcB/s1600/06.png)](https://3.bp.blogspot.com/-uDjSPyDBqw8/Vx7LkXz72OI/AAAAAAAADt0/8YHMNtcKx1UI4xUGhWm2gv828jj_E3Q1QCLcB/s1600/06.png) 設定文件的結尾符號 [![](https://1.bp.blogspot.com/-55AKWEwo0ZM/Vx7LkqKHe5I/AAAAAAAADt4/R_Up4rvb6509tfgvEVoerx2yrYy4hoQsQCLcB/s1600/07.png)](https://1.bp.blogspot.com/-55AKWEwo0ZM/Vx7LkqKHe5I/AAAAAAAADt4/R_Up4rvb6509tfgvEVoerx2yrYy4hoQsQCLcB/s1600/07.png) 設定命令列模式 [![](https://1.bp.blogspot.com/-KZPND7pw0ik/Vx7Lk3UG4EI/AAAAAAAADt8/fZIJJTuV22kYNcc6IBVzsMYod1ZHbqK-gCLcB/s1600/08.png)](https://1.bp.blogspot.com/-KZPND7pw0ik/Vx7Lk3UG4EI/AAAAAAAADt8/fZIJJTuV22kYNcc6IBVzsMYod1ZHbqK-gCLcB/s1600/08.png) 設定快取 [![](https://3.bp.blogspot.com/-vmGiLuQY9r4/Vx7Lk-EAw9I/AAAAAAAADuA/j8y38z-nuywtpiTe9OZxyA0BHyzTVGxygCLcB/s1600/09.png)](https://3.bp.blogspot.com/-vmGiLuQY9r4/Vx7Lk-EAw9I/AAAAAAAADuA/j8y38z-nuywtpiTe9OZxyA0BHyzTVGxygCLcB/s1600/09.png) 開始安裝 [![](https://4.bp.blogspot.com/-6D58j-Yqvmo/Vx7LlGU4dXI/AAAAAAAADuE/jzXs3GRKsIgLDm0qLvCP6YJRrUgEYQAZgCLcB/s1600/10.png)](https://4.bp.blogspot.com/-6D58j-Yqvmo/Vx7LlGU4dXI/AAAAAAAADuE/jzXs3GRKsIgLDm0qLvCP6YJRrUgEYQAZgCLcB/s1600/10.png) 安裝完成 [!
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2016/04/%E5%AE%89%E8%A3%9D-git-for-windows/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+
+
+
+
+<section class="section">
+    <nav class="pagination is-centered">
+
+        
+            <a class="pagination-previous is-dark" href="/posts/page/5/">Previous</a>
+        
+
+        
+            <a class="pagination-next" href="/posts/page/7/">Next page</a>
+        
+
+
+        <ul class="pagination-list">
+
+        
+
+            
+            
+
+                <li><a href="/posts/" class="pagination-link">1</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/5/" class="pagination-link">5</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/6/" class="pagination-link is-current">6</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/7/" class="pagination-link">7</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/52/" class="pagination-link">52</a></li>
+
+                
+                
+
+            
+
+        
+
+        </ul>
+    </nav>
+</section>
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    前端套件管理工具: Bower | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="安裝bower$ npm install bower -g 產生設定檔$ bower init { &#34;name&#34;: &#34;ASP.NET&#34;, &#34;private&#34;: true, &#34;dependencies&#34;: { &#34;bootstrap&#34;: &#34;3.3.5&#34;, &#34;jquery&#34;: &#34;2.1.4&#34;, &#34;jquery-validation&#34;: &#34;1.14.0&#34;, &#34;jquery-validation-unobtrusive&#34;: &#34;3.2.4&#34;, &#34;angularjs&#34;: &#34;1.5.0&#34; } } 新增.bowerrc檔案輸入資料夾位置{ &#34;directory&#34;: &#34;wwwroot/lib&#34; } 安裝套件$ bower install $ bower install jquery $ bower install jquery --save $ bower install jquery --save-dev 查詢套件$ bower search jquery 查詢指定套件詳細訊息 $ bower info jquery 查詢已安裝套件$ bower list 移除套件$ bower uninstall jquery 
+    ">
+
+
+<meta property="og:title" content="前端套件管理工具: Bower" />
+<meta property="og:description" content="安裝bower$ npm install bower -g 產生設定檔$ bower init { &#34;name&#34;: &#34;ASP.NET&#34;, &#34;private&#34;: true, &#34;dependencies&#34;: { &#34;bootstrap&#34;: &#34;3.3.5&#34;, &#34;jquery&#34;: &#34;2.1.4&#34;, &#34;jquery-validation&#34;: &#34;1.14.0&#34;, &#34;jquery-validation-unobtrusive&#34;: &#34;3.2.4&#34;, &#34;angularjs&#34;: &#34;1.5.0&#34; } } 新增.bowerrc檔案輸入資料夾位置{ &#34;directory&#34;: &#34;wwwroot/lib&#34; } 安裝套件$ bower install $ bower install jquery $ bower install jquery --save $ bower install jquery --save-dev 查詢套件$ bower search jquery 查詢指定套件詳細訊息 $ bower info jquery 查詢已安裝套件$ bower list 移除套件$ bower uninstall jquery " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/03/%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-bower/" />
+<meta property="article:published_time" content="2016-03-15T15:47:00+00:00" />
+<meta property="article:modified_time" content="2016-03-15T15:47:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="前端套件管理工具: Bower"/>
+<meta name="twitter:description" content="安裝bower$ npm install bower -g 產生設定檔$ bower init { &#34;name&#34;: &#34;ASP.NET&#34;, &#34;private&#34;: true, &#34;dependencies&#34;: { &#34;bootstrap&#34;: &#34;3.3.5&#34;, &#34;jquery&#34;: &#34;2.1.4&#34;, &#34;jquery-validation&#34;: &#34;1.14.0&#34;, &#34;jquery-validation-unobtrusive&#34;: &#34;3.2.4&#34;, &#34;angularjs&#34;: &#34;1.5.0&#34; } } 新增.bowerrc檔案輸入資料夾位置{ &#34;directory&#34;: &#34;wwwroot/lib&#34; } 安裝套件$ bower install $ bower install jquery $ bower install jquery --save $ bower install jquery --save-dev 查詢套件$ bower search jquery 查詢指定套件詳細訊息 $ bower info jquery 查詢已安裝套件$ bower list 移除套件$ bower uninstall jquery "/>
+
+<meta itemprop="name" content="前端套件管理工具: Bower">
+<meta itemprop="description" content="安裝bower$ npm install bower -g 產生設定檔$ bower init { &#34;name&#34;: &#34;ASP.NET&#34;, &#34;private&#34;: true, &#34;dependencies&#34;: { &#34;bootstrap&#34;: &#34;3.3.5&#34;, &#34;jquery&#34;: &#34;2.1.4&#34;, &#34;jquery-validation&#34;: &#34;1.14.0&#34;, &#34;jquery-validation-unobtrusive&#34;: &#34;3.2.4&#34;, &#34;angularjs&#34;: &#34;1.5.0&#34; } } 新增.bowerrc檔案輸入資料夾位置{ &#34;directory&#34;: &#34;wwwroot/lib&#34; } 安裝套件$ bower install $ bower install jquery $ bower install jquery --save $ bower install jquery --save-dev 查詢套件$ bower search jquery 查詢指定套件詳細訊息 $ bower info jquery 查詢已安裝套件$ bower list 移除套件$ bower uninstall jquery ">
+<meta itemprop="datePublished" content="2016-03-15T15:47:00+00:00" />
+<meta itemprop="dateModified" content="2016-03-15T15:47:00+00:00" />
+<meta itemprop="wordCount" content="64">
+
+
+
+<meta itemprop="keywords" content="NodeJS," />
+
+<link rel="canonical" href="http://example.org/posts/2016/03/%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-bower/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>前端套件管理工具: Bower</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Mar 15, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nodejs">NodeJS</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nodejs">Node j s</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>安裝bower</div><div><pre class="brush:bash">$ npm install bower -g</pre></div>
+<div>產生設定檔</div><div><pre class="brush:bash">$ bower init</pre></div><div>
+<div><pre class="brush:javascript">{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "jquery": "2.1.4",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.4",
+    "angularjs": "1.5.0"
+  }
+}</pre></div><div>
+新增.bowerrc檔案輸入資料夾位置</div><div><pre class="brush:javascript">{
+  "directory": "wwwroot/lib"
+}</pre></div>
+<div>安裝套件</div><div><pre class="brush:bash">$ bower install
+$ bower install jquery
+$ bower install jquery --save
+$ bower install jquery --save-dev</pre></div>
+<div>查詢套件</div><div><pre class="brush:bash">$ bower search jquery</pre></div>
+<div>查詢指定套件詳細訊息 </div><div><pre class="brush:bash">$ bower info jquery</pre></div>
+<div>查詢已安裝套件</div><div><pre class="brush:bash">$ bower list</pre></div>
+<div>移除套件</div><div><pre class="brush:bash">$ bower uninstall jquery</pre></div>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%89%8d%e7%ab%af%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%3a%20Bower&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f
+			&title=%e5%89%8d%e7%ab%af%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%3a%20Bower&summary=%e5%ae%89%e8%a3%9dbower%24%20npm%20install%20bower%20-g%20%e7%94%a2%e7%94%9f%e8%a8%ad%e5%ae%9a%e6%aa%94%24%20bower%20init%20%7b%20%22name%22%3a%20%22ASP.NET%22%2c%20%22private%22%3a%20true%2c%20%22dependencies%22%3a%20%7b%20%22bootstrap%22%3a%20%223.3.5%22%2c%20%22jquery%22%3a%20%222.1.4%22%2c%20%22jquery-validation%22%3a%20%221.14.0%22%2c%20%22jquery-validation-unobtrusive%22%3a%20%223.2.4%22%2c%20%22angularjs%22%3a%20%221.5.0%22%20%7d%20%7d%20%e6%96%b0%e5%a2%9e.bowerrc%e6%aa%94%e6%a1%88%e8%bc%b8%e5%85%a5%e8%b3%87%e6%96%99%e5%a4%be%e4%bd%8d%e7%bd%ae%7b%20%22directory%22%3a%20%22wwwroot%2flib%22%20%7d%20%e5%ae%89%e8%a3%9d%e5%a5%97%e4%bb%b6%24%20bower%20install%20%24%20bower%20install%20jquery%20%24%20bower%20install%20jquery%20--save%20%24%20bower%20install%20jquery%20--save-dev%20%e6%9f%a5%e8%a9%a2%e5%a5%97%e4%bb%b6%24%20bower%20search%20jquery%20%e6%9f%a5%e8%a9%a2%e6%8c%87%e5%ae%9a%e5%a5%97%e4%bb%b6%e8%a9%b3%e7%b4%b0%e8%a8%8a%e6%81%af%20%24%20bower%20info%20jquery%20%e6%9f%a5%e8%a9%a2%e5%b7%b2%e5%ae%89%e8%a3%9d%e5%a5%97%e4%bb%b6%24%20bower%20list%20%e7%a7%bb%e9%99%a4%e5%a5%97%e4%bb%b6%24%20bower%20uninstall%20jquery%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%89%8d%e7%ab%af%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%3a%20Bower&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2f%25E5%2589%258D%25E7%25AB%25AF%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25B7%25A5%25E5%2585%25B7-bower%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

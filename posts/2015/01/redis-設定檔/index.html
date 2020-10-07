@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis 設定檔 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="用來指派空間的單位簡寫，不區分大小寫
+1k =&gt; 1000 bytes 1kb =&gt; 1024 bytes 1m =&gt; 1000000 bytes 1mb =&gt; 1024*1024 bytes 1g =&gt; 1000000000 bytes 1gb =&gt; 102410241024 bytes 伺服器埠號 port 6379
+繫結位址，預設是本機全部
+bind 127.0.0.1 Client連線閒置多久要切斷連線，單位為秒，0是不限制時間 timeout 0
+################################ 快照設定 ################################# 第一個參數是秒數，第二個參數是異動次數 符合以下任一條件，就執行一次快照，產生dump.rdb
+save 900 1 save 300 10 save 60 10000
+產生快照檔時是否要壓縮檔案 rdbcompression yes
+快照檔案的檔名 dbfilename dump.rdb
+快照檔案的路徑 dir ./
+################################# 覆寫 #################################
+在slave的實體上，用來指定master的位址
+slaveof &lt;masterip&gt; &lt;masterport&gt; 如果master需要驗證密碼時設定
+masterauth &lt;master-password&gt; 當slave和master斷線，或是正在同步中，是否回應Client端要求 設定成no會回應一個SYNC with master in progress的錯誤 slave-serve-stale-data yes
+    ">
+
+
+<meta property="og:title" content="Redis 設定檔" />
+<meta property="og:description" content="用來指派空間的單位簡寫，不區分大小寫
+1k =&gt; 1000 bytes 1kb =&gt; 1024 bytes 1m =&gt; 1000000 bytes 1mb =&gt; 1024*1024 bytes 1g =&gt; 1000000000 bytes 1gb =&gt; 102410241024 bytes 伺服器埠號 port 6379
+繫結位址，預設是本機全部
+bind 127.0.0.1 Client連線閒置多久要切斷連線，單位為秒，0是不限制時間 timeout 0
+################################ 快照設定 ################################# 第一個參數是秒數，第二個參數是異動次數 符合以下任一條件，就執行一次快照，產生dump.rdb
+save 900 1 save 300 10 save 60 10000
+產生快照檔時是否要壓縮檔案 rdbcompression yes
+快照檔案的檔名 dbfilename dump.rdb
+快照檔案的路徑 dir ./
+################################# 覆寫 #################################
+在slave的實體上，用來指定master的位址
+slaveof &lt;masterip&gt; &lt;masterport&gt; 如果master需要驗證密碼時設定
+masterauth &lt;master-password&gt; 當slave和master斷線，或是正在同步中，是否回應Client端要求 設定成no會回應一個SYNC with master in progress的錯誤 slave-serve-stale-data yes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-%E8%A8%AD%E5%AE%9A%E6%AA%94/" />
+<meta property="article:published_time" content="2015-01-19T19:13:00+00:00" />
+<meta property="article:modified_time" content="2015-01-19T19:13:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis 設定檔"/>
+<meta name="twitter:description" content="用來指派空間的單位簡寫，不區分大小寫
+1k =&gt; 1000 bytes 1kb =&gt; 1024 bytes 1m =&gt; 1000000 bytes 1mb =&gt; 1024*1024 bytes 1g =&gt; 1000000000 bytes 1gb =&gt; 102410241024 bytes 伺服器埠號 port 6379
+繫結位址，預設是本機全部
+bind 127.0.0.1 Client連線閒置多久要切斷連線，單位為秒，0是不限制時間 timeout 0
+################################ 快照設定 ################################# 第一個參數是秒數，第二個參數是異動次數 符合以下任一條件，就執行一次快照，產生dump.rdb
+save 900 1 save 300 10 save 60 10000
+產生快照檔時是否要壓縮檔案 rdbcompression yes
+快照檔案的檔名 dbfilename dump.rdb
+快照檔案的路徑 dir ./
+################################# 覆寫 #################################
+在slave的實體上，用來指定master的位址
+slaveof &lt;masterip&gt; &lt;masterport&gt; 如果master需要驗證密碼時設定
+masterauth &lt;master-password&gt; 當slave和master斷線，或是正在同步中，是否回應Client端要求 設定成no會回應一個SYNC with master in progress的錯誤 slave-serve-stale-data yes"/>
+
+<meta itemprop="name" content="Redis 設定檔">
+<meta itemprop="description" content="用來指派空間的單位簡寫，不區分大小寫
+1k =&gt; 1000 bytes 1kb =&gt; 1024 bytes 1m =&gt; 1000000 bytes 1mb =&gt; 1024*1024 bytes 1g =&gt; 1000000000 bytes 1gb =&gt; 102410241024 bytes 伺服器埠號 port 6379
+繫結位址，預設是本機全部
+bind 127.0.0.1 Client連線閒置多久要切斷連線，單位為秒，0是不限制時間 timeout 0
+################################ 快照設定 ################################# 第一個參數是秒數，第二個參數是異動次數 符合以下任一條件，就執行一次快照，產生dump.rdb
+save 900 1 save 300 10 save 60 10000
+產生快照檔時是否要壓縮檔案 rdbcompression yes
+快照檔案的檔名 dbfilename dump.rdb
+快照檔案的路徑 dir ./
+################################# 覆寫 #################################
+在slave的實體上，用來指定master的位址
+slaveof &lt;masterip&gt; &lt;masterport&gt; 如果master需要驗證密碼時設定
+masterauth &lt;master-password&gt; 當slave和master斷線，或是正在同步中，是否回應Client端要求 設定成no會回應一個SYNC with master in progress的錯誤 slave-serve-stale-data yes">
+<meta itemprop="datePublished" content="2015-01-19T19:13:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-19T19:13:00+00:00" />
+<meta itemprop="wordCount" content="217">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-%E8%A8%AD%E5%AE%9A%E6%AA%94/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis 設定檔</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 19, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    7 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>用來指派空間的單位簡寫，不區分大小寫</p>
+<h1 id="1k-gt-1000-bytes">1k =&gt; 1000 bytes</h1>
+<h1 id="1kb-gt-1024-bytes">1kb =&gt; 1024 bytes</h1>
+<h1 id="1m-gt-1000000-bytes">1m =&gt; 1000000 bytes</h1>
+<h1 id="1mb-gt-10241024-bytes">1mb =&gt; 1024*1024 bytes</h1>
+<h1 id="1g-gt-1000000000-bytes">1g =&gt; 1000000000 bytes</h1>
+<h1 id="1gb-gt-102410241024-bytes">1gb =&gt; 1024<em>1024</em>1024 bytes</h1>
+<p>伺服器埠號
+port 6379</p>
+<p>繫結位址，預設是本機全部</p>
+<h1 id="bind-127001">bind 127.0.0.1</h1>
+<p>Client連線閒置多久要切斷連線，單位為秒，0是不限制時間
+timeout 0</p>
+<p>################################ 快照設定  #################################
+第一個參數是秒數，第二個參數是異動次數
+符合以下任一條件，就執行一次快照，產生dump.rdb</p>
+<p>save 900 1
+save 300 10
+save 60 10000</p>
+<p>產生快照檔時是否要壓縮檔案
+rdbcompression yes</p>
+<p>快照檔案的檔名
+dbfilename dump.rdb</p>
+<p>快照檔案的路徑
+dir ./</p>
+<p>################################# 覆寫 #################################</p>
+<p>在slave的實體上，用來指定master的位址</p>
+<h1 id="slaveof-ltmasteripgt-ltmasterportgt">slaveof &lt;masterip&gt; &lt;masterport&gt;</h1>
+<p>如果master需要驗證密碼時設定</p>
+<h1 id="masterauth-ltmaster-passwordgt">masterauth &lt;master-password&gt;</h1>
+<p>當slave和master斷線，或是正在同步中，是否回應Client端要求
+設定成no會回應一個SYNC with master in progress的錯誤
+slave-serve-stale-data yes</p>
+<p>設定slave是否唯讀
+slave-read-only yes</p>
+<div>
+</div>slave對master實體ping的時間間隔，單位是秒數
+# repl-ping-slave-period 10
+<p>master傳輸或是ping回應的時間間隔，單位是秒數</p>
+<h1 id="repl-timeout-60">repl-timeout 60</h1>
+<p>slave和master同步後，是否要延遲同步，讓master合併小封包再一回氣同步到slave
+效能較佳，但資料可能不同步
+repl-disable-tcp-nodelay no</p>
+<p>slave優先權，當master無法服務時，數字低的優先被提升為master
+slave-priority 100</p>
+<p>################################## 安全 ###################################</p>
+<p>Client連線時是否需要密碼</p>
+<h1 id="requirepass-foobared">requirepass foobared</h1>
+<p>重寫命令，設定成空字串來禁用命令</p>
+<h1 id="rename-command-config-">rename-command CONFIG &quot;&rdquo;</h1>
+<p>################################### 限制 ####################################</p>
+<p>最大連線數</p>
+<h1 id="maxclients-10000">maxclients 10000</h1>
+<p>最大記憶體</p>
+<h1 id="maxmemory-ltbytesgt">maxmemory &lt;bytes&gt;</h1>
+<p>當記憶體達到上限，使用那一種刪除演算法</p>
+<h1 id="volatile-lru使用lru演算法刪除帶有過期標記的key">volatile-lru：使用LRU演算法刪除帶有過期標記的key</h1>
+<h1 id="allkeys-lru使用lru演算法刪除任何key">allkeys-lru：使用LRU演算法刪除任何Key</h1>
+<h1 id="volatile-random隨機移除一個帶有過期標記的key">volatile-random：隨機移除一個帶有過期標記的Key</h1>
+<h1 id="allkeys-random隨機移除一個key">allkeys-random：隨機移除一個Key</h1>
+<h1 id="volatile-ttl移除快要過期的key">volatile-ttl：移除快要過期的Key</h1>
+<h1 id="noeviction不移除key回應一個錯誤給client端">noeviction：不移除Key，回應一個錯誤給Client端</h1>
+<p>預設為volatile-lru</p>
+<h1 id="maxmemory-policy-volatile-lru">maxmemory-policy volatile-lru</h1>
+<p>LRU演算法的樣本範圍</p>
+<h1 id="maxmemory-samples-3">maxmemory-samples 3</h1>
+<div>
+############################## AOF模式 ##########################
+<p>是否啟用AOF持久化模式
+appendonly no</p>
+<p>AOF模式的檔案名稱</p>
+<h1 id="appendfilename-appendonlyaof">appendfilename appendonly.aof</h1>
+<p>AOF模式的寫入時機
+no：由作業系統決定，性能最好，可靠性最低
+everysec：每秒執行一次寫入
+always：每次都寫入硬碟，效能最差</p>
+<h1 id="appendfsync-always">appendfsync always</h1>
+<p>appendfsync everysec</p>
+<h1 id="appendfsync-no">appendfsync no</h1>
+<p>在阻塞命令時阻止faync在主程序中被呼叫
+no-appendfsync-on-rewrite no</p>
+<p>AOF自動重寫設定，把重覆的命令合併以減少檔案大小
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb</p>
+<p>################################ LUA 腳本  ###############################
+lua腳本的最大執行時間，單位是毫秒
+lua-time-limit 5000</p>
+<p>################################## SLOW LOG ###################################
+用來記錄超出執行時間的命令，單位為微秒，10000等於1秒
+slowlog-log-slower-than 10000</p>
+<p>slowlog的長度，超過設定長度後，最舊的會被移除
+slowlog-max-len 128</p>
+<p>############################### 進階設定 ###############################
+設定hash的資料超過多少數量時，切換使用的數據結構
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64</p>
+<p>設定list的資料超過多少數量時，切換使用的數據結構
+list-max-ziplist-entries 512
+list-max-ziplist-value 64</p>
+<p>設定set的資料超過多少數量時，切換使用的數據結構
+set-max-intset-entries 512</p>
+<p>設定stored set的資料超過多少數量時，切換使用的數據結構
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64</p>
+<p>hash是否使用延遲刷新機制，越多操作，越多刷新
+activerehashing yes</p>
+<p>第一個參數是強制限制，第二個參數是軟性限制，和軟性時間
+當客戶輸出緩存達到限制時，會強制斷開連線
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60</p>
+<p>背景任務執行頻率，範圍為1到500，預設為10
+設定越大，CPU消耗越大，延遲越小
+hz 10</p>
+<p>啟用子行程重寫AOF檔案
+aof-rewrite-incremental-fsync yes</p>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20%e8%a8%ad%e5%ae%9a%e6%aa%94&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f
+			&title=Redis%20%e8%a8%ad%e5%ae%9a%e6%aa%94&summary=%e7%94%a8%e4%be%86%e6%8c%87%e6%b4%be%e7%a9%ba%e9%96%93%e7%9a%84%e5%96%ae%e4%bd%8d%e7%b0%a1%e5%af%ab%ef%bc%8c%e4%b8%8d%e5%8d%80%e5%88%86%e5%a4%a7%e5%b0%8f%e5%af%ab%0a1k%20%3d%26gt%3b%201000%20bytes%201kb%20%3d%26gt%3b%201024%20bytes%201m%20%3d%26gt%3b%201000000%20bytes%201mb%20%3d%26gt%3b%201024%2a1024%20bytes%201g%20%3d%26gt%3b%201000000000%20bytes%201gb%20%3d%26gt%3b%20102410241024%20bytes%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%a0%e8%99%9f%20port%206379%0a%e7%b9%ab%e7%b5%90%e4%bd%8d%e5%9d%80%ef%bc%8c%e9%a0%90%e8%a8%ad%e6%98%af%e6%9c%ac%e6%a9%9f%e5%85%a8%e9%83%a8%0abind%20127.0.0.1%20Client%e9%80%a3%e7%b7%9a%e9%96%92%e7%bd%ae%e5%a4%9a%e4%b9%85%e8%a6%81%e5%88%87%e6%96%b7%e9%80%a3%e7%b7%9a%ef%bc%8c%e5%96%ae%e4%bd%8d%e7%82%ba%e7%a7%92%ef%bc%8c0%e6%98%af%e4%b8%8d%e9%99%90%e5%88%b6%e6%99%82%e9%96%93%20timeout%200%0a%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%20%e5%bf%ab%e7%85%a7%e8%a8%ad%e5%ae%9a%20%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%20%e7%ac%ac%e4%b8%80%e5%80%8b%e5%8f%83%e6%95%b8%e6%98%af%e7%a7%92%e6%95%b8%ef%bc%8c%e7%ac%ac%e4%ba%8c%e5%80%8b%e5%8f%83%e6%95%b8%e6%98%af%e7%95%b0%e5%8b%95%e6%ac%a1%e6%95%b8%20%e7%ac%a6%e5%90%88%e4%bb%a5%e4%b8%8b%e4%bb%bb%e4%b8%80%e6%a2%9d%e4%bb%b6%ef%bc%8c%e5%b0%b1%e5%9f%b7%e8%a1%8c%e4%b8%80%e6%ac%a1%e5%bf%ab%e7%85%a7%ef%bc%8c%e7%94%a2%e7%94%9fdump.rdb%0asave%20900%201%20save%20300%2010%20save%2060%2010000%0a%e7%94%a2%e7%94%9f%e5%bf%ab%e7%85%a7%e6%aa%94%e6%99%82%e6%98%af%e5%90%a6%e8%a6%81%e5%a3%93%e7%b8%ae%e6%aa%94%e6%a1%88%20rdbcompression%20yes%0a%e5%bf%ab%e7%85%a7%e6%aa%94%e6%a1%88%e7%9a%84%e6%aa%94%e5%90%8d%20dbfilename%20dump.rdb%0a%e5%bf%ab%e7%85%a7%e6%aa%94%e6%a1%88%e7%9a%84%e8%b7%af%e5%be%91%20dir%20.%2f%0a%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%20%e8%a6%86%e5%af%ab%20%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%0a%e5%9c%a8slave%e7%9a%84%e5%af%a6%e9%ab%94%e4%b8%8a%ef%bc%8c%e7%94%a8%e4%be%86%e6%8c%87%e5%ae%9amaster%e7%9a%84%e4%bd%8d%e5%9d%80%0aslaveof%20%26lt%3bmasterip%26gt%3b%20%26lt%3bmasterport%26gt%3b%20%e5%a6%82%e6%9e%9cmaster%e9%9c%80%e8%a6%81%e9%a9%97%e8%ad%89%e5%af%86%e7%a2%bc%e6%99%82%e8%a8%ad%e5%ae%9a%0amasterauth%20%26lt%3bmaster-password%26gt%3b%20%e7%95%b6slave%e5%92%8cmaster%e6%96%b7%e7%b7%9a%ef%bc%8c%e6%88%96%e6%98%af%e6%ad%a3%e5%9c%a8%e5%90%8c%e6%ad%a5%e4%b8%ad%ef%bc%8c%e6%98%af%e5%90%a6%e5%9b%9e%e6%87%89Client%e7%ab%af%e8%a6%81%e6%b1%82%20%e8%a8%ad%e5%ae%9a%e6%88%90no%e6%9c%83%e5%9b%9e%e6%87%89%e4%b8%80%e5%80%8bSYNC%20with%20master%20in%20progress%e7%9a%84%e9%8c%af%e8%aa%a4%20slave-serve-stale-data%20yes&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20%e8%a8%ad%e5%ae%9a%e6%aa%94&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

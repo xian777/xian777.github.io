@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Windows Service 啟動參數 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&quot;System&quot;); RegistryKey currentControlSet = System.OpenSubKey(&quot;CurrentControlSet&quot;); RegistryKey services = currentControlSet.OpenSubKey(&quot;Services&quot;); RegistryKey service = services.
+    ">
+
+
+<meta property="og:title" content="Windows Service 啟動參數" />
+<meta property="og:description" content="Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&quot;System&quot;); RegistryKey currentControlSet = System.OpenSubKey(&quot;CurrentControlSet&quot;); RegistryKey services = currentControlSet.OpenSubKey(&quot;Services&quot;); RegistryKey service = services." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/" />
+<meta property="article:published_time" content="2014-01-20T18:13:00+00:00" />
+<meta property="article:modified_time" content="2014-01-20T18:13:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows Service 啟動參數"/>
+<meta name="twitter:description" content="Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&quot;System&quot;); RegistryKey currentControlSet = System.OpenSubKey(&quot;CurrentControlSet&quot;); RegistryKey services = currentControlSet.OpenSubKey(&quot;Services&quot;); RegistryKey service = services."/>
+
+<meta itemprop="name" content="Windows Service 啟動參數">
+<meta itemprop="description" content="Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&quot;System&quot;); RegistryKey currentControlSet = System.OpenSubKey(&quot;CurrentControlSet&quot;); RegistryKey services = currentControlSet.OpenSubKey(&quot;Services&quot;); RegistryKey service = services.">
+<meta itemprop="datePublished" content="2014-01-20T18:13:00+00:00" />
+<meta itemprop="dateModified" content="2014-01-20T18:13:00+00:00" />
+<meta itemprop="wordCount" content="168">
+
+
+
+<meta itemprop="keywords" content="C#,windows service," />
+
+<link rel="canonical" href="http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Windows Service 啟動參數</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 20, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows Service</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/windows-service">Windows service</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>Windows Service可以透過幾種方式來傳入啟動參數
+可以利用服務的啟動參數</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)</div>
+OnStart就可以收到參數
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)</div>
+<span style="color: red;">但需要注意這種方式只能設定一次，下次啟動還要再設定才行</span>
+透過命令列的話有兩種方式
+net start service1 /3000 /yyyyMMddHHmmss
+但這種方式收到的參數也會有斜線
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)</div>
+sc start service1 3000 yyyyMMddHHmmss
+這種方式就不會有斜線了
+<p>還有一種方式是設定在服務機碼的ImagePath後面
+需要透過覆寫安裝程式的Install函式來完成</p>
+<div><pre class="brush:csharp">using System.Collections;
+using System.ComponentModel;
+using Microsoft.Win32;
+<p>namespace MyService
+{
+[RunInstaller(true)]
+public partial class ProjectInstaller : System.Configuration.Install.Installer
+{
+public ProjectInstaller()
+{
+InitializeComponent();
+}</p>
+<pre><code>    public override void Install(IDictionary stateSaver)
+    {
+        base.Install(stateSaver);
+
+        // 安裝的時後增加啟動參數
+        RegistryKey System = Registry.LocalMachine.OpenSubKey(&quot;System&quot;);
+        RegistryKey currentControlSet = System.OpenSubKey(&quot;CurrentControlSet&quot;);
+        RegistryKey services = currentControlSet.OpenSubKey(&quot;Services&quot;);
+        RegistryKey service = services.OpenSubKey(this.serviceInstaller1.ServiceName, true);
+        string imagePath = service.GetValue(&quot;ImagePath&quot;) + &quot; 3000 yyyyMMddHHmmss&quot;;
+        service.SetValue(&quot;ImagePath&quot;, imagePath);
+        service.Close();
+    }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div>
+服務的內容就會在執行路徑後面帶上參數</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-UUq9LvzYQ9s/Utz0-hjTDAI/AAAAAAAAA-0/Z_xDcHxKKoY/s1600/04.ImagePath.png)](http://4.bp.blogspot.com/-UUq9LvzYQ9s/Utz0-hjTDAI/AAAAAAAAA-0/Z_xDcHxKKoY/s1600/04.ImagePath.png)</div>透過Environment.GetCommandLineArgs()來取得參數
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-x4WCgs2qNMo/Utz2Ak-MkHI/AAAAAAAAA_I/0KkslrpmTMQ/s1600/05.GetCommandLineArgs.png)](http://1.bp.blogspot.com/-x4WCgs2qNMo/Utz2Ak-MkHI/AAAAAAAAA_I/0KkslrpmTMQ/s1600/05.GetCommandLineArgs.png)</div>
+<span style="color: red;">只不過這種參數方式是需要修改機碼，所以設定上不太方便</span>
+<p>最簡單好用的方式，莫過於透過app.config中的appSettings</p>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;sectionGroup name="common"&gt;
+            &lt;section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging"/&gt;
+        &lt;/sectionGroup&gt;
+    &lt;/configSections&gt;
+    &lt;common&gt;
+        &lt;logging&gt;
+            &lt;factoryAdapter type="Common.Logging.NLog.NLogLoggerFactoryAdapter, Common.Logging.NLog"&gt;
+                &lt;arg key="configType" value="FILE" /&gt;
+                &lt;arg key="configFile" value="~/NLog.config" /&gt;
+            &lt;/factoryAdapter&gt;
+        &lt;/logging&gt;
+    &lt;/common&gt;
+    &lt;appSettings&gt;
+        &lt;add key="TimerInterval" value="3000" /&gt;
+        &lt;add key="DateTimeFormat" value="HH:mm:ss yyyy/MM/dd" /&gt;
+    &lt;/appSettings&gt;
+    &lt;startup&gt;
+        &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
+    &lt;/startup&gt;
+    &lt;runtime&gt;
+        &lt;assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1"&gt;
+            &lt;dependentAssembly&gt;
+                &lt;assemblyIdentity name="NLog" publicKeyToken="5120e14c03d0593c" culture="neutral" /&gt;
+                &lt;bindingRedirect oldVersion="0.0.0.0-2.1.0.0" newVersion="2.1.0.0" /&gt;
+            &lt;/dependentAssembly&gt;
+            &lt;dependentAssembly&gt;
+                &lt;assemblyIdentity name="Common.Logging" publicKeyToken="af08829b84f0328e" culture="neutral" /&gt;
+                &lt;bindingRedirect oldVersion="0.0.0.0-2.1.2.0" newVersion="2.1.2.0" /&gt;
+            &lt;/dependentAssembly&gt;
+        &lt;/assemblyBinding&gt;
+    &lt;/runtime&gt;
+&lt;/configuration&gt;
+</pre></div>
+記得要引用System.Configuration參考
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-MCi8mOBjr8o/Utz1SMcvjLI/AAAAAAAAA-8/ytnE2aN3h6s/s1600/06.System.Configuration.png)](http://4.bp.blogspot.com/-MCi8mOBjr8o/Utz1SMcvjLI/AAAAAAAAA-8/ytnE2aN3h6s/s1600/06.System.Configuration.png)</div>
+啟動的時後取出參數傳入就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-SobbyJex93Y/Utz2kaEy_5I/AAAAAAAAA_Q/3mmshi85rrs/s1600/08.%E8%A8%AD%E5%AE%9A%E6%AA%94.png)](http://1.bp.blogspot.com/-SobbyJex93Y/Utz2kaEy_5I/AAAAAAAAA_Q/3mmshi85rrs/s1600/08.%E8%A8%AD%E5%AE%9A%E6%AA%94.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Windows%20Service%20%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f
+			&title=Windows%20Service%20%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8&summary=Windows%20Service%e5%8f%af%e4%bb%a5%e9%80%8f%e9%81%8e%e5%b9%be%e7%a8%ae%e6%96%b9%e5%bc%8f%e4%be%86%e5%82%b3%e5%85%a5%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8%20%e5%8f%af%e4%bb%a5%e5%88%a9%e7%94%a8%e6%9c%8d%e5%8b%99%e7%9a%84%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-23WhzTbJ75Y%2fUtzyuOGrojI%2fAAAAAAAAA-Q%2fPnyc88yUKcw%2fs1600%2f02.%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-23WhzTbJ75Y%2fUtzyuOGrojI%2fAAAAAAAAA-Q%2fPnyc88yUKcw%2fs1600%2f02.%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8.png%29%20OnStart%e5%b0%b1%e5%8f%af%e4%bb%a5%e6%94%b6%e5%88%b0%e5%8f%83%e6%95%b8%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-0B5CCS1rGhc%2fUtzyyZKFSGI%2fAAAAAAAAA-Y%2fsCbNvZRXSdg%2fs1600%2f03.Args.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-0B5CCS1rGhc%2fUtzyyZKFSGI%2fAAAAAAAAA-Y%2fsCbNvZRXSdg%2fs1600%2f03.Args.png%29%20%e4%bd%86%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e9%80%99%e7%a8%ae%e6%96%b9%e5%bc%8f%e5%8f%aa%e8%83%bd%e8%a8%ad%e5%ae%9a%e4%b8%80%e6%ac%a1%ef%bc%8c%e4%b8%8b%e6%ac%a1%e5%95%9f%e5%8b%95%e9%82%84%e8%a6%81%e5%86%8d%e8%a8%ad%e5%ae%9a%e6%89%8d%e8%a1%8c%20%e9%80%8f%e9%81%8e%e5%91%bd%e4%bb%a4%e5%88%97%e7%9a%84%e8%a9%b1%e6%9c%89%e5%85%a9%e7%a8%ae%e6%96%b9%e5%bc%8f%20net%20start%20service1%20%2f3000%20%2fyyyyMMddHHmmss%20%e4%bd%86%e9%80%99%e7%a8%ae%e6%96%b9%e5%bc%8f%e6%94%b6%e5%88%b0%e7%9a%84%e5%8f%83%e6%95%b8%e4%b9%9f%e6%9c%83%e6%9c%89%e6%96%9c%e7%b7%9a%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-lwImaTWKjac%2fUtz0jVWsL2I%2fAAAAAAAAA-k%2fj-Sc7uTxWoc%2fs1600%2f07.%25E6%259C%2589%25E6%2596%259C%25E7%25B7%259A.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-lwImaTWKjac%2fUtz0jVWsL2I%2fAAAAAAAAA-k%2fj-Sc7uTxWoc%2fs1600%2f07.%25E6%259C%2589%25E6%2596%259C%25E7%25B7%259A.png%29%20sc%20start%20service1%203000%20yyyyMMddHHmmss%20%e9%80%99%e7%a8%ae%e6%96%b9%e5%bc%8f%e5%b0%b1%e4%b8%8d%e6%9c%83%e6%9c%89%e6%96%9c%e7%b7%9a%e4%ba%86%20%e9%82%84%e6%9c%89%e4%b8%80%e7%a8%ae%e6%96%b9%e5%bc%8f%e6%98%af%e8%a8%ad%e5%ae%9a%e5%9c%a8%e6%9c%8d%e5%8b%99%e6%a9%9f%e7%a2%bc%e7%9a%84ImagePath%e5%be%8c%e9%9d%a2%20%e9%9c%80%e8%a6%81%e9%80%8f%e9%81%8e%e8%a6%86%e5%af%ab%e5%ae%89%e8%a3%9d%e7%a8%8b%e5%bc%8f%e7%9a%84Install%e5%87%bd%e5%bc%8f%e4%be%86%e5%ae%8c%e6%88%90%0ausing%20System.Collections%3b%20using%20System.ComponentModel%3b%20using%20Microsoft.Win32%3b%20namespace%20MyService%20%7b%20%5bRunInstaller%28true%29%5d%20public%20partial%20class%20ProjectInstaller%20%3a%20System.Configuration.Install.Installer%20%7b%20public%20ProjectInstaller%28%29%20%7b%20InitializeComponent%28%29%3b%20%7d%0a%20public%20override%20void%20Install%28IDictionary%20stateSaver%29%20%7b%20base.Install%28stateSaver%29%3b%20%2f%2f%20%e5%ae%89%e8%a3%9d%e7%9a%84%e6%99%82%e5%be%8c%e5%a2%9e%e5%8a%a0%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8%20RegistryKey%20System%20%3d%20Registry.LocalMachine.OpenSubKey%28%26quot%3bSystem%26quot%3b%29%3b%20RegistryKey%20currentControlSet%20%3d%20System.OpenSubKey%28%26quot%3bCurrentControlSet%26quot%3b%29%3b%20RegistryKey%20services%20%3d%20currentControlSet.OpenSubKey%28%26quot%3bServices%26quot%3b%29%3b%20RegistryKey%20service%20%3d%20services.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Windows%20Service%20%e5%95%9f%e5%8b%95%e5%8f%83%e6%95%b8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f01%2fwindows-service-%25E5%2595%259F%25E5%258B%2595%25E5%258F%2583%25E6%2595%25B8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

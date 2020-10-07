@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NodeJS on My New Hugo Site</title>
+    <link>http://example.org/tags/nodejs/</link>
+    <description>Recent content in NodeJS on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Mar 2016 15:47:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>前端套件管理工具: Bower</title>
+      <link>http://example.org/posts/2016/03/%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-bower/</link>
+      <pubDate>Tue, 15 Mar 2016 15:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/03/%E5%89%8D%E7%AB%AF%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-bower/</guid>
+      <description>安裝bower$ npm install bower -g 產生設定檔$ bower init { &#34;name&#34;: &#34;ASP.NET&#34;, &#34;private&#34;: true, &#34;dependencies&#34;: { &#34;bootstrap&#34;: &#34;3.3.5&#34;, &#34;jquery&#34;: &#34;2.1.4&#34;, &#34;jquery-validation&#34;: &#34;1.14.0&#34;, &#34;jquery-validation-unobtrusive&#34;: &#34;3.2.4&#34;, &#34;angularjs&#34;: &#34;1.5.0&#34; } } 新增.bowerrc檔案輸入資料夾位置{ &#34;directory&#34;: &#34;wwwroot/lib&#34; } 安裝套件$ bower install $ bower install jquery $ bower install jquery --save $ bower install jquery --save-dev 查詢套件$ bower search jquery 查詢指定套件詳細訊息 $ bower info jquery 查詢已安裝套件$ bower list 移除套件$ bower uninstall jquery </description>
+    </item>
+    
+    <item>
+      <title>gulp 前端最佳化js和css工具</title>
+      <link>http://example.org/posts/2016/03/gulp-%E5%89%8D%E7%AB%AF%E6%9C%80%E4%BD%B3%E5%8C%96js%E5%92%8Ccss%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Mon, 14 Mar 2016 21:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/03/gulp-%E5%89%8D%E7%AB%AF%E6%9C%80%E4%BD%B3%E5%8C%96js%E5%92%8Ccss%E5%B7%A5%E5%85%B7/</guid>
+      <description>安裝gulp-cli套件 $ npm install gulp-cli -g 安裝gulp套件 $ npm install gulp --save-dev 安裝gulp plugin套件 $ npm install gulp-concat $ npm install gulp-cssmin $ npm install gulp-uglify $ npm install rimraf 新增gulpfile.js /// &amp;lt;binding BeforeBuild=&#39;min&#39; Clean=&#39;clean&#39; /&amp;gt; &#34;use strict&#34;; var gulp = require(&amp;ldquo;gulp&amp;rdquo;), rimraf = require(&amp;ldquo;rimraf&amp;rdquo;), concat = require(&amp;ldquo;gulp-concat&amp;rdquo;), cssmin = require(&amp;ldquo;gulp-cssmin&amp;rdquo;), uglify = require(&amp;ldquo;gulp-uglify&amp;rdquo;);
+var paths = { webroot: &amp;ldquo;./wwwroot/&amp;rdquo; };
+paths.js = paths.webroot + &amp;ldquo;js//*.js&amp;rdquo;; paths.minJs = paths.webroot + &amp;ldquo;js//.</description>
+    </item>
+    
+    <item>
+      <title>NodeJS套件管理工具</title>
+      <link>http://example.org/posts/2016/03/nodejs%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Mon, 14 Mar 2016 18:55:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/03/nodejs%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
+      <description># npm介紹 - node package manager - [npm官網](https://www.npmjs.com/) # package.json - $ npm init [![](https://4.bp.blogspot.com/-04RgkUsOupM/VuaYTiejJRI/AAAAAAAADrE/aX4I3I-knLcwCvIya7DSSQCtZKVHylqog/s1600/01.png)](https://4.bp.blogspot.com/-04RgkUsOupM/VuaYTiejJRI/AAAAAAAADrE/aX4I3I-knLcwCvIya7DSSQCtZKVHylqog/s1600/01.png) - [package.json文件](https://docs.npmjs.com/files/package.json) [![](https://3.bp.blogspot.com/-9av8Fqm3X4Q/VuaYTuv-KtI/AAAAAAAADrA/5F0Xnq8z5K4e3WGN7SnBrUMLC7YuIdh4A/s1600/02.png)](https://3.bp.blogspot.com/-9av8Fqm3X4Q/VuaYTuv-KtI/AAAAAAAADrA/5F0Xnq8z5K4e3WGN7SnBrUMLC7YuIdh4A/s1600/02.png) # npm指令 - 安裝資料夾 **node_modules** ``` shell # 安裝套件 $ npm install -g  $ npm install  # 安裝並寫入設定檔 $ npm install  --save $ npm install ** --save-dev # 移除套件 $ npm uninstall -g  $ npm uninstall  # 搜尋套件 $ npm search  # 列出已安裝的套件 $ npm list -g $ npm list # 更新套件 $ npm update -g $ npm update # 安裝package.</description>
+    </item>
+    
+    <item>
+      <title>NodeJS 筆記</title>
+      <link>http://example.org/posts/2015/01/nodejs-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Wed, 28 Jan 2015 15:42:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/01/nodejs-%E7%AD%86%E8%A8%98/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

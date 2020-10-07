@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Posts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="List of all articles in section- Posts">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/posts/" />
+<meta property="og:updated_time" content="2018-09-14T14:25:42+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/posts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1 class="title is-3">Posts</h1>
+</div>
+
+
+<div class="blog-brief">
+    <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+        <h3 class="title is-4">
+            Windows Service 開發
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                    <p class="subtitle info date">Jan 20, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                    <p class="subtitle info">
+                        17 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/c">C#</a>
+            
+            <a class="tag is-rounded" href="/tags/windows-service">Windows Service</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">
+                <p class="summary">
+                    Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。 用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹
+ 首先開一個新專案，名稱為MyService[![](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png)](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png) 在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案[![](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png) 先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務using System.ServiceProcess; namespace MyService { static class Program { /// &lt;summary&gt; /// 應用程式的主要進入點。 /// &lt;/summary&gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }
+再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件using System.ServiceProcess;
+namespace MyService { public partial class Service1 : ServiceBase { public Service1() { InitializeComponent(); }
+ protected override void OnStart(string[] args) { } protected override void OnStop() { } }  }
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2013/12/common-logging/">
+        <h3 class="title is-4">
+            Common.Logging
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2013/12/common-logging/">
+                    <p class="subtitle info date">Dec 24, 2013
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2013/12/common-logging/">
+                    <p class="subtitle info">
+                        5 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nlog">NLog</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2013/12/common-logging/">
+                <p class="summary">
+                    在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好
+Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考官網，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式
+Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件 應該是為了可儶性，把介面和抽象類別分離到Core套件 在套件的使用上要做點調整
+Common Logging 2.3.1版之後，已不再使用Common.Logging.Core 為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本 例如Common.Logging.NLog31對應到NLog 3.1版本
+首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考
+[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png) 簡單寫一個函式讓之後引用的程式來呼叫
+using Common.Logging; namespace ClassLibrary1 { public class Class1 { private ILog log = LogManager.GetLogger&lt;Class1&gt;());
+ public void SayHello() { this.log.Info(&#34;Hello&#34;); } }  }  再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案
+[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png) 簡單寫一個Button Click來呼叫類別庫中的函式 using System; using System.Windows.Forms; namespace WindowsFormsApplication1 { public partial class Form1 : Form { public Form1() { InitializeComponent(); }
+ private void button1_Click(object sender, EventArgs e) { ClassLibrary1.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2013/12/common-logging/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/">
+        <h3 class="title is-4">
+            NuGet Multiple Framework 建置
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/">
+                    <p class="subtitle info date">Dec 24, 2013
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/">
+                    <p class="subtitle info">
+                        4 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nuget">NuGet</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/">
+                <p class="summary">
+                    NuGet使用一段時間之後，開始碰到共用的元件，在不同專案的Framework版本不同，會有引用上的困擾，在網路上找了幾個解決方案，實作之後個人覺的比較簡單的方法如下 Step1 每個版本建立一個方案檔 一般專案的命名為net20、net35、net40、net45… 其他類型的專案則再加上縮寫 Client Profile(client) WindowsPhone(wp) Silverlight(sl) CompactFramework(cf) 更多完整的資料請參考官網文件 http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package
+[![](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)](http://3.bp.blogspot.com/-Z_7Nwh3E004/Urj3_IOzGmI/AAAAAAAAA3Q/JSdtbB7ne1Q/s1600/01.sln.png)[![](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)](http://2.bp.blogspot.com/-w46datk00Fw/Urj4AWcam2I/AAAAAAAAA3Y/A-GmHxGvsY0/s1600/02.sln.png)Step2 每一個版本建立一個專案檔[![](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png)](http://1.bp.blogspot.com/-GcIzkWZiGz0/Urj4QuT3lII/AAAAAAAAA3c/IbIp_s_gt8g/s1600/03.csproj.png) [![](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png)](http://3.bp.blogspot.com/-wPPOHszWFcA/Urj4RmcGNvI/AAAAAAAAA3o/XBtd2ATXs14/s1600/04.csproj.png) Step3 每一個專案檔選擇不同的Framework，以及條件式編譯符號和修改輸出路徑 **注意每個組態都要設定喔 **[![](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)](http://2.bp.blogspot.com/-B84By-NaVHE/Urj4ZL6TGpI/AAAAAAAAA3s/mZLbwfLGEHw/s1600/05.version.png)[![](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)](http://2.bp.blogspot.com/-9Ka8GNPihf0/Urj4abt1ZLI/AAAAAAAAA34/jRp00XFmLv8/s1600/06.output.png)Step4 依Framework版本，加上條件式編譯 using System; using System.Collections.Generic; #if NET35 || NET40 || NET45 using System.Linq; #endif
+using System.Text;
+#if NET40 || NET45 using System.Threading.Tasks; #endif
+namespace ClassLibrary1 { public class Class1 { } }
+Step5 手動建立nuget spec檔
+[![](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)](http://2.bp.blogspot.com/-_JkzDLOeeJc/Urj4jGQfcnI/AAAAAAAAA38/nPBreRhuDJA/s1600/07.spec.png)&lt;?xml version=&#34;1.0&#34;?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;ClassLibrary1&lt;/id&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;authors&gt;xian&lt;/authors&gt; &lt;owners&gt;xian&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;Package description&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2013/12/nuget-multiple-framework-%E5%BB%BA%E7%BD%AE/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2013/11/%E5%A5%BD%E7%94%A8%E7%9A%84logviewer/">
+        <h3 class="title is-4">
+            好用的LogViewer
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2013/11/%E5%A5%BD%E7%94%A8%E7%9A%84logviewer/">
+                    <p class="subtitle info date">Nov 4, 2013
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2013/11/%E5%A5%BD%E7%94%A8%E7%9A%84logviewer/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nlog">NLog</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2013/11/%E5%A5%BD%E7%94%A8%E7%9A%84logviewer/">
+                <p class="summary">
+                    Log2Console是個好用的Log Viewer，可以配合Log4Net或NLog使用 首先到官網下載
+[![](http://1.bp.blogspot.com/-1SU04Sq3oOc/UndxtGbDi3I/AAAAAAAAA14/21nZBzzTQVg/s1600/01.download.png)](http://1.bp.blogspot.com/-1SU04Sq3oOc/UndxtGbDi3I/AAAAAAAAA14/21nZBzzTQVg/s1600/01.download.png) 安裝好後先設定接收方式
+[![](http://4.bp.blogspot.com/-hx4I28pk5po/Undxwe6iabI/AAAAAAAAA2A/1VERa_k_LQs/s1600/02.receive.png)](http://4.bp.blogspot.com/-hx4I28pk5po/Undxwe6iabI/AAAAAAAAA2A/1VERa_k_LQs/s1600/02.receive.png) 這裡以UDP為例
+[![](http://2.bp.blogspot.com/-DyJoQXRgRBo/Undx0h2GzVI/AAAAAAAAA2I/1L9xaWi3D3Q/s1600/03.add.png)](http://2.bp.blogspot.com/-DyJoQXRgRBo/Undx0h2GzVI/AAAAAAAAA2I/1L9xaWi3D3Q/s1600/03.add.png) 設定要使用的Port號就行了 下方是log4net的設定範例
+[![](http://3.bp.blogspot.com/-GkGKo0EWtOU/Undx4VhUDRI/AAAAAAAAA2Q/CBvil9xgUg4/s1600/04.udpport.png)](http://3.bp.blogspot.com/-GkGKo0EWtOU/Undx4VhUDRI/AAAAAAAAA2Q/CBvil9xgUg4/s1600/04.udpport.png) 以NLog來當日誌輸出元件的話，可以透過Chainsaw將Log寫到指定的位址和埠號
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;!--  See http://nlog-project.org/wiki/Configuration_file for information on customizing logging rules and outputs. –&gt; &lt;targets&gt; &lt;target xsi:type=&#34;Chainsaw” name=&#34;viewer” address=&#34;tcp://127.0.0.1:7071” /&gt; &lt;/targets&gt;
+&amp;lt;rules&amp;gt; &amp;lt;logger name=&#34;*&#34; minlevel=&#34;Trace&#34; writeTo=&#34;viewer&#34; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt; 
+隨便輸出幾個Log試試
+using NLog; namespace ConsoleApplication1 { class Program { private static Logger log = LogManager.GetLogger(“Program”);
+ static void Main(string[] args) { log.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2013/11/%E5%A5%BD%E7%94%A8%E7%9A%84logviewer/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/">
+        <h3 class="title is-4">
+            TeamCity 刪除特定的Nuget Package
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/">
+                    <p class="subtitle info date">Oct 9, 2013
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/teamcity">TeamCity</a>
+            
+            <a class="tag is-rounded" href="/tags/%E8%8C%B6%E5%8C%85%E5%B0%84%E6%89%8B">茶包射手</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/">
+                <p class="summary">
+                    因為設定上的問題，從TeamCity所生成管理的Nuget package的版本號碼會有衝突 所以需要把有問題的package先刪除 但TeamCity本身沒有直接支援刪除的功能，找到了一篇用reset api刪除的方式
+利用Filddler來執行rest api，網址為http://&lt;teamcity&gt;/httpAuth/app/rest/builds/id 最後的id為指定的建置版本，也是要刪除的版本 可以很容易的在一些設定頁面上，找一下網址後面的BuildId所帶的值來取得
+[![](http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png)](http://1.bp.blogspot.com/-xekiyDv1rtQ/UlTFBOBUZGI/AAAAAAAAA04/n4AzSukSpX0/s1600/buildid.png) 使用Filddler執行DELETE方法，並在標頭中加入Authorization: Basic (UserName:Password)就行了
+[![](http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png)](http://4.bp.blogspot.com/-4_P16nZPh-U/UlTHONRcYWI/AAAAAAAAA1g/oSlRrBdtPac/s1600/teamcity.png) 括號內的帳密需要用base64編碼，利用TextWizard來轉換就行了
+[![](http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png)](http://3.bp.blogspot.com/-Be-SvqI7AUY/UlTGMe3pauI/AAAAAAAAA1Q/mERbs8tNtOc/s1600/base64.png)  參考連結 http://stackoverflow.com/questions/10218318/how-to-remove-a-specific-version-of-a-package-on-a-teamcity-nuget-feed
+Fiddler 下載
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2013/10/teamcity-%E5%88%AA%E9%99%A4%E7%89%B9%E5%AE%9A%E7%9A%84nuget-package/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+
+
+
+
+<section class="section">
+    <nav class="pagination is-centered">
+
+        
+            <a class="pagination-previous is-dark" href="/posts/page/31/">Previous</a>
+        
+
+        
+            <a class="pagination-next" href="/posts/page/33/">Next page</a>
+        
+
+
+        <ul class="pagination-list">
+
+        
+
+            
+            
+
+                <li><a href="/posts/" class="pagination-link">1</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/31/" class="pagination-link">31</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/32/" class="pagination-link is-current">32</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/33/" class="pagination-link">33</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/52/" class="pagination-link">52</a></li>
+
+                
+                
+
+            
+
+        
+
+        </ul>
+    </nav>
+</section>
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

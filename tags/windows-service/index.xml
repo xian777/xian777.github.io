@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows service on My New Hugo Site</title>
+    <link>http://example.org/tags/windows-service/</link>
+    <description>Recent content in windows service on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Jan 2016 11:50:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/windows-service/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TopShelf</title>
+      <link>http://example.org/posts/2016/01/topshelf/</link>
+      <pubDate>Wed, 27 Jan 2016 11:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/01/topshelf/</guid>
+      <description>開發Windows Service的時後，為了開發方便，之前都用一些小技巧切換在本機的Console模式和伺服器的Service模式，但在日後維護的時後或是偵錯的時後，總是不太方便，最近用了一個好用的套件叫TopShelf，是一個用來開發Windows Service的框架，實在太好用了，所以記錄一下筆記
+首先新增一個Console專案
+[![](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-b-j_Dv8q9Y0/Vqg97bx32-I/AAAAAAAADkE/QVrxbWArdXg/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E5%25B0%2588%25E6%25A1%2588.png) 透過NuGet安裝TopShelf套件 [![](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-0rrhnPEnOBU/Vqg97v3I74I/AAAAAAAADkQ/3I4zfXvgEYg/s1600/02.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 簡單地寫一個類別，包含Start和Stop兩個函式 using System; namespace ConsoleApplication1 { class MyService { public void Start() { Console.WriteLine(&amp;ldquo;MyService Start&amp;rdquo;); }
+ public void Stop() { Console.WriteLine(&amp;quot;My Service Stop&amp;quot;); } }  }
+ 回到應用程式進入點開始配置服務
+using Topshelf; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { Topshelf.HostFactory.Run(x=&amp;gt; { x.Service&amp;lt;MyService&amp;gt;(s =&amp;gt; { s.ConstructUsing(() =&amp;gt; new MyService()); s.WhenStarted(svc =&amp;gt; svc.Start()); s.WhenStopped(svc =&amp;gt; svc.Stop()); });
+ x.RunAsLocalSystem(); x.StartAutomatically(); x.SetServiceName(&amp;quot;MyService&amp;quot;); x.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 筆記</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Tue, 28 Jan 2014 14:31:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/</guid>
+      <description>Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 控制介面</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Mon, 20 Jan 2014 18:52:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/</guid>
+      <description>ServiceController這個類別可以用來控制Service的狀態 詳細的資訊請參考MSDN上面的文件
+新增一個Windows Form應用程式來當範例
+[![](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png) 首先要先參考System.ServiceProcess這個元件 [![](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png)](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png) 簡單拉兩個按鈕來控制啟動或停止服務 [![](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png)](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png) 在Button Click事件中，透過ServiceController來切換狀態 private void Btn_Start_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(&#34;Service1&#34;)) { // 設定一個 Timeout 時間，若超過 30 秒啟動不成功就宣告失敗 TimeSpan timeout = TimeSpan.FromMilliseconds(1000 * 30);  // 啟動服務 objSC.Start(); // 設定該服務必須在timeout時間內切換到Running狀態 objSC.WaitForStatus(ServiceControllerStatus.Running, timeout); }  }
+private void Btn_Stop_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(&amp;ldquo;Service1&amp;rdquo;)) { // 若該服務不是「停用」的狀態，才將其停止運作，否則會引發 Exception
+if (objSC.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 啟動參數</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/</link>
+      <pubDate>Mon, 20 Jan 2014 18:13:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/</guid>
+      <description>Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&amp;quot;System&amp;quot;); RegistryKey currentControlSet = System.OpenSubKey(&amp;quot;CurrentControlSet&amp;quot;); RegistryKey services = currentControlSet.OpenSubKey(&amp;quot;Services&amp;quot;); RegistryKey service = services.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 遠端偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Jan 2014 16:54:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</guid>
+      <description>通常在本機開發的時後都是沒有問題的，會發生問題都是佈署到正式環境後才會發生=&amp;quot;= 而用一般遠端偵錯的方式，都是已經啟動服務成功才能下中斷點 如果問題出在啟動失敗的話，就中斷不到 這種情境可以加入System.Diagnostics.Debugger.Launch(); 讓應用程式等待偵錯工具的連入後才會繼續執行下去
+using System.ServiceProcess; namespace MyService { public partial class Service1 : ServiceBase { private NowTimeReporter reporter = new NowTimeReporter();
+ public Service1() { InitializeComponent(); // 偵錯中斷用 System.Diagnostics.Debugger.Launch(); } protected override void OnStart(string[] args) { this.reporter.Start(); } protected override void OnStop() { this.reporter.Stop(); } }  }  執行start.bat來啟動服務
+net start Service1  就會跳出選擇偵錯工具的畫面，這裡先不選擇 [![](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png)](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png) 回到本機，選擇工具-&amp;gt;附加執行緒，選擇遠端和輸入IP，再選擇執行檔，然後附加就行了 [![](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png)](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png) 到Server中上放開偵錯工具選擇畫面 [![](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png)](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png) 就會停在System.Diagnostics.Debugger.Launch();這一行
+[![](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png)](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png) 在本機也可以用這種偵錯方式，就不用到應用程式進入點去動手腳 只要讓服務啟動，再選擇偵錯工具連入就行了 [![](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png)](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png) </description>
+    </item>
+    
+    <item>
+      <title>Windows Service 本機偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/</link>
+      <pubDate>Mon, 20 Jan 2014 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/</guid>
+      <description>Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = &amp;ldquo;yyyy/MM/dd HH:mm:ss&amp;rdquo;;</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 本機偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Jan 2014 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</guid>
+      <description>Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = &amp;ldquo;yyyy/MM/dd HH:mm:ss&amp;rdquo;;</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 開發</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/</link>
+      <pubDate>Mon, 20 Jan 2014 13:45:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/</guid>
+      <description>Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。 用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹
+ 首先開一個新專案，名稱為MyService[![](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png)](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png) 在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案[![](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png) 先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }
+再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件using System.ServiceProcess;
+namespace MyService { public partial class Service1 : ServiceBase { public Service1() { InitializeComponent(); }
+ protected override void OnStart(string[] args) { } protected override void OnStop() { } }  }</description>
+    </item>
+    
+  </channel>
+</rss>

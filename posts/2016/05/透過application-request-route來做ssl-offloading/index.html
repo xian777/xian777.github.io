@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    透過Application Request Route來做SSL Offloading | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Application Request Route 越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法
+首先透過Web Platform Installer來安裝ARR [![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png) 搜尋Application Request Routing, 找到後點安裝就行了 [![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png) 重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能 [![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png) 先建立一個預設的站台來繫結https通訊協定 [![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png) 只有預設站台是HTTPS, 其他站台都是HTTP [![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png) 建立一組Server Farms [![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png) 建立一條路由規則來強制站台只能使用https通訊協定 [![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png) 建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台 [![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png) http就會自動轉向https囉 [!
+    ">
+
+
+<meta property="og:title" content="透過Application Request Route來做SSL offloading" />
+<meta property="og:description" content="Application Request Route 越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法
+首先透過Web Platform Installer來安裝ARR [![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png) 搜尋Application Request Routing, 找到後點安裝就行了 [![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png) 重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能 [![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png) 先建立一個預設的站台來繫結https通訊協定 [![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png) 只有預設站台是HTTPS, 其他站台都是HTTP [![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png) 建立一組Server Farms [![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png) 建立一條路由規則來強制站台只能使用https通訊協定 [![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png) 建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台 [![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png) http就會自動轉向https囉 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/" />
+<meta property="article:published_time" content="2016-05-08T12:23:00+00:00" />
+<meta property="article:modified_time" content="2016-05-08T12:23:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="透過Application Request Route來做SSL offloading"/>
+<meta name="twitter:description" content="Application Request Route 越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法
+首先透過Web Platform Installer來安裝ARR [![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png) 搜尋Application Request Routing, 找到後點安裝就行了 [![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png) 重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能 [![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png) 先建立一個預設的站台來繫結https通訊協定 [![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png) 只有預設站台是HTTPS, 其他站台都是HTTP [![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png) 建立一組Server Farms [![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png) 建立一條路由規則來強制站台只能使用https通訊協定 [![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png) 建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台 [![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png) http就會自動轉向https囉 [!"/>
+
+<meta itemprop="name" content="透過Application Request Route來做SSL offloading">
+<meta itemprop="description" content="Application Request Route 越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法
+首先透過Web Platform Installer來安裝ARR [![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png) 搜尋Application Request Routing, 找到後點安裝就行了 [![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png) 重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能 [![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png) 先建立一個預設的站台來繫結https通訊協定 [![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png) 只有預設站台是HTTPS, 其他站台都是HTTP [![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png) 建立一組Server Farms [![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png) 建立一條路由規則來強制站台只能使用https通訊協定 [![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png) 建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台 [![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png) http就會自動轉向https囉 [!">
+<meta itemprop="datePublished" content="2016-05-08T12:23:00+00:00" />
+<meta itemprop="dateModified" content="2016-05-08T12:23:00+00:00" />
+<meta itemprop="wordCount" content="36">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="canonical" href="http://example.org/posts/2016/05/%E9%80%8F%E9%81%8Eapplication-request-route%E4%BE%86%E5%81%9Assl-offloading/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>透過Application Request Route來做SSL Offloading</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">May 8, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="application-request-route">Application Request Route</h1>
+<p>越來越多站台要開始使用SSL了, 記錄一下使用Application Request Route來做SSL offloading的用法</p>
+<h2 id="首先透過web-platform-installer來安裝arr">首先透過Web Platform Installer來安裝ARR</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)](https://1.bp.blogspot.com/-ElT4qkQUCMg/Vy6-1AwXW9I/AAAAAAAADwo/F5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB/s1600/01.png)</div>
+<h2 id="搜尋application-request-routing-找到後點安裝就行了">搜尋Application Request Routing, 找到後點安裝就行了</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)](https://2.bp.blogspot.com/-PqGjDtVXRKE/Vy6-1HeRtPI/AAAAAAAADws/8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB/s1600/02.png)</div>
+<h2 id="重新打開iis會看到新增了server-farms和arr和url-rewrite這幾個功能">重新打開IIS會看到新增了Server Farms和ARR和URL Rewrite這幾個功能</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)](https://3.bp.blogspot.com/-SAnm-5fysLo/Vy6-09HaEuI/AAAAAAAADwk/UdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB/s1600/03.png)</div>
+<h2 id="先建立一個預設的站台來繫結https通訊協定">先建立一個預設的站台來繫結https通訊協定</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)](https://4.bp.blogspot.com/-wOACJ9Oz_Dk/Vy6-1ZMCEnI/AAAAAAAADww/HrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB/s1600/04.png)</div>
+<h2 id="只有預設站台是https-其他站台都是http">只有預設站台是HTTPS, 其他站台都是HTTP</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)](https://2.bp.blogspot.com/-JApbMNiN87M/Vy6-1iZNSmI/AAAAAAAADw4/wr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB/s1600/05.png)</div>
+<h2 id="建立一組server-farms">建立一組Server Farms</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)](https://1.bp.blogspot.com/-W1G06hP7xQc/Vy6-1ekSG8I/AAAAAAAADw0/brdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB/s1600/06.png)</div>
+<h2 id="建立一條路由規則來強制站台只能使用https通訊協定">建立一條路由規則來強制站台只能使用https通訊協定</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)](https://3.bp.blogspot.com/-TzVI_c6eXAE/Vy6-1pAPevI/AAAAAAAADw8/-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB/s1600/07.png)</div>
+<h2 id="建立第二條路由規則來處理ssl-offloading路由到原來只繫結http的站台">建立第二條路由規則來處理SSL offloading路由到原來只繫結http的站台</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)](https://2.bp.blogspot.com/-f_vIIp3UtEY/Vy6-1z0koVI/AAAAAAAADxA/AuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB/s1600/08.png)</div>
+<h2 id="http就會自動轉向https囉">http就會自動轉向https囉</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-1kiW1jBNV6Q/Vy6-12TzbqI/AAAAAAAADxE/GNepJK2W28o8JPGYSd3YIgk_BzylUCDvwCLcB/s1600/09.png)](https://2.bp.blogspot.com/-1kiW1jBNV6Q/Vy6-12TzbqI/AAAAAAAADxE/GNepJK2W28o8JPGYSd3YIgk_BzylUCDvwCLcB/s1600/09.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e9%80%8f%e9%81%8eApplication%20Request%20Route%e4%be%86%e5%81%9aSSL%20offloading&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f
+			&title=%e9%80%8f%e9%81%8eApplication%20Request%20Route%e4%be%86%e5%81%9aSSL%20offloading&summary=Application%20Request%20Route%20%e8%b6%8a%e4%be%86%e8%b6%8a%e5%a4%9a%e7%ab%99%e5%8f%b0%e8%a6%81%e9%96%8b%e5%a7%8b%e4%bd%bf%e7%94%a8SSL%e4%ba%86%2c%20%e8%a8%98%e9%8c%84%e4%b8%80%e4%b8%8b%e4%bd%bf%e7%94%a8Application%20Request%20Route%e4%be%86%e5%81%9aSSL%20offloading%e7%9a%84%e7%94%a8%e6%b3%95%0a%e9%a6%96%e5%85%88%e9%80%8f%e9%81%8eWeb%20Platform%20Installer%e4%be%86%e5%ae%89%e8%a3%9dARR%20%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-ElT4qkQUCMg%2fVy6-1AwXW9I%2fAAAAAAAADwo%2fF5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB%2fs1600%2f01.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-ElT4qkQUCMg%2fVy6-1AwXW9I%2fAAAAAAAADwo%2fF5deoTLNuUYZCXB6Wa9fWioG_MkC_12nQCLcB%2fs1600%2f01.png%29%20%e6%90%9c%e5%b0%8bApplication%20Request%20Routing%2c%20%e6%89%be%e5%88%b0%e5%be%8c%e9%bb%9e%e5%ae%89%e8%a3%9d%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-PqGjDtVXRKE%2fVy6-1HeRtPI%2fAAAAAAAADws%2f8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB%2fs1600%2f02.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-PqGjDtVXRKE%2fVy6-1HeRtPI%2fAAAAAAAADws%2f8USKKPPzNtszIbaUSy_KROwdUHAo6C1LACLcB%2fs1600%2f02.png%29%20%e9%87%8d%e6%96%b0%e6%89%93%e9%96%8bIIS%e6%9c%83%e7%9c%8b%e5%88%b0%e6%96%b0%e5%a2%9e%e4%ba%86Server%20Farms%e5%92%8cARR%e5%92%8cURL%20Rewrite%e9%80%99%e5%b9%be%e5%80%8b%e5%8a%9f%e8%83%bd%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-SAnm-5fysLo%2fVy6-09HaEuI%2fAAAAAAAADwk%2fUdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB%2fs1600%2f03.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-SAnm-5fysLo%2fVy6-09HaEuI%2fAAAAAAAADwk%2fUdlVYz0Cm3Yz9x0uXyEcxvxeV9mQS_WAwCLcB%2fs1600%2f03.png%29%20%e5%85%88%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8b%e9%a0%90%e8%a8%ad%e7%9a%84%e7%ab%99%e5%8f%b0%e4%be%86%e7%b9%ab%e7%b5%90https%e9%80%9a%e8%a8%8a%e5%8d%94%e5%ae%9a%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-wOACJ9Oz_Dk%2fVy6-1ZMCEnI%2fAAAAAAAADww%2fHrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB%2fs1600%2f04.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-wOACJ9Oz_Dk%2fVy6-1ZMCEnI%2fAAAAAAAADww%2fHrE4keo33UkK3nuuMhXIFyQrWz18IELSgCLcB%2fs1600%2f04.png%29%20%e5%8f%aa%e6%9c%89%e9%a0%90%e8%a8%ad%e7%ab%99%e5%8f%b0%e6%98%afHTTPS%2c%20%e5%85%b6%e4%bb%96%e7%ab%99%e5%8f%b0%e9%83%bd%e6%98%afHTTP%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-JApbMNiN87M%2fVy6-1iZNSmI%2fAAAAAAAADw4%2fwr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB%2fs1600%2f05.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-JApbMNiN87M%2fVy6-1iZNSmI%2fAAAAAAAADw4%2fwr7iijiMFoAZzzJFxZ5LLncz7yWhoEJ7ACLcB%2fs1600%2f05.png%29%20%e5%bb%ba%e7%ab%8b%e4%b8%80%e7%b5%84Server%20Farms%20%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-W1G06hP7xQc%2fVy6-1ekSG8I%2fAAAAAAAADw0%2fbrdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB%2fs1600%2f06.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-W1G06hP7xQc%2fVy6-1ekSG8I%2fAAAAAAAADw0%2fbrdiY-EUg4I5eOFOqdL0FnY90qX3UuvJwCLcB%2fs1600%2f06.png%29%20%e5%bb%ba%e7%ab%8b%e4%b8%80%e6%a2%9d%e8%b7%af%e7%94%b1%e8%a6%8f%e5%89%87%e4%be%86%e5%bc%b7%e5%88%b6%e7%ab%99%e5%8f%b0%e5%8f%aa%e8%83%bd%e4%bd%bf%e7%94%a8https%e9%80%9a%e8%a8%8a%e5%8d%94%e5%ae%9a%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-TzVI_c6eXAE%2fVy6-1pAPevI%2fAAAAAAAADw8%2f-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB%2fs1600%2f07.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-TzVI_c6eXAE%2fVy6-1pAPevI%2fAAAAAAAADw8%2f-1-hgZkbNIY8HC0WhcKZevo6giJ6hF--QCLcB%2fs1600%2f07.png%29%20%e5%bb%ba%e7%ab%8b%e7%ac%ac%e4%ba%8c%e6%a2%9d%e8%b7%af%e7%94%b1%e8%a6%8f%e5%89%87%e4%be%86%e8%99%95%e7%90%86SSL%20offloading%e8%b7%af%e7%94%b1%e5%88%b0%e5%8e%9f%e4%be%86%e5%8f%aa%e7%b9%ab%e7%b5%90http%e7%9a%84%e7%ab%99%e5%8f%b0%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-f_vIIp3UtEY%2fVy6-1z0koVI%2fAAAAAAAADxA%2fAuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB%2fs1600%2f08.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-f_vIIp3UtEY%2fVy6-1z0koVI%2fAAAAAAAADxA%2fAuXVhz2ecYwiHH8q-z97tLFavcCzRRPLwCLcB%2fs1600%2f08.png%29%20http%e5%b0%b1%e6%9c%83%e8%87%aa%e5%8b%95%e8%bd%89%e5%90%91https%e5%9b%89%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e9%80%8f%e9%81%8eApplication%20Request%20Route%e4%be%86%e5%81%9aSSL%20offloading&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2f%25E9%2580%258F%25E9%2581%258Eapplication-request-route%25E4%25BE%2586%25E5%2581%259Assl-offloading%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

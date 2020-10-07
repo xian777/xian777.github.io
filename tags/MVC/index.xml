@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MVC on My New Hugo Site</title>
+    <link>http://example.org/tags/mvc/</link>
+    <description>Recent content in MVC on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Aug 2014 14:55:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/mvc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Select2套件搭配MVC專案</title>
+      <link>http://example.org/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/</link>
+      <pubDate>Tue, 26 Aug 2014 14:55:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/</guid>
+      <description>首先開一個MVC專案
+[![](http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet引用Select2.js套件 [![](http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png)](http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png) 因為MVC使用Bootstrap框架，所以需要搭配[select2-bootstrap.css](http://zh-tw.cdnjs.com/libraries/select2)來修正畫面的輸出 [![](http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png)](http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png) 新增一個HomeModel用來傳遞資料 public class HomeModel { public IEnumerable&amp;lt;int&amp;gt; DataList { get; set; } }  在Controler中透過ViewBag，傳入一個MultiSelectList public ActionResult Index() { this.ViewBag.DataList = new MultiSelectList( new List&amp;lt;SelectListItem&amp;gt;() { new SelectListItem{ Text=&#34;aaa&#34;, Value=&#34;1&#34;}, new SelectListItem{ Text=&#34;bbb&#34;, Value=&#34;2&#34;}, new SelectListItem{ Text=&#34;ccc&#34;, Value=&#34;3&#34;}, }, &#34;Value&#34;, &#34;Text&#34;); return View();  }  在View中透過@Html.ListBoxFor輸出下拉選單
+@using WebApplication1.ViewModels @model HomeModel @{ ViewBag.Title = &#34;Index&#34;; } &amp;lt;h2&amp;gt;Index&amp;lt;/h2&amp;gt;
+&amp;lt;div class=&amp;quot;form-horizontal&amp;rdquo;&amp;gt; &amp;lt;div class=&amp;quot;form-group&amp;rdquo;&amp;gt; @Html.LabelFor(x =&amp;gt; x.DataList, new { @class = &amp;ldquo;col-md-2 label-control&amp;rdquo; }) &amp;lt;div class=&amp;quot;col-md-10&amp;rdquo;&amp;gt; @Html.</description>
+    </item>
+    
+  </channel>
+</rss>

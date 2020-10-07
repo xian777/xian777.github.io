@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Gulp 前端最佳化js和css工具 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="安裝gulp-cli套件 $ npm install gulp-cli -g 安裝gulp套件 $ npm install gulp --save-dev 安裝gulp plugin套件 $ npm install gulp-concat $ npm install gulp-cssmin $ npm install gulp-uglify $ npm install rimraf 新增gulpfile.js /// &lt;binding BeforeBuild=&#39;min&#39; Clean=&#39;clean&#39; /&gt; &#34;use strict&#34;; var gulp = require(&ldquo;gulp&rdquo;), rimraf = require(&ldquo;rimraf&rdquo;), concat = require(&ldquo;gulp-concat&rdquo;), cssmin = require(&ldquo;gulp-cssmin&rdquo;), uglify = require(&ldquo;gulp-uglify&rdquo;);
+var paths = { webroot: &ldquo;./wwwroot/&rdquo; };
+paths.js = paths.webroot &#43; &ldquo;js//*.js&rdquo;; paths.minJs = paths.webroot &#43; &ldquo;js//.
+    ">
+
+
+<meta property="og:title" content="gulp 前端最佳化js和css工具" />
+<meta property="og:description" content="安裝gulp-cli套件 $ npm install gulp-cli -g 安裝gulp套件 $ npm install gulp --save-dev 安裝gulp plugin套件 $ npm install gulp-concat $ npm install gulp-cssmin $ npm install gulp-uglify $ npm install rimraf 新增gulpfile.js /// &lt;binding BeforeBuild=&#39;min&#39; Clean=&#39;clean&#39; /&gt; &#34;use strict&#34;; var gulp = require(&ldquo;gulp&rdquo;), rimraf = require(&ldquo;rimraf&rdquo;), concat = require(&ldquo;gulp-concat&rdquo;), cssmin = require(&ldquo;gulp-cssmin&rdquo;), uglify = require(&ldquo;gulp-uglify&rdquo;);
+var paths = { webroot: &ldquo;./wwwroot/&rdquo; };
+paths.js = paths.webroot &#43; &ldquo;js//*.js&rdquo;; paths.minJs = paths.webroot &#43; &ldquo;js//." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/03/gulp-%E5%89%8D%E7%AB%AF%E6%9C%80%E4%BD%B3%E5%8C%96js%E5%92%8Ccss%E5%B7%A5%E5%85%B7/" />
+<meta property="article:published_time" content="2016-03-14T21:40:00+00:00" />
+<meta property="article:modified_time" content="2016-03-14T21:40:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gulp 前端最佳化js和css工具"/>
+<meta name="twitter:description" content="安裝gulp-cli套件 $ npm install gulp-cli -g 安裝gulp套件 $ npm install gulp --save-dev 安裝gulp plugin套件 $ npm install gulp-concat $ npm install gulp-cssmin $ npm install gulp-uglify $ npm install rimraf 新增gulpfile.js /// &lt;binding BeforeBuild=&#39;min&#39; Clean=&#39;clean&#39; /&gt; &#34;use strict&#34;; var gulp = require(&ldquo;gulp&rdquo;), rimraf = require(&ldquo;rimraf&rdquo;), concat = require(&ldquo;gulp-concat&rdquo;), cssmin = require(&ldquo;gulp-cssmin&rdquo;), uglify = require(&ldquo;gulp-uglify&rdquo;);
+var paths = { webroot: &ldquo;./wwwroot/&rdquo; };
+paths.js = paths.webroot &#43; &ldquo;js//*.js&rdquo;; paths.minJs = paths.webroot &#43; &ldquo;js//."/>
+
+<meta itemprop="name" content="gulp 前端最佳化js和css工具">
+<meta itemprop="description" content="安裝gulp-cli套件 $ npm install gulp-cli -g 安裝gulp套件 $ npm install gulp --save-dev 安裝gulp plugin套件 $ npm install gulp-concat $ npm install gulp-cssmin $ npm install gulp-uglify $ npm install rimraf 新增gulpfile.js /// &lt;binding BeforeBuild=&#39;min&#39; Clean=&#39;clean&#39; /&gt; &#34;use strict&#34;; var gulp = require(&ldquo;gulp&rdquo;), rimraf = require(&ldquo;rimraf&rdquo;), concat = require(&ldquo;gulp-concat&rdquo;), cssmin = require(&ldquo;gulp-cssmin&rdquo;), uglify = require(&ldquo;gulp-uglify&rdquo;);
+var paths = { webroot: &ldquo;./wwwroot/&rdquo; };
+paths.js = paths.webroot &#43; &ldquo;js//*.js&rdquo;; paths.minJs = paths.webroot &#43; &ldquo;js//.">
+<meta itemprop="datePublished" content="2016-03-14T21:40:00+00:00" />
+<meta itemprop="dateModified" content="2016-03-14T21:40:00+00:00" />
+<meta itemprop="wordCount" content="166">
+
+
+
+<meta itemprop="keywords" content="NodeJS," />
+
+<link rel="canonical" href="http://example.org/posts/2016/03/gulp-%E5%89%8D%E7%AB%AF%E6%9C%80%E4%BD%B3%E5%8C%96js%E5%92%8Ccss%E5%B7%A5%E5%85%B7/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Gulp 前端最佳化js和css工具</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Mar 14, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nodejs">NodeJS</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nodejs">Node j s</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>安裝gulp-cli套件 </div><div><pre class="brush:bash">$ npm install gulp-cli -g</pre>
+</div><div>安裝gulp套件 </div><div><pre class="brush:bash">$ npm install gulp --save-dev</pre>
+</div><div>安裝gulp plugin套件 </div><div><pre class="brush:bash">$ npm install gulp-concat
+$ npm install gulp-cssmin
+$ npm install gulp-uglify
+$ npm install rimraf</pre>
+</div><div>新增gulpfile.js </div><div><pre class="brush:javascript">/// &lt;binding BeforeBuild='min' Clean='clean' /&gt;
+"use strict";
+<p>var gulp = require(&ldquo;gulp&rdquo;),
+rimraf = require(&ldquo;rimraf&rdquo;),
+concat = require(&ldquo;gulp-concat&rdquo;),
+cssmin = require(&ldquo;gulp-cssmin&rdquo;),
+uglify = require(&ldquo;gulp-uglify&rdquo;);</p>
+<p>var paths = {
+webroot: &ldquo;./wwwroot/&rdquo;
+};</p>
+<p>paths.js = paths.webroot + &ldquo;js/<strong>/*.js&rdquo;;
+paths.minJs = paths.webroot + &ldquo;js/</strong>/<em>.min.js&rdquo;;
+paths.css = paths.webroot + &ldquo;css/**/</em>.css&rdquo;;
+paths.minCss = paths.webroot + &ldquo;css/**/*.min.css&rdquo;;
+paths.concatJsDest = paths.webroot + &ldquo;assets/site.min.js&rdquo;;
+paths.concatCssDest = paths.webroot + &ldquo;assets/site.min.css&rdquo;;</p>
+<p>gulp.task(&ldquo;clean:js&rdquo;, function (cb) {
+rimraf(paths.concatJsDest, cb);
+});</p>
+<p>gulp.task(&ldquo;clean:css&rdquo;, function (cb) {
+rimraf(paths.concatCssDest, cb);
+});</p>
+<p>gulp.task(&ldquo;clean&rdquo;, [&ldquo;clean:js&rdquo;, &ldquo;clean:css&rdquo;]);</p>
+<p>gulp.task(&ldquo;min:js&rdquo;, function () {
+return gulp.src([paths.js, &ldquo;!&rdquo; + paths.minJs], { base: &ldquo;.&rdquo; })
+.pipe(concat(paths.concatJsDest))
+.pipe(uglify())
+.pipe(gulp.dest(&rdquo;.&quot;));
+});</p>
+<p>gulp.task(&ldquo;min:css&rdquo;, function () {
+return gulp.src([paths.css, &ldquo;!&rdquo; + paths.minCss])
+.pipe(concat(paths.concatCssDest))
+.pipe(cssmin())
+.pipe(gulp.dest(&rdquo;.&quot;));
+});</p>
+<p>gulp.task(&ldquo;min&rdquo;, [&ldquo;min:js&rdquo;, &ldquo;min:css&rdquo;]);
+gulp.task(&ldquo;default&rdquo;, function () {
+gulp.watch(paths.js, function () {
+gulp.run(&ldquo;min:js&rdquo;);
+});
+gulp.watch(paths.css, function () {
+gulp.run(&ldquo;min:css&rdquo;);
+});
+});</pre></p>
+</div><div>執行工作 </div><div><pre class="brush:bash">$ gulp clean
+$ gulp min</pre>
+</div><div><div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-vdOW4ShjPTg/Vua-53hG9qI/AAAAAAAADrU/qY1yB9rkhFQ9m7niKIVoAuDjF8TLc8CLA/s1600/01.png)](https://3.bp.blogspot.com/-vdOW4ShjPTg/Vua-53hG9qI/AAAAAAAADrU/qY1yB9rkhFQ9m7niKIVoAuDjF8TLc8CLA/s1600/01.png)</div></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=gulp%20%e5%89%8d%e7%ab%af%e6%9c%80%e4%bd%b3%e5%8c%96js%e5%92%8ccss%e5%b7%a5%e5%85%b7&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f
+			&title=gulp%20%e5%89%8d%e7%ab%af%e6%9c%80%e4%bd%b3%e5%8c%96js%e5%92%8ccss%e5%b7%a5%e5%85%b7&summary=%e5%ae%89%e8%a3%9dgulp-cli%e5%a5%97%e4%bb%b6%20%24%20npm%20install%20gulp-cli%20-g%20%e5%ae%89%e8%a3%9dgulp%e5%a5%97%e4%bb%b6%20%24%20npm%20install%20gulp%20--save-dev%20%e5%ae%89%e8%a3%9dgulp%20plugin%e5%a5%97%e4%bb%b6%20%24%20npm%20install%20gulp-concat%20%24%20npm%20install%20gulp-cssmin%20%24%20npm%20install%20gulp-uglify%20%24%20npm%20install%20rimraf%20%e6%96%b0%e5%a2%9egulpfile.js%20%2f%2f%2f%20%26lt%3bbinding%20BeforeBuild%3d%27min%27%20Clean%3d%27clean%27%20%2f%26gt%3b%20%22use%20strict%22%3b%20var%20gulp%20%3d%20require%28%26ldquo%3bgulp%26rdquo%3b%29%2c%20rimraf%20%3d%20require%28%26ldquo%3brimraf%26rdquo%3b%29%2c%20concat%20%3d%20require%28%26ldquo%3bgulp-concat%26rdquo%3b%29%2c%20cssmin%20%3d%20require%28%26ldquo%3bgulp-cssmin%26rdquo%3b%29%2c%20uglify%20%3d%20require%28%26ldquo%3bgulp-uglify%26rdquo%3b%29%3b%0avar%20paths%20%3d%20%7b%20webroot%3a%20%26ldquo%3b.%2fwwwroot%2f%26rdquo%3b%20%7d%3b%0apaths.js%20%3d%20paths.webroot%20%2b%20%26ldquo%3bjs%2f%2f%2a.js%26rdquo%3b%3b%20paths.minJs%20%3d%20paths.webroot%20%2b%20%26ldquo%3bjs%2f%2f.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=gulp%20%e5%89%8d%e7%ab%af%e6%9c%80%e4%bd%b3%e5%8c%96js%e5%92%8ccss%e5%b7%a5%e5%85%b7&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f03%2fgulp-%25E5%2589%258D%25E7%25AB%25AF%25E6%259C%2580%25E4%25BD%25B3%25E5%258C%2596js%25E5%2592%258Ccss%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

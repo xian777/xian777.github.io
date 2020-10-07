@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework Code First 對應規則設定 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="要改變預設對應規則，可以用兩種方式 一種是使用Attributes的方式，例如[key] 一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定
+資料表名稱和主索引
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }
+protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); }  }  自動編號
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }
+    ">
+
+
+<meta property="og:title" content="Entity Framework Code First 對應規則設定" />
+<meta property="og:description" content="要改變預設對應規則，可以用兩種方式 一種是使用Attributes的方式，例如[key] 一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定
+資料表名稱和主索引
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }
+protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); }  }  自動編號
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/10/entity-framework-code-first-%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87%E8%A8%AD%E5%AE%9A/" />
+<meta property="article:published_time" content="2014-10-27T17:47:00+00:00" />
+<meta property="article:modified_time" content="2014-10-27T17:47:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework Code First 對應規則設定"/>
+<meta name="twitter:description" content="要改變預設對應規則，可以用兩種方式 一種是使用Attributes的方式，例如[key] 一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定
+資料表名稱和主索引
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }
+protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); }  }  自動編號
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }"/>
+
+<meta itemprop="name" content="Entity Framework Code First 對應規則設定">
+<meta itemprop="description" content="要改變預設對應規則，可以用兩種方式 一種是使用Attributes的方式，例如[key] 一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定
+資料表名稱和主索引
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }
+protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id); }  }  自動編號
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&lt;Table1&gt; Table1 { get; set; }">
+<meta itemprop="datePublished" content="2014-10-27T17:47:00+00:00" />
+<meta itemprop="dateModified" content="2014-10-27T17:47:00+00:00" />
+<meta itemprop="wordCount" content="605">
+
+
+
+<meta itemprop="keywords" content="Code First,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/10/entity-framework-code-first-%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87%E8%A8%AD%E5%AE%9A/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework Code First 對應規則設定</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 27, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/code-first">Code First</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/code-first">Code first</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>要改變預設對應規則，可以用兩種方式
+一種是使用Attributes的方式，例如[key]
+一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定</p>
+<p>資料表名稱和主索引</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    public int id { get; set; }
+}
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+}
+</code></pre>
+<p>}
+</pre></div>
+自動編號</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int id { get; set; }
+}
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+}
+</code></pre>
+<p>}</pre></div><div>欄位名稱 </div><div><pre class="brush:csharp">[Table(&ldquo;Table1&rdquo;)]
+public class Table1
+{
+[Key]
+[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+[Column(&ldquo;sid&rdquo;)]
+public int id { get; set; }
+}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;);
+}
+</code></pre>
+<p>}
+</pre></div>
+欄位型態</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+}
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+}
+</code></pre>
+<p>}
+</pre></div>
+不可為空(文字)</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+<pre><code>[Required]
+public string s1 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired();
+}
+</code></pre>
+<p>}
+</pre></div>
+最大長度(文字)</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+<pre><code>[Required]
+[MaxLength(10)]
+public string s1 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired()
+        .HasMaxLength(10);
+}
+</code></pre>
+<p>}
+</pre></div>
+varchar, char(文字)</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+<pre><code>[Required]
+[MaxLength(10)]
+[Column(TypeName=&quot;char&quot;)]
+public string s1 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired()
+        .HasMaxLength(10)
+        .IsFixedLength()
+        .IsUnicode(false);
+}
+</code></pre>
+<p>}</pre></div>
+精準度(浮點數)</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+<pre><code>[Required]
+[MaxLength(10)]
+[Column(TypeName=&quot;char&quot;)]
+public string s1 { get; set; }
+
+public decimal c1 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired()
+        .HasMaxLength(10)
+        .IsFixedLength()
+        .IsUnicode(false);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1)
+        .HasPrecision(18, 2);
+}
+</code></pre>
+<p>}</pre></div>
+時間戳記</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("sid", TypeName = "bigint")]
+    public int id { get; set; }
+<pre><code>[Required]
+[MaxLength(10)]
+[Column(TypeName = &quot;char&quot;)]
+public string s1 { get; set; }
+
+public decimal c1 { get; set; }
+
+[Timestamp]
+public byte[] t1 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; x.id);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.id)
+        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+        .HasColumnName(&quot;sid&quot;)
+        .HasColumnType(&quot;bigint&quot;);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.s1)
+        .IsRequired()
+        .HasMaxLength(10)
+        .IsFixedLength()
+        .IsUnicode(false);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.c1)
+        .HasPrecision(18, 2);
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().Property(x =&amp;gt; x.t1)
+        .IsRowVersion();
+}
+</code></pre>
+<p>}</pre></div>
+複合索引</p>
+<div><pre class="brush:csharp">[Table("Table1")]
+public class Table1
+{
+    [Key]
+    [Column(Order = 1)]
+    public int id1 { get; set; }
+<pre><code>[Key]
+[Column(Order = 2)]
+public int id2 { get; set; }
+</code></pre>
+<p>}</p>
+<p>public class DemoContext : DbContext
+{
+public DbSet&lt;Table1&gt; Table1 { get; set; }</p>
+<pre><code>protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;).HasKey(x =&amp;gt; new { x.id1, x.id2 });
+}
+</code></pre>
+<p>}</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20Code%20First%20%e5%b0%8d%e6%87%89%e8%a6%8f%e5%89%87%e8%a8%ad%e5%ae%9a&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f
+			&title=Entity%20Framework%20Code%20First%20%e5%b0%8d%e6%87%89%e8%a6%8f%e5%89%87%e8%a8%ad%e5%ae%9a&summary=%e8%a6%81%e6%94%b9%e8%ae%8a%e9%a0%90%e8%a8%ad%e5%b0%8d%e6%87%89%e8%a6%8f%e5%89%87%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%94%a8%e5%85%a9%e7%a8%ae%e6%96%b9%e5%bc%8f%20%e4%b8%80%e7%a8%ae%e6%98%af%e4%bd%bf%e7%94%a8Attributes%e7%9a%84%e6%96%b9%e5%bc%8f%ef%bc%8c%e4%be%8b%e5%a6%82%5bkey%5d%20%e4%b8%80%e7%a8%ae%e6%98%af%e8%a6%86%e5%af%abDbContext%e7%9a%84OnModelCreating%ef%bc%8c%e9%80%8f%e9%81%8eDbModelBuilder%e4%bd%bf%e7%94%a8Fluent%20API%e6%96%b9%e5%bc%8f%e4%be%86%e8%a8%ad%e5%ae%9a%0a%e8%b3%87%e6%96%99%e8%a1%a8%e5%90%8d%e7%a8%b1%e5%92%8c%e4%b8%bb%e7%b4%a2%e5%bc%95%0a%5bTable%28%22Table1%22%29%5d%20public%20class%20Table1%20%7b%20%5bKey%5d%20public%20int%20id%20%7b%20get%3b%20set%3b%20%7d%20%7d%20public%20class%20DemoContext%20%3a%20DbContext%20%7b%20public%20DbSet%26lt%3bTable1%26gt%3b%20Table1%20%7b%20get%3b%20set%3b%20%7d%0aprotected%20override%20void%20OnModelCreating%28DbModelBuilder%20modelBuilder%29%20%7b%20modelBuilder.Entity%26amp%3blt%3bTable1%26amp%3bgt%3b%28%29.ToTable%28%26quot%3bTable1%26quot%3b%29.HasKey%28x%20%3d%26amp%3bgt%3b%20x.id%29%3b%20%7d%20%20%7d%20%20%e8%87%aa%e5%8b%95%e7%b7%a8%e8%99%9f%0a%5bTable%28%22Table1%22%29%5d%20public%20class%20Table1%20%7b%20%5bKey%5d%20%5bDatabaseGenerated%28DatabaseGeneratedOption.Identity%29%5d%20public%20int%20id%20%7b%20get%3b%20set%3b%20%7d%20%7d%20public%20class%20DemoContext%20%3a%20DbContext%20%7b%20public%20DbSet%26lt%3bTable1%26gt%3b%20Table1%20%7b%20get%3b%20set%3b%20%7d&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20Code%20First%20%e5%b0%8d%e6%87%89%e8%a6%8f%e5%89%87%e8%a8%ad%e5%ae%9a&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f10%2fentity-framework-code-first-%25E5%25B0%258D%25E6%2587%2589%25E8%25A6%258F%25E5%2589%2587%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

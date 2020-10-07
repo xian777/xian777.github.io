@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NuGet Spec格式 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="套件的.nuspec檔案，預設是包括這些內容 &lt;?xml version=”1.0”?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的檔名 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute $title是套件的顯示名稱 requireLicenseAcceptance是安裝的時後要不要跳授權對話方塊 $licenseUrl是使用條款的網址 $projectUrl是專案資訊的網址 $iconUrl是套件icon的網址  除了這幾個用來設定套件資訊的項目之外，還可以在這個檔案中包含相依性 例如要在這個套件中，使用到log4net套件，那只要加一行dependencies資料就行了
+&lt;dependencies&gt; &lt;dependency id=”log4net” version=”2.0.0” /&gt; &lt;/dependencies&gt; 除了相依性，還可以指定GAC裡面的Assembly，例如System.ServiceModel
+&lt;frameworkAssemblies&gt; &lt;frameworkAssembly assemblyName=”System.ServiceModel” targetFramework=”net40” /&gt; &lt;/frameworkAssemblies&gt; 如果要額外打包檔案的話，就要用files這個tag了 src指定檔案所在的相對路徑，target指定檔案在套件中的位置 也可以萬用字元和exclude來排除特定檔案
+&lt;files&gt; &lt;file src=”bin\Debug*.dll” target=”lib” /&gt; &lt;file src=”bin\Debug*.pdb” target=”lib” /&gt; &lt;file src=”tools*\.
+    ">
+
+
+<meta property="og:title" content="NuGet Spec格式" />
+<meta property="og:description" content="套件的.nuspec檔案，預設是包括這些內容 &lt;?xml version=”1.0”?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的檔名 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute $title是套件的顯示名稱 requireLicenseAcceptance是安裝的時後要不要跳授權對話方塊 $licenseUrl是使用條款的網址 $projectUrl是專案資訊的網址 $iconUrl是套件icon的網址  除了這幾個用來設定套件資訊的項目之外，還可以在這個檔案中包含相依性 例如要在這個套件中，使用到log4net套件，那只要加一行dependencies資料就行了
+&lt;dependencies&gt; &lt;dependency id=”log4net” version=”2.0.0” /&gt; &lt;/dependencies&gt; 除了相依性，還可以指定GAC裡面的Assembly，例如System.ServiceModel
+&lt;frameworkAssemblies&gt; &lt;frameworkAssembly assemblyName=”System.ServiceModel” targetFramework=”net40” /&gt; &lt;/frameworkAssemblies&gt; 如果要額外打包檔案的話，就要用files這個tag了 src指定檔案所在的相對路徑，target指定檔案在套件中的位置 也可以萬用字元和exclude來排除特定檔案
+&lt;files&gt; &lt;file src=”bin\Debug*.dll” target=”lib” /&gt; &lt;file src=”bin\Debug*.pdb” target=”lib” /&gt; &lt;file src=”tools*\." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/nuget-spec%E6%A0%BC%E5%BC%8F/" />
+<meta property="article:published_time" content="2012-11-05T18:13:00+00:00" />
+<meta property="article:modified_time" content="2012-11-05T18:13:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NuGet Spec格式"/>
+<meta name="twitter:description" content="套件的.nuspec檔案，預設是包括這些內容 &lt;?xml version=”1.0”?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的檔名 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute $title是套件的顯示名稱 requireLicenseAcceptance是安裝的時後要不要跳授權對話方塊 $licenseUrl是使用條款的網址 $projectUrl是專案資訊的網址 $iconUrl是套件icon的網址  除了這幾個用來設定套件資訊的項目之外，還可以在這個檔案中包含相依性 例如要在這個套件中，使用到log4net套件，那只要加一行dependencies資料就行了
+&lt;dependencies&gt; &lt;dependency id=”log4net” version=”2.0.0” /&gt; &lt;/dependencies&gt; 除了相依性，還可以指定GAC裡面的Assembly，例如System.ServiceModel
+&lt;frameworkAssemblies&gt; &lt;frameworkAssembly assemblyName=”System.ServiceModel” targetFramework=”net40” /&gt; &lt;/frameworkAssemblies&gt; 如果要額外打包檔案的話，就要用files這個tag了 src指定檔案所在的相對路徑，target指定檔案在套件中的位置 也可以萬用字元和exclude來排除特定檔案
+&lt;files&gt; &lt;file src=”bin\Debug*.dll” target=”lib” /&gt; &lt;file src=”bin\Debug*.pdb” target=”lib” /&gt; &lt;file src=”tools*\."/>
+
+<meta itemprop="name" content="NuGet Spec格式">
+<meta itemprop="description" content="套件的.nuspec檔案，預設是包括這些內容 &lt;?xml version=”1.0”?&gt; &lt;package &gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseUrl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseUrl&gt; &lt;projectUrl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projectUrl&gt; &lt;iconUrl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconUrl&gt; &lt;requireLicenseAcceptance&gt;false&lt;/requireLicenseAcceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releaseNotes&gt;Summary of changes made in this release of the package.&lt;/releaseNotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的檔名 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute $title是套件的顯示名稱 requireLicenseAcceptance是安裝的時後要不要跳授權對話方塊 $licenseUrl是使用條款的網址 $projectUrl是專案資訊的網址 $iconUrl是套件icon的網址  除了這幾個用來設定套件資訊的項目之外，還可以在這個檔案中包含相依性 例如要在這個套件中，使用到log4net套件，那只要加一行dependencies資料就行了
+&lt;dependencies&gt; &lt;dependency id=”log4net” version=”2.0.0” /&gt; &lt;/dependencies&gt; 除了相依性，還可以指定GAC裡面的Assembly，例如System.ServiceModel
+&lt;frameworkAssemblies&gt; &lt;frameworkAssembly assemblyName=”System.ServiceModel” targetFramework=”net40” /&gt; &lt;/frameworkAssemblies&gt; 如果要額外打包檔案的話，就要用files這個tag了 src指定檔案所在的相對路徑，target指定檔案在套件中的位置 也可以萬用字元和exclude來排除特定檔案
+&lt;files&gt; &lt;file src=”bin\Debug*.dll” target=”lib” /&gt; &lt;file src=”bin\Debug*.pdb” target=”lib” /&gt; &lt;file src=”tools*\.">
+<meta itemprop="datePublished" content="2012-11-05T18:13:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-05T18:13:00+00:00" />
+<meta itemprop="wordCount" content="76">
+
+
+
+<meta itemprop="keywords" content="NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/nuget-spec%E6%A0%BC%E5%BC%8F/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NuGet Spec格式</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 5, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="套件的nuspec檔案預設是包括這些內容">套件的.nuspec檔案，預設是包括這些內容</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=”1.0”?&gt;</span>
+<span style="color:#f92672">&lt;package</span> <span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;metadata&gt;</span>
+    <span style="color:#f92672">&lt;id&gt;</span>$id$<span style="color:#f92672">&lt;/id&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>$version$<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;title&gt;</span>$title$<span style="color:#f92672">&lt;/title&gt;</span>
+    <span style="color:#f92672">&lt;authors&gt;</span>$author$<span style="color:#f92672">&lt;/authors&gt;</span>
+    <span style="color:#f92672">&lt;owners&gt;</span>$author$<span style="color:#f92672">&lt;/owners&gt;</span>
+    <span style="color:#f92672">&lt;licenseUrl&gt;</span>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/licenseUrl&gt;</span>
+    <span style="color:#f92672">&lt;projectUrl&gt;</span>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/projectUrl&gt;</span>
+    <span style="color:#f92672">&lt;iconUrl&gt;</span>http://ICON_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/iconUrl&gt;</span>
+    <span style="color:#f92672">&lt;requireLicenseAcceptance&gt;</span>false<span style="color:#f92672">&lt;/requireLicenseAcceptance&gt;</span>
+    <span style="color:#f92672">&lt;description&gt;</span>$description$<span style="color:#f92672">&lt;/description&gt;</span>
+    <span style="color:#f92672">&lt;releaseNotes&gt;</span>Summary of changes made in this release of the package.<span style="color:#f92672">&lt;/releaseNotes&gt;</span>
+    <span style="color:#f92672">&lt;copyright&gt;</span>Copyright 2012<span style="color:#f92672">&lt;/copyright&gt;</span>
+    <span style="color:#f92672">&lt;tags&gt;</span>Tag1 Tag2<span style="color:#f92672">&lt;/tags&gt;</span>
+  <span style="color:#f92672">&lt;/metadata&gt;</span>
+<span style="color:#f92672">&lt;/package&gt;</span>
+</code></pre></div><ul>
+<li>$id對應的是這個套件的檔名</li>
+<li>$version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute</li>
+<li>$author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute</li>
+<li>$description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute</li>
+<li>$title是套件的顯示名稱</li>
+<li>requireLicenseAcceptance是安裝的時後要不要跳授權對話方塊</li>
+<li>$licenseUrl是使用條款的網址</li>
+<li>$projectUrl是專案資訊的網址</li>
+<li>$iconUrl是套件icon的網址</li>
+</ul>
+<p>除了這幾個用來設定套件資訊的項目之外，還可以在這個檔案中包含相依性
+例如要在這個套件中，使用到log4net套件，那只要加一行dependencies資料就行了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencies&gt;</span>
+  <span style="color:#f92672">&lt;dependency</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">”log4net”</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">”2.0.0”</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>除了相依性，還可以指定GAC裡面的Assembly，例如System.ServiceModel</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;frameworkAssemblies&gt;</span>
+  <span style="color:#f92672">&lt;frameworkAssembly</span> <span style="color:#a6e22e">assemblyName=</span><span style="color:#e6db74">”System.ServiceModel”</span> <span style="color:#a6e22e">targetFramework=</span><span style="color:#e6db74">”net40”</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/frameworkAssemblies&gt;</span>
+</code></pre></div><p>如果要額外打包檔案的話，就要用files這個tag了
+src指定檔案所在的相對路徑，target指定檔案在套件中的位置
+也可以萬用字元和exclude來排除特定檔案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;files&gt;</span>
+  <span style="color:#f92672">&lt;file</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">”bin\Debug*.dll”</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">”lib”</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;file</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">”bin\Debug*.pdb”</span> <span style="color:#a6e22e">target=</span><span style="color:#e6db74">”lib”</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;file</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">”tools*\.“</span> <span style="color:#a6e22e">exclude=</span><span style="color:#e6db74">”**\.log”</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/files&gt;</span>
+</code></pre></div><h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://docs.nuget.org/docs/reference/nuspec-reference">Nuspec Reference</a></li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NuGet%20Spec%e6%a0%bc%e5%bc%8f&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f
+			&title=NuGet%20Spec%e6%a0%bc%e5%bc%8f&summary=%e5%a5%97%e4%bb%b6%e7%9a%84.nuspec%e6%aa%94%e6%a1%88%ef%bc%8c%e9%a0%90%e8%a8%ad%e6%98%af%e5%8c%85%e6%8b%ac%e9%80%99%e4%ba%9b%e5%85%a7%e5%ae%b9%20%26lt%3b%3fxml%20version%3d%e2%80%9d1.0%e2%80%9d%3f%26gt%3b%20%26lt%3bpackage%20%26gt%3b%20%26lt%3bmetadata%26gt%3b%20%26lt%3bid%26gt%3b%24id%24%26lt%3b%2fid%26gt%3b%20%26lt%3bversion%26gt%3b%24version%24%26lt%3b%2fversion%26gt%3b%20%26lt%3btitle%26gt%3b%24title%24%26lt%3b%2ftitle%26gt%3b%20%26lt%3bauthors%26gt%3b%24author%24%26lt%3b%2fauthors%26gt%3b%20%26lt%3bowners%26gt%3b%24author%24%26lt%3b%2fowners%26gt%3b%20%26lt%3blicenseUrl%26gt%3bhttp%3a%2f%2fLICENSE_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2flicenseUrl%26gt%3b%20%26lt%3bprojectUrl%26gt%3bhttp%3a%2f%2fPROJECT_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2fprojectUrl%26gt%3b%20%26lt%3biconUrl%26gt%3bhttp%3a%2f%2fICON_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2ficonUrl%26gt%3b%20%26lt%3brequireLicenseAcceptance%26gt%3bfalse%26lt%3b%2frequireLicenseAcceptance%26gt%3b%20%26lt%3bdescription%26gt%3b%24description%24%26lt%3b%2fdescription%26gt%3b%20%26lt%3breleaseNotes%26gt%3bSummary%20of%20changes%20made%20in%20this%20release%20of%20the%20package.%26lt%3b%2freleaseNotes%26gt%3b%20%26lt%3bcopyright%26gt%3bCopyright%202012%26lt%3b%2fcopyright%26gt%3b%20%26lt%3btags%26gt%3bTag1%20Tag2%26lt%3b%2ftags%26gt%3b%20%26lt%3b%2fmetadata%26gt%3b%20%26lt%3b%2fpackage%26gt%3b%20%20%24id%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%af%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e7%9a%84%e6%aa%94%e5%90%8d%20%24version%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyVersionAttribute%20%24author%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyCompanyAttribute%20%24description%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyDescriptionAttribute%20%24title%e6%98%af%e5%a5%97%e4%bb%b6%e7%9a%84%e9%a1%af%e7%a4%ba%e5%90%8d%e7%a8%b1%20requireLicenseAcceptance%e6%98%af%e5%ae%89%e8%a3%9d%e7%9a%84%e6%99%82%e5%be%8c%e8%a6%81%e4%b8%8d%e8%a6%81%e8%b7%b3%e6%8e%88%e6%ac%8a%e5%b0%8d%e8%a9%b1%e6%96%b9%e5%a1%8a%20%24licenseUrl%e6%98%af%e4%bd%bf%e7%94%a8%e6%a2%9d%e6%ac%be%e7%9a%84%e7%b6%b2%e5%9d%80%20%24projectUrl%e6%98%af%e5%b0%88%e6%a1%88%e8%b3%87%e8%a8%8a%e7%9a%84%e7%b6%b2%e5%9d%80%20%24iconUrl%e6%98%af%e5%a5%97%e4%bb%b6icon%e7%9a%84%e7%b6%b2%e5%9d%80%20%20%e9%99%a4%e4%ba%86%e9%80%99%e5%b9%be%e5%80%8b%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e5%a5%97%e4%bb%b6%e8%b3%87%e8%a8%8a%e7%9a%84%e9%a0%85%e7%9b%ae%e4%b9%8b%e5%a4%96%ef%bc%8c%e9%82%84%e5%8f%af%e4%bb%a5%e5%9c%a8%e9%80%99%e5%80%8b%e6%aa%94%e6%a1%88%e4%b8%ad%e5%8c%85%e5%90%ab%e7%9b%b8%e4%be%9d%e6%80%a7%20%e4%be%8b%e5%a6%82%e8%a6%81%e5%9c%a8%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e4%b8%ad%ef%bc%8c%e4%bd%bf%e7%94%a8%e5%88%b0log4net%e5%a5%97%e4%bb%b6%ef%bc%8c%e9%82%a3%e5%8f%aa%e8%a6%81%e5%8a%a0%e4%b8%80%e8%a1%8cdependencies%e8%b3%87%e6%96%99%e5%b0%b1%e8%a1%8c%e4%ba%86%0a%26lt%3bdependencies%26gt%3b%20%26lt%3bdependency%20id%3d%e2%80%9dlog4net%e2%80%9d%20version%3d%e2%80%9d2.0.0%e2%80%9d%20%2f%26gt%3b%20%26lt%3b%2fdependencies%26gt%3b%20%e9%99%a4%e4%ba%86%e7%9b%b8%e4%be%9d%e6%80%a7%ef%bc%8c%e9%82%84%e5%8f%af%e4%bb%a5%e6%8c%87%e5%ae%9aGAC%e8%a3%a1%e9%9d%a2%e7%9a%84Assembly%ef%bc%8c%e4%be%8b%e5%a6%82System.ServiceModel%0a%26lt%3bframeworkAssemblies%26gt%3b%20%26lt%3bframeworkAssembly%20assemblyName%3d%e2%80%9dSystem.ServiceModel%e2%80%9d%20targetFramework%3d%e2%80%9dnet40%e2%80%9d%20%2f%26gt%3b%20%26lt%3b%2fframeworkAssemblies%26gt%3b%20%e5%a6%82%e6%9e%9c%e8%a6%81%e9%a1%8d%e5%a4%96%e6%89%93%e5%8c%85%e6%aa%94%e6%a1%88%e7%9a%84%e8%a9%b1%ef%bc%8c%e5%b0%b1%e8%a6%81%e7%94%a8files%e9%80%99%e5%80%8btag%e4%ba%86%20src%e6%8c%87%e5%ae%9a%e6%aa%94%e6%a1%88%e6%89%80%e5%9c%a8%e7%9a%84%e7%9b%b8%e5%b0%8d%e8%b7%af%e5%be%91%ef%bc%8ctarget%e6%8c%87%e5%ae%9a%e6%aa%94%e6%a1%88%e5%9c%a8%e5%a5%97%e4%bb%b6%e4%b8%ad%e7%9a%84%e4%bd%8d%e7%bd%ae%20%e4%b9%9f%e5%8f%af%e4%bb%a5%e8%90%ac%e7%94%a8%e5%ad%97%e5%85%83%e5%92%8cexclude%e4%be%86%e6%8e%92%e9%99%a4%e7%89%b9%e5%ae%9a%e6%aa%94%e6%a1%88%0a%26lt%3bfiles%26gt%3b%20%26lt%3bfile%20src%3d%e2%80%9dbin%5cDebug%2a.dll%e2%80%9d%20target%3d%e2%80%9dlib%e2%80%9d%20%2f%26gt%3b%20%26lt%3bfile%20src%3d%e2%80%9dbin%5cDebug%2a.pdb%e2%80%9d%20target%3d%e2%80%9dlib%e2%80%9d%20%2f%26gt%3b%20%26lt%3bfile%20src%3d%e2%80%9dtools%2a%5c.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NuGet%20Spec%e6%a0%bc%e5%bc%8f&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fnuget-spec%25E6%25A0%25BC%25E5%25BC%258F%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

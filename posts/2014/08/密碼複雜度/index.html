@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    密碼複雜度 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="密碼複雜度利用Regular Expression可以簡單地完成 先用一個簡單的例子，6~12個英數字混合的規則&lt;div&gt; &lt;asp:TextBox ID=&#34;Tbx_Password&#34; runat=&#34;server&#34; /&gt; &lt;asp:Button ID=&#34;Btn_Save&#34; Text=&#34;Save&#34; OnClick=&#34;Btn_Save_Click&#34; runat=&#34;server&#34; /&gt; &lt;asp:RequiredFieldValidator ID=&#34;Rfv_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ErrorMessage=&#34;密碼不可空白&#34; SetFocusOnError=&#34;true&#34; Text=&#34;密碼不可空白&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;asp:RegularExpressionValidator ID=&#34;Reg_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ValidationExpression=&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34; ErrorMessage=&#34;密碼長度6~12英數混合&#34; Text=&#34;密碼長度6~12英數混合&#34; SetFocusOnError=&#34;true&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;/div&gt;  ^開頭符號(?=.*[a-zA-Z])最少一個英文字(?=.*[\d])最少一個數字.{6,12}6~12長度$結尾符號 利用群組的功能還可以組合出更多的規則 (?=.*[!@#$%^&amp;*])最少一個符號(?=.*[\d][\d])連續兩個數字(?=.*[a-z][a-z])連續兩個小寫英文(?!.*[\d][\d][\d])禁止連續三個數字(?!.*[oO0])禁止小寫的o和大寫的O和數字的0 如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用 protected void Btn_Save_Click(object sender, EventArgs e) { Regex reg = new Regex(@&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34;); if (reg.IsMatch(Tbx_Password.Text)) { Response.Write(&#34;Match&#34;); } else { Response.Write(&#34;Not Match&#34;); } } 
+    ">
+
+
+<meta property="og:title" content="密碼複雜度" />
+<meta property="og:description" content="密碼複雜度利用Regular Expression可以簡單地完成 先用一個簡單的例子，6~12個英數字混合的規則&lt;div&gt; &lt;asp:TextBox ID=&#34;Tbx_Password&#34; runat=&#34;server&#34; /&gt; &lt;asp:Button ID=&#34;Btn_Save&#34; Text=&#34;Save&#34; OnClick=&#34;Btn_Save_Click&#34; runat=&#34;server&#34; /&gt; &lt;asp:RequiredFieldValidator ID=&#34;Rfv_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ErrorMessage=&#34;密碼不可空白&#34; SetFocusOnError=&#34;true&#34; Text=&#34;密碼不可空白&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;asp:RegularExpressionValidator ID=&#34;Reg_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ValidationExpression=&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34; ErrorMessage=&#34;密碼長度6~12英數混合&#34; Text=&#34;密碼長度6~12英數混合&#34; SetFocusOnError=&#34;true&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;/div&gt;  ^開頭符號(?=.*[a-zA-Z])最少一個英文字(?=.*[\d])最少一個數字.{6,12}6~12長度$結尾符號 利用群組的功能還可以組合出更多的規則 (?=.*[!@#$%^&amp;*])最少一個符號(?=.*[\d][\d])連續兩個數字(?=.*[a-z][a-z])連續兩個小寫英文(?!.*[\d][\d][\d])禁止連續三個數字(?!.*[oO0])禁止小寫的o和大寫的O和數字的0 如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用 protected void Btn_Save_Click(object sender, EventArgs e) { Regex reg = new Regex(@&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34;); if (reg.IsMatch(Tbx_Password.Text)) { Response.Write(&#34;Match&#34;); } else { Response.Write(&#34;Not Match&#34;); } } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/08/%E5%AF%86%E7%A2%BC%E8%A4%87%E9%9B%9C%E5%BA%A6/" />
+<meta property="article:published_time" content="2014-08-19T16:57:00+00:00" />
+<meta property="article:modified_time" content="2014-08-19T16:57:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="密碼複雜度"/>
+<meta name="twitter:description" content="密碼複雜度利用Regular Expression可以簡單地完成 先用一個簡單的例子，6~12個英數字混合的規則&lt;div&gt; &lt;asp:TextBox ID=&#34;Tbx_Password&#34; runat=&#34;server&#34; /&gt; &lt;asp:Button ID=&#34;Btn_Save&#34; Text=&#34;Save&#34; OnClick=&#34;Btn_Save_Click&#34; runat=&#34;server&#34; /&gt; &lt;asp:RequiredFieldValidator ID=&#34;Rfv_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ErrorMessage=&#34;密碼不可空白&#34; SetFocusOnError=&#34;true&#34; Text=&#34;密碼不可空白&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;asp:RegularExpressionValidator ID=&#34;Reg_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ValidationExpression=&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34; ErrorMessage=&#34;密碼長度6~12英數混合&#34; Text=&#34;密碼長度6~12英數混合&#34; SetFocusOnError=&#34;true&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;/div&gt;  ^開頭符號(?=.*[a-zA-Z])最少一個英文字(?=.*[\d])最少一個數字.{6,12}6~12長度$結尾符號 利用群組的功能還可以組合出更多的規則 (?=.*[!@#$%^&amp;*])最少一個符號(?=.*[\d][\d])連續兩個數字(?=.*[a-z][a-z])連續兩個小寫英文(?!.*[\d][\d][\d])禁止連續三個數字(?!.*[oO0])禁止小寫的o和大寫的O和數字的0 如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用 protected void Btn_Save_Click(object sender, EventArgs e) { Regex reg = new Regex(@&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34;); if (reg.IsMatch(Tbx_Password.Text)) { Response.Write(&#34;Match&#34;); } else { Response.Write(&#34;Not Match&#34;); } } "/>
+
+<meta itemprop="name" content="密碼複雜度">
+<meta itemprop="description" content="密碼複雜度利用Regular Expression可以簡單地完成 先用一個簡單的例子，6~12個英數字混合的規則&lt;div&gt; &lt;asp:TextBox ID=&#34;Tbx_Password&#34; runat=&#34;server&#34; /&gt; &lt;asp:Button ID=&#34;Btn_Save&#34; Text=&#34;Save&#34; OnClick=&#34;Btn_Save_Click&#34; runat=&#34;server&#34; /&gt; &lt;asp:RequiredFieldValidator ID=&#34;Rfv_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ErrorMessage=&#34;密碼不可空白&#34; SetFocusOnError=&#34;true&#34; Text=&#34;密碼不可空白&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;asp:RegularExpressionValidator ID=&#34;Reg_Password&#34; ControlToValidate=&#34;Tbx_Password&#34; ValidationExpression=&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34; ErrorMessage=&#34;密碼長度6~12英數混合&#34; Text=&#34;密碼長度6~12英數混合&#34; SetFocusOnError=&#34;true&#34; ForeColor=&#34;Red&#34; Display=&#34;Dynamic&#34; runat=&#34;server&#34; /&gt; &lt;/div&gt;  ^開頭符號(?=.*[a-zA-Z])最少一個英文字(?=.*[\d])最少一個數字.{6,12}6~12長度$結尾符號 利用群組的功能還可以組合出更多的規則 (?=.*[!@#$%^&amp;*])最少一個符號(?=.*[\d][\d])連續兩個數字(?=.*[a-z][a-z])連續兩個小寫英文(?!.*[\d][\d][\d])禁止連續三個數字(?!.*[oO0])禁止小寫的o和大寫的O和數字的0 如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用 protected void Btn_Save_Click(object sender, EventArgs e) { Regex reg = new Regex(@&#34;^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$&#34;); if (reg.IsMatch(Tbx_Password.Text)) { Response.Write(&#34;Match&#34;); } else { Response.Write(&#34;Not Match&#34;); } } ">
+<meta itemprop="datePublished" content="2014-08-19T16:57:00+00:00" />
+<meta itemprop="dateModified" content="2014-08-19T16:57:00+00:00" />
+<meta itemprop="wordCount" content="62">
+
+
+
+<meta itemprop="keywords" content="ASP.NET," />
+
+<link rel="canonical" href="http://example.org/posts/2014/08/%E5%AF%86%E7%A2%BC%E8%A4%87%E9%9B%9C%E5%BA%A6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>密碼複雜度</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 19, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/asp.net">ASP.NET</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/asp.net">A s p. n e t</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>密碼複雜度利用Regular Expression可以簡單地完成
+先用一個簡單的例子，6~12個英數字混合的規則</div><div><pre class="brush:html">&lt;div&gt;
+    &lt;asp:TextBox ID="Tbx_Password" runat="server" /&gt;
+    &lt;asp:Button ID="Btn_Save" Text="Save" OnClick="Btn_Save_Click" runat="server" /&gt;
+    &lt;asp:RequiredFieldValidator ID="Rfv_Password" ControlToValidate="Tbx_Password" 
+        ErrorMessage="密碼不可空白" SetFocusOnError="true" Text="密碼不可空白" ForeColor="Red" 
+        Display="Dynamic" runat="server" /&gt;
+    &lt;asp:RegularExpressionValidator ID="Reg_Password" ControlToValidate="Tbx_Password" 
+        ValidationExpression="^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$"
+        ErrorMessage="密碼長度6~12英數混合" Text="密碼長度6~12英數混合" SetFocusOnError="true" 
+        ForeColor="Red" Display="Dynamic" runat="server" /&gt;
+&lt;/div&gt;
+</pre></div>
+<div><table><tbody><tr><td>^</td><td>開頭符號</td></tr><tr><td>(?=.*[a-zA-Z])</td><td>最少一個英文字</td></tr><tr><td>(?=.*[\d])</td><td>最少一個數字</td></tr><tr><td>.{6,12}</td><td>6~12長度</td></tr><tr><td>$</td><td>結尾符號</td></tr></tbody></table></div>
+<div>利用群組的功能還可以組合出更多的規則
+<table><tbody><tr><td>(?=.*[!@#$%^&amp;*])</td><td>最少一個符號</td></tr><tr><td>(?=.*[\d][\d])</td><td>連續兩個數字</td></tr><tr><td>(?=.*[a-z][a-z])</td><td>連續兩個小寫英文</td></tr><tr><td>(?!.*[\d][\d][\d])</td><td>禁止連續三個數字</td></tr><tr><td>(?!.*[oO0])</td><td>禁止小寫的o和大寫的O和數字的0</td></tr></tbody></table></div>
+<div>如果不是WebForm專案，也可以透過System.Text.RegularExpressions空間下的Regex物件來使用</div>
+<div><pre class="brush:csharp">protected void Btn_Save_Click(object sender, EventArgs e)
+{
+    Regex reg = new Regex(@"^(?!.*[oO0])(?=.*[a-zA-Z])(?=.*[\d])(?!.*[\d][\d][\d]).{6,12}$");
+    if (reg.IsMatch(Tbx_Password.Text))
+    {
+        Response.Write("Match");
+    }
+    else
+    {
+        Response.Write("Not Match");
+    }
+}
+</pre></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%af%86%e7%a2%bc%e8%a4%87%e9%9b%9c%e5%ba%a6&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f
+			&title=%e5%af%86%e7%a2%bc%e8%a4%87%e9%9b%9c%e5%ba%a6&summary=%e5%af%86%e7%a2%bc%e8%a4%87%e9%9b%9c%e5%ba%a6%e5%88%a9%e7%94%a8Regular%20Expression%e5%8f%af%e4%bb%a5%e7%b0%a1%e5%96%ae%e5%9c%b0%e5%ae%8c%e6%88%90%20%e5%85%88%e7%94%a8%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e4%be%8b%e5%ad%90%ef%bc%8c6~12%e5%80%8b%e8%8b%b1%e6%95%b8%e5%ad%97%e6%b7%b7%e5%90%88%e7%9a%84%e8%a6%8f%e5%89%87%26lt%3bdiv%26gt%3b%20%26lt%3basp%3aTextBox%20ID%3d%22Tbx_Password%22%20runat%3d%22server%22%20%2f%26gt%3b%20%26lt%3basp%3aButton%20ID%3d%22Btn_Save%22%20Text%3d%22Save%22%20OnClick%3d%22Btn_Save_Click%22%20runat%3d%22server%22%20%2f%26gt%3b%20%26lt%3basp%3aRequiredFieldValidator%20ID%3d%22Rfv_Password%22%20ControlToValidate%3d%22Tbx_Password%22%20ErrorMessage%3d%22%e5%af%86%e7%a2%bc%e4%b8%8d%e5%8f%af%e7%a9%ba%e7%99%bd%22%20SetFocusOnError%3d%22true%22%20Text%3d%22%e5%af%86%e7%a2%bc%e4%b8%8d%e5%8f%af%e7%a9%ba%e7%99%bd%22%20ForeColor%3d%22Red%22%20Display%3d%22Dynamic%22%20runat%3d%22server%22%20%2f%26gt%3b%20%26lt%3basp%3aRegularExpressionValidator%20ID%3d%22Reg_Password%22%20ControlToValidate%3d%22Tbx_Password%22%20ValidationExpression%3d%22%5e%28%3f%21.%2a%5boO0%5d%29%28%3f%3d.%2a%5ba-zA-Z%5d%29%28%3f%3d.%2a%5b%5cd%5d%29%28%3f%21.%2a%5b%5cd%5d%5b%5cd%5d%5b%5cd%5d%29.%7b6%2c12%7d%24%22%20ErrorMessage%3d%22%e5%af%86%e7%a2%bc%e9%95%b7%e5%ba%a66~12%e8%8b%b1%e6%95%b8%e6%b7%b7%e5%90%88%22%20Text%3d%22%e5%af%86%e7%a2%bc%e9%95%b7%e5%ba%a66~12%e8%8b%b1%e6%95%b8%e6%b7%b7%e5%90%88%22%20SetFocusOnError%3d%22true%22%20ForeColor%3d%22Red%22%20Display%3d%22Dynamic%22%20runat%3d%22server%22%20%2f%26gt%3b%20%26lt%3b%2fdiv%26gt%3b%20%20%5e%e9%96%8b%e9%a0%ad%e7%ac%a6%e8%99%9f%28%3f%3d.%2a%5ba-zA-Z%5d%29%e6%9c%80%e5%b0%91%e4%b8%80%e5%80%8b%e8%8b%b1%e6%96%87%e5%ad%97%28%3f%3d.%2a%5b%5cd%5d%29%e6%9c%80%e5%b0%91%e4%b8%80%e5%80%8b%e6%95%b8%e5%ad%97.%7b6%2c12%7d6~12%e9%95%b7%e5%ba%a6%24%e7%b5%90%e5%b0%be%e7%ac%a6%e8%99%9f%20%e5%88%a9%e7%94%a8%e7%be%a4%e7%b5%84%e7%9a%84%e5%8a%9f%e8%83%bd%e9%82%84%e5%8f%af%e4%bb%a5%e7%b5%84%e5%90%88%e5%87%ba%e6%9b%b4%e5%a4%9a%e7%9a%84%e8%a6%8f%e5%89%87%20%28%3f%3d.%2a%5b%21%40%23%24%25%5e%26amp%3b%2a%5d%29%e6%9c%80%e5%b0%91%e4%b8%80%e5%80%8b%e7%ac%a6%e8%99%9f%28%3f%3d.%2a%5b%5cd%5d%5b%5cd%5d%29%e9%80%a3%e7%ba%8c%e5%85%a9%e5%80%8b%e6%95%b8%e5%ad%97%28%3f%3d.%2a%5ba-z%5d%5ba-z%5d%29%e9%80%a3%e7%ba%8c%e5%85%a9%e5%80%8b%e5%b0%8f%e5%af%ab%e8%8b%b1%e6%96%87%28%3f%21.%2a%5b%5cd%5d%5b%5cd%5d%5b%5cd%5d%29%e7%a6%81%e6%ad%a2%e9%80%a3%e7%ba%8c%e4%b8%89%e5%80%8b%e6%95%b8%e5%ad%97%28%3f%21.%2a%5boO0%5d%29%e7%a6%81%e6%ad%a2%e5%b0%8f%e5%af%ab%e7%9a%84o%e5%92%8c%e5%a4%a7%e5%af%ab%e7%9a%84O%e5%92%8c%e6%95%b8%e5%ad%97%e7%9a%840%20%e5%a6%82%e6%9e%9c%e4%b8%8d%e6%98%afWebForm%e5%b0%88%e6%a1%88%ef%bc%8c%e4%b9%9f%e5%8f%af%e4%bb%a5%e9%80%8f%e9%81%8eSystem.Text.RegularExpressions%e7%a9%ba%e9%96%93%e4%b8%8b%e7%9a%84Regex%e7%89%a9%e4%bb%b6%e4%be%86%e4%bd%bf%e7%94%a8%20protected%20void%20Btn_Save_Click%28object%20sender%2c%20EventArgs%20e%29%20%7b%20Regex%20reg%20%3d%20new%20Regex%28%40%22%5e%28%3f%21.%2a%5boO0%5d%29%28%3f%3d.%2a%5ba-zA-Z%5d%29%28%3f%3d.%2a%5b%5cd%5d%29%28%3f%21.%2a%5b%5cd%5d%5b%5cd%5d%5b%5cd%5d%29.%7b6%2c12%7d%24%22%29%3b%20if%20%28reg.IsMatch%28Tbx_Password.Text%29%29%20%7b%20Response.Write%28%22Match%22%29%3b%20%7d%20else%20%7b%20Response.Write%28%22Not%20Match%22%29%3b%20%7d%20%7d%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%af%86%e7%a2%bc%e8%a4%87%e9%9b%9c%e5%ba%a6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f08%2f%25E5%25AF%2586%25E7%25A2%25BC%25E8%25A4%2587%25E9%259B%259C%25E5%25BA%25A6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

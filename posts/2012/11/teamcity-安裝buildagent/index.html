@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity 安裝BuildAgent | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先下載BuildAgent ](http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png)
+把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了 ](http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png)
+安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔 ](http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png)
+確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元 順利連線之後，約1~2分鐘，最下面就會出現authorizationToken ](http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png)
+登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了 ](http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png)
+等待一陣子，Connected就會有剛安裝的BuildAgent了 ](http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png)
+    ">
+
+
+<meta property="og:title" content="TeamCity 安裝BuildAgent" />
+<meta property="og:description" content="首先下載BuildAgent ](http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png)
+把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了 ](http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png)
+安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔 ](http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png)
+確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元 順利連線之後，約1~2分鐘，最下面就會出現authorizationToken ](http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png)
+登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了 ](http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png)
+等待一陣子，Connected就會有剛安裝的BuildAgent了 ](http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/teamcity-%E5%AE%89%E8%A3%9Dbuildagent/" />
+<meta property="article:published_time" content="2012-11-29T22:46:00+00:00" />
+<meta property="article:modified_time" content="2012-11-29T22:46:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity 安裝BuildAgent"/>
+<meta name="twitter:description" content="首先下載BuildAgent ](http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png)
+把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了 ](http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png)
+安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔 ](http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png)
+確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元 順利連線之後，約1~2分鐘，最下面就會出現authorizationToken ](http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png)
+登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了 ](http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png)
+等待一陣子，Connected就會有剛安裝的BuildAgent了 ](http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png)"/>
+
+<meta itemprop="name" content="TeamCity 安裝BuildAgent">
+<meta itemprop="description" content="首先下載BuildAgent ](http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png)
+把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了 ](http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png)
+安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔 ](http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png)
+確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元 順利連線之後，約1~2分鐘，最下面就會出現authorizationToken ](http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png)
+登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了 ](http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png)
+等待一陣子，Connected就會有剛安裝的BuildAgent了 ](http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png)">
+<meta itemprop="datePublished" content="2012-11-29T22:46:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-29T22:46:00+00:00" />
+<meta itemprop="wordCount" content="13">
+
+
+
+<meta itemprop="keywords" content="BuildAgent,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/teamcity-%E5%AE%89%E8%A3%9Dbuildagent/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity 安裝BuildAgent</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 29, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/buildagent">BuildAgent</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/buildagent">Build agent</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先下載buildagent">首先下載BuildAgent</h2>
+<p><img src="http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png" alt="">](<a href="http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png">http://1.bp.blogspot.com/-ljIYNJqcFMA/ULd0mqvusZI/AAAAAAAAAgU/rhd3IZP6gIA/s1600/01.Download.png</a>)</p>
+<h2 id="把安裝程式傳送到目標電腦後一直按下一步安裝就可以了">把安裝程式傳送到目標電腦後，一直按下一步安裝就可以了</h2>
+<p><img src="http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png" alt="">](<a href="http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png">http://3.bp.blogspot.com/-Nl-fVttlNvY/ULd01UChNnI/AAAAAAAAAgc/uCdjsRJa3Q0/s1600/02.Install.png</a>)</p>
+<h2 id="安裝好後到buildagent下面的conf資料夾找到buildagentproperties設定檔">安裝好後，到BuildAgent下面的conf資料夾，找到buildAgent.properties設定檔</h2>
+<p><img src="http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png" alt="">](<a href="http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png">http://2.bp.blogspot.com/-DlsAiWRF11g/ULd05S1cHrI/AAAAAAAAAgk/qyERkuG3M3A/s1600/03.Conf.png</a>)</p>
+<h2 id="確認一下serverurl是否正確要注意用反斜線來表示的跳脫字元">確認一下ServerURL是否正確，要注意用反斜線來表示的跳脫字元</h2>
+<p>順利連線之後，約1~2分鐘，最下面就會出現authorizationToken
+<img src="http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png" alt="">](<a href="http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png">http://1.bp.blogspot.com/-f_JZU5qJLdI/ULd0-Dch_OI/AAAAAAAAAgs/tH_uctbiWLU/s1600/04.UnAuthorized.png</a>)</p>
+<h2 id="登入teamcity也會看到未授權的記錄把剛那組授權碼輸入就行了">登入TeamCity，也會看到未授權的記錄，把剛那組授權碼輸入就行了</h2>
+<p><img src="http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png" alt="">](<a href="http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png">http://1.bp.blogspot.com/-ErLooHee9vA/ULd1CY7_XvI/AAAAAAAAAg0/ku4uJzh7nVQ/s1600/05.Authorized.png</a>)</p>
+<h2 id="等待一陣子connected就會有剛安裝的buildagent了">等待一陣子，Connected就會有剛安裝的BuildAgent了</h2>
+<p><img src="http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png" alt="">](<a href="http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png">http://1.bp.blogspot.com/-BpS-6DA0Di8/ULd1FrO0EzI/AAAAAAAAAg8/OSZQBP1KXDw/s1600/06.Connect.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%20%e5%ae%89%e8%a3%9dBuildAgent&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f
+			&title=TeamCity%20%e5%ae%89%e8%a3%9dBuildAgent&summary=%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89BuildAgent%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ljIYNJqcFMA%2fULd0mqvusZI%2fAAAAAAAAAgU%2frhd3IZP6gIA%2fs1600%2f01.Download.png%29%0a%e6%8a%8a%e5%ae%89%e8%a3%9d%e7%a8%8b%e5%bc%8f%e5%82%b3%e9%80%81%e5%88%b0%e7%9b%ae%e6%a8%99%e9%9b%bb%e8%85%a6%e5%be%8c%ef%bc%8c%e4%b8%80%e7%9b%b4%e6%8c%89%e4%b8%8b%e4%b8%80%e6%ad%a5%e5%ae%89%e8%a3%9d%e5%b0%b1%e5%8f%af%e4%bb%a5%e4%ba%86%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Nl-fVttlNvY%2fULd01UChNnI%2fAAAAAAAAAgc%2fuCdjsRJa3Q0%2fs1600%2f02.Install.png%29%0a%e5%ae%89%e8%a3%9d%e5%a5%bd%e5%be%8c%ef%bc%8c%e5%88%b0BuildAgent%e4%b8%8b%e9%9d%a2%e7%9a%84conf%e8%b3%87%e6%96%99%e5%a4%be%ef%bc%8c%e6%89%be%e5%88%b0buildAgent.properties%e8%a8%ad%e5%ae%9a%e6%aa%94%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-DlsAiWRF11g%2fULd05S1cHrI%2fAAAAAAAAAgk%2fqyERkuG3M3A%2fs1600%2f03.Conf.png%29%0a%e7%a2%ba%e8%aa%8d%e4%b8%80%e4%b8%8bServerURL%e6%98%af%e5%90%a6%e6%ad%a3%e7%a2%ba%ef%bc%8c%e8%a6%81%e6%b3%a8%e6%84%8f%e7%94%a8%e5%8f%8d%e6%96%9c%e7%b7%9a%e4%be%86%e8%a1%a8%e7%a4%ba%e7%9a%84%e8%b7%b3%e8%84%ab%e5%ad%97%e5%85%83%20%e9%a0%86%e5%88%a9%e9%80%a3%e7%b7%9a%e4%b9%8b%e5%be%8c%ef%bc%8c%e7%b4%841~2%e5%88%86%e9%90%98%ef%bc%8c%e6%9c%80%e4%b8%8b%e9%9d%a2%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%beauthorizationToken%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-f_JZU5qJLdI%2fULd0-Dch_OI%2fAAAAAAAAAgs%2ftH_uctbiWLU%2fs1600%2f04.UnAuthorized.png%29%0a%e7%99%bb%e5%85%a5TeamCity%ef%bc%8c%e4%b9%9f%e6%9c%83%e7%9c%8b%e5%88%b0%e6%9c%aa%e6%8e%88%e6%ac%8a%e7%9a%84%e8%a8%98%e9%8c%84%ef%bc%8c%e6%8a%8a%e5%89%9b%e9%82%a3%e7%b5%84%e6%8e%88%e6%ac%8a%e7%a2%bc%e8%bc%b8%e5%85%a5%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ErLooHee9vA%2fULd1CY7_XvI%2fAAAAAAAAAg0%2fku4uJzh7nVQ%2fs1600%2f05.Authorized.png%29%0a%e7%ad%89%e5%be%85%e4%b8%80%e9%99%a3%e5%ad%90%ef%bc%8cConnected%e5%b0%b1%e6%9c%83%e6%9c%89%e5%89%9b%e5%ae%89%e8%a3%9d%e7%9a%84BuildAgent%e4%ba%86%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-BpS-6DA0Di8%2fULd1FrO0EzI%2fAAAAAAAAAg8%2fOSZQBP1KXDw%2fs1600%2f06.Connect.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%20%e5%ae%89%e8%a3%9dBuildAgent&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E5%25AE%2589%25E8%25A3%259Dbuildagent%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

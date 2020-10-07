@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JQuery 屬性選擇器 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content=" 屬性選擇器  範例 說明  $(&#34;E[A]&#34;) 具有A屬性的元素E  $(&#34;E[A=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值為V  $(&#34;E[A^=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值開頭為V  $(&#34;E[A$=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值結尾為V  $(&#34;E[A*=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容包含V  $(&#34;E[A!=V]&#34;) 具有A屬性的元素E，且值內容不等於V  $(&#34;E[A|=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容的前綴為V或是V-  $(&#34;E[A~=&#39;V&#39;]&#34;) 具有A屬性的元素E，且用空格分隔的值中有V  $(&#34;E[A1=&#39;V1&#39;][A2=&#39;V2&#39;][A3=&#39;V3&#39;]...&#34;) 具有A屬性的元素E，且屬性符號多重串接   
+    ">
+
+
+<meta property="og:title" content="jQuery 屬性選擇器" />
+<meta property="og:description" content=" 屬性選擇器  範例 說明  $(&#34;E[A]&#34;) 具有A屬性的元素E  $(&#34;E[A=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值為V  $(&#34;E[A^=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值開頭為V  $(&#34;E[A$=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值結尾為V  $(&#34;E[A*=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容包含V  $(&#34;E[A!=V]&#34;) 具有A屬性的元素E，且值內容不等於V  $(&#34;E[A|=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容的前綴為V或是V-  $(&#34;E[A~=&#39;V&#39;]&#34;) 具有A屬性的元素E，且用空格分隔的值中有V  $(&#34;E[A1=&#39;V1&#39;][A2=&#39;V2&#39;][A3=&#39;V3&#39;]...&#34;) 具有A屬性的元素E，且屬性符號多重串接   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E9%81%B8%E6%93%87%E5%99%A8/" />
+<meta property="article:published_time" content="2013-07-12T17:38:00+00:00" />
+<meta property="article:modified_time" content="2013-07-12T17:38:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jQuery 屬性選擇器"/>
+<meta name="twitter:description" content=" 屬性選擇器  範例 說明  $(&#34;E[A]&#34;) 具有A屬性的元素E  $(&#34;E[A=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值為V  $(&#34;E[A^=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值開頭為V  $(&#34;E[A$=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值結尾為V  $(&#34;E[A*=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容包含V  $(&#34;E[A!=V]&#34;) 具有A屬性的元素E，且值內容不等於V  $(&#34;E[A|=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容的前綴為V或是V-  $(&#34;E[A~=&#39;V&#39;]&#34;) 具有A屬性的元素E，且用空格分隔的值中有V  $(&#34;E[A1=&#39;V1&#39;][A2=&#39;V2&#39;][A3=&#39;V3&#39;]...&#34;) 具有A屬性的元素E，且屬性符號多重串接   "/>
+
+<meta itemprop="name" content="jQuery 屬性選擇器">
+<meta itemprop="description" content=" 屬性選擇器  範例 說明  $(&#34;E[A]&#34;) 具有A屬性的元素E  $(&#34;E[A=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值為V  $(&#34;E[A^=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值開頭為V  $(&#34;E[A$=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值結尾為V  $(&#34;E[A*=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容包含V  $(&#34;E[A!=V]&#34;) 具有A屬性的元素E，且值內容不等於V  $(&#34;E[A|=&#39;V&#39;]&#34;) 具有A屬性的元素E，且值內容的前綴為V或是V-  $(&#34;E[A~=&#39;V&#39;]&#34;) 具有A屬性的元素E，且用空格分隔的值中有V  $(&#34;E[A1=&#39;V1&#39;][A2=&#39;V2&#39;][A3=&#39;V3&#39;]...&#34;) 具有A屬性的元素E，且屬性符號多重串接   ">
+<meta itemprop="datePublished" content="2013-07-12T17:38:00+00:00" />
+<meta itemprop="dateModified" content="2013-07-12T17:38:00+00:00" />
+<meta itemprop="wordCount" content="21">
+
+
+
+<meta itemprop="keywords" content="jQuery," />
+
+<link rel="canonical" href="http://example.org/posts/2013/07/jquery-%E5%B1%AC%E6%80%A7%E9%81%B8%E6%93%87%E5%99%A8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JQuery 屬性選擇器</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jul 12, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jquery">JQuery</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jquery">J query</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div><table border="1">                <tbody><tr>                        <td colspan="2">屬性選擇器</td>                    </tr><tr>                        <td>範例</td>                        <td>說明</td>                    </tr><tr>                        <td>$("E[A]")</td>                        <td>具有A屬性的元素E</td>                    </tr><tr>                        <td>$("E[A='V']")</td>                        <td>具有A屬性的元素E，且值為V</td>                    </tr><tr>                        <td>$("E[A^='V']")</td>                        <td>具有A屬性的元素E，且值開頭為V</td>                    </tr><tr>                        <td>$("E[A$='V']")</td>                        <td>具有A屬性的元素E，且值結尾為V</td>                    </tr><tr>                        <td>$("E[A*='V']")</td>                        <td>具有A屬性的元素E，且值內容包含V</td>                    </tr><tr>                        <td>$("E[A!=V]")</td>                        <td>具有A屬性的元素E，且值內容不等於V</td>                    </tr><tr>                        <td>$("E[A|='V']")</td>                        <td>具有A屬性的元素E，且值內容的前綴為V或是V-</td>                    </tr><tr>                        <td>$("E[A~='V']")</td>                        <td>具有A屬性的元素E，且用空格分隔的值中有V</td>                    </tr><tr>                        <td>$("E[A1='V1'][A2='V2'][A3='V3']...")</td>                        <td>具有A屬性的元素E，且屬性符號多重串接</td>                    </tr></tbody>            </table></div>
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="500" src="http://jsfiddle.net/VRZeX/embedded/js,html,result/presentation" width="100%"></iframe></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=jQuery%20%e5%b1%ac%e6%80%a7%e9%81%b8%e6%93%87%e5%99%a8&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f
+			&title=jQuery%20%e5%b1%ac%e6%80%a7%e9%81%b8%e6%93%87%e5%99%a8&summary=%20%e5%b1%ac%e6%80%a7%e9%81%b8%e6%93%87%e5%99%a8%20%20%e7%af%84%e4%be%8b%20%e8%aa%aa%e6%98%8e%20%20%24%28%22E%5bA%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%20%20%24%28%22E%5bA%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e7%82%baV%20%20%24%28%22E%5bA%5e%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e9%96%8b%e9%a0%ad%e7%82%baV%20%20%24%28%22E%5bA%24%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e7%b5%90%e5%b0%be%e7%82%baV%20%20%24%28%22E%5bA%2a%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e5%85%a7%e5%ae%b9%e5%8c%85%e5%90%abV%20%20%24%28%22E%5bA%21%3dV%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e5%85%a7%e5%ae%b9%e4%b8%8d%e7%ad%89%e6%96%bcV%20%20%24%28%22E%5bA%7c%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%80%bc%e5%85%a7%e5%ae%b9%e7%9a%84%e5%89%8d%e7%b6%b4%e7%82%baV%e6%88%96%e6%98%afV-%20%20%24%28%22E%5bA~%3d%27V%27%5d%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e7%94%a8%e7%a9%ba%e6%a0%bc%e5%88%86%e9%9a%94%e7%9a%84%e5%80%bc%e4%b8%ad%e6%9c%89V%20%20%24%28%22E%5bA1%3d%27V1%27%5d%5bA2%3d%27V2%27%5d%5bA3%3d%27V3%27%5d...%22%29%20%e5%85%b7%e6%9c%89A%e5%b1%ac%e6%80%a7%e7%9a%84%e5%85%83%e7%b4%a0E%ef%bc%8c%e4%b8%94%e5%b1%ac%e6%80%a7%e7%ac%a6%e8%99%9f%e5%a4%9a%e9%87%8d%e4%b8%b2%e6%8e%a5%20%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=jQuery%20%e5%b1%ac%e6%80%a7%e9%81%b8%e6%93%87%e5%99%a8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E5%25B1%25AC%25E6%2580%25A7%25E9%2581%25B8%25E6%2593%2587%25E5%2599%25A8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

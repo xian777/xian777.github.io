@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop 常見問題與修正方法 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="1. 單一頁面檢查方法 在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面
+[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)  2. 沒有檔頭宣告 錯誤訊息 The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+修正方法 程式碼第一行加上檔頭宣告，格式如下
+[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png) 如果是自動產生的檔案，可用auto-generated標籤略過 // &lt;auto-generated /&gt;  3. 縮排格式不正確 錯誤訊息 Tabs are not allowed. Use spaces instead.
+修正方法 工具&ndash;&gt;選項&ndash;&gt;文字編輯器&ndash;&gt;所有語言&ndash;&gt;定位點 定位點和縮排大小都設定成4，並選擇插入空格的方式 開啟原始碼，使用CTRL&#43;k, d重整程式碼即可
+[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)  4. Using指示詞位置 錯誤訊息 All using directives must be placed inside of the namespace.
+修正方法 把所有using指示詞剪下，放到namespace下面
+    ">
+
+
+<meta property="og:title" content="StyleCop 常見問題與修正方法" />
+<meta property="og:description" content="1. 單一頁面檢查方法 在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面
+[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)  2. 沒有檔頭宣告 錯誤訊息 The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+修正方法 程式碼第一行加上檔頭宣告，格式如下
+[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png) 如果是自動產生的檔案，可用auto-generated標籤略過 // &lt;auto-generated /&gt;  3. 縮排格式不正確 錯誤訊息 Tabs are not allowed. Use spaces instead.
+修正方法 工具&ndash;&gt;選項&ndash;&gt;文字編輯器&ndash;&gt;所有語言&ndash;&gt;定位點 定位點和縮排大小都設定成4，並選擇插入空格的方式 開啟原始碼，使用CTRL&#43;k, d重整程式碼即可
+[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)  4. Using指示詞位置 錯誤訊息 All using directives must be placed inside of the namespace.
+修正方法 把所有using指示詞剪下，放到namespace下面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/01/stylecop-%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%E8%88%87%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/" />
+<meta property="article:published_time" content="2013-01-11T16:55:00+00:00" />
+<meta property="article:modified_time" content="2013-01-11T16:55:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop 常見問題與修正方法"/>
+<meta name="twitter:description" content="1. 單一頁面檢查方法 在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面
+[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)  2. 沒有檔頭宣告 錯誤訊息 The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+修正方法 程式碼第一行加上檔頭宣告，格式如下
+[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png) 如果是自動產生的檔案，可用auto-generated標籤略過 // &lt;auto-generated /&gt;  3. 縮排格式不正確 錯誤訊息 Tabs are not allowed. Use spaces instead.
+修正方法 工具&ndash;&gt;選項&ndash;&gt;文字編輯器&ndash;&gt;所有語言&ndash;&gt;定位點 定位點和縮排大小都設定成4，並選擇插入空格的方式 開啟原始碼，使用CTRL&#43;k, d重整程式碼即可
+[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)  4. Using指示詞位置 錯誤訊息 All using directives must be placed inside of the namespace.
+修正方法 把所有using指示詞剪下，放到namespace下面"/>
+
+<meta itemprop="name" content="StyleCop 常見問題與修正方法">
+<meta itemprop="description" content="1. 單一頁面檢查方法 在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面
+[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)  2. 沒有檔頭宣告 錯誤訊息 The file has no header, the header Xml is invalid, or the header is not located at the top of the file.
+修正方法 程式碼第一行加上檔頭宣告，格式如下
+[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png) 如果是自動產生的檔案，可用auto-generated標籤略過 // &lt;auto-generated /&gt;  3. 縮排格式不正確 錯誤訊息 Tabs are not allowed. Use spaces instead.
+修正方法 工具&ndash;&gt;選項&ndash;&gt;文字編輯器&ndash;&gt;所有語言&ndash;&gt;定位點 定位點和縮排大小都設定成4，並選擇插入空格的方式 開啟原始碼，使用CTRL&#43;k, d重整程式碼即可
+[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)  4. Using指示詞位置 錯誤訊息 All using directives must be placed inside of the namespace.
+修正方法 把所有using指示詞剪下，放到namespace下面">
+<meta itemprop="datePublished" content="2013-01-11T16:55:00+00:00" />
+<meta itemprop="dateModified" content="2013-01-11T16:55:00+00:00" />
+<meta itemprop="wordCount" content="464">
+
+
+
+<meta itemprop="keywords" content="StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2013/01/stylecop-%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%E8%88%87%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop 常見問題與修正方法</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 11, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    7 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="1-單一頁面檢查方法">1. 單一頁面檢查方法</h2>
+<p>在空白地方按右鍵，選擇Run StyleCop，就只會檢查目前頁面</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)](http://3.bp.blogspot.com/-0l67G3vlzQ4/UO_I6oV3ySI/AAAAAAAAAqA/UEK5h8PGDpc/s1600/00.RunStyleCop.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="2-沒有檔頭宣告">2. 沒有檔頭宣告</h2>
+<h3 id="錯誤訊息">錯誤訊息</h3>
+<p>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</p>
+<h3 id="修正方法">修正方法</h3>
+<p>程式碼第一行加上檔頭宣告，格式如下</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)](http://2.bp.blogspot.com/-Cpp1sApPGuQ/UO_PTzM4scI/AAAAAAAAArg/aAWRAQ6UqiI/s1600/07.Header.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>如果是自動產生的檔案，可用auto-generated標籤略過
+// &lt;auto-generated /&gt;
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="3-縮排格式不正確">3. 縮排格式不正確</h2>
+<p>錯誤訊息
+Tabs are not allowed. Use spaces instead.</p>
+<h3 id="修正方法-1">修正方法</h3>
+<p>工具&ndash;&gt;選項&ndash;&gt;文字編輯器&ndash;&gt;所有語言&ndash;&gt;定位點
+定位點和縮排大小都設定成4，並選擇插入空格的方式
+開啟原始碼，使用CTRL+k, d重整程式碼即可</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)](http://2.bp.blogspot.com/-9S6GXTgtBsM/UO_JHDLoHOI/AAAAAAAAAqI/ln0-f0prpcE/s1600/01.tab.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="4-using指示詞位置">4. Using指示詞位置</h2>
+<p>錯誤訊息
+All using directives must be placed inside of the namespace.</p>
+<h3 id="修正方法-2">修正方法</h3>
+<p>把所有using指示詞剪下，放到namespace下面</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-bCvpbNrMUgs/UO_OgWrg87I/AAAAAAAAArU/FLhlVA8UfbA/s1600/06.using.png)](http://4.bp.blogspot.com/-bCvpbNrMUgs/UO_OgWrg87I/AAAAAAAAArU/FLhlVA8UfbA/s1600/06.using.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="5-using-指示詞順序">5. Using 指示詞順序</h2>
+<h3 id="錯誤訊息-1">錯誤訊息</h3>
+<p>Using directives must be sorted alphabetically by the namespaces.</p>
+<h3 id="修正方法-3">修正方法</h3>
+<p>命名空間按照字母排序
+系統內建的命名空間先排，再排自訂的命名空間</p>
+<h2 id="6-明確指定修飾詞">6. 明確指定修飾詞</h2>
+<p>錯誤訊息
+The class must have an access modifier.</p>
+<h3 id="修正方法-4">修正方法</h3>
+<p>加上明確的修飾詞，public、private、protected、internal、protected internal</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-vG6tSwtR4zM/UO_Pd8mz57I/AAAAAAAAAro/gDoCLYX826Y/s1600/08.Modify.png)](http://4.bp.blogspot.com/-vG6tSwtR4zM/UO_Pd8mz57I/AAAAAAAAAro/gDoCLYX826Y/s1600/08.Modify.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="7-沒有文件註解">7. 沒有文件註解</h2>
+<h3 id="錯誤訊息-2">錯誤訊息</h3>
+<p>The class must have a documentation header.
+The method must have a documentation header.
+The property must have a documentation header.</p>
+<h3 id="修正方法-5">修正方法</h3>
+<p>加上XML文件註解</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-AsbybJiDFKo/UO_PjIJgd_I/AAAAAAAAArw/3wSBqeQq1Kw/s1600/09.Comment.png)](http://1.bp.blogspot.com/-AsbybJiDFKo/UO_PjIJgd_I/AAAAAAAAArw/3wSBqeQq1Kw/s1600/09.Comment.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="8-中文註解問題">8. 中文註解問題</h2>
+<h3 id="錯誤訊息-3">錯誤訊息</h3>
+<p>The documentation text within the summary tag contains incorrectly spelled words: 中文字  </p>
+<h3 id="修正方法-6">修正方法</h3>
+<p>在專案上按右鍵，選擇StyleCop Settings</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-d8tv6rESvGw/UO_JN4dMbaI/AAAAAAAAAqQ/y-pLFVYwL2Y/s1600/02.Setting.png)](http://1.bp.blogspot.com/-d8tv6rESvGw/UO_JN4dMbaI/AAAAAAAAAqQ/y-pLFVYwL2Y/s1600/02.Setting.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>在Options上，預設Culture是en-US，隨便選擇其他的語系後按確定
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-fc-JQlB0g6E/UO_JQT7A2YI/AAAAAAAAAqY/B-jxs-_870Q/s1600/03.Option.png)](http://3.bp.blogspot.com/-fc-JQlB0g6E/UO_JQT7A2YI/AAAAAAAAAqY/B-jxs-_870Q/s1600/03.Option.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>在方案總管上按顯示所有檔案，會看到產生出Settings.StyleCop的檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-CPE1oznMNvI/UO_JTFTdRkI/AAAAAAAAAqg/fBOsEO7X4KM/s1600/04.SolutionExplorer.png)](http://2.bp.blogspot.com/-CPE1oznMNvI/UO_JTFTdRkI/AAAAAAAAAqg/fBOsEO7X4KM/s1600/04.SolutionExplorer.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>打開後把Culture修改成zh-TW就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-aN0pltuovsA/UO_JVUTotOI/AAAAAAAAAqo/We5R_b-0Md0/s1600/05.Culture.png)](http://3.bp.blogspot.com/-aN0pltuovsA/UO_JVUTotOI/AAAAAAAAAqo/We5R_b-0Md0/s1600/05.Culture.png)</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h2 id="9-文件註解內容中沒有空格">9. 文件註解內容中沒有空格</h2>
+<h3 id="錯誤訊息-4">錯誤訊息</h3>
+<p>The documentation text within the summary tag does not contain any whitespace between words, indicating that it most likely does not follow a proper grammatical structure required for documentation text.</p>
+<h3 id="修正方法-7">修正方法</h3>
+<p>注解文字中加入空格</p>
+<h2 id="10-一般屬性註解格式">10. 一般屬性註解格式</h2>
+<h3 id="錯誤訊息-5">錯誤訊息</h3>
+<p>The property&rsquo;s documentation summary text must begin with: Gets or sets</p>
+<h3 id="修正方法-8">修正方法</h3>
+<p>註解文字開頭使用 Gets or sets</p>
+<pre class="brush:csharp">/// &lt;summary&gt;
+/// Gets or sets MyPropData
+/// &lt;/summary&gt;
+public int MyPropData { get; set; }
+</pre>
+<h2 id="11-布林屬性註解格式">11. 布林屬性註解格式</h2>
+<h3 id="錯誤訊息-6">錯誤訊息</h3>
+<p>The property&rsquo;s documentation summary text must begin with: Gets or sets a value indicating whether</p>
+<h3 id="修正方法-9">修正方法</h3>
+<p>註解文字開頭使用 Gets or sets a value indicating whether</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Gets or sets a value indicating whether MyBooleanData
+/// &lt;/summary&gt;
+public bool MyBooleanData { get; set; }
+</pre>
+<h2 id="12-建構式註解格式">12. 建構式註解格式</h2>
+<h3 id="錯誤訊息-7">錯誤訊息</h3>
+<p>The documentation text within the constructor&rsquo;s summary tag must begin with the text: Initializes a new instance of the &lt;see cref=&quot;類別名稱&rdquo; /&gt; class.</p>
+<h3 id="修正方法-10">修正方法</h3>
+<p>註解文字開頭使用Initializes a new instance of the &lt;see cref=&quot;類別名稱&rdquo; /&gt; class.</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="Program" /&gt; class.
+/// &lt;/summary&gt;
+public Program()
+{
+}
+</pre>
+<h2 id="13-程式碼元素順序">13. 程式碼元素順序</h2>
+<h3 id="錯誤訊息-8">錯誤訊息</h3>
+<p>All methods must be placed after all properties.
+All private properties must be placed after all public properties.</p>
+<h3 id="修正方法-11">修正方法</h3>
+<p>程式碼撰寫順序: public -&gt; internal -&gt; protected internal -&gt; protected -&gt; private
+程式碼元素撰寫順序: Fields -&gt; Constructor -&gt; Event-&gt; Property -&gt; Method</p>
+<h2 id="14-函數多行參數格式">14. 函數多行參數格式</h2>
+<h3 id="錯誤訊息-9">錯誤訊息</h3>
+<p>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.  </p>
+<h3 id="修正方法-12">修正方法</h3>
+<p>每個參數獨立一行</p>
+<pre class="brush:xml">Console.WriteLine(
+    "arg1:{0}, arg2:{1}, arg3:{2}",
+    args[0], 
+    args[1], 
+    args[2]);
+</pre>
+<h2 id="15-呼叫同類別的成員需加入this前綴詞">15. 呼叫同類別的成員需加入this.前綴詞</h2>
+<h3 id="錯誤訊息-10">錯誤訊息</h3>
+<p>The call to MyData must begin with the &lsquo;this.&rsquo; prefix to indicate that the item is a member of the class.</p>
+<h3 id="修正方法-13">修正方法</h3>
+<p>明確使用this前綴詞來呼叫同類別的屬性、方法</p>
+<pre class="brush:xml">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="Program" /&gt; class.
+/// &lt;/summary&gt;
+public Program()
+{
+    this.MyPropData = 123;
+}
+
+/// &lt;summary&gt;
+/// Gets or sets MyPropData
+/// &lt;/summary&gt;
+public int MyPropData { get; set; }
+</pre><blockquote>
+</blockquote>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20%e5%b8%b8%e8%a6%8b%e5%95%8f%e9%a1%8c%e8%88%87%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f
+			&title=StyleCop%20%e5%b8%b8%e8%a6%8b%e5%95%8f%e9%a1%8c%e8%88%87%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95&summary=1.%20%e5%96%ae%e4%b8%80%e9%a0%81%e9%9d%a2%e6%aa%a2%e6%9f%a5%e6%96%b9%e6%b3%95%20%e5%9c%a8%e7%a9%ba%e7%99%bd%e5%9c%b0%e6%96%b9%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e6%93%87Run%20StyleCop%ef%bc%8c%e5%b0%b1%e5%8f%aa%e6%9c%83%e6%aa%a2%e6%9f%a5%e7%9b%ae%e5%89%8d%e9%a0%81%e9%9d%a2%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-0l67G3vlzQ4%2fUO_I6oV3ySI%2fAAAAAAAAAqA%2fUEK5h8PGDpc%2fs1600%2f00.RunStyleCop.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-0l67G3vlzQ4%2fUO_I6oV3ySI%2fAAAAAAAAAqA%2fUEK5h8PGDpc%2fs1600%2f00.RunStyleCop.png%29%20%202.%20%e6%b2%92%e6%9c%89%e6%aa%94%e9%a0%ad%e5%ae%a3%e5%91%8a%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%20The%20file%20has%20no%20header%2c%20the%20header%20Xml%20is%20invalid%2c%20or%20the%20header%20is%20not%20located%20at%20the%20top%20of%20the%20file.%0a%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e7%ac%ac%e4%b8%80%e8%a1%8c%e5%8a%a0%e4%b8%8a%e6%aa%94%e9%a0%ad%e5%ae%a3%e5%91%8a%ef%bc%8c%e6%a0%bc%e5%bc%8f%e5%a6%82%e4%b8%8b%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Cpp1sApPGuQ%2fUO_PTzM4scI%2fAAAAAAAAArg%2faAWRAQ6UqiI%2fs1600%2f07.Header.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Cpp1sApPGuQ%2fUO_PTzM4scI%2fAAAAAAAAArg%2faAWRAQ6UqiI%2fs1600%2f07.Header.png%29%20%e5%a6%82%e6%9e%9c%e6%98%af%e8%87%aa%e5%8b%95%e7%94%a2%e7%94%9f%e7%9a%84%e6%aa%94%e6%a1%88%ef%bc%8c%e5%8f%af%e7%94%a8auto-generated%e6%a8%99%e7%b1%a4%e7%95%a5%e9%81%8e%20%2f%2f%20%26lt%3bauto-generated%20%2f%26gt%3b%20%203.%20%e7%b8%ae%e6%8e%92%e6%a0%bc%e5%bc%8f%e4%b8%8d%e6%ad%a3%e7%a2%ba%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%20Tabs%20are%20not%20allowed.%20Use%20spaces%20instead.%0a%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95%20%e5%b7%a5%e5%85%b7%26ndash%3b%26gt%3b%e9%81%b8%e9%a0%85%26ndash%3b%26gt%3b%e6%96%87%e5%ad%97%e7%b7%a8%e8%bc%af%e5%99%a8%26ndash%3b%26gt%3b%e6%89%80%e6%9c%89%e8%aa%9e%e8%a8%80%26ndash%3b%26gt%3b%e5%ae%9a%e4%bd%8d%e9%bb%9e%20%e5%ae%9a%e4%bd%8d%e9%bb%9e%e5%92%8c%e7%b8%ae%e6%8e%92%e5%a4%a7%e5%b0%8f%e9%83%bd%e8%a8%ad%e5%ae%9a%e6%88%904%ef%bc%8c%e4%b8%a6%e9%81%b8%e6%93%87%e6%8f%92%e5%85%a5%e7%a9%ba%e6%a0%bc%e7%9a%84%e6%96%b9%e5%bc%8f%20%e9%96%8b%e5%95%9f%e5%8e%9f%e5%a7%8b%e7%a2%bc%ef%bc%8c%e4%bd%bf%e7%94%a8CTRL%2bk%2c%20d%e9%87%8d%e6%95%b4%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%8d%b3%e5%8f%af%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9S6GXTgtBsM%2fUO_JHDLoHOI%2fAAAAAAAAAqI%2fln0-f0prpcE%2fs1600%2f01.tab.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9S6GXTgtBsM%2fUO_JHDLoHOI%2fAAAAAAAAAqI%2fln0-f0prpcE%2fs1600%2f01.tab.png%29%20%204.%20Using%e6%8c%87%e7%a4%ba%e8%a9%9e%e4%bd%8d%e7%bd%ae%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%20All%20using%20directives%20must%20be%20placed%20inside%20of%20the%20namespace.%0a%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95%20%e6%8a%8a%e6%89%80%e6%9c%89using%e6%8c%87%e7%a4%ba%e8%a9%9e%e5%89%aa%e4%b8%8b%ef%bc%8c%e6%94%be%e5%88%b0namespace%e4%b8%8b%e9%9d%a2&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20%e5%b8%b8%e8%a6%8b%e5%95%8f%e9%a1%8c%e8%88%87%e4%bf%ae%e6%ad%a3%e6%96%b9%e6%b3%95&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f01%2fstylecop-%25E5%25B8%25B8%25E8%25A6%258B%25E5%2595%258F%25E9%25A1%258C%25E8%2588%2587%25E4%25BF%25AE%25E6%25AD%25A3%25E6%2596%25B9%25E6%25B3%2595%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

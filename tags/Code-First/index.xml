@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code First on My New Hugo Site</title>
+    <link>http://example.org/tags/code-first/</link>
+    <description>Recent content in Code First on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Nov 2014 11:50:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/code-first/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Entity Framework Code First 繼承對應設定</title>
+      <link>http://example.org/posts/2014/11/entity-framework-code-first-%E7%B9%BC%E6%89%BF%E5%B0%8D%E6%87%89%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Wed, 26 Nov 2014 11:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/11/entity-framework-code-first-%E7%B9%BC%E6%89%BF%E5%B0%8D%E6%87%89%E8%A8%AD%E5%AE%9A/</guid>
+      <description>TPH(Table Per Hierarchy) 基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法
+Table1
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations; public class Table1 { [Key] public int Table1Id { get; set; } public int C1 { get; set; } public int C2 { get; set; } }  }  Table2
+namespace ConsoleApplication1.Models { public class Table2 : Table1 { public int C3 { get; set; }  public int C4 { get; set; } }  }  新增幾筆資料</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First Complex Type</title>
+      <link>http://example.org/posts/2014/11/entity-framework-code-first-complex-type/</link>
+      <pubDate>Tue, 25 Nov 2014 18:25:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/11/entity-framework-code-first-complex-type/</guid>
+      <description>Complex Type是用來重覆使用的欄位，有幾個規定 1. 不能有主索引 2. 一個類別中只能有一個實體 3. 只能是引用屬性，不能是集合屬性
+Table1
+namespace ConsoleApplication1.Models { public class Table1 { public int Table1Id { get; set; } public Address Address { get; set; } } }  Table2 namespace ConsoleApplication1.Models { public class Table2 { public int Table2Id { get; set; } public Address Address { get; set; } } }  Address namespace ConsoleApplication1.Models { public class Address { public string Addr1 { get; set; }  public string Addr2 { get; set; } }  }  預設狀態資料表的樣子</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 多對多關聯設定</title>
+      <link>http://example.org/posts/2014/11/entity-framework-code-first-%E5%A4%9A%E5%B0%8D%E5%A4%9A%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Tue, 25 Nov 2014 16:48:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/11/entity-framework-code-first-%E5%A4%9A%E5%B0%8D%E5%A4%9A%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</guid>
+      <description>兩個類別之間，各自包含對應的集合導覽屬性，就會被當成多對多關系 在資料庫中的多對多關系，需要用三張表來表示，分別是一對多再多對一
+一個使用者可以有多個群組
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;User&amp;quot;)] public class User { public int UserId { get; set; } public string UserName { get; set; } public virtual ICollection&amp;amp;lt;Group&amp;amp;gt; Group { get; set; } }  }  一個群組可以有多個使用者
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Group&amp;quot;)] public class Group { public int GroupId { get; set; } public string GroupName { get; set; } public virtual ICollection&amp;amp;lt;User&amp;amp;gt; User { get; set; } }  }  預設會自動生成第三張表</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 一對多關聯設定</title>
+      <link>http://example.org/posts/2014/11/entity-framework-code-first-%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Tue, 25 Nov 2014 16:17:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/11/entity-framework-code-first-%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</guid>
+      <description>兩個類別之間，一個包含集合導覽屬性，一個包含引用屬性，就會被當成一對多關系
+主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Topic&amp;quot;)] public class Topic { public int TopicId { get; set; } public string Title { get; set; } public virtual ICollection&amp;amp;lt;Reply&amp;amp;gt; Reply { get; set; } }  }  明細表 外鍵的命名只有符合預設的規則，就會建立關系，規則如下 1. 目標類型索引的名稱 2. 目標類型名稱+目標類型主索引名稱 3. 導覽屬性名稱+目標類型主索引名稱
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Reply&amp;quot;)] public class Reply { public int ReplyId { get; set; } public int TopicId { get; set; } // public int TopicTopicId { get; set; } // public int TheTopicTopicId { get; set; } public string Title { get; set; } public virtual Topic TheTopic { get; set; } }  }  若不是用預設規則的命名方式，可以透過ForeignKey這個Attribute設定</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 一對一關聯設定</title>
+      <link>http://example.org/posts/2014/11/entity-framework-code-first-%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Mon, 24 Nov 2014 17:42:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/11/entity-framework-code-first-%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A/</guid>
+      <description>在兩個類別之間，各自包含一個引用屬性，就會被當成一對一關系 只是那張是主資料表，需要利用Fluent API來設定
+主資料表
+using System.ComponentModel.DataAnnotations; public partial class TableA { [Key] public int TabId { get; set; }
+public int C1 { get; set; } public virtual TableB TableB { get; set; }  } 對應的資料表
+using System.ComponentModel.DataAnnotations; public partial class TableB { [Key] public int TabId { get; set; }
+public int CC1 { get; set; } public virtual TableA TableA { get; set; }  } 設定關聯</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 資料庫初始化設定</title>
+      <link>http://example.org/posts/2014/10/entity-framework-code-first-%E8%B3%87%E6%96%99%E5%BA%AB%E5%88%9D%E5%A7%8B%E5%8C%96%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Fri, 31 Oct 2014 17:32:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-code-first-%E8%B3%87%E6%96%99%E5%BA%AB%E5%88%9D%E5%A7%8B%E5%8C%96%E8%A8%AD%E5%AE%9A/</guid>
+      <description>在參考了entityFramework套件之後，設定檔中會自動增加一個EntityFramework的區域設定 其中的defaultConnectionFactory宣告了預設的資料庫位置 不同的版本預設的localdb實體名稱會有不同，這邊的例子是mssqllocaldb
+&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;configSections&amp;gt; &amp;lt;!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 --&amp;gt; &amp;lt;section name=&#34;entityFramework&#34; type=&#34;System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; requirePermission=&#34;false&#34; /&amp;gt; &amp;lt;/configSections&amp;gt; &amp;lt;startup&amp;gt; &amp;lt;supportedRuntime version=&#34;v4.0&#34; sku=&#34;.NETFramework,Version=v4.5&#34; /&amp;gt; &amp;lt;/startup&amp;gt; &amp;lt;entityFramework&amp;gt; &amp;lt;defaultConnectionFactory type=&#34;System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework&#34;&amp;gt; &amp;lt;parameters&amp;gt; &amp;lt;parameter value=&#34;mssqllocaldb&#34; /&amp;gt; &amp;lt;/parameters&amp;gt; &amp;lt;/defaultConnectionFactory&amp;gt; &amp;lt;providers&amp;gt; &amp;lt;provider invariantName=&#34;System.Data.SqlClient&#34; type=&#34;System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer&#34; /&amp;gt; &amp;lt;/providers&amp;gt; &amp;lt;/entityFramework&amp;gt; &amp;lt;/configuration&amp;gt;  就會自動建立一個包含完整Assembly名稱的資料庫 [![](http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png)](http://3.bp.blogspot.com/-u6i3p3OnimM/VFNEtuySOlI/AAAAAAAABtk/lDxVN9zSfD8/s1600/db.png) 如果在設定檔的連線區段中，有一個和DbContext同名的設定值，就會改用這邊的連線設定 建立的資料庫也會是連線字串中指定的名稱
+&amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&#34;DemoContext&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(localdb)\v11.0;Initial Catalog=Demo;Integrated Security=true;&#34;/&amp;gt; &amp;lt;/connectionStrings&amp;gt;[![](http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png)](http://2.bp.blogspot.com/-B1iIDWV-srg/VFNGwAUTTXI/AAAAAAAABt4/eI2Gmbx2deY/s1600/02.%E9%80%A3%E7%B7%9A%E5%AD%97%E4%B8%B2.png) 也可以透過預設建構式指定要使用設定檔中的那個值 &amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&#34;</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 組織Fluent API 設定</title>
+      <link>http://example.org/posts/2014/10/entity-framework-code-first-%E7%B5%84%E7%B9%94fluent-api-%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Mon, 27 Oct 2014 18:16:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-code-first-%E7%B5%84%E7%B9%94fluent-api-%E8%A8%AD%E5%AE%9A/</guid>
+      <description>Fluent API可以設定的功能比較多，但每一個欄位就要寫一行，越大的專案設定就會越多
+可以透過EntityTypeConfiguration&amp;lt;T&amp;gt;來分類 一般的設定方式public class DemoContext : DbContext { public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().ToTable(&amp;quot;Table1&amp;quot;).HasKey(x =&amp;amp;gt; x.id); modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().Property(x =&amp;amp;gt; x.id) .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity) .HasColumnName(&amp;quot;sid&amp;quot;) .HasColumnType(&amp;quot;bigint&amp;quot;); modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().Property(x =&amp;amp;gt; x.s1) .IsRequired() .HasMaxLength(10) .IsFixedLength() .IsUnicode(false); modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().Property(x =&amp;amp;gt; x.c1) .HasPrecision(18, 2); modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().Property(x =&amp;amp;gt; x.t1) .IsRowVersion(); }  }
+分類後的設定方式public class DemoContext : DbContext { public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; } protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Configurations.Add(new Table1Configuration()); } private class Table1Configuration : EntityTypeConfiguration&amp;amp;lt;Table1&amp;amp;gt; { public Table1Configuration() { this.</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 對應規則設定</title>
+      <link>http://example.org/posts/2014/10/entity-framework-code-first-%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Mon, 27 Oct 2014 17:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-code-first-%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87%E8%A8%AD%E5%AE%9A/</guid>
+      <description>要改變預設對應規則，可以用兩種方式 一種是使用Attributes的方式，例如[key] 一種是覆寫DbContext的OnModelCreating，透過DbModelBuilder使用Fluent API方式來設定
+資料表名稱和主索引
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }
+protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Entity&amp;amp;lt;Table1&amp;amp;gt;().ToTable(&amp;quot;Table1&amp;quot;).HasKey(x =&amp;amp;gt; x.id); }  }  自動編號
+[Table(&#34;Table1&#34;)] public class Table1 { [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int id { get; set; } } public class DemoContext : DbContext { public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework Code First 預設對應規則</title>
+      <link>http://example.org/posts/2014/10/entity-framework-code-first-%E9%A0%90%E8%A8%AD%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87/</link>
+      <pubDate>Mon, 20 Oct 2014 15:43:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-code-first-%E9%A0%90%E8%A8%AD%E5%B0%8D%E6%87%89%E8%A6%8F%E5%89%87/</guid>
+      <description>資料庫 預設採用SQLEXPRESS，如果沒有SQLEXPRESS執行個體，會嘗試Localdb 如果有和DbContext同名的連線字串，就會直接使用 也可透過覆寫建構式的時後，傳入指定的連線字串名稱 或是透過DbConnection，在執行階段傳入連線物件
+Table 資料表為類別名稱的複數形式，而且schema都為dbo 可以透過System.ComponentModel.DataAnnotations.Schema.Table 或是Fluent API的Entity&amp;lt;T&amp;gt;.ToTable來指定資料表的名稱 也可以覆寫OnModelCreating，移除複數資料表的約定 modelBuilder.Conventions.Remove&amp;lt;PluralizingTableNameConvention&amp;gt;();
+主索引 預設為類別名稱加上Id結尾的屬性，如果資料形態是int，還會加上自動編號 可以透過System.ComponentModel.DataAnnotations.Key 或是Fluent API的Entity&amp;lt;T&amp;gt;.HasKey來指定 如果是複合索引，Attribute方式需再加上Column來指定欄位的順序 Fluent API則是傳入一個匿名型別
+外部索引 如果類別之間有一對多的關系，會自動生成Foreign Key 欄位名稱是導覽屬性加上底線再加上對應主索引的欄位名稱 可以透過System.ComponentModel.DataAnnotations.Schema.ForeignKey來指定 或是透過Fluent API的Entity&amp;lt;T&amp;gt;.Hasxxx().Withxxx來指定 xxx可以是Optional(0或多個)、Required(1或多個)、Many(多個)
+資料型態 實值型別會是not null 參考型別會是null nullable型別會是null 可以透過System.ComponentModel.DataAnnotations.Required來設定不可空值 或是透過Fluent API的Entity&amp;lt;T&amp;gt;().IsRequired()來指定不可空值，IsOptional指定可以空值
+也可以透過System.ComponentModel.DataAnnotations.Schema.Column來明確指定對應的格式 或是透過Fluent API的Entity&amp;lt;T&amp;gt;().Property().HasColumnType來指定對應的格式 或是IsUnicode來指定是否為Unicode
+C#SQL ServernullablebytetinyintNOT NULLshortsmallintNOT NULLintintNOT NULLlongbigintNOT NULLfloatrealNOT NULLdoublefloatNOT NULLdecimaldecimal(18,2)NOT NULLstringnvarchar(max)NULLbyte[]varbinary(max)NOT NULLboolbitNOT NULLdatetimedatetimeNOT NULL</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework 筆記</title>
+      <link>http://example.org/posts/2014/10/entity-framework-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Mon, 20 Oct 2014 10:53:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-%E7%AD%86%E8%A8%98/</guid>
+      <description>[Code First]
+1. Entity Framework Code First 預設對應規則
+2. Entity Framework Code First 對應規則設定
+3. Entity Framework Code First 組織Fluent API 設定
+4. Entity Framework Code First 資料庫初始化設定
+5. Entity Framework Code First 一對一關聯設定
+6. Entity Framework Code First 一對多關聯設定
+7. Entity Framework Code First 多對多關聯設定
+8. Entity Framework Code First Complex Type
+9. Entity Framework Code First 繼承對應設定
+[DbContext]
+1. Entity Framework DbContext 新增、修改、刪除、查詢
+2. Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</description>
+    </item>
+    
+  </channel>
+</rss>

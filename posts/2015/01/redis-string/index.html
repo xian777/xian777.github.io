@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Redis String | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="指令說明APPEND拼接字串BITCOUNT計算字串中的二進位值被設成1的個數BITOP字串中的二進位值的位元操作DECR遞減值一DECRBY遞減指定的值GET取得指定鍵值的內容GETBIT取得指定鍵值的二進位內容GETRANGE取得指定鍵值的資料特定位置的內容GETSET設定指定鍵值的內容，並返回舊值INCR遞增值一INCRBY遞增指定的值INCRBYFLOAT遞增指定的浮點數值MGET一次取回多組指定的key valueMSET一次設定多組key valueMSETNX一次設定多組key value，並且所有設定的key都不存在才成功PSETEX設定key value，並指定過期時間，單位是毫秒SET設定key value 配合ex參數設定過期時間，單位是秒 配合px參數設定過期時間，單位是毫秒 配合nx參數只有key不存在時才成功 配合xx參數只有key已存在時才成功SETBIT設定指定鍵值的二進位資料SETEX設定key value，並指定過期時間，單位是秒SETNX設定key value，並只有在key不存在時才成功SETRANGE更改特定位置的資料內容STRLEN取得指定鍵值的內容長度
+    ">
+
+
+<meta property="og:title" content="Redis String" />
+<meta property="og:description" content="指令說明APPEND拼接字串BITCOUNT計算字串中的二進位值被設成1的個數BITOP字串中的二進位值的位元操作DECR遞減值一DECRBY遞減指定的值GET取得指定鍵值的內容GETBIT取得指定鍵值的二進位內容GETRANGE取得指定鍵值的資料特定位置的內容GETSET設定指定鍵值的內容，並返回舊值INCR遞增值一INCRBY遞增指定的值INCRBYFLOAT遞增指定的浮點數值MGET一次取回多組指定的key valueMSET一次設定多組key valueMSETNX一次設定多組key value，並且所有設定的key都不存在才成功PSETEX設定key value，並指定過期時間，單位是毫秒SET設定key value 配合ex參數設定過期時間，單位是秒 配合px參數設定過期時間，單位是毫秒 配合nx參數只有key不存在時才成功 配合xx參數只有key已存在時才成功SETBIT設定指定鍵值的二進位資料SETEX設定key value，並指定過期時間，單位是秒SETNX設定key value，並只有在key不存在時才成功SETRANGE更改特定位置的資料內容STRLEN取得指定鍵值的內容長度" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/redis-string/" />
+<meta property="article:published_time" content="2015-01-20T11:23:00+00:00" />
+<meta property="article:modified_time" content="2015-01-20T11:23:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis String"/>
+<meta name="twitter:description" content="指令說明APPEND拼接字串BITCOUNT計算字串中的二進位值被設成1的個數BITOP字串中的二進位值的位元操作DECR遞減值一DECRBY遞減指定的值GET取得指定鍵值的內容GETBIT取得指定鍵值的二進位內容GETRANGE取得指定鍵值的資料特定位置的內容GETSET設定指定鍵值的內容，並返回舊值INCR遞增值一INCRBY遞增指定的值INCRBYFLOAT遞增指定的浮點數值MGET一次取回多組指定的key valueMSET一次設定多組key valueMSETNX一次設定多組key value，並且所有設定的key都不存在才成功PSETEX設定key value，並指定過期時間，單位是毫秒SET設定key value 配合ex參數設定過期時間，單位是秒 配合px參數設定過期時間，單位是毫秒 配合nx參數只有key不存在時才成功 配合xx參數只有key已存在時才成功SETBIT設定指定鍵值的二進位資料SETEX設定key value，並指定過期時間，單位是秒SETNX設定key value，並只有在key不存在時才成功SETRANGE更改特定位置的資料內容STRLEN取得指定鍵值的內容長度"/>
+
+<meta itemprop="name" content="Redis String">
+<meta itemprop="description" content="指令說明APPEND拼接字串BITCOUNT計算字串中的二進位值被設成1的個數BITOP字串中的二進位值的位元操作DECR遞減值一DECRBY遞減指定的值GET取得指定鍵值的內容GETBIT取得指定鍵值的二進位內容GETRANGE取得指定鍵值的資料特定位置的內容GETSET設定指定鍵值的內容，並返回舊值INCR遞增值一INCRBY遞增指定的值INCRBYFLOAT遞增指定的浮點數值MGET一次取回多組指定的key valueMSET一次設定多組key valueMSETNX一次設定多組key value，並且所有設定的key都不存在才成功PSETEX設定key value，並指定過期時間，單位是毫秒SET設定key value 配合ex參數設定過期時間，單位是秒 配合px參數設定過期時間，單位是毫秒 配合nx參數只有key不存在時才成功 配合xx參數只有key已存在時才成功SETBIT設定指定鍵值的二進位資料SETEX設定key value，並指定過期時間，單位是秒SETNX設定key value，並只有在key不存在時才成功SETRANGE更改特定位置的資料內容STRLEN取得指定鍵值的內容長度">
+<meta itemprop="datePublished" content="2015-01-20T11:23:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-20T11:23:00+00:00" />
+<meta itemprop="wordCount" content="12">
+
+
+
+<meta itemprop="keywords" content="Redis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/redis-string/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Redis String</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 20, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/redis">Redis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <table border="1" cellpadding="3" cellspacing="1"><tbody><tr><td>指令</td><td>說明</td></tr><tr><td>APPEND</td><td>拼接字串</td></tr><tr><td>BITCOUNT</td><td>計算字串中的二進位值被設成1的個數</td></tr><tr><td>BITOP</td><td>字串中的二進位值的位元操作</td></tr><tr><td>DECR</td><td>遞減值一</td></tr><tr><td>DECRBY</td><td>遞減指定的值</td></tr><tr><td>GET</td><td>取得指定鍵值的內容</td></tr><tr><td>GETBIT</td><td>取得指定鍵值的二進位內容</td></tr><tr><td>GETRANGE</td><td>取得指定鍵值的資料特定位置的內容</td></tr><tr><td>GETSET</td><td>設定指定鍵值的內容，並返回舊值</td></tr><tr><td>INCR</td><td>遞增值一</td></tr><tr><td>INCRBY</td><td>遞增指定的值</td></tr><tr><td>INCRBYFLOAT</td><td>遞增指定的浮點數值</td></tr><tr><td>MGET</td><td>一次取回多組指定的key value</td></tr><tr><td>MSET</td><td>一次設定多組key value</td></tr><tr><td>MSETNX</td><td>一次設定多組key value，並且所有設定的key都不存在才成功</td></tr><tr><td>PSETEX</td><td>設定key value，並指定過期時間，單位是毫秒</td></tr><tr><td>SET</td><td>設定key value
+配合ex參數設定過期時間，單位是秒
+配合px參數設定過期時間，單位是毫秒
+配合nx參數只有key不存在時才成功
+配合xx參數只有key已存在時才成功</td></tr><tr><td>SETBIT</td><td>設定指定鍵值的二進位資料</td></tr><tr><td>SETEX</td><td>設定key value，並指定過期時間，單位是秒</td></tr><tr><td>SETNX</td><td>設定key value，並只有在key不存在時才成功</td></tr><tr><td>SETRANGE</td><td>更改特定位置的資料內容</td></tr><tr><td>STRLEN</td><td>取得指定鍵值的內容長度</td></tr></tbody></table>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Redis%20String&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f
+			&title=Redis%20String&summary=%e6%8c%87%e4%bb%a4%e8%aa%aa%e6%98%8eAPPEND%e6%8b%bc%e6%8e%a5%e5%ad%97%e4%b8%b2BITCOUNT%e8%a8%88%e7%ae%97%e5%ad%97%e4%b8%b2%e4%b8%ad%e7%9a%84%e4%ba%8c%e9%80%b2%e4%bd%8d%e5%80%bc%e8%a2%ab%e8%a8%ad%e6%88%901%e7%9a%84%e5%80%8b%e6%95%b8BITOP%e5%ad%97%e4%b8%b2%e4%b8%ad%e7%9a%84%e4%ba%8c%e9%80%b2%e4%bd%8d%e5%80%bc%e7%9a%84%e4%bd%8d%e5%85%83%e6%93%8d%e4%bd%9cDECR%e9%81%9e%e6%b8%9b%e5%80%bc%e4%b8%80DECRBY%e9%81%9e%e6%b8%9b%e6%8c%87%e5%ae%9a%e7%9a%84%e5%80%bcGET%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e5%85%a7%e5%ae%b9GETBIT%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e4%ba%8c%e9%80%b2%e4%bd%8d%e5%85%a7%e5%ae%b9GETRANGE%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e8%b3%87%e6%96%99%e7%89%b9%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%9a%84%e5%85%a7%e5%ae%b9GETSET%e8%a8%ad%e5%ae%9a%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e5%85%a7%e5%ae%b9%ef%bc%8c%e4%b8%a6%e8%bf%94%e5%9b%9e%e8%88%8a%e5%80%bcINCR%e9%81%9e%e5%a2%9e%e5%80%bc%e4%b8%80INCRBY%e9%81%9e%e5%a2%9e%e6%8c%87%e5%ae%9a%e7%9a%84%e5%80%bcINCRBYFLOAT%e9%81%9e%e5%a2%9e%e6%8c%87%e5%ae%9a%e7%9a%84%e6%b5%ae%e9%bb%9e%e6%95%b8%e5%80%bcMGET%e4%b8%80%e6%ac%a1%e5%8f%96%e5%9b%9e%e5%a4%9a%e7%b5%84%e6%8c%87%e5%ae%9a%e7%9a%84key%20valueMSET%e4%b8%80%e6%ac%a1%e8%a8%ad%e5%ae%9a%e5%a4%9a%e7%b5%84key%20valueMSETNX%e4%b8%80%e6%ac%a1%e8%a8%ad%e5%ae%9a%e5%a4%9a%e7%b5%84key%20value%ef%bc%8c%e4%b8%a6%e4%b8%94%e6%89%80%e6%9c%89%e8%a8%ad%e5%ae%9a%e7%9a%84key%e9%83%bd%e4%b8%8d%e5%ad%98%e5%9c%a8%e6%89%8d%e6%88%90%e5%8a%9fPSETEX%e8%a8%ad%e5%ae%9akey%20value%ef%bc%8c%e4%b8%a6%e6%8c%87%e5%ae%9a%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e6%af%ab%e7%a7%92SET%e8%a8%ad%e5%ae%9akey%20value%20%e9%85%8d%e5%90%88ex%e5%8f%83%e6%95%b8%e8%a8%ad%e5%ae%9a%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e7%a7%92%20%e9%85%8d%e5%90%88px%e5%8f%83%e6%95%b8%e8%a8%ad%e5%ae%9a%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e6%af%ab%e7%a7%92%20%e9%85%8d%e5%90%88nx%e5%8f%83%e6%95%b8%e5%8f%aa%e6%9c%89key%e4%b8%8d%e5%ad%98%e5%9c%a8%e6%99%82%e6%89%8d%e6%88%90%e5%8a%9f%20%e9%85%8d%e5%90%88xx%e5%8f%83%e6%95%b8%e5%8f%aa%e6%9c%89key%e5%b7%b2%e5%ad%98%e5%9c%a8%e6%99%82%e6%89%8d%e6%88%90%e5%8a%9fSETBIT%e8%a8%ad%e5%ae%9a%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e4%ba%8c%e9%80%b2%e4%bd%8d%e8%b3%87%e6%96%99SETEX%e8%a8%ad%e5%ae%9akey%20value%ef%bc%8c%e4%b8%a6%e6%8c%87%e5%ae%9a%e9%81%8e%e6%9c%9f%e6%99%82%e9%96%93%ef%bc%8c%e5%96%ae%e4%bd%8d%e6%98%af%e7%a7%92SETNX%e8%a8%ad%e5%ae%9akey%20value%ef%bc%8c%e4%b8%a6%e5%8f%aa%e6%9c%89%e5%9c%a8key%e4%b8%8d%e5%ad%98%e5%9c%a8%e6%99%82%e6%89%8d%e6%88%90%e5%8a%9fSETRANGE%e6%9b%b4%e6%94%b9%e7%89%b9%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%9a%84%e8%b3%87%e6%96%99%e5%85%a7%e5%ae%b9STRLEN%e5%8f%96%e5%be%97%e6%8c%87%e5%ae%9a%e9%8d%b5%e5%80%bc%e7%9a%84%e5%85%a7%e5%ae%b9%e9%95%b7%e5%ba%a6&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Redis%20String&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2fredis-string%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

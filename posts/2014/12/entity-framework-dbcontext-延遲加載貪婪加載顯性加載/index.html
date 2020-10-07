@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework DbContext 延遲加載、貪婪加載、顯性加載 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異 DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;lt;Topic&amp;gt; Topic { get; set; } public DbSet&amp;lt;Reply&amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Topic&quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;lt;Reply&amp;gt; Reply { get; set; } }  }
+    ">
+
+
+<meta property="og:title" content="Entity Framework DbContext 延遲加載、貪婪加載、顯性加載" />
+<meta property="og:description" content="用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異 DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;lt;Topic&amp;gt; Topic { get; set; } public DbSet&amp;lt;Reply&amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Topic&quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;lt;Reply&amp;gt; Reply { get; set; } }  }" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/entity-framework-dbcontext-%E5%BB%B6%E9%81%B2%E5%8A%A0%E8%BC%89%E8%B2%AA%E5%A9%AA%E5%8A%A0%E8%BC%89%E9%A1%AF%E6%80%A7%E5%8A%A0%E8%BC%89/" />
+<meta property="article:published_time" content="2014-12-17T16:26:00+00:00" />
+<meta property="article:modified_time" content="2014-12-17T16:26:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework DbContext 延遲加載、貪婪加載、顯性加載"/>
+<meta name="twitter:description" content="用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異 DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;lt;Topic&amp;gt; Topic { get; set; } public DbSet&amp;lt;Reply&amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Topic&quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;lt;Reply&amp;gt; Reply { get; set; } }  }"/>
+
+<meta itemprop="name" content="Entity Framework DbContext 延遲加載、貪婪加載、顯性加載">
+<meta itemprop="description" content="用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異 DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;lt;Topic&amp;gt; Topic { get; set; } public DbSet&amp;lt;Reply&amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&quot;Topic&quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;lt;Reply&amp;gt; Reply { get; set; } }  }">
+<meta itemprop="datePublished" content="2014-12-17T16:26:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-17T16:26:00+00:00" />
+<meta itemprop="wordCount" content="733">
+
+
+
+<meta itemprop="keywords" content="DbContext,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/entity-framework-dbcontext-%E5%BB%B6%E9%81%B2%E5%8A%A0%E8%BC%89%E8%B2%AA%E5%A9%AA%E5%8A%A0%E8%BC%89%E9%A1%AF%E6%80%A7%E5%8A%A0%E8%BC%89/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 17, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    7 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/dbcontext">DbContext</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/dbcontext">Db context</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異
+DemoContext</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Data.Entity;
+<pre><code>public class DemoContext : DbContext
+{
+    public DbSet&amp;lt;Topic&amp;gt; Topic { get; set; }
+    public DbSet&amp;lt;Reply&amp;gt; Reply { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+留言版主表</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+<pre><code>[Table(&quot;Topic&quot;)]
+public class Topic
+{
+    [Key]
+    public int TopicId { get; set; }
+    public string TopicTitle { get; set; }
+    public virtual ICollection&amp;lt;Reply&amp;gt; Reply { get; set; }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div>
+留言版明細表</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+<pre><code>[Table(&quot;Reply&quot;)]
+public class Reply
+{
+    [Key]
+    public int ReplyId { get; set; }
+    [ForeignKey(&quot;Topic&quot;)]
+    public int TopicId { get; set; }
+    public string ReplyMessage { get; set; }
+    public virtual Topic Topic { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+資料初始化</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Collections.Generic;
+    using System.Data.Entity;
+<pre><code>public class MyInit : DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;
+{
+    protected override void Seed(DemoContext context)
+    {
+        context.Topic.AddRange(
+            new List&amp;lt;Topic&amp;gt;
+            {
+                new Topic
+                {
+                    TopicTitle = &quot;a&quot;,
+                    Reply = new List&amp;lt;Reply&amp;gt;
+                    {
+                        new Reply { ReplyMessage = &quot;a1&quot; },
+                        new Reply { ReplyMessage = &quot;a2&quot; },
+                        new Reply { ReplyMessage = &quot;a3&quot; },
+                    }
+                },
+                new Topic
+                {
+                    TopicTitle = &quot;b&quot;,
+                    Reply = new List&amp;lt;Reply&amp;gt;
+                    {
+                        new Reply { ReplyMessage = &quot;b1&quot; },
+                        new Reply { ReplyMessage = &quot;b2&quot; },
+                        new Reply { ReplyMessage = &quot;b3&quot; },
+                    }
+                },
+                new Topic
+                {
+                    TopicTitle = &quot;c&quot;,
+                    Reply = new List&amp;lt;Reply&amp;gt;
+                    {
+                        new Reply { ReplyMessage = &quot;c1&quot; },
+                        new Reply { ReplyMessage = &quot;c2&quot; },
+                        new Reply { ReplyMessage = &quot;c3&quot; },
+                    }
+                },
+                new Topic
+                {
+                    TopicTitle = &quot;d&quot;
+                }
+            });
+    }
+}
+</code></pre>
+<p>}</p>
+<p></pre></div>產生的資料</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png)](http://4.bp.blogspot.com/-lXLfCqetSgg/VJE6AR4O1II/AAAAAAAABy8/fuU-yncOXuw/s1600/%E7%94%A2%E7%94%9F%E7%9A%84%E8%B3%87%E6%96%99.png)</div>
+<p>延遲加載利用遠端代理模式，必須在導覽屬性上使用virtual關鍵字，才會在存取到這個屬性時，動態去建立相對應的類別
+這種方式比較明顯的缺點，是會分段產生SQL語法，還有就是在取資料的時後，雖然有加入過濾的條件，但是最後產生的SQL語法，還是會取回全部的資料，然後才在記憶體中過濾資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            foreach (var topic in db.Topic)
+            {
+                foreach (var reply in topic.Reply.Where(x=&amp;gt;x.ReplyMessage.Contains(&quot;1&quot;)))
+                {
+                    Console.WriteLine(&quot;title:{0}, message:{1}&quot;, topic.TopicTitle, reply.ReplyMessage);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+延遲加載產生的SQL語法</p>
+<div><pre class="brush:sql">SELECT 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[TopicTitle] AS [TopicTitle]
+    FROM [dbo].[Topic] AS [Extent1]
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE [Extent1].[TopicId] = @EntityKeyValue1',N'@EntityKeyValue1 int',@EntityKeyValue1=1
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE [Extent1].[TopicId] = @EntityKeyValue1',N'@EntityKeyValue1 int',@EntityKeyValue1=2
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE [Extent1].[TopicId] = @EntityKeyValue1',N'@EntityKeyValue1 int',@EntityKeyValue1=3
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE [Extent1].[TopicId] = @EntityKeyValue1',N'@EntityKeyValue1 int',@EntityKeyValue1=4
+go
+<p></pre></div>
+貪婪加載是產生Join的語法，在一次SQL查詢中就取回所有的資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            foreach (var topic in db.Topic.Include(x =&amp;gt; x.Reply))
+            {
+                foreach (var reply in topic.Reply.Where(x =&amp;gt; x.ReplyMessage.Contains(&quot;1&quot;)))
+                {
+                    Console.WriteLine(&quot;title:{0}, message:{1}&quot;, topic.TopicTitle, reply.ReplyMessage);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+產生的SQL語法</p>
+<div><pre class="brush:sql">SELECT 
+    [Project1].[TopicId] AS [TopicId], 
+    [Project1].[TopicTitle] AS [TopicTitle], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[ReplyId] AS [ReplyId], 
+    [Project1].[TopicId1] AS [TopicId1], 
+    [Project1].[ReplyMessage] AS [ReplyMessage]
+    FROM ( SELECT 
+        [Extent1].[TopicId] AS [TopicId], 
+        [Extent1].[TopicTitle] AS [TopicTitle], 
+        [Extent2].[ReplyId] AS [ReplyId], 
+        [Extent2].[TopicId] AS [TopicId1], 
+        [Extent2].[ReplyMessage] AS [ReplyMessage], 
+        CASE WHEN ([Extent2].[ReplyId] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM  [dbo].[Topic] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Reply] AS [Extent2] ON [Extent1].[TopicId] = [Extent2].[TopicId]
+    )  AS [Project1]
+    ORDER BY [Project1].[TopicId] ASC, [Project1].[C1] ASC
+</pre></div>
+顯性加載也是分段式的語法，和延遲加載的差別在於，延遲加載必須先取回導覽屬性的全部資料，才能繼續後續的處理，而顯性加載則可以篩選要取回那些資料
+透過Entry取得實體後，Collection是取集合對應的屬性，Reference是取實體對應的屬性
+db.Configuration.LazyLoadingEnabled是用來指定是否要啟用延遲加載，預設是啟用的
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        // 初始化資料庫
+        Database.SetInitializer(new MyInit());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+            db.Configuration.LazyLoadingEnabled = false;
+
+            foreach (var topic in db.Topic)
+            {
+                db.Entry(topic).Collection(x =&amp;gt; x.Reply)
+                    .Query()
+                    .Where(x =&amp;gt; x.ReplyMessage.Contains(&quot;1&quot;))
+                    .Load();
+
+                if (topic.Reply != null)
+                {
+                    foreach (var reply in topic.Reply)
+                    {
+                        Console.WriteLine(&quot;title:{0}, message:{1}&quot;, topic.TopicTitle, reply.ReplyMessage);
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+產生的SQL語法</p>
+<div><pre class="brush:sql">SELECT 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[TopicTitle] AS [TopicTitle]
+    FROM [dbo].[Topic] AS [Extent1]
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N''%1%'')',N'@EntityKeyValue1 int',@EntityKeyValue1=1
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N''%1%'')',N'@EntityKeyValue1 int',@EntityKeyValue1=2
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N''%1%'')',N'@EntityKeyValue1 int',@EntityKeyValue1=3
+go
+exec sp_executesql N'SELECT 
+    [Extent1].[ReplyId] AS [ReplyId], 
+    [Extent1].[TopicId] AS [TopicId], 
+    [Extent1].[ReplyMessage] AS [ReplyMessage]
+    FROM [dbo].[Reply] AS [Extent1]
+    WHERE ([Extent1].[TopicId] = @EntityKeyValue1) AND ([Extent1].[ReplyMessage] LIKE N''%1%'')',N'@EntityKeyValue1 int',@EntityKeyValue1=4
+go
+<p></pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20DbContext%20%e5%bb%b6%e9%81%b2%e5%8a%a0%e8%bc%89%e3%80%81%e8%b2%aa%e5%a9%aa%e5%8a%a0%e8%bc%89%e3%80%81%e9%a1%af%e6%80%a7%e5%8a%a0%e8%bc%89&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f
+			&title=Entity%20Framework%20DbContext%20%e5%bb%b6%e9%81%b2%e5%8a%a0%e8%bc%89%e3%80%81%e8%b2%aa%e5%a9%aa%e5%8a%a0%e8%bc%89%e3%80%81%e9%a1%af%e6%80%a7%e5%8a%a0%e8%bc%89&summary=%e7%94%a8%e4%b8%80%e5%80%8b%e7%95%99%e8%a8%80%e7%89%88%e7%9a%84%e4%b8%bb%e8%a1%a8%e5%92%8c%e6%98%8e%e7%b4%b0%e8%a1%a8%e7%95%b6%e4%be%8b%e5%ad%90%ef%bc%8c%e9%a0%86%e4%be%bf%e5%8a%a0%e5%85%a5%e5%88%9d%e5%a7%8b%e5%8c%96%e8%b3%87%e6%96%99%e4%be%86%e6%96%b9%e4%be%bf%e8%a7%80%e5%af%9f%e8%b3%87%e6%96%99%e8%bc%89%e5%85%a5%e6%96%b9%e5%bc%8f%e7%9a%84%e5%b7%ae%e7%95%b0%20DemoContext%0anamespace%20ConsoleApplication1.Models%20%7b%20using%20System.Data.Entity%3b%20public%20class%20DemoContext%20%3a%20DbContext%20%7b%20public%20DbSet%26amp%3blt%3bTopic%26amp%3bgt%3b%20Topic%20%7b%20get%3b%20set%3b%20%7d%20public%20DbSet%26amp%3blt%3bReply%26amp%3bgt%3b%20Reply%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%7d%20%20%e7%95%99%e8%a8%80%e7%89%88%e4%b8%bb%e8%a1%a8%0anamespace%20ConsoleApplication1.Models%20%7b%20using%20System.Collections.Generic%3b%20using%20System.ComponentModel.DataAnnotations%3b%20using%20System.ComponentModel.DataAnnotations.Schema%3b%20%5bTable%28%26quot%3bTopic%26quot%3b%29%5d%20public%20class%20Topic%20%7b%20%5bKey%5d%20public%20int%20TopicId%20%7b%20get%3b%20set%3b%20%7d%20public%20string%20TopicTitle%20%7b%20get%3b%20set%3b%20%7d%20public%20virtual%20ICollection%26amp%3blt%3bReply%26amp%3bgt%3b%20Reply%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%7d&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20DbContext%20%e5%bb%b6%e9%81%b2%e5%8a%a0%e8%bc%89%e3%80%81%e8%b2%aa%e5%a9%aa%e5%8a%a0%e8%bc%89%e3%80%81%e9%a1%af%e6%80%a7%e5%8a%a0%e8%bc%89&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-%25E5%25BB%25B6%25E9%2581%25B2%25E5%258A%25A0%25E8%25BC%2589%25E8%25B2%25AA%25E5%25A9%25AA%25E5%258A%25A0%25E8%25BC%2589%25E9%25A1%25AF%25E6%2580%25A7%25E5%258A%25A0%25E8%25BC%2589%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

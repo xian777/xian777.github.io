@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XDT Transform on My New Hugo Site</title>
+    <link>http://example.org/tags/xdt-transform/</link>
+    <description>Recent content in XDT Transform on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Nov 2012 10:48:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/xdt-transform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Octopus XML設定檔轉換和替代變數</title>
+      <link>http://example.org/posts/2012/11/octopus-xml%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%BD%89%E6%8F%9B%E5%92%8C%E6%9B%BF%E4%BB%A3%E8%AE%8A%E6%95%B8/</link>
+      <pubDate>Tue, 06 Nov 2012 10:48:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/octopus-xml%E8%A8%AD%E5%AE%9A%E6%AA%94%E8%BD%89%E6%8F%9B%E5%92%8C%E6%9B%BF%E4%BB%A3%E8%AE%8A%E6%95%B8/</guid>
+      <description>前言 專案佈署的過程中，不同環境的設定檔會有所不同 web.config使用的還是XDT Transform 只要檔名和環境別對的起來，就會自動轉換，例如UAT環境 佈署的時後，只要有web.uat.config這個檔案 就會自動轉換原來的web.config 除此之外，Octopus還有一些預先定義好的變數，可以在Variables裡面設定 ](http://3.bp.blogspot.com/-y3E2E-vvY3k/UJh56tJ6rVI/AAAAAAAAATo/cx2IDuw-4NA/s1600/01.+Variables.png)
+OctopusOriginalPackageDirectoryPath 這個變數用來指定套件佈署時的原來位置，例如 C:\Apps\Prod\MyApp\1.0.0
+OctopusPackageDirectoryPath 這個變數用來自訂套件要安裝的位置，例如D:\WebSite\MyApp
+OctopusWebSiteName 這個變數用來自訂站台的名稱，如不指定，則是以套件的名稱來對應IIS的設定
+更多詳細的設定，可以參考官網的文件
+參考資料  Variables XML Configuration Files  </description>
+    </item>
+    
+    <item>
+      <title>NuGet的Cofing設定檔和Source Code轉換</title>
+      <link>http://example.org/posts/2012/11/nuget%E7%9A%84cofing%E8%A8%AD%E5%AE%9A%E6%AA%94%E5%92%8Csource-code%E8%BD%89%E6%8F%9B/</link>
+      <pubDate>Mon, 05 Nov 2012 17:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/11/nuget%E7%9A%84cofing%E8%A8%AD%E5%AE%9A%E6%AA%94%E5%92%8Csource-code%E8%BD%89%E6%8F%9B/</guid>
+      <description>前言 使用套件的時後，有時會需要指定設定檔，例如自訂的Section，或特定AppSetting的值 在打包的時後，只要在你想轉換的檔案後面加上.transform的副檔名就行了 以web.config為例，只要新增一個檔案名為web.config.transform在套件中，安裝套件的時後就會合併這個檔案的內容
+web.config.transform &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;aa&amp;#34; value=&amp;#34;aa&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;bb&amp;#34; value=&amp;#34;bb&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;cc&amp;#34; value=&amp;#34;cc&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;dd&amp;#34; value=&amp;#34;dd&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;/configuration&amp;gt; web.config &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;aa&amp;#34; value=&amp;#34;123&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;bb&amp;#34; value=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;cc&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;/configuration&amp;gt; 合併後的結果會變成 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;!– 原來的值不變 –&amp;gt; &amp;lt;add key=&amp;#34;aa&amp;#34; value=&amp;#34;123&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;bb&amp;#34; value=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;!– 合併的資料 –&amp;gt; &amp;lt;add key=&amp;#34;aa&amp;#34; value=&amp;#34;aa&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;bb&amp;#34; value=&amp;#34;bb&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;cc&amp;#34; value=&amp;#34;cc&amp;#34; /&amp;gt; &amp;lt;add key=&amp;#34;dd&amp;#34; value=&amp;#34;dd&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;/configuration&amp;gt; 程式碼轉換的方式，是用.</description>
+    </item>
+    
+    <item>
+      <title>app.config Transformations</title>
+      <link>http://example.org/posts/2012/08/app-config-transformations/</link>
+      <pubDate>Sat, 18 Aug 2012 17:58:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/08/app-config-transformations/</guid>
+      <description>前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035+Result.png)
+這是一個簡單的設定檔內容 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;ServerIP&amp;#34; value=&amp;#34;127.0.0.1&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&amp;#34;MyDB&amp;#34; providerName=&amp;#34;System.Data.SqlClient&amp;#34; connectionString=&amp;#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&amp;#34;/&amp;gt; &amp;lt;/connectionStrings&amp;gt; &amp;lt;/configuration&amp;gt; 在Debug組態的設定檔中，改變了設定檔的內容 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34; ?&amp;gt; &amp;lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&amp;gt; &amp;lt;configuration xmlns:xdt=&amp;#34;http://schemas.microsoft.com/XML-Document-Transform&amp;#34;&amp;gt; &amp;lt;appSettings&amp;gt; &amp;lt;add key=&amp;#34;ServerIP&amp;#34; value=&amp;#34;192.168.100.11&amp;#34; xdt:Transform=&amp;#34;SetAttribute&amp;#34; xdt:Locator=&amp;#34;Match(key)&amp;#34; /&amp;gt; &amp;lt;/appSettings&amp;gt; &amp;lt;connectionStrings&amp;gt; &amp;lt;add name=&amp;#34;MyDB&amp;#34; connectionString=&amp;#34;Data Source=192.</description>
+    </item>
+    
+  </channel>
+</rss>

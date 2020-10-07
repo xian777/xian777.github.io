@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework Code First 繼承對應設定 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="TPH(Table Per Hierarchy) 基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法
+Table1
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations; public class Table1 { [Key] public int Table1Id { get; set; } public int C1 { get; set; } public int C2 { get; set; } }  }  Table2
+namespace ConsoleApplication1.Models { public class Table2 : Table1 { public int C3 { get; set; }  public int C4 { get; set; } }  }  新增幾筆資料
+    ">
+
+
+<meta property="og:title" content="Entity Framework Code First 繼承對應設定" />
+<meta property="og:description" content="TPH(Table Per Hierarchy) 基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法
+Table1
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations; public class Table1 { [Key] public int Table1Id { get; set; } public int C1 { get; set; } public int C2 { get; set; } }  }  Table2
+namespace ConsoleApplication1.Models { public class Table2 : Table1 { public int C3 { get; set; }  public int C4 { get; set; } }  }  新增幾筆資料" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/11/entity-framework-code-first-%E7%B9%BC%E6%89%BF%E5%B0%8D%E6%87%89%E8%A8%AD%E5%AE%9A/" />
+<meta property="article:published_time" content="2014-11-26T11:50:00+00:00" />
+<meta property="article:modified_time" content="2014-11-26T11:50:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework Code First 繼承對應設定"/>
+<meta name="twitter:description" content="TPH(Table Per Hierarchy) 基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法
+Table1
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations; public class Table1 { [Key] public int Table1Id { get; set; } public int C1 { get; set; } public int C2 { get; set; } }  }  Table2
+namespace ConsoleApplication1.Models { public class Table2 : Table1 { public int C3 { get; set; }  public int C4 { get; set; } }  }  新增幾筆資料"/>
+
+<meta itemprop="name" content="Entity Framework Code First 繼承對應設定">
+<meta itemprop="description" content="TPH(Table Per Hierarchy) 基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法
+Table1
+namespace ConsoleApplication1.Models { using System.ComponentModel.DataAnnotations; public class Table1 { [Key] public int Table1Id { get; set; } public int C1 { get; set; } public int C2 { get; set; } }  }  Table2
+namespace ConsoleApplication1.Models { public class Table2 : Table1 { public int C3 { get; set; }  public int C4 { get; set; } }  }  新增幾筆資料">
+<meta itemprop="datePublished" content="2014-11-26T11:50:00+00:00" />
+<meta itemprop="dateModified" content="2014-11-26T11:50:00+00:00" />
+<meta itemprop="wordCount" content="268">
+
+
+
+<meta itemprop="keywords" content="Code First,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/11/entity-framework-code-first-%E7%B9%BC%E6%89%BF%E5%B0%8D%E6%87%89%E8%A8%AD%E5%AE%9A/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework Code First 繼承對應設定</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 26, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/code-first">Code First</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/code-first">Code first</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>TPH(Table Per Hierarchy)
+基底類別和衍生類別都映射到同一張表中，通過一個鑒別欄位來識別資料是屬於基底或是衍生類別，這是預設的映射方法</p>
+<p>Table1</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.ComponentModel.DataAnnotations;
+<pre><code>public class Table1
+{
+    [Key]
+    public int Table1Id { get; set; }
+
+    public int C1 { get; set; }
+
+    public int C2 { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+Table2</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    public class Table2 : Table1
+    {
+        public int C3 { get; set; }
+<pre><code>    public int C4 { get; set; }
+}
+</code></pre>
+<p>}
+</pre></div>
+新增幾筆資料</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        using (DemoContext db = new DemoContext())
+        {
+            db.Table1.Add(new Table1 { C1 = 1, C2 = 2 });
+            db.Table2.Add(new Table2 { C1 = 1, C2 = 2, C3 = 3, C4 = 4 });
+            db.SaveChanges();
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+TPH資料表建立的樣子</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png)](http://1.bp.blogspot.com/-yXePG-77UcQ/VHVNiZMIatI/AAAAAAAABx8/J6Wst3vpqJE/s1600/01.TPH%E8%B3%87%E6%96%99%E8%A1%A8.png)</div>
+TPH資料儲存的樣子
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png)](http://1.bp.blogspot.com/-sI3daA47kAs/VHVNlgPjziI/AAAAAAAAByE/GIZvaaEy7Yo/s1600/02.TPH%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png)</div>
+可以透過Fluent API設定用來識別的欄位，和識別資料的值
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Data.Entity;
+<pre><code>public class DemoContext : DbContext
+{
+    public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }
+    public DbSet&amp;lt;Table2&amp;gt; Table2 { get; set; }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&amp;lt;Table1&amp;gt;()
+            .Map(x=&amp;gt; {
+                x.ToTable(&quot;Table1&quot;);
+                x.Requires(&quot;QQ&quot;).HasValue(&quot;AA&quot;);
+            })
+            .Map&amp;lt;Table2&amp;gt;(x=&amp;gt; {
+                x.Requires(&quot;QQ&quot;).HasValue(&quot;BB&quot;);
+            });
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+設定後資料儲存的樣子</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://2.bp.blogspot.com/-ro-xCLfW2Zw/VHVNpJm_mYI/AAAAAAAAByM/iX8TGskajsY/s1600/03.%E8%A8%AD%E5%AE%9A%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90.png)</div>
+<p>TPT(Table Per Type)
+把資料映射到各自的資料表中，並在衍生類別的資料表中自動生成外鍵來關聯基厎類別的資料表，使用方式很簡單，只要指定各自資料表的名稱就行了</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Data.Entity;
+<pre><code>public class DemoContext : DbContext
+{
+    public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }
+    public DbSet&amp;lt;Table2&amp;gt; Table2 { get; set; }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&amp;lt;Table1&amp;gt;().ToTable(&quot;Table1&quot;);
+        modelBuilder.Entity&amp;lt;Table2&amp;gt;().ToTable(&quot;Table2&quot;);
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+TPT資料表建立的樣子</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png)](http://2.bp.blogspot.com/-BqWRzzWB3I8/VHVNtXjUhCI/AAAAAAAAByU/hM-sHRUu8wo/s1600/04.TPT%E8%B3%87%E6%96%99%E8%A1%A8.png)</div>
+TPT資料儲存的樣子
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png)](http://3.bp.blogspot.com/-X_82GktPX9s/VHVN1eeGhWI/AAAAAAAAByc/Vo65h_II8J0/s1600/05.TPT%E8%B3%87%E6%96%99%E5%85%A7%E5%AE%B9.png)</div>
+<p>TPC(Table Per Concreate Type)
+除了資料映射到各自的資料表之外，衍生類別的資料表中還會包含基底類別的欄位
+透過FluentAPI設定Map即可</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1.Models
+{
+    using System.Data.Entity;
+<pre><code>public class DemoContext : DbContext
+{
+    public DbSet&amp;lt;Table1&amp;gt; Table1 { get; set; }
+    public DbSet&amp;lt;Table2&amp;gt; Table2 { get; set; }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&amp;lt;Table1&amp;gt;()
+            .Map(x =&amp;gt;
+            {
+                x.ToTable(&quot;Table1&quot;);
+            })
+            .Map&amp;lt;Table2&amp;gt;(x =&amp;gt;
+            {
+                x.ToTable(&quot;Table2&quot;);
+                x.MapInheritedProperties();
+            });
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+TPC資料表建立的樣子</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://4.bp.blogspot.com/-O9CIdgHCnZE/VHVN40YQv5I/AAAAAAAAByk/8kwydnaJVQs/s1600/06.TPC%E8%B3%87%E6%96%99%E8%A1%A8%E7%9A%84%E6%A8%A3%E5%AD%90.png)</div>
+TPC資料儲存的樣子
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/--SlDXD6iT3I/VHVN8Rig40I/AAAAAAAABys/G18HVlKXi-Y/s1600/07.TPC%E8%B3%87%E6%96%99%E5%84%B2%E5%AD%98%E7%9A%84%E6%A8%A3%E5%AD%90.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20Code%20First%20%e7%b9%bc%e6%89%bf%e5%b0%8d%e6%87%89%e8%a8%ad%e5%ae%9a&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f
+			&title=Entity%20Framework%20Code%20First%20%e7%b9%bc%e6%89%bf%e5%b0%8d%e6%87%89%e8%a8%ad%e5%ae%9a&summary=TPH%28Table%20Per%20Hierarchy%29%20%e5%9f%ba%e5%ba%95%e9%a1%9e%e5%88%a5%e5%92%8c%e8%a1%8d%e7%94%9f%e9%a1%9e%e5%88%a5%e9%83%bd%e6%98%a0%e5%b0%84%e5%88%b0%e5%90%8c%e4%b8%80%e5%bc%b5%e8%a1%a8%e4%b8%ad%ef%bc%8c%e9%80%9a%e9%81%8e%e4%b8%80%e5%80%8b%e9%91%92%e5%88%a5%e6%ac%84%e4%bd%8d%e4%be%86%e8%ad%98%e5%88%a5%e8%b3%87%e6%96%99%e6%98%af%e5%b1%ac%e6%96%bc%e5%9f%ba%e5%ba%95%e6%88%96%e6%98%af%e8%a1%8d%e7%94%9f%e9%a1%9e%e5%88%a5%ef%bc%8c%e9%80%99%e6%98%af%e9%a0%90%e8%a8%ad%e7%9a%84%e6%98%a0%e5%b0%84%e6%96%b9%e6%b3%95%0aTable1%0anamespace%20ConsoleApplication1.Models%20%7b%20using%20System.ComponentModel.DataAnnotations%3b%20public%20class%20Table1%20%7b%20%5bKey%5d%20public%20int%20Table1Id%20%7b%20get%3b%20set%3b%20%7d%20public%20int%20C1%20%7b%20get%3b%20set%3b%20%7d%20public%20int%20C2%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%7d%20%20Table2%0anamespace%20ConsoleApplication1.Models%20%7b%20public%20class%20Table2%20%3a%20Table1%20%7b%20public%20int%20C3%20%7b%20get%3b%20set%3b%20%7d%20%20public%20int%20C4%20%7b%20get%3b%20set%3b%20%7d%20%7d%20%20%7d%20%20%e6%96%b0%e5%a2%9e%e5%b9%be%e7%ad%86%e8%b3%87%e6%96%99&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20Code%20First%20%e7%b9%bc%e6%89%bf%e5%b0%8d%e6%87%89%e8%a8%ad%e5%ae%9a&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f11%2fentity-framework-code-first-%25E7%25B9%25BC%25E6%2589%25BF%25E5%25B0%258D%25E6%2587%2589%25E8%25A8%25AD%25E5%25AE%259A%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

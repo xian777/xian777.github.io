@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog Layouts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog Layouts Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯使用方法是$字號和左右大括號，包住Layout Renderers參數的使用方法則是冒號分隔，屬性=值的方式預設的輸出格式如下 ${longdate}|${level:uppercase=true}|${logger}|${message}    Layout Renderers   ${basedir} - 應用程式所在的資料庫 ${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊 ${data} - 目前日期和時間 ${exception} - 例外的訊息 ${level} - 日誌的級別 ${logger} - 日誌的來源 ${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm ${machinename} - 電腦名稱 ${message} - 日誌的內容 ${newline} - 換行符號 ${shortdate} - 短日期格式 yyyy-MM-dd ${stacktrace} - 呼叫堆疊資訊 ${time} - 時間格式，HH:mm:ss.mmm. ${windows-identity} - 登入帳號每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考官網Layout Renderers文件   Pre-Defined Layouts NLog還包含了幾個預設定義好的格式，詳細的文件請參考官網的Layout文件
+ CsvLayout - CSV格式 LayoutWithHeaderAndFooter - 加上Header和Footer的格式 Log4JXmlEventLayout - Log4j相容的格式 SimpleLayout - 簡單的文字內容格式  上一篇 : [NLog Rules](http://blog.
+    ">
+
+
+<meta property="og:title" content="NLog Layouts" />
+<meta property="og:description" content="NLog Layouts Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯使用方法是$字號和左右大括號，包住Layout Renderers參數的使用方法則是冒號分隔，屬性=值的方式預設的輸出格式如下 ${longdate}|${level:uppercase=true}|${logger}|${message}    Layout Renderers   ${basedir} - 應用程式所在的資料庫 ${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊 ${data} - 目前日期和時間 ${exception} - 例外的訊息 ${level} - 日誌的級別 ${logger} - 日誌的來源 ${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm ${machinename} - 電腦名稱 ${message} - 日誌的內容 ${newline} - 換行符號 ${shortdate} - 短日期格式 yyyy-MM-dd ${stacktrace} - 呼叫堆疊資訊 ${time} - 時間格式，HH:mm:ss.mmm. ${windows-identity} - 登入帳號每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考官網Layout Renderers文件   Pre-Defined Layouts NLog還包含了幾個預設定義好的格式，詳細的文件請參考官網的Layout文件
+ CsvLayout - CSV格式 LayoutWithHeaderAndFooter - 加上Header和Footer的格式 Log4JXmlEventLayout - Log4j相容的格式 SimpleLayout - 簡單的文字內容格式  上一篇 : [NLog Rules](http://blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-layouts/" />
+<meta property="article:published_time" content="2012-12-30T16:47:00+00:00" />
+<meta property="article:modified_time" content="2012-12-30T16:47:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog Layouts"/>
+<meta name="twitter:description" content="NLog Layouts Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯使用方法是$字號和左右大括號，包住Layout Renderers參數的使用方法則是冒號分隔，屬性=值的方式預設的輸出格式如下 ${longdate}|${level:uppercase=true}|${logger}|${message}    Layout Renderers   ${basedir} - 應用程式所在的資料庫 ${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊 ${data} - 目前日期和時間 ${exception} - 例外的訊息 ${level} - 日誌的級別 ${logger} - 日誌的來源 ${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm ${machinename} - 電腦名稱 ${message} - 日誌的內容 ${newline} - 換行符號 ${shortdate} - 短日期格式 yyyy-MM-dd ${stacktrace} - 呼叫堆疊資訊 ${time} - 時間格式，HH:mm:ss.mmm. ${windows-identity} - 登入帳號每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考官網Layout Renderers文件   Pre-Defined Layouts NLog還包含了幾個預設定義好的格式，詳細的文件請參考官網的Layout文件
+ CsvLayout - CSV格式 LayoutWithHeaderAndFooter - 加上Header和Footer的格式 Log4JXmlEventLayout - Log4j相容的格式 SimpleLayout - 簡單的文字內容格式  上一篇 : [NLog Rules](http://blog."/>
+
+<meta itemprop="name" content="NLog Layouts">
+<meta itemprop="description" content="NLog Layouts Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯使用方法是$字號和左右大括號，包住Layout Renderers參數的使用方法則是冒號分隔，屬性=值的方式預設的輸出格式如下 ${longdate}|${level:uppercase=true}|${logger}|${message}    Layout Renderers   ${basedir} - 應用程式所在的資料庫 ${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊 ${data} - 目前日期和時間 ${exception} - 例外的訊息 ${level} - 日誌的級別 ${logger} - 日誌的來源 ${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm ${machinename} - 電腦名稱 ${message} - 日誌的內容 ${newline} - 換行符號 ${shortdate} - 短日期格式 yyyy-MM-dd ${stacktrace} - 呼叫堆疊資訊 ${time} - 時間格式，HH:mm:ss.mmm. ${windows-identity} - 登入帳號每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考官網Layout Renderers文件   Pre-Defined Layouts NLog還包含了幾個預設定義好的格式，詳細的文件請參考官網的Layout文件
+ CsvLayout - CSV格式 LayoutWithHeaderAndFooter - 加上Header和Footer的格式 Log4JXmlEventLayout - Log4j相容的格式 SimpleLayout - 簡單的文字內容格式  上一篇 : [NLog Rules](http://blog.">
+<meta itemprop="datePublished" content="2012-12-30T16:47:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-30T16:47:00+00:00" />
+<meta itemprop="wordCount" content="72">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-layouts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog Layouts</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 30, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog-layouts">NLog Layouts</h2>
+<div>Layout是用來決定記錄的訊息輸出的格式，通常設定在target的屬性中</div><div>這個功能可以讓我們動態增減日誌的內容，而不用回頭修改程式碼和重新編譯</div><div>使用方法是$字號和左右大括號，包住Layout Renderers</div><div>參數的使用方法則是冒號分隔，屬性=值的方式</div><div>預設的輸出格式如下</div><div>
+</div><div><pre class="brush:xml">${longdate}|${level:uppercase=true}|${logger}|${message}</pre></div><div><div>
+</div>
+<hr>
+<div>
+<h2 id="layout-renderers">Layout Renderers</h2>
+</div></div><div>
+<ul>
+<li>${basedir} - 應用程式所在的資料庫</li>
+<li>${callsite} - 日誌來源的類別名稱、方法名稱和來源資訊</li>
+<li>${data} - 目前日期和時間</li>
+<li>${exception} - 例外的訊息</li>
+<li>${level} - 日誌的級別</li>
+<li>${logger} - 日誌的來源</li>
+<li>${logdate} - 長日期格式，yyyy-MM-dd HH:mm:ss.mmm</li>
+<li>${machinename} - 電腦名稱</li>
+<li>${message} - 日誌的內容</li>
+<li>${newline} - 換行符號</li>
+<li>${shortdate} - 短日期格式  yyyy-MM-dd</li>
+<li>${stacktrace} - 呼叫堆疊資訊</li>
+<li>${time} - 時間格式，HH:mm:ss.mmm.</li>
+<li>${windows-identity} - 登入帳號</div><div>每一個Layout Renderers還包含各自的屬性，詳細的內容可以參考<a href="https://github.com/NLog/NLog/wiki/Layout-renderers">官網Layout Renderers文件</a></li>
+</ul>
+<hr>
+<h2 id="pre-defined-layouts">Pre-Defined Layouts</h2>
+<p>NLog還包含了幾個預設定義好的格式，詳細的文件請參考<a href="https://github.com/NLog/NLog/wiki/Layouts">官網的Layout文件</a></p>
+<ul>
+<li>CsvLayout - CSV格式</li>
+<li>LayoutWithHeaderAndFooter - 加上Header和Footer的格式</li>
+<li>Log4JXmlEventLayout - Log4j相容的格式</li>
+<li>SimpleLayout - 簡單的文字內容格式</li>
+</ul>
+<div>上一篇 : [NLog Rules](http://blog.developer.idv.tw/2012/12/nlog-rules.html)</div>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20Layouts&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f
+			&title=NLog%20Layouts&summary=NLog%20Layouts%20Layout%e6%98%af%e7%94%a8%e4%be%86%e6%b1%ba%e5%ae%9a%e8%a8%98%e9%8c%84%e7%9a%84%e8%a8%8a%e6%81%af%e8%bc%b8%e5%87%ba%e7%9a%84%e6%a0%bc%e5%bc%8f%ef%bc%8c%e9%80%9a%e5%b8%b8%e8%a8%ad%e5%ae%9a%e5%9c%a8target%e7%9a%84%e5%b1%ac%e6%80%a7%e4%b8%ad%e9%80%99%e5%80%8b%e5%8a%9f%e8%83%bd%e5%8f%af%e4%bb%a5%e8%ae%93%e6%88%91%e5%80%91%e5%8b%95%e6%85%8b%e5%a2%9e%e6%b8%9b%e6%97%a5%e8%aa%8c%e7%9a%84%e5%85%a7%e5%ae%b9%ef%bc%8c%e8%80%8c%e4%b8%8d%e7%94%a8%e5%9b%9e%e9%a0%ad%e4%bf%ae%e6%94%b9%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%92%8c%e9%87%8d%e6%96%b0%e7%b7%a8%e8%ad%af%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95%e6%98%af%24%e5%ad%97%e8%99%9f%e5%92%8c%e5%b7%a6%e5%8f%b3%e5%a4%a7%e6%8b%ac%e8%99%9f%ef%bc%8c%e5%8c%85%e4%bd%8fLayout%20Renderers%e5%8f%83%e6%95%b8%e7%9a%84%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95%e5%89%87%e6%98%af%e5%86%92%e8%99%9f%e5%88%86%e9%9a%94%ef%bc%8c%e5%b1%ac%e6%80%a7%3d%e5%80%bc%e7%9a%84%e6%96%b9%e5%bc%8f%e9%a0%90%e8%a8%ad%e7%9a%84%e8%bc%b8%e5%87%ba%e6%a0%bc%e5%bc%8f%e5%a6%82%e4%b8%8b%20%24%7blongdate%7d%7c%24%7blevel%3auppercase%3dtrue%7d%7c%24%7blogger%7d%7c%24%7bmessage%7d%20%20%20%20Layout%20Renderers%20%20%20%24%7bbasedir%7d%20-%20%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e6%89%80%e5%9c%a8%e7%9a%84%e8%b3%87%e6%96%99%e5%ba%ab%20%24%7bcallsite%7d%20-%20%e6%97%a5%e8%aa%8c%e4%be%86%e6%ba%90%e7%9a%84%e9%a1%9e%e5%88%a5%e5%90%8d%e7%a8%b1%e3%80%81%e6%96%b9%e6%b3%95%e5%90%8d%e7%a8%b1%e5%92%8c%e4%be%86%e6%ba%90%e8%b3%87%e8%a8%8a%20%24%7bdata%7d%20-%20%e7%9b%ae%e5%89%8d%e6%97%a5%e6%9c%9f%e5%92%8c%e6%99%82%e9%96%93%20%24%7bexception%7d%20-%20%e4%be%8b%e5%a4%96%e7%9a%84%e8%a8%8a%e6%81%af%20%24%7blevel%7d%20-%20%e6%97%a5%e8%aa%8c%e7%9a%84%e7%b4%9a%e5%88%a5%20%24%7blogger%7d%20-%20%e6%97%a5%e8%aa%8c%e7%9a%84%e4%be%86%e6%ba%90%20%24%7blogdate%7d%20-%20%e9%95%b7%e6%97%a5%e6%9c%9f%e6%a0%bc%e5%bc%8f%ef%bc%8cyyyy-MM-dd%20HH%3amm%3ass.mmm%20%24%7bmachinename%7d%20-%20%e9%9b%bb%e8%85%a6%e5%90%8d%e7%a8%b1%20%24%7bmessage%7d%20-%20%e6%97%a5%e8%aa%8c%e7%9a%84%e5%85%a7%e5%ae%b9%20%24%7bnewline%7d%20-%20%e6%8f%9b%e8%a1%8c%e7%ac%a6%e8%99%9f%20%24%7bshortdate%7d%20-%20%e7%9f%ad%e6%97%a5%e6%9c%9f%e6%a0%bc%e5%bc%8f%20yyyy-MM-dd%20%24%7bstacktrace%7d%20-%20%e5%91%bc%e5%8f%ab%e5%a0%86%e7%96%8a%e8%b3%87%e8%a8%8a%20%24%7btime%7d%20-%20%e6%99%82%e9%96%93%e6%a0%bc%e5%bc%8f%ef%bc%8cHH%3amm%3ass.mmm.%20%24%7bwindows-identity%7d%20-%20%e7%99%bb%e5%85%a5%e5%b8%b3%e8%99%9f%e6%af%8f%e4%b8%80%e5%80%8bLayout%20Renderers%e9%82%84%e5%8c%85%e5%90%ab%e5%90%84%e8%87%aa%e7%9a%84%e5%b1%ac%e6%80%a7%ef%bc%8c%e8%a9%b3%e7%b4%b0%e7%9a%84%e5%85%a7%e5%ae%b9%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2Layout%20Renderers%e6%96%87%e4%bb%b6%20%20%20Pre-Defined%20Layouts%20NLog%e9%82%84%e5%8c%85%e5%90%ab%e4%ba%86%e5%b9%be%e5%80%8b%e9%a0%90%e8%a8%ad%e5%ae%9a%e7%be%a9%e5%a5%bd%e7%9a%84%e6%a0%bc%e5%bc%8f%ef%bc%8c%e8%a9%b3%e7%b4%b0%e7%9a%84%e6%96%87%e4%bb%b6%e8%ab%8b%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e7%9a%84Layout%e6%96%87%e4%bb%b6%0a%20CsvLayout%20-%20CSV%e6%a0%bc%e5%bc%8f%20LayoutWithHeaderAndFooter%20-%20%e5%8a%a0%e4%b8%8aHeader%e5%92%8cFooter%e7%9a%84%e6%a0%bc%e5%bc%8f%20Log4JXmlEventLayout%20-%20Log4j%e7%9b%b8%e5%ae%b9%e7%9a%84%e6%a0%bc%e5%bc%8f%20SimpleLayout%20-%20%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%87%e5%ad%97%e5%85%a7%e5%ae%b9%e6%a0%bc%e5%bc%8f%20%20%e4%b8%8a%e4%b8%80%e7%af%87%20%3a%20%5bNLog%20Rules%5d%28http%3a%2f%2fblog.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20Layouts&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-layouts%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

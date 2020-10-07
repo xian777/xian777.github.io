@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    手動設定WIF | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先引用System.IdentityModel和System.IdentityModel.Service這兩個元件[![](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png)](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png) 再來到web.config加入幾個設定 先加入這兩個元件的configSection
+&lt;configSections&gt; &lt;section name=&#34;system.identityModel&#34; type=&#34;System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;section name=&#34;system.identityModel.services&#34; type=&#34;System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;/configSections&gt;  再來在System.Web區段中，把網站的驗證模組設定None和不允許匿名登入 &lt;system.web&gt; &lt;authentication mode=&#34;None&#34; /&gt; &lt;authorization&gt; &lt;deny users=&#34;?&#34; /&gt; &lt;/authorization&gt; &lt;compilation debug=&#34;true&#34; targetFramework=&#34;4.5&#34;/&gt; &lt;httpRuntime targetFramework=&#34;4.5&#34;/&gt; &lt;/system.web&gt;  再來在System.webServer區段中，啟用兩個HttpModule &lt;system.webServer&gt; &lt;modules&gt; &lt;add name=&#34;WSFederationAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;add name=&#34;SessionAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;/modules&gt; &lt;/system.webServer&gt;  最後加入WIF的設定 &lt;system.identityModel&gt; &lt;identityConfiguration&gt; &lt;audienceUris&gt; &lt;add value=&#34;http://localhost:12345/&#34; /&gt; &lt;/audienceUris&gt; &lt;securityTokenHandlers&gt; &lt;add type=&#34;
+    ">
+
+
+<meta property="og:title" content="手動設定WIF" />
+<meta property="og:description" content="首先引用System.IdentityModel和System.IdentityModel.Service這兩個元件[![](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png)](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png) 再來到web.config加入幾個設定 先加入這兩個元件的configSection
+&lt;configSections&gt; &lt;section name=&#34;system.identityModel&#34; type=&#34;System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;section name=&#34;system.identityModel.services&#34; type=&#34;System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;/configSections&gt;  再來在System.Web區段中，把網站的驗證模組設定None和不允許匿名登入 &lt;system.web&gt; &lt;authentication mode=&#34;None&#34; /&gt; &lt;authorization&gt; &lt;deny users=&#34;?&#34; /&gt; &lt;/authorization&gt; &lt;compilation debug=&#34;true&#34; targetFramework=&#34;4.5&#34;/&gt; &lt;httpRuntime targetFramework=&#34;4.5&#34;/&gt; &lt;/system.web&gt;  再來在System.webServer區段中，啟用兩個HttpModule &lt;system.webServer&gt; &lt;modules&gt; &lt;add name=&#34;WSFederationAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;add name=&#34;SessionAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;/modules&gt; &lt;/system.webServer&gt;  最後加入WIF的設定 &lt;system.identityModel&gt; &lt;identityConfiguration&gt; &lt;audienceUris&gt; &lt;add value=&#34;http://localhost:12345/&#34; /&gt; &lt;/audienceUris&gt; &lt;securityTokenHandlers&gt; &lt;add type=&#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/03/%E6%89%8B%E5%8B%95%E8%A8%AD%E5%AE%9Awif/" />
+<meta property="article:published_time" content="2014-03-24T11:11:00+00:00" />
+<meta property="article:modified_time" content="2014-03-24T11:11:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="手動設定WIF"/>
+<meta name="twitter:description" content="首先引用System.IdentityModel和System.IdentityModel.Service這兩個元件[![](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png)](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png) 再來到web.config加入幾個設定 先加入這兩個元件的configSection
+&lt;configSections&gt; &lt;section name=&#34;system.identityModel&#34; type=&#34;System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;section name=&#34;system.identityModel.services&#34; type=&#34;System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;/configSections&gt;  再來在System.Web區段中，把網站的驗證模組設定None和不允許匿名登入 &lt;system.web&gt; &lt;authentication mode=&#34;None&#34; /&gt; &lt;authorization&gt; &lt;deny users=&#34;?&#34; /&gt; &lt;/authorization&gt; &lt;compilation debug=&#34;true&#34; targetFramework=&#34;4.5&#34;/&gt; &lt;httpRuntime targetFramework=&#34;4.5&#34;/&gt; &lt;/system.web&gt;  再來在System.webServer區段中，啟用兩個HttpModule &lt;system.webServer&gt; &lt;modules&gt; &lt;add name=&#34;WSFederationAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;add name=&#34;SessionAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;/modules&gt; &lt;/system.webServer&gt;  最後加入WIF的設定 &lt;system.identityModel&gt; &lt;identityConfiguration&gt; &lt;audienceUris&gt; &lt;add value=&#34;http://localhost:12345/&#34; /&gt; &lt;/audienceUris&gt; &lt;securityTokenHandlers&gt; &lt;add type=&#34;"/>
+
+<meta itemprop="name" content="手動設定WIF">
+<meta itemprop="description" content="首先引用System.IdentityModel和System.IdentityModel.Service這兩個元件[![](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png)](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add&#43;component.png) 再來到web.config加入幾個設定 先加入這兩個元件的configSection
+&lt;configSections&gt; &lt;section name=&#34;system.identityModel&#34; type=&#34;System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;section name=&#34;system.identityModel.services&#34; type=&#34;System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089&#34; /&gt; &lt;/configSections&gt;  再來在System.Web區段中，把網站的驗證模組設定None和不允許匿名登入 &lt;system.web&gt; &lt;authentication mode=&#34;None&#34; /&gt; &lt;authorization&gt; &lt;deny users=&#34;?&#34; /&gt; &lt;/authorization&gt; &lt;compilation debug=&#34;true&#34; targetFramework=&#34;4.5&#34;/&gt; &lt;httpRuntime targetFramework=&#34;4.5&#34;/&gt; &lt;/system.web&gt;  再來在System.webServer區段中，啟用兩個HttpModule &lt;system.webServer&gt; &lt;modules&gt; &lt;add name=&#34;WSFederationAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;add name=&#34;SessionAuthenticationModule&#34; type=&#34;System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&#34; preCondition=&#34;managedHandler&#34; /&gt; &lt;/modules&gt; &lt;/system.webServer&gt;  最後加入WIF的設定 &lt;system.identityModel&gt; &lt;identityConfiguration&gt; &lt;audienceUris&gt; &lt;add value=&#34;http://localhost:12345/&#34; /&gt; &lt;/audienceUris&gt; &lt;securityTokenHandlers&gt; &lt;add type=&#34;">
+<meta itemprop="datePublished" content="2014-03-24T11:11:00+00:00" />
+<meta itemprop="dateModified" content="2014-03-24T11:11:00+00:00" />
+<meta itemprop="wordCount" content="122">
+
+
+
+<meta itemprop="keywords" content="Claims Base," />
+
+<link rel="canonical" href="http://example.org/posts/2014/03/%E6%89%8B%E5%8B%95%E8%A8%AD%E5%AE%9Awif/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>手動設定WIF</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Mar 24, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/claims-base">Claims Base</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/claims-base">Claims base</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>首先引用System.IdentityModel和System.IdentityModel.Service這兩個元件</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add+component.png)](http://1.bp.blogspot.com/-JeEQBHGiBCA/Uy-gIfqaWrI/AAAAAAAABHg/CKFEhn8Di6I/s1600/01.add+component.png)</div>
+<p>再來到web.config加入幾個設定
+先加入這兩個元件的configSection</p>
+<div><pre class="brush:xml">&lt;configSections&gt;
+    &lt;section name="system.identityModel" type="System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" /&gt;
+    &lt;section name="system.identityModel.services" type="System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" /&gt;
+&lt;/configSections&gt;
+</pre></div>
+再來在System.Web區段中，把網站的驗證模組設定None和不允許匿名登入
+<div><pre class="brush:xml">&lt;system.web&gt;
+    &lt;authentication mode="None" /&gt;
+    &lt;authorization&gt;
+        &lt;deny users="?" /&gt;
+    &lt;/authorization&gt;
+    &lt;compilation debug="true" targetFramework="4.5"/&gt;
+    &lt;httpRuntime targetFramework="4.5"/&gt;
+&lt;/system.web&gt;
+</pre></div>
+再來在System.webServer區段中，啟用兩個HttpModule
+<div><pre class="brush:xml">&lt;system.webServer&gt;
+    &lt;modules&gt;
+        &lt;add name="WSFederationAuthenticationModule" type="System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" /&gt;
+        &lt;add name="SessionAuthenticationModule" type="System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" /&gt;
+    &lt;/modules&gt;
+&lt;/system.webServer&gt;
+</pre></div>
+最後加入WIF的設定
+<div><pre class="brush:xml">&lt;system.identityModel&gt;
+    &lt;identityConfiguration&gt;
+        &lt;audienceUris&gt;
+            &lt;add value="http://localhost:12345/" /&gt;
+        &lt;/audienceUris&gt;
+        &lt;securityTokenHandlers&gt;
+            &lt;add type="System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
+            &lt;remove type="System.IdentityModel.Tokens.SessionSecurityTokenHandler, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
+        &lt;/securityTokenHandlers&gt;
+        &lt;certificateValidation certificateValidationMode="None" /&gt;
+        &lt;issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry"&gt;
+            &lt;authority name="MySTS"&gt;
+                &lt;keys&gt;
+                    &lt;add thumbprint="簽署憑證的姆指紋" /&gt;
+                &lt;/keys&gt;
+                &lt;validIssuers&gt;
+                    &lt;add name="MySTS" /&gt;
+                &lt;/validIssuers&gt;
+            &lt;/authority&gt;
+        &lt;/issuerNameRegistry&gt;
+    &lt;/identityConfiguration&gt;
+&lt;/system.identityModel&gt;
+&lt;system.identityModel.services&gt;
+    &lt;federationConfiguration&gt;
+        &lt;cookieHandler requireSsl="false" /&gt;
+        &lt;wsFederation passiveRedirectEnabled="true"
+                        issuer="http://sts.developer.idv.tw/"
+                        realm="http://localhost:51337/"
+                        requireHttps="false" /&gt;
+    &lt;/federationConfiguration&gt;
+&lt;/system.identityModel.services&gt;
+</pre></div>
+在這裡有個設定，需要加入一個NuGet參考
+System.IdentityModel.Tokens.ValidatingIssuerNameRegistry
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-5jv6U3EKwtU/Uy-iKggj3KI/AAAAAAAABHs/nGIR9YSbP5k/s1600/02.package.png)](http://4.bp.blogspot.com/-5jv6U3EKwtU/Uy-iKggj3KI/AAAAAAAABHs/nGIR9YSbP5k/s1600/02.package.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e6%89%8b%e5%8b%95%e8%a8%ad%e5%ae%9aWIF&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f
+			&title=%e6%89%8b%e5%8b%95%e8%a8%ad%e5%ae%9aWIF&summary=%e9%a6%96%e5%85%88%e5%bc%95%e7%94%a8System.IdentityModel%e5%92%8cSystem.IdentityModel.Service%e9%80%99%e5%85%a9%e5%80%8b%e5%85%83%e4%bb%b6%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-JeEQBHGiBCA%2fUy-gIfqaWrI%2fAAAAAAAABHg%2fCKFEhn8Di6I%2fs1600%2f01.add%2bcomponent.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-JeEQBHGiBCA%2fUy-gIfqaWrI%2fAAAAAAAABHg%2fCKFEhn8Di6I%2fs1600%2f01.add%2bcomponent.png%29%20%e5%86%8d%e4%be%86%e5%88%b0web.config%e5%8a%a0%e5%85%a5%e5%b9%be%e5%80%8b%e8%a8%ad%e5%ae%9a%20%e5%85%88%e5%8a%a0%e5%85%a5%e9%80%99%e5%85%a9%e5%80%8b%e5%85%83%e4%bb%b6%e7%9a%84configSection%0a%26lt%3bconfigSections%26gt%3b%20%26lt%3bsection%20name%3d%22system.identityModel%22%20type%3d%22System.IdentityModel.Configuration.SystemIdentityModelSection%2c%20System.IdentityModel%2c%20Version%3d4.0.0.0%2c%20Culture%3dneutral%2c%20PublicKeyToken%3dB77A5C561934E089%22%20%2f%26gt%3b%20%26lt%3bsection%20name%3d%22system.identityModel.services%22%20type%3d%22System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection%2c%20System.IdentityModel.Services%2c%20Version%3d4.0.0.0%2c%20Culture%3dneutral%2c%20PublicKeyToken%3dB77A5C561934E089%22%20%2f%26gt%3b%20%26lt%3b%2fconfigSections%26gt%3b%20%20%e5%86%8d%e4%be%86%e5%9c%a8System.Web%e5%8d%80%e6%ae%b5%e4%b8%ad%ef%bc%8c%e6%8a%8a%e7%b6%b2%e7%ab%99%e7%9a%84%e9%a9%97%e8%ad%89%e6%a8%a1%e7%b5%84%e8%a8%ad%e5%ae%9aNone%e5%92%8c%e4%b8%8d%e5%85%81%e8%a8%b1%e5%8c%bf%e5%90%8d%e7%99%bb%e5%85%a5%20%26lt%3bsystem.web%26gt%3b%20%26lt%3bauthentication%20mode%3d%22None%22%20%2f%26gt%3b%20%26lt%3bauthorization%26gt%3b%20%26lt%3bdeny%20users%3d%22%3f%22%20%2f%26gt%3b%20%26lt%3b%2fauthorization%26gt%3b%20%26lt%3bcompilation%20debug%3d%22true%22%20targetFramework%3d%224.5%22%2f%26gt%3b%20%26lt%3bhttpRuntime%20targetFramework%3d%224.5%22%2f%26gt%3b%20%26lt%3b%2fsystem.web%26gt%3b%20%20%e5%86%8d%e4%be%86%e5%9c%a8System.webServer%e5%8d%80%e6%ae%b5%e4%b8%ad%ef%bc%8c%e5%95%9f%e7%94%a8%e5%85%a9%e5%80%8bHttpModule%20%26lt%3bsystem.webServer%26gt%3b%20%26lt%3bmodules%26gt%3b%20%26lt%3badd%20name%3d%22WSFederationAuthenticationModule%22%20type%3d%22System.IdentityModel.Services.WSFederationAuthenticationModule%2c%20System.IdentityModel.Services%2c%20Version%3d4.0.0.0%2c%20Culture%3dneutral%2c%20PublicKeyToken%3db77a5c561934e089%22%20preCondition%3d%22managedHandler%22%20%2f%26gt%3b%20%26lt%3badd%20name%3d%22SessionAuthenticationModule%22%20type%3d%22System.IdentityModel.Services.SessionAuthenticationModule%2c%20System.IdentityModel.Services%2c%20Version%3d4.0.0.0%2c%20Culture%3dneutral%2c%20PublicKeyToken%3db77a5c561934e089%22%20preCondition%3d%22managedHandler%22%20%2f%26gt%3b%20%26lt%3b%2fmodules%26gt%3b%20%26lt%3b%2fsystem.webServer%26gt%3b%20%20%e6%9c%80%e5%be%8c%e5%8a%a0%e5%85%a5WIF%e7%9a%84%e8%a8%ad%e5%ae%9a%20%26lt%3bsystem.identityModel%26gt%3b%20%26lt%3bidentityConfiguration%26gt%3b%20%26lt%3baudienceUris%26gt%3b%20%26lt%3badd%20value%3d%22http%3a%2f%2flocalhost%3a12345%2f%22%20%2f%26gt%3b%20%26lt%3b%2faudienceUris%26gt%3b%20%26lt%3bsecurityTokenHandlers%26gt%3b%20%26lt%3badd%20type%3d%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e6%89%8b%e5%8b%95%e8%a8%ad%e5%ae%9aWIF&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f03%2f%25E6%2589%258B%25E5%258B%2595%25E8%25A8%25AD%25E5%25AE%259Awif%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sublime Text 3 on My New Hugo Site</title>
+    <link>http://example.org/tags/sublime-text-3/</link>
+    <description>Recent content in Sublime Text 3 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2015 16:37:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/sublime-text-3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Sublime Text 3 Package] HTML-CSS-JS Prettify</title>
+      <link>http://example.org/posts/2015/07/sublime-text-3-package-html-css-js-prettify/</link>
+      <pubDate>Fri, 03 Jul 2015 16:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/07/sublime-text-3-package-html-css-js-prettify/</guid>
+      <description>HTML-CSS-JS Prettify套件是用來格式化html文件的工具 一樣按下Ctrl + Shift + P透過Pageage Control來安裝套件
+[![](http://4.bp.blogspot.com/-T9xlzy_ldYM/VZZJjIIlW9I/AAAAAAAACXk/ekC6uQ_sMYI/s1600/01.install%2Bpackage.png)](http://4.bp.blogspot.com/-T9xlzy_ldYM/VZZJjIIlW9I/AAAAAAAACXk/ekC6uQ_sMYI/s1600/01.install%2Bpackage.png) 找到HTML-CSS-JS PRettify套件按下Enter即可 [![](http://1.bp.blogspot.com/-aaHozB7QiKg/VZZJjH-vu5I/AAAAAAAACXo/HfQqJtO2nO8/s1600/02.htmlcssjs%25E5%25A5%2597%25E4%25BB%25B6.png)](http://1.bp.blogspot.com/-aaHozB7QiKg/VZZJjH-vu5I/AAAAAAAACXo/HfQqJtO2nO8/s1600/02.htmlcssjs%25E5%25A5%2597%25E4%25BB%25B6.png) 套件需要透過Node來格式化文件，所以需要確定Node執行檔的路徑 [![](http://1.bp.blogspot.com/-ZIQo-oOuuDg/VZZJjJ2VcXI/AAAAAAAACXs/lm1kcnRjuFI/s1600/03.%25E8%25A8%25AD%25E5%25AE%259Anodejs%25E8%25B7%25AF%25E5%25BE%2591.png)](http://1.bp.blogspot.com/-ZIQo-oOuuDg/VZZJjJ2VcXI/AAAAAAAACXs/lm1kcnRjuFI/s1600/03.%25E8%25A8%25AD%25E5%25AE%259Anodejs%25E8%25B7%25AF%25E5%25BE%2591.png) 確定node.exe執行檔的路徑即可 [![](http://1.bp.blogspot.com/-LFnjhIHYh6I/VZZJjzkQH8I/AAAAAAAACXw/Z5U0KfZ5C3k/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5NodJS%25E8%25B7%25AF%25E5%25BE%2591.png)](http://1.bp.blogspot.com/-LFnjhIHYh6I/VZZJjzkQH8I/AAAAAAAACXw/Z5U0KfZ5C3k/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5NodJS%25E8%25B7%25AF%25E5%25BE%2591.png) 準備一份html文件，按下Ctrl&amp;nbsp;+ Shift&amp;nbsp;+ H快速鍵 [![](http://2.bp.blogspot.com/-dbffjR23Gzk/VZZJkFkfxaI/AAAAAAAACX0/SeWf0YZl564/s1600/05.html%25E6%2596%2587%25E4%25BB%25B6.png)](http://2.bp.blogspot.com/-dbffjR23Gzk/VZZJkFkfxaI/AAAAAAAACX0/SeWf0YZl564/s1600/05.html%25E6%2596%2587%25E4%25BB%25B6.png) 即可完成格式化 [!</description>
+    </item>
+    
+    <item>
+      <title>[Sublime Text 3 Package] Emmet</title>
+      <link>http://example.org/posts/2015/07/sublime-text-3-package-emmet/</link>
+      <pubDate>Fri, 03 Jul 2015 15:34:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/07/sublime-text-3-package-emmet/</guid>
+      <description>Emmet套件是用來快速產生HTML和CSS tag的工具，語法如下
+  &amp;gt; 子層元素  + 同層元素  ^ 上層元素  # id  . class  [] 屬性  {} 文字內容  () 群組  * 重覆數量，後面接數字可以指定要重覆多少個數的元素  $ 排序數字，多個$符號會產生多位數的排序數字，前面補零  lorem 亂數文字，後面接數字可以指定幾個字的文字，不接數字的話則是一整個句子  按下Ctrl + Shift&amp;nbsp;+ P 叫出命令視窗，輸入Instal Package，選擇安裝套件 [![](http://2.bp.blogspot.com/-RXRQlvTImrA/VZY6RvHqogI/AAAAAAAACXE/beyRzp0QOdI/s1600/01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://2.bp.blogspot.com/-RXRQlvTImrA/VZY6RvHqogI/AAAAAAAACXE/beyRzp0QOdI/s1600/01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 輸入emmet按下enter即可安裝 [![](http://2.bp.blogspot.com/-x9ggQilI3S0/VZY6Rh9QDJI/AAAAAAAACXU/LqzkEKondZg/s1600/02.%25E9%2581%25B8%25E6%2593%2587emmet.png)](http://2.bp.blogspot.com/-x9ggQilI3S0/VZY6Rh9QDJI/AAAAAAAACXU/LqzkEKondZg/s1600/02.%25E9%2581%25B8%25E6%2593%2587emmet.png) 安裝完成 [![](http://3.bp.blogspot.com/-NJPkD0s5oqI/VZY6RlDbh4I/AAAAAAAACXQ/hCrHH8EBA5g/s1600/03.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png)](http://3.bp.blogspot.com/-NJPkD0s5oqI/VZY6RlDbh4I/AAAAAAAACXQ/hCrHH8EBA5g/s1600/03.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png) 開一個新檔案來試試，輸入html:5&amp;gt;div#header+div#content+div#footer後，按下tab鍵 [![](http://1.bp.blogspot.com/-Ud9bZo64rQ4/VZY6SYGOTAI/AAAAAAAACXM/Tv_tOrYIaDw/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5zencode.png)](http://1.bp.blogspot.com/-Ud9bZo64rQ4/VZY6SYGOTAI/AAAAAAAACXM/Tv_tOrYIaDw/s1600/04.%25E8%25BC%25B8%25E5%2585%25A5zencode.png) 就會自動展開成html元素 [![](http://4.bp.blogspot.com/-y6ncW6qrNgc/VZY6SfUtxzI/AAAAAAAACXY/GqmDW0_SKgY/s1600/05.%25E6%258C%2589%25E4%25B8%258Btab.png)](http://4.bp.blogspot.com/-y6ncW6qrNgc/VZY6SfUtxzI/AAAAAAAACXY/GqmDW0_SKgY/s1600/05.%25E6%258C%2589%25E4%25B8%258Btab.png) </description>
+    </item>
+    
+    <item>
+      <title>[Sublime Text 3 Package] ConvertToUTF8</title>
+      <link>http://example.org/posts/2015/07/sublime-text-3-package-converttoutf8/</link>
+      <pubDate>Fri, 03 Jul 2015 13:45:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/07/sublime-text-3-package-converttoutf8/</guid>
+      <description>Sublime Text 3 預設不支援中文編碼，所以需要安裝ConvertToUTF8套件來解決這個問題 按下Ctrl + Shift + P叫出命令視窗，輸入Install Package，選擇Package Control: Install Package
+[![](http://2.bp.blogspot.com/-B1rAv6zEp1A/VZYg570fO3I/AAAAAAAACWA/egNm6XGSRMQ/s1600/1.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png)](http://2.bp.blogspot.com/-B1rAv6zEp1A/VZYg570fO3I/AAAAAAAACWA/egNm6XGSRMQ/s1600/1.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png) 在命令列中輸入UTF8，選擇ConvertToUTF8套件 [![](http://2.bp.blogspot.com/-lj_t3nvfC-o/VZYg6NFAqYI/AAAAAAAACWI/_0qVzfrva04/s1600/2.%25E9%2581%25B8%25E6%2593%2587UTF8.png)](http://2.bp.blogspot.com/-lj_t3nvfC-o/VZYg6NFAqYI/AAAAAAAACWI/_0qVzfrva04/s1600/2.%25E9%2581%25B8%25E6%2593%2587UTF8.png) 左下角會顯示正在安裝套件 [![](http://1.bp.blogspot.com/-1tDQP_IsDnA/VZYg6cyipbI/AAAAAAAACWM/tiRVWfXO7A0/s1600/3.%25E5%25AE%2589%25E8%25A3%259DUTF8%25E5%25A5%2597%25E4%25BB%25B6.png)](http://1.bp.blogspot.com/-1tDQP_IsDnA/VZYg6cyipbI/AAAAAAAACWM/tiRVWfXO7A0/s1600/3.%25E5%25AE%2589%25E8%25A3%259DUTF8%25E5%25A5%2597%25E4%25BB%25B6.png) 安裝完成後打開套件預設設定值 [![](http://2.bp.blogspot.com/-cLmFa_brOHo/VZYg6jSAJNI/AAAAAAAACWQ/osdZHOQjirg/s1600/6.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png)](http://2.bp.blogspot.com/-cLmFa_brOHo/VZYg6jSAJNI/AAAAAAAACWQ/osdZHOQjirg/s1600/6.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png) 將預設設定值複制後打開套件個人設定值 [![](http://1.bp.blogspot.com/-6P8MALErcg8/VZYg5FetwEI/AAAAAAAACV0/cuC0b1NOOIs/s1600/07.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2580%258B%25E4%25BA%25BA%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png)](http://1.bp.blogspot.com/-6P8MALErcg8/VZYg5FetwEI/AAAAAAAACV0/cuC0b1NOOIs/s1600/07.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2580%258B%25E4%25BA%25BA%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png) 調整BIG5編碼順序放到GBK前面後存檔 [![](http://4.bp.blogspot.com/-L5m5ZtnSchg/VZYg5KY5mUI/AAAAAAAACV8/OJC66EPLfoU/s1600/08.%25E4%25BA%25A4%25E6%258F%259Bbig5.png)](http://4.bp.blogspot.com/-L5m5ZtnSchg/VZYg5KY5mUI/AAAAAAAACV8/OJC66EPLfoU/s1600/08.%25E4%25BA%25A4%25E6%258F%259Bbig5.png) 透過File&amp;gt;Set File Encoding to選單可以調整檔案編碼 [!</description>
+    </item>
+    
+    <item>
+      <title>Sublime Text 3 個人設定檔</title>
+      <link>http://example.org/posts/2015/07/sublime-text-3-%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A%E6%AA%94/</link>
+      <pubDate>Fri, 03 Jul 2015 10:30:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/07/sublime-text-3-%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A%E6%AA%94/</guid>
+      <description>預設的設定值在Preferences&amp;gt;Settings-Default
+[![](http://4.bp.blogspot.com/-BHtrsMvmUSc/VZXzTQv_MKI/AAAAAAAACVo/taqlyOEkpa8/s1600/01.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png)](http://4.bp.blogspot.com/-BHtrsMvmUSc/VZXzTQv_MKI/AAAAAAAACVo/taqlyOEkpa8/s1600/01.%25E9%25A0%2590%25E8%25A8%25AD%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png) 打開後會有所有設定的說明和設定值，這個檔案是唯讀的JSON檔案如果要變更設定，需要打開Preferences&amp;gt;Settings-User[![](http://4.bp.blogspot.com/-6FtW1vtnTW4/VZXzTeGHcgI/AAAAAAAACVg/A4Izoa5_Y5U/s1600/02.%25E5%2594%25AF%25E8%25AE%2580%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png)](http://4.bp.blogspot.com/-6FtW1vtnTW4/VZXzTeGHcgI/AAAAAAAACVg/A4Izoa5_Y5U/s1600/02.%25E5%2594%25AF%25E8%25AE%2580%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png) 在這個檔案中把預設的設定值覆蓋即可[![](http://2.bp.blogspot.com/-z-2bKW2AXyk/VZXzTSxadGI/AAAAAAAACVk/d-nB7KIDDTY/s1600/03.%25E6%2588%2591%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png)](http://2.bp.blogspot.com/-z-2bKW2AXyk/VZXzTSxadGI/AAAAAAAACVk/d-nB7KIDDTY/s1600/03.%25E6%2588%2591%25E7%259A%2584%25E8%25A8%25AD%25E5%25AE%259A%25E5%2580%25BC.png)  { &#34;font_size&#34;: 16, &#34;translate_tabs_to_spaces&#34;: true, &#34;word_wrap&#34;: false, &#34;highlight_line&#34;: true, &#34;highlight_modified_tabs&#34;: true, &#34;show_encoding&#34;: true, &#34;show_line_endings&#34;: true, } </description>
+    </item>
+    
+    <item>
+      <title>Sublime Text 3 安裝 Package Control</title>
+      <link>http://example.org/posts/2015/06/sublime-text-3-%E5%AE%89%E8%A3%9D-package-control/</link>
+      <pubDate>Sat, 27 Jun 2015 14:52:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/06/sublime-text-3-%E5%AE%89%E8%A3%9D-package-control/</guid>
+      <description>來到 Package Control 官網，選擇Installation
+[![](http://4.bp.blogspot.com/-9EHy-0yFlmI/VY5HZM-iefI/AAAAAAAACUM/dcc_k7VFRHc/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%2598%25E7%25B6%25B2.png)](http://4.bp.blogspot.com/-9EHy-0yFlmI/VY5HZM-iefI/AAAAAAAACUM/dcc_k7VFRHc/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%2598%25E7%25B6%25B2.png) 選擇要安裝的版本，把下面的語法複制起來 [![](http://1.bp.blogspot.com/-VK54ChzDu3w/VY5HZGlK2vI/AAAAAAAACUc/yeo4iQMNvVg/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E7%2589%2588%25E6%259C%25AC.png)](http://1.bp.blogspot.com/-VK54ChzDu3w/VY5HZGlK2vI/AAAAAAAACUc/yeo4iQMNvVg/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E7%2589%2588%25E6%259C%25AC.png) 打開Sublime Text，按下Ctrl&amp;nbsp;+ `打開控制台，將剛複制的語法貼上去，按Enter執行 [![](http://3.bp.blogspot.com/-s3kOUX0c8OY/VY5HZDay4OI/AAAAAAAACUQ/LstUNWDBtdw/s1600/03.%25E8%25B2%25BC%25E4%25B8%258A.png)](http://3.bp.blogspot.com/-s3kOUX0c8OY/VY5HZDay4OI/AAAAAAAACUQ/LstUNWDBtdw/s1600/03.%25E8%25B2%25BC%25E4%25B8%258A.png) 接下來按下Ctrl&amp;nbsp;+ Shift&amp;nbsp;+ P，打開命令列，可以看到多了Package Control相關的指令 [![](http://3.bp.blogspot.com/-4ZTY7d_jUzA/VY5HZwfgM_I/AAAAAAAACUs/GYvz6m_4Ha4/s1600/04.install%2Bpackage.png)](http://3.bp.blogspot.com/-4ZTY7d_jUzA/VY5HZwfgM_I/AAAAAAAACUs/GYvz6m_4Ha4/s1600/04.install%2Bpackage.png) 接下來安裝個套件，選擇Install Package，切換到可安裝的套件列表 [![](http://1.bp.blogspot.com/-v4yQdfOFx7w/VY5HaBoz5WI/AAAAAAAACUo/k0p5uampu9o/s1600/05.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2590%258D%25E7%25A8%25B1%25E5%2588%2597%25E8%25A1%25A8.png)](http://1.bp.blogspot.com/-v4yQdfOFx7w/VY5HaBoz5WI/AAAAAAAACUo/k0p5uampu9o/s1600/05.%25E5%25A5%2597%25E4%25BB%25B6%25E5%2590%258D%25E7%25A8%25B1%25E5%2588%2597%25E8%25A1%25A8.png) 輸入utf8，找到ConvertToUTF8，點擊後安裝 [![](http://1.bp.blogspot.com/-qBvotxZBRkY/VY5HbOFQASI/AAAAAAAACU4/9qSlwdMpDyM/s1600/6.utf8%25E5%25A5%2597%25E4%25BB%25B6.png)](http://1.bp.blogspot.com/-qBvotxZBRkY/VY5HbOFQASI/AAAAAAAACU4/9qSlwdMpDyM/s1600/6.utf8%25E5%25A5%2597%25E4%25BB%25B6.png) 安裝完成 [![](http://2.bp.blogspot.com/-z-XYbMu9E5I/VY5HaffK6kI/AAAAAAAACUw/mQafH9uK53Y/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png)](http://2.bp.blogspot.com/-z-XYbMu9E5I/VY5HaffK6kI/AAAAAAAACUw/mQafH9uK53Y/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png) 檔案會以UTF8方式儲存 [!</description>
+    </item>
+    
+    <item>
+      <title>安裝Sublime Text 3</title>
+      <link>http://example.org/posts/2015/06/%E5%AE%89%E8%A3%9Dsublime-text-3/</link>
+      <pubDate>Sat, 27 Jun 2015 14:30:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/06/%E5%AE%89%E8%A3%9Dsublime-text-3/</guid>
+      <description>先到官網下載安裝程式
+[![](http://4.bp.blogspot.com/-JDVMIAWkA7U/VY5ClXt9JII/AAAAAAAACTI/TXN2R2wq1Xw/s1600/0.%25E5%25AE%2598%25E7%25B6%25B2.png)](http://4.bp.blogspot.com/-JDVMIAWkA7U/VY5ClXt9JII/AAAAAAAACTI/TXN2R2wq1Xw/s1600/0.%25E5%25AE%2598%25E7%25B6%25B2.png) 雙擊安裝程式後開始安裝 [![](http://2.bp.blogspot.com/-o8f1QZyUwDM/VY5ClU17nyI/AAAAAAAACTE/81X6hvBlp7A/s1600/01.%2B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-o8f1QZyUwDM/VY5ClU17nyI/AAAAAAAACTE/81X6hvBlp7A/s1600/01.%2B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇安裝路徑 [![](http://1.bp.blogspot.com/-99ARoptqIks/VY5Cleq6hRI/AAAAAAAACTw/MzM7dJJX_Ek/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png)](http://1.bp.blogspot.com/-99ARoptqIks/VY5Cleq6hRI/AAAAAAAACTw/MzM7dJJX_Ek/s1600/02.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png) 勾選加入滑鼠右鍵 [![](http://3.bp.blogspot.com/-eyfiB5CBKfc/VY5CmEaoIBI/AAAAAAAACTo/JE3Lp2bwzH4/s1600/03.%25E5%258B%25BE%25E9%2581%25B8%25E5%258A%25A0%25E5%2585%25A5%25E6%25BB%2591%25E9%25BC%25A0%25E5%258F%25B3%25E9%258D%25B5.png)](http://3.bp.blogspot.com/-eyfiB5CBKfc/VY5CmEaoIBI/AAAAAAAACTo/JE3Lp2bwzH4/s1600/03.%25E5%258B%25BE%25E9%2581%25B8%25E5%258A%25A0%25E5%2585%25A5%25E6%25BB%2591%25E9%25BC%25A0%25E5%258F%25B3%25E9%258D%25B5.png) 安裝資訊確認 [![](http://1.bp.blogspot.com/-DY9wtfPk6gI/VY5CmWFpA6I/AAAAAAAACTg/0No4B7wFAs4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B3%2587%25E8%25A8%258A%25E7%25A2%25BA%25E8%25AA%258D.png)](http://1.bp.blogspot.com/-DY9wtfPk6gI/VY5CmWFpA6I/AAAAAAAACTg/0No4B7wFAs4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E8%25B3%2587%25E8%25A8%258A%25E7%25A2%25BA%25E8%25AA%258D.png) 開始安裝 [![](http://1.bp.blogspot.com/-xjtQwqsAO34/VY5CmjhzZWI/AAAAAAAACTk/eRL1DWM3aqU/s1600/05.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://1.bp.blogspot.com/-xjtQwqsAO34/VY5CmjhzZWI/AAAAAAAACTk/eRL1DWM3aqU/s1600/05.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png) 完成安裝 [!</description>
+    </item>
+    
+    <item>
+      <title>Sublime Text 3 學習筆記</title>
+      <link>http://example.org/posts/2015/06/sublime-text-3-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Sat, 27 Jun 2015 14:22:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/06/sublime-text-3-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</guid>
+      <description>1. 安裝Sublime Text 3 http://blog.developer.idv.tw/2015/06/sublime-text-3_27.html
+2. Sublime Text 3 安裝Package Control http://blog.developer.idv.tw/2015/06/sublime-text-3_36.html
+3. Sublime Text 3 個人設定檔 http://blog.developer.idv.tw/2015/07/sublime-text-3.html
+4. [Sublime Text 3 Package] ConvertToUTF8 http://blog.developer.idv.tw/2015/07/sublime-text-3-package-converttoutf8.html
+5. [Sublime Text 3 Package] Emmet http://blog.developer.idv.tw/2015/07/sublime-text-3-package-emmet.html
+6. [Sublime Text 3 Package] HTML-CSS-JS Prettify http://blog.developer.idv.tw/2015/07/sublime-text-3-package-html-css-js.html
+參考資料 Sublime Text 手冊
+Sublime Text 全程指南
+Sublime Text 3 新手上路：必要的安裝、設定與基本使用教學
+Table of Contents - Sublime Text Unofficial Documentation
+Sublime Text 3 Documentation</description>
+    </item>
+    
+  </channel>
+</rss>

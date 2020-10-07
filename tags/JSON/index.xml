@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JSON on My New Hugo Site</title>
+    <link>http://example.org/tags/json/</link>
+    <description>Recent content in JSON on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jul 2013 15:49:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Json.Net 日期處理</title>
+      <link>http://example.org/posts/2013/07/json-net-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Mon, 01 Jul 2013 15:49:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/json-net-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>Json.Net 序列化的日期格式，在4.5版之前是Microsoft Date Format:&#34;\/Date(ticks)\/&#34; 4.5版之後，預設的日期格式已經改成[ISO 8601 standard](http://en.wikipedia.org/wiki/ISO_8601) 可以透過JsonSerializerSettings的方式來指定序列化的格式 反序列化的時後會自動識別不需另外指定 另外還有一種JavaScript格式，需要透過指定JavaScriptDateTimeConverter來轉換 反序列化的時後也需要明確指定，否則會出現錯誤
+DateTime d = DateTime.Now; Console.WriteLine(&amp;ldquo;datetime:{0}\r\n&amp;rdquo;, d);
+// ISO8601的格式 string jsonString1 = JsonConvert.SerializeObject(d); Console.WriteLine(&amp;ldquo;ISO8601 Date Format:{0}&amp;rdquo;, jsonString1); DateTime d1 = JsonConvert.DeserializeObject&amp;lt;DateTime&amp;gt;(jsonString1); Console.WriteLine(&amp;ldquo;datetime:{0}, kind:{1}\r\n&amp;rdquo;, d1, d1.Kind);
+// Microsoft Date Format string jsonString2 = JsonConvert.SerializeObject( d, new JsonSerializerSettings() { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat }); Console.WriteLine(&amp;ldquo;Microsoft Date Format:{0}&amp;rdquo;, jsonString2); DateTime d2 = JsonConvert.DeserializeObject&amp;lt;DateTime&amp;gt;(jsonString2); Console.WriteLine(&amp;ldquo;datetime:{0}, kind:{1}\r\n&amp;rdquo;, d2, d2.Kind);
+// JavaScript Date Format string jsonString3 = JsonConvert.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 轉換IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9Bidictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 27 Jun 2013 16:41:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9Bidictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>Json.Net 處理 IDictionary介面的方式，會解析成物件的key和value 以下是一個簡單的例子 // 淮備資料 Dictionary&amp;lt;string, string&amp;gt; dict1 = new Dictionary&amp;lt;string, string&amp;gt;() { {&#34;a&#34;, &#34;1&#34;}, {&#34;b&#34;, &#34;2&#34;}, {&#34;c&#34;, &#34;3&#34;}, }; // 序列化 string jsonString = JsonConvert.SerializeObject(dict1); Console.WriteLine(jsonString);
+// 反序列化 Dictionary&amp;lt;string, string&amp;gt; dict2 = JsonConvert.DeserializeObject&amp;lt;Dictionary&amp;lt;string, string&amp;gt;&amp;gt;(jsonString); foreach (KeyValuePair&amp;lt;string, string&amp;gt; item in dict2) { Console.WriteLine(&amp;ldquo;key:{0}, value:{1}&amp;rdquo;, item.Key, item.Value); }
+Console.ReadLine(); 
+執行結果 [!</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 27 Jun 2013 16:31:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>Json.Net對於IEnumerable介面的處理，同樣是序列化成陣列的格式 首先先宣告個物件以便之後的處理 private class Person { public int id { get; set; } public string name { get; set; } public DateTime date { get; set; } }  轉換IEnumerable介面，以List為例 static void Main(string[] args) { // 淮備資料 List&amp;lt;Person&amp;gt; list1 = new List&amp;lt;Person&amp;gt;() { new Person() { id = 1, name = &#34;p1&#34;, date = DateTime.Today.AddDays(-1)  }, new Person() { id = 2, name=&amp;quot;p2&amp;quot;, date = DateTime.Today }, new Person() { id = 3, name = &amp;quot;p3&amp;quot;, date = DateTime.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 用法</title>
+      <link>http://example.org/posts/2013/06/json-net-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Thu, 27 Jun 2013 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先用最基本的JsonTextWriter和JsonTextReader JsonTextWriter使用成對的方法來輸出Json字串 JsonTextReader使用Read方法來持續讀取Json字串 看得出來在使用上有點拖泥帶水static void Main(string[] args) { string jsonString = string.Empty; using (StringWriter sw = new StringWriter()) { using (JsonTextWriter writer = new JsonTextWriter(sw)) { // 開始輸出物件 writer.WriteStartObject(); // 輸出屬性:id writer.WritePropertyName(&amp;quot;id&amp;quot;); writer.WriteValue(1); // 輸出屬性:name writer.WritePropertyName(&amp;quot;name&amp;quot;); writer.WriteValue(&amp;quot;xian&amp;quot;); // 輸出屬性today writer.WritePropertyName(&amp;quot;today&amp;quot;); writer.WriteValue(DateTime.Today); // 開始輸出陣列 writer.WritePropertyName(&amp;quot;arraydata&amp;quot;); writer.WriteStartArray(); writer.WriteValue(1); writer.WriteValue(2); writer.WriteValue(3); // 結束輸出陣列 writer.WriteEndArray(); // 結束串出物件 writer.WriteEndObject(); } jsonString = sw.ToString(); Console.WriteLine(jsonString); } using (StringReader sr = new StringReader(jsonString)) { using (JsonTextReader reader = new JsonTextReader(sr)) { while (reader.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 介紹</title>
+      <link>http://example.org/posts/2013/06/json-net-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Thu, 27 Jun 2013 15:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>Json.Net 是一個第三方套件，其強大的功能和.Net內建的比較表，可以去官網看一下 個人比較有感覺的差別是
+ 支援.Net 2.0 支援LINQ  支援暱名類別 支援dynamic物件 日期格式為ISO8601該專案為Open Source，可以到codeplex下載原始碼  安裝的方式也很簡單，打開NuGet輸入Json.Net就行了  [![](http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png)](http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png)Json.Net也有完整的[線上文件](http://james.newtonking.com/projects/json/help/)可以參考 以下是Json.Net常用的物件
+ [JsonConvert](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 最容易使用的一個靜態工具類別  [JsonTextReader](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 讀取Json格式  [JsonTextWriter](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 輸出Json格式  [JObject](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json物件，就是大括號包起來的部份  [JArray](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json陣列，就是中括號包起來的部份  [JValue](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json值的部份  </description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 日期處理</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Thu, 20 Jun 2013 16:25:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>使用DataContractJsonSerializer序列化日期時，格式為\/Date(ticks+時區資料)\/這個樣子 因為有時區資料，所以不用像JavaScriptSerializer一樣還要手動加上ToLocalTime函式// 初始化DataContractJsonSerializer類別 DateTime d1 = DateTime.Now; DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(DateTime)); string jsonString = string.Empty; // 序列化資料 using (MemoryStream ms = new MemoryStream()) { dcjs.WriteObject(ms, d1); jsonString = Encoding.UTF8.GetString(ms.ToArray()); Console.WriteLine(jsonString); Console.WriteLine(); }
+// 反序列化資料 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString))) { DateTime d2 = (DateTime)dcjs.ReadObject(ms); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); }
+Console.ReadLine(); 
+執行結果 [![](http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png)](http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png) 使用JavaScript處理的時後，因為多了時區資料，所以reg要修改一下 打開一個Chrome的主控台並輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;today&#34;: &#34;\/Date(1371716206301+0800)\/&#34;}; // 看一下資料解析的樣子 data.today;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 轉換 IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 20 Jun 2013 15:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>轉換IDictionary介面的方式也一樣，只要注意初始化DataContractJsonSerializer類別時傳入IDictionary介面就好 但是輸出的結果並不如預期中為物件的格式 直接宣告一個Dictionary來當範例// 淮備序列化的類別資料 Dictionary&amp;lt;int, object&amp;gt; dataList = new Dictionary&amp;lt;int, object&amp;gt;() { {1, &#34;a&#34;}, {2, &#34;b&#34;}, {3, &#34;c&#34;} };  初始化時要傳入這個Dictionary的型別 // 初始化DataContractJsonSerializer類別 DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(Dictionary&amp;lt;int, object&amp;gt;)); string jsonString = string.Empty;  序列化的方式一樣 // 序列化資料 using (MemoryStream ms = new MemoryStream()) { dcjs.WriteObject(ms, dataList); jsonString = Encoding.UTF8.GetString(ms.ToArray()); Console.WriteLine(jsonString); Console.WriteLine(); }  反序列化的方式也一樣 // 反序列化資料 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString))) { Dictionary&amp;lt;int, object&amp;gt; data2List = dcjs.ReadObject(ms) as Dictionary&amp;lt;int, object&amp;gt;; foreach (KeyValuePair&amp;lt;int, object&amp;gt; item in data2List) { Console.</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 20 Jun 2013 15:34:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&amp;lt;JsonData&amp;gt; dataList = new List&amp;lt;JsonData&amp;gt;() { new JsonData() { Id = 1, Name = &#34;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 用法</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Thu, 20 Jun 2013 15:15:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 介紹</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Thu, 20 Jun 2013 14:35:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>JavaScriptSerializer是.NET 3.5中新增的類別 該類別在System.Runtime.Serialization.Json命名空間下面 需引用System.Runtime.Serialization.dll建構式  [DataContractJsonSerializer(Type)](http://msdn.microsoft.com/zh-tw/library/bb908625.aspx) 傳入要轉換的資料型別  [DataContractJsonSerializer(Type, DataContractJsonSerializerSettings)](http://msdn.microsoft.com/zh-tw/library/hh194418.aspx) 傳入要轉換的資料型別，和設定值   方法  [WriteObject](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.writeobject.aspx)  將物件序列化成JSON字串  [ReadObject](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.readobject.aspx)  將JSON字串反序列化成指定的物件   參考資料 System.Runtime.Serialization.Json 命名空間</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer ScriptIgnoreAttribute</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-scriptignoreattribute/</link>
+      <pubDate>Wed, 19 Jun 2013 17:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-scriptignoreattribute/</guid>
+      <description>ScriptIgnore這個Attribute是用來取消屬性或欄位的序列化 using System; using System.Web.Script.Serialization; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { string jsonString = string.Empty; Data data = new Data() { Id = 1, Name = &amp;ldquo;data&amp;rdquo; };
+ JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(data); Console.WriteLine(jsonString); Console.ReadLine(); } private class Data { public int Id { get; set; } public string Name { get; set; } } }  } 
+執行結果如下[![](http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png)](http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png) 加上ScriptIgnore這個Attribute之後 using System; using System.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 日期處理</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Wed, 19 Jun 2013 17:20:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&amp;lt;DateTime&amp;gt;(jsonString); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&amp;lt;DateTime&amp;gt;(jsonString).ToLocalTime(); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&amp;nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 轉換 IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Tue, 18 Jun 2013 18:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>一樣開個新的Console專案，和加入System.Web.Extensions.dll參考 完整的程式碼如下using System; using System.Collections.Generic; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 Dictionary&amp;lt;string, object&amp;gt; data = new Dictionary&amp;lt;string, object&amp;gt;() { { &amp;ldquo;ID&amp;rdquo;, 1 }, { &amp;ldquo;Name&amp;rdquo;, &amp;ldquo;Dictionary Demo&amp;rdquo; }, { &amp;ldquo;State&amp;rdquo;, EnumState.c }, { &amp;ldquo;Date&amp;rdquo;, DateTime.Today }, { &amp;ldquo;Guid&amp;rdquo;, Guid.NewGuid() } };
+ // 序列化 JavaScriptSerializer jss = new JavaScriptSerializer(); string jsonString = jss.Serialize(data); Console.WriteLine(&amp;quot;序列化的JSON字串:{0}\r\n&amp;quot;, jsonString); // 反序列化 JsonObject obj = jss.Deserialize&amp;amp;lt;JsonObject&amp;amp;gt;(jsonString); Console.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 介紹</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>JavaScriptSerializer是.NET 3.5中新增的類別 該類別在System.Web.Script.Serialization命名空間下面 需引用System.Web.Extensions.dll
+方法
+ [Serialize](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.serialize%28v=vs.90%29.aspx) 將物件序列化成JSON字串  [Deserialize&amp;lt;T&amp;gt;](http://msdn.microsoft.com/zh-tw/library/bb355316%28v=vs.90%29.aspx) 將JSON字串反序列化成指定的物件   屬性
+ [MaxJsonLength](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.maxjsonlength%28v=vs.90%29.aspx) 取得或設定可接受的字串最大長度，預設為4MB  [RecursionLimit](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.recursionlimit%28v=vs.90%29.aspx) 取得或設定要處理物件層級數目的限制   參考資料 System.Web.Script.Serialization 命名空間</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 用法</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先開一個Console專案[![](http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png)](http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png)加入System.Web.Extensions.dll的引用[![](http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png)](http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png)完整的程式碼如下using System; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 JsonObject data = new JsonObject() { ID = 1, Name = &amp;ldquo;JsonObject&amp;rdquo;, State = EnumState.c, Date = DateTime.Today, GUID = Guid.NewGuid() };
+ // 序列化 JavaScriptSerializer jss = new JavaScriptSerializer(); string jsonString = jss.Serialize(data); Console.WriteLine(&amp;quot;序列化的JSON字串:{0}\r\n&amp;quot;, jsonString); // 反序列化 JsonObject obj = jss.Deserialize&amp;amp;lt;JsonObject&amp;amp;gt;(jsonString); Console.WriteLine( &amp;quot;反序列化後的物件, ID:{0}, Name:{1}, State:{2}, Date:{3}, GUID:{4}&amp;quot;, obj.ID, obj.Name, obj.State, obj.Date, obj.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>一樣開新Console專案做示範，並加入System.Web.Extensions.dll參考 完整的程式碼如下using System; using System.Collections.Generic; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 List&amp;lt;JsonObject&amp;gt; data = new List&amp;lt;JsonObject&amp;gt;() { new JsonObject() { ID = 1, Name = &amp;ldquo;JsonObject1&amp;rdquo;, State = EnumState.a, Date = DateTime.Today.AddDays(-1), GUID = Guid.NewGuid() }, new JsonObject() { ID = 2, Name = &amp;ldquo;JsonObject2&amp;rdquo;, State = EnumState.b, Date = DateTime.Today, GUID = Guid.NewGuid() }, new JsonObject() { ID = 3, Name = &amp;ldquo;JsonObject3&amp;rdquo;, State = EnumState.</description>
+    </item>
+    
+    <item>
+      <title>JSON筆記</title>
+      <link>http://example.org/posts/2013/06/json%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json%E7%AD%86%E8%A8%98/</guid>
+      <description>JSON 筆記
+JSON的全名為JavaScript Object Notation，是JavaScript的物件表示法 因為輕量化，易於人閱讀和編寫，也易於機器解析和生成的關系，所以很容易在各種網絡平台和程序之間做為一種資料交換格式
+JSON的內容主要有二種型態，一種是物件，一種是陣列 物件由大括號包起來，屬性和值用冒號來分隔，每個屬性之間用逗點分隔 陣列用中括號包起來，每個資料之間用逗點分隔
+{ &#34;ID&#34;: 1, &#34;Name&#34;: &#34;JSON Demo&#34;, &#34;State&#34;: 2, &#34;Date&#34;: &#34;\/Date(13714 84800000)\/&#34;, &#34;Guid&#34;: &#34;7c52f0a4-a742-4898-a55c-583ab851b183&#34;, &#34;DataList&#34;: [ 1, 2, 3, 4, 5 ] }  JSON的資料型態有文字、數字、布林、NULL 文字:用雙引號包起來的內容 數字:包含整數和浮點數 布林: true / false 更多完整的介紹，可以參考官網或W3CSchool JSON官網介紹
+W3CSchool Learn JSON
+ 在.NET中內建兩種解析方式，但需要Framework 3.5以上
+System.Web.Extensions下面的JavaScriptSerializer JavaScriptSerializer 介紹 JavaScriptSerializer 用法 JavaScriptSerializer 轉換 IEnumerable 介面 JavaScriptSerializer 轉換 IDictionary 介面 JavaScriptSerializer 日期處理 JavaScriptSerializer ScriptIgnoreAttribute
+ System.Runtime.Serialization下面的DataContractJsonSerializer DataContractJsonSerializer 介紹 DataContractJsonSerializer 用法 DataContractJsonSerializer 轉換 IEnumerable 介面 DataContractJsonSerializer 轉換 IDictionary 介面 DataContractJsonSerializer 日期處理</description>
+    </item>
+    
+  </channel>
+</rss>

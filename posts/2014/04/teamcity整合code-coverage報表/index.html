@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity整合Code Coverage報表 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先加入一個MSTest的Build Step[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png) 這裡以VS2013為例，選擇要執行單元測試的專案元件[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png) 拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png) 主要就是輸入Filter，&#43;:加入，-:排除，注意不用輸入副檔名[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png) 建置成功後就會看到單元測試覆蓋率的報表了 [!
+    ">
+
+
+<meta property="og:title" content="TeamCity整合Code Coverage報表" />
+<meta property="og:description" content="首先加入一個MSTest的Build Step[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png) 這裡以VS2013為例，選擇要執行單元測試的專案元件[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png) 拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png) 主要就是輸入Filter，&#43;:加入，-:排除，注意不用輸入副檔名[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png) 建置成功後就會看到單元測試覆蓋率的報表了 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88code-coverage%E5%A0%B1%E8%A1%A8/" />
+<meta property="article:published_time" content="2014-04-22T17:04:00+00:00" />
+<meta property="article:modified_time" content="2014-04-22T17:04:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity整合Code Coverage報表"/>
+<meta name="twitter:description" content="首先加入一個MSTest的Build Step[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png) 這裡以VS2013為例，選擇要執行單元測試的專案元件[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png) 拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png) 主要就是輸入Filter，&#43;:加入，-:排除，注意不用輸入副檔名[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png) 建置成功後就會看到單元測試覆蓋率的報表了 [!"/>
+
+<meta itemprop="name" content="TeamCity整合Code Coverage報表">
+<meta itemprop="description" content="首先加入一個MSTest的Build Step[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png) 這裡以VS2013為例，選擇要執行單元測試的專案元件[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png) 拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png) 主要就是輸入Filter，&#43;:加入，-:排除，注意不用輸入副檔名[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png) 建置成功後就會看到單元測試覆蓋率的報表了 [!">
+<meta itemprop="datePublished" content="2014-04-22T17:04:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-22T17:04:00+00:00" />
+<meta itemprop="wordCount" content="8">
+
+
+
+<meta itemprop="keywords" content="Code Coverage,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88code-coverage%E5%A0%B1%E8%A1%A8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity整合Code Coverage報表</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 22, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/code-coverage">Code Coverage</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/code-coverage">Code coverage</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>首先加入一個MSTest的Build Step</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)](http://2.bp.blogspot.com/-mFAFpZ4sBFg/U1Yv105qBlI/AAAAAAAABRc/HCJbfbaCuIw/s1600/01.%E6%96%B0%E5%A2%9ERunner.png)</div>
+<div>這裡以VS2013為例，選擇要執行單元測試的專案元件</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-aFtWBsGltzs/U1dz2eGt4YI/AAAAAAAABT4/rKk7WdWI9H0/s1600/02.%E5%8A%A0%E5%85%A5%E6%B8%AC%E8%A9%A6%E5%85%83%E4%BB%B6.png)</div>
+<div>拉到最下面後可以選擇Code Coverage的工具，這裡以dotCover為例子</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)](http://2.bp.blogspot.com/-Xjc2zO5sAZ8/U1Yv-WpsCNI/AAAAAAAABRs/oXxgjTphKRk/s1600/03.%E9%81%B8%E6%93%87dotCover.png)</div>
+<div>主要就是輸入Filter，+:加入，-:排除，注意不用輸入副檔名</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)](http://3.bp.blogspot.com/-Q9E4eWUXyxI/U1YwCuFlBkI/AAAAAAAABR0/-LWyBvHrEgI/s1600/04.%E5%8A%A0%E5%85%A5Conver%E5%85%83%E4%BB%B6.png)</div>
+<div>建置成功後就會看到單元測試覆蓋率的報表了 </div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-0i27A5sdKdM/U1YwGCyP0pI/AAAAAAAABR8/jIVmKdLPs4A/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://1.bp.blogspot.com/-0i27A5sdKdM/U1YwGCyP0pI/AAAAAAAABR8/jIVmKdLPs4A/s1600/05.%E7%B8%BD%E8%A1%A8.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%e6%95%b4%e5%90%88Code%20Coverage%e5%a0%b1%e8%a1%a8&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f
+			&title=TeamCity%e6%95%b4%e5%90%88Code%20Coverage%e5%a0%b1%e8%a1%a8&summary=%e9%a6%96%e5%85%88%e5%8a%a0%e5%85%a5%e4%b8%80%e5%80%8bMSTest%e7%9a%84Build%20Step%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-mFAFpZ4sBFg%2fU1Yv105qBlI%2fAAAAAAAABRc%2fHCJbfbaCuIw%2fs1600%2f01.%25E6%2596%25B0%25E5%25A2%259ERunner.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-mFAFpZ4sBFg%2fU1Yv105qBlI%2fAAAAAAAABRc%2fHCJbfbaCuIw%2fs1600%2f01.%25E6%2596%25B0%25E5%25A2%259ERunner.png%29%20%e9%80%99%e8%a3%a1%e4%bb%a5VS2013%e7%82%ba%e4%be%8b%ef%bc%8c%e9%81%b8%e6%93%87%e8%a6%81%e5%9f%b7%e8%a1%8c%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6%e7%9a%84%e5%b0%88%e6%a1%88%e5%85%83%e4%bb%b6%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-aFtWBsGltzs%2fU1dz2eGt4YI%2fAAAAAAAABT4%2frKk7WdWI9H0%2fs1600%2f02.%25E5%258A%25A0%25E5%2585%25A5%25E6%25B8%25AC%25E8%25A9%25A6%25E5%2585%2583%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-aFtWBsGltzs%2fU1dz2eGt4YI%2fAAAAAAAABT4%2frKk7WdWI9H0%2fs1600%2f02.%25E5%258A%25A0%25E5%2585%25A5%25E6%25B8%25AC%25E8%25A9%25A6%25E5%2585%2583%25E4%25BB%25B6.png%29%20%e6%8b%89%e5%88%b0%e6%9c%80%e4%b8%8b%e9%9d%a2%e5%be%8c%e5%8f%af%e4%bb%a5%e9%81%b8%e6%93%87Code%20Coverage%e7%9a%84%e5%b7%a5%e5%85%b7%ef%bc%8c%e9%80%99%e8%a3%a1%e4%bb%a5dotCover%e7%82%ba%e4%be%8b%e5%ad%90%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Xjc2zO5sAZ8%2fU1Yv-WpsCNI%2fAAAAAAAABRs%2foXxgjTphKRk%2fs1600%2f03.%25E9%2581%25B8%25E6%2593%2587dotCover.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Xjc2zO5sAZ8%2fU1Yv-WpsCNI%2fAAAAAAAABRs%2foXxgjTphKRk%2fs1600%2f03.%25E9%2581%25B8%25E6%2593%2587dotCover.png%29%20%e4%b8%bb%e8%a6%81%e5%b0%b1%e6%98%af%e8%bc%b8%e5%85%a5Filter%ef%bc%8c%2b%3a%e5%8a%a0%e5%85%a5%ef%bc%8c-%3a%e6%8e%92%e9%99%a4%ef%bc%8c%e6%b3%a8%e6%84%8f%e4%b8%8d%e7%94%a8%e8%bc%b8%e5%85%a5%e5%89%af%e6%aa%94%e5%90%8d%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Q9E4eWUXyxI%2fU1YwCuFlBkI%2fAAAAAAAABR0%2f-LWyBvHrEgI%2fs1600%2f04.%25E5%258A%25A0%25E5%2585%25A5Conver%25E5%2585%2583%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Q9E4eWUXyxI%2fU1YwCuFlBkI%2fAAAAAAAABR0%2f-LWyBvHrEgI%2fs1600%2f04.%25E5%258A%25A0%25E5%2585%25A5Conver%25E5%2585%2583%25E4%25BB%25B6.png%29%20%e5%bb%ba%e7%bd%ae%e6%88%90%e5%8a%9f%e5%be%8c%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0%e5%96%ae%e5%85%83%e6%b8%ac%e8%a9%a6%e8%a6%86%e8%93%8b%e7%8e%87%e7%9a%84%e5%a0%b1%e8%a1%a8%e4%ba%86%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%e6%95%b4%e5%90%88Code%20Coverage%e5%a0%b1%e8%a1%a8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588code-coverage%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

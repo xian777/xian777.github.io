@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    自動化佈署工具Octopus學習筆記 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="1. 安裝自動佈署工具Octopus http://blog.developer.idv.tw/2012/11/octopus.html
+2. 安裝Octopus Tentacle http://blog.developer.idv.tw/2012/11/octopus-tentacle.html
+3. Octopus打包網站專案 http://blog.developer.idv.tw/2012/11/octopus_5.html
+4. Octopus部署專案 http://blog.developer.idv.tw/2012/11/octopus_3840.html
+5. Octopus XML設定檔轉換和替代變數 http://blog.developer.idv.tw/2012/11/octopus-xml.html
+6. NuGet 套件超過30MB的問題 http://blog.developer.idv.tw/2012/11/nuget-30mb.html
+7. Windows平台的軟體套件管理:Chocolatey http://blog.developer.idv.tw/2012/11/windowschocolatey.html
+8. 利用OctoPack套件打包Web專案 http://blog.developer.idv.tw/2014/09/octopackweb.html
+    ">
+
+
+<meta property="og:title" content="自動化佈署工具Octopus學習筆記" />
+<meta property="og:description" content="1. 安裝自動佈署工具Octopus http://blog.developer.idv.tw/2012/11/octopus.html
+2. 安裝Octopus Tentacle http://blog.developer.idv.tw/2012/11/octopus-tentacle.html
+3. Octopus打包網站專案 http://blog.developer.idv.tw/2012/11/octopus_5.html
+4. Octopus部署專案 http://blog.developer.idv.tw/2012/11/octopus_3840.html
+5. Octopus XML設定檔轉換和替代變數 http://blog.developer.idv.tw/2012/11/octopus-xml.html
+6. NuGet 套件超過30MB的問題 http://blog.developer.idv.tw/2012/11/nuget-30mb.html
+7. Windows平台的軟體套件管理:Chocolatey http://blog.developer.idv.tw/2012/11/windowschocolatey.html
+8. 利用OctoPack套件打包Web專案 http://blog.developer.idv.tw/2014/09/octopackweb.html" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/%E8%87%AA%E5%8B%95%E5%8C%96%E4%BD%88%E7%BD%B2%E5%B7%A5%E5%85%B7octopus%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" />
+<meta property="article:published_time" content="2012-12-01T14:32:00+00:00" />
+<meta property="article:modified_time" content="2012-12-01T14:32:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="自動化佈署工具Octopus學習筆記"/>
+<meta name="twitter:description" content="1. 安裝自動佈署工具Octopus http://blog.developer.idv.tw/2012/11/octopus.html
+2. 安裝Octopus Tentacle http://blog.developer.idv.tw/2012/11/octopus-tentacle.html
+3. Octopus打包網站專案 http://blog.developer.idv.tw/2012/11/octopus_5.html
+4. Octopus部署專案 http://blog.developer.idv.tw/2012/11/octopus_3840.html
+5. Octopus XML設定檔轉換和替代變數 http://blog.developer.idv.tw/2012/11/octopus-xml.html
+6. NuGet 套件超過30MB的問題 http://blog.developer.idv.tw/2012/11/nuget-30mb.html
+7. Windows平台的軟體套件管理:Chocolatey http://blog.developer.idv.tw/2012/11/windowschocolatey.html
+8. 利用OctoPack套件打包Web專案 http://blog.developer.idv.tw/2014/09/octopackweb.html"/>
+
+<meta itemprop="name" content="自動化佈署工具Octopus學習筆記">
+<meta itemprop="description" content="1. 安裝自動佈署工具Octopus http://blog.developer.idv.tw/2012/11/octopus.html
+2. 安裝Octopus Tentacle http://blog.developer.idv.tw/2012/11/octopus-tentacle.html
+3. Octopus打包網站專案 http://blog.developer.idv.tw/2012/11/octopus_5.html
+4. Octopus部署專案 http://blog.developer.idv.tw/2012/11/octopus_3840.html
+5. Octopus XML設定檔轉換和替代變數 http://blog.developer.idv.tw/2012/11/octopus-xml.html
+6. NuGet 套件超過30MB的問題 http://blog.developer.idv.tw/2012/11/nuget-30mb.html
+7. Windows平台的軟體套件管理:Chocolatey http://blog.developer.idv.tw/2012/11/windowschocolatey.html
+8. 利用OctoPack套件打包Web專案 http://blog.developer.idv.tw/2014/09/octopackweb.html">
+<meta itemprop="datePublished" content="2012-12-01T14:32:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-01T14:32:00+00:00" />
+<meta itemprop="wordCount" content="27">
+
+
+
+<meta itemprop="keywords" content="Octopus," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/%E8%87%AA%E5%8B%95%E5%8C%96%E4%BD%88%E7%BD%B2%E5%B7%A5%E5%85%B7octopus%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>自動化佈署工具Octopus學習筆記</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 1, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>1. <a href="http://blog.developer.idv.tw/2012/11/octopus.html">安裝自動佈署工具Octopus</a>
+<a href="http://blog.developer.idv.tw/2012/11/octopus.html">http://blog.developer.idv.tw/2012/11/octopus.html</a></p>
+<p>2. <a href="http://blog.developer.idv.tw/2012/11/octopus-tentacle.html">安裝Octopus Tentacle</a>
+<a href="http://blog.developer.idv.tw/2012/11/octopus-tentacle.html">http://blog.developer.idv.tw/2012/11/octopus-tentacle.html</a></p>
+<p>3. <a href="http://blog.developer.idv.tw/2012/11/octopus_5.html">Octopus打包網站專案</a>
+<a href="http://blog.developer.idv.tw/2012/11/octopus_5.html">http://blog.developer.idv.tw/2012/11/octopus_5.html</a></p>
+<p>4. <a href="http://blog.developer.idv.tw/2012/11/octopus_3840.html">Octopus部署專案</a>
+<a href="http://blog.developer.idv.tw/2012/11/octopus_3840.html">http://blog.developer.idv.tw/2012/11/octopus_3840.html</a></p>
+<p>5. <a href="http://blog.developer.idv.tw/2012/11/octopus-xml.html">Octopus XML設定檔轉換和替代變數</a>
+<a href="http://blog.developer.idv.tw/2012/11/octopus-xml.html">http://blog.developer.idv.tw/2012/11/octopus-xml.html</a></p>
+<p>6. <a href="http://blog.developer.idv.tw/2012/11/nuget-30mb.html">NuGet 套件超過30MB的問題</a>
+<a href="http://blog.developer.idv.tw/2012/11/nuget-30mb.html">http://blog.developer.idv.tw/2012/11/nuget-30mb.html</a></p>
+<p>7. <a href="http://blog.developer.idv.tw/2012/11/windowschocolatey.html">Windows平台的軟體套件管理:Chocolatey</a>
+<a href="http://blog.developer.idv.tw/2012/11/windowschocolatey.html">http://blog.developer.idv.tw/2012/11/windowschocolatey.html</a></p>
+<p>8. <a href="http://blog.developer.idv.tw/2014/09/octopackweb.html">利用OctoPack套件打包Web專案</a>
+<a href="http://blog.developer.idv.tw/2014/09/octopackweb.html">http://blog.developer.idv.tw/2014/09/octopackweb.html</a></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e8%87%aa%e5%8b%95%e5%8c%96%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus%e5%ad%b8%e7%bf%92%e7%ad%86%e8%a8%98&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f
+			&title=%e8%87%aa%e5%8b%95%e5%8c%96%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus%e5%ad%b8%e7%bf%92%e7%ad%86%e8%a8%98&summary=1.%20%e5%ae%89%e8%a3%9d%e8%87%aa%e5%8b%95%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2foctopus.html%0a2.%20%e5%ae%89%e8%a3%9dOctopus%20Tentacle%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2foctopus-tentacle.html%0a3.%20Octopus%e6%89%93%e5%8c%85%e7%b6%b2%e7%ab%99%e5%b0%88%e6%a1%88%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2foctopus_5.html%0a4.%20Octopus%e9%83%a8%e7%bd%b2%e5%b0%88%e6%a1%88%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2foctopus_3840.html%0a5.%20Octopus%20XML%e8%a8%ad%e5%ae%9a%e6%aa%94%e8%bd%89%e6%8f%9b%e5%92%8c%e6%9b%bf%e4%bb%a3%e8%ae%8a%e6%95%b8%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2foctopus-xml.html%0a6.%20NuGet%20%e5%a5%97%e4%bb%b6%e8%b6%85%e9%81%8e30MB%e7%9a%84%e5%95%8f%e9%a1%8c%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2fnuget-30mb.html%0a7.%20Windows%e5%b9%b3%e5%8f%b0%e7%9a%84%e8%bb%9f%e9%ab%94%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%3aChocolatey%20http%3a%2f%2fblog.developer.idv.tw%2f2012%2f11%2fwindowschocolatey.html%0a8.%c2%a0%e5%88%a9%e7%94%a8OctoPack%e5%a5%97%e4%bb%b6%e6%89%93%e5%8c%85Web%e5%b0%88%e6%a1%88%20http%3a%2f%2fblog.developer.idv.tw%2f2014%2f09%2foctopackweb.html&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e8%87%aa%e5%8b%95%e5%8c%96%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus%e5%ad%b8%e7%bf%92%e7%ad%86%e8%a8%98&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2f%25E8%2587%25AA%25E5%258B%2595%25E5%258C%2596%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%25E5%25AD%25B8%25E7%25BF%2592%25E7%25AD%2586%25E8%25A8%2598%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

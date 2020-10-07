@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Unit Test Assert 類別 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Assert 類別    屬性 說明     AreEqual 確認兩個指定的物件相等如果這些物件都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的物件不相等如果這些物件都相等，判斷提示就會失敗   AreSame 確認兩個指定的物件變數參考相同的物件如果它們參考不同的物件，判斷提示就會失敗   AreNotSame 確認兩個指定的物件變數參考不同的物件如果它們參考相同的物件，判斷提示就會失敗   IsTrue 驗證指定的條件是 true如果條件為 false，判斷提示就會失敗。   IsFalse 驗證指定的條件是 false如果條件為 true，判斷提示就會失敗   IsNull 確認指定的物件是 null如果它不是 null，判斷提示就會失敗   IsNotNull 確認指定的物件不是 null如果它是 null，判斷提示就會失敗   IsInstanceOfType 確認指定的物件是指定之型別的執行個體如果此型別不在物件的繼承階層架構內，判斷提示就會失敗   IsNotInstanceOfType 確認指定的物件不是指定之型別的執行個體如果此型別位於物件的繼承階層架構內，判斷提示就會失敗   Fail 判斷提示失敗，但不檢查任何條件   Inconclusive 表示無法驗證判斷提示    CollectionAssert 類別    屬性 說明     AllItemsAreInstancesOfType 確認指定之集合中的所有項目都是指定之型別的執行個體如果任何項目的型別不在其繼承階層架構內，判斷提示就會失敗   AllItemsAreNotNull 確認指定之集合中的所有項目都不是 null如果有任何項目是 null，判斷提示就會失敗   AllItemsAreUnique 確認指定之集合中的所有項目都是唯一的如果集合中有任兩個項目相等，判斷提示就會失敗   AreEqual 確認兩個指定的集合相等如果這些集合都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的集合不相等如果這些集合都相等，判斷提示就會失敗   AreEquivalent 確認兩個指定的集合對等如果這些集合都不對等，判斷提示就會失敗   AreNotEquivalent 確認兩個指定的集合不對等如果這些集合都對等，判斷提示就會失敗   Contains 確認指定的集合包含指定的項目如果此項目不在集合中，判斷提示就會失敗   DoesNotContain 確認指定的集合不包含指定的項目如果此項目位於集合中，判斷提示就會失敗   IsSubsetOf 確認第一個集合是第二個集合的子集   IsNotSubsetOf 確認第一個集合不是第二個集合的子集    StringAssert 類別    屬性 說明     Contains 確認第一個字串包含第二個字串這個方法會區分大小寫   StartsWith 確認第一個字串以第二個字串開始這個方法會區分大小寫   EndsWith 確認第一個字串以第二個字串結束這個方法會區分大小寫   Matches 確認指定的字串符合規則運算式   DoesNotMatch 確認指定的字串不符合規則運算式    
+    ">
+
+
+<meta property="og:title" content="Unit Test Assert 類別" />
+<meta property="og:description" content="Assert 類別    屬性 說明     AreEqual 確認兩個指定的物件相等如果這些物件都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的物件不相等如果這些物件都相等，判斷提示就會失敗   AreSame 確認兩個指定的物件變數參考相同的物件如果它們參考不同的物件，判斷提示就會失敗   AreNotSame 確認兩個指定的物件變數參考不同的物件如果它們參考相同的物件，判斷提示就會失敗   IsTrue 驗證指定的條件是 true如果條件為 false，判斷提示就會失敗。   IsFalse 驗證指定的條件是 false如果條件為 true，判斷提示就會失敗   IsNull 確認指定的物件是 null如果它不是 null，判斷提示就會失敗   IsNotNull 確認指定的物件不是 null如果它是 null，判斷提示就會失敗   IsInstanceOfType 確認指定的物件是指定之型別的執行個體如果此型別不在物件的繼承階層架構內，判斷提示就會失敗   IsNotInstanceOfType 確認指定的物件不是指定之型別的執行個體如果此型別位於物件的繼承階層架構內，判斷提示就會失敗   Fail 判斷提示失敗，但不檢查任何條件   Inconclusive 表示無法驗證判斷提示    CollectionAssert 類別    屬性 說明     AllItemsAreInstancesOfType 確認指定之集合中的所有項目都是指定之型別的執行個體如果任何項目的型別不在其繼承階層架構內，判斷提示就會失敗   AllItemsAreNotNull 確認指定之集合中的所有項目都不是 null如果有任何項目是 null，判斷提示就會失敗   AllItemsAreUnique 確認指定之集合中的所有項目都是唯一的如果集合中有任兩個項目相等，判斷提示就會失敗   AreEqual 確認兩個指定的集合相等如果這些集合都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的集合不相等如果這些集合都相等，判斷提示就會失敗   AreEquivalent 確認兩個指定的集合對等如果這些集合都不對等，判斷提示就會失敗   AreNotEquivalent 確認兩個指定的集合不對等如果這些集合都對等，判斷提示就會失敗   Contains 確認指定的集合包含指定的項目如果此項目不在集合中，判斷提示就會失敗   DoesNotContain 確認指定的集合不包含指定的項目如果此項目位於集合中，判斷提示就會失敗   IsSubsetOf 確認第一個集合是第二個集合的子集   IsNotSubsetOf 確認第一個集合不是第二個集合的子集    StringAssert 類別    屬性 說明     Contains 確認第一個字串包含第二個字串這個方法會區分大小寫   StartsWith 確認第一個字串以第二個字串開始這個方法會區分大小寫   EndsWith 確認第一個字串以第二個字串結束這個方法會區分大小寫   Matches 確認指定的字串符合規則運算式   DoesNotMatch 確認指定的字串不符合規則運算式    " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/unit-test-assert-%E9%A1%9E%E5%88%A5/" />
+<meta property="article:published_time" content="2014-04-23T17:49:00+00:00" />
+<meta property="article:modified_time" content="2014-04-23T17:49:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unit Test Assert 類別"/>
+<meta name="twitter:description" content="Assert 類別    屬性 說明     AreEqual 確認兩個指定的物件相等如果這些物件都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的物件不相等如果這些物件都相等，判斷提示就會失敗   AreSame 確認兩個指定的物件變數參考相同的物件如果它們參考不同的物件，判斷提示就會失敗   AreNotSame 確認兩個指定的物件變數參考不同的物件如果它們參考相同的物件，判斷提示就會失敗   IsTrue 驗證指定的條件是 true如果條件為 false，判斷提示就會失敗。   IsFalse 驗證指定的條件是 false如果條件為 true，判斷提示就會失敗   IsNull 確認指定的物件是 null如果它不是 null，判斷提示就會失敗   IsNotNull 確認指定的物件不是 null如果它是 null，判斷提示就會失敗   IsInstanceOfType 確認指定的物件是指定之型別的執行個體如果此型別不在物件的繼承階層架構內，判斷提示就會失敗   IsNotInstanceOfType 確認指定的物件不是指定之型別的執行個體如果此型別位於物件的繼承階層架構內，判斷提示就會失敗   Fail 判斷提示失敗，但不檢查任何條件   Inconclusive 表示無法驗證判斷提示    CollectionAssert 類別    屬性 說明     AllItemsAreInstancesOfType 確認指定之集合中的所有項目都是指定之型別的執行個體如果任何項目的型別不在其繼承階層架構內，判斷提示就會失敗   AllItemsAreNotNull 確認指定之集合中的所有項目都不是 null如果有任何項目是 null，判斷提示就會失敗   AllItemsAreUnique 確認指定之集合中的所有項目都是唯一的如果集合中有任兩個項目相等，判斷提示就會失敗   AreEqual 確認兩個指定的集合相等如果這些集合都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的集合不相等如果這些集合都相等，判斷提示就會失敗   AreEquivalent 確認兩個指定的集合對等如果這些集合都不對等，判斷提示就會失敗   AreNotEquivalent 確認兩個指定的集合不對等如果這些集合都對等，判斷提示就會失敗   Contains 確認指定的集合包含指定的項目如果此項目不在集合中，判斷提示就會失敗   DoesNotContain 確認指定的集合不包含指定的項目如果此項目位於集合中，判斷提示就會失敗   IsSubsetOf 確認第一個集合是第二個集合的子集   IsNotSubsetOf 確認第一個集合不是第二個集合的子集    StringAssert 類別    屬性 說明     Contains 確認第一個字串包含第二個字串這個方法會區分大小寫   StartsWith 確認第一個字串以第二個字串開始這個方法會區分大小寫   EndsWith 確認第一個字串以第二個字串結束這個方法會區分大小寫   Matches 確認指定的字串符合規則運算式   DoesNotMatch 確認指定的字串不符合規則運算式    "/>
+
+<meta itemprop="name" content="Unit Test Assert 類別">
+<meta itemprop="description" content="Assert 類別    屬性 說明     AreEqual 確認兩個指定的物件相等如果這些物件都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的物件不相等如果這些物件都相等，判斷提示就會失敗   AreSame 確認兩個指定的物件變數參考相同的物件如果它們參考不同的物件，判斷提示就會失敗   AreNotSame 確認兩個指定的物件變數參考不同的物件如果它們參考相同的物件，判斷提示就會失敗   IsTrue 驗證指定的條件是 true如果條件為 false，判斷提示就會失敗。   IsFalse 驗證指定的條件是 false如果條件為 true，判斷提示就會失敗   IsNull 確認指定的物件是 null如果它不是 null，判斷提示就會失敗   IsNotNull 確認指定的物件不是 null如果它是 null，判斷提示就會失敗   IsInstanceOfType 確認指定的物件是指定之型別的執行個體如果此型別不在物件的繼承階層架構內，判斷提示就會失敗   IsNotInstanceOfType 確認指定的物件不是指定之型別的執行個體如果此型別位於物件的繼承階層架構內，判斷提示就會失敗   Fail 判斷提示失敗，但不檢查任何條件   Inconclusive 表示無法驗證判斷提示    CollectionAssert 類別    屬性 說明     AllItemsAreInstancesOfType 確認指定之集合中的所有項目都是指定之型別的執行個體如果任何項目的型別不在其繼承階層架構內，判斷提示就會失敗   AllItemsAreNotNull 確認指定之集合中的所有項目都不是 null如果有任何項目是 null，判斷提示就會失敗   AllItemsAreUnique 確認指定之集合中的所有項目都是唯一的如果集合中有任兩個項目相等，判斷提示就會失敗   AreEqual 確認兩個指定的集合相等如果這些集合都不相等，判斷提示就會失敗   AreNotEqual 確認兩個指定的集合不相等如果這些集合都相等，判斷提示就會失敗   AreEquivalent 確認兩個指定的集合對等如果這些集合都不對等，判斷提示就會失敗   AreNotEquivalent 確認兩個指定的集合不對等如果這些集合都對等，判斷提示就會失敗   Contains 確認指定的集合包含指定的項目如果此項目不在集合中，判斷提示就會失敗   DoesNotContain 確認指定的集合不包含指定的項目如果此項目位於集合中，判斷提示就會失敗   IsSubsetOf 確認第一個集合是第二個集合的子集   IsNotSubsetOf 確認第一個集合不是第二個集合的子集    StringAssert 類別    屬性 說明     Contains 確認第一個字串包含第二個字串這個方法會區分大小寫   StartsWith 確認第一個字串以第二個字串開始這個方法會區分大小寫   EndsWith 確認第一個字串以第二個字串結束這個方法會區分大小寫   Matches 確認指定的字串符合規則運算式   DoesNotMatch 確認指定的字串不符合規則運算式    ">
+<meta itemprop="datePublished" content="2014-04-23T17:49:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-23T17:49:00+00:00" />
+<meta itemprop="wordCount" content="78">
+
+
+
+<meta itemprop="keywords" content="Unit Test," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/unit-test-assert-%E9%A1%9E%E5%88%A5/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Unit Test Assert 類別</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 23, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit Test</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit test</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="assert-類別">Assert 類別</h1>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AreEqual</td>
+<td>確認兩個指定的物件相等如果這些物件都不相等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreNotEqual</td>
+<td>確認兩個指定的物件不相等如果這些物件都相等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreSame</td>
+<td>確認兩個指定的物件變數參考相同的物件如果它們參考不同的物件，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreNotSame</td>
+<td>確認兩個指定的物件變數參考不同的物件如果它們參考相同的物件，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsTrue</td>
+<td>驗證指定的條件是 true如果條件為 false，判斷提示就會失敗。</td>
+</tr>
+<tr>
+<td>IsFalse</td>
+<td>驗證指定的條件是 false如果條件為 true，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsNull</td>
+<td>確認指定的物件是 null如果它不是 null，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsNotNull</td>
+<td>確認指定的物件不是 null如果它是 null，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsInstanceOfType</td>
+<td>確認指定的物件是指定之型別的執行個體如果此型別不在物件的繼承階層架構內，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsNotInstanceOfType</td>
+<td>確認指定的物件不是指定之型別的執行個體如果此型別位於物件的繼承階層架構內，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>Fail</td>
+<td>判斷提示失敗，但不檢查任何條件</td>
+</tr>
+<tr>
+<td>Inconclusive</td>
+<td>表示無法驗證判斷提示</td>
+</tr>
+</tbody>
+</table>
+<h1 id="collectionassert-類別">CollectionAssert 類別</h1>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AllItemsAreInstancesOfType</td>
+<td>確認指定之集合中的所有項目都是指定之型別的執行個體如果任何項目的型別不在其繼承階層架構內，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AllItemsAreNotNull</td>
+<td>確認指定之集合中的所有項目都不是 null如果有任何項目是 null，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AllItemsAreUnique</td>
+<td>確認指定之集合中的所有項目都是唯一的如果集合中有任兩個項目相等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreEqual</td>
+<td>確認兩個指定的集合相等如果這些集合都不相等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreNotEqual</td>
+<td>確認兩個指定的集合不相等如果這些集合都相等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreEquivalent</td>
+<td>確認兩個指定的集合對等如果這些集合都不對等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>AreNotEquivalent</td>
+<td>確認兩個指定的集合不對等如果這些集合都對等，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>確認指定的集合包含指定的項目如果此項目不在集合中，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>DoesNotContain</td>
+<td>確認指定的集合不包含指定的項目如果此項目位於集合中，判斷提示就會失敗</td>
+</tr>
+<tr>
+<td>IsSubsetOf</td>
+<td>確認第一個集合是第二個集合的子集</td>
+</tr>
+<tr>
+<td>IsNotSubsetOf</td>
+<td>確認第一個集合不是第二個集合的子集</td>
+</tr>
+</tbody>
+</table>
+<h1 id="stringassert-類別">StringAssert 類別</h1>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contains</td>
+<td>確認第一個字串包含第二個字串這個方法會區分大小寫</td>
+</tr>
+<tr>
+<td>StartsWith</td>
+<td>確認第一個字串以第二個字串開始這個方法會區分大小寫</td>
+</tr>
+<tr>
+<td>EndsWith</td>
+<td>確認第一個字串以第二個字串結束這個方法會區分大小寫</td>
+</tr>
+<tr>
+<td>Matches</td>
+<td>確認指定的字串符合規則運算式</td>
+</tr>
+<tr>
+<td>DoesNotMatch</td>
+<td>確認指定的字串不符合規則運算式</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Unit%20Test%20Assert%20%e9%a1%9e%e5%88%a5&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f
+			&title=Unit%20Test%20Assert%20%e9%a1%9e%e5%88%a5&summary=Assert%20%e9%a1%9e%e5%88%a5%20%20%20%20%e5%b1%ac%e6%80%a7%20%e8%aa%aa%e6%98%8e%20%20%20%20%20AreEqual%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e7%9b%b8%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e7%89%a9%e4%bb%b6%e9%83%bd%e4%b8%8d%e7%9b%b8%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreNotEqual%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e4%b8%8d%e7%9b%b8%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e7%89%a9%e4%bb%b6%e9%83%bd%e7%9b%b8%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreSame%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e8%ae%8a%e6%95%b8%e5%8f%83%e8%80%83%e7%9b%b8%e5%90%8c%e7%9a%84%e7%89%a9%e4%bb%b6%e5%a6%82%e6%9e%9c%e5%ae%83%e5%80%91%e5%8f%83%e8%80%83%e4%b8%8d%e5%90%8c%e7%9a%84%e7%89%a9%e4%bb%b6%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreNotSame%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e8%ae%8a%e6%95%b8%e5%8f%83%e8%80%83%e4%b8%8d%e5%90%8c%e7%9a%84%e7%89%a9%e4%bb%b6%e5%a6%82%e6%9e%9c%e5%ae%83%e5%80%91%e5%8f%83%e8%80%83%e7%9b%b8%e5%90%8c%e7%9a%84%e7%89%a9%e4%bb%b6%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsTrue%20%e9%a9%97%e8%ad%89%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a2%9d%e4%bb%b6%e6%98%af%20true%e5%a6%82%e6%9e%9c%e6%a2%9d%e4%bb%b6%e7%82%ba%20false%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%e3%80%82%20%20%20IsFalse%20%e9%a9%97%e8%ad%89%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a2%9d%e4%bb%b6%e6%98%af%20false%e5%a6%82%e6%9e%9c%e6%a2%9d%e4%bb%b6%e7%82%ba%20true%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsNull%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e6%98%af%20null%e5%a6%82%e6%9e%9c%e5%ae%83%e4%b8%8d%e6%98%af%20null%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsNotNull%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e4%b8%8d%e6%98%af%20null%e5%a6%82%e6%9e%9c%e5%ae%83%e6%98%af%20null%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsInstanceOfType%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e6%98%af%e6%8c%87%e5%ae%9a%e4%b9%8b%e5%9e%8b%e5%88%a5%e7%9a%84%e5%9f%b7%e8%a1%8c%e5%80%8b%e9%ab%94%e5%a6%82%e6%9e%9c%e6%ad%a4%e5%9e%8b%e5%88%a5%e4%b8%8d%e5%9c%a8%e7%89%a9%e4%bb%b6%e7%9a%84%e7%b9%bc%e6%89%bf%e9%9a%8e%e5%b1%a4%e6%9e%b6%e6%a7%8b%e5%85%a7%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsNotInstanceOfType%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%a9%e4%bb%b6%e4%b8%8d%e6%98%af%e6%8c%87%e5%ae%9a%e4%b9%8b%e5%9e%8b%e5%88%a5%e7%9a%84%e5%9f%b7%e8%a1%8c%e5%80%8b%e9%ab%94%e5%a6%82%e6%9e%9c%e6%ad%a4%e5%9e%8b%e5%88%a5%e4%bd%8d%e6%96%bc%e7%89%a9%e4%bb%b6%e7%9a%84%e7%b9%bc%e6%89%bf%e9%9a%8e%e5%b1%a4%e6%9e%b6%e6%a7%8b%e5%85%a7%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20Fail%20%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%a4%b1%e6%95%97%ef%bc%8c%e4%bd%86%e4%b8%8d%e6%aa%a2%e6%9f%a5%e4%bb%bb%e4%bd%95%e6%a2%9d%e4%bb%b6%20%20%20Inconclusive%20%e8%a1%a8%e7%a4%ba%e7%84%a1%e6%b3%95%e9%a9%97%e8%ad%89%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%20%20%20%20CollectionAssert%20%e9%a1%9e%e5%88%a5%20%20%20%20%e5%b1%ac%e6%80%a7%20%e8%aa%aa%e6%98%8e%20%20%20%20%20AllItemsAreInstancesOfType%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e4%b9%8b%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e9%a0%85%e7%9b%ae%e9%83%bd%e6%98%af%e6%8c%87%e5%ae%9a%e4%b9%8b%e5%9e%8b%e5%88%a5%e7%9a%84%e5%9f%b7%e8%a1%8c%e5%80%8b%e9%ab%94%e5%a6%82%e6%9e%9c%e4%bb%bb%e4%bd%95%e9%a0%85%e7%9b%ae%e7%9a%84%e5%9e%8b%e5%88%a5%e4%b8%8d%e5%9c%a8%e5%85%b6%e7%b9%bc%e6%89%bf%e9%9a%8e%e5%b1%a4%e6%9e%b6%e6%a7%8b%e5%85%a7%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AllItemsAreNotNull%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e4%b9%8b%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e9%a0%85%e7%9b%ae%e9%83%bd%e4%b8%8d%e6%98%af%20null%e5%a6%82%e6%9e%9c%e6%9c%89%e4%bb%bb%e4%bd%95%e9%a0%85%e7%9b%ae%e6%98%af%20null%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AllItemsAreUnique%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e4%b9%8b%e9%9b%86%e5%90%88%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e9%a0%85%e7%9b%ae%e9%83%bd%e6%98%af%e5%94%af%e4%b8%80%e7%9a%84%e5%a6%82%e6%9e%9c%e9%9b%86%e5%90%88%e4%b8%ad%e6%9c%89%e4%bb%bb%e5%85%a9%e5%80%8b%e9%a0%85%e7%9b%ae%e7%9b%b8%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreEqual%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e7%9b%b8%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e9%9b%86%e5%90%88%e9%83%bd%e4%b8%8d%e7%9b%b8%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreNotEqual%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e4%b8%8d%e7%9b%b8%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e9%9b%86%e5%90%88%e9%83%bd%e7%9b%b8%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreEquivalent%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e5%b0%8d%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e9%9b%86%e5%90%88%e9%83%bd%e4%b8%8d%e5%b0%8d%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20AreNotEquivalent%20%e7%a2%ba%e8%aa%8d%e5%85%a9%e5%80%8b%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e4%b8%8d%e5%b0%8d%e7%ad%89%e5%a6%82%e6%9e%9c%e9%80%99%e4%ba%9b%e9%9b%86%e5%90%88%e9%83%bd%e5%b0%8d%e7%ad%89%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20Contains%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e5%8c%85%e5%90%ab%e6%8c%87%e5%ae%9a%e7%9a%84%e9%a0%85%e7%9b%ae%e5%a6%82%e6%9e%9c%e6%ad%a4%e9%a0%85%e7%9b%ae%e4%b8%8d%e5%9c%a8%e9%9b%86%e5%90%88%e4%b8%ad%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20DoesNotContain%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e9%9b%86%e5%90%88%e4%b8%8d%e5%8c%85%e5%90%ab%e6%8c%87%e5%ae%9a%e7%9a%84%e9%a0%85%e7%9b%ae%e5%a6%82%e6%9e%9c%e6%ad%a4%e9%a0%85%e7%9b%ae%e4%bd%8d%e6%96%bc%e9%9b%86%e5%90%88%e4%b8%ad%ef%bc%8c%e5%88%a4%e6%96%b7%e6%8f%90%e7%a4%ba%e5%b0%b1%e6%9c%83%e5%a4%b1%e6%95%97%20%20%20IsSubsetOf%20%e7%a2%ba%e8%aa%8d%e7%ac%ac%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88%e6%98%af%e7%ac%ac%e4%ba%8c%e5%80%8b%e9%9b%86%e5%90%88%e7%9a%84%e5%ad%90%e9%9b%86%20%20%20IsNotSubsetOf%20%e7%a2%ba%e8%aa%8d%e7%ac%ac%e4%b8%80%e5%80%8b%e9%9b%86%e5%90%88%e4%b8%8d%e6%98%af%e7%ac%ac%e4%ba%8c%e5%80%8b%e9%9b%86%e5%90%88%e7%9a%84%e5%ad%90%e9%9b%86%20%20%20%20StringAssert%20%e9%a1%9e%e5%88%a5%20%20%20%20%e5%b1%ac%e6%80%a7%20%e8%aa%aa%e6%98%8e%20%20%20%20%20Contains%20%e7%a2%ba%e8%aa%8d%e7%ac%ac%e4%b8%80%e5%80%8b%e5%ad%97%e4%b8%b2%e5%8c%85%e5%90%ab%e7%ac%ac%e4%ba%8c%e5%80%8b%e5%ad%97%e4%b8%b2%e9%80%99%e5%80%8b%e6%96%b9%e6%b3%95%e6%9c%83%e5%8d%80%e5%88%86%e5%a4%a7%e5%b0%8f%e5%af%ab%20%20%20StartsWith%20%e7%a2%ba%e8%aa%8d%e7%ac%ac%e4%b8%80%e5%80%8b%e5%ad%97%e4%b8%b2%e4%bb%a5%e7%ac%ac%e4%ba%8c%e5%80%8b%e5%ad%97%e4%b8%b2%e9%96%8b%e5%a7%8b%e9%80%99%e5%80%8b%e6%96%b9%e6%b3%95%e6%9c%83%e5%8d%80%e5%88%86%e5%a4%a7%e5%b0%8f%e5%af%ab%20%20%20EndsWith%20%e7%a2%ba%e8%aa%8d%e7%ac%ac%e4%b8%80%e5%80%8b%e5%ad%97%e4%b8%b2%e4%bb%a5%e7%ac%ac%e4%ba%8c%e5%80%8b%e5%ad%97%e4%b8%b2%e7%b5%90%e6%9d%9f%e9%80%99%e5%80%8b%e6%96%b9%e6%b3%95%e6%9c%83%e5%8d%80%e5%88%86%e5%a4%a7%e5%b0%8f%e5%af%ab%20%20%20Matches%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e5%ad%97%e4%b8%b2%e7%ac%a6%e5%90%88%e8%a6%8f%e5%89%87%e9%81%8b%e7%ae%97%e5%bc%8f%20%20%20DoesNotMatch%20%e7%a2%ba%e8%aa%8d%e6%8c%87%e5%ae%9a%e7%9a%84%e5%ad%97%e4%b8%b2%e4%b8%8d%e7%ac%a6%e5%90%88%e8%a6%8f%e5%89%87%e9%81%8b%e7%ae%97%e5%bc%8f%20%20%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Unit%20Test%20Assert%20%e9%a1%9e%e5%88%a5&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2funit-test-assert-%25E9%25A1%259E%25E5%2588%25A5%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

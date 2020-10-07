@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Frame Hijacking 防止其他站台用Frame包住自家的網站 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="建立簡單的三個站台
+[![](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png) w1.aaa.com &lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w1._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w1 &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;  w2.bbb.com
+&lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w2._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w2 &lt;/div&gt; &lt;br /&gt; &lt;div&gt; &lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt; &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;
+    ">
+
+
+<meta property="og:title" content="Frame Hijacking 防止其他站台用Frame包住自家的網站" />
+<meta property="og:description" content="建立簡單的三個站台
+[![](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png) w1.aaa.com &lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w1._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w1 &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;  w2.bbb.com
+&lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w2._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w2 &lt;/div&gt; &lt;br /&gt; &lt;div&gt; &lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt; &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/05/frame-hijacking-%E9%98%B2%E6%AD%A2%E5%85%B6%E4%BB%96%E7%AB%99%E5%8F%B0%E7%94%A8frame%E5%8C%85%E4%BD%8F%E8%87%AA%E5%AE%B6%E7%9A%84%E7%B6%B2%E7%AB%99/" />
+<meta property="article:published_time" content="2015-05-20T15:37:00+00:00" />
+<meta property="article:modified_time" content="2015-05-20T15:37:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Frame Hijacking 防止其他站台用Frame包住自家的網站"/>
+<meta name="twitter:description" content="建立簡單的三個站台
+[![](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png) w1.aaa.com &lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w1._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w1 &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;  w2.bbb.com
+&lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w2._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w2 &lt;/div&gt; &lt;br /&gt; &lt;div&gt; &lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt; &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;"/>
+
+<meta itemprop="name" content="Frame Hijacking 防止其他站台用Frame包住自家的網站">
+<meta itemprop="description" content="建立簡單的三個站台
+[![](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png) w1.aaa.com &lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w1._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w1 &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;  w2.bbb.com
+&lt;%@ Page Language=&#34;C#&#34; AutoEventWireup=&#34;true&#34; CodeBehind=&#34;default.aspx.cs&#34; Inherits=&#34;w2._default&#34; %&gt; &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt; &lt;head runat=&quot;server&rdquo;&gt; &lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt; &lt;div&gt; w2 &lt;/div&gt; &lt;br /&gt; &lt;div&gt; &lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt; &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;">
+<meta itemprop="datePublished" content="2015-05-20T15:37:00+00:00" />
+<meta itemprop="dateModified" content="2015-05-20T15:37:00+00:00" />
+<meta itemprop="wordCount" content="180">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="canonical" href="http://example.org/posts/2015/05/frame-hijacking-%E9%98%B2%E6%AD%A2%E5%85%B6%E4%BB%96%E7%AB%99%E5%8F%B0%E7%94%A8frame%E5%8C%85%E4%BD%8F%E8%87%AA%E5%AE%B6%E7%9A%84%E7%B6%B2%E7%AB%99/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Frame Hijacking 防止其他站台用Frame包住自家的網站</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">May 20, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>建立簡單的三個站台</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)](http://1.bp.blogspot.com/-bmqrkBwnMi0/VVw5htGvBVI/AAAAAAAACSc/yGWZiLD-X4c/s1600/00.site.png)</div>
+w1.aaa.com
+<div><pre class="brush:html">&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="w1._default" %&gt;
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt;
+&lt;head runat=&quot;server&rdquo;&gt;
+&lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt;
+&lt;div&gt;
+w1
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+w2.bbb.com</p>
+<div><pre class="brush:html">&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="w2._default" %&gt;
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt;
+&lt;head runat=&quot;server&rdquo;&gt;
+&lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt;
+&lt;div&gt;
+w2
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;
+&lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</p>
+<p></pre></div>
+w3.ccc.com</p>
+<div><pre class="brush:html">&lt;%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="w3._default" %&gt;
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&rdquo;&gt;
+&lt;head runat=&quot;server&rdquo;&gt;
+&lt;meta http-equiv=&quot;Content-Type&rdquo; content=&quot;text/html; charset=utf-8&rdquo; /&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&rdquo; runat=&quot;server&rdquo;&gt;
+&lt;div&gt;
+w3
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;
+&lt;iframe src=&quot;http://w1.aaa.com&rdquo; /&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</p>
+<p></pre></div>
+在w2和w3這兩個站台中，都可以用iframe把w1給包進來</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-EY9jXx5UoIQ/VVw5hdRt0dI/AAAAAAAACSU/jkT1ziiQbnM/s1600/01.png)](http://4.bp.blogspot.com/-EY9jXx5UoIQ/VVw5hdRt0dI/AAAAAAAACSU/jkT1ziiQbnM/s1600/01.png)</div>
+在w1站台中加入一個全域header
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!--
+  如需如何設定 ASP.NET 應用程式的詳細資訊，請造訪
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  --&gt;
+&lt;configuration&gt;
+<pre><code>&amp;lt;system.web&amp;gt;
+    &amp;lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5&quot; /&amp;gt;
+    &amp;lt;httpRuntime targetFramework=&quot;4.5&quot; /&amp;gt;
+&amp;lt;/system.web&amp;gt;
+
+&amp;lt;system.webServer&amp;gt;
+    &amp;lt;httpProtocol&amp;gt;
+        &amp;lt;customHeaders&amp;gt;
+            &amp;lt;add name=&quot;X-Frame-Options&quot; value=&quot;SAMEORIGIN&quot; /&amp;gt;
+        &amp;lt;/customHeaders&amp;gt;
+    &amp;lt;/httpProtocol&amp;gt;
+&amp;lt;/system.webServer&amp;gt;
+</code></pre>
+<p>&lt;/configuration&gt;
+</pre></div>
+w2和w3就不能用frame包住w1了</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-eRytF-lcF0E/VVw5hYAycJI/AAAAAAAACSY/mS_zuElzmTs/s1600/02%25E5%2590%258C%25E6%25BA%2590.png)](http://4.bp.blogspot.com/-eRytF-lcF0E/VVw5hYAycJI/AAAAAAAACSY/mS_zuElzmTs/s1600/02%25E5%2590%258C%25E6%25BA%2590.png)</div>
+改用Content-Security-Policy
+需要注意網站的通訊協定，如果有http和https的差別，就需要把通訊協定也明確指出
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!--
+  如需如何設定 ASP.NET 應用程式的詳細資訊，請造訪
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  --&gt;
+&lt;configuration&gt;
+<pre><code>&amp;lt;system.web&amp;gt;
+    &amp;lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5&quot; /&amp;gt;
+    &amp;lt;httpRuntime targetFramework=&quot;4.5&quot; /&amp;gt;
+&amp;lt;/system.web&amp;gt;
+
+&amp;lt;system.webServer&amp;gt;
+    &amp;lt;httpProtocol&amp;gt;
+        &amp;lt;customHeaders&amp;gt;
+            &amp;lt;add name=&quot;Content-Security-Policy&quot; value=&quot;frame-ancestors 'self' http://w2.bbb.com&quot; /&amp;gt;
+        &amp;lt;/customHeaders&amp;gt;
+    &amp;lt;/httpProtocol&amp;gt;
+&amp;lt;/system.webServer&amp;gt;
+</code></pre>
+<p>&lt;/configuration&gt;
+</pre></div>
+就可以指定特定的站台可以用frame包住w1</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-cc1A2CO6z9M/VVw5iLqWHfI/AAAAAAAACSg/FqUsiMlo-Qk/s1600/04CSP.png)](http://1.bp.blogspot.com/-cc1A2CO6z9M/VVw5iLqWHfI/AAAAAAAACSg/FqUsiMlo-Qk/s1600/04CSP.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Frame%20Hijacking%20%e9%98%b2%e6%ad%a2%e5%85%b6%e4%bb%96%e7%ab%99%e5%8f%b0%e7%94%a8Frame%e5%8c%85%e4%bd%8f%e8%87%aa%e5%ae%b6%e7%9a%84%e7%b6%b2%e7%ab%99&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f
+			&title=Frame%20Hijacking%20%e9%98%b2%e6%ad%a2%e5%85%b6%e4%bb%96%e7%ab%99%e5%8f%b0%e7%94%a8Frame%e5%8c%85%e4%bd%8f%e8%87%aa%e5%ae%b6%e7%9a%84%e7%b6%b2%e7%ab%99&summary=%e5%bb%ba%e7%ab%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e4%b8%89%e5%80%8b%e7%ab%99%e5%8f%b0%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-bmqrkBwnMi0%2fVVw5htGvBVI%2fAAAAAAAACSc%2fyGWZiLD-X4c%2fs1600%2f00.site.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-bmqrkBwnMi0%2fVVw5htGvBVI%2fAAAAAAAACSc%2fyGWZiLD-X4c%2fs1600%2f00.site.png%29%20w1.aaa.com%20%26lt%3b%25%40%20Page%20Language%3d%22C%23%22%20AutoEventWireup%3d%22true%22%20CodeBehind%3d%22default.aspx.cs%22%20Inherits%3d%22w1._default%22%20%25%26gt%3b%20%26lt%3b%21DOCTYPE%20html%26gt%3b%0a%26lt%3bhtml%20xmlns%3d%26quot%3bhttp%3a%2f%2fwww.w3.org%2f1999%2fxhtml%26rdquo%3b%26gt%3b%20%26lt%3bhead%20runat%3d%26quot%3bserver%26rdquo%3b%26gt%3b%20%26lt%3bmeta%20http-equiv%3d%26quot%3bContent-Type%26rdquo%3b%20content%3d%26quot%3btext%2fhtml%3b%20charset%3dutf-8%26rdquo%3b%20%2f%26gt%3b%20%26lt%3btitle%26gt%3b%26lt%3b%2ftitle%26gt%3b%20%26lt%3b%2fhead%26gt%3b%20%26lt%3bbody%26gt%3b%20%26lt%3bform%20id%3d%26quot%3bform1%26rdquo%3b%20runat%3d%26quot%3bserver%26rdquo%3b%26gt%3b%20%26lt%3bdiv%26gt%3b%20w1%20%26lt%3b%2fdiv%26gt%3b%20%26lt%3b%2fform%26gt%3b%20%26lt%3b%2fbody%26gt%3b%20%26lt%3b%2fhtml%26gt%3b%20%20w2.bbb.com%0a%26lt%3b%25%40%20Page%20Language%3d%22C%23%22%20AutoEventWireup%3d%22true%22%20CodeBehind%3d%22default.aspx.cs%22%20Inherits%3d%22w2._default%22%20%25%26gt%3b%20%26lt%3b%21DOCTYPE%20html%26gt%3b%0a%26lt%3bhtml%20xmlns%3d%26quot%3bhttp%3a%2f%2fwww.w3.org%2f1999%2fxhtml%26rdquo%3b%26gt%3b%20%26lt%3bhead%20runat%3d%26quot%3bserver%26rdquo%3b%26gt%3b%20%26lt%3bmeta%20http-equiv%3d%26quot%3bContent-Type%26rdquo%3b%20content%3d%26quot%3btext%2fhtml%3b%20charset%3dutf-8%26rdquo%3b%20%2f%26gt%3b%20%26lt%3btitle%26gt%3b%26lt%3b%2ftitle%26gt%3b%20%26lt%3b%2fhead%26gt%3b%20%26lt%3bbody%26gt%3b%20%26lt%3bform%20id%3d%26quot%3bform1%26rdquo%3b%20runat%3d%26quot%3bserver%26rdquo%3b%26gt%3b%20%26lt%3bdiv%26gt%3b%20w2%20%26lt%3b%2fdiv%26gt%3b%20%26lt%3bbr%20%2f%26gt%3b%20%26lt%3bdiv%26gt%3b%20%26lt%3biframe%20src%3d%26quot%3bhttp%3a%2f%2fw1.aaa.com%26rdquo%3b%20%2f%26gt%3b%20%26lt%3b%2fdiv%26gt%3b%20%26lt%3b%2fform%26gt%3b%20%26lt%3b%2fbody%26gt%3b%20%26lt%3b%2fhtml%26gt%3b&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Frame%20Hijacking%20%e9%98%b2%e6%ad%a2%e5%85%b6%e4%bb%96%e7%ab%99%e5%8f%b0%e7%94%a8Frame%e5%8c%85%e4%bd%8f%e8%87%aa%e5%ae%b6%e7%9a%84%e7%b6%b2%e7%ab%99&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f05%2fframe-hijacking-%25E9%2598%25B2%25E6%25AD%25A2%25E5%2585%25B6%25E4%25BB%2596%25E7%25AB%2599%25E5%258F%25B0%25E7%2594%25A8frame%25E5%258C%2585%25E4%25BD%258F%25E8%2587%25AA%25E5%25AE%25B6%25E7%259A%2584%25E7%25B6%25B2%25E7%25AB%2599%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

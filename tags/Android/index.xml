@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on My New Hugo Site</title>
+    <link>http://example.org/tags/android/</link>
+    <description>Recent content in Android on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Nov 2016 11:46:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安裝Android Studio</title>
+      <link>http://example.org/posts/2016/11/%E5%AE%89%E8%A3%9Dandroid-studio/</link>
+      <pubDate>Mon, 14 Nov 2016 11:46:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/11/%E5%AE%89%E8%A3%9Dandroid-studio/</guid>
+      <description>安裝Android Studio影片
+ 下載安裝程式
+[![](https://3.bp.blogspot.com/-F3AUDbYH96g/WCkzALzdagI/AAAAAAAAENY/Q9KFUGbCfYct3BKWpIiGaHvxFJcFzZufgCLcB/s1600/01.png)](https://3.bp.blogspot.com/-F3AUDbYH96g/WCkzALzdagI/AAAAAAAAENY/Q9KFUGbCfYct3BKWpIiGaHvxFJcFzZufgCLcB/s1600/01.png) 點擊安裝程式
+[![](https://4.bp.blogspot.com/-6nJH_73aYyE/WCkzAIlm80I/AAAAAAAAENc/2Jgg-2V15i4xVePqhpWCJ6PPXbpAW3b1wCLcB/s1600/02.png)](https://4.bp.blogspot.com/-6nJH_73aYyE/WCkzAIlm80I/AAAAAAAAENc/2Jgg-2V15i4xVePqhpWCJ6PPXbpAW3b1wCLcB/s1600/02.png) 設定安裝程式
+[![](https://2.bp.blogspot.com/-LJ8ze0sM_6c/WCkzAGISipI/AAAAAAAAENg/-3y9LrRKe9Utiu43XHDaU9SVAAI4t3l6gCLcB/s1600/03.png)](https://2.bp.blogspot.com/-LJ8ze0sM_6c/WCkzAGISipI/AAAAAAAAENg/-3y9LrRKe9Utiu43XHDaU9SVAAI4t3l6gCLcB/s1600/03.png) 接受授權絛約
+[![](https://2.bp.blogspot.com/-Y-NDkBgf1dQ/WCkzAi1EjvI/AAAAAAAAENk/y9rlBJQb6ekV8_L7_EaJHlbnYLGK0tL3wCLcB/s1600/04.png)](https://2.bp.blogspot.com/-Y-NDkBgf1dQ/WCkzAi1EjvI/AAAAAAAAENk/y9rlBJQb6ekV8_L7_EaJHlbnYLGK0tL3wCLcB/s1600/04.png) 選擇安裝路徑
+[![](https://2.bp.blogspot.com/-xhpOTzMWSus/WCkzAp17g8I/AAAAAAAAENs/Sna3ZEKJslcilAqHwJxrafmzxMc9-sKfwCLcB/s1600/05.png)](https://2.bp.blogspot.com/-xhpOTzMWSus/WCkzAp17g8I/AAAAAAAAENs/Sna3ZEKJslcilAqHwJxrafmzxMc9-sKfwCLcB/s1600/05.png) 選擇安裝名稱
+[![](https://4.bp.blogspot.com/-Pybx7RQJ_b8/WCkzAif-IpI/AAAAAAAAENo/7ifGpfUp0MM5QwCp0WfDgVrd0rasYxV3wCLcB/s1600/06.png)](https://4.bp.blogspot.com/-Pybx7RQJ_b8/WCkzAif-IpI/AAAAAAAAENo/7ifGpfUp0MM5QwCp0WfDgVrd0rasYxV3wCLcB/s1600/06.png) 開始安裝
+[![](https://4.bp.blogspot.com/-f6D1P4E8tp0/WCkzAy8hJsI/AAAAAAAAENw/BtDUiDQxaZckOH1Qfy_S2AjUzr4UqAFywCLcB/s1600/07.png)](https://4.bp.blogspot.com/-f6D1P4E8tp0/WCkzAy8hJsI/AAAAAAAAENw/BtDUiDQxaZckOH1Qfy_S2AjUzr4UqAFywCLcB/s1600/07.png) 安裝完成
+[![](https://2.bp.blogspot.com/-eCehO9K_2_g/WCkzA6TulrI/AAAAAAAAEN0/ek5zQEEc8SYwt0yGRInag6tSbLwBCuIhgCLcB/s1600/08.png)](https://2.bp.blogspot.com/-eCehO9K_2_g/WCkzA6TulrI/AAAAAAAAEN0/ek5zQEEc8SYwt0yGRInag6tSbLwBCuIhgCLcB/s1600/08.png) 選擇初始化選項
+[![](https://2.bp.blogspot.com/-pp4vce8XFIU/WCkzAxB-q9I/AAAAAAAAEN4/-BbNEWaXFxs7lfCnWFBgCwrDtmc6QFoKACLcB/s1600/09.png)](https://2.bp.blogspot.com/-pp4vce8XFIU/WCkzAxB-q9I/AAAAAAAAEN4/-BbNEWaXFxs7lfCnWFBgCwrDtmc6QFoKACLcB/s1600/09.png) 開始初始化
+[![](https://1.bp.blogspot.com/-gDF22-Dg404/WCkzBDr-QTI/AAAAAAAAEN8/oPE2IVU__RoQnbZmh55jzEVc3yOhP9VCwCLcB/s1600/10.png)](https://1.bp.blogspot.com/-gDF22-Dg404/WCkzBDr-QTI/AAAAAAAAEN8/oPE2IVU__RoQnbZmh55jzEVc3yOhP9VCwCLcB/s1600/10.png) 設定初始化
+[![](https://3.bp.blogspot.com/-AQwj48dVnHA/WCkzBU7BltI/AAAAAAAAEOA/NQAOPcC2rVYFCKKbihzAwVd-riBN6T3UgCLcB/s1600/11.png)](https://3.bp.blogspot.com/-AQwj48dVnHA/WCkzBU7BltI/AAAAAAAAEOA/NQAOPcC2rVYFCKKbihzAwVd-riBN6T3UgCLcB/s1600/11.png) 完成初始化設定
+[![](https://3.bp.blogspot.com/-VFGqRKi8NDo/WCkzBQ8QOYI/AAAAAAAAEOE/LIvHvvUgkXMTEa5iHqpVNNciiFeSvX_hgCLcB/s1600/12.png)](https://3.bp.blogspot.com/-VFGqRKi8NDo/WCkzBQ8QOYI/AAAAAAAAEOE/LIvHvvUgkXMTEa5iHqpVNNciiFeSvX_hgCLcB/s1600/12.png) 下載元件
+[![](https://3.bp.blogspot.com/-rgK_DxwZARo/WCkzBWh73II/AAAAAAAAEOI/LRahKASpDmIz_Z6IRr_xmf7-rhjKR-EwQCLcB/s1600/13.png)](https://3.bp.blogspot.com/-rgK_DxwZARo/WCkzBWh73II/AAAAAAAAEOI/LRahKASpDmIz_Z6IRr_xmf7-rhjKR-EwQCLcB/s1600/13.png) 完成元件安裝
+[![](https://4.bp.blogspot.com/-gc1On2UdMKM/WCkzB4sxh6I/AAAAAAAAEOM/9JWDSM5ZIogjJREfcggHl5bUGnF0nRKMgCLcB/s1600/14.png)](https://4.bp.blogspot.com/-gc1On2UdMKM/WCkzB4sxh6I/AAAAAAAAEOM/9JWDSM5ZIogjJREfcggHl5bUGnF0nRKMgCLcB/s1600/14.png) 啟動Android Studio</description>
+    </item>
+    
+    <item>
+      <title>安裝JAVA JDK</title>
+      <link>http://example.org/posts/2016/11/%E5%AE%89%E8%A3%9Djava-jdk/</link>
+      <pubDate>Mon, 14 Nov 2016 11:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/11/%E5%AE%89%E8%A3%9Djava-jdk/</guid>
+      <description>安裝JAVA SDK影片 下載安裝程式[![](https://3.bp.blogspot.com/-OL4txoEDJts/WCkxfCmYYzI/AAAAAAAAEM0/pOC10lWaRFIZ8c33GFefwYUmUnpBHTBvACLcB/s1600/01.png)](https://3.bp.blogspot.com/-OL4txoEDJts/WCkxfCmYYzI/AAAAAAAAEM0/pOC10lWaRFIZ8c33GFefwYUmUnpBHTBvACLcB/s1600/01.png) 點擊安裝程式[![](https://4.bp.blogspot.com/-SwtE3lIgW7I/WCkxfP_yBOI/AAAAAAAAEM8/igiZyAOcrUcUR4lhXHFqKISCgUXoXMHQgCLcB/s1600/02.png)](https://4.bp.blogspot.com/-SwtE3lIgW7I/WCkxfP_yBOI/AAAAAAAAEM8/igiZyAOcrUcUR4lhXHFqKISCgUXoXMHQgCLcB/s1600/02.png)選擇要安裝的功能[![](https://1.bp.blogspot.com/-BJ_E-uyLNVA/WCkxfHxhBrI/AAAAAAAAEM4/mCZdBtozT9ESgnf8MV2lydWlMBFJkK7pACLcB/s1600/03.png)](https://1.bp.blogspot.com/-BJ_E-uyLNVA/WCkxfHxhBrI/AAAAAAAAEM4/mCZdBtozT9ESgnf8MV2lydWlMBFJkK7pACLcB/s1600/03.png) 開始安裝JDK[![](https://4.bp.blogspot.com/-h_UdAvae-P0/WCkxfQpF87I/AAAAAAAAENI/2m6oDYNOd5A6TL2mDQWR4ffo2DGjQ7GRQCLcB/s1600/04.png)](https://4.bp.blogspot.com/-h_UdAvae-P0/WCkxfQpF87I/AAAAAAAAENI/2m6oDYNOd5A6TL2mDQWR4ffo2DGjQ7GRQCLcB/s1600/04.png) 選擇執行環境資料夾[![](https://4.bp.blogspot.com/-LIt5ZvKb8dU/WCkxfs2zNkI/AAAAAAAAENA/YK-fV7DCi9I52XqFrBNSkGAI-bFvNWmwQCLcB/s1600/05.png)](https://4.bp.blogspot.com/-LIt5ZvKb8dU/WCkxfs2zNkI/AAAAAAAAENA/YK-fV7DCi9I52XqFrBNSkGAI-bFvNWmwQCLcB/s1600/05.png) 開始安裝執行環境[![](https://3.bp.blogspot.com/-NLasBvCSPOg/WCkxfq7j76I/AAAAAAAAENE/COqpd4Oo7owHTVkW-6EecRpdqnmzGBhkQCLcB/s1600/06.png)](https://3.bp.blogspot.com/-NLasBvCSPOg/WCkxfq7j76I/AAAAAAAAENE/COqpd4Oo7owHTVkW-6EecRpdqnmzGBhkQCLcB/s1600/06.png) 安裝完成[!</description>
+    </item>
+    
+  </channel>
+</rss>

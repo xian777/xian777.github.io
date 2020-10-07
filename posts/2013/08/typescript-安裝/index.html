@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TypeScript 安裝 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="[首先下載Plugin](http://www.microsoft.com/en-us/download/details.aspx?id=34790) [![](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png)](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png) TypeScript會安裝到C:\Program Files(x86)\Microsoft SDKs\TypeScript資料夾內 [![](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png) 安裝後，VS2012會多出一個TypeScript的範本 [![](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png) 新增檔案的時後，也會多出一個TypeScript的檔案類型 [![](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png) 在檔案總管中，TypeScript會包含js和map檔案 建置動作會是TypeScriptCompile [![](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)在設定選項中，會有存檔編譯的選項 [![](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png) 另外安裝Web Essentials套件會更方便，首先打開擴充功能和更新 [![](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png) 選擇Web Essentials 2012安裝 [![](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png) 安裝後在編輯TypeScript檔案時，會出現預覽視窗[![](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)  選項中的會有更多設定 [![](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png) P.S. Web Essentails 套件在V3.0版本中，已經移除所有對TypeScript的支援 原因是VS2013已經內建了 如果在VS2012還要使用之前提供的功能的話，建議安裝V2.
+    ">
+
+
+<meta property="og:title" content="TypeScript 安裝" />
+<meta property="og:description" content="[首先下載Plugin](http://www.microsoft.com/en-us/download/details.aspx?id=34790) [![](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png)](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png) TypeScript會安裝到C:\Program Files(x86)\Microsoft SDKs\TypeScript資料夾內 [![](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png) 安裝後，VS2012會多出一個TypeScript的範本 [![](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png) 新增檔案的時後，也會多出一個TypeScript的檔案類型 [![](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png) 在檔案總管中，TypeScript會包含js和map檔案 建置動作會是TypeScriptCompile [![](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)在設定選項中，會有存檔編譯的選項 [![](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png) 另外安裝Web Essentials套件會更方便，首先打開擴充功能和更新 [![](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png) 選擇Web Essentials 2012安裝 [![](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png) 安裝後在編輯TypeScript檔案時，會出現預覽視窗[![](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)  選項中的會有更多設定 [![](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png) P.S. Web Essentails 套件在V3.0版本中，已經移除所有對TypeScript的支援 原因是VS2013已經內建了 如果在VS2012還要使用之前提供的功能的話，建議安裝V2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/08/typescript-%E5%AE%89%E8%A3%9D/" />
+<meta property="article:published_time" content="2013-08-30T14:34:00+00:00" />
+<meta property="article:modified_time" content="2013-08-30T14:34:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TypeScript 安裝"/>
+<meta name="twitter:description" content="[首先下載Plugin](http://www.microsoft.com/en-us/download/details.aspx?id=34790) [![](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png)](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png) TypeScript會安裝到C:\Program Files(x86)\Microsoft SDKs\TypeScript資料夾內 [![](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png) 安裝後，VS2012會多出一個TypeScript的範本 [![](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png) 新增檔案的時後，也會多出一個TypeScript的檔案類型 [![](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png) 在檔案總管中，TypeScript會包含js和map檔案 建置動作會是TypeScriptCompile [![](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)在設定選項中，會有存檔編譯的選項 [![](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png) 另外安裝Web Essentials套件會更方便，首先打開擴充功能和更新 [![](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png) 選擇Web Essentials 2012安裝 [![](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png) 安裝後在編輯TypeScript檔案時，會出現預覽視窗[![](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)  選項中的會有更多設定 [![](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png) P.S. Web Essentails 套件在V3.0版本中，已經移除所有對TypeScript的支援 原因是VS2013已經內建了 如果在VS2012還要使用之前提供的功能的話，建議安裝V2."/>
+
+<meta itemprop="name" content="TypeScript 安裝">
+<meta itemprop="description" content="[首先下載Plugin](http://www.microsoft.com/en-us/download/details.aspx?id=34790) [![](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png)](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install&#43;Plugin.png) TypeScript會安裝到C:\Program Files(x86)\Microsoft SDKs\TypeScript資料夾內 [![](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png) 安裝後，VS2012會多出一個TypeScript的範本 [![](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png) 新增檔案的時後，也會多出一個TypeScript的檔案類型 [![](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png) 在檔案總管中，TypeScript會包含js和map檔案 建置動作會是TypeScriptCompile [![](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)在設定選項中，會有存檔編譯的選項 [![](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png) 另外安裝Web Essentials套件會更方便，首先打開擴充功能和更新 [![](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png) 選擇Web Essentials 2012安裝 [![](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png) 安裝後在編輯TypeScript檔案時，會出現預覽視窗[![](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)  選項中的會有更多設定 [![](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png) P.S. Web Essentails 套件在V3.0版本中，已經移除所有對TypeScript的支援 原因是VS2013已經內建了 如果在VS2012還要使用之前提供的功能的話，建議安裝V2.">
+<meta itemprop="datePublished" content="2013-08-30T14:34:00+00:00" />
+<meta itemprop="dateModified" content="2013-08-30T14:34:00+00:00" />
+<meta itemprop="wordCount" content="30">
+
+
+
+<meta itemprop="keywords" content="TypeScript," />
+
+<link rel="canonical" href="http://example.org/posts/2013/08/typescript-%E5%AE%89%E8%A3%9D/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TypeScript 安裝</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 30, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/typescript">TypeScript</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/typescript">Type script</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>[首先下載Plugin](http://www.microsoft.com/en-us/download/details.aspx?id=34790)</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install+Plugin.png)](http://1.bp.blogspot.com/-WRV3aAlWA90/UiA5JY7FhvI/AAAAAAAAAzU/vpjUPcr9n-8/s1600/01.Install+Plugin.png)</div>
+<div>TypeScript會安裝到C:\Program Files(x86)\Microsoft SDKs\TypeScript資料夾內</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)](http://3.bp.blogspot.com/-6b-otXZ0x9E/UiA5dTiLGkI/AAAAAAAAAzc/2G9hqjPmoRk/s1600/02.TypeScriptPath.png)</div>
+<div>安裝後，VS2012會多出一個TypeScript的範本</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)](http://1.bp.blogspot.com/-sRAJODGYtag/UiA5nu229JI/AAAAAAAAAzk/5-2CuTjHTjk/s1600/03.TypeScriptProject.png)</div>
+<div>新增檔案的時後，也會多出一個TypeScript的檔案類型</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)](http://2.bp.blogspot.com/-l75O28OgDQU/UiA5xi9P4mI/AAAAAAAAAzs/lZxE6w-KyNA/s1600/04.TypeScriptFile.png)</div>
+<div>在檔案總管中，TypeScript會包含js和map檔案
+建置動作會是TypeScriptCompile</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)](http://4.bp.blogspot.com/-XM8zMJX6ob8/UiA599Vkm0I/AAAAAAAAAz0/RkiPnMCZQVY/s1600/05.TypeScriptCompilerAction.png)</div><div>在設定選項中，會有存檔編譯的選項</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)](http://1.bp.blogspot.com/-fF_PzROOIp0/UiA6MrP-TwI/AAAAAAAAAz8/H_Tq_ipcW4g/s1600/06.CompileOnSave.png)</div>
+<div>另外安裝Web Essentials套件會更方便，首先打開擴充功能和更新</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)](http://4.bp.blogspot.com/-ufoFt8-MuK0/UiA6kp5vRRI/AAAAAAAAA0E/8PJitTnYDlY/s1600/07.Extend.png)</div>
+<div>選擇Web Essentials 2012安裝</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)](http://3.bp.blogspot.com/-4MawRq3pVmQ/UiA6sq3YV6I/AAAAAAAAA0M/2Mpn7jqw2KU/s1600/08.Essentials.png)</div>
+<div>安裝後在編輯TypeScript檔案時，會出現預覽視窗</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)](http://4.bp.blogspot.com/-hYLgm21kKVY/UiA8x6rBUWI/AAAAAAAAA0o/NHu0N31kKSw/s1600/09.VS2012.png)</div>
+<div class="separator" style="clear: both; text-align: center;"></div>
+<div>選項中的會有更多設定</div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)](http://2.bp.blogspot.com/-nLOUDuY4taU/UiA7BErne1I/AAAAAAAAA0c/OhkGZ9wot98/s1600/10.PreviewWindow.png)</div>
+<div>P.S. Web Essentails 套件在V3.0版本中，已經移除所有對TypeScript的支援
+原因是VS2013已經內建了
+如果在VS2012還要使用之前提供的功能的話，建議安裝V2.9版就好了</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TypeScript%20%e5%ae%89%e8%a3%9d&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f
+			&title=TypeScript%20%e5%ae%89%e8%a3%9d&summary=%5b%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89Plugin%5d%28http%3a%2f%2fwww.microsoft.com%2fen-us%2fdownload%2fdetails.aspx%3fid%3d34790%29%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-WRV3aAlWA90%2fUiA5JY7FhvI%2fAAAAAAAAAzU%2fvpjUPcr9n-8%2fs1600%2f01.Install%2bPlugin.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-WRV3aAlWA90%2fUiA5JY7FhvI%2fAAAAAAAAAzU%2fvpjUPcr9n-8%2fs1600%2f01.Install%2bPlugin.png%29%20TypeScript%e6%9c%83%e5%ae%89%e8%a3%9d%e5%88%b0C%3a%5cProgram%20Files%28x86%29%5cMicrosoft%20SDKs%5cTypeScript%e8%b3%87%e6%96%99%e5%a4%be%e5%85%a7%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-6b-otXZ0x9E%2fUiA5dTiLGkI%2fAAAAAAAAAzc%2f2G9hqjPmoRk%2fs1600%2f02.TypeScriptPath.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-6b-otXZ0x9E%2fUiA5dTiLGkI%2fAAAAAAAAAzc%2f2G9hqjPmoRk%2fs1600%2f02.TypeScriptPath.png%29%20%e5%ae%89%e8%a3%9d%e5%be%8c%ef%bc%8cVS2012%e6%9c%83%e5%a4%9a%e5%87%ba%e4%b8%80%e5%80%8bTypeScript%e7%9a%84%e7%af%84%e6%9c%ac%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-sRAJODGYtag%2fUiA5nu229JI%2fAAAAAAAAAzk%2f5-2CuTjHTjk%2fs1600%2f03.TypeScriptProject.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-sRAJODGYtag%2fUiA5nu229JI%2fAAAAAAAAAzk%2f5-2CuTjHTjk%2fs1600%2f03.TypeScriptProject.png%29%20%e6%96%b0%e5%a2%9e%e6%aa%94%e6%a1%88%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e4%b9%9f%e6%9c%83%e5%a4%9a%e5%87%ba%e4%b8%80%e5%80%8bTypeScript%e7%9a%84%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-l75O28OgDQU%2fUiA5xi9P4mI%2fAAAAAAAAAzs%2flZxE6w-KyNA%2fs1600%2f04.TypeScriptFile.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-l75O28OgDQU%2fUiA5xi9P4mI%2fAAAAAAAAAzs%2flZxE6w-KyNA%2fs1600%2f04.TypeScriptFile.png%29%20%e5%9c%a8%e6%aa%94%e6%a1%88%e7%b8%bd%e7%ae%a1%e4%b8%ad%ef%bc%8cTypeScript%e6%9c%83%e5%8c%85%e5%90%abjs%e5%92%8cmap%e6%aa%94%e6%a1%88%20%e5%bb%ba%e7%bd%ae%e5%8b%95%e4%bd%9c%e6%9c%83%e6%98%afTypeScriptCompile%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-XM8zMJX6ob8%2fUiA599Vkm0I%2fAAAAAAAAAz0%2fRkiPnMCZQVY%2fs1600%2f05.TypeScriptCompilerAction.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-XM8zMJX6ob8%2fUiA599Vkm0I%2fAAAAAAAAAz0%2fRkiPnMCZQVY%2fs1600%2f05.TypeScriptCompilerAction.png%29%e5%9c%a8%e8%a8%ad%e5%ae%9a%e9%81%b8%e9%a0%85%e4%b8%ad%ef%bc%8c%e6%9c%83%e6%9c%89%e5%ad%98%e6%aa%94%e7%b7%a8%e8%ad%af%e7%9a%84%e9%81%b8%e9%a0%85%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-fF_PzROOIp0%2fUiA6MrP-TwI%2fAAAAAAAAAz8%2fH_Tq_ipcW4g%2fs1600%2f06.CompileOnSave.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-fF_PzROOIp0%2fUiA6MrP-TwI%2fAAAAAAAAAz8%2fH_Tq_ipcW4g%2fs1600%2f06.CompileOnSave.png%29%20%e5%8f%a6%e5%a4%96%e5%ae%89%e8%a3%9dWeb%20Essentials%e5%a5%97%e4%bb%b6%e6%9c%83%e6%9b%b4%e6%96%b9%e4%be%bf%ef%bc%8c%e9%a6%96%e5%85%88%e6%89%93%e9%96%8b%e6%93%b4%e5%85%85%e5%8a%9f%e8%83%bd%e5%92%8c%e6%9b%b4%e6%96%b0%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ufoFt8-MuK0%2fUiA6kp5vRRI%2fAAAAAAAAA0E%2f8PJitTnYDlY%2fs1600%2f07.Extend.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ufoFt8-MuK0%2fUiA6kp5vRRI%2fAAAAAAAAA0E%2f8PJitTnYDlY%2fs1600%2f07.Extend.png%29%20%e9%81%b8%e6%93%87Web%20Essentials%202012%e5%ae%89%e8%a3%9d%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-4MawRq3pVmQ%2fUiA6sq3YV6I%2fAAAAAAAAA0M%2f2Mpn7jqw2KU%2fs1600%2f08.Essentials.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-4MawRq3pVmQ%2fUiA6sq3YV6I%2fAAAAAAAAA0M%2f2Mpn7jqw2KU%2fs1600%2f08.Essentials.png%29%20%e5%ae%89%e8%a3%9d%e5%be%8c%e5%9c%a8%e7%b7%a8%e8%bc%afTypeScript%e6%aa%94%e6%a1%88%e6%99%82%ef%bc%8c%e6%9c%83%e5%87%ba%e7%8f%be%e9%a0%90%e8%a6%bd%e8%a6%96%e7%aa%97%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-hYLgm21kKVY%2fUiA8x6rBUWI%2fAAAAAAAAA0o%2fNHu0N31kKSw%2fs1600%2f09.VS2012.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-hYLgm21kKVY%2fUiA8x6rBUWI%2fAAAAAAAAA0o%2fNHu0N31kKSw%2fs1600%2f09.VS2012.png%29%20%20%e9%81%b8%e9%a0%85%e4%b8%ad%e7%9a%84%e6%9c%83%e6%9c%89%e6%9b%b4%e5%a4%9a%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-nLOUDuY4taU%2fUiA7BErne1I%2fAAAAAAAAA0c%2fOhkGZ9wot98%2fs1600%2f10.PreviewWindow.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-nLOUDuY4taU%2fUiA7BErne1I%2fAAAAAAAAA0c%2fOhkGZ9wot98%2fs1600%2f10.PreviewWindow.png%29%20P.S.%20Web%20Essentails%20%e5%a5%97%e4%bb%b6%e5%9c%a8V3.0%e7%89%88%e6%9c%ac%e4%b8%ad%ef%bc%8c%e5%b7%b2%e7%b6%93%e7%a7%bb%e9%99%a4%e6%89%80%e6%9c%89%e5%b0%8dTypeScript%e7%9a%84%e6%94%af%e6%8f%b4%20%e5%8e%9f%e5%9b%a0%e6%98%afVS2013%e5%b7%b2%e7%b6%93%e5%85%a7%e5%bb%ba%e4%ba%86%20%e5%a6%82%e6%9e%9c%e5%9c%a8VS2012%e9%82%84%e8%a6%81%e4%bd%bf%e7%94%a8%e4%b9%8b%e5%89%8d%e6%8f%90%e4%be%9b%e7%9a%84%e5%8a%9f%e8%83%bd%e7%9a%84%e8%a9%b1%ef%bc%8c%e5%bb%ba%e8%ad%b0%e5%ae%89%e8%a3%9dV2.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TypeScript%20%e5%ae%89%e8%a3%9d&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2ftypescript-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

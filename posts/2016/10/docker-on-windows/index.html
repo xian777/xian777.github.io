@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Docker on Windows | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Docker on windows 前置條件  Windows 10 Professional版本以上 啟用Hyper-V支援  [![](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png) 安裝 首先到官網下載安裝程式 [![](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png) 接受授權合約 [![](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png) 開始安裝 [![](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png) 安裝完成 [![](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png) Docker is running [![](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png) 在工作列上Docker的icon按右鍵選Settings [![](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png) 設定共享磁碟 [![](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png) 設定使用資源 [![](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png) 開始Docker之旅吧:)
+    ">
+
+
+<meta property="og:title" content="Docker on windows" />
+<meta property="og:description" content="Docker on windows 前置條件  Windows 10 Professional版本以上 啟用Hyper-V支援  [![](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png) 安裝 首先到官網下載安裝程式 [![](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png) 接受授權合約 [![](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png) 開始安裝 [![](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png) 安裝完成 [![](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png) Docker is running [![](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png) 在工作列上Docker的icon按右鍵選Settings [![](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png) 設定共享磁碟 [![](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png) 設定使用資源 [![](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png) 開始Docker之旅吧:)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/10/docker-on-windows/" />
+<meta property="article:published_time" content="2016-10-05T08:38:00+00:00" />
+<meta property="article:modified_time" content="2016-10-05T08:38:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker on windows"/>
+<meta name="twitter:description" content="Docker on windows 前置條件  Windows 10 Professional版本以上 啟用Hyper-V支援  [![](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png) 安裝 首先到官網下載安裝程式 [![](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png) 接受授權合約 [![](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png) 開始安裝 [![](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png) 安裝完成 [![](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png) Docker is running [![](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png) 在工作列上Docker的icon按右鍵選Settings [![](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png) 設定共享磁碟 [![](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png) 設定使用資源 [![](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png) 開始Docker之旅吧:)"/>
+
+<meta itemprop="name" content="Docker on windows">
+<meta itemprop="description" content="Docker on windows 前置條件  Windows 10 Professional版本以上 啟用Hyper-V支援  [![](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png) 安裝 首先到官網下載安裝程式 [![](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png) 接受授權合約 [![](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png) 開始安裝 [![](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png) 安裝完成 [![](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png) Docker is running [![](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png) 在工作列上Docker的icon按右鍵選Settings [![](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png) 設定共享磁碟 [![](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png) 設定使用資源 [![](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png) 開始Docker之旅吧:)">
+<meta itemprop="datePublished" content="2016-10-05T08:38:00+00:00" />
+<meta itemprop="dateModified" content="2016-10-05T08:38:00+00:00" />
+<meta itemprop="wordCount" content="29">
+
+
+
+<meta itemprop="keywords" content="docker," />
+
+<link rel="canonical" href="http://example.org/posts/2016/10/docker-on-windows/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Docker on Windows</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 5, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/docker">Docker</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/docker">Docker</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="docker-on-windows">Docker on windows</h1>
+<h1 id="前置條件">前置條件</h1>
+<ul>
+<li>Windows 10 Professional版本以上</li>
+<li>啟用Hyper-V支援</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)](https://4.bp.blogspot.com/-AIR7PYyJEN4/V_RLDAqgSbI/AAAAAAAAEJs/rXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB/s1600/hyperV.png)</div><span id="goog_198635478"></span><span id="goog_198635479"></span>
+<h1 id="安裝">安裝</h1>
+<h2 id="首先到官網下載安裝程式httpwwwdockercomproductsoverview">首先到<a href="http://www.docker.com/products/overview">官網下載安裝程式</a></h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)](https://4.bp.blogspot.com/-mdHM-Fn3g4k/V_RK6ECYj_I/AAAAAAAAEJo/LtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw/s1600/download.png)</div>
+<h2 id="接受授權合約">接受授權合約</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)](https://2.bp.blogspot.com/-ZJcA8koizB8/V_RK5ZmO07I/AAAAAAAAEJU/p4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw/s1600/01.png)</div>
+<h2 id="開始安裝">開始安裝</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)](https://4.bp.blogspot.com/-50Oh8KFRFts/V_RK5UpilzI/AAAAAAAAEJQ/4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw/s1600/02.png)</div>
+<h2 id="安裝完成">安裝完成</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)](https://1.bp.blogspot.com/-a8DjmDYrjzQ/V_RK5NJ_hlI/AAAAAAAAEJM/-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw/s1600/03.png)</div>
+<h2 id="docker-is-running">Docker is running</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)](https://3.bp.blogspot.com/-XFM7OCV1uPA/V_RK5oaPFUI/AAAAAAAAEJY/tqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw/s1600/04.png)</div>
+<h2 id="在工作列上docker的icon按右鍵選settings">在工作列上Docker的icon按右鍵選Settings</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)](https://3.bp.blogspot.com/-ScG9jupqcTM/V_RK5_2OH2I/AAAAAAAAEJg/NF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw/s1600/05.png)</div>
+<h2 id="設定共享磁碟">設定共享磁碟</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)](https://4.bp.blogspot.com/-6oS_huOf5l0/V_RK5r7ALcI/AAAAAAAAEJc/jWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw/s1600/06.png)</div>
+<h2 id="設定使用資源">設定使用資源</h2>
+<div class="separator" style="clear: both; text-align: center;">[![](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)](https://3.bp.blogspot.com/-kRB5QOdm2yE/V_RK6GE8VuI/AAAAAAAAEJk/q5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw/s1600/07.png)</div>
+開始Docker之旅吧:)
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Docker%20on%20windows&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f
+			&title=Docker%20on%20windows&summary=Docker%20on%20windows%20%e5%89%8d%e7%bd%ae%e6%a2%9d%e4%bb%b6%20%20Windows%2010%20Professional%e7%89%88%e6%9c%ac%e4%bb%a5%e4%b8%8a%20%e5%95%9f%e7%94%a8Hyper-V%e6%94%af%e6%8f%b4%20%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-AIR7PYyJEN4%2fV_RLDAqgSbI%2fAAAAAAAAEJs%2frXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB%2fs1600%2fhyperV.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-AIR7PYyJEN4%2fV_RLDAqgSbI%2fAAAAAAAAEJs%2frXqEQKUlAE8490pNSJ5UWGZ6Xk85YH4TACLcB%2fs1600%2fhyperV.png%29%20%e5%ae%89%e8%a3%9d%20%e9%a6%96%e5%85%88%e5%88%b0%e5%ae%98%e7%b6%b2%e4%b8%8b%e8%bc%89%e5%ae%89%e8%a3%9d%e7%a8%8b%e5%bc%8f%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-mdHM-Fn3g4k%2fV_RK6ECYj_I%2fAAAAAAAAEJo%2fLtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw%2fs1600%2fdownload.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-mdHM-Fn3g4k%2fV_RK6ECYj_I%2fAAAAAAAAEJo%2fLtG7BJlijEAimRSDOWTH6l7l4Fl_-AO_gCEw%2fs1600%2fdownload.png%29%20%e6%8e%a5%e5%8f%97%e6%8e%88%e6%ac%8a%e5%90%88%e7%b4%84%20%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-ZJcA8koizB8%2fV_RK5ZmO07I%2fAAAAAAAAEJU%2fp4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw%2fs1600%2f01.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-ZJcA8koizB8%2fV_RK5ZmO07I%2fAAAAAAAAEJU%2fp4mTW5NjN-AAoakthFzI36tlMK4MOs9cwCEw%2fs1600%2f01.png%29%20%e9%96%8b%e5%a7%8b%e5%ae%89%e8%a3%9d%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-50Oh8KFRFts%2fV_RK5UpilzI%2fAAAAAAAAEJQ%2f4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw%2fs1600%2f02.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-50Oh8KFRFts%2fV_RK5UpilzI%2fAAAAAAAAEJQ%2f4iTkzZ1LqisfHNMaitgESAyJanTWYf4lQCEw%2fs1600%2f02.png%29%20%e5%ae%89%e8%a3%9d%e5%ae%8c%e6%88%90%20%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-a8DjmDYrjzQ%2fV_RK5NJ_hlI%2fAAAAAAAAEJM%2f-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw%2fs1600%2f03.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-a8DjmDYrjzQ%2fV_RK5NJ_hlI%2fAAAAAAAAEJM%2f-Xc1tD7oWZggjkIGz_lAhgNHIgEwg72hACEw%2fs1600%2f03.png%29%20Docker%20is%20running%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-XFM7OCV1uPA%2fV_RK5oaPFUI%2fAAAAAAAAEJY%2ftqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw%2fs1600%2f04.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-XFM7OCV1uPA%2fV_RK5oaPFUI%2fAAAAAAAAEJY%2ftqsIQmqhQYkutd463JjDqlNzHoBDlZoFQCEw%2fs1600%2f04.png%29%20%e5%9c%a8%e5%b7%a5%e4%bd%9c%e5%88%97%e4%b8%8aDocker%e7%9a%84icon%e6%8c%89%e5%8f%b3%e9%8d%b5%e9%81%b8Settings%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-ScG9jupqcTM%2fV_RK5_2OH2I%2fAAAAAAAAEJg%2fNF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw%2fs1600%2f05.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-ScG9jupqcTM%2fV_RK5_2OH2I%2fAAAAAAAAEJg%2fNF_bpfkTRa4d7WO8fQb_MKuqHaZbJkrwgCEw%2fs1600%2f05.png%29%20%e8%a8%ad%e5%ae%9a%e5%85%b1%e4%ba%ab%e7%a3%81%e7%a2%9f%20%5b%21%5b%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-6oS_huOf5l0%2fV_RK5r7ALcI%2fAAAAAAAAEJc%2fjWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw%2fs1600%2f06.png%29%5d%28https%3a%2f%2f4.bp.blogspot.com%2f-6oS_huOf5l0%2fV_RK5r7ALcI%2fAAAAAAAAEJc%2fjWWFjPdfYNUJPuRDF1zGksDLD3BNIG_oACEw%2fs1600%2f06.png%29%20%e8%a8%ad%e5%ae%9a%e4%bd%bf%e7%94%a8%e8%b3%87%e6%ba%90%20%5b%21%5b%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-kRB5QOdm2yE%2fV_RK6GE8VuI%2fAAAAAAAAEJk%2fq5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw%2fs1600%2f07.png%29%5d%28https%3a%2f%2f3.bp.blogspot.com%2f-kRB5QOdm2yE%2fV_RK6GE8VuI%2fAAAAAAAAEJk%2fq5zfoKbcD2YIjfBqIUz4_KBkAfBF5imUwCEw%2fs1600%2f07.png%29%20%e9%96%8b%e5%a7%8bDocker%e4%b9%8b%e6%97%85%e5%90%a7%3a%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Docker%20on%20windows&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f10%2fdocker-on-windows%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Team Foundation Server 加入組建定義 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="打開Team Explorer，點擊組建
+[![](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png) 新增組建定義 [![](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png) 組建定義名稱 [![](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png) 觸發程序用來設定何時執行這個建置 連續整合是每當程式碼簽入時就會觸發 累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響 閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查 排程可以設定固定時間啟動建置 [![](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png) 來源設定用來設定原始碼從何而來 [![](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png) 組建預設值用來設定建置成功後的產品要輸出到什麼地方 [![](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png) 流程是用來設定建置的動作和細部的設定 [![](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png) 保留原則用來設定不同建置結果下是否要保留建置出來的產品 [![](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png) 設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義 在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義 [![](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png) 手動執行之前，可以設定一下這一次的組建的控制器和代理 [![](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png) 雙擊組建定義，可以叫出組建記錄 [![](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png) 雙擊組建記錄，可以看該次組建的結果 這次組建失敗，原因是少了Microsoft.WebApplication.targets [![](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png) 可以手動複製這個資料夾到組建伺服器上相同的位置 比較簡單的方式是安裝Visual Studio Shell轉散發套件 [![](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png) 就會有相關的檔案了 [![](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png) 再執行一次就建置成功了 [!
+    ">
+
+
+<meta property="og:title" content="Team Foundation Server 加入組建定義" />
+<meta property="og:description" content="打開Team Explorer，點擊組建
+[![](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png) 新增組建定義 [![](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png) 組建定義名稱 [![](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png) 觸發程序用來設定何時執行這個建置 連續整合是每當程式碼簽入時就會觸發 累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響 閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查 排程可以設定固定時間啟動建置 [![](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png) 來源設定用來設定原始碼從何而來 [![](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png) 組建預設值用來設定建置成功後的產品要輸出到什麼地方 [![](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png) 流程是用來設定建置的動作和細部的設定 [![](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png) 保留原則用來設定不同建置結果下是否要保留建置出來的產品 [![](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png) 設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義 在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義 [![](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png) 手動執行之前，可以設定一下這一次的組建的控制器和代理 [![](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png) 雙擊組建定義，可以叫出組建記錄 [![](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png) 雙擊組建記錄，可以看該次組建的結果 這次組建失敗，原因是少了Microsoft.WebApplication.targets [![](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png) 可以手動複製這個資料夾到組建伺服器上相同的位置 比較簡單的方式是安裝Visual Studio Shell轉散發套件 [![](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png) 就會有相關的檔案了 [![](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png) 再執行一次就建置成功了 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/team-foundation-server-%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9/" />
+<meta property="article:published_time" content="2014-12-31T19:06:00+00:00" />
+<meta property="article:modified_time" content="2014-12-31T19:06:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Team Foundation Server 加入組建定義"/>
+<meta name="twitter:description" content="打開Team Explorer，點擊組建
+[![](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png) 新增組建定義 [![](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png) 組建定義名稱 [![](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png) 觸發程序用來設定何時執行這個建置 連續整合是每當程式碼簽入時就會觸發 累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響 閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查 排程可以設定固定時間啟動建置 [![](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png) 來源設定用來設定原始碼從何而來 [![](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png) 組建預設值用來設定建置成功後的產品要輸出到什麼地方 [![](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png) 流程是用來設定建置的動作和細部的設定 [![](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png) 保留原則用來設定不同建置結果下是否要保留建置出來的產品 [![](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png) 設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義 在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義 [![](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png) 手動執行之前，可以設定一下這一次的組建的控制器和代理 [![](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png) 雙擊組建定義，可以叫出組建記錄 [![](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png) 雙擊組建記錄，可以看該次組建的結果 這次組建失敗，原因是少了Microsoft.WebApplication.targets [![](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png) 可以手動複製這個資料夾到組建伺服器上相同的位置 比較簡單的方式是安裝Visual Studio Shell轉散發套件 [![](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png) 就會有相關的檔案了 [![](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png) 再執行一次就建置成功了 [!"/>
+
+<meta itemprop="name" content="Team Foundation Server 加入組建定義">
+<meta itemprop="description" content="打開Team Explorer，點擊組建
+[![](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png) 新增組建定義 [![](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png) 組建定義名稱 [![](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png) 觸發程序用來設定何時執行這個建置 連續整合是每當程式碼簽入時就會觸發 累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響 閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查 排程可以設定固定時間啟動建置 [![](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png) 來源設定用來設定原始碼從何而來 [![](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png) 組建預設值用來設定建置成功後的產品要輸出到什麼地方 [![](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png) 流程是用來設定建置的動作和細部的設定 [![](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png) 保留原則用來設定不同建置結果下是否要保留建置出來的產品 [![](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png) 設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義 在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義 [![](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png) 手動執行之前，可以設定一下這一次的組建的控制器和代理 [![](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png) 雙擊組建定義，可以叫出組建記錄 [![](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png) 雙擊組建記錄，可以看該次組建的結果 這次組建失敗，原因是少了Microsoft.WebApplication.targets [![](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png) 可以手動複製這個資料夾到組建伺服器上相同的位置 比較簡單的方式是安裝Visual Studio Shell轉散發套件 [![](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png) 就會有相關的檔案了 [![](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png) 再執行一次就建置成功了 [!">
+<meta itemprop="datePublished" content="2014-12-31T19:06:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-31T19:06:00+00:00" />
+<meta itemprop="wordCount" content="40">
+
+
+
+<meta itemprop="keywords" content="Team Foundation Server," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/team-foundation-server-%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Team Foundation Server 加入組建定義</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 31, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team Foundation Server</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team foundation server</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>打開Team Explorer，點擊組建</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)](http://2.bp.blogspot.com/-5pCfNH8CTkU/VKPYCjBRWoI/AAAAAAAACBc/7O1dWcBkRUw/s1600/01.%E5%8A%A0%E5%85%A5%E7%B5%84%E5%BB%BA.png)</div>
+新增組建定義
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)](http://4.bp.blogspot.com/-6xrdwLtukgg/VKPYCukG-sI/AAAAAAAACBY/SpsW1Y3Q-Ok/s1600/02.%E6%96%B0%E5%A2%9E%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9.png)</div>
+組建定義名稱
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)](http://2.bp.blogspot.com/-Bllqjy9lwNs/VKPYKJN42sI/AAAAAAAACCw/92afSzDahf4/s1600/03.%E7%B5%84%E5%BB%BA%E5%AE%9A%E7%BE%A9%E5%90%8D%E7%A8%B1.png)</div>
+觸發程序用來設定何時執行這個建置
+連續整合是每當程式碼簽入時就會觸發
+累積簽入是設定至少多少時間才執行一次建置，用來避免頻繁簽入所造成的效能影響
+閘道簽入是只有通過建置，才讓原始碼簽入，用來做建置條件的檢查
+排程可以設定固定時間啟動建置
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)](http://1.bp.blogspot.com/-H5_6gnigVUU/VKPYDnW7MiI/AAAAAAAACBg/uRzajdqu5HI/s1600/04.%E8%A7%B8%E7%99%BC%E7%A8%8B%E5%BA%8F.png)</div>
+來源設定用來設定原始碼從何而來
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-JwHAof2PoZY/VKPYEfu1L9I/AAAAAAAACBk/8qwgBZ5COJg/s1600/05.%E4%BE%86%E6%BA%90%E8%A8%AD%E5%AE%9A.png)</div>
+組建預設值用來設定建置成功後的產品要輸出到什麼地方
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)](http://1.bp.blogspot.com/-tcu5d7h4QKc/VKPYEzSB7uI/AAAAAAAACBo/EADMiKvNxVs/s1600/06.%E7%B5%84%E5%BB%BA%E9%A0%90%E8%A8%AD%E5%80%BC.png)</div>
+流程是用來設定建置的動作和細部的設定
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)](http://4.bp.blogspot.com/-QFoV7prmOIQ/VKPYFU7ZCBI/AAAAAAAACBs/xlRpNrBS9Yk/s1600/07.%E6%B5%81%E7%A8%8B.png)</div>
+保留原則用來設定不同建置結果下是否要保留建置出來的產品
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)](http://4.bp.blogspot.com/-2OhX8zi3otQ/VKPYGMcgY1I/AAAAAAAACB0/UfuRSYk-VHs/s1600/08.%E4%BF%9D%E7%95%99%E5%8E%9F%E5%89%87.png)</div>
+設定好後按存檔就行了，在組建定義中就可以看到剛建立的組建定義
+在上面按右鍵，選擇佇列新組建，就可以手動執行這個組建定義
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)](http://3.bp.blogspot.com/-9eXfenIcV3s/VKPYGYsKPSI/AAAAAAAACB4/Y_peIkvWLOQ/s1600/09.%E4%BD%87%E5%88%97%E6%96%B0%E7%B5%84%E5%BB%BA.png)</div>
+手動執行之前，可以設定一下這一次的組建的控制器和代理
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)](http://3.bp.blogspot.com/-gI0RbdwJnrI/VKPYG9_9PCI/AAAAAAAACB8/YyrgxRatotw/s1600/10.%E4%BD%87%E5%88%97%E8%A8%AD%E5%AE%9A.png)</div>
+雙擊組建定義，可以叫出組建記錄
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)](http://2.bp.blogspot.com/-KGGDERK0x_A/VKPYHUmTOiI/AAAAAAAACCE/7rYyXdOsQ-I/s1600/11.%E4%BD%87%E5%88%97%E9%A0%85%E7%9B%AE.png)</div>
+雙擊組建記錄，可以看該次組建的結果
+這次組建失敗，原因是少了Microsoft.WebApplication.targets
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-7sYEMorvllg/VKPYH1TqzQI/AAAAAAAACCM/OveXOPeJ93w/s1600/12.%2B%E5%BB%BA%E7%BD%AE%E8%A8%8A%E6%81%AF.png)</div>
+可以手動複製這個資料夾到組建伺服器上相同的位置
+比較簡單的方式是安裝Visual Studio Shell轉散發套件
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)](http://4.bp.blogspot.com/-lOBgzNLC6Os/VKPYIbMM94I/AAAAAAAACCU/vYBfxTzTUhE/s1600/13.%E5%8A%A0%E5%85%A5Shell.png)</div>
+就會有相關的檔案了
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)](http://3.bp.blogspot.com/-pzNYLUS1G9E/VKPYImLuIaI/AAAAAAAACCY/XbnEeEJgXak/s1600/14.%E5%8A%A0%E5%85%A5target.png)</div>
+再執行一次就建置成功了
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png)](http://4.bp.blogspot.com/-N_QbhlPGKS0/VKPYJYlpMGI/AAAAAAAACCo/uHMG_d0TXjk/s1600/15.%E5%BB%BA%E7%BD%AE%E6%88%90%E5%8A%9F.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Team%20Foundation%20Server%20%e5%8a%a0%e5%85%a5%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f
+			&title=Team%20Foundation%20Server%20%e5%8a%a0%e5%85%a5%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9&summary=%e6%89%93%e9%96%8bTeam%20Explorer%ef%bc%8c%e9%bb%9e%e6%93%8a%e7%b5%84%e5%bb%ba%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-5pCfNH8CTkU%2fVKPYCjBRWoI%2fAAAAAAAACBc%2f7O1dWcBkRUw%2fs1600%2f01.%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-5pCfNH8CTkU%2fVKPYCjBRWoI%2fAAAAAAAACBc%2f7O1dWcBkRUw%2fs1600%2f01.%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA.png%29%20%e6%96%b0%e5%a2%9e%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6xrdwLtukgg%2fVKPYCukG-sI%2fAAAAAAAACBY%2fSpsW1Y3Q-Ok%2fs1600%2f02.%25E6%2596%25B0%25E5%25A2%259E%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-6xrdwLtukgg%2fVKPYCukG-sI%2fAAAAAAAACBY%2fSpsW1Y3Q-Ok%2fs1600%2f02.%25E6%2596%25B0%25E5%25A2%259E%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9.png%29%20%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%e5%90%8d%e7%a8%b1%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Bllqjy9lwNs%2fVKPYKJN42sI%2fAAAAAAAACCw%2f92afSzDahf4%2fs1600%2f03.%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%25E5%2590%258D%25E7%25A8%25B1.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Bllqjy9lwNs%2fVKPYKJN42sI%2fAAAAAAAACCw%2f92afSzDahf4%2fs1600%2f03.%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%25E5%2590%258D%25E7%25A8%25B1.png%29%20%e8%a7%b8%e7%99%bc%e7%a8%8b%e5%ba%8f%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e4%bd%95%e6%99%82%e5%9f%b7%e8%a1%8c%e9%80%99%e5%80%8b%e5%bb%ba%e7%bd%ae%20%e9%80%a3%e7%ba%8c%e6%95%b4%e5%90%88%e6%98%af%e6%af%8f%e7%95%b6%e7%a8%8b%e5%bc%8f%e7%a2%bc%e7%b0%bd%e5%85%a5%e6%99%82%e5%b0%b1%e6%9c%83%e8%a7%b8%e7%99%bc%20%e7%b4%af%e7%a9%8d%e7%b0%bd%e5%85%a5%e6%98%af%e8%a8%ad%e5%ae%9a%e8%87%b3%e5%b0%91%e5%a4%9a%e5%b0%91%e6%99%82%e9%96%93%e6%89%8d%e5%9f%b7%e8%a1%8c%e4%b8%80%e6%ac%a1%e5%bb%ba%e7%bd%ae%ef%bc%8c%e7%94%a8%e4%be%86%e9%81%bf%e5%85%8d%e9%a0%bb%e7%b9%81%e7%b0%bd%e5%85%a5%e6%89%80%e9%80%a0%e6%88%90%e7%9a%84%e6%95%88%e8%83%bd%e5%bd%b1%e9%9f%bf%20%e9%96%98%e9%81%93%e7%b0%bd%e5%85%a5%e6%98%af%e5%8f%aa%e6%9c%89%e9%80%9a%e9%81%8e%e5%bb%ba%e7%bd%ae%ef%bc%8c%e6%89%8d%e8%ae%93%e5%8e%9f%e5%a7%8b%e7%a2%bc%e7%b0%bd%e5%85%a5%ef%bc%8c%e7%94%a8%e4%be%86%e5%81%9a%e5%bb%ba%e7%bd%ae%e6%a2%9d%e4%bb%b6%e7%9a%84%e6%aa%a2%e6%9f%a5%20%e6%8e%92%e7%a8%8b%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%e5%9b%ba%e5%ae%9a%e6%99%82%e9%96%93%e5%95%9f%e5%8b%95%e5%bb%ba%e7%bd%ae%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-H5_6gnigVUU%2fVKPYDnW7MiI%2fAAAAAAAACBg%2fuRzajdqu5HI%2fs1600%2f04.%25E8%25A7%25B8%25E7%2599%25BC%25E7%25A8%258B%25E5%25BA%258F.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-H5_6gnigVUU%2fVKPYDnW7MiI%2fAAAAAAAACBg%2fuRzajdqu5HI%2fs1600%2f04.%25E8%25A7%25B8%25E7%2599%25BC%25E7%25A8%258B%25E5%25BA%258F.png%29%20%e4%be%86%e6%ba%90%e8%a8%ad%e5%ae%9a%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e5%8e%9f%e5%a7%8b%e7%a2%bc%e5%be%9e%e4%bd%95%e8%80%8c%e4%be%86%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-JwHAof2PoZY%2fVKPYEfu1L9I%2fAAAAAAAACBk%2f8qwgBZ5COJg%2fs1600%2f05.%25E4%25BE%2586%25E6%25BA%2590%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-JwHAof2PoZY%2fVKPYEfu1L9I%2fAAAAAAAACBk%2f8qwgBZ5COJg%2fs1600%2f05.%25E4%25BE%2586%25E6%25BA%2590%25E8%25A8%25AD%25E5%25AE%259A.png%29%20%e7%b5%84%e5%bb%ba%e9%a0%90%e8%a8%ad%e5%80%bc%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e5%bb%ba%e7%bd%ae%e6%88%90%e5%8a%9f%e5%be%8c%e7%9a%84%e7%94%a2%e5%93%81%e8%a6%81%e8%bc%b8%e5%87%ba%e5%88%b0%e4%bb%80%e9%ba%bc%e5%9c%b0%e6%96%b9%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-tcu5d7h4QKc%2fVKPYEzSB7uI%2fAAAAAAAACBo%2fEADMiKvNxVs%2fs1600%2f06.%25E7%25B5%2584%25E5%25BB%25BA%25E9%25A0%2590%25E8%25A8%25AD%25E5%2580%25BC.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-tcu5d7h4QKc%2fVKPYEzSB7uI%2fAAAAAAAACBo%2fEADMiKvNxVs%2fs1600%2f06.%25E7%25B5%2584%25E5%25BB%25BA%25E9%25A0%2590%25E8%25A8%25AD%25E5%2580%25BC.png%29%20%e6%b5%81%e7%a8%8b%e6%98%af%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e5%bb%ba%e7%bd%ae%e7%9a%84%e5%8b%95%e4%bd%9c%e5%92%8c%e7%b4%b0%e9%83%a8%e7%9a%84%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-QFoV7prmOIQ%2fVKPYFU7ZCBI%2fAAAAAAAACBs%2fxlRpNrBS9Yk%2fs1600%2f07.%25E6%25B5%2581%25E7%25A8%258B.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-QFoV7prmOIQ%2fVKPYFU7ZCBI%2fAAAAAAAACBs%2fxlRpNrBS9Yk%2fs1600%2f07.%25E6%25B5%2581%25E7%25A8%258B.png%29%20%e4%bf%9d%e7%95%99%e5%8e%9f%e5%89%87%e7%94%a8%e4%be%86%e8%a8%ad%e5%ae%9a%e4%b8%8d%e5%90%8c%e5%bb%ba%e7%bd%ae%e7%b5%90%e6%9e%9c%e4%b8%8b%e6%98%af%e5%90%a6%e8%a6%81%e4%bf%9d%e7%95%99%e5%bb%ba%e7%bd%ae%e5%87%ba%e4%be%86%e7%9a%84%e7%94%a2%e5%93%81%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-2OhX8zi3otQ%2fVKPYGMcgY1I%2fAAAAAAAACB0%2fUfuRSYk-VHs%2fs1600%2f08.%25E4%25BF%259D%25E7%2595%2599%25E5%258E%259F%25E5%2589%2587.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-2OhX8zi3otQ%2fVKPYGMcgY1I%2fAAAAAAAACB0%2fUfuRSYk-VHs%2fs1600%2f08.%25E4%25BF%259D%25E7%2595%2599%25E5%258E%259F%25E5%2589%2587.png%29%20%e8%a8%ad%e5%ae%9a%e5%a5%bd%e5%be%8c%e6%8c%89%e5%ad%98%e6%aa%94%e5%b0%b1%e8%a1%8c%e4%ba%86%ef%bc%8c%e5%9c%a8%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%e4%b8%ad%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e5%89%9b%e5%bb%ba%e7%ab%8b%e7%9a%84%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%20%e5%9c%a8%e4%b8%8a%e9%9d%a2%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e6%93%87%e4%bd%87%e5%88%97%e6%96%b0%e7%b5%84%e5%bb%ba%ef%bc%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e6%89%8b%e5%8b%95%e5%9f%b7%e8%a1%8c%e9%80%99%e5%80%8b%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-9eXfenIcV3s%2fVKPYGYsKPSI%2fAAAAAAAACB4%2fY_peIkvWLOQ%2fs1600%2f09.%25E4%25BD%2587%25E5%2588%2597%25E6%2596%25B0%25E7%25B5%2584%25E5%25BB%25BA.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-9eXfenIcV3s%2fVKPYGYsKPSI%2fAAAAAAAACB4%2fY_peIkvWLOQ%2fs1600%2f09.%25E4%25BD%2587%25E5%2588%2597%25E6%2596%25B0%25E7%25B5%2584%25E5%25BB%25BA.png%29%20%e6%89%8b%e5%8b%95%e5%9f%b7%e8%a1%8c%e4%b9%8b%e5%89%8d%ef%bc%8c%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%e4%b8%80%e4%b8%8b%e9%80%99%e4%b8%80%e6%ac%a1%e7%9a%84%e7%b5%84%e5%bb%ba%e7%9a%84%e6%8e%a7%e5%88%b6%e5%99%a8%e5%92%8c%e4%bb%a3%e7%90%86%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-gI0RbdwJnrI%2fVKPYG9_9PCI%2fAAAAAAAACB8%2fYyrgxRatotw%2fs1600%2f10.%25E4%25BD%2587%25E5%2588%2597%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-gI0RbdwJnrI%2fVKPYG9_9PCI%2fAAAAAAAACB8%2fYyrgxRatotw%2fs1600%2f10.%25E4%25BD%2587%25E5%2588%2597%25E8%25A8%25AD%25E5%25AE%259A.png%29%20%e9%9b%99%e6%93%8a%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%8f%ab%e5%87%ba%e7%b5%84%e5%bb%ba%e8%a8%98%e9%8c%84%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KGGDERK0x_A%2fVKPYHUmTOiI%2fAAAAAAAACCE%2f7rYyXdOsQ-I%2fs1600%2f11.%25E4%25BD%2587%25E5%2588%2597%25E9%25A0%2585%25E7%259B%25AE.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KGGDERK0x_A%2fVKPYHUmTOiI%2fAAAAAAAACCE%2f7rYyXdOsQ-I%2fs1600%2f11.%25E4%25BD%2587%25E5%2588%2597%25E9%25A0%2585%25E7%259B%25AE.png%29%20%e9%9b%99%e6%93%8a%e7%b5%84%e5%bb%ba%e8%a8%98%e9%8c%84%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%9c%8b%e8%a9%b2%e6%ac%a1%e7%b5%84%e5%bb%ba%e7%9a%84%e7%b5%90%e6%9e%9c%20%e9%80%99%e6%ac%a1%e7%b5%84%e5%bb%ba%e5%a4%b1%e6%95%97%ef%bc%8c%e5%8e%9f%e5%9b%a0%e6%98%af%e5%b0%91%e4%ba%86Microsoft.WebApplication.targets%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-7sYEMorvllg%2fVKPYH1TqzQI%2fAAAAAAAACCM%2fOveXOPeJ93w%2fs1600%2f12.%252B%25E5%25BB%25BA%25E7%25BD%25AE%25E8%25A8%258A%25E6%2581%25AF.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-7sYEMorvllg%2fVKPYH1TqzQI%2fAAAAAAAACCM%2fOveXOPeJ93w%2fs1600%2f12.%252B%25E5%25BB%25BA%25E7%25BD%25AE%25E8%25A8%258A%25E6%2581%25AF.png%29%20%e5%8f%af%e4%bb%a5%e6%89%8b%e5%8b%95%e8%a4%87%e8%a3%bd%e9%80%99%e5%80%8b%e8%b3%87%e6%96%99%e5%a4%be%e5%88%b0%e7%b5%84%e5%bb%ba%e4%bc%ba%e6%9c%8d%e5%99%a8%e4%b8%8a%e7%9b%b8%e5%90%8c%e7%9a%84%e4%bd%8d%e7%bd%ae%20%e6%af%94%e8%bc%83%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e5%ae%89%e8%a3%9dVisual%20Studio%20Shell%e8%bd%89%e6%95%a3%e7%99%bc%e5%a5%97%e4%bb%b6%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-lOBgzNLC6Os%2fVKPYIbMM94I%2fAAAAAAAACCU%2fvYBfxTzTUhE%2fs1600%2f13.%25E5%258A%25A0%25E5%2585%25A5Shell.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-lOBgzNLC6Os%2fVKPYIbMM94I%2fAAAAAAAACCU%2fvYBfxTzTUhE%2fs1600%2f13.%25E5%258A%25A0%25E5%2585%25A5Shell.png%29%20%e5%b0%b1%e6%9c%83%e6%9c%89%e7%9b%b8%e9%97%9c%e7%9a%84%e6%aa%94%e6%a1%88%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-pzNYLUS1G9E%2fVKPYImLuIaI%2fAAAAAAAACCY%2fXbnEeEJgXak%2fs1600%2f14.%25E5%258A%25A0%25E5%2585%25A5target.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-pzNYLUS1G9E%2fVKPYImLuIaI%2fAAAAAAAACCY%2fXbnEeEJgXak%2fs1600%2f14.%25E5%258A%25A0%25E5%2585%25A5target.png%29%20%e5%86%8d%e5%9f%b7%e8%a1%8c%e4%b8%80%e6%ac%a1%e5%b0%b1%e5%bb%ba%e7%bd%ae%e6%88%90%e5%8a%9f%e4%ba%86%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Team%20Foundation%20Server%20%e5%8a%a0%e5%85%a5%e7%b5%84%e5%bb%ba%e5%ae%9a%e7%be%a9&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%258A%25A0%25E5%2585%25A5%25E7%25B5%2584%25E5%25BB%25BA%25E5%25AE%259A%25E7%25BE%25A9%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

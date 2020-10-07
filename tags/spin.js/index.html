@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Spin.js | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A description for the meta tag of the site
+    ">
+
+
+<meta property="og:title" content="spin.js" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/tags/spin.js/" />
+<meta property="og:updated_time" content="2014-10-01T14:05:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="spin.js"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="spin.js">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/tags/spin.js/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1>Spin.js</h1>
+</div>
+
+<div class="blog-brief">
+    <a href="/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/">
+        <h3 class="title is-4">
+            Spin.js 套件
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/">
+                    <p class="subtitle info date">Oct 1, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">NuGet套件</a>
+            
+            <a class="tag is-rounded" href="/tags/spin.js">Spin.js</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/">
+                <p class="summary">
+                    spin.js是一個簡單使用的Loading的動畫，官網上有很清楚的使用範例 首先透過NuGet安裝spin.js套件
+[![](http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-frBwZAmeVK8/VCuYw17LqtI/AAAAAAAABs0/fWYi4xH2j6M/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 網頁中放一個div來轉圈圈，再用一個按鈕來觸發事件 &lt;div id=&#34;div1&#34;&gt;&lt;/div&gt; &lt;input id=&#34;btn1&#34; type=&#34;button&#34; value=&#34;click&#34; /&gt;  spin.js本身是無相依性的，這邊用JQuery只是用來綁定事件 呼叫Spinner物件的spin函式來啟用動畫，呼叫stop來停止動畫 $(function () { $(&#34;#btn1&#34;).click(function () { spinner = new Spinner().spin($(&#34;#div1&#34;)[0]); setTimeout(function () { spinner.stop(); }, 1000); }); });   相關資料 Bootstrap button loading text http://blog.developer.idv.tw/2014/10/bootstrap-button-loading-text.html
+ladda-bootstrap 套件 http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/10/spin-js-%E5%A5%97%E4%BB%B6/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

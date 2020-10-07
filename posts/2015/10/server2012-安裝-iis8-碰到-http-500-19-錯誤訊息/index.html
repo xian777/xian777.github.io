@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Server2012 安裝 IIS8 碰到 HTTP 500.19 錯誤訊息 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="開始使用Server2012R2上面的IIS 8，結果就碰到一個問題500.19的問題
+[![](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png) 以為是權限問題，搞了半天，錯誤訊息又變成設定檔錯誤 [![](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png) 爬文發現是ASP.NET的模組沒裝好，最簡單的方法就是aspnet_regiis -i重新安裝就好 但在Server2012 R2上面已經不再支援這個命令了&hellip;
+[![](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png) 只好打開新增角色和精靈來研究一下IIS的功能模組 [![](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png) 選擇角色型或功能型安裝 [![](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇伺服器 [![](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png) 勾選網頁伺服器(IIS)和應用程式伺服器 [![](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png) 勾選ASP.NET45功能模組 [![](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png) 網頁伺服器(IIS)的角色服務中，勾選ASP.NET4.5 [![](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png) 應用程式伺服器的角色服務中，勾選網頁伺服器(IIS)支援 [![](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png) 準備安裝 [![](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png) 打完收工
+    ">
+
+
+<meta property="og:title" content="Server2012 安裝 IIS8 碰到 HTTP 500.19 錯誤訊息" />
+<meta property="og:description" content="開始使用Server2012R2上面的IIS 8，結果就碰到一個問題500.19的問題
+[![](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png) 以為是權限問題，搞了半天，錯誤訊息又變成設定檔錯誤 [![](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png) 爬文發現是ASP.NET的模組沒裝好，最簡單的方法就是aspnet_regiis -i重新安裝就好 但在Server2012 R2上面已經不再支援這個命令了&hellip;
+[![](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png) 只好打開新增角色和精靈來研究一下IIS的功能模組 [![](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png) 選擇角色型或功能型安裝 [![](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇伺服器 [![](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png) 勾選網頁伺服器(IIS)和應用程式伺服器 [![](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png) 勾選ASP.NET45功能模組 [![](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png) 網頁伺服器(IIS)的角色服務中，勾選ASP.NET4.5 [![](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png) 應用程式伺服器的角色服務中，勾選網頁伺服器(IIS)支援 [![](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png) 準備安裝 [![](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png) 打完收工" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/10/server2012-%E5%AE%89%E8%A3%9D-iis8-%E7%A2%B0%E5%88%B0-http-500-19-%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF/" />
+<meta property="article:published_time" content="2015-10-09T11:18:00+00:00" />
+<meta property="article:modified_time" content="2015-10-09T11:18:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Server2012 安裝 IIS8 碰到 HTTP 500.19 錯誤訊息"/>
+<meta name="twitter:description" content="開始使用Server2012R2上面的IIS 8，結果就碰到一個問題500.19的問題
+[![](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png) 以為是權限問題，搞了半天，錯誤訊息又變成設定檔錯誤 [![](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png) 爬文發現是ASP.NET的模組沒裝好，最簡單的方法就是aspnet_regiis -i重新安裝就好 但在Server2012 R2上面已經不再支援這個命令了&hellip;
+[![](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png) 只好打開新增角色和精靈來研究一下IIS的功能模組 [![](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png) 選擇角色型或功能型安裝 [![](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇伺服器 [![](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png) 勾選網頁伺服器(IIS)和應用程式伺服器 [![](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png) 勾選ASP.NET45功能模組 [![](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png) 網頁伺服器(IIS)的角色服務中，勾選ASP.NET4.5 [![](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png) 應用程式伺服器的角色服務中，勾選網頁伺服器(IIS)支援 [![](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png) 準備安裝 [![](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png) 打完收工"/>
+
+<meta itemprop="name" content="Server2012 安裝 IIS8 碰到 HTTP 500.19 錯誤訊息">
+<meta itemprop="description" content="開始使用Server2012R2上面的IIS 8，結果就碰到一個問題500.19的問題
+[![](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png) 以為是權限問題，搞了半天，錯誤訊息又變成設定檔錯誤 [![](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png) 爬文發現是ASP.NET的模組沒裝好，最簡單的方法就是aspnet_regiis -i重新安裝就好 但在Server2012 R2上面已經不再支援這個命令了&hellip;
+[![](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png) 只好打開新增角色和精靈來研究一下IIS的功能模組 [![](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png) 選擇角色型或功能型安裝 [![](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇伺服器 [![](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png) 勾選網頁伺服器(IIS)和應用程式伺服器 [![](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png) 勾選ASP.NET45功能模組 [![](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png) 網頁伺服器(IIS)的角色服務中，勾選ASP.NET4.5 [![](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png) 應用程式伺服器的角色服務中，勾選網頁伺服器(IIS)支援 [![](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png) 準備安裝 [![](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png) 打完收工">
+<meta itemprop="datePublished" content="2015-10-09T11:18:00+00:00" />
+<meta itemprop="dateModified" content="2015-10-09T11:18:00+00:00" />
+<meta itemprop="wordCount" content="27">
+
+
+
+<meta itemprop="keywords" content="iis," />
+
+<link rel="canonical" href="http://example.org/posts/2015/10/server2012-%E5%AE%89%E8%A3%9D-iis8-%E7%A2%B0%E5%88%B0-http-500-19-%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Server2012 安裝 IIS8 碰到 HTTP 500.19 錯誤訊息</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 9, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/iis">Iis</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/iis">Iis</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>開始使用Server2012R2上面的IIS 8，結果就碰到一個問題500.19的問題</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)](http://4.bp.blogspot.com/-FGSmEdeARrs/VhczqkuRogI/AAAAAAAACkQ/FGrIdc6JyDs/s1600/00.500.19.png)</div>
+以為是權限問題，搞了半天，錯誤訊息又變成設定檔錯誤
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)](http://1.bp.blogspot.com/-r7oRQE18Dm4/VhczIgXuuUI/AAAAAAAACkI/_oZ6irWnsBE/s1600/00.error.png)</div>
+<p>爬文發現是ASP.NET的模組沒裝好，最簡單的方法就是aspnet_regiis -i重新安裝就好
+但在Server2012 R2上面已經不再支援這個命令了&hellip;</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)](http://2.bp.blogspot.com/-ff_xTkXmelA/VhcxtKP1XkI/AAAAAAAACiw/t8oNHmYaIZ0/s1600/00.regiis.png)</div>
+只好打開新增角色和精靈來研究一下IIS的功能模組
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)](http://2.bp.blogspot.com/-1Dg6QD8BVRY/VhcxtJYIalI/AAAAAAAACis/qWtmPwkXB40/s1600/01.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A7%2592%25E8%2589%25B2.png)</div>
+選擇角色型或功能型安裝
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://2.bp.blogspot.com/-Zqp7wZ6mYbY/VhcxtMAW1iI/AAAAAAAACio/Xo1WFEaPVVE/s1600/02.%25E8%25A7%2592%25E8%2589%25B2%25E5%259E%258B%25E5%25AE%2589%25E8%25A3%259D.png)</div>
+選擇伺服器
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)](http://1.bp.blogspot.com/-vkF7mkt1Ntk/VhcxtlxKmZI/AAAAAAAACi0/yESQb9cuZd0/s1600/03.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E9%25A0%2585%25E7%259B%25AE.png)</div>
+勾選網頁伺服器(IIS)和應用程式伺服器
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)](http://4.bp.blogspot.com/-wldIGTpf1To/Vhcxt2WIH2I/AAAAAAAACjQ/xYoqS5S8cyM/s1600/04.%25E4%25BC%25BA%25E6%259C%258D%25E5%2599%25A8%25E8%25A7%2592%25E8%2589%25B2.png)</div>
+勾選ASP.NET45功能模組
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)](http://4.bp.blogspot.com/-8WrAFc3_vUo/Vhcxt7DlS5I/AAAAAAAACjA/wlc6DwnsYYI/s1600/05.asp45.png)</div>
+網頁伺服器(IIS)的角色服務中，勾選ASP.NET4.5
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)](http://2.bp.blogspot.com/-j_BGR9TPWQs/VhcyoH_ckII/AAAAAAAACj4/M2jDUV5NMXI/s1600/06.asp45.png)</div>
+應用程式伺服器的角色服務中，勾選網頁伺服器(IIS)支援
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)](http://3.bp.blogspot.com/-vdp2raIVtXg/VhcysyVo-iI/AAAAAAAACkA/Ms8uKV9j0zc/s1600/07.iis.png)</div>
+準備安裝
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)](http://2.bp.blogspot.com/-i4v0KRMe7FM/VhcxutX6UWI/AAAAAAAACjY/_-3X6U_LuZg/s1600/08.install.png)</div>
+打完收工
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Server2012%20%e5%ae%89%e8%a3%9d%20IIS8%20%e7%a2%b0%e5%88%b0%20HTTP%20500.19%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f
+			&title=Server2012%20%e5%ae%89%e8%a3%9d%20IIS8%20%e7%a2%b0%e5%88%b0%20HTTP%20500.19%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af&summary=%e9%96%8b%e5%a7%8b%e4%bd%bf%e7%94%a8Server2012R2%e4%b8%8a%e9%9d%a2%e7%9a%84IIS%208%ef%bc%8c%e7%b5%90%e6%9e%9c%e5%b0%b1%e7%a2%b0%e5%88%b0%e4%b8%80%e5%80%8b%e5%95%8f%e9%a1%8c500.19%e7%9a%84%e5%95%8f%e9%a1%8c%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-FGSmEdeARrs%2fVhczqkuRogI%2fAAAAAAAACkQ%2fFGrIdc6JyDs%2fs1600%2f00.500.19.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-FGSmEdeARrs%2fVhczqkuRogI%2fAAAAAAAACkQ%2fFGrIdc6JyDs%2fs1600%2f00.500.19.png%29%20%e4%bb%a5%e7%82%ba%e6%98%af%e6%ac%8a%e9%99%90%e5%95%8f%e9%a1%8c%ef%bc%8c%e6%90%9e%e4%ba%86%e5%8d%8a%e5%a4%a9%ef%bc%8c%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%e5%8f%88%e8%ae%8a%e6%88%90%e8%a8%ad%e5%ae%9a%e6%aa%94%e9%8c%af%e8%aa%a4%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-r7oRQE18Dm4%2fVhczIgXuuUI%2fAAAAAAAACkI%2f_oZ6irWnsBE%2fs1600%2f00.error.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-r7oRQE18Dm4%2fVhczIgXuuUI%2fAAAAAAAACkI%2f_oZ6irWnsBE%2fs1600%2f00.error.png%29%20%e7%88%ac%e6%96%87%e7%99%bc%e7%8f%be%e6%98%afASP.NET%e7%9a%84%e6%a8%a1%e7%b5%84%e6%b2%92%e8%a3%9d%e5%a5%bd%ef%bc%8c%e6%9c%80%e7%b0%a1%e5%96%ae%e7%9a%84%e6%96%b9%e6%b3%95%e5%b0%b1%e6%98%afaspnet_regiis%20-i%e9%87%8d%e6%96%b0%e5%ae%89%e8%a3%9d%e5%b0%b1%e5%a5%bd%20%e4%bd%86%e5%9c%a8Server2012%20R2%e4%b8%8a%e9%9d%a2%e5%b7%b2%e7%b6%93%e4%b8%8d%e5%86%8d%e6%94%af%e6%8f%b4%e9%80%99%e5%80%8b%e5%91%bd%e4%bb%a4%e4%ba%86%26hellip%3b%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-ff_xTkXmelA%2fVhcxtKP1XkI%2fAAAAAAAACiw%2ft8oNHmYaIZ0%2fs1600%2f00.regiis.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-ff_xTkXmelA%2fVhcxtKP1XkI%2fAAAAAAAACiw%2ft8oNHmYaIZ0%2fs1600%2f00.regiis.png%29%20%e5%8f%aa%e5%a5%bd%e6%89%93%e9%96%8b%e6%96%b0%e5%a2%9e%e8%a7%92%e8%89%b2%e5%92%8c%e7%b2%be%e9%9d%88%e4%be%86%e7%a0%94%e7%a9%b6%e4%b8%80%e4%b8%8bIIS%e7%9a%84%e5%8a%9f%e8%83%bd%e6%a8%a1%e7%b5%84%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-1Dg6QD8BVRY%2fVhcxtJYIalI%2fAAAAAAAACis%2fqWtmPwkXB40%2fs1600%2f01.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E8%2525A7%252592%2525E8%252589%2525B2.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-1Dg6QD8BVRY%2fVhcxtJYIalI%2fAAAAAAAACis%2fqWtmPwkXB40%2fs1600%2f01.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E8%2525A7%252592%2525E8%252589%2525B2.png%29%20%e9%81%b8%e6%93%87%e8%a7%92%e8%89%b2%e5%9e%8b%e6%88%96%e5%8a%9f%e8%83%bd%e5%9e%8b%e5%ae%89%e8%a3%9d%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Zqp7wZ6mYbY%2fVhcxtMAW1iI%2fAAAAAAAACio%2fXo1WFEaPVVE%2fs1600%2f02.%2525E8%2525A7%252592%2525E8%252589%2525B2%2525E5%25259E%25258B%2525E5%2525AE%252589%2525E8%2525A3%25259D.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Zqp7wZ6mYbY%2fVhcxtMAW1iI%2fAAAAAAAACio%2fXo1WFEaPVVE%2fs1600%2f02.%2525E8%2525A7%252592%2525E8%252589%2525B2%2525E5%25259E%25258B%2525E5%2525AE%252589%2525E8%2525A3%25259D.png%29%20%e9%81%b8%e6%93%87%e4%bc%ba%e6%9c%8d%e5%99%a8%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-vkF7mkt1Ntk%2fVhcxtlxKmZI%2fAAAAAAAACi0%2fyESQb9cuZd0%2fs1600%2f03.%2525E4%2525BC%2525BA%2525E6%25259C%25258D%2525E5%252599%2525A8%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-vkF7mkt1Ntk%2fVhcxtlxKmZI%2fAAAAAAAACi0%2fyESQb9cuZd0%2fs1600%2f03.%2525E4%2525BC%2525BA%2525E6%25259C%25258D%2525E5%252599%2525A8%2525E9%2525A0%252585%2525E7%25259B%2525AE.png%29%20%e5%8b%be%e9%81%b8%e7%b6%b2%e9%a0%81%e4%bc%ba%e6%9c%8d%e5%99%a8%28IIS%29%e5%92%8c%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e4%bc%ba%e6%9c%8d%e5%99%a8%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-wldIGTpf1To%2fVhcxt2WIH2I%2fAAAAAAAACjQ%2fxYoqS5S8cyM%2fs1600%2f04.%2525E4%2525BC%2525BA%2525E6%25259C%25258D%2525E5%252599%2525A8%2525E8%2525A7%252592%2525E8%252589%2525B2.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-wldIGTpf1To%2fVhcxt2WIH2I%2fAAAAAAAACjQ%2fxYoqS5S8cyM%2fs1600%2f04.%2525E4%2525BC%2525BA%2525E6%25259C%25258D%2525E5%252599%2525A8%2525E8%2525A7%252592%2525E8%252589%2525B2.png%29%20%e5%8b%be%e9%81%b8ASP.NET45%e5%8a%9f%e8%83%bd%e6%a8%a1%e7%b5%84%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-8WrAFc3_vUo%2fVhcxt7DlS5I%2fAAAAAAAACjA%2fwlc6DwnsYYI%2fs1600%2f05.asp45.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-8WrAFc3_vUo%2fVhcxt7DlS5I%2fAAAAAAAACjA%2fwlc6DwnsYYI%2fs1600%2f05.asp45.png%29%20%e7%b6%b2%e9%a0%81%e4%bc%ba%e6%9c%8d%e5%99%a8%28IIS%29%e7%9a%84%e8%a7%92%e8%89%b2%e6%9c%8d%e5%8b%99%e4%b8%ad%ef%bc%8c%e5%8b%be%e9%81%b8ASP.NET4.5%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-j_BGR9TPWQs%2fVhcyoH_ckII%2fAAAAAAAACj4%2fM2jDUV5NMXI%2fs1600%2f06.asp45.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-j_BGR9TPWQs%2fVhcyoH_ckII%2fAAAAAAAACj4%2fM2jDUV5NMXI%2fs1600%2f06.asp45.png%29%20%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e4%bc%ba%e6%9c%8d%e5%99%a8%e7%9a%84%e8%a7%92%e8%89%b2%e6%9c%8d%e5%8b%99%e4%b8%ad%ef%bc%8c%e5%8b%be%e9%81%b8%e7%b6%b2%e9%a0%81%e4%bc%ba%e6%9c%8d%e5%99%a8%28IIS%29%e6%94%af%e6%8f%b4%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-vdp2raIVtXg%2fVhcysyVo-iI%2fAAAAAAAACkA%2fMs8uKV9j0zc%2fs1600%2f07.iis.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-vdp2raIVtXg%2fVhcysyVo-iI%2fAAAAAAAACkA%2fMs8uKV9j0zc%2fs1600%2f07.iis.png%29%20%e6%ba%96%e5%82%99%e5%ae%89%e8%a3%9d%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-i4v0KRMe7FM%2fVhcxutX6UWI%2fAAAAAAAACjY%2f_-3X6U_LuZg%2fs1600%2f08.install.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-i4v0KRMe7FM%2fVhcxutX6UWI%2fAAAAAAAACjY%2f_-3X6U_LuZg%2fs1600%2f08.install.png%29%20%e6%89%93%e5%ae%8c%e6%94%b6%e5%b7%a5&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Server2012%20%e5%ae%89%e8%a3%9d%20IIS8%20%e7%a2%b0%e5%88%b0%20HTTP%20500.19%20%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f10%2fserver2012-%25E5%25AE%2589%25E8%25A3%259D-iis8-%25E7%25A2%25B0%25E5%2588%25B0-http-500-19-%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JavaScriptSerializer 日期處理 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime(); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;
+    ">
+
+
+<meta property="og:title" content="JavaScriptSerializer 日期處理" />
+<meta property="og:description" content="使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime(); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/" />
+<meta property="article:published_time" content="2013-06-19T17:20:00+00:00" />
+<meta property="article:modified_time" content="2013-06-19T17:20:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JavaScriptSerializer 日期處理"/>
+<meta name="twitter:description" content="使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime(); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;"/>
+
+<meta itemprop="name" content="JavaScriptSerializer 日期處理">
+<meta itemprop="description" content="使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime(); Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind); Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;">
+<meta itemprop="datePublished" content="2013-06-19T17:20:00+00:00" />
+<meta itemprop="dateModified" content="2013-06-19T17:20:00+00:00" />
+<meta itemprop="wordCount" content="98">
+
+
+
+<meta itemprop="keywords" content="C#,JSON," />
+
+<link rel="canonical" href="http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JavaScriptSerializer 日期處理</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 19, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/json">JSON</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/json">J s o n</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子
+其中的tick為1970/1/1到目前為止的毫秒數
+因為沒有時區資訊，而且預設會轉換成UTC時間
+所以反序列化回來的時後，會有時區的問題</div><div><pre class="brush:csharp">string jsonString = string.Empty;
+DateTime d1 = DateTime.Now;
+<p>JavaScriptSerializer jss = new JavaScriptSerializer();
+jsonString = jss.Serialize(d1);
+Console.WriteLine(jsonString);</p>
+<p>DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString);
+Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind);
+Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind);
+Console.ReadLine();</pre></div><div>執行結果如下 </div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-F8fcPVk1keE/UcFuKhJJOmI/AAAAAAAAAug/KVQeon93Nxw/s1600/01.r1.png"><img src="http://4.bp.blogspot.com/-F8fcPVk1keE/UcFuKhJJOmI/AAAAAAAAAug/KVQeon93Nxw/s1600/01.r1.png" alt=""></a></div><div>解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 </div><div><pre class="brush:csharp">string jsonString = string.Empty;
+DateTime d1 = DateTime.Now;</p>
+<p>JavaScriptSerializer jss = new JavaScriptSerializer();
+jsonString = jss.Serialize(d1);
+Console.WriteLine(jsonString);</p>
+<p>DateTime d2 = jss.Deserialize&lt;DateTime&gt;(jsonString).ToLocalTime();
+Console.WriteLine(&ldquo;d1:{0}, kind:{1}&rdquo;, d1, d1.Kind);
+Console.WriteLine(&ldquo;d2:{0}, kind:{1}&rdquo;, d2, d2.Kind);
+Console.ReadLine();
+</pre></div><div>執行結果如下 </div></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)</div><div>另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解
+打開一個Chrome的主控台來測試一下，輸入以下幾行指令</div><div><pre class="brush:javascript">// 建立一個JSON格式的資料
+data = { "today": "\/Date(1371631612818)\/" };
+<p>// 看一下資料解析的樣子
+data.today;</p>
+<p>// 把前後的斜線去掉的樣子
+data.today.replace(///g, &ldquo;&quot;);</p>
+<p>// 使用eval來得到日期
+eval(&ldquo;new &quot; + data.today.replace(///g, &ldquo;&quot;))</p>
+<p>// 使用reg取出ticks的部份
+data.today.replace(//Date((\d+))//g, &ldquo;$1&rdquo;);</p>
+<p>// parseInt轉成數字後也能得到日期
+new Date(parseInt(data.today.replace(//Date((\d+))//g, &ldquo;$1&rdquo;)))</pre></div><div>執行結果如下</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-8kc7pENjgFo/UcF2_-0zwkI/AAAAAAAAAu4/iC1ITkH7wGY/s1600/01r3.png)](http://2.bp.blogspot.com/-8kc7pENjgFo/UcF2_-0zwkI/AAAAAAAAAu4/iC1ITkH7wGY/s1600/01r3.png)</div></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=JavaScriptSerializer%20%e6%97%a5%e6%9c%9f%e8%99%95%e7%90%86&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f
+			&title=JavaScriptSerializer%20%e6%97%a5%e6%9c%9f%e8%99%95%e7%90%86&summary=%e4%bd%bf%e7%94%a8JavaScriptSerializer%e5%ba%8f%e5%88%97%e5%8c%96%e6%97%a5%e6%9c%9f%e6%99%82%ef%bc%8c%e6%a0%bc%e5%bc%8f%e6%9c%83%e9%95%b7%e7%9a%84%e5%83%8f%5c%2fDate%28ticks%29%5c%2f%e9%80%99%e5%80%8b%e6%a8%a3%e5%ad%90%20%e5%85%b6%e4%b8%ad%e7%9a%84tick%e7%82%ba1970%2f1%2f1%e5%88%b0%e7%9b%ae%e5%89%8d%e7%82%ba%e6%ad%a2%e7%9a%84%e6%af%ab%e7%a7%92%e6%95%b8%20%e5%9b%a0%e7%82%ba%e6%b2%92%e6%9c%89%e6%99%82%e5%8d%80%e8%b3%87%e8%a8%8a%ef%bc%8c%e8%80%8c%e4%b8%94%e9%a0%90%e8%a8%ad%e6%9c%83%e8%bd%89%e6%8f%9b%e6%88%90UTC%e6%99%82%e9%96%93%20%e6%89%80%e4%bb%a5%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e5%9b%9e%e4%be%86%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e6%9c%89%e6%99%82%e5%8d%80%e7%9a%84%e5%95%8f%e9%a1%8cstring%20jsonString%20%3d%20string.Empty%3b%20DateTime%20d1%20%3d%20DateTime.Now%3b%20JavaScriptSerializer%20jss%20%3d%20new%20JavaScriptSerializer%28%29%3b%20jsonString%20%3d%20jss.Serialize%28d1%29%3b%20Console.WriteLine%28jsonString%29%3b%0aDateTime%20d2%20%3d%20jss.Deserialize%26lt%3bDateTime%26gt%3b%28jsonString%29%3b%20Console.WriteLine%28%26ldquo%3bd1%3a%7b0%7d%2c%20kind%3a%7b1%7d%26rdquo%3b%2c%20d1%2c%20d1.Kind%29%3b%20Console.WriteLine%28%26ldquo%3bd2%3a%7b0%7d%2c%20kind%3a%7b1%7d%26rdquo%3b%2c%20d2%2c%20d2.Kind%29%3b%20Console.ReadLine%28%29%3b%e5%9f%b7%e8%a1%8c%e7%b5%90%e6%9e%9c%e5%a6%82%e4%b8%8b%20%e8%a7%a3%e6%b1%ba%e6%96%b9%e6%b3%95%e5%be%88%e7%b0%a1%e5%96%ae%ef%bc%8c%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e5%9b%9e%e4%be%86%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e8%a8%98%e5%be%97%e6%8a%8a%e6%99%82%e9%96%93ToLocalTime%e5%b0%b1%e5%a5%bd%e4%ba%86%20string%20jsonString%20%3d%20string.Empty%3b%20DateTime%20d1%20%3d%20DateTime.Now%3b%0aJavaScriptSerializer%20jss%20%3d%20new%20JavaScriptSerializer%28%29%3b%20jsonString%20%3d%20jss.Serialize%28d1%29%3b%20Console.WriteLine%28jsonString%29%3b%0aDateTime%20d2%20%3d%20jss.Deserialize%26lt%3bDateTime%26gt%3b%28jsonString%29.ToLocalTime%28%29%3b%20Console.WriteLine%28%26ldquo%3bd1%3a%7b0%7d%2c%20kind%3a%7b1%7d%26rdquo%3b%2c%20d1%2c%20d1.Kind%29%3b%20Console.WriteLine%28%26ldquo%3bd2%3a%7b0%7d%2c%20kind%3a%7b1%7d%26rdquo%3b%2c%20d2%2c%20d2.Kind%29%3b%20Console.ReadLine%28%29%3b%20%e5%9f%b7%e8%a1%8c%e7%b5%90%e6%9e%9c%e5%a6%82%e4%b8%8b%20%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-4i59tTlZwkQ%2fUcFu8u1O6fI%2fAAAAAAAAAuo%2fdy_4uxVg2UY%2fs1600%2f01.r2.png%29%26nbsp%3b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-4i59tTlZwkQ%2fUcFu8u1O6fI%2fAAAAAAAAAuo%2fdy_4uxVg2UY%2fs1600%2f01.r2.png%29%e5%8f%a6%e5%a4%96%e4%b8%80%e5%80%8b%e5%95%8f%e9%a1%8c%e6%98%af%e5%82%b3%e5%88%b0JavaScript%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%8f%aa%e6%9c%83%e6%8a%8a%e9%80%99%e6%a8%a3%e7%9a%84%e6%a0%bc%e5%bc%8f%e7%95%b6%e6%88%90%e5%ad%97%e4%b8%b2%ef%bc%8c%e9%9c%80%e8%a6%81%e8%87%aa%e8%a1%8c%e6%8b%86%e8%a7%a3%20%e6%89%93%e9%96%8b%e4%b8%80%e5%80%8bChrome%e7%9a%84%e4%b8%bb%e6%8e%a7%e5%8f%b0%e4%be%86%e6%b8%ac%e8%a9%a6%e4%b8%80%e4%b8%8b%ef%bc%8c%e8%bc%b8%e5%85%a5%e4%bb%a5%e4%b8%8b%e5%b9%be%e8%a1%8c%e6%8c%87%e4%bb%a4%2f%2f%20%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8bJSON%e6%a0%bc%e5%bc%8f%e7%9a%84%e8%b3%87%e6%96%99%20data%20%3d%20%7b%20%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=JavaScriptSerializer%20%e6%97%a5%e6%9c%9f%e8%99%95%e7%90%86&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fjavascriptserializer-%25E6%2597%25A5%25E6%259C%259F%25E8%2599%2595%25E7%2590%2586%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

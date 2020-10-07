@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    C# 排程套件: Quartz | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Quartz 套件 簡介 Quartz是個排程套件
+安裝 $ install-package Quartz 建立Job namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using System; &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; [DisallowConcurrentExecution] &amp;nbsp; &amp;nbsp; internal class MyJob : IJob &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; public void Execute(IJobExecutionContext context) &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(&#34;do job&#34;); &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } &amp;nbsp; &amp;nbsp; } } 建立排程 namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; using Quartz.
+    ">
+
+
+<meta property="og:title" content="C# 排程套件: Quartz" />
+<meta property="og:description" content="Quartz 套件 簡介 Quartz是個排程套件
+安裝 $ install-package Quartz 建立Job namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using System; &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; [DisallowConcurrentExecution] &amp;nbsp; &amp;nbsp; internal class MyJob : IJob &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; public void Execute(IJobExecutionContext context) &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(&#34;do job&#34;); &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } &amp;nbsp; &amp;nbsp; } } 建立排程 namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; using Quartz." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/05/c-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6-quartz/" />
+<meta property="article:published_time" content="2016-05-23T17:06:00+00:00" />
+<meta property="article:modified_time" content="2016-05-23T17:06:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C# 排程套件: Quartz"/>
+<meta name="twitter:description" content="Quartz 套件 簡介 Quartz是個排程套件
+安裝 $ install-package Quartz 建立Job namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using System; &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; [DisallowConcurrentExecution] &amp;nbsp; &amp;nbsp; internal class MyJob : IJob &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; public void Execute(IJobExecutionContext context) &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(&#34;do job&#34;); &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } &amp;nbsp; &amp;nbsp; } } 建立排程 namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; using Quartz."/>
+
+<meta itemprop="name" content="C# 排程套件: Quartz">
+<meta itemprop="description" content="Quartz 套件 簡介 Quartz是個排程套件
+安裝 $ install-package Quartz 建立Job namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using System; &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; [DisallowConcurrentExecution] &amp;nbsp; &amp;nbsp; internal class MyJob : IJob &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; public void Execute(IJobExecutionContext context) &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; { &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(&#34;do job&#34;); &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } &amp;nbsp; &amp;nbsp; } } 建立排程 namespace ConsoleApplication1 { &amp;nbsp; &amp;nbsp; using Quartz; &amp;nbsp; &amp;nbsp; using Quartz.">
+<meta itemprop="datePublished" content="2016-05-23T17:06:00+00:00" />
+<meta itemprop="dateModified" content="2016-05-23T17:06:00+00:00" />
+<meta itemprop="wordCount" content="256">
+
+
+
+<meta itemprop="keywords" content="NuGet套件," />
+
+<link rel="canonical" href="http://example.org/posts/2016/05/c-%E6%8E%92%E7%A8%8B%E5%A5%97%E4%BB%B6-quartz/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>C# 排程套件: Quartz</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">May 23, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">NuGet套件</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget%E5%A5%97%E4%BB%B6">Nu get套件</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="quartz-套件">Quartz 套件</h1>
+<h2 id="簡介">簡介</h2>
+<p>Quartz是個排程套件</p>
+<h2 id="安裝">安裝</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ install-package Quartz
+</code></pre></div><h2 id="建立job">建立Job</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> ConsoleApplication1
+{
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">using</span> System;
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">using</span> Quartz;
+
+&amp;nbsp; &amp;nbsp; [DisallowConcurrentExecution]
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyJob</span> : IJob
+&amp;nbsp; &amp;nbsp; {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Execute(IJobExecutionContext context)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Console.WriteLine(<span style="color:#e6db74">&#34;do job&#34;</span>);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+}
+</code></pre></div><h2 id="建立排程">建立排程</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> ConsoleApplication1
+{
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">using</span> Quartz;
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">using</span> Quartz.Impl;
+
+&amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+&amp;nbsp; &amp;nbsp; {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#75715e">// 建立排程器
+</span><span style="color:#75715e"></span>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">var</span> schedulerFactory = <span style="color:#66d9ef">new</span> StdSchedulerFactory();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#66d9ef">var</span> schedular = schedulerFactory.GetScheduler();
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#75715e">// 建立Job
+</span><span style="color:#75715e"></span>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; IJobDetail job = JobBuilder.Create&amp;lt;MyJob&amp;gt;()
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .WithIdentity(<span style="color:#e6db74">&#34;MyJob&#34;</span>)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .Build();
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#75715e">// 建立Trigger
+</span><span style="color:#75715e"></span>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ITrigger trigger = TriggerBuilder.Create()
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .WithCronSchedule(<span style="color:#e6db74">&#34;0 0/1 * * * ?&#34;</span>)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .WithIdentity(<span style="color:#e6db74">&#34;MyJobTrigger&#34;</span>)
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .Build();
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#75715e">// Job配對Trigger
+</span><span style="color:#75715e"></span>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; schedular.ScheduleJob(job, trigger);
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; <span style="color:#75715e">// 啟動排程器
+</span><span style="color:#75715e"></span>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; schedular.Start();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+}
+</code></pre></div><h2 id="注意事項">注意事項</h2>
+<ul>
+<li>排程是固定周期觸發，和Job的執行時間無關</li>
+<li>每次觸發都會重新建立一個全新的Job物件</li>
+<li>在Job上加入DisallowConcurrentExecution來限制每次只能執行一個Job</li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=C%23%20%e6%8e%92%e7%a8%8b%e5%a5%97%e4%bb%b6%3a%20Quartz&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f
+			&title=C%23%20%e6%8e%92%e7%a8%8b%e5%a5%97%e4%bb%b6%3a%20Quartz&summary=Quartz%20%e5%a5%97%e4%bb%b6%20%e7%b0%a1%e4%bb%8b%20Quartz%e6%98%af%e5%80%8b%e6%8e%92%e7%a8%8b%e5%a5%97%e4%bb%b6%0a%e5%ae%89%e8%a3%9d%20%24%20install-package%20Quartz%20%e5%bb%ba%e7%ab%8bJob%20namespace%20ConsoleApplication1%20%7b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20using%20System%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20using%20Quartz%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%5bDisallowConcurrentExecution%5d%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20internal%20class%20MyJob%20%3a%20IJob%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%7b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20public%20void%20Execute%28IJobExecutionContext%20context%29%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%7b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20Console.WriteLine%28%26%2334%3bdo%20job%26%2334%3b%29%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%7d%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20%7d%20%7d%20%e5%bb%ba%e7%ab%8b%e6%8e%92%e7%a8%8b%20namespace%20ConsoleApplication1%20%7b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20using%20Quartz%3b%20%26amp%3bnbsp%3b%20%26amp%3bnbsp%3b%20using%20Quartz.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=C%23%20%e6%8e%92%e7%a8%8b%e5%a5%97%e4%bb%b6%3a%20Quartz&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f05%2fc-%25E6%258E%2592%25E7%25A8%258B%25E5%25A5%2597%25E4%25BB%25B6-quartz%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

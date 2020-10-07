@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Team Foundation Server 安裝 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先到Visual Studio的官網下載Team Foundation Server 90天免費試用版
+[![](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png) 要安裝的時後雙擊tfs_server.exe就行了 [![](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png) 勾選接受授權條款後，點擊立即安裝就行了 [![](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png) 接下來就會開始跑安裝流程 [![](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png) 安裝成功後會跳出授權畫面，安裝試用版授權會有90天的試用期 [![](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png) 接下來就是在組態中心選擇適合自已環境的設定 Team Foundation Application Server可以選擇幾種層級 基本：自動在本機安裝SQL 2012 Express版本並使用 [標準單一伺服器](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631903.aspx)：需自行安裝SQL Server 2008 R2以上的版本，再透過這個精靈來設定 [進階](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631919.aspx)：SQL Server裝到另外一台機器上面，再用這個精靈來設定 僅限應用程式層：做伺服器陣列的時後，再選這個精靈來設定 [![](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 管理主控台可以做更多的設定 [!
+    ">
+
+
+<meta property="og:title" content="Team Foundation Server 安裝" />
+<meta property="og:description" content="首先到Visual Studio的官網下載Team Foundation Server 90天免費試用版
+[![](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png) 要安裝的時後雙擊tfs_server.exe就行了 [![](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png) 勾選接受授權條款後，點擊立即安裝就行了 [![](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png) 接下來就會開始跑安裝流程 [![](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png) 安裝成功後會跳出授權畫面，安裝試用版授權會有90天的試用期 [![](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png) 接下來就是在組態中心選擇適合自已環境的設定 Team Foundation Application Server可以選擇幾種層級 基本：自動在本機安裝SQL 2012 Express版本並使用 [標準單一伺服器](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631903.aspx)：需自行安裝SQL Server 2008 R2以上的版本，再透過這個精靈來設定 [進階](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631919.aspx)：SQL Server裝到另外一台機器上面，再用這個精靈來設定 僅限應用程式層：做伺服器陣列的時後，再選這個精靈來設定 [![](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 管理主控台可以做更多的設定 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/team-foundation-server-%E5%AE%89%E8%A3%9D/" />
+<meta property="article:published_time" content="2014-12-22T16:49:00+00:00" />
+<meta property="article:modified_time" content="2014-12-22T16:49:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Team Foundation Server 安裝"/>
+<meta name="twitter:description" content="首先到Visual Studio的官網下載Team Foundation Server 90天免費試用版
+[![](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png) 要安裝的時後雙擊tfs_server.exe就行了 [![](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png) 勾選接受授權條款後，點擊立即安裝就行了 [![](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png) 接下來就會開始跑安裝流程 [![](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png) 安裝成功後會跳出授權畫面，安裝試用版授權會有90天的試用期 [![](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png) 接下來就是在組態中心選擇適合自已環境的設定 Team Foundation Application Server可以選擇幾種層級 基本：自動在本機安裝SQL 2012 Express版本並使用 [標準單一伺服器](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631903.aspx)：需自行安裝SQL Server 2008 R2以上的版本，再透過這個精靈來設定 [進階](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631919.aspx)：SQL Server裝到另外一台機器上面，再用這個精靈來設定 僅限應用程式層：做伺服器陣列的時後，再選這個精靈來設定 [![](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 管理主控台可以做更多的設定 [!"/>
+
+<meta itemprop="name" content="Team Foundation Server 安裝">
+<meta itemprop="description" content="首先到Visual Studio的官網下載Team Foundation Server 90天免費試用版
+[![](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png) 要安裝的時後雙擊tfs_server.exe就行了 [![](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png) 勾選接受授權條款後，點擊立即安裝就行了 [![](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png) 接下來就會開始跑安裝流程 [![](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png) 安裝成功後會跳出授權畫面，安裝試用版授權會有90天的試用期 [![](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png) 接下來就是在組態中心選擇適合自已環境的設定 Team Foundation Application Server可以選擇幾種層級 基本：自動在本機安裝SQL 2012 Express版本並使用 [標準單一伺服器](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631903.aspx)：需自行安裝SQL Server 2008 R2以上的版本，再透過這個精靈來設定 [進階](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631919.aspx)：SQL Server裝到另外一台機器上面，再用這個精靈來設定 僅限應用程式層：做伺服器陣列的時後，再選這個精靈來設定 [![](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png) 管理主控台可以做更多的設定 [!">
+<meta itemprop="datePublished" content="2014-12-22T16:49:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-22T16:49:00+00:00" />
+<meta itemprop="wordCount" content="32">
+
+
+
+<meta itemprop="keywords" content="Team Foundation Server," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/team-foundation-server-%E5%AE%89%E8%A3%9D/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Team Foundation Server 安裝</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 22, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team Foundation Server</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/team-foundation-server">Team foundation server</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>首先到<a href="http://www.visualstudio.com/">Visual Studio的官網</a>下載Team Foundation Server 90天免費試用版</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)](http://4.bp.blogspot.com/-hxGsZCAur7w/VJfWVNxQwtI/AAAAAAAAB08/TzIPMCI2qps/s1600/01.png)</div>
+要安裝的時後雙擊tfs_server.exe就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)](http://2.bp.blogspot.com/-A7eVh247ul0/VJfWZ96-FUI/AAAAAAAAB1E/j_r_nc6Z8SY/s1600/02.png)</div>
+勾選接受授權條款後，點擊立即安裝就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)](http://2.bp.blogspot.com/-9z2sc1IX-Kg/VJfWdw4752I/AAAAAAAAB1M/OGwxMcC7-gk/s1600/03.png)</div>
+接下來就會開始跑安裝流程
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)](http://1.bp.blogspot.com/-cqjSmTcP2ss/VJfXrtx3QNI/AAAAAAAAB1Y/HprxZDpDfeM/s1600/04.%E5%AE%89%E8%A3%9D%E4%B8%AD.png)</div>
+安裝成功後會跳出授權畫面，安裝試用版授權會有90天的試用期
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)](http://3.bp.blogspot.com/-DD02x-xmYI0/VJfYbirgJJI/AAAAAAAAB1g/FlmFAefZysw/s1600/05.%E6%8E%88%E6%AC%8A.png)</div>
+接下來就是在組態中心選擇適合自已環境的設定
+Team Foundation Application Server可以選擇幾種層級
+基本：自動在本機安裝SQL 2012 Express版本並使用
+[標準單一伺服器](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631903.aspx)：需自行安裝SQL Server 2008 R2以上的版本，再透過這個精靈來設定
+[進階](http://msdn.microsoft.com/zh-tw/library/vstudio/dd631919.aspx)：SQL Server裝到另外一台機器上面，再用這個精靈來設定
+僅限應用程式層：做伺服器陣列的時後，再選這個精靈來設定
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)](http://2.bp.blogspot.com/-ETId2vPV8uM/VJfYx90Or7I/AAAAAAAAB1o/SJUzKalZ4Ok/s1600/06.%E7%B5%84%E6%85%8B%E4%B8%AD%E5%BF%83.png)</div>
+管理主控台可以做更多的設定
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-xBpczMPsD4w/VJfZR7lSB5I/AAAAAAAAB10/S-_XFmyNdT8/s1600/07.%E7%AE%A1%E7%90%86%E4%B8%BB%E6%8E%A7%E5%8F%B0.png)](http://3.bp.blogspot.com/-xBpczMPsD4w/VJfZR7lSB5I/AAAAAAAAB10/S-_XFmyNdT8/s1600/07.%E7%AE%A1%E7%90%86%E4%B8%BB%E6%8E%A7%E5%8F%B0.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Team%20Foundation%20Server%20%e5%ae%89%e8%a3%9d&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f
+			&title=Team%20Foundation%20Server%20%e5%ae%89%e8%a3%9d&summary=%e9%a6%96%e5%85%88%e5%88%b0Visual%20Studio%e7%9a%84%e5%ae%98%e7%b6%b2%e4%b8%8b%e8%bc%89Team%20Foundation%20Server%2090%e5%a4%a9%e5%85%8d%e8%b2%bb%e8%a9%a6%e7%94%a8%e7%89%88%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-hxGsZCAur7w%2fVJfWVNxQwtI%2fAAAAAAAAB08%2fTzIPMCI2qps%2fs1600%2f01.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-hxGsZCAur7w%2fVJfWVNxQwtI%2fAAAAAAAAB08%2fTzIPMCI2qps%2fs1600%2f01.png%29%20%e8%a6%81%e5%ae%89%e8%a3%9d%e7%9a%84%e6%99%82%e5%be%8c%e9%9b%99%e6%93%8atfs_server.exe%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-A7eVh247ul0%2fVJfWZ96-FUI%2fAAAAAAAAB1E%2fj_r_nc6Z8SY%2fs1600%2f02.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-A7eVh247ul0%2fVJfWZ96-FUI%2fAAAAAAAAB1E%2fj_r_nc6Z8SY%2fs1600%2f02.png%29%20%e5%8b%be%e9%81%b8%e6%8e%a5%e5%8f%97%e6%8e%88%e6%ac%8a%e6%a2%9d%e6%ac%be%e5%be%8c%ef%bc%8c%e9%bb%9e%e6%93%8a%e7%ab%8b%e5%8d%b3%e5%ae%89%e8%a3%9d%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9z2sc1IX-Kg%2fVJfWdw4752I%2fAAAAAAAAB1M%2fOGwxMcC7-gk%2fs1600%2f03.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-9z2sc1IX-Kg%2fVJfWdw4752I%2fAAAAAAAAB1M%2fOGwxMcC7-gk%2fs1600%2f03.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e5%b0%b1%e6%9c%83%e9%96%8b%e5%a7%8b%e8%b7%91%e5%ae%89%e8%a3%9d%e6%b5%81%e7%a8%8b%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-cqjSmTcP2ss%2fVJfXrtx3QNI%2fAAAAAAAAB1Y%2fHprxZDpDfeM%2fs1600%2f04.%25E5%25AE%2589%25E8%25A3%259D%25E4%25B8%25AD.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-cqjSmTcP2ss%2fVJfXrtx3QNI%2fAAAAAAAAB1Y%2fHprxZDpDfeM%2fs1600%2f04.%25E5%25AE%2589%25E8%25A3%259D%25E4%25B8%25AD.png%29%20%e5%ae%89%e8%a3%9d%e6%88%90%e5%8a%9f%e5%be%8c%e6%9c%83%e8%b7%b3%e5%87%ba%e6%8e%88%e6%ac%8a%e7%95%ab%e9%9d%a2%ef%bc%8c%e5%ae%89%e8%a3%9d%e8%a9%a6%e7%94%a8%e7%89%88%e6%8e%88%e6%ac%8a%e6%9c%83%e6%9c%8990%e5%a4%a9%e7%9a%84%e8%a9%a6%e7%94%a8%e6%9c%9f%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-DD02x-xmYI0%2fVJfYbirgJJI%2fAAAAAAAAB1g%2fFlmFAefZysw%2fs1600%2f05.%25E6%258E%2588%25E6%25AC%258A.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-DD02x-xmYI0%2fVJfYbirgJJI%2fAAAAAAAAB1g%2fFlmFAefZysw%2fs1600%2f05.%25E6%258E%2588%25E6%25AC%258A.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e5%b0%b1%e6%98%af%e5%9c%a8%e7%b5%84%e6%85%8b%e4%b8%ad%e5%bf%83%e9%81%b8%e6%93%87%e9%81%a9%e5%90%88%e8%87%aa%e5%b7%b2%e7%92%b0%e5%a2%83%e7%9a%84%e8%a8%ad%e5%ae%9a%20Team%20Foundation%20Application%20Server%e5%8f%af%e4%bb%a5%e9%81%b8%e6%93%87%e5%b9%be%e7%a8%ae%e5%b1%a4%e7%b4%9a%20%e5%9f%ba%e6%9c%ac%ef%bc%9a%e8%87%aa%e5%8b%95%e5%9c%a8%e6%9c%ac%e6%a9%9f%e5%ae%89%e8%a3%9dSQL%202012%20Express%e7%89%88%e6%9c%ac%e4%b8%a6%e4%bd%bf%e7%94%a8%20%5b%e6%a8%99%e6%ba%96%e5%96%ae%e4%b8%80%e4%bc%ba%e6%9c%8d%e5%99%a8%5d%28http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fvstudio%2fdd631903.aspx%29%ef%bc%9a%e9%9c%80%e8%87%aa%e8%a1%8c%e5%ae%89%e8%a3%9dSQL%20Server%202008%20R2%e4%bb%a5%e4%b8%8a%e7%9a%84%e7%89%88%e6%9c%ac%ef%bc%8c%e5%86%8d%e9%80%8f%e9%81%8e%e9%80%99%e5%80%8b%e7%b2%be%e9%9d%88%e4%be%86%e8%a8%ad%e5%ae%9a%20%5b%e9%80%b2%e9%9a%8e%5d%28http%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2flibrary%2fvstudio%2fdd631919.aspx%29%ef%bc%9aSQL%20Server%e8%a3%9d%e5%88%b0%e5%8f%a6%e5%a4%96%e4%b8%80%e5%8f%b0%e6%a9%9f%e5%99%a8%e4%b8%8a%e9%9d%a2%ef%bc%8c%e5%86%8d%e7%94%a8%e9%80%99%e5%80%8b%e7%b2%be%e9%9d%88%e4%be%86%e8%a8%ad%e5%ae%9a%20%e5%83%85%e9%99%90%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e5%b1%a4%ef%bc%9a%e5%81%9a%e4%bc%ba%e6%9c%8d%e5%99%a8%e9%99%a3%e5%88%97%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%86%8d%e9%81%b8%e9%80%99%e5%80%8b%e7%b2%be%e9%9d%88%e4%be%86%e8%a8%ad%e5%ae%9a%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-ETId2vPV8uM%2fVJfYx90Or7I%2fAAAAAAAAB1o%2fSJUzKalZ4Ok%2fs1600%2f06.%25E7%25B5%2584%25E6%2585%258B%25E4%25B8%25AD%25E5%25BF%2583.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-ETId2vPV8uM%2fVJfYx90Or7I%2fAAAAAAAAB1o%2fSJUzKalZ4Ok%2fs1600%2f06.%25E7%25B5%2584%25E6%2585%258B%25E4%25B8%25AD%25E5%25BF%2583.png%29%20%e7%ae%a1%e7%90%86%e4%b8%bb%e6%8e%a7%e5%8f%b0%e5%8f%af%e4%bb%a5%e5%81%9a%e6%9b%b4%e5%a4%9a%e7%9a%84%e8%a8%ad%e5%ae%9a%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Team%20Foundation%20Server%20%e5%ae%89%e8%a3%9d&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fteam-foundation-server-%25E5%25AE%2589%25E8%25A3%259D%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

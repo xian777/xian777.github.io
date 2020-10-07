@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity整合FxCop報表 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=8279)[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png) SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例 安裝好VS2013後，FxCop執行檔的路徑在 FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 在Build Step中新增一個FxCop Runner[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png) 設定內容主要是指定FxCop執行檔的路徑 和要分析的Assembly檔案位置 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 比較方便的方式是到Build Agent上面設定buildAgent.properties加入 system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop 就可以用Autodetect而不用指定路徑了 P.S. 注意跳脫符號 [![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)建置成功後就會多出一個FxCop的數據 [![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)  
+    ">
+
+
+<meta property="og:title" content="TeamCity整合FxCop報表" />
+<meta property="og:description" content="FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=8279)[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png) SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例 安裝好VS2013後，FxCop執行檔的路徑在 FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 在Build Step中新增一個FxCop Runner[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png) 設定內容主要是指定FxCop執行檔的路徑 和要分析的Assembly檔案位置 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 比較方便的方式是到Build Agent上面設定buildAgent.properties加入 system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop 就可以用Autodetect而不用指定路徑了 P.S. 注意跳脫符號 [![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)建置成功後就會多出一個FxCop的數據 [![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88fxcop%E5%A0%B1%E8%A1%A8/" />
+<meta property="article:published_time" content="2014-04-22T14:37:00+00:00" />
+<meta property="article:modified_time" content="2014-04-22T14:37:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity整合FxCop報表"/>
+<meta name="twitter:description" content="FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=8279)[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png) SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例 安裝好VS2013後，FxCop執行檔的路徑在 FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 在Build Step中新增一個FxCop Runner[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png) 設定內容主要是指定FxCop執行檔的路徑 和要分析的Assembly檔案位置 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 比較方便的方式是到Build Agent上面設定buildAgent.properties加入 system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop 就可以用Autodetect而不用指定路徑了 P.S. 注意跳脫符號 [![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)建置成功後就會多出一個FxCop的數據 [![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)  "/>
+
+<meta itemprop="name" content="TeamCity整合FxCop報表">
+<meta itemprop="description" content="FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=8279)[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png) SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例 安裝好VS2013後，FxCop執行檔的路徑在 FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 在Build Step中新增一個FxCop Runner[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png) 設定內容主要是指定FxCop執行檔的路徑 和要分析的Assembly檔案位置 C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop 比較方便的方式是到Build Agent上面設定buildAgent.properties加入 system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop 就可以用Autodetect而不用指定路徑了 P.S. 注意跳脫符號 [![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)建置成功後就會多出一個FxCop的數據 [![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)  ">
+<meta itemprop="datePublished" content="2014-04-22T14:37:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-22T14:37:00+00:00" />
+<meta itemprop="wordCount" content="52">
+
+
+
+<meta itemprop="keywords" content="FxCop,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/teamcity%E6%95%B4%E5%90%88fxcop%E5%A0%B1%E8%A1%A8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity整合FxCop報表</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 22, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    6 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/fxcop">FxCop</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/fxcop">Fx cop</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>FxCop 10的安裝檔在Microsoft Windows SDK中，所以首先要先下載[Windwos SDK](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=8279)</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)](http://2.bp.blogspot.com/-Ryzi5Wp1mxk/U1YM8QFNVeI/AAAAAAAABQY/o5yi63VDzdE/s1600/00.FxCop%E8%BC%89%E9%BB%9E.png)</div>
+<div>SDK安裝好後，安裝檔的路徑在C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\FXCop\FxCopSetup.exe</div>由於VS2013已整合FxCop 12版，所以這裡以FxCop 12版為例
+<div>安裝好VS2013後，FxCop執行檔的路徑在
+FxCop的路徑在C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop</div>
+<div>在Build Step中新增一個FxCop Runner</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)](http://1.bp.blogspot.com/-UPextgdfaqg/U1YNNQYcR0I/AAAAAAAABQg/dl-bnwC9fPQ/s1600/02.%E6%96%B0%E5%A2%9EFxCop.png)</div>
+<div>設定內容主要是指定FxCop執行檔的路徑
+和要分析的Assembly檔案位置
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop
+比較方便的方式是到Build Agent上面設定buildAgent.properties加入
+system.FxCopRoot=C\:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Team Tools\\Static Analysis Tools\\FxCop
+就可以用Autodetect而不用指定路徑了
+P.S. 注意跳脫符號
+</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)](http://4.bp.blogspot.com/-IxO1nBWwCG4/U1YOJCl6c8I/AAAAAAAABQ4/PJnb62unAG0/s1600/03.FxCop%E5%BB%BA%E7%BD%AE%E8%A8%AD%E5%AE%9A.png)</div>建置成功後就會多出一個FxCop的數據
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)](http://3.bp.blogspot.com/-hRYlHqjQsss/U1YR362allI/AAAAAAAABRM/DZZnNx-VHR4/s1600/05.%E7%B8%BD%E8%A1%A8.png)</div><div>點擊連結或是右上角的Code Inspection就會轉入FxCop報表的詳細頁面</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)](http://4.bp.blogspot.com/-5dyGrZH_Lwo/U1YOMJfd2rI/AAAAAAAABRA/3JONiZpg7o8/s1600/04.%E5%BB%BA%E7%BD%AE%E5%A0%B1%E8%A1%A8.png)</div>
+<div>
+</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%e6%95%b4%e5%90%88FxCop%e5%a0%b1%e8%a1%a8&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f
+			&title=TeamCity%e6%95%b4%e5%90%88FxCop%e5%a0%b1%e8%a1%a8&summary=FxCop%2010%e7%9a%84%e5%ae%89%e8%a3%9d%e6%aa%94%e5%9c%a8Microsoft%20Windows%20SDK%e4%b8%ad%ef%bc%8c%e6%89%80%e4%bb%a5%e9%a6%96%e5%85%88%e8%a6%81%e5%85%88%e4%b8%8b%e8%bc%89%5bWindwos%20SDK%5d%28http%3a%2f%2fwww.microsoft.com%2fen-us%2fdownload%2fdetails.aspx%3fdisplaylang%3den%26amp%3bid%3d8279%29%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Ryzi5Wp1mxk%2fU1YM8QFNVeI%2fAAAAAAAABQY%2fo5yi63VDzdE%2fs1600%2f00.FxCop%25E8%25BC%2589%25E9%25BB%259E.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Ryzi5Wp1mxk%2fU1YM8QFNVeI%2fAAAAAAAABQY%2fo5yi63VDzdE%2fs1600%2f00.FxCop%25E8%25BC%2589%25E9%25BB%259E.png%29%20SDK%e5%ae%89%e8%a3%9d%e5%a5%bd%e5%be%8c%ef%bc%8c%e5%ae%89%e8%a3%9d%e6%aa%94%e7%9a%84%e8%b7%af%e5%be%91%e5%9c%a8C%3a%5cProgram%20Files%20%28x86%29%5cMicrosoft%20SDKs%5cWindows%5cv7.0A%5cFXCop%5cFxCopSetup.exe%e7%94%b1%e6%96%bcVS2013%e5%b7%b2%e6%95%b4%e5%90%88FxCop%2012%e7%89%88%ef%bc%8c%e6%89%80%e4%bb%a5%e9%80%99%e8%a3%a1%e4%bb%a5FxCop%2012%e7%89%88%e7%82%ba%e4%be%8b%20%e5%ae%89%e8%a3%9d%e5%a5%bdVS2013%e5%be%8c%ef%bc%8cFxCop%e5%9f%b7%e8%a1%8c%e6%aa%94%e7%9a%84%e8%b7%af%e5%be%91%e5%9c%a8%20FxCop%e7%9a%84%e8%b7%af%e5%be%91%e5%9c%a8C%3a%5cProgram%20Files%20%28x86%29%5cMicrosoft%20Visual%20Studio%2012.0%5cTeam%20Tools%5cStatic%20Analysis%20Tools%5cFxCop%20%e5%9c%a8Build%20Step%e4%b8%ad%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bFxCop%20Runner%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-UPextgdfaqg%2fU1YNNQYcR0I%2fAAAAAAAABQg%2fdl-bnwC9fPQ%2fs1600%2f02.%25E6%2596%25B0%25E5%25A2%259EFxCop.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-UPextgdfaqg%2fU1YNNQYcR0I%2fAAAAAAAABQg%2fdl-bnwC9fPQ%2fs1600%2f02.%25E6%2596%25B0%25E5%25A2%259EFxCop.png%29%20%e8%a8%ad%e5%ae%9a%e5%85%a7%e5%ae%b9%e4%b8%bb%e8%a6%81%e6%98%af%e6%8c%87%e5%ae%9aFxCop%e5%9f%b7%e8%a1%8c%e6%aa%94%e7%9a%84%e8%b7%af%e5%be%91%20%e5%92%8c%e8%a6%81%e5%88%86%e6%9e%90%e7%9a%84Assembly%e6%aa%94%e6%a1%88%e4%bd%8d%e7%bd%ae%20C%3a%5cProgram%20Files%20%28x86%29%5cMicrosoft%20Visual%20Studio%2012.0%5cTeam%20Tools%5cStatic%20Analysis%20Tools%5cFxCop%20%e6%af%94%e8%bc%83%e6%96%b9%e4%be%bf%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e5%88%b0Build%20Agent%e4%b8%8a%e9%9d%a2%e8%a8%ad%e5%ae%9abuildAgent.properties%e5%8a%a0%e5%85%a5%20system.FxCopRoot%3dC%5c%3a%5c%5cProgram%20Files%20%28x86%29%5c%5cMicrosoft%20Visual%20Studio%2012.0%5c%5cTeam%20Tools%5c%5cStatic%20Analysis%20Tools%5c%5cFxCop%20%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%94%a8Autodetect%e8%80%8c%e4%b8%8d%e7%94%a8%e6%8c%87%e5%ae%9a%e8%b7%af%e5%be%91%e4%ba%86%20P.S.%20%e6%b3%a8%e6%84%8f%e8%b7%b3%e8%84%ab%e7%ac%a6%e8%99%9f%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-IxO1nBWwCG4%2fU1YOJCl6c8I%2fAAAAAAAABQ4%2fPJnb62unAG0%2fs1600%2f03.FxCop%25E5%25BB%25BA%25E7%25BD%25AE%25E8%25A8%25AD%25E5%25AE%259A.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-IxO1nBWwCG4%2fU1YOJCl6c8I%2fAAAAAAAABQ4%2fPJnb62unAG0%2fs1600%2f03.FxCop%25E5%25BB%25BA%25E7%25BD%25AE%25E8%25A8%25AD%25E5%25AE%259A.png%29%e5%bb%ba%e7%bd%ae%e6%88%90%e5%8a%9f%e5%be%8c%e5%b0%b1%e6%9c%83%e5%a4%9a%e5%87%ba%e4%b8%80%e5%80%8bFxCop%e7%9a%84%e6%95%b8%e6%93%9a%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hRYlHqjQsss%2fU1YR362allI%2fAAAAAAAABRM%2fDZZnNx-VHR4%2fs1600%2f05.%25E7%25B8%25BD%25E8%25A1%25A8.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-hRYlHqjQsss%2fU1YR362allI%2fAAAAAAAABRM%2fDZZnNx-VHR4%2fs1600%2f05.%25E7%25B8%25BD%25E8%25A1%25A8.png%29%e9%bb%9e%e6%93%8a%e9%80%a3%e7%b5%90%e6%88%96%e6%98%af%e5%8f%b3%e4%b8%8a%e8%a7%92%e7%9a%84Code%20Inspection%e5%b0%b1%e6%9c%83%e8%bd%89%e5%85%a5FxCop%e5%a0%b1%e8%a1%a8%e7%9a%84%e8%a9%b3%e7%b4%b0%e9%a0%81%e9%9d%a2%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-5dyGrZH_Lwo%2fU1YOMJfd2rI%2fAAAAAAAABRA%2f3JONiZpg7o8%2fs1600%2f04.%25E5%25BB%25BA%25E7%25BD%25AE%25E5%25A0%25B1%25E8%25A1%25A8.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-5dyGrZH_Lwo%2fU1YOMJfd2rI%2fAAAAAAAABRA%2f3JONiZpg7o8%2fs1600%2f04.%25E5%25BB%25BA%25E7%25BD%25AE%25E5%25A0%25B1%25E8%25A1%25A8.png%29%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%e6%95%b4%e5%90%88FxCop%e5%a0%b1%e8%a1%a8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fteamcity%25E6%2595%25B4%25E5%2590%2588fxcop%25E5%25A0%25B1%25E8%25A1%25A8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

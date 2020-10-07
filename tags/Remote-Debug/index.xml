@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Remote Debug on My New Hugo Site</title>
+    <link>http://example.org/tags/remote-debug/</link>
+    <description>Recent content in Remote Debug on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Dec 2012 12:03:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/remote-debug/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VS2012 Remote Debug 遠端偵錯</title>
+      <link>http://example.org/posts/2012/12/vs2012-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/</link>
+      <pubDate>Tue, 25 Dec 2012 12:03:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/12/vs2012-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/</guid>
+      <description>VS2012的遠端偵錯變的簡單多了，不再需要驗證身份就可以使用，但相對的作業系統需要更新到Server2008R2以上  [![](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)](http://4.bp.blogspot.com/-lQq_Fp2n3AE/UNkege7WrMI/AAAAAAAAAjU/bjY8oAEdBfQ/s1600/VS2012RemoteDebug.png)首先下載Remote Tools for Visual Studio 2012 [![](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)](http://2.bp.blogspot.com/-VqG02LMi9aE/UNkerTlrF5I/AAAAAAAAAjc/HxWTX18lW5w/s1600/01.Download.png)在伺服器上面安裝遠端偵錯工具  [![](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)](http://3.bp.blogspot.com/-N2cnZ2-rzqM/UNkgRPNpyRI/AAAAAAAAAkE/4bLI0GskB50/s1600/02.InstallUI.png)在Server上安裝好遠端偵錯工具後，打開遠端偵錯工具[![](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png)](http://1.bp.blogspot.com/-ttJKtFGuWWY/UNkk8TCKtZI/AAAAAAAAAk8/d-NO1x5AcVg/s1600/03.Start.png) 設定成非驗證模式，允許任何使用者執行偵錯，和延長閒置時間[![](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)](http://3.bp.blogspot.com/-7wjO-1g8oRg/UNkkyfqDIuI/AAAAAAAAAk0/HeaygtT76r8/s1600/04.Connect.png)打開VS2012，附加執行緒，選擇遠端(非驗證)，輸入IP和Port號，找到執行檔附加即可 [![](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png)](http://4.bp.blogspot.com/-umj_9g07B-w/UNklLCMLIDI/AAAAAAAAAlE/-j_M1y-EV7I/s1600/05.Attach.png) 上一篇: [VS2010 Remote Debug 遠端偵錯](http://blog.</description>
+    </item>
+    
+    <item>
+      <title>VS2010 Remote Debug 遠端偵錯</title>
+      <link>http://example.org/posts/2012/09/vs2010-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/</link>
+      <pubDate>Fri, 28 Sep 2012 15:09:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/09/vs2010-remote-debug-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF/</guid>
+      <description>前言 很多時後特別是設定檔的原因，直接在開發環境的伺服器上面遠端偵錯，比較容易找到問題點，但ASP.NET的遠端偵錯之前一直搞不定，後來爬了許多文並做了多次的試驗後才搞定，主要問題分成兩個部份，防火牆的設定相對來說比較簡單，大部份都是帳號權限的問題比較麻煩，在此記錄一下，以供日後老年癡呆的時後服用
+首先先從簡單的防火牆設定開始 http://msdn.microsoft.com/zh-tw/library/ee126350%28v=vs.100%29.aspx
+ 本機防火牆設定 遠端偵錯 DCOM:TCP 135 遠端偵錯 DCOM UDP IPSec UDP:500,4500 允許Vistual Studio接收網路訊息 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe  在附加執行緒的時後，如果本機的防火牆設定沒開，預設就會跳出這個訊息 
+選擇解除了就會幫你打開相對應的Port 
+ 遠端防火牆設定 遠端偵錯 DCOM TCP 135 IPSec 遠端偵錯 DCOM UDP 500, 4500 遠端偵錯檔案及印表機 TCP 139, 445 遠端偵錯檔案及印表機 UDP 137, 138 為 Visual Studio msvcmon.exe 處理序新增例外 SystemDrive:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE  在伺服器上面使用遠端偵錯工具組態精靈進行設定比較簡單 
+再來就是問題比較多的帳號權限問題 http://msdn.microsoft.com/zh-tw/library/9y5b4b4f.aspx
+ 重點1:每台電腦上都必須有本機使用者帳戶，而且兩個帳戶的使用者名稱和密碼都必須相同 重點2:如果您要以不同的使用者帳戶執行  剛開始我是在本機和遠端都另外開一個帳號，密碼都一樣，在內部開發環境中順利執行遠端偵錯 但後來換了線上環境，卻又發生帳號權限問題，再多爬一些文後，才發現問題在這裡 也就是說本機附加執行緒的時後，用的是打開Visual Studio的帳號連線到遠端 而遠端接收連線後也要連回來本機，用的是打開msvsmon的帳號 開發環境隨便搞都沒關系，但線上環境就不能亂動了，更何況是加帳號 所以最簡單的方法，就是使用遠端的管理員帳號，然後讓本機來配合遠端的密碼，首先開啟遠端的偵錯工具</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on My New Hugo Site</title>
+    <link>http://example.org/tags/c#/</link>
+    <description>Recent content in C# on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jun 2016 14:12:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>StyleCop SA1208 排列Using時先放置System指示詞</title>
+      <link>http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/</link>
+      <pubDate>Tue, 07 Jun 2016 14:12:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/</guid>
+      <description>在使用組合管理Using-&amp;gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&amp;gt;選項-&amp;gt;文字編輯器-&amp;gt;C#-&amp;gt;進階- 排序Usning時先放置System指示詞勾起來就行了</description>
+    </item>
+    
+    <item>
+      <title>C# HexString to ByteArray</title>
+      <link>http://example.org/posts/2015/03/c-hexstring-to-bytearray/</link>
+      <pubDate>Wed, 04 Mar 2015 15:43:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/03/c-hexstring-to-bytearray/</guid>
+      <description>16進位的字串轉成ByteArray
+namespace ConsoleApplication1 { using System; using System.Linq; class Program { static void Main(string[] args) { string hexstring = &amp;quot;0123456789abcdef&amp;quot;; byte[] byteArray = Enumerable.Range(0, hexstring.Length) .Where(x =&amp;amp;gt; x % 2 == 0) .Select(x =&amp;amp;gt; Convert.ToByte(hexstring.Substring(x, 2), 16)) .ToArray(); Console.WriteLine(BitConverter.ToString(byteArray)); } }  }</description>
+    </item>
+    
+    <item>
+      <title>C# 多國語系</title>
+      <link>http://example.org/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/</link>
+      <pubDate>Mon, 07 Apr 2014 15:31:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/04/c-%E5%A4%9A%E5%9C%8B%E8%AA%9E%E7%B3%BB/</guid>
+      <description>C#的語系格式為languagecode2-country/regioncode2 可用以下列的語法列舉出所有語系 foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures)) { Console.WriteLine(ci.Name); }  在.NET3.5之前簡中為zh-CHS，繁中為zh-CHT 在NET4.0之後簡中為zh-Hans，繁中為zh-Hant在C#中影響目前語系的屬性有二個 Thread.CurrentThread.CurrentCulture影響的是控制台中的設定 [![](http://3.bp.blogspot.com/-yAGbJRIJZFk/U0JM_0G_KvI/AAAAAAAABIE/yihmCUKpkbw/s1600/01.%E6%8E%A7%E5%88%B6%E5%8F%B0.png)](http://3.bp.blogspot.com/-yAGbJRIJZFk/U0JM_0G_KvI/AAAAAAAABIE/yihmCUKpkbw/s1600/01.%E6%8E%A7%E5%88%B6%E5%8F%B0.png) 例如日期、數字、貨幣的顯示格式[![](http://3.bp.blogspot.com/-am2qr9Txbm4/U0JNC5e2TdI/AAAAAAAABIM/EWAZZGoXLSM/s1600/02.%E6%A0%BC%E5%BC%8F.png)](http://3.bp.blogspot.com/-am2qr9Txbm4/U0JNC5e2TdI/AAAAAAAABIM/EWAZZGoXLSM/s1600/02.%E6%A0%BC%E5%BC%8F.png) Thread.CurrentThread.CurrentUICulture影響的則是要選用那個語系的資源檔在ASP.NET中可以透過設定檔來啟用多國語系 &amp;lt;system.web&amp;gt; &amp;lt;globalization culture=&#34;auto&#34; uiCulture=&#34;auto&#34; /&amp;gt; &amp;lt;/system.web&amp;gt;  就會自動以Http通訊協定中的Accept-Language的順序來選擇語系 [![](http://3.bp.blogspot.com/-79chB1gPP78/U0JNMI80AsI/AAAAAAAABIU/FszxyUony9U/s1600/03.AcceptLanguage.png)](http://3.bp.blogspot.com/-79chB1gPP78/U0JNMI80AsI/AAAAAAAABIU/FszxyUony9U/s1600/03.AcceptLanguage.png) 以ASP.NET WebForm為例，可以利用兩個特殊的資料夾 App_GlobalResources裡面的資源檔是全域的 App_LocalResources裡面的資源檔則是只有該層目錄下有效 將資源檔的名稱取成和Page一樣，就可以在頁面中使用GetLocalResourceObject取出資源檔中的值 [![](http://2.bp.blogspot.com/-UOsyS9PleYY/U0JNUJfjIaI/AAAAAAAABIc/0iWHhGU_GeI/s1600/04.LocalResources.png)](http://2.bp.blogspot.com/-UOsyS9PleYY/U0JNUJfjIaI/AAAAAAAABIc/0iWHhGU_GeI/s1600/04.LocalResources.png) namespace WebApplication1 { public partial class Default : System.Web.UI.Page { protected void Page_Load(object sender, EventArgs e) { Object s1 = this.GetLocalResourceObject(&#34;s1&#34;); Response.Write(s1.ToString()); } } }  除了依瀏覽器的設定來選擇語系之外，也可以強制指定語系 比較常見的情況是讓使用者自行選擇語系後用cookie或session記住 然後在AcquireRequestState事件中取代目前的指定語系 namespace WebApplication1 { public class Global : System.Web.HttpApplication { protected void Application_Start(object sender, EventArgs e) { }  protected void Application_AcquireRequestState(object sender, EventArgs e) { HttpCookie cookie = this.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 筆記</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Tue, 28 Jan 2014 14:31:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E7%AD%86%E8%A8%98/</guid>
+      <description>Windows Service 開發 http://blog.developer.idv.tw/2014/01/windows-service.html
+Windows Service 本機偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_20.html
+Windows Service 遠端偵錯方式 http://blog.developer.idv.tw/2014/01/windows-service_8048.html
+Windows Service 啟動參數 http://blog.developer.idv.tw/2014/01/windows-service_6343.html
+Windows Service 控制介面 http://blog.developer.idv.tw/2014/01/windows-service_3882.html
+TopShelf http://blog.developer.idv.tw/2016/01/topshelf.html</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 控制介面</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Mon, 20 Jan 2014 18:52:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%8E%A7%E5%88%B6%E4%BB%8B%E9%9D%A2/</guid>
+      <description>ServiceController這個類別可以用來控制Service的狀態 詳細的資訊請參考MSDN上面的文件
+新增一個Windows Form應用程式來當範例
+[![](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-9Zaajyh2xjg/Utz6R411nDI/AAAAAAAAA_c/OENaeRnmfCQ/s1600/01.%E6%96%B0%E5%B0%88%E6%A1%88.png) 首先要先參考System.ServiceProcess這個元件 [![](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png)](http://3.bp.blogspot.com/-6sDG8aGMtxo/Utz6eAxax9I/AAAAAAAAA_k/-aidHLl07JQ/s1600/02.ServiceProcess.png) 簡單拉兩個按鈕來控制啟動或停止服務 [![](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png)](http://4.bp.blogspot.com/-e7Ashr3npdo/Utz-zlUNARI/AAAAAAAAA_w/_XQ09xrhLi8/s1600/03.%E6%8C%89%E9%88%95.png) 在Button Click事件中，透過ServiceController來切換狀態 private void Btn_Start_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(&#34;Service1&#34;)) { // 設定一個 Timeout 時間，若超過 30 秒啟動不成功就宣告失敗 TimeSpan timeout = TimeSpan.FromMilliseconds(1000 * 30);  // 啟動服務 objSC.Start(); // 設定該服務必須在timeout時間內切換到Running狀態 objSC.WaitForStatus(ServiceControllerStatus.Running, timeout); }  }
+private void Btn_Stop_Click(object sender, EventArgs e) { // 設定服務 using (ServiceController objSC = new ServiceController(&amp;ldquo;Service1&amp;rdquo;)) { // 若該服務不是「停用」的狀態，才將其停止運作，否則會引發 Exception
+if (objSC.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 啟動參數</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/</link>
+      <pubDate>Mon, 20 Jan 2014 18:13:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8/</guid>
+      <description>Windows Service可以透過幾種方式來傳入啟動參數 可以利用服務的啟動參數
+[![](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png)](http://1.bp.blogspot.com/-23WhzTbJ75Y/UtzyuOGrojI/AAAAAAAAA-Q/Pnyc88yUKcw/s1600/02.%E5%95%9F%E5%8B%95%E5%8F%83%E6%95%B8.png) OnStart就可以收到參數 [![](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png)](http://2.bp.blogspot.com/-0B5CCS1rGhc/UtzyyZKFSGI/AAAAAAAAA-Y/sCbNvZRXSdg/s1600/03.Args.png) 但需要注意這種方式只能設定一次，下次啟動還要再設定才行 透過命令列的話有兩種方式 net start service1 /3000 /yyyyMMddHHmmss 但這種方式收到的參數也會有斜線 [![](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png)](http://2.bp.blogspot.com/-lwImaTWKjac/Utz0jVWsL2I/AAAAAAAAA-k/j-Sc7uTxWoc/s1600/07.%E6%9C%89%E6%96%9C%E7%B7%9A.png) sc start service1 3000 yyyyMMddHHmmss 這種方式就不會有斜線了 還有一種方式是設定在服務機碼的ImagePath後面 需要透過覆寫安裝程式的Install函式來完成
+using System.Collections; using System.ComponentModel; using Microsoft.Win32; namespace MyService { [RunInstaller(true)] public partial class ProjectInstaller : System.Configuration.Install.Installer { public ProjectInstaller() { InitializeComponent(); }
+ public override void Install(IDictionary stateSaver) { base.Install(stateSaver); // 安裝的時後增加啟動參數 RegistryKey System = Registry.LocalMachine.OpenSubKey(&amp;quot;System&amp;quot;); RegistryKey currentControlSet = System.OpenSubKey(&amp;quot;CurrentControlSet&amp;quot;); RegistryKey services = currentControlSet.OpenSubKey(&amp;quot;Services&amp;quot;); RegistryKey service = services.</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 遠端偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Jan 2014 16:54:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</guid>
+      <description>通常在本機開發的時後都是沒有問題的，會發生問題都是佈署到正式環境後才會發生=&amp;quot;= 而用一般遠端偵錯的方式，都是已經啟動服務成功才能下中斷點 如果問題出在啟動失敗的話，就中斷不到 這種情境可以加入System.Diagnostics.Debugger.Launch(); 讓應用程式等待偵錯工具的連入後才會繼續執行下去
+using System.ServiceProcess; namespace MyService { public partial class Service1 : ServiceBase { private NowTimeReporter reporter = new NowTimeReporter();
+ public Service1() { InitializeComponent(); // 偵錯中斷用 System.Diagnostics.Debugger.Launch(); } protected override void OnStart(string[] args) { this.reporter.Start(); } protected override void OnStop() { this.reporter.Stop(); } }  }  執行start.bat來啟動服務
+net start Service1  就會跳出選擇偵錯工具的畫面，這裡先不選擇 [![](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png)](http://4.bp.blogspot.com/-M5Yf05_bGOY/UtzipUSGl4I/AAAAAAAAA9s/cJf4tdbcxzU/s1600/05.%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7.png) 回到本機，選擇工具-&amp;gt;附加執行緒，選擇遠端和輸入IP，再選擇執行檔，然後附加就行了 [![](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png)](http://4.bp.blogspot.com/-uGb298oEAvQ/UtzhrLGSTuI/AAAAAAAAA9g/VvbGAN2T-N8/s1600/07.%E9%81%A0%E7%AB%AF%E5%81%B5%E9%8C%AF.png) 到Server中上放開偵錯工具選擇畫面 [![](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png)](http://2.bp.blogspot.com/-BusT8ywXWiA/Utzi77WLxFI/AAAAAAAAA90/JnWf7kSvQXs/s1600/08.%E6%94%BE%E9%96%8B.png) 就會停在System.Diagnostics.Debugger.Launch();這一行
+[![](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png)](http://3.bp.blogspot.com/-03HYHEc8Wc0/UtzeoQPD90I/AAAAAAAAA9I/0OhDXBJnB4Y/s1600/06.%E4%B8%AD%E6%96%B7.png) 在本機也可以用這種偵錯方式，就不用到應用程式進入點去動手腳 只要讓服務啟動，再選擇偵錯工具連入就行了 [![](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png)](http://2.bp.blogspot.com/-02isQmXS3aw/UtzkHFl5KlI/AAAAAAAAA-A/g8Jzp4hsUG0/s1600/09.%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF.png) </description>
+    </item>
+    
+    <item>
+      <title>Windows Service 本機偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/</link>
+      <pubDate>Mon, 20 Jan 2014 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F-1/</guid>
+      <description>Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = &amp;ldquo;yyyy/MM/dd HH:mm:ss&amp;rdquo;;</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 本機偵錯方式</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Jan 2014 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E6%9C%AC%E6%A9%9F%E5%81%B5%E9%8C%AF%E6%96%B9%E5%BC%8F/</guid>
+      <description>Windows Service輸出類型雖然是Windows 應用程式
+[![](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png)](http://2.bp.blogspot.com/-gYEQnP9vcX0/UtzUoK5OSuI/AAAAAAAAA8I/CG9AE2X77G0/s1600/01.%E5%B0%88%E6%A1%88%E9%A1%9E%E5%9E%8B.png) 但開發的時後直接執行卻會出現啟動錯誤的提示訊息 [![](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png)](http://3.bp.blogspot.com/-k-LwIRVhZpI/UtzUsdZe7DI/AAAAAAAAA8Q/TzHsZQQvEvI/s1600/02.%E5%95%9F%E5%8B%95%E9%8C%AF%E8%AA%A4.png) 原因在於程式進入點是用ServiceBase來啟動，而不是Application.Run using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }  為了方便本機開發，就需要先動點手腳 首先先把邏輯拆到獨立的類別去，並公開Start和Stop方法
+using System; using System.Timers; using Common.Logging; namespace MyService { internal class NowTimeReporter { private Timer timer; private ILog log; private double timerInterval = 1000; private string datetimeFormat = &amp;ldquo;yyyy/MM/dd HH:mm:ss&amp;rdquo;;</description>
+    </item>
+    
+    <item>
+      <title>Windows Service 開發</title>
+      <link>http://example.org/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/</link>
+      <pubDate>Mon, 20 Jan 2014 13:45:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/01/windows-service-%E9%96%8B%E7%99%BC/</guid>
+      <description>Windows Service是一種沒有UI，開機後不需使用者登入就會執行的應用程式，通常會用來做一些定時排程的工作。 用C#開發Windows Service很簡單，以下用一個簡單的範例來介紹
+ 首先開一個新專案，名稱為MyService[![](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png)](http://4.bp.blogspot.com/-nPZ1TWcF_gE/UtyZHPYoD6I/AAAAAAAAA5U/PmOegTcO0ZQ/s1600/01.NewProject.png) 在方案總管中可以看到，只有Program.cs和Service1.cs兩個檔案[![](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png)](http://3.bp.blogspot.com/-67GklNvhUr4/UtyZTsHucXI/AAAAAAAAA5c/tGlNpdjspvM/s1600/02.%E6%96%B9%E6%A1%88%E7%B8%BD%E7%AE%A1.png) 先來看看Program.cs，這是應用程式的進入點，主要是透過ServiceBase.Run來啟動服務using System.ServiceProcess; namespace MyService { static class Program { /// &amp;lt;summary&amp;gt; /// 應用程式的主要進入點。 /// &amp;lt;/summary&amp;gt; static void Main() { ServiceBase[] ServicesToRun; ServicesToRun = new ServiceBase[] { new Service1() }; ServiceBase.Run(ServicesToRun); } } }
+再來看一下Service1.cs，可以看到是繼承自ServiceBase的類別，再自行覆寫要處理的事件using System.ServiceProcess;
+namespace MyService { public partial class Service1 : ServiceBase { public Service1() { InitializeComponent(); }
+ protected override void OnStart(string[] args) { } protected override void OnStop() { } }  }</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 日期處理</title>
+      <link>http://example.org/posts/2013/07/json-net-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Mon, 01 Jul 2013 15:49:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/07/json-net-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>Json.Net 序列化的日期格式，在4.5版之前是Microsoft Date Format:&#34;\/Date(ticks)\/&#34; 4.5版之後，預設的日期格式已經改成[ISO 8601 standard](http://en.wikipedia.org/wiki/ISO_8601) 可以透過JsonSerializerSettings的方式來指定序列化的格式 反序列化的時後會自動識別不需另外指定 另外還有一種JavaScript格式，需要透過指定JavaScriptDateTimeConverter來轉換 反序列化的時後也需要明確指定，否則會出現錯誤
+DateTime d = DateTime.Now; Console.WriteLine(&amp;ldquo;datetime:{0}\r\n&amp;rdquo;, d);
+// ISO8601的格式 string jsonString1 = JsonConvert.SerializeObject(d); Console.WriteLine(&amp;ldquo;ISO8601 Date Format:{0}&amp;rdquo;, jsonString1); DateTime d1 = JsonConvert.DeserializeObject&amp;lt;DateTime&amp;gt;(jsonString1); Console.WriteLine(&amp;ldquo;datetime:{0}, kind:{1}\r\n&amp;rdquo;, d1, d1.Kind);
+// Microsoft Date Format string jsonString2 = JsonConvert.SerializeObject( d, new JsonSerializerSettings() { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat }); Console.WriteLine(&amp;ldquo;Microsoft Date Format:{0}&amp;rdquo;, jsonString2); DateTime d2 = JsonConvert.DeserializeObject&amp;lt;DateTime&amp;gt;(jsonString2); Console.WriteLine(&amp;ldquo;datetime:{0}, kind:{1}\r\n&amp;rdquo;, d2, d2.Kind);
+// JavaScript Date Format string jsonString3 = JsonConvert.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 轉換IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9Bidictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 27 Jun 2013 16:41:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9Bidictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>Json.Net 處理 IDictionary介面的方式，會解析成物件的key和value 以下是一個簡單的例子 // 淮備資料 Dictionary&amp;lt;string, string&amp;gt; dict1 = new Dictionary&amp;lt;string, string&amp;gt;() { {&#34;a&#34;, &#34;1&#34;}, {&#34;b&#34;, &#34;2&#34;}, {&#34;c&#34;, &#34;3&#34;}, }; // 序列化 string jsonString = JsonConvert.SerializeObject(dict1); Console.WriteLine(jsonString);
+// 反序列化 Dictionary&amp;lt;string, string&amp;gt; dict2 = JsonConvert.DeserializeObject&amp;lt;Dictionary&amp;lt;string, string&amp;gt;&amp;gt;(jsonString); foreach (KeyValuePair&amp;lt;string, string&amp;gt; item in dict2) { Console.WriteLine(&amp;ldquo;key:{0}, value:{1}&amp;rdquo;, item.Key, item.Value); }
+Console.ReadLine(); 
+執行結果 [!</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 27 Jun 2013 16:31:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>Json.Net對於IEnumerable介面的處理，同樣是序列化成陣列的格式 首先先宣告個物件以便之後的處理 private class Person { public int id { get; set; } public string name { get; set; } public DateTime date { get; set; } }  轉換IEnumerable介面，以List為例 static void Main(string[] args) { // 淮備資料 List&amp;lt;Person&amp;gt; list1 = new List&amp;lt;Person&amp;gt;() { new Person() { id = 1, name = &#34;p1&#34;, date = DateTime.Today.AddDays(-1)  }, new Person() { id = 2, name=&amp;quot;p2&amp;quot;, date = DateTime.Today }, new Person() { id = 3, name = &amp;quot;p3&amp;quot;, date = DateTime.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 用法</title>
+      <link>http://example.org/posts/2013/06/json-net-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Thu, 27 Jun 2013 16:02:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先用最基本的JsonTextWriter和JsonTextReader JsonTextWriter使用成對的方法來輸出Json字串 JsonTextReader使用Read方法來持續讀取Json字串 看得出來在使用上有點拖泥帶水static void Main(string[] args) { string jsonString = string.Empty; using (StringWriter sw = new StringWriter()) { using (JsonTextWriter writer = new JsonTextWriter(sw)) { // 開始輸出物件 writer.WriteStartObject(); // 輸出屬性:id writer.WritePropertyName(&amp;quot;id&amp;quot;); writer.WriteValue(1); // 輸出屬性:name writer.WritePropertyName(&amp;quot;name&amp;quot;); writer.WriteValue(&amp;quot;xian&amp;quot;); // 輸出屬性today writer.WritePropertyName(&amp;quot;today&amp;quot;); writer.WriteValue(DateTime.Today); // 開始輸出陣列 writer.WritePropertyName(&amp;quot;arraydata&amp;quot;); writer.WriteStartArray(); writer.WriteValue(1); writer.WriteValue(2); writer.WriteValue(3); // 結束輸出陣列 writer.WriteEndArray(); // 結束串出物件 writer.WriteEndObject(); } jsonString = sw.ToString(); Console.WriteLine(jsonString); } using (StringReader sr = new StringReader(jsonString)) { using (JsonTextReader reader = new JsonTextReader(sr)) { while (reader.</description>
+    </item>
+    
+    <item>
+      <title>Json.Net 介紹</title>
+      <link>http://example.org/posts/2013/06/json-net-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Thu, 27 Jun 2013 15:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/json-net-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>Json.Net 是一個第三方套件，其強大的功能和.Net內建的比較表，可以去官網看一下 個人比較有感覺的差別是
+ 支援.Net 2.0 支援LINQ  支援暱名類別 支援dynamic物件 日期格式為ISO8601該專案為Open Source，可以到codeplex下載原始碼  安裝的方式也很簡單，打開NuGet輸入Json.Net就行了  [![](http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png)](http://1.bp.blogspot.com/-BDn6mLRndto/UcvaxUgwvEI/AAAAAAAAAww/fu0JjG4R5HE/s1600/01.png)Json.Net也有完整的[線上文件](http://james.newtonking.com/projects/json/help/)可以參考 以下是Json.Net常用的物件
+ [JsonConvert](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 最容易使用的一個靜態工具類別  [JsonTextReader](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 讀取Json格式  [JsonTextWriter](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm) 輸出Json格式  [JObject](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json物件，就是大括號包起來的部份  [JArray](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json陣列，就是中括號包起來的部份  [JValue](http://james.newtonking.com/projects/json/help/index.html?topic=html/JsonNetVsDotNetSerializers.htm#) 對應Json值的部份  </description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 日期處理</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Thu, 20 Jun 2013 16:25:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>使用DataContractJsonSerializer序列化日期時，格式為\/Date(ticks+時區資料)\/這個樣子 因為有時區資料，所以不用像JavaScriptSerializer一樣還要手動加上ToLocalTime函式// 初始化DataContractJsonSerializer類別 DateTime d1 = DateTime.Now; DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(DateTime)); string jsonString = string.Empty; // 序列化資料 using (MemoryStream ms = new MemoryStream()) { dcjs.WriteObject(ms, d1); jsonString = Encoding.UTF8.GetString(ms.ToArray()); Console.WriteLine(jsonString); Console.WriteLine(); }
+// 反序列化資料 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString))) { DateTime d2 = (DateTime)dcjs.ReadObject(ms); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); }
+Console.ReadLine(); 
+執行結果 [![](http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png)](http://1.bp.blogspot.com/-BYDVvul8U9Q/UcK6kL-DMWI/AAAAAAAAAwQ/TbbHuT0BD2A/s1600/04-4.png) 使用JavaScript處理的時後，因為多了時區資料，所以reg要修改一下 打開一個Chrome的主控台並輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;today&#34;: &#34;\/Date(1371716206301+0800)\/&#34;}; // 看一下資料解析的樣子 data.today;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 轉換 IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 20 Jun 2013 15:50:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>轉換IDictionary介面的方式也一樣，只要注意初始化DataContractJsonSerializer類別時傳入IDictionary介面就好 但是輸出的結果並不如預期中為物件的格式 直接宣告一個Dictionary來當範例// 淮備序列化的類別資料 Dictionary&amp;lt;int, object&amp;gt; dataList = new Dictionary&amp;lt;int, object&amp;gt;() { {1, &#34;a&#34;}, {2, &#34;b&#34;}, {3, &#34;c&#34;} };  初始化時要傳入這個Dictionary的型別 // 初始化DataContractJsonSerializer類別 DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(Dictionary&amp;lt;int, object&amp;gt;)); string jsonString = string.Empty;  序列化的方式一樣 // 序列化資料 using (MemoryStream ms = new MemoryStream()) { dcjs.WriteObject(ms, dataList); jsonString = Encoding.UTF8.GetString(ms.ToArray()); Console.WriteLine(jsonString); Console.WriteLine(); }  反序列化的方式也一樣 // 反序列化資料 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString))) { Dictionary&amp;lt;int, object&amp;gt; data2List = dcjs.ReadObject(ms) as Dictionary&amp;lt;int, object&amp;gt;; foreach (KeyValuePair&amp;lt;int, object&amp;gt; item in data2List) { Console.</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Thu, 20 Jun 2013 15:34:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&amp;lt;JsonData&amp;gt; dataList = new List&amp;lt;JsonData&amp;gt;() { new JsonData() { Id = 1, Name = &#34;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 用法</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Thu, 20 Jun 2013 15:15:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先需要先定義資料類別 [DataContract](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datacontractattribute.aspx)用來標記類別 [DataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.datamemberattribute.aspx)用來標記屬性，Name可以用來變更序列化後的名稱，Order則是序列化的順序 [IgnoreDataMember](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.ignoredatamemberattribute.aspx)用來標記屬性，表示不參與序列化過程[DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+初始化DataContractJsonSerializer類別時，需傳入要序列化的資料型別 // 淮備序列化的類別資料 JsonData d1 = new JsonData() { Id = 1, Name = &#34;</description>
+    </item>
+    
+    <item>
+      <title>DataContractJsonSerializer 介紹</title>
+      <link>http://example.org/posts/2013/06/datacontractjsonserializer-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Thu, 20 Jun 2013 14:35:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/datacontractjsonserializer-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>JavaScriptSerializer是.NET 3.5中新增的類別 該類別在System.Runtime.Serialization.Json命名空間下面 需引用System.Runtime.Serialization.dll建構式  [DataContractJsonSerializer(Type)](http://msdn.microsoft.com/zh-tw/library/bb908625.aspx) 傳入要轉換的資料型別  [DataContractJsonSerializer(Type, DataContractJsonSerializerSettings)](http://msdn.microsoft.com/zh-tw/library/hh194418.aspx) 傳入要轉換的資料型別，和設定值   方法  [WriteObject](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.writeobject.aspx)  將物件序列化成JSON字串  [ReadObject](http://msdn.microsoft.com/zh-tw/library/system.runtime.serialization.json.datacontractjsonserializer.readobject.aspx)  將JSON字串反序列化成指定的物件   參考資料 System.Runtime.Serialization.Json 命名空間</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer ScriptIgnoreAttribute</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-scriptignoreattribute/</link>
+      <pubDate>Wed, 19 Jun 2013 17:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-scriptignoreattribute/</guid>
+      <description>ScriptIgnore這個Attribute是用來取消屬性或欄位的序列化 using System; using System.Web.Script.Serialization; namespace ConsoleApplication1 { class Program { static void Main(string[] args) { string jsonString = string.Empty; Data data = new Data() { Id = 1, Name = &amp;ldquo;data&amp;rdquo; };
+ JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(data); Console.WriteLine(jsonString); Console.ReadLine(); } private class Data { public int Id { get; set; } public string Name { get; set; } } }  } 
+執行結果如下[![](http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png)](http://2.bp.blogspot.com/-PHlgEgUvvCM/UcF933vdXNI/AAAAAAAAAvI/ry4MXPXtNNc/s1600/02r1.png) 加上ScriptIgnore這個Attribute之後 using System; using System.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 日期處理</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</link>
+      <pubDate>Wed, 19 Jun 2013 17:20:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E6%97%A5%E6%9C%9F%E8%99%95%E7%90%86/</guid>
+      <description>使用JavaScriptSerializer序列化日期時，格式會長的像\/Date(ticks)\/這個樣子 其中的tick為1970/1/1到目前為止的毫秒數 因為沒有時區資訊，而且預設會轉換成UTC時間 所以反序列化回來的時後，會有時區的問題string jsonString = string.Empty; DateTime d1 = DateTime.Now; JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&amp;lt;DateTime&amp;gt;(jsonString); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); Console.ReadLine();執行結果如下 解決方法很簡單，反序列化回來的時後，記得把時間ToLocalTime就好了 string jsonString = string.Empty; DateTime d1 = DateTime.Now;
+JavaScriptSerializer jss = new JavaScriptSerializer(); jsonString = jss.Serialize(d1); Console.WriteLine(jsonString);
+DateTime d2 = jss.Deserialize&amp;lt;DateTime&amp;gt;(jsonString).ToLocalTime(); Console.WriteLine(&amp;ldquo;d1:{0}, kind:{1}&amp;rdquo;, d1, d1.Kind); Console.WriteLine(&amp;ldquo;d2:{0}, kind:{1}&amp;rdquo;, d2, d2.Kind); Console.ReadLine(); 執行結果如下 
+[![](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)&amp;nbsp;](http://1.bp.blogspot.com/-4i59tTlZwkQ/UcFu8u1O6fI/AAAAAAAAAuo/dy_4uxVg2UY/s1600/01.r2.png)另外一個問題是傳到JavaScript的時後，只會把這樣的格式當成字串，需要自行拆解 打開一個Chrome的主控台來測試一下，輸入以下幾行指令// 建立一個JSON格式的資料 data = { &#34;</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 轉換 IDictionary 介面</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Tue, 18 Jun 2013 18:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-idictionary-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>一樣開個新的Console專案，和加入System.Web.Extensions.dll參考 完整的程式碼如下using System; using System.Collections.Generic; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 Dictionary&amp;lt;string, object&amp;gt; data = new Dictionary&amp;lt;string, object&amp;gt;() { { &amp;ldquo;ID&amp;rdquo;, 1 }, { &amp;ldquo;Name&amp;rdquo;, &amp;ldquo;Dictionary Demo&amp;rdquo; }, { &amp;ldquo;State&amp;rdquo;, EnumState.c }, { &amp;ldquo;Date&amp;rdquo;, DateTime.Today }, { &amp;ldquo;Guid&amp;rdquo;, Guid.NewGuid() } };
+ // 序列化 JavaScriptSerializer jss = new JavaScriptSerializer(); string jsonString = jss.Serialize(data); Console.WriteLine(&amp;quot;序列化的JSON字串:{0}\r\n&amp;quot;, jsonString); // 反序列化 JsonObject obj = jss.Deserialize&amp;amp;lt;JsonObject&amp;amp;gt;(jsonString); Console.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 介紹</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E4%BB%8B%E7%B4%B9/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E4%BB%8B%E7%B4%B9/</guid>
+      <description>JavaScriptSerializer是.NET 3.5中新增的類別 該類別在System.Web.Script.Serialization命名空間下面 需引用System.Web.Extensions.dll
+方法
+ [Serialize](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.serialize%28v=vs.90%29.aspx) 將物件序列化成JSON字串  [Deserialize&amp;lt;T&amp;gt;](http://msdn.microsoft.com/zh-tw/library/bb355316%28v=vs.90%29.aspx) 將JSON字串反序列化成指定的物件   屬性
+ [MaxJsonLength](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.maxjsonlength%28v=vs.90%29.aspx) 取得或設定可接受的字串最大長度，預設為4MB  [RecursionLimit](http://msdn.microsoft.com/zh-tw/library/system.web.script.serialization.javascriptserializer.recursionlimit%28v=vs.90%29.aspx) 取得或設定要處理物件層級數目的限制   參考資料 System.Web.Script.Serialization 命名空間</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 用法</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E7%94%A8%E6%B3%95/</guid>
+      <description>首先開一個Console專案[![](http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png)](http://1.bp.blogspot.com/-VwDQgSVGz-U/UcAj3KvmOLI/AAAAAAAAAtI/Kf254EFNRiY/s1600/01.NewProject.png)加入System.Web.Extensions.dll的引用[![](http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png)](http://2.bp.blogspot.com/-nxGL-_thS3A/UcAkAWtjyxI/AAAAAAAAAtQ/BRmfRy3LwFM/s1600/02.AddReference.png)完整的程式碼如下using System; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 JsonObject data = new JsonObject() { ID = 1, Name = &amp;ldquo;JsonObject&amp;rdquo;, State = EnumState.c, Date = DateTime.Today, GUID = Guid.NewGuid() };
+ // 序列化 JavaScriptSerializer jss = new JavaScriptSerializer(); string jsonString = jss.Serialize(data); Console.WriteLine(&amp;quot;序列化的JSON字串:{0}\r\n&amp;quot;, jsonString); // 反序列化 JsonObject obj = jss.Deserialize&amp;amp;lt;JsonObject&amp;amp;gt;(jsonString); Console.WriteLine( &amp;quot;反序列化後的物件, ID:{0}, Name:{1}, State:{2}, Date:{3}, GUID:{4}&amp;quot;, obj.ID, obj.Name, obj.State, obj.Date, obj.</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptSerializer 轉換 IEnumerable 介面</title>
+      <link>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</link>
+      <pubDate>Tue, 18 Jun 2013 18:39:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/06/javascriptserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/</guid>
+      <description>一樣開新Console專案做示範，並加入System.Web.Extensions.dll參考 完整的程式碼如下using System; using System.Collections.Generic; using System.Web.Script.Serialization; namespace JavaScriptSerializerDemo { class Program { static void Main(string[] args) { // 淮備要序列化的資料 List&amp;lt;JsonObject&amp;gt; data = new List&amp;lt;JsonObject&amp;gt;() { new JsonObject() { ID = 1, Name = &amp;ldquo;JsonObject1&amp;rdquo;, State = EnumState.a, Date = DateTime.Today.AddDays(-1), GUID = Guid.NewGuid() }, new JsonObject() { ID = 2, Name = &amp;ldquo;JsonObject2&amp;rdquo;, State = EnumState.b, Date = DateTime.Today, GUID = Guid.NewGuid() }, new JsonObject() { ID = 3, Name = &amp;ldquo;JsonObject3&amp;rdquo;, State = EnumState.</description>
+    </item>
+    
+  </channel>
+</rss>

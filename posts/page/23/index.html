@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Posts | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="List of all articles in section- Posts">
+
+
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/posts/" />
+<meta property="og:updated_time" content="2018-09-14T14:25:42+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/posts/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1 class="title is-3">Posts</h1>
+</div>
+
+
+<div class="blog-brief">
+    <a href="/posts/2014/09/nlog-database-target/">
+        <h3 class="title is-4">
+            NLog Database Target
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/09/nlog-database-target/">
+                    <p class="subtitle info date">Sep 18, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/09/nlog-database-target/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nlog">NLog</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/09/nlog-database-target/">
+                <p class="summary">
+                    NLog要把Log存到資料庫的話，可以透過Database這個taget
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &lt;targets&gt; &lt;target xsi:type=&#34;Database&#34; name=&#34;db&#34; connectionString=&#34;data source=(localdb)\v11.0;database=LogDB; trusted_connection=true;&#34; commandText=&#34;INSERT INTO NLog_Error(ThreadId, MachineName, LogName, LogLevel, LogMessage, CallSite, Exception, Stacktrace) VALUES (@ThreadId, @MachineName, @LogName, @LogLevel, @LogMessage, @CallSite, @Exception, @Stacktrace);&#34;&gt; &lt;parameter name=&#34;@ThreadId&#34; layout=&#34;${threadid}&#34;/&gt; &lt;parameter name=&#34;@MachineName&#34; layout=&#34;${machinename}&#34;/&gt; &lt;parameter name=&#34;@LogName&#34; layout=&#34;${logger}&#34;/&gt; &lt;parameter name=&#34;@LogLevel&#34; layout=&#34;${level}&#34;/&gt; &lt;parameter name=&#34;@LogMessage&#34; layout=&#34;${message}&#34;/&gt; &lt;parameter name=&#34;@CallSite&#34; layout=&#34;${callsite:filename=true}&#34;/&gt; &lt;parameter name=&#34;@Exception&#34; layout=&#34;${exception}&#34;/&gt; &lt;parameter name=&#34;@stacktrace&#34; layout=&#34;${stacktrace}&#34;/&gt; &lt;/target&gt; &lt;/targets&gt; &lt;rules&gt; &lt;logger name=&#34;*&#34; minlevel=&#34;Trace&#34; writeTo=&#34;db&#34; /&gt; &lt;/rules&gt; &lt;/nlog&gt; 資料庫的Table Schema
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/09/nlog-database-target/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/09/elmah-error-logging-modules-and-handlers/">
+        <h3 class="title is-4">
+            Elmah (Error Logging Modules and Handlers)
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/09/elmah-error-logging-modules-and-handlers/">
+                    <p class="subtitle info date">Sep 16, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/09/elmah-error-logging-modules-and-handlers/">
+                    <p class="subtitle info">
+                        4 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/elmah">Elmah</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/09/elmah-error-logging-modules-and-handlers/">
+                <p class="summary">
+                    Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &lt;configSections&gt; &lt;sectionGroup name=&#34;elmah&#34;&gt; &lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&gt; &lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&gt; &lt;/sectionGroup&gt; &lt;/configSections&gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &lt;elmah&gt; &lt;security allowRemoteAccess=&#34;false&#34; /&gt; &lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/09/elmah-error-logging-modules-and-handlers/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/">
+        <h3 class="title is-4">
+            個人常用Log格式筆記
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/">
+                    <p class="subtitle info date">Aug 28, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/nlog">NLog</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/">
+                <p class="summary">
+                    個人常用的Log格式，在此記錄一下
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;!--  See https://github.com/nlog/nlog/wiki/Configuration-file for information on customizing logging rules and outputs. –&gt; &lt;targets async=&#34;true”&gt; &lt;default-wrapper xsi:type=&#34;BufferingWrapper” bufferSize=&#34;500” flushTimeout=&#34;3000” /&gt;
+ &amp;lt;target xsi:type=&#34;Chainsaw&#34; name=&#34;console&#34; address=&#34;udp4://127.0.0.1:7071&#34; layout=&#34;${longdate} ${uppercase:${level}} ${message}&#34; /&amp;gt; &amp;lt;target xsi:type=&#34;File&#34; name=&#34;file&#34; fileName=&#34;D:\LogFiles\Proj_Log\${shortdate}\${date:format=yyyy-MM-dd-HH}.log&#34; layout=&#34;${longdate} ${uppercase:${level}} ${message}${newline}${onexception:inner=${newline}Exception:${newline}${exception:format=ToString}${newline}}STACKTRACE:${newline}${stacktrace:format=DetailedFlat}&#34; /&amp;gt;&lt;/pre&gt;&lt;pre class=&#34;brush:xml&#34;&gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&#34;*&#34; minlevel=&#34;Trace&#34; writeTo=&#34;console,file&#34; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/08/%E5%80%8B%E4%BA%BA%E5%B8%B8%E7%94%A8log%E6%A0%BC%E5%BC%8F%E7%AD%86%E8%A8%98/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/">
+        <h3 class="title is-4">
+            Select2套件搭配MVC專案
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/">
+                    <p class="subtitle info date">Aug 26, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/asp.net">ASP.NET</a>
+            
+            <a class="tag is-rounded" href="/tags/mvc">MVC</a>
+            
+            <a class="tag is-rounded" href="/tags/select2">Select2</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/">
+                <p class="summary">
+                    首先開一個MVC專案
+[![](http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://1.bp.blogspot.com/-S1UzcfC0Y1o/U_wrT7TrJtI/AAAAAAAABj8/lbIoB2J113k/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet引用Select2.js套件 [![](http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png)](http://3.bp.blogspot.com/-r0BD97ZmLPs/U_wrT5xcPTI/AAAAAAAABkE/LM86LOjUes0/s1600/02.%E5%BC%95%E7%94%A8%E5%8F%83%E8%80%83.png) 因為MVC使用Bootstrap框架，所以需要搭配[select2-bootstrap.css](http://zh-tw.cdnjs.com/libraries/select2)來修正畫面的輸出 [![](http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png)](http://1.bp.blogspot.com/-D8ZI1EUPzcI/U_wrTxzEHOI/AAAAAAAABkA/rzGEPLiMOzw/s1600/03.SelectBootstrap.png) 新增一個HomeModel用來傳遞資料 public class HomeModel { public IEnumerable&lt;int&gt; DataList { get; set; } }  在Controler中透過ViewBag，傳入一個MultiSelectList public ActionResult Index() { this.ViewBag.DataList = new MultiSelectList( new List&lt;SelectListItem&gt;() { new SelectListItem{ Text=&#34;aaa&#34;, Value=&#34;1&#34;}, new SelectListItem{ Text=&#34;bbb&#34;, Value=&#34;2&#34;}, new SelectListItem{ Text=&#34;ccc&#34;, Value=&#34;3&#34;}, }, &#34;Value&#34;, &#34;Text&#34;); return View();  }  在View中透過@Html.ListBoxFor輸出下拉選單
+@using WebApplication1.ViewModels @model HomeModel @{ ViewBag.Title = &#34;Index&#34;; } &lt;h2&gt;Index&lt;/h2&gt;
+&lt;div class=&#34;form-horizontal”&gt; &lt;div class=&#34;form-group”&gt; @Html.LabelFor(x =&gt; x.DataList, new { @class = “col-md-2 label-control” }) &lt;div class=&#34;col-md-10”&gt; @Html.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/08/select2%E5%A5%97%E4%BB%B6%E6%90%AD%E9%85%8Dmvc%E5%B0%88%E6%A1%88/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/posts/2014/08/select2-%E5%A5%97%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
+        <h3 class="title is-4">
+            Select2 套件基本用法
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2014/08/select2-%E5%A5%97%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
+                    <p class="subtitle info date">Aug 22, 2014
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2014/08/select2-%E5%A5%97%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
+                    <p class="subtitle info">
+                        2 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/asp.net">ASP.NET</a>
+            
+            <a class="tag is-rounded" href="/tags/nuget">NuGet</a>
+            
+            <a class="tag is-rounded" href="/tags/select2">Select2</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2014/08/select2-%E5%A5%97%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
+                <p class="summary">
+                    Select2 套件是一個加強下拉選單的套件，官網提供了許多詳細的示範 這裡用一個簡單的例子來介紹這個套件 首先開一個Web專案
+[![](http://3.bp.blogspot.com/--1rBcMtW1Y0/U_bkynIQwNI/AAAAAAAABic/OlnDplvnK8I/s1600/01.%E9%96%8B%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/--1rBcMtW1Y0/U_bkynIQwNI/AAAAAAAABic/OlnDplvnK8I/s1600/01.%E9%96%8B%E5%B0%88%E6%A1%88.png) 用一個html頁面來練習 [![](http://2.bp.blogspot.com/-ToVRuf067nQ/U_bk416LpLI/AAAAAAAABik/Nsn2uLwtv3E/s1600/02.%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2.png)](http://2.bp.blogspot.com/-ToVRuf067nQ/U_bk416LpLI/AAAAAAAABik/Nsn2uLwtv3E/s1600/02.%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2.png) 透過NuGet新增select2.js套件 [![](http://1.bp.blogspot.com/-LsOCKW5DqQc/U_bk_S6qg0I/AAAAAAAABis/y5G7T6NOi9U/s1600/03.select2%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-LsOCKW5DqQc/U_bk_S6qg0I/AAAAAAAABis/y5G7T6NOi9U/s1600/03.select2%E5%A5%97%E4%BB%B6.png) select2.js套件包含了CSS和JavaScript和語系 [![](http://4.bp.blogspot.com/-Hy2TdLfmd7s/U_blD22Tm9I/AAAAAAAABi0/vvZC8707Vl4/s1600/04.%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B.png)](http://4.bp.blogspot.com/-Hy2TdLfmd7s/U_blD22Tm9I/AAAAAAAABi0/vvZC8707Vl4/s1600/04.%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B.png) 在html裡面引用CSS和JavaScript，該套件相依於JQuery，最低版本1.7以上 [![](http://4.bp.blogspot.com/-lKdMrr5EHxA/U_blHcBAGQI/AAAAAAAABi8/9EF63xjvhCc/s1600/05.%E5%BC%95%E5%85%A5%E6%AA%94%E6%A1%88.png)](http://4.bp.blogspot.com/-lKdMrr5EHxA/U_blHcBAGQI/AAAAAAAABi8/9EF63xjvhCc/s1600/05.%E5%BC%95%E5%85%A5%E6%AA%94%E6%A1%88.png) 手動輸入一個下拉選單 [![](http://1.bp.blogspot.com/-pz9TUisEjcc/U_blLbXR6jI/AAAAAAAABjE/4VypAffM6h8/s1600/06.%E5%8A%A0%E5%85%A5%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE.png)](http://1.bp.blogspot.com/-pz9TUisEjcc/U_blLbXR6jI/AAAAAAAABjE/4VypAffM6h8/s1600/06.%E5%8A%A0%E5%85%A5%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE.png) 一般的下拉選單看起來像這個樣子 [![](http://3.bp.blogspot.com/-rXD3i6ufPks/U_blO9ka_eI/AAAAAAAABjM/WNgZSkYrBF4/s1600/07.%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://3.bp.blogspot.com/-rXD3i6ufPks/U_blO9ka_eI/AAAAAAAABjM/WNgZSkYrBF4/s1600/07.%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E7%9A%84%E6%A8%A3%E5%AD%90.png) 透過JQuery啟用select2 [![](http://4.bp.blogspot.com/-GBLzgQcd89M/U_blSWWuvlI/AAAAAAAABjU/KBZSwC8Jd2o/s1600/08.%E5%8A%A0%E5%85%A5JQuery.png)](http://4.bp.blogspot.com/-GBLzgQcd89M/U_blSWWuvlI/AAAAAAAABjU/KBZSwC8Jd2o/s1600/08.%E5%8A%A0%E5%85%A5JQuery.png) 看起來漂亮多了，而已還有查詢過濾的功能 [![](http://1.bp.blogspot.com/-EoqcBDY_4Ho/U_blWRJoSyI/AAAAAAAABjc/xnp3Qs6hpmg/s1600/09.%E5%A5%97%E4%BB%B6select2%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-EoqcBDY_4Ho/U_blWRJoSyI/AAAAAAAABjc/xnp3Qs6hpmg/s1600/09.%E5%A5%97%E4%BB%B6select2%E7%9A%84%E6%A8%A3%E5%AD%90.png) 加入多選屬性 [![](http://3.bp.blogspot.com/-BRgdJ_TQ1lI/U_blaO3szHI/AAAAAAAABjk/reLmSAgoFe0/s1600/10.%E5%8A%A0%E5%85%A5%E5%A4%9A%E9%81%B8.png)](http://3.bp.blogspot.com/-BRgdJ_TQ1lI/U_blaO3szHI/AAAAAAAABjk/reLmSAgoFe0/s1600/10.%E5%8A%A0%E5%85%A5%E5%A4%9A%E9%81%B8.png) Select2套件的多選功能 [![](http://1.bp.blogspot.com/-5tm6ArFLpfI/U_bld8UpKyI/AAAAAAAABjs/Nha7t2csK6M/s1600/11.%E5%A4%9A%E9%81%B8%E7%9A%84%E6%A8%A3%E5%AD%90.png)](http://1.bp.blogspot.com/-5tm6ArFLpfI/U_bld8UpKyI/AAAAAAAABjs/Nha7t2csK6M/s1600/11.%E5%A4%9A%E9%81%B8%E7%9A%84%E6%A8%A3%E5%AD%90.png) 參考資料 Select2 官網
+Select 2 CDN
+Select2 Bootstrap 3 CSS
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2014/08/select2-%E5%A5%97%E4%BB%B6%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+    
+    
+
+        
+
+        
+        
+
+        
+        
+            
+        
+
+    
+
+
+
+
+
+<section class="section">
+    <nav class="pagination is-centered">
+
+        
+            <a class="pagination-previous is-dark" href="/posts/page/22/">Previous</a>
+        
+
+        
+            <a class="pagination-next" href="/posts/page/24/">Next page</a>
+        
+
+
+        <ul class="pagination-list">
+
+        
+
+            
+            
+
+                <li><a href="/posts/" class="pagination-link">1</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/22/" class="pagination-link">22</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/23/" class="pagination-link is-current">23</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/24/" class="pagination-link">24</a></li>
+
+                
+                
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                
+
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+        
+
+            
+            
+
+                <li><a href="/posts/page/52/" class="pagination-link">52</a></li>
+
+                
+                
+
+            
+
+        
+
+        </ul>
+    </nav>
+</section>
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

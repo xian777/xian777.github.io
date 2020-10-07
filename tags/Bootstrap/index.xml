@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bootstrap on My New Hugo Site</title>
+    <link>http://example.org/tags/bootstrap/</link>
+    <description>Recent content in Bootstrap on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Nov 2015 21:33:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/bootstrap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bootstrap.Switch</title>
+      <link>http://example.org/posts/2015/11/bootstrap-switch/</link>
+      <pubDate>Mon, 30 Nov 2015 21:33:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/11/bootstrap-switch/</guid>
+      <description>首先安裝Bootstrap.Switch這個套件
+[![](http://4.bp.blogspot.com/-faOE9uyJuH4/VlxQFVdS3AI/AAAAAAAADZg/edkXVZQdkYI/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6.png)](http://4.bp.blogspot.com/-faOE9uyJuH4/VlxQFVdS3AI/AAAAAAAADZg/edkXVZQdkYI/s1600/01.%25E5%25A5%2597%25E4%25BB%25B6.png) 引用css和javascript [![](http://3.bp.blogspot.com/-O730AbiP9DQ/VlxQFTVg2SI/AAAAAAAADZo/J0uQGJcf1GE/s1600/02.%25E5%25BC%2595%25E7%2594%25A8.png)](http://3.bp.blogspot.com/-O730AbiP9DQ/VlxQFTVg2SI/AAAAAAAADZo/J0uQGJcf1GE/s1600/02.%25E5%25BC%2595%25E7%2594%25A8.png) 透過JQuery呼叫bootstrapSwitch這個方法 [![](http://2.bp.blogspot.com/-d4QNIxCS2dc/VlxQFtjzgII/AAAAAAAADZk/IRsfWZMh-Z8/s1600/03.code.png)](http://2.bp.blogspot.com/-d4QNIxCS2dc/VlxQFtjzgII/AAAAAAAADZk/IRsfWZMh-Z8/s1600/03.code.png) 原本的checkbox就會變成開關的樣式了 [![](http://2.bp.blogspot.com/-E4lEQttojp4/VlxQF823nOI/AAAAAAAADZs/W4zb19LYzXk/s1600/04.%25E7%25B5%2590%25E6%259E%259C.png)](http://2.bp.blogspot.com/-E4lEQttojp4/VlxQF823nOI/AAAAAAAADZs/W4zb19LYzXk/s1600/04.%25E7%25B5%2590%25E6%259E%259C.png) 參考資料 [Bootstrap Switch 官網](http://www.</description>
+    </item>
+    
+    <item>
+      <title>Bootstrap button loading text</title>
+      <link>http://example.org/posts/2014/10/bootstrap-button-loading-text/</link>
+      <pubDate>Wed, 01 Oct 2014 13:48:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/bootstrap-button-loading-text/</guid>
+      <description>Bootstrap的Button上，加上data-loading-text的屬性，可以很簡單地做到clickonce的功能 透過JQuery來設定button的狀態 btn.button(&amp;ldquo;loading&amp;rdquo;)會顯示data-loading-text設定的文字，並且把button設為disabled btn.button(&amp;ldquo;reset&amp;rdquo;)會恢復button的狀態
+ 相關資料 [spin.js 套件](http://blog.developer.idv.tw/2014/10/spinjs.html) [http://blog.developer.idv.tw/2014/10/spinjs.html](http://blog.developer.idv.tw/2014/10/spinjs.html) ladda-bootstrap 套件 http://blog.developer.idv.tw/2014/10/ladda-bootstrap.html</description>
+    </item>
+    
+  </channel>
+</rss>

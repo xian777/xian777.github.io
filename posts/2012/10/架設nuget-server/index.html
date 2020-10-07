@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    架設Nuget.Server | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先建立一個空白的Web應用程式專案 
+再來使用Nuget安裝Nuget.Server這個套件 ](http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png)
+VS2012需檢查一下是否有兩個compilation區段 ](http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png)
+順便設定一下apiKey，這是之後用來上傳package的密碼 ](http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png)
+  設定完後，按下F5應該會看到這樣的畫面
+  上面的網址是查詢Nuget套件資訊用的
+  下面的命令是之後用command line工具上傳套件的指令格式 ](http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png)
+  工具-&gt;選項-&gt;套件管理員-&gt;套件來源
+  在這裡把剛的網址設定上去 ](http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png)
+  使用Nuget的時後，就會發現多了一個來源 ](http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png)
+    ">
+
+
+<meta property="og:title" content="架設Nuget.Server" />
+<meta property="og:description" content="首先建立一個空白的Web應用程式專案 
+再來使用Nuget安裝Nuget.Server這個套件 ](http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png)
+VS2012需檢查一下是否有兩個compilation區段 ](http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png)
+順便設定一下apiKey，這是之後用來上傳package的密碼 ](http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png)
+  設定完後，按下F5應該會看到這樣的畫面
+  上面的網址是查詢Nuget套件資訊用的
+  下面的命令是之後用command line工具上傳套件的指令格式 ](http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png)
+  工具-&gt;選項-&gt;套件管理員-&gt;套件來源
+  在這裡把剛的網址設定上去 ](http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png)
+  使用Nuget的時後，就會發現多了一個來源 ](http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADnuget-server/" />
+<meta property="article:published_time" content="2012-10-17T11:15:00+00:00" />
+<meta property="article:modified_time" content="2012-10-17T11:15:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="架設Nuget.Server"/>
+<meta name="twitter:description" content="首先建立一個空白的Web應用程式專案 
+再來使用Nuget安裝Nuget.Server這個套件 ](http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png)
+VS2012需檢查一下是否有兩個compilation區段 ](http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png)
+順便設定一下apiKey，這是之後用來上傳package的密碼 ](http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png)
+  設定完後，按下F5應該會看到這樣的畫面
+  上面的網址是查詢Nuget套件資訊用的
+  下面的命令是之後用command line工具上傳套件的指令格式 ](http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png)
+  工具-&gt;選項-&gt;套件管理員-&gt;套件來源
+  在這裡把剛的網址設定上去 ](http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png)
+  使用Nuget的時後，就會發現多了一個來源 ](http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png)"/>
+
+<meta itemprop="name" content="架設Nuget.Server">
+<meta itemprop="description" content="首先建立一個空白的Web應用程式專案 
+再來使用Nuget安裝Nuget.Server這個套件 ](http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png)
+VS2012需檢查一下是否有兩個compilation區段 ](http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png)
+順便設定一下apiKey，這是之後用來上傳package的密碼 ](http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png)
+  設定完後，按下F5應該會看到這樣的畫面
+  上面的網址是查詢Nuget套件資訊用的
+  下面的命令是之後用command line工具上傳套件的指令格式 ](http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png)
+  工具-&gt;選項-&gt;套件管理員-&gt;套件來源
+  在這裡把剛的網址設定上去 ](http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png)
+  使用Nuget的時後，就會發現多了一個來源 ](http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png)">
+<meta itemprop="datePublished" content="2012-10-17T11:15:00+00:00" />
+<meta itemprop="dateModified" content="2012-10-17T11:15:00+00:00" />
+<meta itemprop="wordCount" content="17">
+
+
+
+<meta itemprop="keywords" content="NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADnuget-server/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>架設Nuget.Server</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 17, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先建立一個空白的web應用程式專案">首先建立一個空白的Web應用程式專案</h2>
+<p><a href="http://3.bp.blogspot.com/-5RPTDkv_WAw/UH4fA3LkznI/AAAAAAAAAIM/KkYwIituHkA/s1600/01.NewProject.png"><img src="http://3.bp.blogspot.com/-5RPTDkv_WAw/UH4fA3LkznI/AAAAAAAAAIM/KkYwIituHkA/s1600/01.NewProject.png" alt=""></a></p>
+<h2 id="再來使用nuget安裝nugetserver這個套件">再來使用Nuget安裝Nuget.Server這個套件</h2>
+<p><img src="http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png" alt="">](<a href="http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png">http://1.bp.blogspot.com/-Y35bQtZfSsY/UH4fBo6X46I/AAAAAAAAAIQ/Nw3tlc4gEtU/s1600/02.NugetServer.png</a>)</p>
+<h2 id="vs2012需檢查一下是否有兩個compilation區段">VS2012需檢查一下是否有兩個compilation區段</h2>
+<p><img src="http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png" alt="">](<a href="http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png">http://3.bp.blogspot.com/-MBIm4bi6t0s/UH4fCb-AHtI/AAAAAAAAAIY/bZx8QYobEO8/s1600/03.ConfigError.png</a>)</p>
+<h2 id="順便設定一下apikey這是之後用來上傳package的密碼">順便設定一下apiKey，這是之後用來上傳package的密碼</h2>
+<p><img src="http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png" alt="">](<a href="http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png">http://3.bp.blogspot.com/-nf5rin61TbM/UH4fDWK1JaI/AAAAAAAAAIk/46OQrDyq65A/s1600/04.ApiKey.png</a>)</p>
+<ul>
+<li>
+<p>設定完後，按下F5應該會看到這樣的畫面</p>
+</li>
+<li>
+<p>上面的網址是查詢Nuget套件資訊用的</p>
+</li>
+<li>
+<p>下面的命令是之後用command line工具上傳套件的指令格式
+<img src="http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png" alt="">](<a href="http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png">http://1.bp.blogspot.com/-1rhRqaKxNi4/UH4fESz8e6I/AAAAAAAAAIo/KBPtNfg9k5w/s1600/05.Default.png</a>)</p>
+</li>
+<li>
+<p>工具-&gt;選項-&gt;套件管理員-&gt;套件來源</p>
+</li>
+<li>
+<p>在這裡把剛的網址設定上去
+<img src="http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png" alt="">](<a href="http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png">http://1.bp.blogspot.com/-PAeK1lQ1tpY/UH4fEysT_-I/AAAAAAAAAIw/-9rtYt4W5T8/s1600/06.Setting.png</a>)</p>
+</li>
+</ul>
+<h2 id="使用nuget的時後就會發現多了一個來源">使用Nuget的時後，就會發現多了一個來源</h2>
+<p><img src="http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png" alt="">](<a href="http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png">http://3.bp.blogspot.com/-fZlBCZsU2i8/UH4ifzL3qtI/AAAAAAAAAJI/D1EF7scCW9Y/s1600/07.source.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e6%9e%b6%e8%a8%adNuget.Server&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f
+			&title=%e6%9e%b6%e8%a8%adNuget.Server&summary=%e9%a6%96%e5%85%88%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8b%e7%a9%ba%e7%99%bd%e7%9a%84Web%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e5%b0%88%e6%a1%88%20%0a%e5%86%8d%e4%be%86%e4%bd%bf%e7%94%a8Nuget%e5%ae%89%e8%a3%9dNuget.Server%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Y35bQtZfSsY%2fUH4fBo6X46I%2fAAAAAAAAAIQ%2fNw3tlc4gEtU%2fs1600%2f02.NugetServer.png%29%0aVS2012%e9%9c%80%e6%aa%a2%e6%9f%a5%e4%b8%80%e4%b8%8b%e6%98%af%e5%90%a6%e6%9c%89%e5%85%a9%e5%80%8bcompilation%e5%8d%80%e6%ae%b5%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-MBIm4bi6t0s%2fUH4fCb-AHtI%2fAAAAAAAAAIY%2fbZx8QYobEO8%2fs1600%2f03.ConfigError.png%29%0a%e9%a0%86%e4%be%bf%e8%a8%ad%e5%ae%9a%e4%b8%80%e4%b8%8bapiKey%ef%bc%8c%e9%80%99%e6%98%af%e4%b9%8b%e5%be%8c%e7%94%a8%e4%be%86%e4%b8%8a%e5%82%b3package%e7%9a%84%e5%af%86%e7%a2%bc%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-nf5rin61TbM%2fUH4fDWK1JaI%2fAAAAAAAAAIk%2f46OQrDyq65A%2fs1600%2f04.ApiKey.png%29%0a%20%20%e8%a8%ad%e5%ae%9a%e5%ae%8c%e5%be%8c%ef%bc%8c%e6%8c%89%e4%b8%8bF5%e6%87%89%e8%a9%b2%e6%9c%83%e7%9c%8b%e5%88%b0%e9%80%99%e6%a8%a3%e7%9a%84%e7%95%ab%e9%9d%a2%0a%20%20%e4%b8%8a%e9%9d%a2%e7%9a%84%e7%b6%b2%e5%9d%80%e6%98%af%e6%9f%a5%e8%a9%a2Nuget%e5%a5%97%e4%bb%b6%e8%b3%87%e8%a8%8a%e7%94%a8%e7%9a%84%0a%20%20%e4%b8%8b%e9%9d%a2%e7%9a%84%e5%91%bd%e4%bb%a4%e6%98%af%e4%b9%8b%e5%be%8c%e7%94%a8command%20line%e5%b7%a5%e5%85%b7%e4%b8%8a%e5%82%b3%e5%a5%97%e4%bb%b6%e7%9a%84%e6%8c%87%e4%bb%a4%e6%a0%bc%e5%bc%8f%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-1rhRqaKxNi4%2fUH4fESz8e6I%2fAAAAAAAAAIo%2fKBPtNfg9k5w%2fs1600%2f05.Default.png%29%0a%20%20%e5%b7%a5%e5%85%b7-%26gt%3b%e9%81%b8%e9%a0%85-%26gt%3b%e5%a5%97%e4%bb%b6%e7%ae%a1%e7%90%86%e5%93%a1-%26gt%3b%e5%a5%97%e4%bb%b6%e4%be%86%e6%ba%90%0a%20%20%e5%9c%a8%e9%80%99%e8%a3%a1%e6%8a%8a%e5%89%9b%e7%9a%84%e7%b6%b2%e5%9d%80%e8%a8%ad%e5%ae%9a%e4%b8%8a%e5%8e%bb%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-PAeK1lQ1tpY%2fUH4fEysT_-I%2fAAAAAAAAAIw%2f-9rtYt4W5T8%2fs1600%2f06.Setting.png%29%0a%20%20%e4%bd%bf%e7%94%a8Nuget%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%b0%b1%e6%9c%83%e7%99%bc%e7%8f%be%e5%a4%9a%e4%ba%86%e4%b8%80%e5%80%8b%e4%be%86%e6%ba%90%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-fZlBCZsU2i8%2fUH4ifzL3qtI%2fAAAAAAAAAJI%2fD1EF7scCW9Y%2fs1600%2f07.source.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e6%9e%b6%e8%a8%adNuget.Server&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E6%259E%25B6%25E8%25A8%25ADnuget-server%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

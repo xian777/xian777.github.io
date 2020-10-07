@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    App.config | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A description for the meta tag of the site
+    ">
+
+
+<meta property="og:title" content="app.config" />
+<meta property="og:description" content="A description for the meta tag of the site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/tags/app.config/" />
+<meta property="og:updated_time" content="2012-08-18T17:58:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="app.config"/>
+<meta name="twitter:description" content="A description for the meta tag of the site"/>
+
+<meta itemprop="name" content="app.config">
+<meta itemprop="description" content="A description for the meta tag of the site">
+
+<link rel="canonical" href="http://example.org/tags/app.config/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1>App.config</h1>
+</div>
+
+<div class="blog-brief">
+    <a href="/posts/2012/08/app-config-transformations/">
+        <h3 class="title is-4">
+            App.config Transformations
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/posts/2012/08/app-config-transformations/">
+                    <p class="subtitle info date">Aug 18, 2012
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/posts/2012/08/app-config-transformations/">
+                    <p class="subtitle info">
+                        3 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/app.config">App.config</a>
+            
+            <a class="tag is-rounded" href="/tags/xdt-transform">XDT Transform</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/posts/2012/08/app-config-transformations/">
+                <p class="summary">
+                    前言 使用過內建的web.config transform功能，對於佈署不同環境時更新設定檔內容很有幫助 但app.config並沒有這樣的功能，之前搜尋了一些解法，大部份是自行修改專案檔，並利用MSBuild來轉換XML檔案 那一次研究到頭暈眼花還搞不定，就暫時放下，改天境界有所提升再來研究 最近又想到這個問題，趁著失眠的時後再來摸一下，應該可以很快就睡著XD 結果找到了這個套件，用滑鼠點一點就搞定了，使用上方便多了
+首先先下載SlowCheetah這個套件 安裝並重新啟動後，在app.config上面點右鍵，會出現這個Add Transform功能選項 ](http://3.bp.blogspot.com/-eD-oI9lRbjQ/UC9h51R2VZI/AAAAAAAAAAo/RL1zOHSjxrU/s1600/02.AddTransform.png)
+按下後，會跳出一個警告視窗，提示會修改你的專案檔來完成app.config的轉換功能 ](http://3.bp.blogspot.com/-hZFwvWz7Jn4/UC9h6tFmWtI/AAAAAAAAAAs/ZmaHtC_mDzo/s1600/03.Alert.png)
+按下「是」後 ，會自動幫你依組態新增出對應的config檔案 ](http://3.bp.blogspot.com/-dyVGcKN93PQ/UC9lbptDKlI/AAAAAAAAABc/heOoWKUG5Cs/s1600/035&#43;Result.png)
+這是一個簡單的設定檔內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;configuration&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;127.0.0.1&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; providerName=&#34;System.Data.SqlClient&#34; connectionString=&#34;Data Source=(local);Initial Catalog=DemoDB;Integrated Security=True&#34;/&gt; &lt;/connectionStrings&gt; &lt;/configuration&gt; 在Debug組態的設定檔中，改變了設定檔的內容 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;!– For more information on using transformations see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134\. –&gt; &lt;configuration xmlns:xdt=&#34;http://schemas.microsoft.com/XML-Document-Transform&#34;&gt; &lt;appSettings&gt; &lt;add key=&#34;ServerIP&#34; value=&#34;192.168.100.11&#34; xdt:Transform=&#34;SetAttribute&#34; xdt:Locator=&#34;Match(key)&#34; /&gt; &lt;/appSettings&gt; &lt;connectionStrings&gt; &lt;add name=&#34;MyDB&#34; connectionString=&#34;Data Source=192.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/posts/2012/08/app-config-transformations/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

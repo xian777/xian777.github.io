@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop 程式碼風格和一致性規則檢查工具 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com 首先下載msi格式的安裝檔[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png) 下載回來後一直按下一步就行了[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png) 等幾分鐘才能跑完[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png) 打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png) 工作清單就會出現一堆不符合的警告在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 [![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png) 如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png) 就會跳出StyleCop的說明手冊[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png) 在專案上面按右鍵，可以選擇設定[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png) 顯示的設定介面[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png) 專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值  [!
+    ">
+
+
+<meta property="og:title" content="StyleCop 程式碼風格和一致性規則檢查工具" />
+<meta property="og:description" content="StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com 首先下載msi格式的安裝檔[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png) 下載回來後一直按下一步就行了[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png) 等幾分鐘才能跑完[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png) 打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png) 工作清單就會出現一堆不符合的警告在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 [![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png) 如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png) 就會跳出StyleCop的說明手冊[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png) 在專案上面按右鍵，可以選擇設定[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png) 顯示的設定介面[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png) 專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值  [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7%E8%A6%8F%E5%89%87%E6%AA%A2%E6%9F%A5%E5%B7%A5%E5%85%B7/" />
+<meta property="article:published_time" content="2012-12-24T19:54:00+00:00" />
+<meta property="article:modified_time" content="2012-12-24T19:54:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop 程式碼風格和一致性規則檢查工具"/>
+<meta name="twitter:description" content="StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com 首先下載msi格式的安裝檔[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png) 下載回來後一直按下一步就行了[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png) 等幾分鐘才能跑完[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png) 打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png) 工作清單就會出現一堆不符合的警告在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 [![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png) 如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png) 就會跳出StyleCop的說明手冊[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png) 在專案上面按右鍵，可以選擇設定[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png) 顯示的設定介面[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png) 專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值  [!"/>
+
+<meta itemprop="name" content="StyleCop 程式碼風格和一致性規則檢查工具">
+<meta itemprop="description" content="StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com 首先下載msi格式的安裝檔[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png) 下載回來後一直按下一步就行了[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png) 等幾分鐘才能跑完[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png) 打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png) 工作清單就會出現一堆不符合的警告在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 [![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png) 如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png) 就會跳出StyleCop的說明手冊[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png) 在專案上面按右鍵，可以選擇設定[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png) 顯示的設定介面[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png) 專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值  [!">
+<meta itemprop="datePublished" content="2012-12-24T19:54:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-24T19:54:00+00:00" />
+<meta itemprop="wordCount" content="16">
+
+
+
+<meta itemprop="keywords" content="StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/stylecop-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7%E8%A6%8F%E5%89%87%E6%AA%A2%E6%9F%A5%E5%B7%A5%E5%85%B7/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop 程式碼風格和一致性規則檢查工具</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 24, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    9 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div class="separator" style="clear: both; text-align: left;">StyleCop是C# 程式碼風格和一致性規則檢查工具，針對原始碼來做檢查，目前已經Open Source，網址為http://stylecop.codeplex.com</div>
+<div class="separator" style="clear: both; text-align: left;">首先下載msi格式的安裝檔</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)](http://3.bp.blogspot.com/--jwuaUDVBfs/UNhBDnLG0eI/AAAAAAAAAhk/b_U-xXWZIcc/s1600/01.Download.png)</div>
+<div class="separator" style="clear: both; text-align: left;">下載回來後一直按下一步就行了</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)](http://1.bp.blogspot.com/-PRXONIZ_JxE/UNhBEIzkfBI/AAAAAAAAAho/VlZngd-AHbE/s1600/02.Install.png)</div>
+<div class="separator" style="clear: both; text-align: left;">等幾分鐘才能跑完</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)](http://1.bp.blogspot.com/-xfr0KROUJtg/UNhBEyCSOrI/AAAAAAAAAhw/a0SoGG2XcEY/s1600/03.InstallOK.png)</div>
+<div class="separator" style="clear: both; text-align: left;">打開專案，在專案上面按右鍵，選單中就會出現StyleCop相關的功能，先選擇Run StyleCop</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)](http://1.bp.blogspot.com/-M30ktUiaFUk/UNhBFYlbzQI/AAAAAAAAAh4/o7PhLu-ZA9Y/s1600/04.ContextMenu.png)</div>
+<div class="separator" style="clear: both; text-align: left;">工作清單就會出現一堆不符合的警告</div><div class="separator" style="clear: both; text-align: left;">在警告訊息上面點兩下，就會跳到引發警告的程式碼位置 </div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)](http://1.bp.blogspot.com/-rwafVo1cfac/UNhBGI6MfMI/AAAAAAAAAiA/Gp5JccWdtTo/s1600/05.ErrorMsgClick.png)</div>
+<div class="separator" style="clear: both; text-align: left;">如果要了解引發警告的原因，可以在訊息上面按右鍵，選擇顯示錯誤說明</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)](http://2.bp.blogspot.com/-xhJ2QEBbHoI/UNhBG6EP7JI/AAAAAAAAAiI/2V_wFrzpYD8/s1600/06.ShowErrorMsg.png)</div>
+<div class="separator" style="clear: both; text-align: left;">就會跳出StyleCop的說明手冊</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)](http://1.bp.blogspot.com/-iS6TiIGAbBI/UNhBHprpkPI/AAAAAAAAAiQ/dt7cxyCK5b0/s1600/07.ErrorMsg.png)</div>
+<div class="separator" style="clear: both; text-align: left;">在專案上面按右鍵，可以選擇設定</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)](http://1.bp.blogspot.com/-xNiffoKWSq8/UNhBIXrQ8uI/AAAAAAAAAiY/OnDUuiUbrAI/s1600/08.Setting.png)</div>
+<div class="separator" style="clear: both; text-align: left;">顯示的設定介面</div><div class="separator" style="clear: both; text-align: left;">[![](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)](http://2.bp.blogspot.com/-EaQfSztjdkE/UNhBJPQvZuI/AAAAAAAAAig/rwnc9ZGH9Jg/s1600/09.SettingUI.png)</div>
+<div class="separator" style="clear: both; text-align: left;">專案下就會出現一個StyleCo的檔案，裡面就是剛設定的值 </div>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-3lKTQfTfRxA/UNhBJ0qmReI/AAAAAAAAAio/uNLCe15w45c/s1600/10.Settings.StyleCop.png)](http://3.bp.blogspot.com/-3lKTQfTfRxA/UNhBJ0qmReI/AAAAAAAAAio/uNLCe15w45c/s1600/10.Settings.StyleCop.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e4%b8%80%e8%87%b4%e6%80%a7%e8%a6%8f%e5%89%87%e6%aa%a2%e6%9f%a5%e5%b7%a5%e5%85%b7&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f
+			&title=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e4%b8%80%e8%87%b4%e6%80%a7%e8%a6%8f%e5%89%87%e6%aa%a2%e6%9f%a5%e5%b7%a5%e5%85%b7&summary=StyleCop%e6%98%afC%23%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e4%b8%80%e8%87%b4%e6%80%a7%e8%a6%8f%e5%89%87%e6%aa%a2%e6%9f%a5%e5%b7%a5%e5%85%b7%ef%bc%8c%e9%87%9d%e5%b0%8d%e5%8e%9f%e5%a7%8b%e7%a2%bc%e4%be%86%e5%81%9a%e6%aa%a2%e6%9f%a5%ef%bc%8c%e7%9b%ae%e5%89%8d%e5%b7%b2%e7%b6%93Open%20Source%ef%bc%8c%e7%b6%b2%e5%9d%80%e7%82%bahttp%3a%2f%2fstylecop.codeplex.com%20%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89msi%e6%a0%bc%e5%bc%8f%e7%9a%84%e5%ae%89%e8%a3%9d%e6%aa%94%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f--jwuaUDVBfs%2fUNhBDnLG0eI%2fAAAAAAAAAhk%2fb_U-xXWZIcc%2fs1600%2f01.Download.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f--jwuaUDVBfs%2fUNhBDnLG0eI%2fAAAAAAAAAhk%2fb_U-xXWZIcc%2fs1600%2f01.Download.png%29%20%e4%b8%8b%e8%bc%89%e5%9b%9e%e4%be%86%e5%be%8c%e4%b8%80%e7%9b%b4%e6%8c%89%e4%b8%8b%e4%b8%80%e6%ad%a5%e5%b0%b1%e8%a1%8c%e4%ba%86%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-PRXONIZ_JxE%2fUNhBEIzkfBI%2fAAAAAAAAAho%2fVlZngd-AHbE%2fs1600%2f02.Install.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-PRXONIZ_JxE%2fUNhBEIzkfBI%2fAAAAAAAAAho%2fVlZngd-AHbE%2fs1600%2f02.Install.png%29%20%e7%ad%89%e5%b9%be%e5%88%86%e9%90%98%e6%89%8d%e8%83%bd%e8%b7%91%e5%ae%8c%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-xfr0KROUJtg%2fUNhBEyCSOrI%2fAAAAAAAAAhw%2fa0SoGG2XcEY%2fs1600%2f03.InstallOK.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-xfr0KROUJtg%2fUNhBEyCSOrI%2fAAAAAAAAAhw%2fa0SoGG2XcEY%2fs1600%2f03.InstallOK.png%29%20%e6%89%93%e9%96%8b%e5%b0%88%e6%a1%88%ef%bc%8c%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%e9%9d%a2%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e5%96%ae%e4%b8%ad%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%beStyleCop%e7%9b%b8%e9%97%9c%e7%9a%84%e5%8a%9f%e8%83%bd%ef%bc%8c%e5%85%88%e9%81%b8%e6%93%87Run%20StyleCop%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-M30ktUiaFUk%2fUNhBFYlbzQI%2fAAAAAAAAAh4%2fo7PhLu-ZA9Y%2fs1600%2f04.ContextMenu.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-M30ktUiaFUk%2fUNhBFYlbzQI%2fAAAAAAAAAh4%2fo7PhLu-ZA9Y%2fs1600%2f04.ContextMenu.png%29%20%e5%b7%a5%e4%bd%9c%e6%b8%85%e5%96%ae%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%be%e4%b8%80%e5%a0%86%e4%b8%8d%e7%ac%a6%e5%90%88%e7%9a%84%e8%ad%a6%e5%91%8a%e5%9c%a8%e8%ad%a6%e5%91%8a%e8%a8%8a%e6%81%af%e4%b8%8a%e9%9d%a2%e9%bb%9e%e5%85%a9%e4%b8%8b%ef%bc%8c%e5%b0%b1%e6%9c%83%e8%b7%b3%e5%88%b0%e5%bc%95%e7%99%bc%e8%ad%a6%e5%91%8a%e7%9a%84%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%bd%8d%e7%bd%ae%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-rwafVo1cfac%2fUNhBGI6MfMI%2fAAAAAAAAAiA%2fGp5JccWdtTo%2fs1600%2f05.ErrorMsgClick.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-rwafVo1cfac%2fUNhBGI6MfMI%2fAAAAAAAAAiA%2fGp5JccWdtTo%2fs1600%2f05.ErrorMsgClick.png%29%20%e5%a6%82%e6%9e%9c%e8%a6%81%e4%ba%86%e8%a7%a3%e5%bc%95%e7%99%bc%e8%ad%a6%e5%91%8a%e7%9a%84%e5%8e%9f%e5%9b%a0%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%9c%a8%e8%a8%8a%e6%81%af%e4%b8%8a%e9%9d%a2%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e9%81%b8%e6%93%87%e9%a1%af%e7%a4%ba%e9%8c%af%e8%aa%a4%e8%aa%aa%e6%98%8e%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-xhJ2QEBbHoI%2fUNhBG6EP7JI%2fAAAAAAAAAiI%2f2V_wFrzpYD8%2fs1600%2f06.ShowErrorMsg.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-xhJ2QEBbHoI%2fUNhBG6EP7JI%2fAAAAAAAAAiI%2f2V_wFrzpYD8%2fs1600%2f06.ShowErrorMsg.png%29%20%e5%b0%b1%e6%9c%83%e8%b7%b3%e5%87%baStyleCop%e7%9a%84%e8%aa%aa%e6%98%8e%e6%89%8b%e5%86%8a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-iS6TiIGAbBI%2fUNhBHprpkPI%2fAAAAAAAAAiQ%2fdt7cxyCK5b0%2fs1600%2f07.ErrorMsg.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-iS6TiIGAbBI%2fUNhBHprpkPI%2fAAAAAAAAAiQ%2fdt7cxyCK5b0%2fs1600%2f07.ErrorMsg.png%29%20%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%e9%9d%a2%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e5%8f%af%e4%bb%a5%e9%81%b8%e6%93%87%e8%a8%ad%e5%ae%9a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-xNiffoKWSq8%2fUNhBIXrQ8uI%2fAAAAAAAAAiY%2fOnDUuiUbrAI%2fs1600%2f08.Setting.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-xNiffoKWSq8%2fUNhBIXrQ8uI%2fAAAAAAAAAiY%2fOnDUuiUbrAI%2fs1600%2f08.Setting.png%29%20%e9%a1%af%e7%a4%ba%e7%9a%84%e8%a8%ad%e5%ae%9a%e4%bb%8b%e9%9d%a2%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-EaQfSztjdkE%2fUNhBJPQvZuI%2fAAAAAAAAAig%2frwnc9ZGH9Jg%2fs1600%2f09.SettingUI.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-EaQfSztjdkE%2fUNhBJPQvZuI%2fAAAAAAAAAig%2frwnc9ZGH9Jg%2fs1600%2f09.SettingUI.png%29%20%e5%b0%88%e6%a1%88%e4%b8%8b%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%be%e4%b8%80%e5%80%8bStyleCo%e7%9a%84%e6%aa%94%e6%a1%88%ef%bc%8c%e8%a3%a1%e9%9d%a2%e5%b0%b1%e6%98%af%e5%89%9b%e8%a8%ad%e5%ae%9a%e7%9a%84%e5%80%bc%20%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a2%a8%e6%a0%bc%e5%92%8c%e4%b8%80%e8%87%b4%e6%80%a7%e8%a6%8f%e5%89%87%e6%aa%a2%e6%9f%a5%e5%b7%a5%e5%85%b7&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fstylecop-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E9%25A2%25A8%25E6%25A0%25BC%25E5%2592%258C%25E4%25B8%2580%25E8%2587%25B4%25E6%2580%25A7%25E8%25A6%258F%25E5%2589%2587%25E6%25AA%25A2%25E6%259F%25A5%25E5%25B7%25A5%25E5%2585%25B7%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

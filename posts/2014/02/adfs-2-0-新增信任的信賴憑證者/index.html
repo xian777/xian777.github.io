@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    ADFS 2.0 新增信任的信賴憑證者 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="接下來開始新增RP(Relying Party)
+[![](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png) 設定精靈的畫面 [![](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png) 這裡用手動輸入為例子 [![](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png) 輸入一個給人用來識別的名稱 [![](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png) 選擇AD FS 2.0 設定檔 [![](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png) 這裡用簡單的例子不加密所以直接下一步 [![](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png) 啟用 WS-Federation 被動通訊協定的支援，注意SSL和結尾的/ [![](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png) 這裡的識別碼是程式要看的，也就是audienceUris [![](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png) 允許所有使用者存取 [![](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png) 準備新增信任 [![](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png) 新增完成，接下來順便新增要轉換的資料 [![](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png) 發佈轉換規則中新增規則 [![](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png) 這裡以LDAP屬性為例 [![](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png) 把LDAP的屬性，轉成要傳出的宣告類型 [![](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png) 轉換規則設定完成 [![](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png) 到此新增RP完成 [!
+    ">
+
+
+<meta property="og:title" content="ADFS 2.0 新增信任的信賴憑證者" />
+<meta property="og:description" content="接下來開始新增RP(Relying Party)
+[![](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png) 設定精靈的畫面 [![](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png) 這裡用手動輸入為例子 [![](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png) 輸入一個給人用來識別的名稱 [![](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png) 選擇AD FS 2.0 設定檔 [![](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png) 這裡用簡單的例子不加密所以直接下一步 [![](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png) 啟用 WS-Federation 被動通訊協定的支援，注意SSL和結尾的/ [![](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png) 這裡的識別碼是程式要看的，也就是audienceUris [![](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png) 允許所有使用者存取 [![](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png) 準備新增信任 [![](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png) 新增完成，接下來順便新增要轉換的資料 [![](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png) 發佈轉換規則中新增規則 [![](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png) 這裡以LDAP屬性為例 [![](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png) 把LDAP的屬性，轉成要傳出的宣告類型 [![](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png) 轉換規則設定完成 [![](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png) 到此新增RP完成 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/02/adfs-2-0-%E6%96%B0%E5%A2%9E%E4%BF%A1%E4%BB%BB%E7%9A%84%E4%BF%A1%E8%B3%B4%E6%86%91%E8%AD%89%E8%80%85/" />
+<meta property="article:published_time" content="2014-02-14T14:44:00+00:00" />
+<meta property="article:modified_time" content="2014-02-14T14:44:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ADFS 2.0 新增信任的信賴憑證者"/>
+<meta name="twitter:description" content="接下來開始新增RP(Relying Party)
+[![](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png) 設定精靈的畫面 [![](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png) 這裡用手動輸入為例子 [![](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png) 輸入一個給人用來識別的名稱 [![](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png) 選擇AD FS 2.0 設定檔 [![](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png) 這裡用簡單的例子不加密所以直接下一步 [![](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png) 啟用 WS-Federation 被動通訊協定的支援，注意SSL和結尾的/ [![](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png) 這裡的識別碼是程式要看的，也就是audienceUris [![](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png) 允許所有使用者存取 [![](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png) 準備新增信任 [![](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png) 新增完成，接下來順便新增要轉換的資料 [![](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png) 發佈轉換規則中新增規則 [![](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png) 這裡以LDAP屬性為例 [![](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png) 把LDAP的屬性，轉成要傳出的宣告類型 [![](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png) 轉換規則設定完成 [![](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png) 到此新增RP完成 [!"/>
+
+<meta itemprop="name" content="ADFS 2.0 新增信任的信賴憑證者">
+<meta itemprop="description" content="接下來開始新增RP(Relying Party)
+[![](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png) 設定精靈的畫面 [![](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png) 這裡用手動輸入為例子 [![](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png) 輸入一個給人用來識別的名稱 [![](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png) 選擇AD FS 2.0 設定檔 [![](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png) 這裡用簡單的例子不加密所以直接下一步 [![](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png) 啟用 WS-Federation 被動通訊協定的支援，注意SSL和結尾的/ [![](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png) 這裡的識別碼是程式要看的，也就是audienceUris [![](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png) 允許所有使用者存取 [![](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png) 準備新增信任 [![](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png) 新增完成，接下來順便新增要轉換的資料 [![](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png) 發佈轉換規則中新增規則 [![](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png) 這裡以LDAP屬性為例 [![](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png) 把LDAP的屬性，轉成要傳出的宣告類型 [![](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png) 轉換規則設定完成 [![](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png) 到此新增RP完成 [!">
+<meta itemprop="datePublished" content="2014-02-14T14:44:00+00:00" />
+<meta itemprop="dateModified" content="2014-02-14T14:44:00+00:00" />
+<meta itemprop="wordCount" content="38">
+
+
+
+<meta itemprop="keywords" content="ADFS,Claims Base,SSO," />
+
+<link rel="canonical" href="http://example.org/posts/2014/02/adfs-2-0-%E6%96%B0%E5%A2%9E%E4%BF%A1%E4%BB%BB%E7%9A%84%E4%BF%A1%E8%B3%B4%E6%86%91%E8%AD%89%E8%80%85/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>ADFS 2.0 新增信任的信賴憑證者</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Feb 14, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/adfs">ADFS</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/claims-base">Claims Base</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/sso">SSO</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/adfs">A d f s</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/claims-base">Claims base</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/sso">S s o</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>接下來開始新增RP(Relying Party)</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)](http://2.bp.blogspot.com/-vLPrmmAQ0U8/Uv2JXZQ1VfI/AAAAAAAABC8/eeIGdQSZH4M/s1600/01.png)</div>
+設定精靈的畫面
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)](http://2.bp.blogspot.com/-Mua3r26Sssg/Uv2JXWvLLVI/AAAAAAAABDI/2ge-kfXg504/s1600/02.png)</div>
+這裡用手動輸入為例子
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)](http://3.bp.blogspot.com/-b3dHsdW6Lgc/Uv2JYmulxHI/AAAAAAAABDw/nlRPavaRvww/s1600/03.png)</div>
+輸入一個給人用來識別的名稱
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)](http://3.bp.blogspot.com/-ZjIYsxbZCrQ/Uv2JYNqfZgI/AAAAAAAABDM/MfI-6QVNz2Y/s1600/04.png)</div>
+選擇AD FS 2.0 設定檔
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)](http://1.bp.blogspot.com/-9ilWycLTR5E/Uv2JYdrP3NI/AAAAAAAABDY/OOm8gKBttTs/s1600/05.png)</div>
+這裡用簡單的例子不加密所以直接下一步
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)](http://1.bp.blogspot.com/-EHbTfRL4WUk/Uv2JYx32YjI/AAAAAAAABDg/iMoh1N6aRxI/s1600/06.png)</div>
+啟用 WS-Federation 被動通訊協定的支援，注意SSL和結尾的/
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)](http://2.bp.blogspot.com/-zgPv-ndCWn8/Uv2KjlZzWRI/AAAAAAAABE4/qKrCLGZ-uHo/s1600/07.png)</div>
+這裡的識別碼是程式要看的，也就是audienceUris
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)](http://2.bp.blogspot.com/-KVQ9oz9PfYM/Uv2JaIn9wnI/AAAAAAAABEQ/M04yyBNT8bU/s1600/08.png)</div>
+允許所有使用者存取
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)](http://3.bp.blogspot.com/-lqmg6yTu6YA/Uv2JaPAqK1I/AAAAAAAABD0/xP9qJb5EQfc/s1600/09.png)</div>
+準備新增信任
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)](http://1.bp.blogspot.com/-9gtrMYiSYlY/Uv2Jaq2uxWI/AAAAAAAABD4/xppCp5yhdXk/s1600/10.png)</div>
+新增完成，接下來順便新增要轉換的資料
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)](http://1.bp.blogspot.com/-FUHvQGzfAuI/Uv2Ja7_86YI/AAAAAAAABEM/gs0YHRPEfaE/s1600/11.png)</div>
+<div class="separator" style="clear: both; text-align: center;"></div>發佈轉換規則中新增規則
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)](http://1.bp.blogspot.com/-K-Dv1xXNaoE/Uv2MIkLNe7I/AAAAAAAABFM/kOth2Ps7GgE/s1600/12.png)</div>
+這裡以LDAP屬性為例
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)](http://1.bp.blogspot.com/-Q39atvMpEj4/Uv2JcK2Jq2I/AAAAAAAABEc/DIpVLn9xyIE/s1600/13.png)</div>
+把LDAP的屬性，轉成要傳出的宣告類型
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)](http://3.bp.blogspot.com/-UwzwR31Cm84/Uv26uGcbNCI/AAAAAAAABFo/jEdouWyYxHE/s1600/14.png)</div>
+轉換規則設定完成
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)](http://1.bp.blogspot.com/-M6SbsGmKqCA/Uv27ST1MLuI/AAAAAAAABFw/OV4YcWFN93w/s1600/15.png)</div>
+到此新增RP完成
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-eyjii0WijiE/Uv2JdDP53FI/AAAAAAAABEw/6KEtX5HuIvo/s1600/16.png)](http://2.bp.blogspot.com/-eyjii0WijiE/Uv2JdDP53FI/AAAAAAAABEw/6KEtX5HuIvo/s1600/16.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=ADFS%202.0%20%e6%96%b0%e5%a2%9e%e4%bf%a1%e4%bb%bb%e7%9a%84%e4%bf%a1%e8%b3%b4%e6%86%91%e8%ad%89%e8%80%85&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f
+			&title=ADFS%202.0%20%e6%96%b0%e5%a2%9e%e4%bf%a1%e4%bb%bb%e7%9a%84%e4%bf%a1%e8%b3%b4%e6%86%91%e8%ad%89%e8%80%85&summary=%e6%8e%a5%e4%b8%8b%e4%be%86%e9%96%8b%e5%a7%8b%e6%96%b0%e5%a2%9eRP%28Relying%20Party%29%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-vLPrmmAQ0U8%2fUv2JXZQ1VfI%2fAAAAAAAABC8%2feeIGdQSZH4M%2fs1600%2f01.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-vLPrmmAQ0U8%2fUv2JXZQ1VfI%2fAAAAAAAABC8%2feeIGdQSZH4M%2fs1600%2f01.png%29%20%e8%a8%ad%e5%ae%9a%e7%b2%be%e9%9d%88%e7%9a%84%e7%95%ab%e9%9d%a2%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Mua3r26Sssg%2fUv2JXWvLLVI%2fAAAAAAAABDI%2f2ge-kfXg504%2fs1600%2f02.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Mua3r26Sssg%2fUv2JXWvLLVI%2fAAAAAAAABDI%2f2ge-kfXg504%2fs1600%2f02.png%29%20%e9%80%99%e8%a3%a1%e7%94%a8%e6%89%8b%e5%8b%95%e8%bc%b8%e5%85%a5%e7%82%ba%e4%be%8b%e5%ad%90%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-b3dHsdW6Lgc%2fUv2JYmulxHI%2fAAAAAAAABDw%2fnlRPavaRvww%2fs1600%2f03.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-b3dHsdW6Lgc%2fUv2JYmulxHI%2fAAAAAAAABDw%2fnlRPavaRvww%2fs1600%2f03.png%29%20%e8%bc%b8%e5%85%a5%e4%b8%80%e5%80%8b%e7%b5%a6%e4%ba%ba%e7%94%a8%e4%be%86%e8%ad%98%e5%88%a5%e7%9a%84%e5%90%8d%e7%a8%b1%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-ZjIYsxbZCrQ%2fUv2JYNqfZgI%2fAAAAAAAABDM%2fMfI-6QVNz2Y%2fs1600%2f04.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-ZjIYsxbZCrQ%2fUv2JYNqfZgI%2fAAAAAAAABDM%2fMfI-6QVNz2Y%2fs1600%2f04.png%29%20%e9%81%b8%e6%93%87AD%20FS%202.0%20%e8%a8%ad%e5%ae%9a%e6%aa%94%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-9ilWycLTR5E%2fUv2JYdrP3NI%2fAAAAAAAABDY%2fOOm8gKBttTs%2fs1600%2f05.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-9ilWycLTR5E%2fUv2JYdrP3NI%2fAAAAAAAABDY%2fOOm8gKBttTs%2fs1600%2f05.png%29%20%e9%80%99%e8%a3%a1%e7%94%a8%e7%b0%a1%e5%96%ae%e7%9a%84%e4%be%8b%e5%ad%90%e4%b8%8d%e5%8a%a0%e5%af%86%e6%89%80%e4%bb%a5%e7%9b%b4%e6%8e%a5%e4%b8%8b%e4%b8%80%e6%ad%a5%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-EHbTfRL4WUk%2fUv2JYx32YjI%2fAAAAAAAABDg%2fiMoh1N6aRxI%2fs1600%2f06.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-EHbTfRL4WUk%2fUv2JYx32YjI%2fAAAAAAAABDg%2fiMoh1N6aRxI%2fs1600%2f06.png%29%20%e5%95%9f%e7%94%a8%20WS-Federation%20%e8%a2%ab%e5%8b%95%e9%80%9a%e8%a8%8a%e5%8d%94%e5%ae%9a%e7%9a%84%e6%94%af%e6%8f%b4%ef%bc%8c%e6%b3%a8%e6%84%8fSSL%e5%92%8c%e7%b5%90%e5%b0%be%e7%9a%84%2f%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-zgPv-ndCWn8%2fUv2KjlZzWRI%2fAAAAAAAABE4%2fqKrCLGZ-uHo%2fs1600%2f07.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-zgPv-ndCWn8%2fUv2KjlZzWRI%2fAAAAAAAABE4%2fqKrCLGZ-uHo%2fs1600%2f07.png%29%20%e9%80%99%e8%a3%a1%e7%9a%84%e8%ad%98%e5%88%a5%e7%a2%bc%e6%98%af%e7%a8%8b%e5%bc%8f%e8%a6%81%e7%9c%8b%e7%9a%84%ef%bc%8c%e4%b9%9f%e5%b0%b1%e6%98%afaudienceUris%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KVQ9oz9PfYM%2fUv2JaIn9wnI%2fAAAAAAAABEQ%2fM04yyBNT8bU%2fs1600%2f08.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-KVQ9oz9PfYM%2fUv2JaIn9wnI%2fAAAAAAAABEQ%2fM04yyBNT8bU%2fs1600%2f08.png%29%20%e5%85%81%e8%a8%b1%e6%89%80%e6%9c%89%e4%bd%bf%e7%94%a8%e8%80%85%e5%ad%98%e5%8f%96%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-lqmg6yTu6YA%2fUv2JaPAqK1I%2fAAAAAAAABD0%2fxP9qJb5EQfc%2fs1600%2f09.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-lqmg6yTu6YA%2fUv2JaPAqK1I%2fAAAAAAAABD0%2fxP9qJb5EQfc%2fs1600%2f09.png%29%20%e6%ba%96%e5%82%99%e6%96%b0%e5%a2%9e%e4%bf%a1%e4%bb%bb%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-9gtrMYiSYlY%2fUv2Jaq2uxWI%2fAAAAAAAABD4%2fxppCp5yhdXk%2fs1600%2f10.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-9gtrMYiSYlY%2fUv2Jaq2uxWI%2fAAAAAAAABD4%2fxppCp5yhdXk%2fs1600%2f10.png%29%20%e6%96%b0%e5%a2%9e%e5%ae%8c%e6%88%90%ef%bc%8c%e6%8e%a5%e4%b8%8b%e4%be%86%e9%a0%86%e4%be%bf%e6%96%b0%e5%a2%9e%e8%a6%81%e8%bd%89%e6%8f%9b%e7%9a%84%e8%b3%87%e6%96%99%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-FUHvQGzfAuI%2fUv2Ja7_86YI%2fAAAAAAAABEM%2fgs0YHRPEfaE%2fs1600%2f11.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-FUHvQGzfAuI%2fUv2Ja7_86YI%2fAAAAAAAABEM%2fgs0YHRPEfaE%2fs1600%2f11.png%29%20%e7%99%bc%e4%bd%88%e8%bd%89%e6%8f%9b%e8%a6%8f%e5%89%87%e4%b8%ad%e6%96%b0%e5%a2%9e%e8%a6%8f%e5%89%87%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-K-Dv1xXNaoE%2fUv2MIkLNe7I%2fAAAAAAAABFM%2fkOth2Ps7GgE%2fs1600%2f12.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-K-Dv1xXNaoE%2fUv2MIkLNe7I%2fAAAAAAAABFM%2fkOth2Ps7GgE%2fs1600%2f12.png%29%20%e9%80%99%e8%a3%a1%e4%bb%a5LDAP%e5%b1%ac%e6%80%a7%e7%82%ba%e4%be%8b%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Q39atvMpEj4%2fUv2JcK2Jq2I%2fAAAAAAAABEc%2fDIpVLn9xyIE%2fs1600%2f13.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Q39atvMpEj4%2fUv2JcK2Jq2I%2fAAAAAAAABEc%2fDIpVLn9xyIE%2fs1600%2f13.png%29%20%e6%8a%8aLDAP%e7%9a%84%e5%b1%ac%e6%80%a7%ef%bc%8c%e8%bd%89%e6%88%90%e8%a6%81%e5%82%b3%e5%87%ba%e7%9a%84%e5%ae%a3%e5%91%8a%e9%a1%9e%e5%9e%8b%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-UwzwR31Cm84%2fUv26uGcbNCI%2fAAAAAAAABFo%2fjEdouWyYxHE%2fs1600%2f14.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-UwzwR31Cm84%2fUv26uGcbNCI%2fAAAAAAAABFo%2fjEdouWyYxHE%2fs1600%2f14.png%29%20%e8%bd%89%e6%8f%9b%e8%a6%8f%e5%89%87%e8%a8%ad%e5%ae%9a%e5%ae%8c%e6%88%90%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-M6SbsGmKqCA%2fUv27ST1MLuI%2fAAAAAAAABFw%2fOV4YcWFN93w%2fs1600%2f15.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-M6SbsGmKqCA%2fUv27ST1MLuI%2fAAAAAAAABFw%2fOV4YcWFN93w%2fs1600%2f15.png%29%20%e5%88%b0%e6%ad%a4%e6%96%b0%e5%a2%9eRP%e5%ae%8c%e6%88%90%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=ADFS%202.0%20%e6%96%b0%e5%a2%9e%e4%bf%a1%e4%bb%bb%e7%9a%84%e4%bf%a1%e8%b3%b4%e6%86%91%e8%ad%89%e8%80%85&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f02%2fadfs-2-0-%25E6%2596%25B0%25E5%25A2%259E%25E4%25BF%25A1%25E4%25BB%25BB%25E7%259A%2584%25E4%25BF%25A1%25E8%25B3%25B4%25E6%2586%2591%25E8%25AD%2589%25E8%2580%2585%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

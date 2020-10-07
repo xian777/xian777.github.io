@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    DataContractJsonSerializer 轉換 IEnumerable 介面 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;() { new JsonData() { Id = 1, Name = &#34;
+    ">
+
+
+<meta property="og:title" content="DataContractJsonSerializer 轉換 IEnumerable 介面" />
+<meta property="og:description" content="轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;() { new JsonData() { Id = 1, Name = &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/" />
+<meta property="article:published_time" content="2013-06-20T15:34:00+00:00" />
+<meta property="article:modified_time" content="2013-06-20T15:34:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DataContractJsonSerializer 轉換 IEnumerable 介面"/>
+<meta name="twitter:description" content="轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;() { new JsonData() { Id = 1, Name = &#34;"/>
+
+<meta itemprop="name" content="DataContractJsonSerializer 轉換 IEnumerable 介面">
+<meta itemprop="description" content="轉換IEnumerable的用法和一般的資料沒什麼不同 差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable 宣告一個相同的資料型別來做範例 [DataContract] public class JsonData { [DataMember(Name = &#34;ID&#34;, Order = 0)] public int Id { get; set; } [DataMember(Order = 1)] public string Name { get; set; } [DataMember(Order = 2)] public DateTime Today { get; set; } [DataMember(Order=3)] public bool IsBool { get; set; } [IgnoreDataMember()] public string UnlessField { get; set; }  } 
+準備一個List來當做序列化的資料 初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別// 淮備序列化的類別資料 List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;() { new JsonData() { Id = 1, Name = &#34;">
+<meta itemprop="datePublished" content="2013-06-20T15:34:00+00:00" />
+<meta itemprop="dateModified" content="2013-06-20T15:34:00+00:00" />
+<meta itemprop="wordCount" content="191">
+
+
+
+<meta itemprop="keywords" content="C#,JSON," />
+
+<link rel="canonical" href="http://example.org/posts/2013/06/datacontractjsonserializer-%E8%BD%89%E6%8F%9B-ienumerable-%E4%BB%8B%E9%9D%A2/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>DataContractJsonSerializer 轉換 IEnumerable 介面</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 20, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/json">JSON</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/json">J s o n</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>轉換IEnumerable的用法和一般的資料沒什麼不同
+差別只在於初始化類別的時後，傳入的資料型別也要改成IEnumerable
+宣告一個相同的資料型別來做範例 </div><div><pre class="brush:csharp">[DataContract]
+public class JsonData
+{
+    [DataMember(Name = "ID", Order = 0)]
+    public int Id { get; set; }
+<pre><code>[DataMember(Order = 1)]
+public string Name { get; set; }
+
+[DataMember(Order = 2)]
+public DateTime Today { get; set; }
+
+[DataMember(Order=3)]
+public bool IsBool { get; set; }
+
+[IgnoreDataMember()]
+public string UnlessField { get; set; }
+</code></pre>
+<p>}
+</pre></div></p>
+<div>準備一個List來當做序列化的資料
+初始化DataContractJsonSerializer類別的時後，也要傳入這個List的型別</div><div><pre class="brush:csharp">// 淮備序列化的類別資料
+List&lt;JsonData&gt; dataList = new List&lt;JsonData&gt;()
+{
+    new JsonData()
+    {
+        Id = 1,
+        Name = "data1",
+        Today = DateTime.Now.AddDays(-1),
+        IsBool = true,
+        UnlessField = "沒用到的欄位1"
+    },
+    new JsonData()
+    {
+        Id = 2,
+        Name = "data2",
+        Today = DateTime.Now,
+        IsBool = false,
+        UnlessField = "沒用到的欄位2"
+    },
+    new JsonData()
+    {
+        Id = 3,
+        Name = "data3",
+        Today = DateTime.Now.AddDays(1),
+        IsBool = true,
+        UnlessField = "沒用到的欄位3"
+    }
+<p>};</p>
+<p>// 初始化DataContractJsonSerializer類別
+DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List&lt;JsonData&gt;));
+string jsonString = string.Empty;
+</pre></div></p>
+<div>序列化的方法一樣 </div><div><pre class="brush:csharp">// 序列化資料
+using (MemoryStream ms = new MemoryStream())
+{
+    dcjs.WriteObject(ms, dataList);
+    jsonString = Encoding.UTF8.GetString(ms.ToArray());
+    Console.WriteLine(jsonString);
+    Console.WriteLine();
+}
+</pre></div>
+<div>反序列化的方法也一樣 </div><div><pre class="brush:csharp">// 反序列化資料
+using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+{
+    List&lt;JsonData&gt; data2List = dcjs.ReadObject(ms) as List&lt;JsonData&gt;;
+    foreach (JsonData item in data2List)
+    {
+        Console.WriteLine(
+            "Id:{0}, Name:{1}, Today:{2}, IsBool:{3}, UnlessField:{4}",
+            item.Id,
+            item.Name,
+            item.Today,
+            item.IsBool,
+            item.UnlessField);
+    }
+}
+</pre></div>
+<div>執行結果資料一樣序列化成陣列的樣子，反序列化也沒什麼問題 
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-j1sVYW0xrmk/UcKv_7wCK4I/AAAAAAAAAvw/gpDughnVeRg/s1600/04.2.png)](http://4.bp.blogspot.com/-j1sVYW0xrmk/UcKv_7wCK4I/AAAAAAAAAvw/gpDughnVeRg/s1600/04.2.png)</div></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=DataContractJsonSerializer%20%e8%bd%89%e6%8f%9b%20IEnumerable%20%e4%bb%8b%e9%9d%a2&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f
+			&title=DataContractJsonSerializer%20%e8%bd%89%e6%8f%9b%20IEnumerable%20%e4%bb%8b%e9%9d%a2&summary=%e8%bd%89%e6%8f%9bIEnumerable%e7%9a%84%e7%94%a8%e6%b3%95%e5%92%8c%e4%b8%80%e8%88%ac%e7%9a%84%e8%b3%87%e6%96%99%e6%b2%92%e4%bb%80%e9%ba%bc%e4%b8%8d%e5%90%8c%20%e5%b7%ae%e5%88%a5%e5%8f%aa%e5%9c%a8%e6%96%bc%e5%88%9d%e5%a7%8b%e5%8c%96%e9%a1%9e%e5%88%a5%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%82%b3%e5%85%a5%e7%9a%84%e8%b3%87%e6%96%99%e5%9e%8b%e5%88%a5%e4%b9%9f%e8%a6%81%e6%94%b9%e6%88%90IEnumerable%20%e5%ae%a3%e5%91%8a%e4%b8%80%e5%80%8b%e7%9b%b8%e5%90%8c%e7%9a%84%e8%b3%87%e6%96%99%e5%9e%8b%e5%88%a5%e4%be%86%e5%81%9a%e7%af%84%e4%be%8b%20%5bDataContract%5d%20public%20class%20JsonData%20%7b%20%5bDataMember%28Name%20%3d%20%22ID%22%2c%20Order%20%3d%200%29%5d%20public%20int%20Id%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%20%3d%201%29%5d%20public%20string%20Name%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%20%3d%202%29%5d%20public%20DateTime%20Today%20%7b%20get%3b%20set%3b%20%7d%20%5bDataMember%28Order%3d3%29%5d%20public%20bool%20IsBool%20%7b%20get%3b%20set%3b%20%7d%20%5bIgnoreDataMember%28%29%5d%20public%20string%20UnlessField%20%7b%20get%3b%20set%3b%20%7d%20%20%7d%20%0a%e6%ba%96%e5%82%99%e4%b8%80%e5%80%8bList%e4%be%86%e7%95%b6%e5%81%9a%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e8%b3%87%e6%96%99%20%e5%88%9d%e5%a7%8b%e5%8c%96DataContractJsonSerializer%e9%a1%9e%e5%88%a5%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e4%b9%9f%e8%a6%81%e5%82%b3%e5%85%a5%e9%80%99%e5%80%8bList%e7%9a%84%e5%9e%8b%e5%88%a5%2f%2f%20%e6%b7%ae%e5%82%99%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e9%a1%9e%e5%88%a5%e8%b3%87%e6%96%99%20List%26lt%3bJsonData%26gt%3b%20dataList%20%3d%20new%20List%26lt%3bJsonData%26gt%3b%28%29%20%7b%20new%20JsonData%28%29%20%7b%20Id%20%3d%201%2c%20Name%20%3d%20%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=DataContractJsonSerializer%20%e8%bd%89%e6%8f%9b%20IEnumerable%20%e4%bb%8b%e9%9d%a2&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f06%2fdatacontractjsonserializer-%25E8%25BD%2589%25E6%258F%259B-ienumerable-%25E4%25BB%258B%25E9%259D%25A2%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

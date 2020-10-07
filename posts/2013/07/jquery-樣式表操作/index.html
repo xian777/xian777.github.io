@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    JQuery 樣式表操作 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content=" .addClass() 增加樣式類別  .removeClass() 移除樣式類別  .hasClass() 是否有指定的樣式類別  .toogleClass() 切換樣式類別  .css() 取得或設定指定的樣式  
+    ">
+
+
+<meta property="og:title" content="jQuery 樣式表操作" />
+<meta property="og:description" content=" .addClass() 增加樣式類別  .removeClass() 移除樣式類別  .hasClass() 是否有指定的樣式類別  .toogleClass() 切換樣式類別  .css() 取得或設定指定的樣式  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/07/jquery-%E6%A8%A3%E5%BC%8F%E8%A1%A8%E6%93%8D%E4%BD%9C/" />
+<meta property="article:published_time" content="2013-07-30T11:16:00+00:00" />
+<meta property="article:modified_time" content="2013-07-30T11:16:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="jQuery 樣式表操作"/>
+<meta name="twitter:description" content=" .addClass() 增加樣式類別  .removeClass() 移除樣式類別  .hasClass() 是否有指定的樣式類別  .toogleClass() 切換樣式類別  .css() 取得或設定指定的樣式  "/>
+
+<meta itemprop="name" content="jQuery 樣式表操作">
+<meta itemprop="description" content=" .addClass() 增加樣式類別  .removeClass() 移除樣式類別  .hasClass() 是否有指定的樣式類別  .toogleClass() 切換樣式類別  .css() 取得或設定指定的樣式  ">
+<meta itemprop="datePublished" content="2013-07-30T11:16:00+00:00" />
+<meta itemprop="dateModified" content="2013-07-30T11:16:00+00:00" />
+<meta itemprop="wordCount" content="10">
+
+
+
+<meta itemprop="keywords" content="jQuery," />
+
+<link rel="canonical" href="http://example.org/posts/2013/07/jquery-%E6%A8%A3%E5%BC%8F%E8%A1%A8%E6%93%8D%E4%BD%9C/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>JQuery 樣式表操作</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jul 30, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jquery">JQuery</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jquery">J query</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div><table border="1"><tbody><tr>            <td>.addClass()</td>            <td>增加樣式類別</td>        </tr><tr>            <td>.removeClass()</td>            <td>移除樣式類別</td>        </tr><tr>            <td>.hasClass()</td>            <td>是否有指定的樣式類別</td>        </tr><tr>            <td>.toogleClass()</td>            <td>切換樣式類別</td>        </tr><tr>            <td>.css()</td>            <td>取得或設定指定的樣式</td>        </tr></tbody></table></div>
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="500" src="http://jsfiddle.net/jf7Kj/embedded/js,html,css,result/presentation" width="100%"></iframe></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=jQuery%20%e6%a8%a3%e5%bc%8f%e8%a1%a8%e6%93%8d%e4%bd%9c&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f
+			&title=jQuery%20%e6%a8%a3%e5%bc%8f%e8%a1%a8%e6%93%8d%e4%bd%9c&summary=%20.addClass%28%29%20%e5%a2%9e%e5%8a%a0%e6%a8%a3%e5%bc%8f%e9%a1%9e%e5%88%a5%20%20.removeClass%28%29%20%e7%a7%bb%e9%99%a4%e6%a8%a3%e5%bc%8f%e9%a1%9e%e5%88%a5%20%20.hasClass%28%29%20%e6%98%af%e5%90%a6%e6%9c%89%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a8%a3%e5%bc%8f%e9%a1%9e%e5%88%a5%20%20.toogleClass%28%29%20%e5%88%87%e6%8f%9b%e6%a8%a3%e5%bc%8f%e9%a1%9e%e5%88%a5%20%20.css%28%29%20%e5%8f%96%e5%be%97%e6%88%96%e8%a8%ad%e5%ae%9a%e6%8c%87%e5%ae%9a%e7%9a%84%e6%a8%a3%e5%bc%8f%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=jQuery%20%e6%a8%a3%e5%bc%8f%e8%a1%a8%e6%93%8d%e4%bd%9c&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f07%2fjquery-%25E6%25A8%25A3%25E5%25BC%258F%25E8%25A1%25A8%25E6%2593%258D%25E4%25BD%259C%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

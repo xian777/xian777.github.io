@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog Rules | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog Rules NLog使用一個簡單的路由表檢查當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去如果指定了final屬性，之後的規則就不再檢查Rules可以使用的屬性如下   name - 日誌來源的名稱(允許使用通配符號*) minlevel - 設定符合該規則的最低級別 maxlevel - 設定符合該規則的最高級別 level - 設定符合該規則的特定級別 levels - 設定符合該規則的級別列表，用逗號分隔 writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔 final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查以下為一些例子&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; minlevel=&quot;Debug&rdquo; writeTo=&quot;f1&rdquo; /&gt;  &lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; levels=&quot;Debug,Error&rdquo; writeTo=&quot;f1&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; writeTo=&quot;f3,f4&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間 也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo 同時不再檢查之後的規則，因為這裡設定final=true &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; minlevel=&quot;Debug&rdquo; maxlevel=&quot;Error&rdquo; final=&quot;true&rdquo; /&gt; 
+ NLog Level NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出
+ Trace - 大量而詳細的訊息，一般只用在開發環境 Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境 Info - 用來提示用的訊息，例如使用者登出入，交易參數資料 Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限 Error - 一般錯誤的訊息，一般就是try catch到的Exception Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了 上一篇: NLog Targets 下一篇: NLog Layouts   
+    ">
+
+
+<meta property="og:title" content="NLog Rules" />
+<meta property="og:description" content="NLog Rules NLog使用一個簡單的路由表檢查當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去如果指定了final屬性，之後的規則就不再檢查Rules可以使用的屬性如下   name - 日誌來源的名稱(允許使用通配符號*) minlevel - 設定符合該規則的最低級別 maxlevel - 設定符合該規則的最高級別 level - 設定符合該規則的特定級別 levels - 設定符合該規則的級別列表，用逗號分隔 writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔 final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查以下為一些例子&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; minlevel=&quot;Debug&rdquo; writeTo=&quot;f1&rdquo; /&gt;  &lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; levels=&quot;Debug,Error&rdquo; writeTo=&quot;f1&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; writeTo=&quot;f3,f4&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間 也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo 同時不再檢查之後的規則，因為這裡設定final=true &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; minlevel=&quot;Debug&rdquo; maxlevel=&quot;Error&rdquo; final=&quot;true&rdquo; /&gt; 
+ NLog Level NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出
+ Trace - 大量而詳細的訊息，一般只用在開發環境 Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境 Info - 用來提示用的訊息，例如使用者登出入，交易參數資料 Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限 Error - 一般錯誤的訊息，一般就是try catch到的Exception Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了 上一篇: NLog Targets 下一篇: NLog Layouts   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-rules/" />
+<meta property="article:published_time" content="2012-12-30T01:40:00+00:00" />
+<meta property="article:modified_time" content="2012-12-30T01:40:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog Rules"/>
+<meta name="twitter:description" content="NLog Rules NLog使用一個簡單的路由表檢查當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去如果指定了final屬性，之後的規則就不再檢查Rules可以使用的屬性如下   name - 日誌來源的名稱(允許使用通配符號*) minlevel - 設定符合該規則的最低級別 maxlevel - 設定符合該規則的最高級別 level - 設定符合該規則的特定級別 levels - 設定符合該規則的級別列表，用逗號分隔 writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔 final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查以下為一些例子&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; minlevel=&quot;Debug&rdquo; writeTo=&quot;f1&rdquo; /&gt;  &lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; levels=&quot;Debug,Error&rdquo; writeTo=&quot;f1&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; writeTo=&quot;f3,f4&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間 也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo 同時不再檢查之後的規則，因為這裡設定final=true &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; minlevel=&quot;Debug&rdquo; maxlevel=&quot;Error&rdquo; final=&quot;true&rdquo; /&gt; 
+ NLog Level NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出
+ Trace - 大量而詳細的訊息，一般只用在開發環境 Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境 Info - 用來提示用的訊息，例如使用者登出入，交易參數資料 Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限 Error - 一般錯誤的訊息，一般就是try catch到的Exception Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了 上一篇: NLog Targets 下一篇: NLog Layouts   "/>
+
+<meta itemprop="name" content="NLog Rules">
+<meta itemprop="description" content="NLog Rules NLog使用一個簡單的路由表檢查當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去如果指定了final屬性，之後的規則就不再檢查Rules可以使用的屬性如下   name - 日誌來源的名稱(允許使用通配符號*) minlevel - 設定符合該規則的最低級別 maxlevel - 設定符合該規則的最高級別 level - 設定符合該規則的特定級別 levels - 設定符合該規則的級別列表，用逗號分隔 writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔 final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查以下為一些例子&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; minlevel=&quot;Debug&rdquo; writeTo=&quot;f1&rdquo; /&gt;  &lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.Class1&rdquo; levels=&quot;Debug,Error&rdquo; writeTo=&quot;f1&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; writeTo=&quot;f3,f4&rdquo; /&gt;
+&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間 也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo 同時不再檢查之後的規則，因為這裡設定final=true &ndash;&gt; &lt;logger name=&quot;Name.Space.*&rdquo; minlevel=&quot;Debug&rdquo; maxlevel=&quot;Error&rdquo; final=&quot;true&rdquo; /&gt; 
+ NLog Level NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出
+ Trace - 大量而詳細的訊息，一般只用在開發環境 Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境 Info - 用來提示用的訊息，例如使用者登出入，交易參數資料 Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限 Error - 一般錯誤的訊息，一般就是try catch到的Exception Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了 上一篇: NLog Targets 下一篇: NLog Layouts   ">
+<meta itemprop="datePublished" content="2012-12-30T01:40:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-30T01:40:00+00:00" />
+<meta itemprop="wordCount" content="88">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-rules/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog Rules</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 30, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog-rules">NLog Rules</h2>
+<div>NLog使用一個簡單的路由表檢查</div><div>當檢查到符合的日誌名稱和級別時，會輸出到指定的一個或多個Target去</div><div>如果指定了final屬性，之後的規則就不再檢查</div><div>Rules可以使用的屬性如下</div><div>
+</div><div>
+<ol>
+<li>name - 日誌來源的名稱(允許使用通配符號*)</li>
+<li>minlevel - 設定符合該規則的最低級別</li>
+<li>maxlevel - 設定符合該規則的最高級別</li>
+<li>level - 設定符合該規則的特定級別</li>
+<li>levels - 設定符合該規則的級別列表，用逗號分隔</li>
+<li>writeTo - 設定符合該規則的日誌要寫入的target列表，用逗號分隔</li>
+<li>final - 設定符合該規則的條件為最後一個規則，後面的規則不再檢查<div>以下為一些例子</div></div><div><pre class="brush:xml">&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug以上的級別，就輸出到f1這個Target &ndash;&gt;
+&lt;logger name=&quot;Name.Space.Class1&rdquo; minlevel=&quot;Debug&rdquo; writeTo=&quot;f1&rdquo; /&gt;</li>
+</ol>
+<p>&lt;!&ndash; 命名空間Name.Space下的Class1這個類別的日誌，符合Debug和Error這兩個級別，就輸出到f1這個Target &ndash;&gt;
+&lt;logger name=&quot;Name.Space.Class1&rdquo; levels=&quot;Debug,Error&rdquo; writeTo=&quot;f1&rdquo; /&gt;</p>
+<p>&lt;!&ndash; 命名空間Name.Space下的所有類別的日誌，就輸出到f3和f4這兩個Target &ndash;&gt;
+&lt;logger name=&quot;Name.Space.*&rdquo; writeTo=&quot;f3,f4&rdquo; /&gt;</p>
+<p>&lt;!&ndash;
+命名空間Name.Space下的所有類別的日誌，級別在Debug和Error之間
+也就是說級別為Debug, Info, Warn, Error，不輸出日誌，因為這條規則沒有指定writeTo
+同時不再檢查之後的規則，因為這裡設定final=true
+&ndash;&gt;
+&lt;logger name=&quot;Name.Space.*&rdquo; minlevel=&quot;Debug&rdquo; maxlevel=&quot;Error&rdquo; final=&quot;true&rdquo; /&gt;
+</pre></div></p>
+<hr>
+<h2 id="nlog-level">NLog Level</h2>
+<p>NLog的日誌級別分為六個等級，方便我們對於不同情境制訂出合適的級別輸出</p>
+<ol>
+<li>Trace - 大量而詳細的訊息，一般只用在開發環境</li>
+<li>Debug - 用來除錯用的詳細訊息，比Trace用的少一點，一般也只用在開發環境</li>
+<li>Info - 用來提示用的訊息，例如使用者登出入，交易參數資料</li>
+<li>Warn - 用來警告用的訊息，例如執行時間超出預期，連線數接近上限</li>
+<li>Error - 一般錯誤的訊息，一般就是try catch到的Exception</li>
+<li>Fatal - 致命錯誤的訊息，通常會造成應用程式無法執行<div>最簡單的設定檔配置，只要設定Rule和要寫入的Target就行了</div><div>
+上一篇: <a href="http://blog.developer.idv.tw/2012/12/nlog-targets.html">NLog Targets</a>
+下一篇: <a href="http://blog.developer.idv.tw/2012/12/nlog-layouts.html">NLog Layouts </a></div></li>
+</ol>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20Rules&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f
+			&title=NLog%20Rules&summary=NLog%20Rules%20NLog%e4%bd%bf%e7%94%a8%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e8%b7%af%e7%94%b1%e8%a1%a8%e6%aa%a2%e6%9f%a5%e7%95%b6%e6%aa%a2%e6%9f%a5%e5%88%b0%e7%ac%a6%e5%90%88%e7%9a%84%e6%97%a5%e8%aa%8c%e5%90%8d%e7%a8%b1%e5%92%8c%e7%b4%9a%e5%88%a5%e6%99%82%ef%bc%8c%e6%9c%83%e8%bc%b8%e5%87%ba%e5%88%b0%e6%8c%87%e5%ae%9a%e7%9a%84%e4%b8%80%e5%80%8b%e6%88%96%e5%a4%9a%e5%80%8bTarget%e5%8e%bb%e5%a6%82%e6%9e%9c%e6%8c%87%e5%ae%9a%e4%ba%86final%e5%b1%ac%e6%80%a7%ef%bc%8c%e4%b9%8b%e5%be%8c%e7%9a%84%e8%a6%8f%e5%89%87%e5%b0%b1%e4%b8%8d%e5%86%8d%e6%aa%a2%e6%9f%a5Rules%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e7%9a%84%e5%b1%ac%e6%80%a7%e5%a6%82%e4%b8%8b%20%20%20name%20-%20%e6%97%a5%e8%aa%8c%e4%be%86%e6%ba%90%e7%9a%84%e5%90%8d%e7%a8%b1%28%e5%85%81%e8%a8%b1%e4%bd%bf%e7%94%a8%e9%80%9a%e9%85%8d%e7%ac%a6%e8%99%9f%2a%29%20minlevel%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e6%9c%80%e4%bd%8e%e7%b4%9a%e5%88%a5%20maxlevel%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e6%9c%80%e9%ab%98%e7%b4%9a%e5%88%a5%20level%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e7%89%b9%e5%ae%9a%e7%b4%9a%e5%88%a5%20levels%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e7%b4%9a%e5%88%a5%e5%88%97%e8%a1%a8%ef%bc%8c%e7%94%a8%e9%80%97%e8%99%9f%e5%88%86%e9%9a%94%20writeTo%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e6%97%a5%e8%aa%8c%e8%a6%81%e5%af%ab%e5%85%a5%e7%9a%84target%e5%88%97%e8%a1%a8%ef%bc%8c%e7%94%a8%e9%80%97%e8%99%9f%e5%88%86%e9%9a%94%20final%20-%20%e8%a8%ad%e5%ae%9a%e7%ac%a6%e5%90%88%e8%a9%b2%e8%a6%8f%e5%89%87%e7%9a%84%e6%a2%9d%e4%bb%b6%e7%82%ba%e6%9c%80%e5%be%8c%e4%b8%80%e5%80%8b%e8%a6%8f%e5%89%87%ef%bc%8c%e5%be%8c%e9%9d%a2%e7%9a%84%e8%a6%8f%e5%89%87%e4%b8%8d%e5%86%8d%e6%aa%a2%e6%9f%a5%e4%bb%a5%e4%b8%8b%e7%82%ba%e4%b8%80%e4%ba%9b%e4%be%8b%e5%ad%90%26lt%3b%21%26ndash%3b%20%e5%91%bd%e5%90%8d%e7%a9%ba%e9%96%93Name.Space%e4%b8%8b%e7%9a%84Class1%e9%80%99%e5%80%8b%e9%a1%9e%e5%88%a5%e7%9a%84%e6%97%a5%e8%aa%8c%ef%bc%8c%e7%ac%a6%e5%90%88Debug%e4%bb%a5%e4%b8%8a%e7%9a%84%e7%b4%9a%e5%88%a5%ef%bc%8c%e5%b0%b1%e8%bc%b8%e5%87%ba%e5%88%b0f1%e9%80%99%e5%80%8bTarget%20%26ndash%3b%26gt%3b%20%26lt%3blogger%20name%3d%26quot%3bName.Space.Class1%26rdquo%3b%20minlevel%3d%26quot%3bDebug%26rdquo%3b%20writeTo%3d%26quot%3bf1%26rdquo%3b%20%2f%26gt%3b%20%20%26lt%3b%21%26ndash%3b%20%e5%91%bd%e5%90%8d%e7%a9%ba%e9%96%93Name.Space%e4%b8%8b%e7%9a%84Class1%e9%80%99%e5%80%8b%e9%a1%9e%e5%88%a5%e7%9a%84%e6%97%a5%e8%aa%8c%ef%bc%8c%e7%ac%a6%e5%90%88Debug%e5%92%8cError%e9%80%99%e5%85%a9%e5%80%8b%e7%b4%9a%e5%88%a5%ef%bc%8c%e5%b0%b1%e8%bc%b8%e5%87%ba%e5%88%b0f1%e9%80%99%e5%80%8bTarget%20%26ndash%3b%26gt%3b%20%26lt%3blogger%20name%3d%26quot%3bName.Space.Class1%26rdquo%3b%20levels%3d%26quot%3bDebug%2cError%26rdquo%3b%20writeTo%3d%26quot%3bf1%26rdquo%3b%20%2f%26gt%3b%0a%26lt%3b%21%26ndash%3b%20%e5%91%bd%e5%90%8d%e7%a9%ba%e9%96%93Name.Space%e4%b8%8b%e7%9a%84%e6%89%80%e6%9c%89%e9%a1%9e%e5%88%a5%e7%9a%84%e6%97%a5%e8%aa%8c%ef%bc%8c%e5%b0%b1%e8%bc%b8%e5%87%ba%e5%88%b0f3%e5%92%8cf4%e9%80%99%e5%85%a9%e5%80%8bTarget%20%26ndash%3b%26gt%3b%20%26lt%3blogger%20name%3d%26quot%3bName.Space.%2a%26rdquo%3b%20writeTo%3d%26quot%3bf3%2cf4%26rdquo%3b%20%2f%26gt%3b%0a%26lt%3b%21%26ndash%3b%20%e5%91%bd%e5%90%8d%e7%a9%ba%e9%96%93Name.Space%e4%b8%8b%e7%9a%84%e6%89%80%e6%9c%89%e9%a1%9e%e5%88%a5%e7%9a%84%e6%97%a5%e8%aa%8c%ef%bc%8c%e7%b4%9a%e5%88%a5%e5%9c%a8Debug%e5%92%8cError%e4%b9%8b%e9%96%93%20%e4%b9%9f%e5%b0%b1%e6%98%af%e8%aa%aa%e7%b4%9a%e5%88%a5%e7%82%baDebug%2c%20Info%2c%20Warn%2c%20Error%ef%bc%8c%e4%b8%8d%e8%bc%b8%e5%87%ba%e6%97%a5%e8%aa%8c%ef%bc%8c%e5%9b%a0%e7%82%ba%e9%80%99%e6%a2%9d%e8%a6%8f%e5%89%87%e6%b2%92%e6%9c%89%e6%8c%87%e5%ae%9awriteTo%20%e5%90%8c%e6%99%82%e4%b8%8d%e5%86%8d%e6%aa%a2%e6%9f%a5%e4%b9%8b%e5%be%8c%e7%9a%84%e8%a6%8f%e5%89%87%ef%bc%8c%e5%9b%a0%e7%82%ba%e9%80%99%e8%a3%a1%e8%a8%ad%e5%ae%9afinal%3dtrue%20%26ndash%3b%26gt%3b%20%26lt%3blogger%20name%3d%26quot%3bName.Space.%2a%26rdquo%3b%20minlevel%3d%26quot%3bDebug%26rdquo%3b%20maxlevel%3d%26quot%3bError%26rdquo%3b%20final%3d%26quot%3btrue%26rdquo%3b%20%2f%26gt%3b%20%0a%20NLog%20Level%20NLog%e7%9a%84%e6%97%a5%e8%aa%8c%e7%b4%9a%e5%88%a5%e5%88%86%e7%82%ba%e5%85%ad%e5%80%8b%e7%ad%89%e7%b4%9a%ef%bc%8c%e6%96%b9%e4%be%bf%e6%88%91%e5%80%91%e5%b0%8d%e6%96%bc%e4%b8%8d%e5%90%8c%e6%83%85%e5%a2%83%e5%88%b6%e8%a8%82%e5%87%ba%e5%90%88%e9%81%a9%e7%9a%84%e7%b4%9a%e5%88%a5%e8%bc%b8%e5%87%ba%0a%20Trace%20-%20%e5%a4%a7%e9%87%8f%e8%80%8c%e8%a9%b3%e7%b4%b0%e7%9a%84%e8%a8%8a%e6%81%af%ef%bc%8c%e4%b8%80%e8%88%ac%e5%8f%aa%e7%94%a8%e5%9c%a8%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%20Debug%20-%20%e7%94%a8%e4%be%86%e9%99%a4%e9%8c%af%e7%94%a8%e7%9a%84%e8%a9%b3%e7%b4%b0%e8%a8%8a%e6%81%af%ef%bc%8c%e6%af%94Trace%e7%94%a8%e7%9a%84%e5%b0%91%e4%b8%80%e9%bb%9e%ef%bc%8c%e4%b8%80%e8%88%ac%e4%b9%9f%e5%8f%aa%e7%94%a8%e5%9c%a8%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%20Info%20-%20%e7%94%a8%e4%be%86%e6%8f%90%e7%a4%ba%e7%94%a8%e7%9a%84%e8%a8%8a%e6%81%af%ef%bc%8c%e4%be%8b%e5%a6%82%e4%bd%bf%e7%94%a8%e8%80%85%e7%99%bb%e5%87%ba%e5%85%a5%ef%bc%8c%e4%ba%a4%e6%98%93%e5%8f%83%e6%95%b8%e8%b3%87%e6%96%99%20Warn%20-%20%e7%94%a8%e4%be%86%e8%ad%a6%e5%91%8a%e7%94%a8%e7%9a%84%e8%a8%8a%e6%81%af%ef%bc%8c%e4%be%8b%e5%a6%82%e5%9f%b7%e8%a1%8c%e6%99%82%e9%96%93%e8%b6%85%e5%87%ba%e9%a0%90%e6%9c%9f%ef%bc%8c%e9%80%a3%e7%b7%9a%e6%95%b8%e6%8e%a5%e8%bf%91%e4%b8%8a%e9%99%90%20Error%20-%20%e4%b8%80%e8%88%ac%e9%8c%af%e8%aa%a4%e7%9a%84%e8%a8%8a%e6%81%af%ef%bc%8c%e4%b8%80%e8%88%ac%e5%b0%b1%e6%98%aftry%20catch%e5%88%b0%e7%9a%84Exception%20Fatal%20-%20%e8%87%b4%e5%91%bd%e9%8c%af%e8%aa%a4%e7%9a%84%e8%a8%8a%e6%81%af%ef%bc%8c%e9%80%9a%e5%b8%b8%e6%9c%83%e9%80%a0%e6%88%90%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e7%84%a1%e6%b3%95%e5%9f%b7%e8%a1%8c%e6%9c%80%e7%b0%a1%e5%96%ae%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%aa%94%e9%85%8d%e7%bd%ae%ef%bc%8c%e5%8f%aa%e8%a6%81%e8%a8%ad%e5%ae%9aRule%e5%92%8c%e8%a6%81%e5%af%ab%e5%85%a5%e7%9a%84Target%e5%b0%b1%e8%a1%8c%e4%ba%86%20%e4%b8%8a%e4%b8%80%e7%af%87%3a%20NLog%20Targets%20%e4%b8%8b%e4%b8%80%e7%af%87%3a%20NLog%20Layouts%c2%a0%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20Rules&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-rules%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

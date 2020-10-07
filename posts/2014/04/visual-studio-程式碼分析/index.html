@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Visual Studio 程式碼分析 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Visual Studio內建的程式碼分析，功能和Fxcop一樣用來對編譯出來的的Assembly做分析 這裡以一個簡單的網站當例子[![](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 選擇空白的MVC專案[![](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png) 在專案設定中的程式碼分析有一些預設的規則集[![](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png) 可以新增自訂的規則集[![](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 記得在屬性視窗中去修改這個規則集的顯示名稱[![](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png) 調整自訂的規則集[![](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 就可以在剛剛專案屬性中選擇自訂的規則集[![](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 在專案上面按右鍵選擇分析[![](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 又或是在選擇工具列上的分析，快速鍵為Alt&nbsp;&#43; F11[![](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 建置後就會跑出分析結果，該項目上點兩下就會切換到引發該訊息的原始碼處[![](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png) 如果要知道這條規則更詳細的說明，就點擊左上方的規則編號 如果要先隱藏訊息的話，就在動作上面點一下，選擇隱藏訊息 這裡以在原始程式檔中為例[![](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png) 就會在原始檔中加入SuppressMessage Attribute 記得要在屬性Justification中加入隱藏這個訊息的原因 namespace DemoWeb { public class MvcApplication : System.Web.HttpApplication { [System.Diagnostics.CodeAnalysis.SuppressMessage(&#34;Microsoft.Performance&#34;, &#34;CA1822:MarkMembersAsStatic&#34;, Justification = &#34;DemoWeb不處理&#34;)] protected void Application_Start() { AreaRegistration.RegisterAllAreas(); RouteConfig.RegisterRoutes(RouteTable.Routes); } } }  相關連結 Managed 程式碼的程式碼分析警告
+    ">
+
+
+<meta property="og:title" content="Visual Studio 程式碼分析" />
+<meta property="og:description" content="Visual Studio內建的程式碼分析，功能和Fxcop一樣用來對編譯出來的的Assembly做分析 這裡以一個簡單的網站當例子[![](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 選擇空白的MVC專案[![](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png) 在專案設定中的程式碼分析有一些預設的規則集[![](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png) 可以新增自訂的規則集[![](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 記得在屬性視窗中去修改這個規則集的顯示名稱[![](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png) 調整自訂的規則集[![](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 就可以在剛剛專案屬性中選擇自訂的規則集[![](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 在專案上面按右鍵選擇分析[![](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 又或是在選擇工具列上的分析，快速鍵為Alt&nbsp;&#43; F11[![](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 建置後就會跑出分析結果，該項目上點兩下就會切換到引發該訊息的原始碼處[![](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png) 如果要知道這條規則更詳細的說明，就點擊左上方的規則編號 如果要先隱藏訊息的話，就在動作上面點一下，選擇隱藏訊息 這裡以在原始程式檔中為例[![](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png) 就會在原始檔中加入SuppressMessage Attribute 記得要在屬性Justification中加入隱藏這個訊息的原因 namespace DemoWeb { public class MvcApplication : System.Web.HttpApplication { [System.Diagnostics.CodeAnalysis.SuppressMessage(&#34;Microsoft.Performance&#34;, &#34;CA1822:MarkMembersAsStatic&#34;, Justification = &#34;DemoWeb不處理&#34;)] protected void Application_Start() { AreaRegistration.RegisterAllAreas(); RouteConfig.RegisterRoutes(RouteTable.Routes); } } }  相關連結 Managed 程式碼的程式碼分析警告" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/04/visual-studio-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%88%86%E6%9E%90/" />
+<meta property="article:published_time" content="2014-04-22T13:38:00+00:00" />
+<meta property="article:modified_time" content="2014-04-22T13:38:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visual Studio 程式碼分析"/>
+<meta name="twitter:description" content="Visual Studio內建的程式碼分析，功能和Fxcop一樣用來對編譯出來的的Assembly做分析 這裡以一個簡單的網站當例子[![](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 選擇空白的MVC專案[![](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png) 在專案設定中的程式碼分析有一些預設的規則集[![](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png) 可以新增自訂的規則集[![](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 記得在屬性視窗中去修改這個規則集的顯示名稱[![](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png) 調整自訂的規則集[![](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 就可以在剛剛專案屬性中選擇自訂的規則集[![](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 在專案上面按右鍵選擇分析[![](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 又或是在選擇工具列上的分析，快速鍵為Alt&nbsp;&#43; F11[![](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 建置後就會跑出分析結果，該項目上點兩下就會切換到引發該訊息的原始碼處[![](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png) 如果要知道這條規則更詳細的說明，就點擊左上方的規則編號 如果要先隱藏訊息的話，就在動作上面點一下，選擇隱藏訊息 這裡以在原始程式檔中為例[![](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png) 就會在原始檔中加入SuppressMessage Attribute 記得要在屬性Justification中加入隱藏這個訊息的原因 namespace DemoWeb { public class MvcApplication : System.Web.HttpApplication { [System.Diagnostics.CodeAnalysis.SuppressMessage(&#34;Microsoft.Performance&#34;, &#34;CA1822:MarkMembersAsStatic&#34;, Justification = &#34;DemoWeb不處理&#34;)] protected void Application_Start() { AreaRegistration.RegisterAllAreas(); RouteConfig.RegisterRoutes(RouteTable.Routes); } } }  相關連結 Managed 程式碼的程式碼分析警告"/>
+
+<meta itemprop="name" content="Visual Studio 程式碼分析">
+<meta itemprop="description" content="Visual Studio內建的程式碼分析，功能和Fxcop一樣用來對編譯出來的的Assembly做分析 這裡以一個簡單的網站當例子[![](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 選擇空白的MVC專案[![](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png) 在專案設定中的程式碼分析有一些預設的規則集[![](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png) 可以新增自訂的規則集[![](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 記得在屬性視窗中去修改這個規則集的顯示名稱[![](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png) 調整自訂的規則集[![](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 就可以在剛剛專案屬性中選擇自訂的規則集[![](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png) 在專案上面按右鍵選擇分析[![](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 又或是在選擇工具列上的分析，快速鍵為Alt&nbsp;&#43; F11[![](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png) 建置後就會跑出分析結果，該項目上點兩下就會切換到引發該訊息的原始碼處[![](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png) 如果要知道這條規則更詳細的說明，就點擊左上方的規則編號 如果要先隱藏訊息的話，就在動作上面點一下，選擇隱藏訊息 這裡以在原始程式檔中為例[![](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png) 就會在原始檔中加入SuppressMessage Attribute 記得要在屬性Justification中加入隱藏這個訊息的原因 namespace DemoWeb { public class MvcApplication : System.Web.HttpApplication { [System.Diagnostics.CodeAnalysis.SuppressMessage(&#34;Microsoft.Performance&#34;, &#34;CA1822:MarkMembersAsStatic&#34;, Justification = &#34;DemoWeb不處理&#34;)] protected void Application_Start() { AreaRegistration.RegisterAllAreas(); RouteConfig.RegisterRoutes(RouteTable.Routes); } } }  相關連結 Managed 程式碼的程式碼分析警告">
+<meta itemprop="datePublished" content="2014-04-22T13:38:00+00:00" />
+<meta itemprop="dateModified" content="2014-04-22T13:38:00+00:00" />
+<meta itemprop="wordCount" content="45">
+
+
+
+<meta itemprop="keywords" content="Code Analysis,FxCop," />
+
+<link rel="canonical" href="http://example.org/posts/2014/04/visual-studio-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%88%86%E6%9E%90/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Visual Studio 程式碼分析</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Apr 22, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    20 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/code-analysis">Code Analysis</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/fxcop">FxCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/code-analysis">Code analysis</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/fxcop">Fx cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div>Visual Studio內建的程式碼分析，功能和Fxcop一樣用來對編譯出來的的Assembly做分析
+這裡以一個簡單的網站當例子</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://3.bp.blogspot.com/-Vb_xWiwDI6M/U1XnV68asaI/AAAAAAAABOs/xxPRf3OER7U/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)</div>
+<div>選擇空白的MVC專案</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)](http://1.bp.blogspot.com/-MVgS-qgi4pk/U1XnYLAjtDI/AAAAAAAABPY/-BqHSmWSK_M/s1600/02.MVC%25E5%25B0%2588%25E6%25A1%2588.png)</div>
+<div>在專案設定中的程式碼分析有一些預設的規則集</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)](http://1.bp.blogspot.com/-Ys253RmWmjo/U1XnV626otI/AAAAAAAABOw/O0dQZgKvY3U/s1600/03.%25E5%25B0%2588%25E6%25A1%2588%25E8%25A8%25AD%25E5%25AE%259A.png)</div>
+<div>可以新增自訂的規則集</div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://2.bp.blogspot.com/-h72BZRA2ZFc/U1XnWQe0PhI/AAAAAAAABO8/Ga8-4BIp1ow/s1600/04.%25E6%2596%25B0%25E5%25A2%259E%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)</div>
+<div>記得在屬性視窗中去修改這個規則集的顯示名稱</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)](http://4.bp.blogspot.com/-_YerSEatUhw/U1XnWlCyRNI/AAAAAAAABPM/RFAIwLjqtwc/s1600/05.%25E4%25BF%25AE%25E6%2594%25B9%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586%25E5%2590%258D%25E7%25A8%25B1.png)</div>
+<div>調整自訂的規則集</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://3.bp.blogspot.com/-Vk7DdmFofho/U1XnXGtMVbI/AAAAAAAABPI/3_x3XdR-nzA/s1600/06.%25E8%25AA%25BF%25E6%2595%25B4%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)</div>
+<div>就可以在剛剛專案屬性中選擇自訂的規則集</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)](http://4.bp.blogspot.com/-bjjTg1JDYWM/U1XnaWimi2I/AAAAAAAABP4/O9YeOeUJsO8/s1600/07.%25E9%2581%25B8%25E6%2593%2587%25E8%2587%25AA%25E8%25A8%2582%25E8%25A6%258F%25E5%2589%2587%25E9%259B%2586.png)</div>
+<div>在專案上面按右鍵選擇分析</div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://4.bp.blogspot.com/-Rz_jWNFB1Kg/U1XnYOrwXsI/AAAAAAAABPg/w_9Jv3hORD4/s1600/08.%25E5%25B0%2588%25E6%25A1%2588%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)</div>
+<div>又或是在選擇工具列上的分析，快速鍵為Alt&nbsp;+ F11</div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)](http://3.bp.blogspot.com/-9ZsXWNGeFDc/U1XnY_JxcRI/AAAAAAAABPo/HAKNKNEzZzM/s1600/09.%25E5%25B7%25A5%25E5%2585%25B7%25E5%2588%2597%25E4%25B8%258A%25E9%2581%25B8%25E6%2593%2587%25E5%2588%2586%25E6%259E%2590.png)</div>
+<div>建置後就會跑出分析結果，該項目上點兩下就會切換到引發該訊息的原始碼處</div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)](http://1.bp.blogspot.com/-SpipZT6VDXs/U1XnZOjsk_I/AAAAAAAABPs/97VlEH6oJ7s/s1600/10.%25E5%2588%2586%25E6%259E%2590%25E5%2595%258F%25E9%25A1%258C.png)</div>
+<div>如果要知道這條規則更詳細的說明，就點擊左上方的規則編號
+如果要先隱藏訊息的話，就在動作上面點一下，選擇隱藏訊息
+這裡以在原始程式檔中為例</div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)](http://3.bp.blogspot.com/-1XPg6CTlIB8/U1X_wYjG3eI/AAAAAAAABQI/HCnZUrYh8Aw/s1600/11.%E9%9A%B1%E8%97%8F%E8%A8%8A%E6%81%AF.png)</div>
+<div>就會在原始檔中加入SuppressMessage Attribute
+記得要在屬性Justification中加入隱藏這個訊息的原因</div>
+<div><pre class="brush:csharp">namespace DemoWeb
+{
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "DemoWeb不處理")]
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+    }
+}
+</pre></div>
+<div>相關連結
+<p><a href="http://msdn.microsoft.com/zh-tw/library/ee1hzekz.aspx">Managed 程式碼的程式碼分析警告</a></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Visual%20Studio%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f
+			&title=Visual%20Studio%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90&summary=Visual%20Studio%e5%85%a7%e5%bb%ba%e7%9a%84%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90%ef%bc%8c%e5%8a%9f%e8%83%bd%e5%92%8cFxcop%e4%b8%80%e6%a8%a3%e7%94%a8%e4%be%86%e5%b0%8d%e7%b7%a8%e8%ad%af%e5%87%ba%e4%be%86%e7%9a%84%e7%9a%84Assembly%e5%81%9a%e5%88%86%e6%9e%90%20%e9%80%99%e8%a3%a1%e4%bb%a5%e4%b8%80%e5%80%8b%e7%b0%a1%e5%96%ae%e7%9a%84%e7%b6%b2%e7%ab%99%e7%95%b6%e4%be%8b%e5%ad%90%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Vb_xWiwDI6M%2fU1XnV68asaI%2fAAAAAAAABOs%2fxxPRf3OER7U%2fs1600%2f01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Vb_xWiwDI6M%2fU1XnV68asaI%2fAAAAAAAABOs%2fxxPRf3OER7U%2fs1600%2f01.%25E9%2596%258B%25E6%2596%25B0%25E5%25B0%2588%25E6%25A1%2588.png%29%20%e9%81%b8%e6%93%87%e7%a9%ba%e7%99%bd%e7%9a%84MVC%e5%b0%88%e6%a1%88%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MVgS-qgi4pk%2fU1XnYLAjtDI%2fAAAAAAAABPY%2f-BqHSmWSK_M%2fs1600%2f02.MVC%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MVgS-qgi4pk%2fU1XnYLAjtDI%2fAAAAAAAABPY%2f-BqHSmWSK_M%2fs1600%2f02.MVC%2525E5%2525B0%252588%2525E6%2525A1%252588.png%29%20%e5%9c%a8%e5%b0%88%e6%a1%88%e8%a8%ad%e5%ae%9a%e4%b8%ad%e7%9a%84%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90%e6%9c%89%e4%b8%80%e4%ba%9b%e9%a0%90%e8%a8%ad%e7%9a%84%e8%a6%8f%e5%89%87%e9%9b%86%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Ys253RmWmjo%2fU1XnV626otI%2fAAAAAAAABOw%2fO0dQZgKvY3U%2fs1600%2f03.%2525E5%2525B0%252588%2525E6%2525A1%252588%2525E8%2525A8%2525AD%2525E5%2525AE%25259A.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Ys253RmWmjo%2fU1XnV626otI%2fAAAAAAAABOw%2fO0dQZgKvY3U%2fs1600%2f03.%2525E5%2525B0%252588%2525E6%2525A1%252588%2525E8%2525A8%2525AD%2525E5%2525AE%25259A.png%29%20%e5%8f%af%e4%bb%a5%e6%96%b0%e5%a2%9e%e8%87%aa%e8%a8%82%e7%9a%84%e8%a6%8f%e5%89%87%e9%9b%86%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-h72BZRA2ZFc%2fU1XnWQe0PhI%2fAAAAAAAABO8%2fGa8-4BIp1ow%2fs1600%2f04.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-h72BZRA2ZFc%2fU1XnWQe0PhI%2fAAAAAAAABO8%2fGa8-4BIp1ow%2fs1600%2f04.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%20%e8%a8%98%e5%be%97%e5%9c%a8%e5%b1%ac%e6%80%a7%e8%a6%96%e7%aa%97%e4%b8%ad%e5%8e%bb%e4%bf%ae%e6%94%b9%e9%80%99%e5%80%8b%e8%a6%8f%e5%89%87%e9%9b%86%e7%9a%84%e9%a1%af%e7%a4%ba%e5%90%8d%e7%a8%b1%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-_YerSEatUhw%2fU1XnWlCyRNI%2fAAAAAAAABPM%2fRFAIwLjqtwc%2fs1600%2f05.%2525E4%2525BF%2525AE%2525E6%252594%2525B9%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586%2525E5%252590%25258D%2525E7%2525A8%2525B1.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-_YerSEatUhw%2fU1XnWlCyRNI%2fAAAAAAAABPM%2fRFAIwLjqtwc%2fs1600%2f05.%2525E4%2525BF%2525AE%2525E6%252594%2525B9%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586%2525E5%252590%25258D%2525E7%2525A8%2525B1.png%29%20%e8%aa%bf%e6%95%b4%e8%87%aa%e8%a8%82%e7%9a%84%e8%a6%8f%e5%89%87%e9%9b%86%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Vk7DdmFofho%2fU1XnXGtMVbI%2fAAAAAAAABPI%2f3_x3XdR-nzA%2fs1600%2f06.%2525E8%2525AA%2525BF%2525E6%252595%2525B4%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Vk7DdmFofho%2fU1XnXGtMVbI%2fAAAAAAAABPI%2f3_x3XdR-nzA%2fs1600%2f06.%2525E8%2525AA%2525BF%2525E6%252595%2525B4%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%20%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%9c%a8%e5%89%9b%e5%89%9b%e5%b0%88%e6%a1%88%e5%b1%ac%e6%80%a7%e4%b8%ad%e9%81%b8%e6%93%87%e8%87%aa%e8%a8%82%e7%9a%84%e8%a6%8f%e5%89%87%e9%9b%86%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-bjjTg1JDYWM%2fU1XnaWimi2I%2fAAAAAAAABP4%2fO9YeOeUJsO8%2fs1600%2f07.%2525E9%252581%2525B8%2525E6%252593%252587%2525E8%252587%2525AA%2525E8%2525A8%252582%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-bjjTg1JDYWM%2fU1XnaWimi2I%2fAAAAAAAABP4%2fO9YeOeUJsO8%2fs1600%2f07.%2525E9%252581%2525B8%2525E6%252593%252587%2525E8%252587%2525AA%2525E8%2525A8%252582%2525E8%2525A6%25258F%2525E5%252589%252587%2525E9%25259B%252586.png%29%20%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%e9%9d%a2%e6%8c%89%e5%8f%b3%e9%8d%b5%e9%81%b8%e6%93%87%e5%88%86%e6%9e%90%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Rz_jWNFB1Kg%2fU1XnYOrwXsI%2fAAAAAAAABPg%2fw_9Jv3hORD4%2fs1600%2f08.%2525E5%2525B0%252588%2525E6%2525A1%252588%2525E4%2525B8%25258A%2525E9%252581%2525B8%2525E6%252593%252587%2525E5%252588%252586%2525E6%25259E%252590.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Rz_jWNFB1Kg%2fU1XnYOrwXsI%2fAAAAAAAABPg%2fw_9Jv3hORD4%2fs1600%2f08.%2525E5%2525B0%252588%2525E6%2525A1%252588%2525E4%2525B8%25258A%2525E9%252581%2525B8%2525E6%252593%252587%2525E5%252588%252586%2525E6%25259E%252590.png%29%20%e5%8f%88%e6%88%96%e6%98%af%e5%9c%a8%e9%81%b8%e6%93%87%e5%b7%a5%e5%85%b7%e5%88%97%e4%b8%8a%e7%9a%84%e5%88%86%e6%9e%90%ef%bc%8c%e5%bf%ab%e9%80%9f%e9%8d%b5%e7%82%baAlt%26nbsp%3b%2b%20F11%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-9ZsXWNGeFDc%2fU1XnY_JxcRI%2fAAAAAAAABPo%2fHAKNKNEzZzM%2fs1600%2f09.%2525E5%2525B7%2525A5%2525E5%252585%2525B7%2525E5%252588%252597%2525E4%2525B8%25258A%2525E9%252581%2525B8%2525E6%252593%252587%2525E5%252588%252586%2525E6%25259E%252590.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-9ZsXWNGeFDc%2fU1XnY_JxcRI%2fAAAAAAAABPo%2fHAKNKNEzZzM%2fs1600%2f09.%2525E5%2525B7%2525A5%2525E5%252585%2525B7%2525E5%252588%252597%2525E4%2525B8%25258A%2525E9%252581%2525B8%2525E6%252593%252587%2525E5%252588%252586%2525E6%25259E%252590.png%29%20%e5%bb%ba%e7%bd%ae%e5%be%8c%e5%b0%b1%e6%9c%83%e8%b7%91%e5%87%ba%e5%88%86%e6%9e%90%e7%b5%90%e6%9e%9c%ef%bc%8c%e8%a9%b2%e9%a0%85%e7%9b%ae%e4%b8%8a%e9%bb%9e%e5%85%a9%e4%b8%8b%e5%b0%b1%e6%9c%83%e5%88%87%e6%8f%9b%e5%88%b0%e5%bc%95%e7%99%bc%e8%a9%b2%e8%a8%8a%e6%81%af%e7%9a%84%e5%8e%9f%e5%a7%8b%e7%a2%bc%e8%99%95%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-SpipZT6VDXs%2fU1XnZOjsk_I%2fAAAAAAAABPs%2f97VlEH6oJ7s%2fs1600%2f10.%2525E5%252588%252586%2525E6%25259E%252590%2525E5%252595%25258F%2525E9%2525A1%25258C.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-SpipZT6VDXs%2fU1XnZOjsk_I%2fAAAAAAAABPs%2f97VlEH6oJ7s%2fs1600%2f10.%2525E5%252588%252586%2525E6%25259E%252590%2525E5%252595%25258F%2525E9%2525A1%25258C.png%29%20%e5%a6%82%e6%9e%9c%e8%a6%81%e7%9f%a5%e9%81%93%e9%80%99%e6%a2%9d%e8%a6%8f%e5%89%87%e6%9b%b4%e8%a9%b3%e7%b4%b0%e7%9a%84%e8%aa%aa%e6%98%8e%ef%bc%8c%e5%b0%b1%e9%bb%9e%e6%93%8a%e5%b7%a6%e4%b8%8a%e6%96%b9%e7%9a%84%e8%a6%8f%e5%89%87%e7%b7%a8%e8%99%9f%20%e5%a6%82%e6%9e%9c%e8%a6%81%e5%85%88%e9%9a%b1%e8%97%8f%e8%a8%8a%e6%81%af%e7%9a%84%e8%a9%b1%ef%bc%8c%e5%b0%b1%e5%9c%a8%e5%8b%95%e4%bd%9c%e4%b8%8a%e9%9d%a2%e9%bb%9e%e4%b8%80%e4%b8%8b%ef%bc%8c%e9%81%b8%e6%93%87%e9%9a%b1%e8%97%8f%e8%a8%8a%e6%81%af%20%e9%80%99%e8%a3%a1%e4%bb%a5%e5%9c%a8%e5%8e%9f%e5%a7%8b%e7%a8%8b%e5%bc%8f%e6%aa%94%e4%b8%ad%e7%82%ba%e4%be%8b%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1XPg6CTlIB8%2fU1X_wYjG3eI%2fAAAAAAAABQI%2fHCnZUrYh8Aw%2fs1600%2f11.%25E9%259A%25B1%25E8%2597%258F%25E8%25A8%258A%25E6%2581%25AF.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1XPg6CTlIB8%2fU1X_wYjG3eI%2fAAAAAAAABQI%2fHCnZUrYh8Aw%2fs1600%2f11.%25E9%259A%25B1%25E8%2597%258F%25E8%25A8%258A%25E6%2581%25AF.png%29%20%e5%b0%b1%e6%9c%83%e5%9c%a8%e5%8e%9f%e5%a7%8b%e6%aa%94%e4%b8%ad%e5%8a%a0%e5%85%a5SuppressMessage%20Attribute%20%e8%a8%98%e5%be%97%e8%a6%81%e5%9c%a8%e5%b1%ac%e6%80%a7Justification%e4%b8%ad%e5%8a%a0%e5%85%a5%e9%9a%b1%e8%97%8f%e9%80%99%e5%80%8b%e8%a8%8a%e6%81%af%e7%9a%84%e5%8e%9f%e5%9b%a0%20namespace%20DemoWeb%20%7b%20public%20class%20MvcApplication%20%3a%20System.Web.HttpApplication%20%7b%20%5bSystem.Diagnostics.CodeAnalysis.SuppressMessage%28%22Microsoft.Performance%22%2c%20%22CA1822%3aMarkMembersAsStatic%22%2c%20Justification%20%3d%20%22DemoWeb%e4%b8%8d%e8%99%95%e7%90%86%22%29%5d%20protected%20void%20Application_Start%28%29%20%7b%20AreaRegistration.RegisterAllAreas%28%29%3b%20RouteConfig.RegisterRoutes%28RouteTable.Routes%29%3b%20%7d%20%7d%20%7d%20%20%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90%20Managed%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e7%9a%84%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90%e8%ad%a6%e5%91%8a&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Visual%20Studio%20%e7%a8%8b%e5%bc%8f%e7%a2%bc%e5%88%86%e6%9e%90&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f04%2fvisual-studio-%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC%25E5%2588%2586%25E6%259E%2590%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

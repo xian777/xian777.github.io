@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Common.Logging | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好
+Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考官網，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式
+Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件 應該是為了可儶性，把介面和抽象類別分離到Core套件 在套件的使用上要做點調整
+Common Logging 2.3.1版之後，已不再使用Common.Logging.Core 為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本 例如Common.Logging.NLog31對應到NLog 3.1版本
+首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考
+[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png) 簡單寫一個函式讓之後引用的程式來呼叫
+using Common.Logging; namespace ClassLibrary1 { public class Class1 { private ILog log = LogManager.GetLogger&lt;Class1&gt;());
+ public void SayHello() { this.log.Info(&quot;Hello&quot;); } }  }  再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案
+[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png) 簡單寫一個Button Click來呼叫類別庫中的函式 using System; using System.Windows.Forms; namespace WindowsFormsApplication1 { public partial class Form1 : Form { public Form1() { InitializeComponent(); }
+ private void button1_Click(object sender, EventArgs e) { ClassLibrary1.
+    ">
+
+
+<meta property="og:title" content="Common.Logging" />
+<meta property="og:description" content="在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好
+Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考官網，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式
+Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件 應該是為了可儶性，把介面和抽象類別分離到Core套件 在套件的使用上要做點調整
+Common Logging 2.3.1版之後，已不再使用Common.Logging.Core 為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本 例如Common.Logging.NLog31對應到NLog 3.1版本
+首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考
+[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png) 簡單寫一個函式讓之後引用的程式來呼叫
+using Common.Logging; namespace ClassLibrary1 { public class Class1 { private ILog log = LogManager.GetLogger&lt;Class1&gt;());
+ public void SayHello() { this.log.Info(&quot;Hello&quot;); } }  }  再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案
+[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png) 簡單寫一個Button Click來呼叫類別庫中的函式 using System; using System.Windows.Forms; namespace WindowsFormsApplication1 { public partial class Form1 : Form { public Form1() { InitializeComponent(); }
+ private void button1_Click(object sender, EventArgs e) { ClassLibrary1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/12/common-logging/" />
+<meta property="article:published_time" content="2013-12-24T15:45:00+00:00" />
+<meta property="article:modified_time" content="2013-12-24T15:45:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Common.Logging"/>
+<meta name="twitter:description" content="在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好
+Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考官網，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式
+Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件 應該是為了可儶性，把介面和抽象類別分離到Core套件 在套件的使用上要做點調整
+Common Logging 2.3.1版之後，已不再使用Common.Logging.Core 為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本 例如Common.Logging.NLog31對應到NLog 3.1版本
+首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考
+[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png) 簡單寫一個函式讓之後引用的程式來呼叫
+using Common.Logging; namespace ClassLibrary1 { public class Class1 { private ILog log = LogManager.GetLogger&lt;Class1&gt;());
+ public void SayHello() { this.log.Info(&quot;Hello&quot;); } }  }  再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案
+[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png) 簡單寫一個Button Click來呼叫類別庫中的函式 using System; using System.Windows.Forms; namespace WindowsFormsApplication1 { public partial class Form1 : Form { public Form1() { InitializeComponent(); }
+ private void button1_Click(object sender, EventArgs e) { ClassLibrary1."/>
+
+<meta itemprop="name" content="Common.Logging">
+<meta itemprop="description" content="在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好
+Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考官網，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式
+Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件 應該是為了可儶性，把介面和抽象類別分離到Core套件 在套件的使用上要做點調整
+Common Logging 2.3.1版之後，已不再使用Common.Logging.Core 為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本 例如Common.Logging.NLog31對應到NLog 3.1版本
+首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考
+[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png) 簡單寫一個函式讓之後引用的程式來呼叫
+using Common.Logging; namespace ClassLibrary1 { public class Class1 { private ILog log = LogManager.GetLogger&lt;Class1&gt;());
+ public void SayHello() { this.log.Info(&quot;Hello&quot;); } }  }  再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案
+[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png) 簡單寫一個Button Click來呼叫類別庫中的函式 using System; using System.Windows.Forms; namespace WindowsFormsApplication1 { public partial class Form1 : Form { public Form1() { InitializeComponent(); }
+ private void button1_Click(object sender, EventArgs e) { ClassLibrary1.">
+<meta itemprop="datePublished" content="2013-12-24T15:45:00+00:00" />
+<meta itemprop="dateModified" content="2013-12-24T15:45:00+00:00" />
+<meta itemprop="wordCount" content="193">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2013/12/common-logging/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Common.Logging</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 24, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>在開始使用log4net或NLog這種Logging元件來處理log，是一個很美好的開發經驗，但在開發類別庫專案的時後，會碰到循環參考的問題，這時後改用Common.Logging會比較好</p>
+<p>Common.Logging是一個Log介面，可以支援log4net、NLog、Enterprise Library Logging，透過設定檔把Log轉接到真正要使用的Log元件，在日後轉換Log元件的時後很方便，詳細的介紹可以參考<a href="http://netcommon.sourceforge.net/">官網</a>，以下用一個類別庫專案搭配一個應用程式來介紹這個元件的使用方式</p>
+<p>Common.Logging 2.2.0版之後，相依於Common.Logging.Core套件
+應該是為了可儶性，把介面和抽象類別分離到Core套件
+在套件的使用上要做點調整</p>
+<p>Common Logging 2.3.1版之後，已不再使用Common.Logging.Core
+為了比較好在Log套件的多個版本之間切換，對應的Log套件後面都會有指定的版本
+例如Common.Logging.NLog31對應到NLog 3.1版本</p>
+<p>首先開啟一個類別庫專案，並透過NuGet加入Common.Logging參考</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)](http://1.bp.blogspot.com/-YZT52XVZA3Q/VHKbhm-Vn9I/AAAAAAAABvo/xwz2a-Mpg_Q/s1600/01.NuGet%E5%A5%97%E4%BB%B6.png)</div>
+<p>簡單寫一個函式讓之後引用的程式來呼叫</p>
+<div><pre class="brush:csharp">using Common.Logging;
+<p>namespace ClassLibrary1
+{
+public class Class1
+{
+private ILog log = LogManager.GetLogger&lt;Class1&gt;());</p>
+<pre><code>    public void SayHello()
+    {
+        this.log.Info(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+再來新增一個Windows Form應用程式，並引用剛寫的庫別庫專案</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)](http://4.bp.blogspot.com/-xaXV4Oh0V4A/Urk59141GjI/AAAAAAAAA4o/tmXK3kNuKj0/s1600/02.ref.png)</div>
+簡單寫一個Button Click來呼叫類別庫中的函式
+<div><pre class="brush:csharp">using System;
+using System.Windows.Forms;
+<p>namespace WindowsFormsApplication1
+{
+public partial class Form1 : Form
+{
+public Form1()
+{
+InitializeComponent();
+}</p>
+<pre><code>    private void button1_Click(object sender, EventArgs e)
+    {
+        ClassLibrary1.Class1 x = new ClassLibrary1.Class1();
+        x.SayHello();
+    }
+}
+</code></pre>
+<p>}
+</pre></div>
+因為要轉接到NLog去，所以再新增套件Common.Logging.NLog31，對應的NLog版本就是3.1
+如果要對應到其他的版本，可以選擇對應的套件</p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-AE_fFBVrJSQ/VHKb3tGq9-I/AAAAAAAABvw/kRMfp3sX7nI/s1600/02.Nlog%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-AE_fFBVrJSQ/VHKb3tGq9-I/AAAAAAAABvw/kRMfp3sX7nI/s1600/02.Nlog%E5%A5%97%E4%BB%B6.png)</div>
+加入NLog，為了方便起見，順便加入NLog.Configuration和NLog Schema for Intellisense(TM)
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-Re1X-FNbZ0Q/VHKb71DU-_I/AAAAAAAABv4/rGS2CXpklXQ/s1600/03.Config%E5%A5%97%E4%BB%B6.png)](http://4.bp.blogspot.com/-Re1X-FNbZ0Q/VHKb71DU-_I/AAAAAAAABv4/rGS2CXpklXQ/s1600/03.Config%E5%A5%97%E4%BB%B6.png)</div>
+接下來透過設定檔把Log轉接到NLog
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;sectionGroup name="common"&gt;
+            &lt;section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging"/&gt;
+        &lt;/sectionGroup&gt;
+    &lt;/configSections&gt;
+    &lt;common&gt;
+        &lt;logging&gt;
+            &lt;factoryAdapter type="Common.Logging.NLog.NLogLoggerFactoryAdapter, Common.Logging.NLog31"&gt;
+                &lt;arg key="configType" value="FILE" /&gt;
+                &lt;arg key="configFile" value="~/NLog.config" /&gt;
+            &lt;/factoryAdapter&gt;
+        &lt;/logging&gt;
+    &lt;/common&gt;
+    &lt;startup&gt;
+        &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
+    &lt;/startup&gt;
+    &lt;runtime&gt;
+        &lt;assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1"&gt;
+            &lt;dependentAssembly&gt;
+                &lt;assemblyIdentity name="NLog" publicKeyToken="5120e14c03d0593c" culture="neutral" /&gt;
+                &lt;bindingRedirect oldVersion="0.0.0.0-2.1.0.0" newVersion="2.1.0.0" /&gt;
+            &lt;/dependentAssembly&gt;
+        &lt;/assemblyBinding&gt;
+    &lt;/runtime&gt;
+&lt;/configuration&gt;
+</pre></div>NLog使用預設的設定
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+<pre><code>&amp;lt;!-- 
+</code></pre>
+<p>See <a href="http://nlog-project.org/wiki/Configuration_file">http://nlog-project.org/wiki/Configuration_file</a>
+for information on customizing logging rules and outputs.
+&ndash;&gt;
+&lt;targets&gt;
+&lt;!&ndash; add your targets here &ndash;&gt;
+&lt;target xsi:type=&quot;File&rdquo; name=&quot;f&rdquo; fileName=&quot;${basedir}/logs/${shortdate}.log&rdquo;
+layout=&quot;${longdate} ${uppercase:${level}} ${message}&rdquo; /&gt;</p>
+<pre><code>&amp;lt;/targets&amp;gt;
+
+&amp;lt;rules&amp;gt;
+    &amp;lt;!-- add your logging rules here --&amp;gt;
+    &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;f&quot; /&amp;gt;
+&amp;lt;/rules&amp;gt;
+</code></pre>
+<p>&lt;/nlog&gt;
+</pre></div>輸出的結果</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-z3rA9UMH-kw/Urk7GkSlchI/AAAAAAAAA5E/NCuolISJCSY/s1600/05.result.png)](http://4.bp.blogspot.com/-z3rA9UMH-kw/Urk7GkSlchI/AAAAAAAAA5E/NCuolISJCSY/s1600/05.result.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Common.Logging&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f
+			&title=Common.Logging&summary=%e5%9c%a8%e9%96%8b%e5%a7%8b%e4%bd%bf%e7%94%a8log4net%e6%88%96NLog%e9%80%99%e7%a8%aeLogging%e5%85%83%e4%bb%b6%e4%be%86%e8%99%95%e7%90%86log%ef%bc%8c%e6%98%af%e4%b8%80%e5%80%8b%e5%be%88%e7%be%8e%e5%a5%bd%e7%9a%84%e9%96%8b%e7%99%bc%e7%b6%93%e9%a9%97%ef%bc%8c%e4%bd%86%e5%9c%a8%e9%96%8b%e7%99%bc%e9%a1%9e%e5%88%a5%e5%ba%ab%e5%b0%88%e6%a1%88%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e7%a2%b0%e5%88%b0%e5%be%aa%e7%92%b0%e5%8f%83%e8%80%83%e7%9a%84%e5%95%8f%e9%a1%8c%ef%bc%8c%e9%80%99%e6%99%82%e5%be%8c%e6%94%b9%e7%94%a8Common.Logging%e6%9c%83%e6%af%94%e8%bc%83%e5%a5%bd%0aCommon.Logging%e6%98%af%e4%b8%80%e5%80%8bLog%e4%bb%8b%e9%9d%a2%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%94%af%e6%8f%b4log4net%e3%80%81NLog%e3%80%81Enterprise%20Library%20Logging%ef%bc%8c%e9%80%8f%e9%81%8e%e8%a8%ad%e5%ae%9a%e6%aa%94%e6%8a%8aLog%e8%bd%89%e6%8e%a5%e5%88%b0%e7%9c%9f%e6%ad%a3%e8%a6%81%e4%bd%bf%e7%94%a8%e7%9a%84Log%e5%85%83%e4%bb%b6%ef%bc%8c%e5%9c%a8%e6%97%a5%e5%be%8c%e8%bd%89%e6%8f%9bLog%e5%85%83%e4%bb%b6%e7%9a%84%e6%99%82%e5%be%8c%e5%be%88%e6%96%b9%e4%be%bf%ef%bc%8c%e8%a9%b3%e7%b4%b0%e7%9a%84%e4%bb%8b%e7%b4%b9%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%ef%bc%8c%e4%bb%a5%e4%b8%8b%e7%94%a8%e4%b8%80%e5%80%8b%e9%a1%9e%e5%88%a5%e5%ba%ab%e5%b0%88%e6%a1%88%e6%90%ad%e9%85%8d%e4%b8%80%e5%80%8b%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e4%be%86%e4%bb%8b%e7%b4%b9%e9%80%99%e5%80%8b%e5%85%83%e4%bb%b6%e7%9a%84%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f%0aCommon.Logging%202.2.0%e7%89%88%e4%b9%8b%e5%be%8c%ef%bc%8c%e7%9b%b8%e4%be%9d%e6%96%bcCommon.Logging.Core%e5%a5%97%e4%bb%b6%20%e6%87%89%e8%a9%b2%e6%98%af%e7%82%ba%e4%ba%86%e5%8f%af%e5%84%b6%e6%80%a7%ef%bc%8c%e6%8a%8a%e4%bb%8b%e9%9d%a2%e5%92%8c%e6%8a%bd%e8%b1%a1%e9%a1%9e%e5%88%a5%e5%88%86%e9%9b%a2%e5%88%b0Core%e5%a5%97%e4%bb%b6%20%e5%9c%a8%e5%a5%97%e4%bb%b6%e7%9a%84%e4%bd%bf%e7%94%a8%e4%b8%8a%e8%a6%81%e5%81%9a%e9%bb%9e%e8%aa%bf%e6%95%b4%0aCommon%20Logging%202.3.1%e7%89%88%e4%b9%8b%e5%be%8c%ef%bc%8c%e5%b7%b2%e4%b8%8d%e5%86%8d%e4%bd%bf%e7%94%a8Common.Logging.Core%20%e7%82%ba%e4%ba%86%e6%af%94%e8%bc%83%e5%a5%bd%e5%9c%a8Log%e5%a5%97%e4%bb%b6%e7%9a%84%e5%a4%9a%e5%80%8b%e7%89%88%e6%9c%ac%e4%b9%8b%e9%96%93%e5%88%87%e6%8f%9b%ef%bc%8c%e5%b0%8d%e6%87%89%e7%9a%84Log%e5%a5%97%e4%bb%b6%e5%be%8c%e9%9d%a2%e9%83%bd%e6%9c%83%e6%9c%89%e6%8c%87%e5%ae%9a%e7%9a%84%e7%89%88%e6%9c%ac%20%e4%be%8b%e5%a6%82Common.Logging.NLog31%e5%b0%8d%e6%87%89%e5%88%b0NLog%203.1%e7%89%88%e6%9c%ac%0a%e9%a6%96%e5%85%88%e9%96%8b%e5%95%9f%e4%b8%80%e5%80%8b%e9%a1%9e%e5%88%a5%e5%ba%ab%e5%b0%88%e6%a1%88%ef%bc%8c%e4%b8%a6%e9%80%8f%e9%81%8eNuGet%e5%8a%a0%e5%85%a5Common.Logging%e5%8f%83%e8%80%83%0a%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-YZT52XVZA3Q%2fVHKbhm-Vn9I%2fAAAAAAAABvo%2fxwz2a-Mpg_Q%2fs1600%2f01.NuGet%25E5%25A5%2597%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-YZT52XVZA3Q%2fVHKbhm-Vn9I%2fAAAAAAAABvo%2fxwz2a-Mpg_Q%2fs1600%2f01.NuGet%25E5%25A5%2597%25E4%25BB%25B6.png%29%20%e7%b0%a1%e5%96%ae%e5%af%ab%e4%b8%80%e5%80%8b%e5%87%bd%e5%bc%8f%e8%ae%93%e4%b9%8b%e5%be%8c%e5%bc%95%e7%94%a8%e7%9a%84%e7%a8%8b%e5%bc%8f%e4%be%86%e5%91%bc%e5%8f%ab%0ausing%20Common.Logging%3b%20namespace%20ClassLibrary1%20%7b%20public%20class%20Class1%20%7b%20private%20ILog%20log%20%3d%20LogManager.GetLogger%26lt%3bClass1%26gt%3b%28%29%29%3b%0a%20public%20void%20SayHello%28%29%20%7b%20this.log.Info%28%26quot%3bHello%26quot%3b%29%3b%20%7d%20%7d%20%20%7d%20%20%e5%86%8d%e4%be%86%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bWindows%20Form%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%ef%bc%8c%e4%b8%a6%e5%bc%95%e7%94%a8%e5%89%9b%e5%af%ab%e7%9a%84%e5%ba%ab%e5%88%a5%e5%ba%ab%e5%b0%88%e6%a1%88%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-xaXV4Oh0V4A%2fUrk59141GjI%2fAAAAAAAAA4o%2ftmXK3kNuKj0%2fs1600%2f02.ref.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-xaXV4Oh0V4A%2fUrk59141GjI%2fAAAAAAAAA4o%2ftmXK3kNuKj0%2fs1600%2f02.ref.png%29%20%e7%b0%a1%e5%96%ae%e5%af%ab%e4%b8%80%e5%80%8bButton%20Click%e4%be%86%e5%91%bc%e5%8f%ab%e9%a1%9e%e5%88%a5%e5%ba%ab%e4%b8%ad%e7%9a%84%e5%87%bd%e5%bc%8f%20using%20System%3b%20using%20System.Windows.Forms%3b%20namespace%20WindowsFormsApplication1%20%7b%20public%20partial%20class%20Form1%20%3a%20Form%20%7b%20public%20Form1%28%29%20%7b%20InitializeComponent%28%29%3b%20%7d%0a%20private%20void%20button1_Click%28object%20sender%2c%20EventArgs%20e%29%20%7b%20ClassLibrary1.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Common.Logging&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f12%2fcommon-logging%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

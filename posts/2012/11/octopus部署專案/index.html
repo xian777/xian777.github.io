@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Octopus部署專案 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed ](http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png)
+輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增 ](http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png)
+接下來先建立專案群組 ](http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png)
+再來選擇建立專案 ](http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png)
+輸入專案資訊 ](http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png)
+新增完成，點擊專案名稱來設定部署 ](http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png)
+選擇Steps，再點擊Add package step ](http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png)
+輸入套件資料，如果專案有多個套件，可重覆此步驟 ](http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png)
+接下來建立發佈版本 ](http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png)
+輸入版本資訊 ](http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png)
+發佈版本資訊 ](http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png)
+執行發佈版本 ](http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png)
+發佈成功 ](http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png)
+    ">
+
+
+<meta property="og:title" content="Octopus部署專案" />
+<meta property="og:description" content="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed ](http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png)
+輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增 ](http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png)
+接下來先建立專案群組 ](http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png)
+再來選擇建立專案 ](http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png)
+輸入專案資訊 ](http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png)
+新增完成，點擊專案名稱來設定部署 ](http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png)
+選擇Steps，再點擊Add package step ](http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png)
+輸入套件資料，如果專案有多個套件，可重覆此步驟 ](http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png)
+接下來建立發佈版本 ](http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png)
+輸入版本資訊 ](http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png)
+發佈版本資訊 ](http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png)
+執行發佈版本 ](http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png)
+發佈成功 ](http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/octopus%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88/" />
+<meta property="article:published_time" content="2012-11-05T21:36:00+00:00" />
+<meta property="article:modified_time" content="2012-11-05T21:36:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Octopus部署專案"/>
+<meta name="twitter:description" content="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed ](http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png)
+輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增 ](http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png)
+接下來先建立專案群組 ](http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png)
+再來選擇建立專案 ](http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png)
+輸入專案資訊 ](http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png)
+新增完成，點擊專案名稱來設定部署 ](http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png)
+選擇Steps，再點擊Add package step ](http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png)
+輸入套件資料，如果專案有多個套件，可重覆此步驟 ](http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png)
+接下來建立發佈版本 ](http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png)
+輸入版本資訊 ](http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png)
+發佈版本資訊 ](http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png)
+執行發佈版本 ](http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png)
+發佈成功 ](http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png)"/>
+
+<meta itemprop="name" content="Octopus部署專案">
+<meta itemprop="description" content="首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed ](http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png)
+輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增 ](http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png)
+接下來先建立專案群組 ](http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png)
+再來選擇建立專案 ](http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png)
+輸入專案資訊 ](http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png)
+新增完成，點擊專案名稱來設定部署 ](http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png)
+選擇Steps，再點擊Add package step ](http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png)
+輸入套件資料，如果專案有多個套件，可重覆此步驟 ](http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png)
+接下來建立發佈版本 ](http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png)
+輸入版本資訊 ](http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png)
+發佈版本資訊 ](http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png)
+執行發佈版本 ](http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png)
+發佈成功 ](http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png)">
+<meta itemprop="datePublished" content="2012-11-05T21:36:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-05T21:36:00+00:00" />
+<meta itemprop="wordCount" content="31">
+
+
+
+<meta itemprop="keywords" content="Octopus," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/octopus%E9%83%A8%E7%BD%B2%E5%B0%88%E6%A1%88/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Octopus部署專案</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 5, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先設定一下nuget套件的來源在設定中選擇nuget再點擊add-nuget-feed">首先設定一下NuGet套件的來源，在設定中選擇NuGet，再點擊Add NuGet feed</h2>
+<p><img src="http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png" alt="">](<a href="http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png">http://2.bp.blogspot.com/-eB-5_jr8Tco/UJe-gvfxniI/AAAAAAAAARs/Uf5vQaP2B9k/s1600/01.AddNuGetFeed.png</a>)</p>
+<h2 id="輸入名稱和nuget-server所在位置如有需要授權就再輸入帳密然後按下新增">輸入名稱和NuGet Server所在位置，如有需要授權就再輸入帳密，然後按下新增</h2>
+<p><img src="http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png" alt="">](<a href="http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png">http://3.bp.blogspot.com/-p-KdXHP_KvA/UJe-hAxku4I/AAAAAAAAAR0/_NYIRdWHbks/s1600/02.SaveNuGetFeed.png</a>)</p>
+<h2 id="接下來先建立專案群組">接下來先建立專案群組</h2>
+<p><img src="http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png" alt="">](<a href="http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png">http://2.bp.blogspot.com/-_xbwdU3aDvA/UJe-hmD6DmI/AAAAAAAAAR8/E_rbSdD6ous/s1600/03.ProjGroup.png</a>)</p>
+<h2 id="再來選擇建立專案">再來選擇建立專案</h2>
+<p><img src="http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png" alt="">](<a href="http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png">http://2.bp.blogspot.com/-4gsASjDPLTU/UJe-iecxQoI/AAAAAAAAASE/qEAzaQGrxGg/s1600/04.CreateProj.png</a>)</p>
+<h2 id="輸入專案資訊">輸入專案資訊</h2>
+<p><img src="http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png" alt="">](<a href="http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png">http://4.bp.blogspot.com/-ZAwObqAo_KM/UJe-ivPrxWI/AAAAAAAAASM/OtkrLc6EIzc/s1600/05.AddProj.png</a>)</p>
+<h2 id="新增完成點擊專案名稱來設定部署">新增完成，點擊專案名稱來設定部署</h2>
+<p><img src="http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png" alt="">](<a href="http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png">http://3.bp.blogspot.com/-OUKY0O9Ysoo/UJe-jGQvxYI/AAAAAAAAASU/RGDhTl0smos/s1600/06.AddProjSuccess.png</a>)</p>
+<h2 id="選擇steps再點擊add-package-step">選擇Steps，再點擊Add package step</h2>
+<p><img src="http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png" alt="">](<a href="http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png">http://2.bp.blogspot.com/-gRHt3_sxa-0/UJe-j1SAj4I/AAAAAAAAASc/pjn3CciupCU/s1600/07.Steps.png</a>)</p>
+<h2 id="輸入套件資料如果專案有多個套件可重覆此步驟">輸入套件資料，如果專案有多個套件，可重覆此步驟</h2>
+<p><img src="http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png" alt="">](<a href="http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png">http://4.bp.blogspot.com/-aau7ZAIqhzo/UJe-kJ3IBsI/AAAAAAAAASk/RJ22IWIbMug/s1600/08.AddStep.png</a>)</p>
+<h2 id="接下來建立發佈版本">接下來建立發佈版本</h2>
+<p><img src="http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png" alt="">](<a href="http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png">http://1.bp.blogspot.com/-Q3sIi82aRWg/UJe-k7H2nEI/AAAAAAAAASs/FB5PLU39KK4/s1600/09.CreateRelease.png</a>)</p>
+<h2 id="輸入版本資訊">輸入版本資訊</h2>
+<p><img src="http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png" alt="">](<a href="http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png">http://4.bp.blogspot.com/-7hmX0qXpuP8/UJe-lqezpeI/AAAAAAAAAS0/s1zlTX_NIps/s1600/10.AddPack.png</a>)</p>
+<h2 id="發佈版本資訊">發佈版本資訊</h2>
+<p><img src="http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png" alt="">](<a href="http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png">http://3.bp.blogspot.com/-7NdYKSQqG9s/UJe-mEzRh5I/AAAAAAAAAS8/_7dyWOdaW9Q/s1600/11.Deploy.png</a>)</p>
+<h2 id="執行發佈版本">執行發佈版本</h2>
+<p><img src="http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png" alt="">](<a href="http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png">http://2.bp.blogspot.com/-TAKCxk9v-tA/UJe-m1BFQCI/AAAAAAAAATE/3RJ0pHpepHQ/s1600/12.DeployPackage.png</a>)</p>
+<h2 id="發佈成功">發佈成功</h2>
+<p><img src="http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png" alt="">](<a href="http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png">http://1.bp.blogspot.com/-TDX71V5yrrY/UJe-nIkvpYI/AAAAAAAAATM/du0maFJdsSs/s1600/13.DeploySuccess.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Octopus%e9%83%a8%e7%bd%b2%e5%b0%88%e6%a1%88&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f
+			&title=Octopus%e9%83%a8%e7%bd%b2%e5%b0%88%e6%a1%88&summary=%e9%a6%96%e5%85%88%e8%a8%ad%e5%ae%9a%e4%b8%80%e4%b8%8bNuGet%e5%a5%97%e4%bb%b6%e7%9a%84%e4%be%86%e6%ba%90%ef%bc%8c%e5%9c%a8%e8%a8%ad%e5%ae%9a%e4%b8%ad%e9%81%b8%e6%93%87NuGet%ef%bc%8c%e5%86%8d%e9%bb%9e%e6%93%8aAdd%20NuGet%20feed%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-eB-5_jr8Tco%2fUJe-gvfxniI%2fAAAAAAAAARs%2fUf5vQaP2B9k%2fs1600%2f01.AddNuGetFeed.png%29%0a%e8%bc%b8%e5%85%a5%e5%90%8d%e7%a8%b1%e5%92%8cNuGet%20Server%e6%89%80%e5%9c%a8%e4%bd%8d%e7%bd%ae%ef%bc%8c%e5%a6%82%e6%9c%89%e9%9c%80%e8%a6%81%e6%8e%88%e6%ac%8a%e5%b0%b1%e5%86%8d%e8%bc%b8%e5%85%a5%e5%b8%b3%e5%af%86%ef%bc%8c%e7%84%b6%e5%be%8c%e6%8c%89%e4%b8%8b%e6%96%b0%e5%a2%9e%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-p-KdXHP_KvA%2fUJe-hAxku4I%2fAAAAAAAAAR0%2f_NYIRdWHbks%2fs1600%2f02.SaveNuGetFeed.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e5%85%88%e5%bb%ba%e7%ab%8b%e5%b0%88%e6%a1%88%e7%be%a4%e7%b5%84%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-_xbwdU3aDvA%2fUJe-hmD6DmI%2fAAAAAAAAAR8%2fE_rbSdD6ous%2fs1600%2f03.ProjGroup.png%29%0a%e5%86%8d%e4%be%86%e9%81%b8%e6%93%87%e5%bb%ba%e7%ab%8b%e5%b0%88%e6%a1%88%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-4gsASjDPLTU%2fUJe-iecxQoI%2fAAAAAAAAASE%2fqEAzaQGrxGg%2fs1600%2f04.CreateProj.png%29%0a%e8%bc%b8%e5%85%a5%e5%b0%88%e6%a1%88%e8%b3%87%e8%a8%8a%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-ZAwObqAo_KM%2fUJe-ivPrxWI%2fAAAAAAAAASM%2fOtkrLc6EIzc%2fs1600%2f05.AddProj.png%29%0a%e6%96%b0%e5%a2%9e%e5%ae%8c%e6%88%90%ef%bc%8c%e9%bb%9e%e6%93%8a%e5%b0%88%e6%a1%88%e5%90%8d%e7%a8%b1%e4%be%86%e8%a8%ad%e5%ae%9a%e9%83%a8%e7%bd%b2%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-OUKY0O9Ysoo%2fUJe-jGQvxYI%2fAAAAAAAAASU%2fRGDhTl0smos%2fs1600%2f06.AddProjSuccess.png%29%0a%e9%81%b8%e6%93%87Steps%ef%bc%8c%e5%86%8d%e9%bb%9e%e6%93%8aAdd%20package%20step%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-gRHt3_sxa-0%2fUJe-j1SAj4I%2fAAAAAAAAASc%2fpjn3CciupCU%2fs1600%2f07.Steps.png%29%0a%e8%bc%b8%e5%85%a5%e5%a5%97%e4%bb%b6%e8%b3%87%e6%96%99%ef%bc%8c%e5%a6%82%e6%9e%9c%e5%b0%88%e6%a1%88%e6%9c%89%e5%a4%9a%e5%80%8b%e5%a5%97%e4%bb%b6%ef%bc%8c%e5%8f%af%e9%87%8d%e8%a6%86%e6%ad%a4%e6%ad%a5%e9%a9%9f%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-aau7ZAIqhzo%2fUJe-kJ3IBsI%2fAAAAAAAAASk%2fRJ22IWIbMug%2fs1600%2f08.AddStep.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e5%bb%ba%e7%ab%8b%e7%99%bc%e4%bd%88%e7%89%88%e6%9c%ac%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-Q3sIi82aRWg%2fUJe-k7H2nEI%2fAAAAAAAAASs%2fFB5PLU39KK4%2fs1600%2f09.CreateRelease.png%29%0a%e8%bc%b8%e5%85%a5%e7%89%88%e6%9c%ac%e8%b3%87%e8%a8%8a%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-7hmX0qXpuP8%2fUJe-lqezpeI%2fAAAAAAAAAS0%2fs1zlTX_NIps%2fs1600%2f10.AddPack.png%29%0a%e7%99%bc%e4%bd%88%e7%89%88%e6%9c%ac%e8%b3%87%e8%a8%8a%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-7NdYKSQqG9s%2fUJe-mEzRh5I%2fAAAAAAAAAS8%2f_7dyWOdaW9Q%2fs1600%2f11.Deploy.png%29%0a%e5%9f%b7%e8%a1%8c%e7%99%bc%e4%bd%88%e7%89%88%e6%9c%ac%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-TAKCxk9v-tA%2fUJe-m1BFQCI%2fAAAAAAAAATE%2f3RJ0pHpepHQ%2fs1600%2f12.DeployPackage.png%29%0a%e7%99%bc%e4%bd%88%e6%88%90%e5%8a%9f%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-TDX71V5yrrY%2fUJe-nIkvpYI%2fAAAAAAAAATM%2fdu0maFJdsSs%2fs1600%2f13.DeploySuccess.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Octopus%e9%83%a8%e7%bd%b2%e5%b0%88%e6%a1%88&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2foctopus%25E9%2583%25A8%25E7%25BD%25B2%25E5%25B0%2588%25E6%25A1%2588%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

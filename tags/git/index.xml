@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on My New Hugo Site</title>
+    <link>http://example.org/tags/git/</link>
+    <description>Recent content in git on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Sep 2016 09:12:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>svn migration to git</title>
+      <link>http://example.org/posts/2016/09/svn-migration-to-git/</link>
+      <pubDate>Fri, 30 Sep 2016 09:12:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/09/svn-migration-to-git/</guid>
+      <description>首先下載subgit，需要先安裝好JAVA環境
+[![](https://3.bp.blogspot.com/-WHgp_trAbNo/V-26bWM_UjI/AAAAAAAAEIk/EYrM4H_RPPAHpMDLqQlsYc_HB44XmVghgCLcB/s1600/01.png)](https://3.bp.blogspot.com/-WHgp_trAbNo/V-26bWM_UjI/AAAAAAAAEIk/EYrM4H_RPPAHpMDLqQlsYc_HB44XmVghgCLcB/s1600/01.png) 解壓縮後開啟命令列工具到bin資料夾，輸入指令 subgit import &amp;ndash;non-interactive &amp;ndash;default-domain example.com &amp;ndash;svn-url https://svnurl/svn/ExampleProjectName ExampleProjectName
+[![](https://1.bp.blogspot.com/-64W4fqUASBs/V-26bj589cI/AAAAAAAAEIs/iz9lOQ6-c_46nLtpFPHJYZIxpWJujxWIACLcB/s1600/02.png)](https://1.bp.blogspot.com/-64W4fqUASBs/V-26bj589cI/AAAAAAAAEIs/iz9lOQ6-c_46nLtpFPHJYZIxpWJujxWIACLcB/s1600/02.png) 匯出成功後，再推送到git server git push &amp;ndash;mirror https://giturl/ExampleProjectName.git
+[![](https://4.bp.blogspot.com/-U4IxN5KqWkE/V-26briOl8I/AAAAAAAAEIo/CJ2qjT_Tx7Qsi3Gz9hpXOsfMEAPuCnXUgCLcB/s1600/03.png)](https://4.bp.blogspot.com/-U4IxN5KqWkE/V-26briOl8I/AAAAAAAAEIo/CJ2qjT_Tx7Qsi3Gz9hpXOsfMEAPuCnXUgCLcB/s1600/03.png) 這樣就轉移成功囉</description>
+    </item>
+    
+    <item>
+      <title>Gogs - Go Git Service on windows</title>
+      <link>http://example.org/posts/2016/08/gogs-go-git-service-on-windows/</link>
+      <pubDate>Sun, 14 Aug 2016 15:47:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-go-git-service-on-windows/</guid>
+      <description>先到官網下載windodws版本編譯好的二進制壓縮檔
+[![](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png)](https://4.bp.blogspot.com/-gdi57inFIN4/V7AhnC2PX4I/AAAAAAAAD0k/XeoXDAuNKfs_POtQf4RctzGK2Or6zipHgCLcB/s1600/01.png) 解壓縮後到資料夾下執行gogs web即可，預設Listen port是3000 [![](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png)](https://1.bp.blogspot.com/-hslHcwh_lgw/V7AhnCfwnZI/AAAAAAAAD0g/e2HASIhkOLE4DP3i8_Fw3a3ANPvQ6yV6ACLcB/s1600/02.png) 打開瀏覽器進入http://127.0.0.1:3000後，開始初始化設定 設定要使用的資料庫和專案放置的資料夾路徑 [![](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png)](https://3.bp.blogspot.com/-gsVP-BbXeHU/V7AhnAcVd3I/AAAAAAAAD0o/uRGkeqy8i3IcQj9jgrDQdwA0myitxAfdQCLcB/s1600/03.png) 勾選禁止註冊和登錄訪問限制 再建立一個管理員帳號就完成設定了
+[![](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png)](https://4.bp.blogspot.com/-u7QiBsg5pLw/V7AhnqGtO3I/AAAAAAAAD0s/rUxLIbIVUc00pqi0RrHaysQd49CvC7q4ACLcB/s1600/04.png) 如果沒有勾選禁止註冊，右上角的登入旁邊就會有一個註冊的功能 [![](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png)](https://4.bp.blogspot.com/-4b9TPMqjwrw/V7AjGbhqG8I/AAAAAAAAD1g/iG5ub2HARlEeOy69gRHafkMLV5-MgcatwCLcB/s1600/05.png) 登入後先來建一個專案
+[![](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png)](https://2.bp.blogspot.com/-IoZIbfFg2ug/V7AhnhNObGI/AAAAAAAAD0w/VRZTy9g_7F4DCiLyI0cjwhZ-chrPAevSwCLcB/s1600/06.png) 輸入專案的名稱，把可見度勾成私有的，就必需有帳密才能下載專案
+[![](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png)](https://1.bp.blogspot.com/-UpeLRN8U0PE/V7Ahn9MCkUI/AAAAAAAAD04/exwpySFk3e04-KQUhzyGOvuSOUUhwfz2ACLcB/s1600/07.png) 右上角的路徑是當初設定時所輸入的網址 [![](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png)](https://1.bp.blogspot.com/-FnJ590Dnwuk/V7AhoPh1v-I/AAAAAAAAD08/bIq-2UuFjw8fHmDXUErnzk53VZqHL5BNwCLcB/s1600/08.png) 把專案取回來 [![](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png)](https://2.bp.blogspot.com/-8D2dnijW8iU/V7AhoAhuuII/AAAAAAAAD1A/EfiP0lkTnIctqFIg5MYCPJwm2LG0tZDxQCLcB/s1600/09.png) 因為是私人專案所以需要輸入帳密 [![](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png)](https://2.bp.blogspot.com/-oWo36HJO95s/V7AhoYm3wGI/AAAAAAAAD1E/EHmOwTNy4cYps0h42LRlywrzfFZjqNrwgCLcB/s1600/10.png) 新增一個測試專案 [![](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png)](https://2.bp.blogspot.com/-AAMdPFCFdBs/V7AhoTl8-kI/AAAAAAAAD1I/mkN1UwVRkIYmnoKzJHVDFDWBk8BjI5mDQCLcB/s1600/12.png) 把測試專案移到工作目錄後送交 [![](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png)](https://2.bp.blogspot.com/-_xT0GLgF-_A/V7Ahor84L_I/AAAAAAAAD1M/K1nxBB2GMIASEkmh6bQerNAgNKUIKld_ACLcB/s1600/13.png) 把測試專案推送到gogs [![](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png)](https://2.bp.blogspot.com/-e880ZNeiJGU/V7Ahooi8LkI/AAAAAAAAD1Q/hs5y8jaoI8MkotEQSHFkZ-NwTDhuGKRhwCLcB/s1600/15.png) 專案同步完成 [!</description>
+    </item>
+    
+  </channel>
+</rss>

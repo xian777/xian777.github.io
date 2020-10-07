@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    StyleCop SA1208 排列Using時先放置System指示詞 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階- 排序Usning時先放置System指示詞勾起來就行了
+    ">
+
+
+<meta property="og:title" content="StyleCop SA1208 排列Using時先放置System指示詞" />
+<meta property="og:description" content="在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階- 排序Usning時先放置System指示詞勾起來就行了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/" />
+<meta property="article:published_time" content="2016-06-07T14:12:00+00:00" />
+<meta property="article:modified_time" content="2016-06-07T14:12:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="StyleCop SA1208 排列Using時先放置System指示詞"/>
+<meta name="twitter:description" content="在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階- 排序Usning時先放置System指示詞勾起來就行了"/>
+
+<meta itemprop="name" content="StyleCop SA1208 排列Using時先放置System指示詞">
+<meta itemprop="description" content="在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序
+[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png) StyleCop就會靠北說System開頭的命名空間要放在最上面 SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives
+[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png) 工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階- 排序Usning時先放置System指示詞勾起來就行了">
+<meta itemprop="datePublished" content="2016-06-07T14:12:00+00:00" />
+<meta itemprop="dateModified" content="2016-06-07T14:12:00+00:00" />
+<meta itemprop="wordCount" content="22">
+
+
+
+<meta itemprop="keywords" content="C#,StyleCop," />
+
+<link rel="canonical" href="http://example.org/posts/2016/06/stylecop-sa1208-%E6%8E%92%E5%88%97using%E6%99%82%E5%85%88%E6%94%BE%E7%BD%AEsystem%E6%8C%87%E7%A4%BA%E8%A9%9E/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>StyleCop SA1208 排列Using時先放置System指示詞</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 7, 2016
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/stylecop">StyleCop</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/c">C#</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/stylecop">Style cop</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>在使用組合管理Using-&gt;移除並排序Using功能的時後，會依照字母的順序排序</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)](https://2.bp.blogspot.com/-4_luDR6yqzk/V1Zluu_U-5I/AAAAAAAADyg/peZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB/s1600/01.png)</div>
+<p>StyleCop就會靠北說System開頭的命名空間要放在最上面
+SA1208 : CSharp.Ordering : System using directives must be placed before all other using directives</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)](https://1.bp.blogspot.com/-y1iOIfsjlRs/V1Zlup2ZRuI/AAAAAAAADyc/p7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB/s1600/02.png)</div>
+<p>工具-&gt;選項-&gt;文字編輯器-&gt;C#-&gt;進階-
+排序Usning時先放置System指示詞勾起來就行了</p>
+<div class="separator" style="clear: both; text-align: center;">[![](https://1.bp.blogspot.com/-bhudH420YNY/V1ZluZlssBI/AAAAAAAADyk/BpBx5WxHOb0Krwwp0xmeWQiieeBMV4DsACLcB/s1600/03.png)](https://1.bp.blogspot.com/-bhudH420YNY/V1ZluZlssBI/AAAAAAAADyk/BpBx5WxHOb0Krwwp0xmeWQiieeBMV4DsACLcB/s1600/03.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=StyleCop%20SA1208%20%e6%8e%92%e5%88%97Using%e6%99%82%e5%85%88%e6%94%be%e7%bd%aeSystem%e6%8c%87%e7%a4%ba%e8%a9%9e&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f
+			&title=StyleCop%20SA1208%20%e6%8e%92%e5%88%97Using%e6%99%82%e5%85%88%e6%94%be%e7%bd%aeSystem%e6%8c%87%e7%a4%ba%e8%a9%9e&summary=%e5%9c%a8%e4%bd%bf%e7%94%a8%e7%b5%84%e5%90%88%e7%ae%a1%e7%90%86Using-%26gt%3b%e7%a7%bb%e9%99%a4%e4%b8%a6%e6%8e%92%e5%ba%8fUsing%e5%8a%9f%e8%83%bd%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e4%be%9d%e7%85%a7%e5%ad%97%e6%af%8d%e7%9a%84%e9%a0%86%e5%ba%8f%e6%8e%92%e5%ba%8f%0a%5b%21%5b%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-4_luDR6yqzk%2fV1Zluu_U-5I%2fAAAAAAAADyg%2fpeZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB%2fs1600%2f01.png%29%5d%28https%3a%2f%2f2.bp.blogspot.com%2f-4_luDR6yqzk%2fV1Zluu_U-5I%2fAAAAAAAADyg%2fpeZgQ-8DWE80Jz07KFQ_5hDzB6sP7lTuQCLcB%2fs1600%2f01.png%29%20StyleCop%e5%b0%b1%e6%9c%83%e9%9d%a0%e5%8c%97%e8%aa%aaSystem%e9%96%8b%e9%a0%ad%e7%9a%84%e5%91%bd%e5%90%8d%e7%a9%ba%e9%96%93%e8%a6%81%e6%94%be%e5%9c%a8%e6%9c%80%e4%b8%8a%e9%9d%a2%20SA1208%20%3a%20CSharp.Ordering%20%3a%20System%20using%20directives%20must%20be%20placed%20before%20all%20other%20using%20directives%0a%5b%21%5b%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-y1iOIfsjlRs%2fV1Zlup2ZRuI%2fAAAAAAAADyc%2fp7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB%2fs1600%2f02.png%29%5d%28https%3a%2f%2f1.bp.blogspot.com%2f-y1iOIfsjlRs%2fV1Zlup2ZRuI%2fAAAAAAAADyc%2fp7rBuW9mtIYgN1bjbykZ3JXbyjq2wYlpwCLcB%2fs1600%2f02.png%29%20%e5%b7%a5%e5%85%b7-%26gt%3b%e9%81%b8%e9%a0%85-%26gt%3b%e6%96%87%e5%ad%97%e7%b7%a8%e8%bc%af%e5%99%a8-%26gt%3bC%23-%26gt%3b%e9%80%b2%e9%9a%8e-%20%e6%8e%92%e5%ba%8fUsning%e6%99%82%e5%85%88%e6%94%be%e7%bd%aeSystem%e6%8c%87%e7%a4%ba%e8%a9%9e%e5%8b%be%e8%b5%b7%e4%be%86%e5%b0%b1%e8%a1%8c%e4%ba%86&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=StyleCop%20SA1208%20%e6%8e%92%e5%88%97Using%e6%99%82%e5%85%88%e6%94%be%e7%bd%aeSystem%e6%8c%87%e7%a4%ba%e8%a9%9e&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2016%2f06%2fstylecop-sa1208-%25E6%258E%2592%25E5%2588%2597using%25E6%2599%2582%25E5%2585%2588%25E6%2594%25BE%25E7%25BD%25AEsystem%25E6%258C%2587%25E7%25A4%25BA%25E8%25A9%259E%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

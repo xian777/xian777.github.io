@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Entity Framework DbContext SqlQuery、ExecuteSqlCommand | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數 傳遞參數的方式有以下幾種
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System.Data; using System.Data.Entity; using System.Data.SqlClient; class Program { static void Main(string[] args) { Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); int colA = 123; string colB = &quot;abc&quot;; // 使用佔位符號 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&quot;, colA, colB); // 使用固定名稱的參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&quot;, colA, colB); // 使用SQL參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;( &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;, new SqlParameter(&quot;ColA&quot;, colA), new SqlParameter(&quot;ColB&quot;, colB)); // 使用SQL參數並明確指定資料形態 db.
+    ">
+
+
+<meta property="og:title" content="Entity Framework DbContext SqlQuery、ExecuteSqlCommand" />
+<meta property="og:description" content="SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數 傳遞參數的方式有以下幾種
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System.Data; using System.Data.Entity; using System.Data.SqlClient; class Program { static void Main(string[] args) { Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); int colA = 123; string colB = &quot;abc&quot;; // 使用佔位符號 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&quot;, colA, colB); // 使用固定名稱的參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&quot;, colA, colB); // 使用SQL參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;( &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;, new SqlParameter(&quot;ColA&quot;, colA), new SqlParameter(&quot;ColB&quot;, colB)); // 使用SQL參數並明確指定資料形態 db." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/12/entity-framework-dbcontext-sqlqueryexecutesqlcommand/" />
+<meta property="article:published_time" content="2014-12-18T16:17:00+00:00" />
+<meta property="article:modified_time" content="2014-12-18T16:17:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Entity Framework DbContext SqlQuery、ExecuteSqlCommand"/>
+<meta name="twitter:description" content="SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數 傳遞參數的方式有以下幾種
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System.Data; using System.Data.Entity; using System.Data.SqlClient; class Program { static void Main(string[] args) { Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); int colA = 123; string colB = &quot;abc&quot;; // 使用佔位符號 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&quot;, colA, colB); // 使用固定名稱的參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&quot;, colA, colB); // 使用SQL參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;( &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;, new SqlParameter(&quot;ColA&quot;, colA), new SqlParameter(&quot;ColB&quot;, colB)); // 使用SQL參數並明確指定資料形態 db."/>
+
+<meta itemprop="name" content="Entity Framework DbContext SqlQuery、ExecuteSqlCommand">
+<meta itemprop="description" content="SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數 傳遞參數的方式有以下幾種
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System.Data; using System.Data.Entity; using System.Data.SqlClient; class Program { static void Main(string[] args) { Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); int colA = 123; string colB = &quot;abc&quot;; // 使用佔位符號 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&quot;, colA, colB); // 使用固定名稱的參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&quot;, colA, colB); // 使用SQL參數 db.Database.SqlQuery&amp;lt;TableName&amp;gt;( &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;, new SqlParameter(&quot;ColA&quot;, colA), new SqlParameter(&quot;ColB&quot;, colB)); // 使用SQL參數並明確指定資料形態 db.">
+<meta itemprop="datePublished" content="2014-12-18T16:17:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-18T16:17:00+00:00" />
+<meta itemprop="wordCount" content="112">
+
+
+
+<meta itemprop="keywords" content="DbContext,Entity Framework," />
+
+<link rel="canonical" href="http://example.org/posts/2014/12/entity-framework-dbcontext-sqlqueryexecutesqlcommand/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Entity Framework DbContext SqlQuery、ExecuteSqlCommand</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 18, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/dbcontext">DbContext</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity Framework</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/dbcontext">Db context</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/entity-framework">Entity framework</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數
+傳遞參數的方式有以下幾種</p>
+<div><pre class="brush:csharp">namespace ConsoleApplication1
+{
+    using ConsoleApplication1.Models;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.SqlClient;
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Database.SetInitializer(new DropCreateDatabaseAlways&amp;lt;DemoContext&amp;gt;());
+        using (DemoContext db = new DemoContext())
+        {
+            db.Database.Initialize(false);
+
+            int colA = 123;
+            string colB = &quot;abc&quot;;
+
+            // 使用佔位符號
+            db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&quot;, colA, colB);
+
+            // 使用固定名稱的參數
+            db.Database.SqlQuery&amp;lt;TableName&amp;gt;(&quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&quot;, colA, colB);
+
+            // 使用SQL參數
+            db.Database.SqlQuery&amp;lt;TableName&amp;gt;(
+                &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;,
+                new SqlParameter(&quot;ColA&quot;, colA),
+                new SqlParameter(&quot;ColB&quot;, colB));
+
+            // 使用SQL參數並明確指定資料形態
+            db.Database.SqlQuery&amp;lt;TableName&amp;gt;(
+                &quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&quot;,
+                new SqlParameter(&quot;ColA&quot;, SqlDbType.Int) { Value = colA },
+                new SqlParameter(&quot;ColB&quot;, SqlDbType.VarChar, 50) { Value = colB });
+        }
+    }
+}
+</code></pre>
+<p>}
+</pre></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Entity%20Framework%20DbContext%20SqlQuery%e3%80%81ExecuteSqlCommand&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f
+			&title=Entity%20Framework%20DbContext%20SqlQuery%e3%80%81ExecuteSqlCommand&summary=SqlQuery%e6%9c%83%e5%9b%9e%e5%82%b3%e7%b5%90%e6%9e%9c%e9%9b%86%ef%bc%8cExecuteSqlCommand%e6%9c%83%e5%9b%9e%e5%82%b3%e5%8f%97%e5%bd%b1%e9%9f%bf%e7%9a%84%e7%ad%86%e6%95%b8%20%e5%82%b3%e9%81%9e%e5%8f%83%e6%95%b8%e7%9a%84%e6%96%b9%e5%bc%8f%e6%9c%89%e4%bb%a5%e4%b8%8b%e5%b9%be%e7%a8%ae%0anamespace%20ConsoleApplication1%20%7b%20using%20ConsoleApplication1.Models%3b%20using%20System.Data%3b%20using%20System.Data.Entity%3b%20using%20System.Data.SqlClient%3b%20class%20Program%20%7b%20static%20void%20Main%28string%5b%5d%20args%29%20%7b%20Database.SetInitializer%28new%20DropCreateDatabaseAlways%26amp%3blt%3bDemoContext%26amp%3bgt%3b%28%29%29%3b%20using%20%28DemoContext%20db%20%3d%20new%20DemoContext%28%29%29%20%7b%20db.Database.Initialize%28false%29%3b%20int%20colA%20%3d%20123%3b%20string%20colB%20%3d%20%26quot%3babc%26quot%3b%3b%20%2f%2f%20%e4%bd%bf%e7%94%a8%e4%bd%94%e4%bd%8d%e7%ac%a6%e8%99%9f%20db.Database.SqlQuery%26amp%3blt%3bTableName%26amp%3bgt%3b%28%26quot%3bSELECT%20%2a%20FROM%20TableName%20WHERE%20ColA%3d%7b0%7d%20AND%20ColB%3d%7b1%7d%26quot%3b%2c%20colA%2c%20colB%29%3b%20%2f%2f%20%e4%bd%bf%e7%94%a8%e5%9b%ba%e5%ae%9a%e5%90%8d%e7%a8%b1%e7%9a%84%e5%8f%83%e6%95%b8%20db.Database.SqlQuery%26amp%3blt%3bTableName%26amp%3bgt%3b%28%26quot%3bSELECT%20%2a%20FROM%20TableName%20WHERE%20ColA%3d%40P0%20AND%20ColB%3d%40P1%26quot%3b%2c%20colA%2c%20colB%29%3b%20%2f%2f%20%e4%bd%bf%e7%94%a8SQL%e5%8f%83%e6%95%b8%20db.Database.SqlQuery%26amp%3blt%3bTableName%26amp%3bgt%3b%28%20%26quot%3bSELECT%20%2a%20FROM%20TableName%20WHERE%20ColA%3d%40ColA%20AND%20ColB%3d%40ColB%26quot%3b%2c%20new%20SqlParameter%28%26quot%3bColA%26quot%3b%2c%20colA%29%2c%20new%20SqlParameter%28%26quot%3bColB%26quot%3b%2c%20colB%29%29%3b%20%2f%2f%20%e4%bd%bf%e7%94%a8SQL%e5%8f%83%e6%95%b8%e4%b8%a6%e6%98%8e%e7%a2%ba%e6%8c%87%e5%ae%9a%e8%b3%87%e6%96%99%e5%bd%a2%e6%85%8b%20db.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Entity%20Framework%20DbContext%20SqlQuery%e3%80%81ExecuteSqlCommand&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f12%2fentity-framework-dbcontext-sqlqueryexecutesqlcommand%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

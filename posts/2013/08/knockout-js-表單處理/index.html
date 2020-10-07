@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Knockout.js 表單處理 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content=" click 觸發click事件的動作  event 繫結自訂的事件處理  submit 觸發表單送出事件的動作  enable 是否啟用  disable 是否停用  value 繫結表單內容  hasFocus 是否得到焦點  checked 是否核取  options 繫結下拉選單 optionsText為文字內容 optionsValue為下拉選單的值  selectedOptions 可複取的下拉選單所選取的資料  
+    ">
+
+
+<meta property="og:title" content="Knockout.js 表單處理" />
+<meta property="og:description" content=" click 觸發click事件的動作  event 繫結自訂的事件處理  submit 觸發表單送出事件的動作  enable 是否啟用  disable 是否停用  value 繫結表單內容  hasFocus 是否得到焦點  checked 是否核取  options 繫結下拉選單 optionsText為文字內容 optionsValue為下拉選單的值  selectedOptions 可複取的下拉選單所選取的資料  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2013/08/knockout-js-%E8%A1%A8%E5%96%AE%E8%99%95%E7%90%86/" />
+<meta property="article:published_time" content="2013-08-29T14:30:00+00:00" />
+<meta property="article:modified_time" content="2013-08-29T14:30:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Knockout.js 表單處理"/>
+<meta name="twitter:description" content=" click 觸發click事件的動作  event 繫結自訂的事件處理  submit 觸發表單送出事件的動作  enable 是否啟用  disable 是否停用  value 繫結表單內容  hasFocus 是否得到焦點  checked 是否核取  options 繫結下拉選單 optionsText為文字內容 optionsValue為下拉選單的值  selectedOptions 可複取的下拉選單所選取的資料  "/>
+
+<meta itemprop="name" content="Knockout.js 表單處理">
+<meta itemprop="description" content=" click 觸發click事件的動作  event 繫結自訂的事件處理  submit 觸發表單送出事件的動作  enable 是否啟用  disable 是否停用  value 繫結表單內容  hasFocus 是否得到焦點  checked 是否核取  options 繫結下拉選單 optionsText為文字內容 optionsValue為下拉選單的值  selectedOptions 可複取的下拉選單所選取的資料  ">
+<meta itemprop="datePublished" content="2013-08-29T14:30:00+00:00" />
+<meta itemprop="dateModified" content="2013-08-29T14:30:00+00:00" />
+<meta itemprop="wordCount" content="22">
+
+
+
+<meta itemprop="keywords" content="Knockout," />
+
+<link rel="canonical" href="http://example.org/posts/2013/08/knockout-js-%E8%A1%A8%E5%96%AE%E8%99%95%E7%90%86/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Knockout.js 表單處理</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 29, 2013
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/knockout">Knockout</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/knockout">Knockout</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <div><table border="1">    <tbody><tr>            <td>click</td>            <td>觸發click事件的動作</td>        </tr><tr>            <td>event</td>            <td>繫結自訂的事件處理</td>        </tr><tr>            <td>submit</td>            <td>觸發表單送出事件的動作</td>        </tr><tr>            <td>enable</td>            <td>是否啟用</td>        </tr><tr>            <td>disable</td>            <td>是否停用</td>        </tr><tr>            <td>value</td>            <td>繫結表單內容</td>        </tr><tr>            <td>hasFocus</td>            <td>是否得到焦點</td>        </tr><tr>            <td>checked</td>            <td>是否核取</td>        </tr><tr>            <td>options</td>            <td>繫結下拉選單
+optionsText為文字內容
+optionsValue為下拉選單的值</td>        </tr><tr>            <td>selectedOptions</td>            <td>可複取的下拉選單所選取的資料</td>        </tr></tbody></table></div>
+<div><iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/9nKKx/embedded/" width="100%"></iframe></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Knockout.js%20%e8%a1%a8%e5%96%ae%e8%99%95%e7%90%86&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f
+			&title=Knockout.js%20%e8%a1%a8%e5%96%ae%e8%99%95%e7%90%86&summary=%20click%20%e8%a7%b8%e7%99%bcclick%e4%ba%8b%e4%bb%b6%e7%9a%84%e5%8b%95%e4%bd%9c%20%20event%20%e7%b9%ab%e7%b5%90%e8%87%aa%e8%a8%82%e7%9a%84%e4%ba%8b%e4%bb%b6%e8%99%95%e7%90%86%20%20submit%20%e8%a7%b8%e7%99%bc%e8%a1%a8%e5%96%ae%e9%80%81%e5%87%ba%e4%ba%8b%e4%bb%b6%e7%9a%84%e5%8b%95%e4%bd%9c%20%20enable%20%e6%98%af%e5%90%a6%e5%95%9f%e7%94%a8%20%20disable%20%e6%98%af%e5%90%a6%e5%81%9c%e7%94%a8%20%20value%20%e7%b9%ab%e7%b5%90%e8%a1%a8%e5%96%ae%e5%85%a7%e5%ae%b9%20%20hasFocus%20%e6%98%af%e5%90%a6%e5%be%97%e5%88%b0%e7%84%a6%e9%bb%9e%20%20checked%20%e6%98%af%e5%90%a6%e6%a0%b8%e5%8f%96%20%20options%20%e7%b9%ab%e7%b5%90%e4%b8%8b%e6%8b%89%e9%81%b8%e5%96%ae%20optionsText%e7%82%ba%e6%96%87%e5%ad%97%e5%85%a7%e5%ae%b9%20optionsValue%e7%82%ba%e4%b8%8b%e6%8b%89%e9%81%b8%e5%96%ae%e7%9a%84%e5%80%bc%20%20selectedOptions%20%e5%8f%af%e8%a4%87%e5%8f%96%e7%9a%84%e4%b8%8b%e6%8b%89%e9%81%b8%e5%96%ae%e6%89%80%e9%81%b8%e5%8f%96%e7%9a%84%e8%b3%87%e6%96%99%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Knockout.js%20%e8%a1%a8%e5%96%ae%e8%99%95%e7%90%86&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2013%2f08%2fknockout-js-%25E8%25A1%25A8%25E5%2596%25AE%25E8%2599%2595%25E7%2590%2586%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Jenkins 安裝Template Project Plugin | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="安裝Template Project Plugin外掛
+[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png) 設定一個建置範本WebTemplate [![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png) 這邊的設定被套用時只有建置步驟會生效 [![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png) 新增一個專案 [![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png) 建置步驟選擇Use builders from another project [![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png) 套用WebTemplate建置範本 [![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png) 建置成功 [!
+    ">
+
+
+<meta property="og:title" content="Jenkins 安裝Template Project Plugin" />
+<meta property="og:description" content="安裝Template Project Plugin外掛
+[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png) 設定一個建置範本WebTemplate [![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png) 這邊的設定被套用時只有建置步驟會生效 [![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png) 新增一個專案 [![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png) 建置步驟選擇Use builders from another project [![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png) 套用WebTemplate建置範本 [![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png) 建置成功 [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dtemplate-project-plugin/" />
+<meta property="article:published_time" content="2015-08-31T15:19:00+00:00" />
+<meta property="article:modified_time" content="2015-08-31T15:19:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jenkins 安裝Template Project Plugin"/>
+<meta name="twitter:description" content="安裝Template Project Plugin外掛
+[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png) 設定一個建置範本WebTemplate [![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png) 這邊的設定被套用時只有建置步驟會生效 [![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png) 新增一個專案 [![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png) 建置步驟選擇Use builders from another project [![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png) 套用WebTemplate建置範本 [![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png) 建置成功 [!"/>
+
+<meta itemprop="name" content="Jenkins 安裝Template Project Plugin">
+<meta itemprop="description" content="安裝Template Project Plugin外掛
+[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png) 設定一個建置範本WebTemplate [![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png) 這邊的設定被套用時只有建置步驟會生效 [![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png) 新增一個專案 [![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png) 建置步驟選擇Use builders from another project [![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png) 套用WebTemplate建置範本 [![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png) 建置成功 [!">
+<meta itemprop="datePublished" content="2015-08-31T15:19:00+00:00" />
+<meta itemprop="dateModified" content="2015-08-31T15:19:00+00:00" />
+<meta itemprop="wordCount" content="20">
+
+
+
+<meta itemprop="keywords" content="Jenkins," />
+
+<link rel="canonical" href="http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dtemplate-project-plugin/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Jenkins 安裝Template Project Plugin</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 31, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jenkins">Jenkins</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jenkins">Jenkins</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>安裝Template Project Plugin外掛</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)</div>
+設定一個建置範本WebTemplate
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)</div>
+這邊的設定被套用時只有建置步驟會生效
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)</div>
+新增一個專案
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)</div>
+建置步驟選擇Use builders from another project
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)</div>
+套用WebTemplate建置範本
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)</div>
+建置成功
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-s5pKN9e4A2E/VeP_svbM8GI/AAAAAAAACe4/MxQ4PqV3Sqg/s1600/07.%25E5%25BB%25BA%25E7%25BD%25AE%25E6%2588%2590%25E5%258A%259F.png)](http://3.bp.blogspot.com/-s5pKN9e4A2E/VeP_svbM8GI/AAAAAAAACe4/MxQ4PqV3Sqg/s1600/07.%25E5%25BB%25BA%25E7%25BD%25AE%25E6%2588%2590%25E5%258A%259F.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Jenkins%20%e5%ae%89%e8%a3%9dTemplate%20Project%20Plugin&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f
+			&title=Jenkins%20%e5%ae%89%e8%a3%9dTemplate%20Project%20Plugin&summary=%e5%ae%89%e8%a3%9dTemplate%20Project%20Plugin%e5%a4%96%e6%8e%9b%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-S4pGkauZdEU%2fVeP_rf74mxI%2fAAAAAAAACeQ%2fVRoVVlGeFbI%2fs1600%2f01.TemplateProjectPlugin.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-S4pGkauZdEU%2fVeP_rf74mxI%2fAAAAAAAACeQ%2fVRoVVlGeFbI%2fs1600%2f01.TemplateProjectPlugin.png%29%20%e8%a8%ad%e5%ae%9a%e4%b8%80%e5%80%8b%e5%bb%ba%e7%bd%ae%e7%af%84%e6%9c%acWebTemplate%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-bTKxG-UpN_c%2fVeP_rfsOJ6I%2fAAAAAAAACeY%2f2SubJt43_6g%2fs1600%2f02.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E4%2525BD%25259C%2525E6%2525A5%2525AD.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-bTKxG-UpN_c%2fVeP_rfsOJ6I%2fAAAAAAAACeY%2f2SubJt43_6g%2fs1600%2f02.%2525E6%252596%2525B0%2525E5%2525A2%25259E%2525E4%2525BD%25259C%2525E6%2525A5%2525AD.png%29%20%e9%80%99%e9%82%8a%e7%9a%84%e8%a8%ad%e5%ae%9a%e8%a2%ab%e5%a5%97%e7%94%a8%e6%99%82%e5%8f%aa%e6%9c%89%e5%bb%ba%e7%bd%ae%e6%ad%a5%e9%a9%9f%e6%9c%83%e7%94%9f%e6%95%88%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-kyrWvVl0-iI%2fVeP_rVViW0I%2fAAAAAAAACe8%2fH46fdV-9zzU%2fs1600%2f03.Build.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-kyrWvVl0-iI%2fVeP_rVViW0I%2fAAAAAAAACe8%2fH46fdV-9zzU%2fs1600%2f03.Build.png%29%20%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8b%e5%b0%88%e6%a1%88%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-tNrm-c7Dn0o%2fVeP_sJHLG8I%2fAAAAAAAACeo%2ftvjIbr5_ur8%2fs1600%2f04.QQ123.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-tNrm-c7Dn0o%2fVeP_sJHLG8I%2fAAAAAAAACeo%2ftvjIbr5_ur8%2fs1600%2f04.QQ123.png%29%20%e5%bb%ba%e7%bd%ae%e6%ad%a5%e9%a9%9f%e9%81%b8%e6%93%87Use%20builders%20from%20another%20project%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-fANuqXp__-o%2fVeP_sMECO7I%2fAAAAAAAACes%2fKtv3ZsDEtgM%2fs1600%2f05.use%252Btemplate.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-fANuqXp__-o%2fVeP_sMECO7I%2fAAAAAAAACes%2fKtv3ZsDEtgM%2fs1600%2f05.use%252Btemplate.png%29%20%e5%a5%97%e7%94%a8WebTemplate%e5%bb%ba%e7%bd%ae%e7%af%84%e6%9c%ac%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-uqRg0OCO7FM%2fVeP_sQFCDWI%2fAAAAAAAACe0%2fvX44eTidrHM%2fs1600%2f06.webtemplate.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-uqRg0OCO7FM%2fVeP_sQFCDWI%2fAAAAAAAACe0%2fvX44eTidrHM%2fs1600%2f06.webtemplate.png%29%20%e5%bb%ba%e7%bd%ae%e6%88%90%e5%8a%9f%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Jenkins%20%e5%ae%89%e8%a3%9dTemplate%20Project%20Plugin&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25AE%2589%25E8%25A3%259Dtemplate-project-plugin%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

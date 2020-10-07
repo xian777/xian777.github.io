@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    建立NuGet套件 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="首先下載NuGet命令列工具，請按此下載 為了方便起見，把這個檔案丟到系統資料夾中，例如%WinDir%或System32 ](http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png)
+接下來建立一個測試用的dll專案 ](http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png)
+為了方便起見，請先安裝PowerCommands擴充元件 ](http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png)
+在專案上按右鍵，就會出現Open Command Prompt這個功能，按下後會打開一個cmd視窗，並把路徑切換到專案下面 ](http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png)
+輸入nuget spec，就會產生一個副檔名nuspec的檔案 P.S. 如果該目錄下不只一個專案檔(csproj)，請明確指定你要產生的專案檔是那一個 ](http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png)
+在專案總管上面按下顯示所有檔案，就可以看到這個檔案 ](http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png)
+產生的nuspec檔案的內容如下 &lt;package&gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseurl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseurl&gt; &lt;projecturl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projecturl&gt; &lt;iconurl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconurl&gt; &lt;requirelicenseacceptance&gt;false&lt;/requirelicenseacceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releasenotes&gt;Summary of changes made in this release of the package.&lt;/releasenotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的名稱 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute 當然也可以手動輸入，下次再來更詳細地說明這個檔案的格式  接下來打包這個dll成一個套件，命令是nuget pack，參數說明如下  -sym:會一起產生包含偵錯符號的套件 -prop:用來額外指定一些特性，例如configuration=relase是編譯release這個組態 -build:是在打包前先編譯專案，以取得最新編譯的檔案 更詳細的說明，可以用nuget pack /?取得Help   因為有下-sym這個參數，所以除了會把元件打包成{id}.{version}.nupkg這樣格式的檔案之外 還會產生一個{id}.{version}.symbols.nupkg的檔案 ](http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png)
+接下來把這兩個檔案發佈到之前建立的nuget server和symbol server 發佈到nuget server  nuget push *.
+    ">
+
+
+<meta property="og:title" content="建立NuGet套件" />
+<meta property="og:description" content="首先下載NuGet命令列工具，請按此下載 為了方便起見，把這個檔案丟到系統資料夾中，例如%WinDir%或System32 ](http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png)
+接下來建立一個測試用的dll專案 ](http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png)
+為了方便起見，請先安裝PowerCommands擴充元件 ](http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png)
+在專案上按右鍵，就會出現Open Command Prompt這個功能，按下後會打開一個cmd視窗，並把路徑切換到專案下面 ](http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png)
+輸入nuget spec，就會產生一個副檔名nuspec的檔案 P.S. 如果該目錄下不只一個專案檔(csproj)，請明確指定你要產生的專案檔是那一個 ](http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png)
+在專案總管上面按下顯示所有檔案，就可以看到這個檔案 ](http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png)
+產生的nuspec檔案的內容如下 &lt;package&gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseurl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseurl&gt; &lt;projecturl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projecturl&gt; &lt;iconurl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconurl&gt; &lt;requirelicenseacceptance&gt;false&lt;/requirelicenseacceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releasenotes&gt;Summary of changes made in this release of the package.&lt;/releasenotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的名稱 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute 當然也可以手動輸入，下次再來更詳細地說明這個檔案的格式  接下來打包這個dll成一個套件，命令是nuget pack，參數說明如下  -sym:會一起產生包含偵錯符號的套件 -prop:用來額外指定一些特性，例如configuration=relase是編譯release這個組態 -build:是在打包前先編譯專案，以取得最新編譯的檔案 更詳細的說明，可以用nuget pack /?取得Help   因為有下-sym這個參數，所以除了會把元件打包成{id}.{version}.nupkg這樣格式的檔案之外 還會產生一個{id}.{version}.symbols.nupkg的檔案 ](http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png)
+接下來把這兩個檔案發佈到之前建立的nuget server和symbol server 發佈到nuget server  nuget push *." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/10/%E5%BB%BA%E7%AB%8Bnuget%E5%A5%97%E4%BB%B6/" />
+<meta property="article:published_time" content="2012-10-21T19:13:00+00:00" />
+<meta property="article:modified_time" content="2012-10-21T19:13:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="建立NuGet套件"/>
+<meta name="twitter:description" content="首先下載NuGet命令列工具，請按此下載 為了方便起見，把這個檔案丟到系統資料夾中，例如%WinDir%或System32 ](http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png)
+接下來建立一個測試用的dll專案 ](http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png)
+為了方便起見，請先安裝PowerCommands擴充元件 ](http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png)
+在專案上按右鍵，就會出現Open Command Prompt這個功能，按下後會打開一個cmd視窗，並把路徑切換到專案下面 ](http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png)
+輸入nuget spec，就會產生一個副檔名nuspec的檔案 P.S. 如果該目錄下不只一個專案檔(csproj)，請明確指定你要產生的專案檔是那一個 ](http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png)
+在專案總管上面按下顯示所有檔案，就可以看到這個檔案 ](http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png)
+產生的nuspec檔案的內容如下 &lt;package&gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseurl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseurl&gt; &lt;projecturl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projecturl&gt; &lt;iconurl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconurl&gt; &lt;requirelicenseacceptance&gt;false&lt;/requirelicenseacceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releasenotes&gt;Summary of changes made in this release of the package.&lt;/releasenotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的名稱 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute 當然也可以手動輸入，下次再來更詳細地說明這個檔案的格式  接下來打包這個dll成一個套件，命令是nuget pack，參數說明如下  -sym:會一起產生包含偵錯符號的套件 -prop:用來額外指定一些特性，例如configuration=relase是編譯release這個組態 -build:是在打包前先編譯專案，以取得最新編譯的檔案 更詳細的說明，可以用nuget pack /?取得Help   因為有下-sym這個參數，所以除了會把元件打包成{id}.{version}.nupkg這樣格式的檔案之外 還會產生一個{id}.{version}.symbols.nupkg的檔案 ](http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png)
+接下來把這兩個檔案發佈到之前建立的nuget server和symbol server 發佈到nuget server  nuget push *."/>
+
+<meta itemprop="name" content="建立NuGet套件">
+<meta itemprop="description" content="首先下載NuGet命令列工具，請按此下載 為了方便起見，把這個檔案丟到系統資料夾中，例如%WinDir%或System32 ](http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png)
+接下來建立一個測試用的dll專案 ](http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png)
+為了方便起見，請先安裝PowerCommands擴充元件 ](http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png)
+在專案上按右鍵，就會出現Open Command Prompt這個功能，按下後會打開一個cmd視窗，並把路徑切換到專案下面 ](http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png)
+輸入nuget spec，就會產生一個副檔名nuspec的檔案 P.S. 如果該目錄下不只一個專案檔(csproj)，請明確指定你要產生的專案檔是那一個 ](http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png)
+在專案總管上面按下顯示所有檔案，就可以看到這個檔案 ](http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png)
+產生的nuspec檔案的內容如下 &lt;package&gt; &lt;metadata&gt; &lt;id&gt;$id$&lt;/id&gt; &lt;version&gt;$version$&lt;/version&gt; &lt;title&gt;$title$&lt;/title&gt; &lt;authors&gt;$author$&lt;/authors&gt; &lt;owners&gt;$author$&lt;/owners&gt; &lt;licenseurl&gt;http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE&lt;/licenseurl&gt; &lt;projecturl&gt;http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE&lt;/projecturl&gt; &lt;iconurl&gt;http://ICON_URL_HERE_OR_DELETE_THIS_LINE&lt;/iconurl&gt; &lt;requirelicenseacceptance&gt;false&lt;/requirelicenseacceptance&gt; &lt;description&gt;$description$&lt;/description&gt; &lt;releasenotes&gt;Summary of changes made in this release of the package.&lt;/releasenotes&gt; &lt;copyright&gt;Copyright 2012&lt;/copyright&gt; &lt;tags&gt;Tag1 Tag2&lt;/tags&gt; &lt;/metadata&gt; &lt;/package&gt;  $id對應的是這個套件的名稱 $version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute $author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute $description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute 當然也可以手動輸入，下次再來更詳細地說明這個檔案的格式  接下來打包這個dll成一個套件，命令是nuget pack，參數說明如下  -sym:會一起產生包含偵錯符號的套件 -prop:用來額外指定一些特性，例如configuration=relase是編譯release這個組態 -build:是在打包前先編譯專案，以取得最新編譯的檔案 更詳細的說明，可以用nuget pack /?取得Help   因為有下-sym這個參數，所以除了會把元件打包成{id}.{version}.nupkg這樣格式的檔案之外 還會產生一個{id}.{version}.symbols.nupkg的檔案 ](http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png)
+接下來把這兩個檔案發佈到之前建立的nuget server和symbol server 發佈到nuget server  nuget push *.">
+<meta itemprop="datePublished" content="2012-10-21T19:13:00+00:00" />
+<meta itemprop="dateModified" content="2012-10-21T19:13:00+00:00" />
+<meta itemprop="wordCount" content="87">
+
+
+
+<meta itemprop="keywords" content="NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2012/10/%E5%BB%BA%E7%AB%8Bnuget%E5%A5%97%E4%BB%B6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>建立NuGet套件</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Oct 21, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="首先下載nuget命令列工具請按此下載httpnugetcodeplexcomreleasesview58939">首先下載NuGet命令列工具，請<a href="http://nuget.codeplex.com/releases/view/58939">按此下載</a></h2>
+<h2 id="為了方便起見把這個檔案丟到系統資料夾中例如windir或system32">為了方便起見，把這個檔案丟到系統資料夾中，例如%WinDir%或System32</h2>
+<p><img src="http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png" alt="">](<a href="http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png">http://2.bp.blogspot.com/-Iq1IYY5A7CA/UIPU0e78XoI/AAAAAAAAAMs/7ptcekOJkQQ/s1600/00.download.png</a>)</p>
+<h2 id="接下來建立一個測試用的dll專案">接下來建立一個測試用的dll專案</h2>
+<p><img src="http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png" alt="">](<a href="http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png">http://4.bp.blogspot.com/-HMrws61C34M/UIPTGsi4x9I/AAAAAAAAALE/1ymW04Gppqs/s1600/00.NewProject.png</a>)</p>
+<h2 id="為了方便起見請先安裝powercommands擴充元件">為了方便起見，請先安裝PowerCommands擴充元件</h2>
+<p><img src="http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png" alt="">](<a href="http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png">http://2.bp.blogspot.com/-nJj9KyxiAaM/UIPTHOayBDI/AAAAAAAAALM/Nq0S4oy1bwI/s1600/01.PowerCommands.png</a>)</p>
+<h2 id="在專案上按右鍵就會出現open-command-prompt這個功能按下後會打開一個cmd視窗並把路徑切換到專案下面">在專案上按右鍵，就會出現Open Command Prompt這個功能，按下後會打開一個cmd視窗，並把路徑切換到專案下面</h2>
+<p><img src="http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png" alt="">](<a href="http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png">http://2.bp.blogspot.com/-crRkZcmDMRw/UIPTH93kj0I/AAAAAAAAALU/mbkQ15Lmx5I/s1600/02.OpenCommandPrompt.png</a>)</p>
+<h2 id="輸入nuget-spec就會產生一個副檔名nuspec的檔案">輸入nuget spec，就會產生一個副檔名nuspec的檔案</h2>
+<h2 id="ps-如果該目錄下不只一個專案檔csproj請明確指定你要產生的專案檔是那一個">P.S. 如果該目錄下不只一個專案檔(csproj)，請明確指定你要產生的專案檔是那一個</h2>
+<p><img src="http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png" alt="">](<a href="http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png">http://3.bp.blogspot.com/-Jz-baDzNlGc/UIPTIeo4bBI/AAAAAAAAALc/ZKcIqAgN_3w/s1600/03.NugetSpec.png</a>)</p>
+<h2 id="在專案總管上面按下顯示所有檔案就可以看到這個檔案">在專案總管上面按下顯示所有檔案，就可以看到這個檔案</h2>
+<p><img src="http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png" alt="">](<a href="http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png">http://3.bp.blogspot.com/-lCpZOlgjhkU/UIPTJZ-ApfI/AAAAAAAAALk/FW-o1ID1r_A/s1600/04.ShowAllFile.png</a>)</p>
+<h2 id="產生的nuspec檔案的內容如下">產生的nuspec檔案的內容如下</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;package&gt;</span>
+  <span style="color:#f92672">&lt;metadata&gt;</span>
+    <span style="color:#f92672">&lt;id&gt;</span>$id$<span style="color:#f92672">&lt;/id&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>$version$<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;title&gt;</span>$title$<span style="color:#f92672">&lt;/title&gt;</span>
+    <span style="color:#f92672">&lt;authors&gt;</span>$author$<span style="color:#f92672">&lt;/authors&gt;</span>
+    <span style="color:#f92672">&lt;owners&gt;</span>$author$<span style="color:#f92672">&lt;/owners&gt;</span>
+    <span style="color:#f92672">&lt;licenseurl&gt;</span>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/licenseurl&gt;</span>
+    <span style="color:#f92672">&lt;projecturl&gt;</span>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/projecturl&gt;</span>
+    <span style="color:#f92672">&lt;iconurl&gt;</span>http://ICON_URL_HERE_OR_DELETE_THIS_LINE<span style="color:#f92672">&lt;/iconurl&gt;</span>
+    <span style="color:#f92672">&lt;requirelicenseacceptance&gt;</span>false<span style="color:#f92672">&lt;/requirelicenseacceptance&gt;</span>
+    <span style="color:#f92672">&lt;description&gt;</span>$description$<span style="color:#f92672">&lt;/description&gt;</span>
+    <span style="color:#f92672">&lt;releasenotes&gt;</span>Summary of changes made in this release of the package.<span style="color:#f92672">&lt;/releasenotes&gt;</span>
+    <span style="color:#f92672">&lt;copyright&gt;</span>Copyright 2012<span style="color:#f92672">&lt;/copyright&gt;</span>
+    <span style="color:#f92672">&lt;tags&gt;</span>Tag1 Tag2<span style="color:#f92672">&lt;/tags&gt;</span>
+  <span style="color:#f92672">&lt;/metadata&gt;</span>
+<span style="color:#f92672">&lt;/package&gt;</span>
+</code></pre></div><ul>
+<li>$id對應的是這個套件的名稱</li>
+<li>$version$對應的是AssemblyInfo.cs中的AssemblyVersionAttribute</li>
+<li>$author$對應的是AssemblyInfo.cs中的AssemblyCompanyAttribute</li>
+<li>$description$對應的是AssemblyInfo.cs中的AssemblyDescriptionAttribute</li>
+<li>當然也可以手動輸入，下次再來更詳細地說明這個檔案的格式</li>
+</ul>
+<h2 id="接下來打包這個dll成一個套件命令是nuget-pack參數說明如下">接下來打包這個dll成一個套件，命令是nuget pack，參數說明如下</h2>
+<ul>
+<li>-sym:會一起產生包含偵錯符號的套件</li>
+<li>-prop:用來額外指定一些特性，例如configuration=relase是編譯release這個組態</li>
+<li>-build:是在打包前先編譯專案，以取得最新編譯的檔案</li>
+<li>更詳細的說明，可以用nuget pack /?取得Help
+<a href="http://4.bp.blogspot.com/-pIv9pxm5ol8/UIPTKlzqTyI/AAAAAAAAAL0/2qzZFo0iKKU/s1600/06.NugetPack.png"><img src="http://4.bp.blogspot.com/-pIv9pxm5ol8/UIPTKlzqTyI/AAAAAAAAAL0/2qzZFo0iKKU/s1600/06.NugetPack.png" alt=""></a></li>
+</ul>
+<h2 id="因為有下-sym這個參數所以除了會把元件打包成idversionnupkg這樣格式的檔案之外">因為有下-sym這個參數，所以除了會把元件打包成{id}.{version}.nupkg這樣格式的檔案之外</h2>
+<h2 id="還會產生一個idversionsymbolsnupkg的檔案">還會產生一個{id}.{version}.symbols.nupkg的檔案</h2>
+<p><img src="http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png" alt="">](<a href="http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png">http://1.bp.blogspot.com/-jVtaJ-nk4ls/UIPTLSt43zI/AAAAAAAAAL8/dQai5gRgPZY/s1600/07.Pkg.png</a>)</p>
+<h2 id="接下來把這兩個檔案發佈到之前建立的nuget-server和symbol-server">接下來把這兩個檔案發佈到之前建立的nuget server和symbol server</h2>
+<h2 id="發佈到nuget-server">發佈到nuget server</h2>
+<ul>
+<li>nuget push *.symbols.nupkg 123 -Source http://localhost:2335/NuGet</li>
+</ul>
+<h2 id="發佈到symbol-serverdivnuget-push-nupkg-123456--s-httplocalhost1968">發佈到symbol server</div>nuget push *.nupkg 123456 -s http://localhost:1968</h2>
+<h2 id="參考網址">參考網址:</h2>
+<ul>
+<li><a href="http://docs.nuget.org/docs/creating-packages/Creating-and-Publishing-a-Package">Creating and Publishing a Packag</a></li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%bb%ba%e7%ab%8bNuGet%e5%a5%97%e4%bb%b6&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f
+			&title=%e5%bb%ba%e7%ab%8bNuGet%e5%a5%97%e4%bb%b6&summary=%e9%a6%96%e5%85%88%e4%b8%8b%e8%bc%89NuGet%e5%91%bd%e4%bb%a4%e5%88%97%e5%b7%a5%e5%85%b7%ef%bc%8c%e8%ab%8b%e6%8c%89%e6%ad%a4%e4%b8%8b%e8%bc%89%20%e7%82%ba%e4%ba%86%e6%96%b9%e4%be%bf%e8%b5%b7%e8%a6%8b%ef%bc%8c%e6%8a%8a%e9%80%99%e5%80%8b%e6%aa%94%e6%a1%88%e4%b8%9f%e5%88%b0%e7%b3%bb%e7%b5%b1%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%ad%ef%bc%8c%e4%be%8b%e5%a6%82%25WinDir%25%e6%88%96System32%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-Iq1IYY5A7CA%2fUIPU0e78XoI%2fAAAAAAAAAMs%2f7ptcekOJkQQ%2fs1600%2f00.download.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e5%bb%ba%e7%ab%8b%e4%b8%80%e5%80%8b%e6%b8%ac%e8%a9%a6%e7%94%a8%e7%9a%84dll%e5%b0%88%e6%a1%88%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-HMrws61C34M%2fUIPTGsi4x9I%2fAAAAAAAAALE%2f1ymW04Gppqs%2fs1600%2f00.NewProject.png%29%0a%e7%82%ba%e4%ba%86%e6%96%b9%e4%be%bf%e8%b5%b7%e8%a6%8b%ef%bc%8c%e8%ab%8b%e5%85%88%e5%ae%89%e8%a3%9dPowerCommands%e6%93%b4%e5%85%85%e5%85%83%e4%bb%b6%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-nJj9KyxiAaM%2fUIPTHOayBDI%2fAAAAAAAAALM%2fNq0S4oy1bwI%2fs1600%2f01.PowerCommands.png%29%0a%e5%9c%a8%e5%b0%88%e6%a1%88%e4%b8%8a%e6%8c%89%e5%8f%b3%e9%8d%b5%ef%bc%8c%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%beOpen%20Command%20Prompt%e9%80%99%e5%80%8b%e5%8a%9f%e8%83%bd%ef%bc%8c%e6%8c%89%e4%b8%8b%e5%be%8c%e6%9c%83%e6%89%93%e9%96%8b%e4%b8%80%e5%80%8bcmd%e8%a6%96%e7%aa%97%ef%bc%8c%e4%b8%a6%e6%8a%8a%e8%b7%af%e5%be%91%e5%88%87%e6%8f%9b%e5%88%b0%e5%b0%88%e6%a1%88%e4%b8%8b%e9%9d%a2%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-crRkZcmDMRw%2fUIPTH93kj0I%2fAAAAAAAAALU%2fmbkQ15Lmx5I%2fs1600%2f02.OpenCommandPrompt.png%29%0a%e8%bc%b8%e5%85%a5nuget%20spec%ef%bc%8c%e5%b0%b1%e6%9c%83%e7%94%a2%e7%94%9f%e4%b8%80%e5%80%8b%e5%89%af%e6%aa%94%e5%90%8dnuspec%e7%9a%84%e6%aa%94%e6%a1%88%20P.S.%20%e5%a6%82%e6%9e%9c%e8%a9%b2%e7%9b%ae%e9%8c%84%e4%b8%8b%e4%b8%8d%e5%8f%aa%e4%b8%80%e5%80%8b%e5%b0%88%e6%a1%88%e6%aa%94%28csproj%29%ef%bc%8c%e8%ab%8b%e6%98%8e%e7%a2%ba%e6%8c%87%e5%ae%9a%e4%bd%a0%e8%a6%81%e7%94%a2%e7%94%9f%e7%9a%84%e5%b0%88%e6%a1%88%e6%aa%94%e6%98%af%e9%82%a3%e4%b8%80%e5%80%8b%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-Jz-baDzNlGc%2fUIPTIeo4bBI%2fAAAAAAAAALc%2fZKcIqAgN_3w%2fs1600%2f03.NugetSpec.png%29%0a%e5%9c%a8%e5%b0%88%e6%a1%88%e7%b8%bd%e7%ae%a1%e4%b8%8a%e9%9d%a2%e6%8c%89%e4%b8%8b%e9%a1%af%e7%a4%ba%e6%89%80%e6%9c%89%e6%aa%94%e6%a1%88%ef%bc%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e9%80%99%e5%80%8b%e6%aa%94%e6%a1%88%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-lCpZOlgjhkU%2fUIPTJZ-ApfI%2fAAAAAAAAALk%2fFW-o1ID1r_A%2fs1600%2f04.ShowAllFile.png%29%0a%e7%94%a2%e7%94%9f%e7%9a%84nuspec%e6%aa%94%e6%a1%88%e7%9a%84%e5%85%a7%e5%ae%b9%e5%a6%82%e4%b8%8b%20%26lt%3bpackage%26gt%3b%20%26lt%3bmetadata%26gt%3b%20%26lt%3bid%26gt%3b%24id%24%26lt%3b%2fid%26gt%3b%20%26lt%3bversion%26gt%3b%24version%24%26lt%3b%2fversion%26gt%3b%20%26lt%3btitle%26gt%3b%24title%24%26lt%3b%2ftitle%26gt%3b%20%26lt%3bauthors%26gt%3b%24author%24%26lt%3b%2fauthors%26gt%3b%20%26lt%3bowners%26gt%3b%24author%24%26lt%3b%2fowners%26gt%3b%20%26lt%3blicenseurl%26gt%3bhttp%3a%2f%2fLICENSE_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2flicenseurl%26gt%3b%20%26lt%3bprojecturl%26gt%3bhttp%3a%2f%2fPROJECT_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2fprojecturl%26gt%3b%20%26lt%3biconurl%26gt%3bhttp%3a%2f%2fICON_URL_HERE_OR_DELETE_THIS_LINE%26lt%3b%2ficonurl%26gt%3b%20%26lt%3brequirelicenseacceptance%26gt%3bfalse%26lt%3b%2frequirelicenseacceptance%26gt%3b%20%26lt%3bdescription%26gt%3b%24description%24%26lt%3b%2fdescription%26gt%3b%20%26lt%3breleasenotes%26gt%3bSummary%20of%20changes%20made%20in%20this%20release%20of%20the%20package.%26lt%3b%2freleasenotes%26gt%3b%20%26lt%3bcopyright%26gt%3bCopyright%202012%26lt%3b%2fcopyright%26gt%3b%20%26lt%3btags%26gt%3bTag1%20Tag2%26lt%3b%2ftags%26gt%3b%20%26lt%3b%2fmetadata%26gt%3b%20%26lt%3b%2fpackage%26gt%3b%20%20%24id%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%af%e9%80%99%e5%80%8b%e5%a5%97%e4%bb%b6%e7%9a%84%e5%90%8d%e7%a8%b1%20%24version%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyVersionAttribute%20%24author%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyCompanyAttribute%20%24description%24%e5%b0%8d%e6%87%89%e7%9a%84%e6%98%afAssemblyInfo.cs%e4%b8%ad%e7%9a%84AssemblyDescriptionAttribute%20%e7%95%b6%e7%84%b6%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%89%8b%e5%8b%95%e8%bc%b8%e5%85%a5%ef%bc%8c%e4%b8%8b%e6%ac%a1%e5%86%8d%e4%be%86%e6%9b%b4%e8%a9%b3%e7%b4%b0%e5%9c%b0%e8%aa%aa%e6%98%8e%e9%80%99%e5%80%8b%e6%aa%94%e6%a1%88%e7%9a%84%e6%a0%bc%e5%bc%8f%20%20%e6%8e%a5%e4%b8%8b%e4%be%86%e6%89%93%e5%8c%85%e9%80%99%e5%80%8bdll%e6%88%90%e4%b8%80%e5%80%8b%e5%a5%97%e4%bb%b6%ef%bc%8c%e5%91%bd%e4%bb%a4%e6%98%afnuget%20pack%ef%bc%8c%e5%8f%83%e6%95%b8%e8%aa%aa%e6%98%8e%e5%a6%82%e4%b8%8b%20%20-sym%3a%e6%9c%83%e4%b8%80%e8%b5%b7%e7%94%a2%e7%94%9f%e5%8c%85%e5%90%ab%e5%81%b5%e9%8c%af%e7%ac%a6%e8%99%9f%e7%9a%84%e5%a5%97%e4%bb%b6%20-prop%3a%e7%94%a8%e4%be%86%e9%a1%8d%e5%a4%96%e6%8c%87%e5%ae%9a%e4%b8%80%e4%ba%9b%e7%89%b9%e6%80%a7%ef%bc%8c%e4%be%8b%e5%a6%82configuration%3drelase%e6%98%af%e7%b7%a8%e8%ad%afrelease%e9%80%99%e5%80%8b%e7%b5%84%e6%85%8b%20-build%3a%e6%98%af%e5%9c%a8%e6%89%93%e5%8c%85%e5%89%8d%e5%85%88%e7%b7%a8%e8%ad%af%e5%b0%88%e6%a1%88%ef%bc%8c%e4%bb%a5%e5%8f%96%e5%be%97%e6%9c%80%e6%96%b0%e7%b7%a8%e8%ad%af%e7%9a%84%e6%aa%94%e6%a1%88%20%e6%9b%b4%e8%a9%b3%e7%b4%b0%e7%9a%84%e8%aa%aa%e6%98%8e%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%94%a8nuget%20pack%20%2f%3f%e5%8f%96%e5%be%97Help%20%20%20%e5%9b%a0%e7%82%ba%e6%9c%89%e4%b8%8b-sym%e9%80%99%e5%80%8b%e5%8f%83%e6%95%b8%ef%bc%8c%e6%89%80%e4%bb%a5%e9%99%a4%e4%ba%86%e6%9c%83%e6%8a%8a%e5%85%83%e4%bb%b6%e6%89%93%e5%8c%85%e6%88%90%7bid%7d.%7bversion%7d.nupkg%e9%80%99%e6%a8%a3%e6%a0%bc%e5%bc%8f%e7%9a%84%e6%aa%94%e6%a1%88%e4%b9%8b%e5%a4%96%20%e9%82%84%e6%9c%83%e7%94%a2%e7%94%9f%e4%b8%80%e5%80%8b%7bid%7d.%7bversion%7d.symbols.nupkg%e7%9a%84%e6%aa%94%e6%a1%88%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-jVtaJ-nk4ls%2fUIPTLSt43zI%2fAAAAAAAAAL8%2fdQai5gRgPZY%2fs1600%2f07.Pkg.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e6%8a%8a%e9%80%99%e5%85%a9%e5%80%8b%e6%aa%94%e6%a1%88%e7%99%bc%e4%bd%88%e5%88%b0%e4%b9%8b%e5%89%8d%e5%bb%ba%e7%ab%8b%e7%9a%84nuget%20server%e5%92%8csymbol%20server%20%e7%99%bc%e4%bd%88%e5%88%b0nuget%20server%20%20nuget%20push%20%2a.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%bb%ba%e7%ab%8bNuGet%e5%a5%97%e4%bb%b6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f10%2f%25E5%25BB%25BA%25E7%25AB%258Bnuget%25E5%25A5%2597%25E4%25BB%25B6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

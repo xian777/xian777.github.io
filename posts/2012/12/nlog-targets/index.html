@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog Targets | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog Targets target用來定義Log的輸出目標，基本的兩個屬性為
+ name - 目標的名稱，用來給rule路由指定的名稱 type - 目標的類型，NLog支援的類型很多，完整資料請參考官網Supported Targets文件每一個target元素代表一個輸出目標，只要name屬性值不衝突即可  &lt;targets&gt; &lt;target name=&#34;f1&#34; xsi:type=&#34;File&#34; fileName=&#34;file1.txt&#34;/&gt; &lt;target name=&#34;f2&#34; xsi:type=&#34;File&#34; fileName=&#34;file2.txt&#34;/&gt; &lt;target name=&#34;n1&#34; xsi:type=&#34;Network&#34; address=&#34;tcp://localhost:4001&#34;/&gt; &lt;target name=&#34;ds&#34; xsi:type=&#34;OutputDebugString&#34;/&gt; &lt;/targets&gt;  依照type的不同，會有相對應的屬性，例如 File需要指定FileName檔名 Database需指定資料庫相關的參數和語法 Mail需指定郵件主機等資訊 每種類型的設定方式，之後再來詳細介紹
+ 自訂target 要自行擴充target可以參考官網文件的How to write a target 只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式 再利用extensions元素或在程式碼中註冊就行了
+ Wrapper Targets NLog提供幾個封裝和複合目標，用來增加target的功能  asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行) retry-on-error(自動重試功能) buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log) filtering(過濾條件，會依設定值決定是否輸出Log)更多詳細功能請參考官網的Wrapper Targets文件  Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能&lt;targets&gt; &lt;!-- 增加非同步功能--&gt; &lt;target name=&#34;n&#34; xsi:type=&#34;AsyncWrapper&#34;&gt; &lt;!-- 增加自動重試功能 --&gt; &lt;target xsi:type=&#34;RetryingWrapper&#34;&gt; &lt;target xsi:type=&#34;
+    ">
+
+
+<meta property="og:title" content="NLog Targets" />
+<meta property="og:description" content="NLog Targets target用來定義Log的輸出目標，基本的兩個屬性為
+ name - 目標的名稱，用來給rule路由指定的名稱 type - 目標的類型，NLog支援的類型很多，完整資料請參考官網Supported Targets文件每一個target元素代表一個輸出目標，只要name屬性值不衝突即可  &lt;targets&gt; &lt;target name=&#34;f1&#34; xsi:type=&#34;File&#34; fileName=&#34;file1.txt&#34;/&gt; &lt;target name=&#34;f2&#34; xsi:type=&#34;File&#34; fileName=&#34;file2.txt&#34;/&gt; &lt;target name=&#34;n1&#34; xsi:type=&#34;Network&#34; address=&#34;tcp://localhost:4001&#34;/&gt; &lt;target name=&#34;ds&#34; xsi:type=&#34;OutputDebugString&#34;/&gt; &lt;/targets&gt;  依照type的不同，會有相對應的屬性，例如 File需要指定FileName檔名 Database需指定資料庫相關的參數和語法 Mail需指定郵件主機等資訊 每種類型的設定方式，之後再來詳細介紹
+ 自訂target 要自行擴充target可以參考官網文件的How to write a target 只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式 再利用extensions元素或在程式碼中註冊就行了
+ Wrapper Targets NLog提供幾個封裝和複合目標，用來增加target的功能  asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行) retry-on-error(自動重試功能) buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log) filtering(過濾條件，會依設定值決定是否輸出Log)更多詳細功能請參考官網的Wrapper Targets文件  Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能&lt;targets&gt; &lt;!-- 增加非同步功能--&gt; &lt;target name=&#34;n&#34; xsi:type=&#34;AsyncWrapper&#34;&gt; &lt;!-- 增加自動重試功能 --&gt; &lt;target xsi:type=&#34;RetryingWrapper&#34;&gt; &lt;target xsi:type=&#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/12/nlog-targets/" />
+<meta property="article:published_time" content="2012-12-30T00:29:00+00:00" />
+<meta property="article:modified_time" content="2012-12-30T00:29:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog Targets"/>
+<meta name="twitter:description" content="NLog Targets target用來定義Log的輸出目標，基本的兩個屬性為
+ name - 目標的名稱，用來給rule路由指定的名稱 type - 目標的類型，NLog支援的類型很多，完整資料請參考官網Supported Targets文件每一個target元素代表一個輸出目標，只要name屬性值不衝突即可  &lt;targets&gt; &lt;target name=&#34;f1&#34; xsi:type=&#34;File&#34; fileName=&#34;file1.txt&#34;/&gt; &lt;target name=&#34;f2&#34; xsi:type=&#34;File&#34; fileName=&#34;file2.txt&#34;/&gt; &lt;target name=&#34;n1&#34; xsi:type=&#34;Network&#34; address=&#34;tcp://localhost:4001&#34;/&gt; &lt;target name=&#34;ds&#34; xsi:type=&#34;OutputDebugString&#34;/&gt; &lt;/targets&gt;  依照type的不同，會有相對應的屬性，例如 File需要指定FileName檔名 Database需指定資料庫相關的參數和語法 Mail需指定郵件主機等資訊 每種類型的設定方式，之後再來詳細介紹
+ 自訂target 要自行擴充target可以參考官網文件的How to write a target 只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式 再利用extensions元素或在程式碼中註冊就行了
+ Wrapper Targets NLog提供幾個封裝和複合目標，用來增加target的功能  asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行) retry-on-error(自動重試功能) buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log) filtering(過濾條件，會依設定值決定是否輸出Log)更多詳細功能請參考官網的Wrapper Targets文件  Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能&lt;targets&gt; &lt;!-- 增加非同步功能--&gt; &lt;target name=&#34;n&#34; xsi:type=&#34;AsyncWrapper&#34;&gt; &lt;!-- 增加自動重試功能 --&gt; &lt;target xsi:type=&#34;RetryingWrapper&#34;&gt; &lt;target xsi:type=&#34;"/>
+
+<meta itemprop="name" content="NLog Targets">
+<meta itemprop="description" content="NLog Targets target用來定義Log的輸出目標，基本的兩個屬性為
+ name - 目標的名稱，用來給rule路由指定的名稱 type - 目標的類型，NLog支援的類型很多，完整資料請參考官網Supported Targets文件每一個target元素代表一個輸出目標，只要name屬性值不衝突即可  &lt;targets&gt; &lt;target name=&#34;f1&#34; xsi:type=&#34;File&#34; fileName=&#34;file1.txt&#34;/&gt; &lt;target name=&#34;f2&#34; xsi:type=&#34;File&#34; fileName=&#34;file2.txt&#34;/&gt; &lt;target name=&#34;n1&#34; xsi:type=&#34;Network&#34; address=&#34;tcp://localhost:4001&#34;/&gt; &lt;target name=&#34;ds&#34; xsi:type=&#34;OutputDebugString&#34;/&gt; &lt;/targets&gt;  依照type的不同，會有相對應的屬性，例如 File需要指定FileName檔名 Database需指定資料庫相關的參數和語法 Mail需指定郵件主機等資訊 每種類型的設定方式，之後再來詳細介紹
+ 自訂target 要自行擴充target可以參考官網文件的How to write a target 只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式 再利用extensions元素或在程式碼中註冊就行了
+ Wrapper Targets NLog提供幾個封裝和複合目標，用來增加target的功能  asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行) retry-on-error(自動重試功能) buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log) filtering(過濾條件，會依設定值決定是否輸出Log)更多詳細功能請參考官網的Wrapper Targets文件  Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能&lt;targets&gt; &lt;!-- 增加非同步功能--&gt; &lt;target name=&#34;n&#34; xsi:type=&#34;AsyncWrapper&#34;&gt; &lt;!-- 增加自動重試功能 --&gt; &lt;target xsi:type=&#34;RetryingWrapper&#34;&gt; &lt;target xsi:type=&#34;">
+<meta itemprop="datePublished" content="2012-12-30T00:29:00+00:00" />
+<meta itemprop="dateModified" content="2012-12-30T00:29:00+00:00" />
+<meta itemprop="wordCount" content="181">
+
+
+
+<meta itemprop="keywords" content="NLog," />
+
+<link rel="canonical" href="http://example.org/posts/2012/12/nlog-targets/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog Targets</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 30, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    6 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="nlog-targets">NLog Targets</h2>
+<p>target用來定義Log的輸出目標，基本的兩個屬性為</p>
+<ul>
+<li>name - 目標的名稱，用來給rule路由指定的名稱</li>
+<li>type - 目標的類型，NLog支援的類型很多，完整資料請參考<a href="https://github.com/nlog/nlog/wiki/Targets">官網Supported Targets文件</a>每一個target元素代表一個輸出目標，只要name屬性值不衝突即可</li>
+</ul>
+<pre class="brush:xml">&lt;targets&gt;
+    &lt;target name="f1" xsi:type="File" fileName="file1.txt"/&gt;
+    &lt;target name="f2" xsi:type="File" fileName="file2.txt"/&gt;
+    &lt;target name="n1" xsi:type="Network" address="tcp://localhost:4001"/&gt;
+    &lt;target name="ds" xsi:type="OutputDebugString"/&gt;
+&lt;/targets&gt;
+</pre>
+<p>依照type的不同，會有相對應的屬性，例如
+File需要指定FileName檔名
+Database需指定資料庫相關的參數和語法
+Mail需指定郵件主機等資訊
+每種類型的設定方式，之後再來詳細介紹</p>
+<hr>
+<h2 id="自訂target">自訂target</h2>
+<p>要自行擴充target可以參考官網文件的<a href="https://github.com/nlog/nlog/wiki/How%20to%20write%20a%20Target">How to write a target</a>
+只要繼承NLog的TargetWithLayout類別，覆寫Write(LogEventInfo logEvent)函式
+再利用extensions元素或在程式碼中註冊就行了</p>
+<hr>
+<h2 id="wrapper-targets">Wrapper Targets</h2>
+<div>NLog提供幾個封裝和複合目標，用來增加target的功能</div><div>
+<ul>
+<li>asynchronous processing (非同步功能，被封裝的target會由另一個執行緒來運行)</li>
+<li>retry-on-error(自動重試功能)</li>
+<li>buffering(緩衝處理，不會馬上寫出Log，而會依設定值累積一定數量才輸出Log)</li>
+<li>filtering(過濾條件，會依設定值決定是否輸出Log)<div>更多詳細功能請參考<a href="https://github.com/nlog/nlog/wiki/Targets">官網的Wrapper Targets文件</a></div></div><div></li>
+</ul>
+</div><div>Wrapper可以連續嵌套，以下的範例可以增加非同步和自動重試的功能</div><pre class="brush:xml">&lt;targets&gt;
+    &lt;!-- 增加非同步功能--&gt;
+    &lt;target name="n" xsi:type="AsyncWrapper"&gt;
+        &lt;!-- 增加自動重試功能 --&gt;
+        &lt;target xsi:type="RetryingWrapper"&gt;
+            &lt;target xsi:type="File" fileName="${file}.txt" /&gt;
+        &lt;/target&gt;
+    &lt;/target&gt;
+&lt;/targets&gt;
+</pre><div>
+由於非同步處理是很常用來增加效能的功能，所以提供了一個更簡單的設定方式
+</div><pre class="brush:xml">&lt;nlog&gt;
+    &lt;targets async="true"&gt;
+        &lt;!-- 放在這個section之間的target都會有非同步功能 --&gt;
+    &lt;/targets&gt;
+&lt;/nlog&gt;
+</pre>
+<hr>
+<h2 id="default-wrappers">Default wrappers</h2>
+<div>如果有多組target元素需要大腸包小腸的時後，多層的嵌套會比較複雜
+所以提供了預設封裝的功能
+使用default-wrapper元素設定，同一組的target就會有同樣的封裝功能</div><div><pre class="brush:xml">&lt;nlog&gt;
+    &lt;!-- 第一組Wrapper --&gt;
+    &lt;targets&gt;
+        &lt;default-wrapper xsi:type="BufferingWrapper" bufferSize="100"/&gt;  
+        &lt;target name="f1" xsi:type="File" fileName="f1.txt"/&gt;  
+        &lt;target name="f2" xsi:type="File" fileName="f2.txt"/&gt;  
+    &lt;/targets&gt;
+    &lt;!-- 第二組Wrapper --&gt;
+    &lt;targets&gt;  
+        &lt;default-wrapper xsi:type="AsyncWrapper"&gt;  
+            &lt;wrapper xsi:type="RetryingWrapper"/&gt;  
+        &lt;/default-wrapper&gt;  
+        &lt;target name="n1" xsi:type="Network" address="tcp://localhost:4001"/&gt;  
+        &lt;target name="n2" xsi:type="Network" address="tcp://localhost:4002"/&gt;  
+        &lt;target name="n3" xsi:type="Network" address="tcp://localhost:4003"/&gt;  
+    &lt;/targets&gt; 
+&lt;/nlog&gt;
+</pre></div>
+<hr>
+<h2 id="default-target-parameters">Default target parameters</h2>
+<div>類似的功能在參數設定上也有
+同一組的target需要設定同樣的參數設定的話，也可以利用這個功能設定一次就好</div><div><pre class="brush:xml">&lt;nlog&gt;
+    &lt;targets&gt;
+        &lt;!-- 多組target都有同樣的屬性keepFileOpen --&gt;
+        &lt;target name="f1" xsi:type="File" fileName="f1.txt" keepFileOpen="false"/&gt;
+        &lt;target name="f2" xsi:type="File" fileName="f2.txt" keepFileOpen="false"/&gt;
+        &lt;target name="f3" xsi:type="File" fileName="f3.txt" keepFileOpen="false"/&gt;
+    &lt;/targets&gt;
+&lt;/nlog&gt;
+&lt;!-- 替代的設定方式如下 --&gt;
+&lt;nlog&gt;
+    &lt;targets&gt;
+        &lt;!-- 利用default-target-parameters來設定一次就好 --&gt;
+        &lt;default-target-parameters xsi:type="File" keepFileOpen="false"/&gt;
+        &lt;target name="f1" xsi:type="File" fileName="f1.txt"/&gt;
+        &lt;target name="f2" xsi:type="File" fileName="f2.txt"/&gt;
+        &lt;target name="f3" xsi:type="File" fileName="f3.txt"/&gt;
+    &lt;/targets&gt;
+&lt;/nlog&gt;
+</pre></div><div>
+<p>上一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-config.html">NLog Config</a>
+下一篇 : <a href="http://blog.developer.idv.tw/2012/12/nlog-rules.html">NLog Rules</a></div></p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog%20Targets&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f
+			&title=NLog%20Targets&summary=NLog%20Targets%20target%e7%94%a8%e4%be%86%e5%ae%9a%e7%be%a9Log%e7%9a%84%e8%bc%b8%e5%87%ba%e7%9b%ae%e6%a8%99%ef%bc%8c%e5%9f%ba%e6%9c%ac%e7%9a%84%e5%85%a9%e5%80%8b%e5%b1%ac%e6%80%a7%e7%82%ba%0a%20name%20-%20%e7%9b%ae%e6%a8%99%e7%9a%84%e5%90%8d%e7%a8%b1%ef%bc%8c%e7%94%a8%e4%be%86%e7%b5%a6rule%e8%b7%af%e7%94%b1%e6%8c%87%e5%ae%9a%e7%9a%84%e5%90%8d%e7%a8%b1%20type%20-%20%e7%9b%ae%e6%a8%99%e7%9a%84%e9%a1%9e%e5%9e%8b%ef%bc%8cNLog%e6%94%af%e6%8f%b4%e7%9a%84%e9%a1%9e%e5%9e%8b%e5%be%88%e5%a4%9a%ef%bc%8c%e5%ae%8c%e6%95%b4%e8%b3%87%e6%96%99%e8%ab%8b%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2Supported%20Targets%e6%96%87%e4%bb%b6%e6%af%8f%e4%b8%80%e5%80%8btarget%e5%85%83%e7%b4%a0%e4%bb%a3%e8%a1%a8%e4%b8%80%e5%80%8b%e8%bc%b8%e5%87%ba%e7%9b%ae%e6%a8%99%ef%bc%8c%e5%8f%aa%e8%a6%81name%e5%b1%ac%e6%80%a7%e5%80%bc%e4%b8%8d%e8%a1%9d%e7%aa%81%e5%8d%b3%e5%8f%af%20%20%26lt%3btargets%26gt%3b%20%26lt%3btarget%20name%3d%22f1%22%20xsi%3atype%3d%22File%22%20fileName%3d%22file1.txt%22%2f%26gt%3b%20%26lt%3btarget%20name%3d%22f2%22%20xsi%3atype%3d%22File%22%20fileName%3d%22file2.txt%22%2f%26gt%3b%20%26lt%3btarget%20name%3d%22n1%22%20xsi%3atype%3d%22Network%22%20address%3d%22tcp%3a%2f%2flocalhost%3a4001%22%2f%26gt%3b%20%26lt%3btarget%20name%3d%22ds%22%20xsi%3atype%3d%22OutputDebugString%22%2f%26gt%3b%20%26lt%3b%2ftargets%26gt%3b%20%20%e4%be%9d%e7%85%a7type%e7%9a%84%e4%b8%8d%e5%90%8c%ef%bc%8c%e6%9c%83%e6%9c%89%e7%9b%b8%e5%b0%8d%e6%87%89%e7%9a%84%e5%b1%ac%e6%80%a7%ef%bc%8c%e4%be%8b%e5%a6%82%20File%e9%9c%80%e8%a6%81%e6%8c%87%e5%ae%9aFileName%e6%aa%94%e5%90%8d%20Database%e9%9c%80%e6%8c%87%e5%ae%9a%e8%b3%87%e6%96%99%e5%ba%ab%e7%9b%b8%e9%97%9c%e7%9a%84%e5%8f%83%e6%95%b8%e5%92%8c%e8%aa%9e%e6%b3%95%20Mail%e9%9c%80%e6%8c%87%e5%ae%9a%e9%83%b5%e4%bb%b6%e4%b8%bb%e6%a9%9f%e7%ad%89%e8%b3%87%e8%a8%8a%20%e6%af%8f%e7%a8%ae%e9%a1%9e%e5%9e%8b%e7%9a%84%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8f%ef%bc%8c%e4%b9%8b%e5%be%8c%e5%86%8d%e4%be%86%e8%a9%b3%e7%b4%b0%e4%bb%8b%e7%b4%b9%0a%20%e8%87%aa%e8%a8%82target%20%e8%a6%81%e8%87%aa%e8%a1%8c%e6%93%b4%e5%85%85target%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e6%96%87%e4%bb%b6%e7%9a%84How%20to%20write%20a%20target%20%e5%8f%aa%e8%a6%81%e7%b9%bc%e6%89%bfNLog%e7%9a%84TargetWithLayout%e9%a1%9e%e5%88%a5%ef%bc%8c%e8%a6%86%e5%af%abWrite%28LogEventInfo%20logEvent%29%e5%87%bd%e5%bc%8f%20%e5%86%8d%e5%88%a9%e7%94%a8extensions%e5%85%83%e7%b4%a0%e6%88%96%e5%9c%a8%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%b8%ad%e8%a8%bb%e5%86%8a%e5%b0%b1%e8%a1%8c%e4%ba%86%0a%20Wrapper%20Targets%20NLog%e6%8f%90%e4%be%9b%e5%b9%be%e5%80%8b%e5%b0%81%e8%a3%9d%e5%92%8c%e8%a4%87%e5%90%88%e7%9b%ae%e6%a8%99%ef%bc%8c%e7%94%a8%e4%be%86%e5%a2%9e%e5%8a%a0target%e7%9a%84%e5%8a%9f%e8%83%bd%20%20asynchronous%20processing%20%28%e9%9d%9e%e5%90%8c%e6%ad%a5%e5%8a%9f%e8%83%bd%ef%bc%8c%e8%a2%ab%e5%b0%81%e8%a3%9d%e7%9a%84target%e6%9c%83%e7%94%b1%e5%8f%a6%e4%b8%80%e5%80%8b%e5%9f%b7%e8%a1%8c%e7%b7%92%e4%be%86%e9%81%8b%e8%a1%8c%29%20retry-on-error%28%e8%87%aa%e5%8b%95%e9%87%8d%e8%a9%a6%e5%8a%9f%e8%83%bd%29%20buffering%28%e7%b7%a9%e8%a1%9d%e8%99%95%e7%90%86%ef%bc%8c%e4%b8%8d%e6%9c%83%e9%a6%ac%e4%b8%8a%e5%af%ab%e5%87%baLog%ef%bc%8c%e8%80%8c%e6%9c%83%e4%be%9d%e8%a8%ad%e5%ae%9a%e5%80%bc%e7%b4%af%e7%a9%8d%e4%b8%80%e5%ae%9a%e6%95%b8%e9%87%8f%e6%89%8d%e8%bc%b8%e5%87%baLog%29%20filtering%28%e9%81%8e%e6%bf%be%e6%a2%9d%e4%bb%b6%ef%bc%8c%e6%9c%83%e4%be%9d%e8%a8%ad%e5%ae%9a%e5%80%bc%e6%b1%ba%e5%ae%9a%e6%98%af%e5%90%a6%e8%bc%b8%e5%87%baLog%29%e6%9b%b4%e5%a4%9a%e8%a9%b3%e7%b4%b0%e5%8a%9f%e8%83%bd%e8%ab%8b%e5%8f%83%e8%80%83%e5%ae%98%e7%b6%b2%e7%9a%84Wrapper%20Targets%e6%96%87%e4%bb%b6%20%20Wrapper%e5%8f%af%e4%bb%a5%e9%80%a3%e7%ba%8c%e5%b5%8c%e5%a5%97%ef%bc%8c%e4%bb%a5%e4%b8%8b%e7%9a%84%e7%af%84%e4%be%8b%e5%8f%af%e4%bb%a5%e5%a2%9e%e5%8a%a0%e9%9d%9e%e5%90%8c%e6%ad%a5%e5%92%8c%e8%87%aa%e5%8b%95%e9%87%8d%e8%a9%a6%e7%9a%84%e5%8a%9f%e8%83%bd%26lt%3btargets%26gt%3b%20%26lt%3b%21--%20%e5%a2%9e%e5%8a%a0%e9%9d%9e%e5%90%8c%e6%ad%a5%e5%8a%9f%e8%83%bd--%26gt%3b%20%26lt%3btarget%20name%3d%22n%22%20xsi%3atype%3d%22AsyncWrapper%22%26gt%3b%20%26lt%3b%21--%20%e5%a2%9e%e5%8a%a0%e8%87%aa%e5%8b%95%e9%87%8d%e8%a9%a6%e5%8a%9f%e8%83%bd%20--%26gt%3b%20%26lt%3btarget%20xsi%3atype%3d%22RetryingWrapper%22%26gt%3b%20%26lt%3btarget%20xsi%3atype%3d%22&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog%20Targets&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f12%2fnlog-targets%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on My New Hugo Site</title>
+    <link>http://example.org/tags/nginx/</link>
+    <description>Recent content in nginx on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2016 21:37:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gogs with nginx reverse proxy</title>
+      <link>http://example.org/posts/2016/08/gogs-with-nginx-reverse-proxy/</link>
+      <pubDate>Mon, 15 Aug 2016 21:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/gogs-with-nginx-reverse-proxy/</guid>
+      <description>ngix新增一組站台設定
+[![](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png)](https://3.bp.blogspot.com/-5pCqX-PKlL4/V7HFi9H5m_I/AAAAAAAAD2w/IlMP7TcMxdUbPpXy_r1Gv5Ywnmn8Vv6QgCLcB/s1600/01.png) 新增站台的DNS，為了測試方便所以建在本機的hosts [![](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png)](https://2.bp.blogspot.com/-TKZboAubPcE/V7HFi3IQVxI/AAAAAAAAD20/aj4gq2qUzj08cHpfG8nN6GH6KPotK515gCLcB/s1600/02.png) 修改一下gogs的設定，把domain和ROOT_URL改成這組測試的網址 順便DISABLE_SSH = true [![](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png)](https://3.bp.blogspot.com/-NWt0cLVNSD8/V7HFi-bF8RI/AAAAAAAAD2s/Z4GJ4sS8QyU6bgG1XPAbOIqV4LOyYj9ogCLcB/s1600/03.png) 重新啟動gogs服務後，就可以用這組測試網址了 [!</description>
+    </item>
+    
+    <item>
+      <title>Nginx run as windows service</title>
+      <link>http://example.org/posts/2016/08/nginx-run-as-windows-service/</link>
+      <pubDate>Mon, 15 Aug 2016 21:09:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2016/08/nginx-run-as-windows-service/</guid>
+      <description>在官網下載Nginx編譯好的執行檔
+[![](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png)](https://3.bp.blogspot.com/-8vknH_NDWWc/V7G-1WbRz9I/AAAAAAAAD2U/8dIR2IfcZLE0Gg8h6v5JraGoPmztkHwNQCLcB/s1600/01.png) [下載nssm](https://nssm.cc/download)用來把nginx的執行檔註冊成一個服務[![](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png)](https://2.bp.blogspot.com/-smMH3K8Qmqw/V7G-1QMgHrI/AAAAAAAAD2Q/eueu5aJVMdsHgtocc-YkiZLhNUHOm86ugCLcB/s1600/02.png) 執行nssm install nginx設定好nginx執行檔的路徑和工作目錄[![](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png)](https://1.bp.blogspot.com/-x_sQIDUaHcs/V7G-1Z_m1bI/AAAAAAAAD2M/X1KZotWYxuglW7JQ7GHok9H4sT09JVG9ACLcB/s1600/03.png) 啟動nginx服務[![](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png)](https://3.bp.blogspot.com/--lOAGgATX0c/V7G-10HDnZI/AAAAAAAAD2Y/lE0r7P2DHYw0mMJiW-XSd_xLm_-BtdaGwCLcB/s1600/04.png) nginx啟動成功[![](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)](https://3.bp.blogspot.com/-Yik38hLCppY/V7G-16Q0rQI/AAAAAAAAD2c/RZz1ARt3dhspgMuzP6N-3sDtI7LmGlJpQCLcB/s1600/05.png)  </description>
+    </item>
+    
+  </channel>
+</rss>

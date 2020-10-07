@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elmah on My New Hugo Site</title>
+    <link>http://example.org/tags/elmah/</link>
+    <description>Recent content in Elmah on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Sep 2014 17:40:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/elmah/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Elmah (Error Logging Modules and Handlers)</title>
+      <link>http://example.org/posts/2014/09/elmah-error-logging-modules-and-handlers/</link>
+      <pubDate>Tue, 16 Sep 2014 17:40:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/09/elmah-error-logging-modules-and-handlers/</guid>
+      <description>Elmah - Error Logging Modules and Handlers 是一個將未處理的Error記錄起來的模組，和包含一個顯示Log的處理常式 先開一個簡單的Web專案
+[![](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png)](http://2.bp.blogspot.com/-TyswIpyTOZA/VBgAA5BWvHI/AAAAAAAABlE/NWJLVmrVZFc/s1600/01.%E9%96%8B%E6%96%B0%E5%B0%88%E6%A1%88.png) 透過NuGet安裝Elmah套件 [![](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://2.bp.blogspot.com/-RWj6U08DY2Q/VBgAAxYwTpI/AAAAAAAABlA/S2JQbGbvSk0/s1600/02.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 從設定檔上可以看到包含四個模組 &amp;lt;configSections&amp;gt; &amp;lt;sectionGroup name=&#34;elmah&#34;&amp;gt; &amp;lt;section name=&#34;security&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.SecuritySectionHandler, Elmah&#34; /&amp;gt; &amp;lt;section name=&#34;errorLog&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorLogSectionHandler, Elmah&#34; /&amp;gt; &amp;lt;section name=&#34;errorMail&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorMailSectionHandler, Elmah&#34; /&amp;gt; &amp;lt;section name=&#34;errorFilter&#34; requirePermission=&#34;false&#34; type=&#34;Elmah.ErrorFilterSectionHandler, Elmah&#34; /&amp;gt; &amp;lt;/sectionGroup&amp;gt; &amp;lt;/configSections&amp;gt;  security，用來設定是否允許遠端讀取elmah.axd， errorLog，用來設定Log要存在什麼地方，例如XML或DB，預設是Memory errorMail，用來把Log送出EMail通知 errorFilter，用來過濾Log elmah.axd是用來顯示Log的處理常式，如果允許遠端存取的時後，在安全性上要特別注意
+[![](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png)](http://4.bp.blogspot.com/-_Ps8vplqOuY/VBgBnFqEfmI/AAAAAAAABlQ/MDIVTYN3ufQ/s1600/03.Elmah.axd.png) 如果要把記錄存在資料庫的話，以下用SQL Server為例子 首先到官網取得資料表結構 或是透過NuGet安裝Elmah.SqlServer套件
+[![](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png)](http://1.bp.blogspot.com/-sb1kLHepB98/VBgCV60F_-I/AAAAAAAABlY/wAbY9vnHuwc/s1600/04.elmah.sqlserver.png) 就可以在App_Readme資料夾下找到SQL檔案 [![](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png)](http://1.bp.blogspot.com/-_jDh4hF8WcM/VBgCeqV0q5I/AAAAAAAABlg/VbW97vrHEQo/s1600/05.sql%E6%AA%94.png) 不過最好把NTEXT形態，改成NVARCHAR(MAX)比較好 [![](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png)](http://1.bp.blogspot.com/-vde3bv6V62U/VBgCm2s-pKI/AAAAAAAABlo/FQNfBqMyUpQ/s1600/06.%E6%94%B9%E6%AC%84%E4%BD%8D.png) 準備好資料庫，包含ELMAH_Error資料表和三隻預儲程序 [![](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)](http://3.bp.blogspot.com/-n9HDn_3aLM0/VBgDwExhESI/AAAAAAAABlw/-P7RYpLoBXA/s1600/07.%E6%BA%96%E5%82%99%E8%B3%87%E6%96%99%E5%BA%AB.png)透過errorLog設定Log寫到SQL Server &amp;lt;elmah&amp;gt; &amp;lt;security allowRemoteAccess=&#34;false&#34; /&amp;gt; &amp;lt;errorLog type=&#34;Elmah.SqlErrorLog, Elmah&#34; connectionString=&#34;data source=(localdb)\v11.0; database=ElmahDB; trusted_connection=true&#34;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    TeamCity 改用網域帳號LDAP登入 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入 打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml ](http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png)
+裡面的auth-type節點中，預設會是DefaultLoginModule &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&#34; /&gt; 將模組改成LDAPLoginModule就行了 &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&#34; /&gt; 再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔 ](http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png)
+複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目 把example換成自已的網域名稱 #設定AD的位置 java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com #設定登入的時後，帳號格式不用包含\或是@ teamcity.auth.loginFilter=[^/\\\\@]&#43; #配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱 teamcity.auth.formatDN=example\\$login$  設定這三個項目，其他改用預設值，就可以用網域驗證了 登入後如果要同步帳號資料，可以再多加以下幾個選項  java.naming.security.principal=&lt;username&gt; java.naming.security.credentials=&lt;password&gt; teamcity.users.username=sAMAccountName teamcity.options.users.synchronize=true teamcity.users.filter=(objectClass=user) teamcity.users.property.displayName=displayName teamcity.users.property.email=mail 第一次登入的時後，會需要設定帳號成管理員 ](http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png)
+如果有問題，可以查一下log ](http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png)
+參考資料  Typical LDAP Configurations LDAP Integration How To Set Up Secure LDAP Authentication with TeamCity  
+    ">
+
+
+<meta property="og:title" content="TeamCity 改用網域帳號LDAP登入" />
+<meta property="og:description" content="如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入 打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml ](http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png)
+裡面的auth-type節點中，預設會是DefaultLoginModule &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&#34; /&gt; 將模組改成LDAPLoginModule就行了 &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&#34; /&gt; 再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔 ](http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png)
+複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目 把example換成自已的網域名稱 #設定AD的位置 java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com #設定登入的時後，帳號格式不用包含\或是@ teamcity.auth.loginFilter=[^/\\\\@]&#43; #配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱 teamcity.auth.formatDN=example\\$login$  設定這三個項目，其他改用預設值，就可以用網域驗證了 登入後如果要同步帳號資料，可以再多加以下幾個選項  java.naming.security.principal=&lt;username&gt; java.naming.security.credentials=&lt;password&gt; teamcity.users.username=sAMAccountName teamcity.options.users.synchronize=true teamcity.users.filter=(objectClass=user) teamcity.users.property.displayName=displayName teamcity.users.property.email=mail 第一次登入的時後，會需要設定帳號成管理員 ](http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png)
+如果有問題，可以查一下log ](http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png)
+參考資料  Typical LDAP Configurations LDAP Integration How To Set Up Secure LDAP Authentication with TeamCity  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/teamcity-%E6%94%B9%E7%94%A8%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9Fldap%E7%99%BB%E5%85%A5/" />
+<meta property="article:published_time" content="2012-11-29T22:07:00+00:00" />
+<meta property="article:modified_time" content="2012-11-29T22:07:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TeamCity 改用網域帳號LDAP登入"/>
+<meta name="twitter:description" content="如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入 打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml ](http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png)
+裡面的auth-type節點中，預設會是DefaultLoginModule &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&#34; /&gt; 將模組改成LDAPLoginModule就行了 &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&#34; /&gt; 再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔 ](http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png)
+複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目 把example換成自已的網域名稱 #設定AD的位置 java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com #設定登入的時後，帳號格式不用包含\或是@ teamcity.auth.loginFilter=[^/\\\\@]&#43; #配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱 teamcity.auth.formatDN=example\\$login$  設定這三個項目，其他改用預設值，就可以用網域驗證了 登入後如果要同步帳號資料，可以再多加以下幾個選項  java.naming.security.principal=&lt;username&gt; java.naming.security.credentials=&lt;password&gt; teamcity.users.username=sAMAccountName teamcity.options.users.synchronize=true teamcity.users.filter=(objectClass=user) teamcity.users.property.displayName=displayName teamcity.users.property.email=mail 第一次登入的時後，會需要設定帳號成管理員 ](http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png)
+如果有問題，可以查一下log ](http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png)
+參考資料  Typical LDAP Configurations LDAP Integration How To Set Up Secure LDAP Authentication with TeamCity  "/>
+
+<meta itemprop="name" content="TeamCity 改用網域帳號LDAP登入">
+<meta itemprop="description" content="如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入 打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml ](http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png)
+裡面的auth-type節點中，預設會是DefaultLoginModule &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&#34; /&gt; 將模組改成LDAPLoginModule就行了 &lt;login-module class=&#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&#34; /&gt; 再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔 ](http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png)
+複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目 把example換成自已的網域名稱 #設定AD的位置 java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com #設定登入的時後，帳號格式不用包含\或是@ teamcity.auth.loginFilter=[^/\\\\@]&#43; #配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱 teamcity.auth.formatDN=example\\$login$  設定這三個項目，其他改用預設值，就可以用網域驗證了 登入後如果要同步帳號資料，可以再多加以下幾個選項  java.naming.security.principal=&lt;username&gt; java.naming.security.credentials=&lt;password&gt; teamcity.users.username=sAMAccountName teamcity.options.users.synchronize=true teamcity.users.filter=(objectClass=user) teamcity.users.property.displayName=displayName teamcity.users.property.email=mail 第一次登入的時後，會需要設定帳號成管理員 ](http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png)
+如果有問題，可以查一下log ](http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png)
+參考資料  Typical LDAP Configurations LDAP Integration How To Set Up Secure LDAP Authentication with TeamCity  ">
+<meta itemprop="datePublished" content="2012-11-29T22:07:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-29T22:07:00+00:00" />
+<meta itemprop="wordCount" content="49">
+
+
+
+<meta itemprop="keywords" content="LDAP,TeamCity," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/teamcity-%E6%94%B9%E7%94%A8%E7%B6%B2%E5%9F%9F%E5%B8%B3%E8%99%9Fldap%E7%99%BB%E5%85%A5/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>TeamCity 改用網域帳號LDAP登入</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 29, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/ldap">LDAP</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/teamcity">TeamCity</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/ldap">L d a p</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/teamcity">Team city</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="如果開發環境中有網域管理的話可以把登入模式改ldap模組登入">如果開發環境中有網域管理的話，可以把登入模式改LDAP模組登入</h2>
+<p>打開C:\ProgramData\JetBrains\TeamCity\config\main-config.xml
+<img src="http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png" alt="">](<a href="http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png">http://1.bp.blogspot.com/-LkzYbvwCZuw/ULdqGx9BwaI/AAAAAAAAAfQ/6CW0ZAsBGI8/s1600/01.MainConfig.png</a>)</p>
+<h2 id="裡面的auth-type節點中預設會是defaultloginmodule">裡面的auth-type節點中，預設會是DefaultLoginModule</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;login-module</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;jetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="將模組改成ldaploginmodule就行了">將模組改成LDAPLoginModule就行了</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;login-module</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;jetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="再來是設定ldap的環境參數在config資料夾中有一個ldap-configpropertiesdist的範本檔">再來是設定LDAP的環境參數，在config資料夾中，有一個ldap-config.properties.dist的範本檔</h2>
+<p><img src="http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png" alt="">](<a href="http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png">http://4.bp.blogspot.com/-WMSkZa1XkIk/ULdojCaepFI/AAAAAAAAAfI/vMVyOCm631c/s1600/ldapConfig.png</a>)</p>
+<h2 id="複制成ldap-configproperties這個檔案再用文字編輯器打開來修改主要有以下幾個項目">複制成ldap-config.properties這個檔案，再用文字編輯器打開來修改，主要有以下幾個項目</h2>
+<h2 id="把example換成自已的網域名稱">把example換成自已的網域名稱</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">#設定AD的位置
+java.naming.provider.url=ldap://dc.example.com:389/DC=example,DC=com
+ 
+#設定登入的時後，帳號格式不用包含\或是@
+teamcity.auth.loginFilter=[^/\\\\@]+
+ 
+#配合上一個設定，和AD驗證的時後，送過去的帳號，前面自動補上網域名稱
+teamcity.auth.formatDN=example\\$login$
+</code></pre></div><ul>
+<li>設定這三個項目，其他改用預設值，就可以用網域驗證了</li>
+<li>登入後如果要同步帳號資料，可以再多加以下幾個選項</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">java.naming.security.principal=<span style="color:#f92672">&lt;username&gt;</span>
+java.naming.security.credentials=<span style="color:#f92672">&lt;password&gt;</span>
+teamcity.users.username=sAMAccountName
+teamcity.options.users.synchronize=true
+teamcity.users.filter=(objectClass=user)
+teamcity.users.property.displayName=displayName
+teamcity.users.property.email=mail
+</code></pre></div><h2 id="第一次登入的時後會需要設定帳號成管理員">第一次登入的時後，會需要設定帳號成管理員</h2>
+<p><img src="http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png" alt="">](<a href="http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png">http://4.bp.blogspot.com/-YeLe1Eu1ow8/ULdoiVM37FI/AAAAAAAAAfA/wpXiVMbloMI/s1600/01.LDAP.png</a>)</p>
+<h2 id="如果有問題可以查一下log">如果有問題，可以查一下log</h2>
+<p><img src="http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png" alt="">](<a href="http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png">http://4.bp.blogspot.com/-msOoL42fhGg/ULdri4HdINI/AAAAAAAAAfY/njs3tVOcjv8/s1600/02.log.png</a>)</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://confluence.jetbrains.net/display/TCD7/Typical+LDAP+Configurations">Typical LDAP Configurations</a></li>
+<li><a href="http://confluence.jetbrains.net/display/TCD7/LDAP+Integration#LDAPIntegration-ActiveDirectory">LDAP Integration</a></li>
+<li><a href="http://therightstuff.de/CommentView,guid,2e19b03d-6ee1-49c1-b8c9-da5f3db7826f.aspx">How To Set Up Secure LDAP Authentication with TeamCity</a></li>
+</ul>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=TeamCity%20%e6%94%b9%e7%94%a8%e7%b6%b2%e5%9f%9f%e5%b8%b3%e8%99%9fLDAP%e7%99%bb%e5%85%a5&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f
+			&title=TeamCity%20%e6%94%b9%e7%94%a8%e7%b6%b2%e5%9f%9f%e5%b8%b3%e8%99%9fLDAP%e7%99%bb%e5%85%a5&summary=%e5%a6%82%e6%9e%9c%e9%96%8b%e7%99%bc%e7%92%b0%e5%a2%83%e4%b8%ad%e6%9c%89%e7%b6%b2%e5%9f%9f%e7%ae%a1%e7%90%86%e7%9a%84%e8%a9%b1%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e7%99%bb%e5%85%a5%e6%a8%a1%e5%bc%8f%e6%94%b9LDAP%e6%a8%a1%e7%b5%84%e7%99%bb%e5%85%a5%20%e6%89%93%e9%96%8bC%3a%5cProgramData%5cJetBrains%5cTeamCity%5cconfig%5cmain-config.xml%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-LkzYbvwCZuw%2fULdqGx9BwaI%2fAAAAAAAAAfQ%2f6CW0ZAsBGI8%2fs1600%2f01.MainConfig.png%29%0a%e8%a3%a1%e9%9d%a2%e7%9a%84auth-type%e7%af%80%e9%bb%9e%e4%b8%ad%ef%bc%8c%e9%a0%90%e8%a8%ad%e6%9c%83%e6%98%afDefaultLoginModule%20%26lt%3blogin-module%20class%3d%26%2334%3bjetbrains.buildServer.serverSide.impl.auth.DefaultLoginModule%26%2334%3b%20%2f%26gt%3b%20%e5%b0%87%e6%a8%a1%e7%b5%84%e6%94%b9%e6%88%90LDAPLoginModule%e5%b0%b1%e8%a1%8c%e4%ba%86%20%26lt%3blogin-module%20class%3d%26%2334%3bjetbrains.buildServer.serverSide.impl.auth.LDAPLoginModule%26%2334%3b%20%2f%26gt%3b%20%e5%86%8d%e4%be%86%e6%98%af%e8%a8%ad%e5%ae%9aLDAP%e7%9a%84%e7%92%b0%e5%a2%83%e5%8f%83%e6%95%b8%ef%bc%8c%e5%9c%a8config%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%ad%ef%bc%8c%e6%9c%89%e4%b8%80%e5%80%8bldap-config.properties.dist%e7%9a%84%e7%af%84%e6%9c%ac%e6%aa%94%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-WMSkZa1XkIk%2fULdojCaepFI%2fAAAAAAAAAfI%2fvMVyOCm631c%2fs1600%2fldapConfig.png%29%0a%e8%a4%87%e5%88%b6%e6%88%90ldap-config.properties%e9%80%99%e5%80%8b%e6%aa%94%e6%a1%88%ef%bc%8c%e5%86%8d%e7%94%a8%e6%96%87%e5%ad%97%e7%b7%a8%e8%bc%af%e5%99%a8%e6%89%93%e9%96%8b%e4%be%86%e4%bf%ae%e6%94%b9%ef%bc%8c%e4%b8%bb%e8%a6%81%e6%9c%89%e4%bb%a5%e4%b8%8b%e5%b9%be%e5%80%8b%e9%a0%85%e7%9b%ae%20%e6%8a%8aexample%e6%8f%9b%e6%88%90%e8%87%aa%e5%b7%b2%e7%9a%84%e7%b6%b2%e5%9f%9f%e5%90%8d%e7%a8%b1%20%23%e8%a8%ad%e5%ae%9aAD%e7%9a%84%e4%bd%8d%e7%bd%ae%20java.naming.provider.url%3dldap%3a%2f%2fdc.example.com%3a389%2fDC%3dexample%2cDC%3dcom%20%23%e8%a8%ad%e5%ae%9a%e7%99%bb%e5%85%a5%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%b8%b3%e8%99%9f%e6%a0%bc%e5%bc%8f%e4%b8%8d%e7%94%a8%e5%8c%85%e5%90%ab%5c%e6%88%96%e6%98%af%40%20teamcity.auth.loginFilter%3d%5b%5e%2f%5c%5c%5c%5c%40%5d%2b%20%23%e9%85%8d%e5%90%88%e4%b8%8a%e4%b8%80%e5%80%8b%e8%a8%ad%e5%ae%9a%ef%bc%8c%e5%92%8cAD%e9%a9%97%e8%ad%89%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e9%80%81%e9%81%8e%e5%8e%bb%e7%9a%84%e5%b8%b3%e8%99%9f%ef%bc%8c%e5%89%8d%e9%9d%a2%e8%87%aa%e5%8b%95%e8%a3%9c%e4%b8%8a%e7%b6%b2%e5%9f%9f%e5%90%8d%e7%a8%b1%20teamcity.auth.formatDN%3dexample%5c%5c%24login%24%20%20%e8%a8%ad%e5%ae%9a%e9%80%99%e4%b8%89%e5%80%8b%e9%a0%85%e7%9b%ae%ef%bc%8c%e5%85%b6%e4%bb%96%e6%94%b9%e7%94%a8%e9%a0%90%e8%a8%ad%e5%80%bc%ef%bc%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%94%a8%e7%b6%b2%e5%9f%9f%e9%a9%97%e8%ad%89%e4%ba%86%20%e7%99%bb%e5%85%a5%e5%be%8c%e5%a6%82%e6%9e%9c%e8%a6%81%e5%90%8c%e6%ad%a5%e5%b8%b3%e8%99%9f%e8%b3%87%e6%96%99%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%86%8d%e5%a4%9a%e5%8a%a0%e4%bb%a5%e4%b8%8b%e5%b9%be%e5%80%8b%e9%81%b8%e9%a0%85%20%20java.naming.security.principal%3d%26lt%3busername%26gt%3b%20java.naming.security.credentials%3d%26lt%3bpassword%26gt%3b%20teamcity.users.username%3dsAMAccountName%20teamcity.options.users.synchronize%3dtrue%20teamcity.users.filter%3d%28objectClass%3duser%29%20teamcity.users.property.displayName%3ddisplayName%20teamcity.users.property.email%3dmail%20%e7%ac%ac%e4%b8%80%e6%ac%a1%e7%99%bb%e5%85%a5%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e9%9c%80%e8%a6%81%e8%a8%ad%e5%ae%9a%e5%b8%b3%e8%99%9f%e6%88%90%e7%ae%a1%e7%90%86%e5%93%a1%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-YeLe1Eu1ow8%2fULdoiVM37FI%2fAAAAAAAAAfA%2fwpXiVMbloMI%2fs1600%2f01.LDAP.png%29%0a%e5%a6%82%e6%9e%9c%e6%9c%89%e5%95%8f%e9%a1%8c%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%9f%a5%e4%b8%80%e4%b8%8blog%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-msOoL42fhGg%2fULdri4HdINI%2fAAAAAAAAAfY%2fnjs3tVOcjv8%2fs1600%2f02.log.png%29%0a%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%20%20Typical%20LDAP%20Configurations%20LDAP%20Integration%20How%20To%20Set%20Up%20Secure%20LDAP%20Authentication%20with%20TeamCity%20%20&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=TeamCity%20%e6%94%b9%e7%94%a8%e7%b6%b2%e5%9f%9f%e5%b8%b3%e8%99%9fLDAP%e7%99%bb%e5%85%a5&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2fteamcity-%25E6%2594%25B9%25E7%2594%25A8%25E7%25B6%25B2%25E5%259F%259F%25E5%25B8%25B3%25E8%2599%259Fldap%25E7%2599%25BB%25E5%2585%25A5%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

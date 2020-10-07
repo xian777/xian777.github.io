@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pdb on My New Hugo Site</title>
+    <link>http://example.org/tags/pdb/</link>
+    <description>Recent content in pdb on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Oct 2012 17:19:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/pdb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>架設SymbolSource.Server</title>
+      <link>http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/</link>
+      <pubDate>Sun, 21 Oct 2012 17:19:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2012/10/%E6%9E%B6%E8%A8%ADsymbolsource-server/</guid>
+      <description>首先要先安裝Debugging Tools for Windows ](http://1.bp.blogspot.com/-KzKeCG8zNjk/UIO4-cYGgII/AAAAAAAAAKU/wGhW5z4HeaQ/s1600/00.download.png)
+記住這個安裝路徑，等下會用到 ](http://3.bp.blogspot.com/-QKH8P_Fpovo/UIO4J4JlA_I/AAAAAAAAAJk/5Yxs5DDK09I/s1600/00.Path.png)
+選擇安裝Debugging Tool for Windows，一直按下一步就好了 ](http://4.bp.blogspot.com/-eQQb6sjiNqE/UIO4JNm7ZzI/AAAAAAAAAJc/ClovhmG2kzU/s1600/00.DebuggingTool.png)
+接下來開始安裝SymbolSource.Server 先開一個MVC專案 ](http://3.bp.blogspot.com/-weYfPMU9dLY/UIO4Koyl5eI/AAAAAAAAAJs/6Jp_tUUv1eQ/s1600/01.NewProject.png)
+選擇空白範本 ](http://2.bp.blogspot.com/-2fqKnGX6JNA/UIO4LMBQMSI/AAAAAAAAAJ0/sBdNebIBvDo/s1600/02.ProjectSetting.png)
+用Nuget安裝SymbolSource.Server.Basic套件 ](http://2.bp.blogspot.com/-vAS8yuexXc4/UIO4Lr-AvLI/AAAAAAAAAJ8/AqZbH0BG-mg/s1600/03.SymbolSourceServer.png)
+打開web.config，找到SrcSrvPath，修改成剛安裝的路徑 &amp;lt;add key=&amp;#34;SrcSrvPath&amp;#34; value=&amp;#34;C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\srcsrv&amp;#34; /&amp;gt; 按F5執行，就會看到如下的畫面 一個是Symbol的位置，一個是套件發佈用的位置 ](http://1.bp.blogspot.com/-3aEpzPPQ66g/UIO4MDpaxbI/AAAAAAAAAKE/qXzukxnN2mU/s1600/04.DefaultPage.png)
+設定一下偵錯選項  取消「啟用Just My Code的勾勾」 勾選「啟用來源伺服器支援」 把套件和Symbol發佈之後就可以偵錯了 ](http://2.bp.blogspot.com/-dypoFu3nhYk/UIO4Ms8TdjI/AAAAAAAAAKM/eC0J2y1De5Q/s1600/05.Setting.png)  再新增一個Symbol位置，指向到伺服器路徑，之後發佈套件和Symbol就可以偵錯了 ](http://4.bp.blogspot.com/-7qcGV2EU9d8/UIO9MgH6h1I/AAAAAAAAAKs/huq9yb8Emso/s1600/06.Symbol.png)
+參考資料  Setting it up your own symbol and source server Setting up your own SymbolSource Server: step-by-step   </description>
+    </item>
+    
+  </channel>
+</rss>

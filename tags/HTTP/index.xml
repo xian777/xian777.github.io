@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP on My New Hugo Site</title>
+    <link>http://example.org/tags/http/</link>
+    <description>Recent content in HTTP on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Aug 2013 15:54:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTTP Status Code</title>
+      <link>http://example.org/posts/2013/08/http-status-code/</link>
+      <pubDate>Fri, 16 Aug 2013 15:54:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/http-status-code/</guid>
+      <description>HTTP Status Code 100~199 訊息狀態碼  StatusCode ReasonPhrase 說明  100 Continue Client端有一個Message要發送給Server 但希望在發送之前先看一下Server是否會接受這個Message 所以在Request表頭中加入一個名稱Expect值為100 Conutinue Server端收到後如果可以接受，就馬上回應這個狀態碼給Client 表示收到了Request的初始部份，要求Client端繼續 通常用於傳送接收一個大的Message時的優化  101 Switching Protocols 伺服器正在切換成Request封包表頭中 Update所指定的通訊協定  200~299 成功狀態碼  Status Code Reason Phrase 說明  200 OK 就是OK  201 Created 資源已建立，用於回應建立資源的要求，例如PUT 回應的訊息中，應該在表頭中加入Location 用來告訴Client建立好的資源URL位置  202 Accepted 請求已被接受，但伺服器還未執行任何動作，也不能保證會完成 簡單的說，就是朕知道了...  203 Non-Authoritative Information Header中包含的訊息，並不是來自於要求的伺服器 而是來自資源的一個副本  204 No Content 用來告訴瀏覽器，在不轉頁的情況下，刷新表單頁面  205 Reset Content 用來告訴瀏覽器，Reset目前頁面中的表單元素  206 Partial Content Client透過Request Header中的Range來要求部份或某個範圍的資源 這個狀態碼就是成功執行了一個部份或是某個範圍的請求 Response中的Header必須包含Content-Range、Date 以及ETag或是Content-Location  300~399 重轉向定位狀態碼  Status Code Reason Phrase 說明  300 Multiple Choices 訊息類狀態碼  301 Moved Permanently 所要求的資源已移除，永久轉向 Response Header中的Location為新的URL 之前的要求都要改成新的URL HTTP/1.</description>
+    </item>
+    
+    <item>
+      <title>HTTP Method</title>
+      <link>http://example.org/posts/2013/08/http-method/</link>
+      <pubDate>Fri, 16 Aug 2013 14:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2013/08/http-method/</guid>
+      <description>HTTP Method  GET 這是最常用的方法，通常用在請求伺服器上的某個資源 該方法沒有Body主體，可以被Cache HTTP protocols中並沒有規範長度限制，有限制的是瀏覽器和Web Server 不同瀏覽器中的限制也不同，IE為2048，FF為8192  POST 向伺服器輸入數據，通常會以透過表單的方式 資料會在HTTP Body的部份，以name=value的方式表示，分隔符號為&amp;amp; 該方法不會被Cache  PUT 將資源寫入伺服器端，如果資源已存在，就用這個資源來取代原有的資源 因為需要對伺服器寫入，所以基本上都需要先通過身份驗證是否有寫入的權限 寫入成功後，應回應201，並在表頭中用Location告訴Client端寫入的資源位置  DELETE 要求伺服器刪除指定的資源  PATCH 要求伺服器更新指定的資源  HEAD 和GET方法的行為很類似，但在伺服器端回應的訊息中，只包含HTTP Header而已 並不會返回HTTP Body的部份，適用於在不取得資源的情況下，了解資源的狀態  TRACE 要求伺服器返回接收到的表頭資料 用意是用來追蹤發送出去的表頭，和到伺服器接收到的表頭，有何差異  OPTIONS 要求伺服器返回可接收的HTTP Method指令有那些 因為並不是所有Method都有被Web Server所實作 </description>
+    </item>
+    
+  </channel>
+</rss>

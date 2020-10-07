@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    安裝自動佈署工具Octopus | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 首先到Octopus官網下載安裝檔 Octopus Install是Server端 Octopus Tentacle Installer是Client端 ](http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png)
+先下載Server端，然後一直下一步就可以安裝好了 ](http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png)
+接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集 ](http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png)
+這邊是資料存放的地方，自行輸入路徑按Save就行了 ](http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png)
+這邊是Service安裝，按下Install就行了 ](http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png)
+這邊是網站的安裝，按下Create Site就行了 ](http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png)
+IIS中就會出現這個網站 ](http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png)
+第一次瀏覽這個網站的時後，會需要輸入管理員的密碼 ](http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png) 通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了 ](http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png)
+    ">
+
+
+<meta property="og:title" content="安裝自動佈署工具Octopus" />
+<meta property="og:description" content="前言 首先到Octopus官網下載安裝檔 Octopus Install是Server端 Octopus Tentacle Installer是Client端 ](http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png)
+先下載Server端，然後一直下一步就可以安裝好了 ](http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png)
+接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集 ](http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png)
+這邊是資料存放的地方，自行輸入路徑按Save就行了 ](http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png)
+這邊是Service安裝，按下Install就行了 ](http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png)
+這邊是網站的安裝，按下Create Site就行了 ](http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png)
+IIS中就會出現這個網站 ](http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png)
+第一次瀏覽這個網站的時後，會需要輸入管理員的密碼 ](http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png) 通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了 ](http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9D%E8%87%AA%E5%8B%95%E4%BD%88%E7%BD%B2%E5%B7%A5%E5%85%B7octopus/" />
+<meta property="article:published_time" content="2012-11-05T19:48:00+00:00" />
+<meta property="article:modified_time" content="2012-11-05T19:48:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="安裝自動佈署工具Octopus"/>
+<meta name="twitter:description" content="前言 首先到Octopus官網下載安裝檔 Octopus Install是Server端 Octopus Tentacle Installer是Client端 ](http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png)
+先下載Server端，然後一直下一步就可以安裝好了 ](http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png)
+接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集 ](http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png)
+這邊是資料存放的地方，自行輸入路徑按Save就行了 ](http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png)
+這邊是Service安裝，按下Install就行了 ](http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png)
+這邊是網站的安裝，按下Create Site就行了 ](http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png)
+IIS中就會出現這個網站 ](http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png)
+第一次瀏覽這個網站的時後，會需要輸入管理員的密碼 ](http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png) 通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了 ](http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png)"/>
+
+<meta itemprop="name" content="安裝自動佈署工具Octopus">
+<meta itemprop="description" content="前言 首先到Octopus官網下載安裝檔 Octopus Install是Server端 Octopus Tentacle Installer是Client端 ](http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png)
+先下載Server端，然後一直下一步就可以安裝好了 ](http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png)
+接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集 ](http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png)
+這邊是資料存放的地方，自行輸入路徑按Save就行了 ](http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png)
+這邊是Service安裝，按下Install就行了 ](http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png)
+這邊是網站的安裝，按下Create Site就行了 ](http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png)
+IIS中就會出現這個網站 ](http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png)
+第一次瀏覽這個網站的時後，會需要輸入管理員的密碼 ](http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png) 通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了 ](http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png)">
+<meta itemprop="datePublished" content="2012-11-05T19:48:00+00:00" />
+<meta itemprop="dateModified" content="2012-11-05T19:48:00+00:00" />
+<meta itemprop="wordCount" content="25">
+
+
+
+<meta itemprop="keywords" content="Octopus," />
+
+<link rel="canonical" href="http://example.org/posts/2012/11/%E5%AE%89%E8%A3%9D%E8%87%AA%E5%8B%95%E4%BD%88%E7%BD%B2%E5%B7%A5%E5%85%B7octopus/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>安裝自動佈署工具Octopus</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 5, 2012
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/octopus">Octopus</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="前言">前言</h2>
+<p>首先到<a href="http://octopusdeploy.com/downloads">Octopus官網</a>下載安裝檔
+Octopus Install是Server端
+Octopus Tentacle Installer是Client端
+<img src="http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png" alt="">](<a href="http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png">http://1.bp.blogspot.com/-H9qjtO_IV9U/UJemMZ4NxOI/AAAAAAAAAOM/j6zAcX16n6o/s1600/00.Files.png</a>)</p>
+<h2 id="先下載server端然後一直下一步就可以安裝好了">先下載Server端，然後一直下一步就可以安裝好了</h2>
+<p><img src="http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png" alt="">](<a href="http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png">http://4.bp.blogspot.com/-f3MuiPrHB4s/UJemNCMmQPI/AAAAAAAAAOU/q4eG1L3YYHo/s1600/01.install.png</a>)</p>
+<h2 id="接下來會進入設定畫面這邊選擇是否允許自動檢查更新和資料搜集">接下來會進入設定畫面，這邊選擇是否允許自動檢查更新和資料搜集</h2>
+<p><img src="http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png" alt="">](<a href="http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png">http://3.bp.blogspot.com/-_M8Of2TU_TI/UJemNQ5lMrI/AAAAAAAAAOc/E5rTE3tg61I/s1600/02.config.png</a>)</p>
+<h2 id="這邊是資料存放的地方自行輸入路徑按save就行了">這邊是資料存放的地方，自行輸入路徑按Save就行了</h2>
+<p><img src="http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png" alt="">](<a href="http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png">http://4.bp.blogspot.com/-4iTFrbVfLmg/UJemOjEH2kI/AAAAAAAAAOk/QWBc6XcdU8U/s1600/03.Location.png</a>)</p>
+<h2 id="這邊是service安裝按下install就行了">這邊是Service安裝，按下Install就行了</h2>
+<p><img src="http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png" alt="">](<a href="http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png">http://2.bp.blogspot.com/--gWTrNSFGak/UJemPANyFpI/AAAAAAAAAOs/KBMdCGKxpYM/s1600/04.Service.png</a>)</p>
+<h2 id="這邊是網站的安裝按下create-site就行了">這邊是網站的安裝，按下Create Site就行了</h2>
+<p><img src="http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png" alt="">](<a href="http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png">http://2.bp.blogspot.com/-CPrX6aLZMbg/UJemP-ZV5XI/AAAAAAAAAO0/bKO4k7-xDGY/s1600/05.Web.png</a>)</p>
+<h2 id="iis中就會出現這個網站">IIS中就會出現這個網站</h2>
+<p><img src="http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png" alt="">](<a href="http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png">http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png</a>)</p>
+<h2 id="第一次瀏覽這個網站的時後會需要輸入管理員的密碼">第一次瀏覽這個網站的時後，會需要輸入管理員的密碼</h2>
+<p><img src="http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png" alt="">](<a href="http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png">http://3.bp.blogspot.com/-if_hX5Z9Sds/UJemQ4sqtpI/AAAAAAAAAPE/48yKRb2qmOE/s1600/07.DefaultPage.png</a>)
+<img src="http://4.bp.blogspot.com/-Yd13lI2ac34/UJemQaQmfRI/AAAAAAAAAO8/X9YSOI1eYc4/s1600/06.IIS.png" alt=""></p>
+<h2 id="通過密碼複雜度之後就可以登入網站server端就安裝完成了">通過密碼複雜度之後，就可以登入網站，Server端就安裝完成了</h2>
+<p><img src="http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png" alt="">](<a href="http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png">http://2.bp.blogspot.com/-08tk_T_LEkg/UJemRqKOHtI/AAAAAAAAAPM/9HZY8sUbAJY/s1600/08.Login.png</a>)</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e5%ae%89%e8%a3%9d%e8%87%aa%e5%8b%95%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f
+			&title=%e5%ae%89%e8%a3%9d%e8%87%aa%e5%8b%95%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus&summary=%e5%89%8d%e8%a8%80%20%e9%a6%96%e5%85%88%e5%88%b0Octopus%e5%ae%98%e7%b6%b2%e4%b8%8b%e8%bc%89%e5%ae%89%e8%a3%9d%e6%aa%94%20Octopus%20Install%e6%98%afServer%e7%ab%af%20Octopus%20Tentacle%20Installer%e6%98%afClient%e7%ab%af%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-H9qjtO_IV9U%2fUJemMZ4NxOI%2fAAAAAAAAAOM%2fj6zAcX16n6o%2fs1600%2f00.Files.png%29%0a%e5%85%88%e4%b8%8b%e8%bc%89Server%e7%ab%af%ef%bc%8c%e7%84%b6%e5%be%8c%e4%b8%80%e7%9b%b4%e4%b8%8b%e4%b8%80%e6%ad%a5%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%ae%89%e8%a3%9d%e5%a5%bd%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-f3MuiPrHB4s%2fUJemNCMmQPI%2fAAAAAAAAAOU%2fq4eG1L3YYHo%2fs1600%2f01.install.png%29%0a%e6%8e%a5%e4%b8%8b%e4%be%86%e6%9c%83%e9%80%b2%e5%85%a5%e8%a8%ad%e5%ae%9a%e7%95%ab%e9%9d%a2%ef%bc%8c%e9%80%99%e9%82%8a%e9%81%b8%e6%93%87%e6%98%af%e5%90%a6%e5%85%81%e8%a8%b1%e8%87%aa%e5%8b%95%e6%aa%a2%e6%9f%a5%e6%9b%b4%e6%96%b0%e5%92%8c%e8%b3%87%e6%96%99%e6%90%9c%e9%9b%86%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-_M8Of2TU_TI%2fUJemNQ5lMrI%2fAAAAAAAAAOc%2fE5rTE3tg61I%2fs1600%2f02.config.png%29%0a%e9%80%99%e9%82%8a%e6%98%af%e8%b3%87%e6%96%99%e5%ad%98%e6%94%be%e7%9a%84%e5%9c%b0%e6%96%b9%ef%bc%8c%e8%87%aa%e8%a1%8c%e8%bc%b8%e5%85%a5%e8%b7%af%e5%be%91%e6%8c%89Save%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-4iTFrbVfLmg%2fUJemOjEH2kI%2fAAAAAAAAAOk%2fQWBc6XcdU8U%2fs1600%2f03.Location.png%29%0a%e9%80%99%e9%82%8a%e6%98%afService%e5%ae%89%e8%a3%9d%ef%bc%8c%e6%8c%89%e4%b8%8bInstall%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f--gWTrNSFGak%2fUJemPANyFpI%2fAAAAAAAAAOs%2fKBMdCGKxpYM%2fs1600%2f04.Service.png%29%0a%e9%80%99%e9%82%8a%e6%98%af%e7%b6%b2%e7%ab%99%e7%9a%84%e5%ae%89%e8%a3%9d%ef%bc%8c%e6%8c%89%e4%b8%8bCreate%20Site%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-CPrX6aLZMbg%2fUJemP-ZV5XI%2fAAAAAAAAAO0%2fbKO4k7-xDGY%2fs1600%2f05.Web.png%29%0aIIS%e4%b8%ad%e5%b0%b1%e6%9c%83%e5%87%ba%e7%8f%be%e9%80%99%e5%80%8b%e7%b6%b2%e7%ab%99%20%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-Yd13lI2ac34%2fUJemQaQmfRI%2fAAAAAAAAAO8%2fX9YSOI1eYc4%2fs1600%2f06.IIS.png%29%0a%e7%ac%ac%e4%b8%80%e6%ac%a1%e7%80%8f%e8%a6%bd%e9%80%99%e5%80%8b%e7%b6%b2%e7%ab%99%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e6%9c%83%e9%9c%80%e8%a6%81%e8%bc%b8%e5%85%a5%e7%ae%a1%e7%90%86%e5%93%a1%e7%9a%84%e5%af%86%e7%a2%bc%20%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-if_hX5Z9Sds%2fUJemQ4sqtpI%2fAAAAAAAAAPE%2f48yKRb2qmOE%2fs1600%2f07.DefaultPage.png%29%20%e9%80%9a%e9%81%8e%e5%af%86%e7%a2%bc%e8%a4%87%e9%9b%9c%e5%ba%a6%e4%b9%8b%e5%be%8c%ef%bc%8c%e5%b0%b1%e5%8f%af%e4%bb%a5%e7%99%bb%e5%85%a5%e7%b6%b2%e7%ab%99%ef%bc%8cServer%e7%ab%af%e5%b0%b1%e5%ae%89%e8%a3%9d%e5%ae%8c%e6%88%90%e4%ba%86%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-08tk_T_LEkg%2fUJemRqKOHtI%2fAAAAAAAAAPM%2f9HZY8sUbAJY%2fs1600%2f08.Login.png%29&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e5%ae%89%e8%a3%9d%e8%87%aa%e5%8b%95%e4%bd%88%e7%bd%b2%e5%b7%a5%e5%85%b7Octopus&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2012%2f11%2f%25E5%25AE%2589%25E8%25A3%259D%25E8%2587%25AA%25E5%258B%2595%25E4%25BD%2588%25E7%25BD%25B2%25E5%25B7%25A5%25E5%2585%25B7octopus%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

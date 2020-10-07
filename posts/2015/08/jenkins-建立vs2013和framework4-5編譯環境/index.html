@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Jenkins 建立VS2013和Framework4.5編譯環境 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="下載Microsoft Build Tools 2013 http://www.microsoft.com/zh-tw/download/details.aspx?id=40760
+[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png) 下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK) https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx
+[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png) 選擇安裝.NET Framework 4.5 Software Development Kit [![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png) 複製資料夾 C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio [!
+    ">
+
+
+<meta property="og:title" content="Jenkins 建立VS2013和Framework4.5編譯環境" />
+<meta property="og:description" content="下載Microsoft Build Tools 2013 http://www.microsoft.com/zh-tw/download/details.aspx?id=40760
+[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png) 下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK) https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx
+[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png) 選擇安裝.NET Framework 4.5 Software Development Kit [![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png) 複製資料夾 C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio [!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/08/jenkins-%E5%BB%BA%E7%AB%8Bvs2013%E5%92%8Cframework4-5%E7%B7%A8%E8%AD%AF%E7%92%B0%E5%A2%83/" />
+<meta property="article:published_time" content="2015-08-31T11:49:00+00:00" />
+<meta property="article:modified_time" content="2015-08-31T11:49:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jenkins 建立VS2013和Framework4.5編譯環境"/>
+<meta name="twitter:description" content="下載Microsoft Build Tools 2013 http://www.microsoft.com/zh-tw/download/details.aspx?id=40760
+[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png) 下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK) https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx
+[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png) 選擇安裝.NET Framework 4.5 Software Development Kit [![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png) 複製資料夾 C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio [!"/>
+
+<meta itemprop="name" content="Jenkins 建立VS2013和Framework4.5編譯環境">
+<meta itemprop="description" content="下載Microsoft Build Tools 2013 http://www.microsoft.com/zh-tw/download/details.aspx?id=40760
+[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png) 下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK) https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx
+[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png) 選擇安裝.NET Framework 4.5 Software Development Kit [![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png) 複製資料夾 C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio [!">
+<meta itemprop="datePublished" content="2015-08-31T11:49:00+00:00" />
+<meta itemprop="dateModified" content="2015-08-31T11:49:00+00:00" />
+<meta itemprop="wordCount" content="27">
+
+
+
+<meta itemprop="keywords" content="Jenkins," />
+
+<link rel="canonical" href="http://example.org/posts/2015/08/jenkins-%E5%BB%BA%E7%AB%8Bvs2013%E5%92%8Cframework4-5%E7%B7%A8%E8%AD%AF%E7%92%B0%E5%A2%83/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Jenkins 建立VS2013和Framework4.5編譯環境</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 31, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    1 min read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/jenkins">Jenkins</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/jenkins">Jenkins</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>下載Microsoft Build Tools 2013
+<a href="http://www.microsoft.com/zh-tw/download/details.aspx?id=40760">http://www.microsoft.com/zh-tw/download/details.aspx?id=40760</a></p>
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)</div>
+<p>下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK)
+<a href="https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx">https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx</a></p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)</div>
+選擇安裝.NET Framework 4.5 Software Development Kit
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)</div>
+複製資料夾
+C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio
+<div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-n0N2DayL-Kw/VePOlXx2ARI/AAAAAAAACc8/II9SdZz8phg/s1600/13.%25E8%25A4%2587%25E8%25A3%25BD%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png)](http://4.bp.blogspot.com/-n0N2DayL-Kw/VePOlXx2ARI/AAAAAAAACc8/II9SdZz8phg/s1600/13.%25E8%25A4%2587%25E8%25A3%25BD%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Jenkins%20%e5%bb%ba%e7%ab%8bVS2013%e5%92%8cFramework4.5%e7%b7%a8%e8%ad%af%e7%92%b0%e5%a2%83&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f
+			&title=Jenkins%20%e5%bb%ba%e7%ab%8bVS2013%e5%92%8cFramework4.5%e7%b7%a8%e8%ad%af%e7%92%b0%e5%a2%83&summary=%e4%b8%8b%e8%bc%89Microsoft%20Build%20Tools%202013%20http%3a%2f%2fwww.microsoft.com%2fzh-tw%2fdownload%2fdetails.aspx%3fid%3d40760%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-EiIMQ5xvTqQ%2fVePOHpjXHII%2fAAAAAAAACc0%2f838zrh8ObhI%2fs1600%2f00.msbuild2013.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-EiIMQ5xvTqQ%2fVePOHpjXHII%2fAAAAAAAACc0%2f838zrh8ObhI%2fs1600%2f00.msbuild2013.png%29%20%e4%b8%8b%e8%bc%89%e9%81%a9%e7%94%a8%e6%96%bc%20Windows%208%20%e7%9a%84%20Windows%20%e8%bb%9f%e9%ab%94%e9%96%8b%e7%99%bc%e5%a5%97%e4%bb%b6%20%28SDK%29%20https%3a%2f%2fmsdn.microsoft.com%2fzh-tw%2fwindows%2fdesktop%2fhh852363.aspx%0a%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-X2obIDZ7r4k%2fVePMiQjjhlI%2fAAAAAAAACcM%2fjpYjPkzlOLs%2fs1600%2f05.sdk.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-X2obIDZ7r4k%2fVePMiQjjhlI%2fAAAAAAAACcM%2fjpYjPkzlOLs%2fs1600%2f05.sdk.png%29%20%e9%81%b8%e6%93%87%e5%ae%89%e8%a3%9d.NET%20Framework%204.5%20Software%20Development%20Kit%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-LKRu8hbHJeU%2fVePMjCG-7-I%2fAAAAAAAACcg%2f5RWZIfCxgvk%2fs1600%2f09.framework45.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-LKRu8hbHJeU%2fVePMjCG-7-I%2fAAAAAAAACcg%2f5RWZIfCxgvk%2fs1600%2f09.framework45.png%29%20%e8%a4%87%e8%a3%bd%e8%b3%87%e6%96%99%e5%a4%be%20C%3a%5cProgram%20Files%20%28x86%29%5cMSBuild%5cMicrosoft%5cVisualStudio%20%5b%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Jenkins%20%e5%bb%ba%e7%ab%8bVS2013%e5%92%8cFramework4.5%e7%b7%a8%e8%ad%af%e7%92%b0%e5%a2%83&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f08%2fjenkins-%25E5%25BB%25BA%25E7%25AB%258Bvs2013%25E5%2592%258Cframework4-5%25E7%25B7%25A8%25E8%25AD%25AF%25E7%2592%25B0%25E5%25A2%2583%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

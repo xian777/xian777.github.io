@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DbContext on My New Hugo Site</title>
+    <link>http://example.org/tags/dbcontext/</link>
+    <description>Recent content in DbContext on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Dec 2014 16:17:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/dbcontext/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Entity Framework DbContext SqlQuery、ExecuteSqlCommand</title>
+      <link>http://example.org/posts/2014/12/entity-framework-dbcontext-sqlqueryexecutesqlcommand/</link>
+      <pubDate>Thu, 18 Dec 2014 16:17:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/12/entity-framework-dbcontext-sqlqueryexecutesqlcommand/</guid>
+      <description>SqlQuery會回傳結果集，ExecuteSqlCommand會回傳受影響的筆數 傳遞參數的方式有以下幾種
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System.Data; using System.Data.Entity; using System.Data.SqlClient; class Program { static void Main(string[] args) { Database.SetInitializer(new DropCreateDatabaseAlways&amp;amp;lt;DemoContext&amp;amp;gt;()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); int colA = 123; string colB = &amp;quot;abc&amp;quot;; // 使用佔位符號 db.Database.SqlQuery&amp;amp;lt;TableName&amp;amp;gt;(&amp;quot;SELECT * FROM TableName WHERE ColA={0} AND ColB={1}&amp;quot;, colA, colB); // 使用固定名稱的參數 db.Database.SqlQuery&amp;amp;lt;TableName&amp;amp;gt;(&amp;quot;SELECT * FROM TableName WHERE ColA=@P0 AND ColB=@P1&amp;quot;, colA, colB); // 使用SQL參數 db.Database.SqlQuery&amp;amp;lt;TableName&amp;amp;gt;( &amp;quot;SELECT * FROM TableName WHERE ColA=@ColA AND ColB=@ColB&amp;quot;, new SqlParameter(&amp;quot;ColA&amp;quot;, colA), new SqlParameter(&amp;quot;ColB&amp;quot;, colB)); // 使用SQL參數並明確指定資料形態 db.</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework DbContext Validation API</title>
+      <link>http://example.org/posts/2014/12/entity-framework-dbcontext-validation-api/</link>
+      <pubDate>Thu, 18 Dec 2014 15:46:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/12/entity-framework-dbcontext-validation-api/</guid>
+      <description>先建一張資料表，並加上幾個Attribute當例子
+namespace ConsoleApplication1.Models { using System; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Table1&amp;quot;)] public class Table1 { [Key] public int Table1Id { get; set; } [Required] [StringLength(10, MinimumLength = 2)] public string C1 { get; set; } [Range(10, 20)] public int C2 { get; set; } public DateTime D1 { get; set; } public DateTime D2 { get; set; } }  }  針對屬性驗證
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework DbContext Change Tracker API</title>
+      <link>http://example.org/posts/2014/12/entity-framework-dbcontext-change-tracker-api/</link>
+      <pubDate>Wed, 17 Dec 2014 18:21:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/12/entity-framework-dbcontext-change-tracker-api/</guid>
+      <description>DbSet有一個Local，是用來存放從資料庫中取得的資料
+namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); Console.WriteLine(db.Topic.Local.Count); db.Topic.Load(); Console.WriteLine(db.Topic.Local.Count); } } }  } 
+[![](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png)](http://2.bp.blogspot.com/-nFIf_sip55A/VJFaB_gYo0I/AAAAAAAABzs/FxfhAybwr8Q/s1600/01.png) Local屬性是一個ObservableCollection，可以透過CollectionChanged事件來得到Local集合中發生變化的通知 namespace ConsoleApplication1 { using ConsoleApplication1.Models; using System; using System.Data.Entity; class Program { static void Main(string[] args) { // 初始化資料庫 Database.SetInitializer(new MyInit()); using (DemoContext db = new DemoContext()) { db.Database.Initialize(false); db.</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</title>
+      <link>http://example.org/posts/2014/12/entity-framework-dbcontext-%E5%BB%B6%E9%81%B2%E5%8A%A0%E8%BC%89%E8%B2%AA%E5%A9%AA%E5%8A%A0%E8%BC%89%E9%A1%AF%E6%80%A7%E5%8A%A0%E8%BC%89/</link>
+      <pubDate>Wed, 17 Dec 2014 16:26:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/12/entity-framework-dbcontext-%E5%BB%B6%E9%81%B2%E5%8A%A0%E8%BC%89%E8%B2%AA%E5%A9%AA%E5%8A%A0%E8%BC%89%E9%A1%AF%E6%80%A7%E5%8A%A0%E8%BC%89/</guid>
+      <description>用一個留言版的主表和明細表當例子，順便加入初始化資料來方便觀察資料載入方式的差異 DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;amp;lt;Topic&amp;amp;gt; Topic { get; set; } public DbSet&amp;amp;lt;Reply&amp;amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Topic&amp;quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;amp;lt;Reply&amp;amp;gt; Reply { get; set; } }  }</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework DbContext 新增、修改、刪除、查詢</title>
+      <link>http://example.org/posts/2014/12/entity-framework-dbcontext-%E6%96%B0%E5%A2%9E%E4%BF%AE%E6%94%B9%E5%88%AA%E9%99%A4%E6%9F%A5%E8%A9%A2/</link>
+      <pubDate>Wed, 17 Dec 2014 15:33:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/12/entity-framework-dbcontext-%E6%96%B0%E5%A2%9E%E4%BF%AE%E6%94%B9%E5%88%AA%E9%99%A4%E6%9F%A5%E8%A9%A2/</guid>
+      <description>首先建立一個留言版的資料庫來當例子
+DemoContext
+namespace ConsoleApplication1.Models { using System.Data.Entity; public class DemoContext : DbContext { public DbSet&amp;amp;lt;Topic&amp;amp;gt; Topic { get; set; } public DbSet&amp;amp;lt;Reply&amp;amp;gt; Reply { get; set; } }  }  留言版主表
+namespace ConsoleApplication1.Models { using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; [Table(&amp;quot;Topic&amp;quot;)] public class Topic { [Key] public int TopicId { get; set; } public string TopicTitle { get; set; } public virtual ICollection&amp;amp;lt;Reply&amp;amp;gt; Reply { get; set; } }  }</description>
+    </item>
+    
+    <item>
+      <title>Entity Framework 筆記</title>
+      <link>http://example.org/posts/2014/10/entity-framework-%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Mon, 20 Oct 2014 10:53:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2014/10/entity-framework-%E7%AD%86%E8%A8%98/</guid>
+      <description>[Code First]
+1. Entity Framework Code First 預設對應規則
+2. Entity Framework Code First 對應規則設定
+3. Entity Framework Code First 組織Fluent API 設定
+4. Entity Framework Code First 資料庫初始化設定
+5. Entity Framework Code First 一對一關聯設定
+6. Entity Framework Code First 一對多關聯設定
+7. Entity Framework Code First 多對多關聯設定
+8. Entity Framework Code First Complex Type
+9. Entity Framework Code First 繼承對應設定
+[DbContext]
+1. Entity Framework DbContext 新增、修改、刪除、查詢
+2. Entity Framework DbContext 延遲加載、貪婪加載、顯性加載</description>
+    </item>
+    
+  </channel>
+</rss>

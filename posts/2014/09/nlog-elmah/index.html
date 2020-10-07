@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    NLog.Elmah | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去 Elmah的用法可以參考之前的筆記 在設定好Elmah之後，開始來安裝NLog.Elmah 首先透過NuGet來安裝套件
+[![](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 再來設定NLog來套用Elmah 主要是透過extensions來引用NLog.Elmah這個Assembly 就可以透過Elmah這個Target，把Log寫到Elmah去
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt; 
+就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0
+[![](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png) 如果加上LogLevelAsType=&quot;true&quot;這個屬性
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; LogLevelAsType=&quot;true&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;
+    ">
+
+
+<meta property="og:title" content="NLog.Elmah" />
+<meta property="og:description" content="NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去 Elmah的用法可以參考之前的筆記 在設定好Elmah之後，開始來安裝NLog.Elmah 首先透過NuGet來安裝套件
+[![](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 再來設定NLog來套用Elmah 主要是透過extensions來引用NLog.Elmah這個Assembly 就可以透過Elmah這個Target，把Log寫到Elmah去
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt; 
+就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0
+[![](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png) 如果加上LogLevelAsType=&quot;true&quot;這個屬性
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; LogLevelAsType=&quot;true&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/09/nlog-elmah/" />
+<meta property="article:published_time" content="2014-09-18T17:33:00+00:00" />
+<meta property="article:modified_time" content="2014-09-18T17:33:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NLog.Elmah"/>
+<meta name="twitter:description" content="NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去 Elmah的用法可以參考之前的筆記 在設定好Elmah之後，開始來安裝NLog.Elmah 首先透過NuGet來安裝套件
+[![](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 再來設定NLog來套用Elmah 主要是透過extensions來引用NLog.Elmah這個Assembly 就可以透過Elmah這個Target，把Log寫到Elmah去
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt; 
+就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0
+[![](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png) 如果加上LogLevelAsType=&quot;true&quot;這個屬性
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; LogLevelAsType=&quot;true&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;"/>
+
+<meta itemprop="name" content="NLog.Elmah">
+<meta itemprop="description" content="NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去 Elmah的用法可以參考之前的筆記 在設定好Elmah之後，開始來安裝NLog.Elmah 首先透過NuGet來安裝套件
+[![](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png) 再來設定NLog來套用Elmah 主要是透過extensions來引用NLog.Elmah這個Assembly 就可以透過Elmah這個Target，把Log寫到Elmah去
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt; 
+就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0
+[![](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png) 如果加上LogLevelAsType=&quot;true&quot;這個屬性
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; &lt;nlog xmlns=&#34;http://www.nlog-project.org/schemas/NLog.xsd&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; autoReload=&#34;true&#34;&gt; &amp;lt;extensions&amp;gt; &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt; &amp;lt;/extensions&amp;gt; &amp;lt;targets&amp;gt; &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; LogLevelAsType=&quot;true&quot; layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt; &amp;lt;/targets&amp;gt; &amp;lt;rules&amp;gt; &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt; &amp;lt;/rules&amp;gt;  &lt;/nlog&gt;">
+<meta itemprop="datePublished" content="2014-09-18T17:33:00+00:00" />
+<meta itemprop="dateModified" content="2014-09-18T17:33:00+00:00" />
+<meta itemprop="wordCount" content="69">
+
+
+
+<meta itemprop="keywords" content="NLog,NuGet," />
+
+<link rel="canonical" href="http://example.org/posts/2014/09/nlog-elmah/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>NLog.Elmah</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Sep 18, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/nlog">NLog</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/nuget">NuGet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/nlog">N log</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/nuget">Nu get</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>NLog.Elmah套件，是用來擴充NLog的Target，可以寫到Elmah去
+Elmah的用法可以參考<a href="http://blog.developer.idv.tw/2014/09/elmah-error-logging-modules-and-handlers.html">之前的筆記</a>
+在設定好Elmah之後，開始來安裝NLog.Elmah
+首先透過NuGet來安裝套件</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)](http://3.bp.blogspot.com/-7-Ra6YAOsCg/VBqk41izCYI/AAAAAAAABmI/cfGfIw-fulU/s1600/01.%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6.png)</div>
+<p>再來設定NLog來套用Elmah
+主要是透過extensions來引用NLog.Elmah這個Assembly
+就可以透過Elmah這個Target，把Log寫到Elmah去</p>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+<pre><code>&amp;lt;extensions&amp;gt;
+    &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt;
+&amp;lt;/extensions&amp;gt;
+
+&amp;lt;targets&amp;gt;
+    &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot;
+            layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt;
+&amp;lt;/targets&amp;gt;
+
+&amp;lt;rules&amp;gt;
+    &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt;
+&amp;lt;/rules&amp;gt;
+</code></pre>
+<p>&lt;/nlog&gt;
+</pre></div></p>
+<p>就可以在elmah中看到寫出的記錄，只是沒有Type，HttpStatusCode也都是0</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)](http://2.bp.blogspot.com/-IlyVebdJVBw/VBqmnO3VBJI/AAAAAAAABmU/MfcOlbctXZQ/s1600/02.%E5%AF%AB%E5%87%BA.png)</div>
+<p>如果加上LogLevelAsType=&quot;true&quot;這個屬性</p>
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" autoReload="true"&gt;
+<pre><code>&amp;lt;extensions&amp;gt;
+    &amp;lt;add assembly=&quot;NLog.Elmah&quot;/&amp;gt;
+&amp;lt;/extensions&amp;gt;
+
+&amp;lt;targets&amp;gt;
+    &amp;lt;target xsi:type=&quot;Elmah&quot; name=&quot;elmah&quot; LogLevelAsType=&quot;true&quot;
+            layout=&quot;${longdate} ${uppercase:${level}} ${message}&quot;/&amp;gt;
+&amp;lt;/targets&amp;gt;
+
+&amp;lt;rules&amp;gt;
+    &amp;lt;logger name=&quot;*&quot; minlevel=&quot;Trace&quot; writeTo=&quot;elmah&quot; /&amp;gt;
+&amp;lt;/rules&amp;gt;
+</code></pre>
+<p>&lt;/nlog&gt;
+</pre></div></p>
+<p>elmah的Type中，就會顯示Log的Level</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-5IPBWRrWs40/VBqmqaOZQPI/AAAAAAAABmc/6xaTP0h0oeg/s1600/03.%E5%A2%9E%E5%8A%A0Type.png)](http://3.bp.blogspot.com/-5IPBWRrWs40/VBqmqaOZQPI/AAAAAAAABmc/6xaTP0h0oeg/s1600/03.%E5%A2%9E%E5%8A%A0Type.png)</div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=NLog.Elmah&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f
+			&title=NLog.Elmah&summary=NLog.Elmah%e5%a5%97%e4%bb%b6%ef%bc%8c%e6%98%af%e7%94%a8%e4%be%86%e6%93%b4%e5%85%85NLog%e7%9a%84Target%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%af%ab%e5%88%b0Elmah%e5%8e%bb%20Elmah%e7%9a%84%e7%94%a8%e6%b3%95%e5%8f%af%e4%bb%a5%e5%8f%83%e8%80%83%e4%b9%8b%e5%89%8d%e7%9a%84%e7%ad%86%e8%a8%98%20%e5%9c%a8%e8%a8%ad%e5%ae%9a%e5%a5%bdElmah%e4%b9%8b%e5%be%8c%ef%bc%8c%e9%96%8b%e5%a7%8b%e4%be%86%e5%ae%89%e8%a3%9dNLog.Elmah%20%e9%a6%96%e5%85%88%e9%80%8f%e9%81%8eNuGet%e4%be%86%e5%ae%89%e8%a3%9d%e5%a5%97%e4%bb%b6%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-7-Ra6YAOsCg%2fVBqk41izCYI%2fAAAAAAAABmI%2fcfGfIw-fulU%2fs1600%2f01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-7-Ra6YAOsCg%2fVBqk41izCYI%2fAAAAAAAABmI%2fcfGfIw-fulU%2fs1600%2f01.%25E5%25AE%2589%25E8%25A3%259D%25E5%25A5%2597%25E4%25BB%25B6.png%29%20%e5%86%8d%e4%be%86%e8%a8%ad%e5%ae%9aNLog%e4%be%86%e5%a5%97%e7%94%a8Elmah%20%e4%b8%bb%e8%a6%81%e6%98%af%e9%80%8f%e9%81%8eextensions%e4%be%86%e5%bc%95%e7%94%a8NLog.Elmah%e9%80%99%e5%80%8bAssembly%20%e5%b0%b1%e5%8f%af%e4%bb%a5%e9%80%8f%e9%81%8eElmah%e9%80%99%e5%80%8bTarget%ef%bc%8c%e6%8a%8aLog%e5%af%ab%e5%88%b0Elmah%e5%8e%bb%0a%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%22http%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%22%20xmlns%3axsi%3d%22http%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%22%26gt%3b%20%26amp%3blt%3bextensions%26amp%3bgt%3b%20%26amp%3blt%3badd%20assembly%3d%26quot%3bNLog.Elmah%26quot%3b%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2fextensions%26amp%3bgt%3b%20%26amp%3blt%3btargets%26amp%3bgt%3b%20%26amp%3blt%3btarget%20xsi%3atype%3d%26quot%3bElmah%26quot%3b%20name%3d%26quot%3belmah%26quot%3b%20layout%3d%26quot%3b%24%7blongdate%7d%20%24%7buppercase%3a%24%7blevel%7d%7d%20%24%7bmessage%7d%26quot%3b%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2ftargets%26amp%3bgt%3b%20%26amp%3blt%3brules%26amp%3bgt%3b%20%26amp%3blt%3blogger%20name%3d%26quot%3b%2a%26quot%3b%20minlevel%3d%26quot%3bTrace%26quot%3b%20writeTo%3d%26quot%3belmah%26quot%3b%20%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2frules%26amp%3bgt%3b%20%20%26lt%3b%2fnlog%26gt%3b%20%0a%e5%b0%b1%e5%8f%af%e4%bb%a5%e5%9c%a8elmah%e4%b8%ad%e7%9c%8b%e5%88%b0%e5%af%ab%e5%87%ba%e7%9a%84%e8%a8%98%e9%8c%84%ef%bc%8c%e5%8f%aa%e6%98%af%e6%b2%92%e6%9c%89Type%ef%bc%8cHttpStatusCode%e4%b9%9f%e9%83%bd%e6%98%af0%0a%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-IlyVebdJVBw%2fVBqmnO3VBJI%2fAAAAAAAABmU%2fMfcOlbctXZQ%2fs1600%2f02.%25E5%25AF%25AB%25E5%2587%25BA.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-IlyVebdJVBw%2fVBqmnO3VBJI%2fAAAAAAAABmU%2fMfcOlbctXZQ%2fs1600%2f02.%25E5%25AF%25AB%25E5%2587%25BA.png%29%20%e5%a6%82%e6%9e%9c%e5%8a%a0%e4%b8%8aLogLevelAsType%3d%26quot%3btrue%26quot%3b%e9%80%99%e5%80%8b%e5%b1%ac%e6%80%a7%0a%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%20%3f%26gt%3b%20%26lt%3bnlog%20xmlns%3d%22http%3a%2f%2fwww.nlog-project.org%2fschemas%2fNLog.xsd%22%20xmlns%3axsi%3d%22http%3a%2f%2fwww.w3.org%2f2001%2fXMLSchema-instance%22%20autoReload%3d%22true%22%26gt%3b%20%26amp%3blt%3bextensions%26amp%3bgt%3b%20%26amp%3blt%3badd%20assembly%3d%26quot%3bNLog.Elmah%26quot%3b%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2fextensions%26amp%3bgt%3b%20%26amp%3blt%3btargets%26amp%3bgt%3b%20%26amp%3blt%3btarget%20xsi%3atype%3d%26quot%3bElmah%26quot%3b%20name%3d%26quot%3belmah%26quot%3b%20LogLevelAsType%3d%26quot%3btrue%26quot%3b%20layout%3d%26quot%3b%24%7blongdate%7d%20%24%7buppercase%3a%24%7blevel%7d%7d%20%24%7bmessage%7d%26quot%3b%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2ftargets%26amp%3bgt%3b%20%26amp%3blt%3brules%26amp%3bgt%3b%20%26amp%3blt%3blogger%20name%3d%26quot%3b%2a%26quot%3b%20minlevel%3d%26quot%3bTrace%26quot%3b%20writeTo%3d%26quot%3belmah%26quot%3b%20%2f%26amp%3bgt%3b%20%26amp%3blt%3b%2frules%26amp%3bgt%3b%20%20%26lt%3b%2fnlog%26gt%3b&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=NLog.Elmah&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f09%2fnlog-elmah%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jenkins on My New Hugo Site</title>
+    <link>http://example.org/tags/jenkins/</link>
+    <description>Recent content in Jenkins on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2015 16:26:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Jenkins 安裝 MSTest</title>
+      <link>http://example.org/posts/2015/09/jenkins-%E5%AE%89%E8%A3%9D-mstest/</link>
+      <pubDate>Wed, 16 Sep 2015 16:26:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/09/jenkins-%E5%AE%89%E8%A3%9D-mstest/</guid>
+      <description>下載Visual Studio Agents 2015
+[![](http://2.bp.blogspot.com/-_Umr--V4V3U/VfknYUXoEbI/AAAAAAAAChc/jg6ZNx4qHno/s1600/01.download.png)](http://2.bp.blogspot.com/-_Umr--V4V3U/VfknYUXoEbI/AAAAAAAAChc/jg6ZNx4qHno/s1600/01.download.png) 安裝Visual Studio Agents 2015 [![](http://3.bp.blogspot.com/-o1dba2X_Itw/VfknYS7d9DI/AAAAAAAAChI/iPNFXpq_m6Y/s1600/02.install.png)](http://3.bp.blogspot.com/-o1dba2X_Itw/VfknYS7d9DI/AAAAAAAAChI/iPNFXpq_m6Y/s1600/02.install.png) 安裝完後會有MSTest.exe相關的工具 [![](http://3.bp.blogspot.com/-Wrcu2ooOiVk/VfknYUYTc8I/AAAAAAAACiI/DD6sDL5RquI/s1600/03.MSTest%25E4%25BD%258D%25E7%25BD%25AE.png)](http://3.bp.blogspot.com/-Wrcu2ooOiVk/VfknYUYTc8I/AAAAAAAACiI/DD6sDL5RquI/s1600/03.MSTest%25E4%25BD%258D%25E7%25BD%25AE.png) 安裝MSTest Plugin [![](http://4.bp.blogspot.com/-cS7FjLfzdkk/VfknYxFXtCI/AAAAAAAAChY/cDMNnB4soSs/s1600/04.%25E5%25AE%2589%25E8%25A3%259DPlugin.png)](http://4.bp.blogspot.com/-cS7FjLfzdkk/VfknYxFXtCI/AAAAAAAAChY/cDMNnB4soSs/s1600/04.%25E5%25AE%2589%25E8%25A3%259DPlugin.png) 安裝完成後重新啟動 [![](http://1.bp.blogspot.com/-hkTk5p1E13w/VfknZC7en_I/AAAAAAAACiA/IexA64ONuTo/s1600/05.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png)](http://1.bp.blogspot.com/-hkTk5p1E13w/VfknZC7en_I/AAAAAAAACiA/IexA64ONuTo/s1600/05.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png) 管理Jenkins =&amp;gt; 設定系統 [![](http://2.bp.blogspot.com/-zDvrRK1d7qw/VfknZI3z6NI/AAAAAAAAChs/m8Dw-X8kIdA/s1600/06.%25E8%25A8%25AD%25E5%25AE%259A%25E7%25B3%25BB%25E7%25B5%25B1.png)](http://2.bp.blogspot.com/-zDvrRK1d7qw/VfknZI3z6NI/AAAAAAAAChs/m8Dw-X8kIdA/s1600/06.%25E8%25A8%25AD%25E5%25AE%259A%25E7%25B3%25BB%25E7%25B5%25B1.png) 設定MSTest路徑 [![](http://2.bp.blogspot.com/-Jm59N2yNC_E/VfknZZ45kxI/AAAAAAAACho/P-Jzgcxe2os/s1600/07.%25E8%25A8%25AD%25E5%25AE%259Amstest%25E8%25B7%25AF%25E5%25BE%2591.png)](http://2.bp.blogspot.com/-Jm59N2yNC_E/VfknZZ45kxI/AAAAAAAACho/P-Jzgcxe2os/s1600/07.%25E8%25A8%25AD%25E5%25AE%259Amstest%25E8%25B7%25AF%25E5%25BE%2591.png) 新增一個測試專案 [![](http://2.bp.blogspot.com/-XQhDZ_W8oTc/VfkoEokeDMI/AAAAAAAACiQ/wFpl_Kn8b4M/s1600/08.%25E6%2596%25B0%25E5%25A2%259E%25E6%25B8%25AC%25E8%25A9%25A6%25E5%25B0%2588%25E6%25A1%2588.png)](http://2.bp.blogspot.com/-XQhDZ_W8oTc/VfkoEokeDMI/AAAAAAAACiQ/wFpl_Kn8b4M/s1600/08.%25E6%2596%25B0%25E5%25A2%259E%25E6%25B8%25AC%25E8%25A9%25A6%25E5%25B0%2588%25E6%25A1%2588.png) 新增建置步驟 [![](http://4.bp.blogspot.com/-Fr-q7s6B_bQ/VfknZ5FPBfI/AAAAAAAACh0/PLWo8-AfeYg/s1600/10.%25E5%258A%25A0%25E5%2585%25A5%25E5%25BB%25BA%25E7%25BD%25AE%25E6%25AD%25A5%25E9%25A9%259F.png)](http://4.bp.blogspot.com/-Fr-q7s6B_bQ/VfknZ5FPBfI/AAAAAAAACh0/PLWo8-AfeYg/s1600/10.%25E5%258A%25A0%25E5%2585%25A5%25E5%25BB%25BA%25E7%25BD%25AE%25E6%25AD%25A5%25E9%25A9%259F.png) 新增建置後動作 [![](http://4.bp.blogspot.com/-HReseVBcVUQ/VfknZ3YVOVI/AAAAAAAACh4/uRvenG4XGkE/s1600/11.%25E5%258A%25A0%25E5%2585%25A5%25E5%25BB%25BA%25E7%25BD%25AE%25E5%25BE%258C%25E5%258B%2595%25E4%25BD%259C.png)](http://4.bp.blogspot.com/-HReseVBcVUQ/VfknZ3YVOVI/AAAAAAAACh4/uRvenG4XGkE/s1600/11.%25E5%258A%25A0%25E5%2585%25A5%25E5%25BB%25BA%25E7%25BD%25AE%25E5%25BE%258C%25E5%258B%2595%25E4%25BD%259C.png) 建置結果 [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝 Change Assembly Version Plugin</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D-change-assembly-version-plugin/</link>
+      <pubDate>Mon, 31 Aug 2015 16:05:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D-change-assembly-version-plugin/</guid>
+      <description>安裝 Change Assembly Version
+[![](http://1.bp.blogspot.com/-hqIvlueWJ1Y/VeQKi_q2QnI/AAAAAAAACgA/e1Cdgy32j3Q/s1600/01.%25E5%25AE%2589%25E8%25A3%259D.png)](http://1.bp.blogspot.com/-hqIvlueWJ1Y/VeQKi_q2QnI/AAAAAAAACgA/e1Cdgy32j3Q/s1600/01.%25E5%25AE%2589%25E8%25A3%259D.png) 建置步驟中增加Change Assembly Version步驟 [![](http://2.bp.blogspot.com/-HNxAE3DRgIk/VeQKiwhX9fI/AAAAAAAACgI/ysJi1NG3bog/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E5%25BB%25BA%25E7%25BD%25AE%25E6%25AD%25A5%25E9%25A9%259F.png)](http://2.bp.blogspot.com/-HNxAE3DRgIk/VeQKiwhX9fI/AAAAAAAACgI/ysJi1NG3bog/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E5%25BB%25BA%25E7%25BD%25AE%25E6%25AD%25A5%25E9%25A9%259F.png) 套用版本變數即可 [![](http://2.bp.blogspot.com/-QHHofaV7bqo/VeQKi9skN9I/AAAAAAAACgE/ZnLPCDA7B5c/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A.png)](http://2.bp.blogspot.com/-QHHofaV7bqo/VeQKi9skN9I/AAAAAAAACgE/ZnLPCDA7B5c/s1600/03.%25E8%25A8%25AD%25E5%25AE%259A.png) 執行建置 [![](http://3.bp.blogspot.com/-zcpuD2erpoY/VeQKjZeY18I/AAAAAAAACgU/Nd0N5TI7i9M/s1600/04.%25E5%25BB%25BA%25E7%25BD%25AE.png)](http://3.bp.blogspot.com/-zcpuD2erpoY/VeQKjZeY18I/AAAAAAAACgU/Nd0N5TI7i9M/s1600/04.%25E5%25BB%25BA%25E7%25BD%25AE.png) AssemblyInfo裡面的版本就會完成取代 [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝 Version Number Plug-In</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D-version-number-plug-in/</link>
+      <pubDate>Mon, 31 Aug 2015 15:49:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D-version-number-plug-in/</guid>
+      <description>安裝Version Number Plug-In
+[![](http://3.bp.blogspot.com/-Xn0N1_xaf80/VeQGyWbBTMI/AAAAAAAACfk/uR9AJYB8H1U/s1600/01.%25E5%25AE%2589%25E8%25A3%259D.png)](http://3.bp.blogspot.com/-Xn0N1_xaf80/VeQGyWbBTMI/AAAAAAAACfk/uR9AJYB8H1U/s1600/01.%25E5%25AE%2589%25E8%25A3%259D.png) 專案組態中增加版號設定 [![](http://4.bp.blogspot.com/-mooSquyV2HM/VeQGyZOpluI/AAAAAAAACfo/9N_eI5C7ivM/s1600/02.%25E8%25A8%25AD%25E5%25AE%259A.png)](http://4.bp.blogspot.com/-mooSquyV2HM/VeQGyZOpluI/AAAAAAAACfo/9N_eI5C7ivM/s1600/02.%25E8%25A8%25AD%25E5%25AE%259A.png) 執行結果 [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝Next Build Number Plugin</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dnext-build-number-plugin/</link>
+      <pubDate>Mon, 31 Aug 2015 15:28:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dnext-build-number-plugin/</guid>
+      <description>安裝Next Build Number Plugin
+[![](http://2.bp.blogspot.com/-n6Ie4b1ZqxM/VeQB4BD41sI/AAAAAAAACfI/XSX7jrqYhgc/s1600/01.next%2Bbuild.png)](http://2.bp.blogspot.com/-n6Ie4b1ZqxM/VeQB4BD41sI/AAAAAAAACfI/XSX7jrqYhgc/s1600/01.next%2Bbuild.png) 設定下一次建置號碼 [![](http://1.bp.blogspot.com/-4LIPhqdSxxY/VeQB4LHSJyI/AAAAAAAACfE/hEmww9zZOBA/s1600/02.set.png)](http://1.bp.blogspot.com/-4LIPhqdSxxY/VeQB4LHSJyI/AAAAAAAACfE/hEmww9zZOBA/s1600/02.set.png) 按下馬上建置會發現建置號碼改成新的設定值 [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝Template Project Plugin</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dtemplate-project-plugin/</link>
+      <pubDate>Mon, 31 Aug 2015 15:19:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dtemplate-project-plugin/</guid>
+      <description>安裝Template Project Plugin外掛
+[![](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png)](http://3.bp.blogspot.com/-S4pGkauZdEU/VeP_rf74mxI/AAAAAAAACeQ/VRoVVlGeFbI/s1600/01.TemplateProjectPlugin.png) 設定一個建置範本WebTemplate [![](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png)](http://4.bp.blogspot.com/-bTKxG-UpN_c/VeP_rfsOJ6I/AAAAAAAACeY/2SubJt43_6g/s1600/02.%25E6%2596%25B0%25E5%25A2%259E%25E4%25BD%259C%25E6%25A5%25AD.png) 這邊的設定被套用時只有建置步驟會生效 [![](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png)](http://4.bp.blogspot.com/-kyrWvVl0-iI/VeP_rVViW0I/AAAAAAAACe8/H46fdV-9zzU/s1600/03.Build.png) 新增一個專案 [![](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png)](http://2.bp.blogspot.com/-tNrm-c7Dn0o/VeP_sJHLG8I/AAAAAAAACeo/tvjIbr5_ur8/s1600/04.QQ123.png) 建置步驟選擇Use builders from another project [![](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png)](http://1.bp.blogspot.com/-fANuqXp__-o/VeP_sMECO7I/AAAAAAAACes/Ktv3ZsDEtgM/s1600/05.use%2Btemplate.png) 套用WebTemplate建置範本 [![](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png)](http://1.bp.blogspot.com/-uqRg0OCO7FM/VeP_sQFCDWI/AAAAAAAACe0/vX44eTidrHM/s1600/06.webtemplate.png) 建置成功 [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝MSBuild Plugin</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dmsbuild-plugin/</link>
+      <pubDate>Mon, 31 Aug 2015 11:59:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9Dmsbuild-plugin/</guid>
+      <description>管理Jenkins
+[![](http://2.bp.blogspot.com/-PxmL6C-eHeQ/VePQw4c7WyI/AAAAAAAACd4/Itbo-MtJNj4/s1600/01.%25E7%25AE%25A1%25E7%2590%2586Jenkins.png)](http://2.bp.blogspot.com/-PxmL6C-eHeQ/VePQw4c7WyI/AAAAAAAACd4/Itbo-MtJNj4/s1600/01.%25E7%25AE%25A1%25E7%2590%2586Jenkins.png) 管理外掛程式 [![](http://3.bp.blogspot.com/-uIhO8-4TvUk/VePQw8ybiAI/AAAAAAAACdc/QVwn4HGCeYw/s1600/02.%25E7%25AE%25A1%25E7%2590%2586%25E5%25A4%2596%25E6%258E%259B.png)](http://3.bp.blogspot.com/-uIhO8-4TvUk/VePQw8ybiAI/AAAAAAAACdc/QVwn4HGCeYw/s1600/02.%25E7%25AE%25A1%25E7%2590%2586%25E5%25A4%2596%25E6%258E%259B.png) 找到MSBuild Plugin後直接安裝 [![](http://1.bp.blogspot.com/-H2FUF2a1hKs/VePQw9coHhI/AAAAAAAACdw/T-FF3aqySGA/s1600/03.%25E9%2581%25B8%25E6%2593%2587msbuild.png)](http://1.bp.blogspot.com/-H2FUF2a1hKs/VePQw9coHhI/AAAAAAAACdw/T-FF3aqySGA/s1600/03.%25E9%2581%25B8%25E6%2593%2587msbuild.png) 安裝成功後勾選重新啟動 [![](http://2.bp.blogspot.com/-ua0dgqyU9_Y/VePQxfOIXWI/AAAAAAAACdo/qf5EPjg_4Z4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E6%2588%2590%25E5%258A%259F.png)](http://2.bp.blogspot.com/-ua0dgqyU9_Y/VePQxfOIXWI/AAAAAAAACdo/qf5EPjg_4Z4/s1600/04.%25E5%25AE%2589%25E8%25A3%259D%25E6%2588%2590%25E5%258A%259F.png) 重新啟動中 [![](http://4.bp.blogspot.com/-QvaaKBop3xk/VePQxkWwHrI/AAAAAAAACds/YRHw-ghFy04/s1600/05.%25E9%2587%258D%25E6%2596%25B0%25E5%2595%259F%25E5%258B%2595.png)](http://4.bp.blogspot.com/-QvaaKBop3xk/VePQxkWwHrI/AAAAAAAACds/YRHw-ghFy04/s1600/05.%25E9%2587%258D%25E6%2596%25B0%25E5%2595%259F%25E5%258B%2595.png) 設定系統 [![](http://1.bp.blogspot.com/-_zKRLWEkES8/VePQyN0oqPI/AAAAAAAACd0/eL2UV0fwJzk/s1600/06.%25E8%25A8%25AD%25E5%25AE%259A%25E7%25B3%25BB%25E7%25B5%25B1.png)](http://1.bp.blogspot.com/-_zKRLWEkES8/VePQyN0oqPI/AAAAAAAACd0/eL2UV0fwJzk/s1600/06.%25E8%25A8%25AD%25E5%25AE%259A%25E7%25B3%25BB%25E7%25B5%25B1.png) 新增MSBuild的版本和路徑 VS2013 C:\Program Files (x86)\MSBuild\12.0\bin\amd64\msbuild.exe VS2015 C:\Program Files (x86)\MSBuild\14.0\bin\amd64\msbuild.exe</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 建立VS2013和Framework4.5編譯環境</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%BB%BA%E7%AB%8Bvs2013%E5%92%8Cframework4-5%E7%B7%A8%E8%AD%AF%E7%92%B0%E5%A2%83/</link>
+      <pubDate>Mon, 31 Aug 2015 11:49:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%BB%BA%E7%AB%8Bvs2013%E5%92%8Cframework4-5%E7%B7%A8%E8%AD%AF%E7%92%B0%E5%A2%83/</guid>
+      <description>下載Microsoft Build Tools 2013 http://www.microsoft.com/zh-tw/download/details.aspx?id=40760
+[![](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png)](http://2.bp.blogspot.com/-EiIMQ5xvTqQ/VePOHpjXHII/AAAAAAAACc0/838zrh8ObhI/s1600/00.msbuild2013.png) 下載適用於 Windows 8 的 Windows 軟體開發套件 (SDK) https://msdn.microsoft.com/zh-tw/windows/desktop/hh852363.aspx
+[![](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png)](http://4.bp.blogspot.com/-X2obIDZ7r4k/VePMiQjjhlI/AAAAAAAACcM/jpYjPkzlOLs/s1600/05.sdk.png) 選擇安裝.NET Framework 4.5 Software Development Kit [![](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png)](http://2.bp.blogspot.com/-LKRu8hbHJeU/VePMjCG-7-I/AAAAAAAACcg/5RWZIfCxgvk/s1600/09.framework45.png) 複製資料夾 C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio [!</description>
+    </item>
+    
+    <item>
+      <title>Jenkins 安裝</title>
+      <link>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D/</link>
+      <pubDate>Tue, 25 Aug 2015 18:13:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2015/08/jenkins-%E5%AE%89%E8%A3%9D/</guid>
+      <description>首先到官網下載檔案
+[![](http://1.bp.blogspot.com/-NontDaM9nQE/Vdw_Of-gjSI/AAAAAAAACaA/h3j3yGEkPwI/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png)](http://1.bp.blogspot.com/-NontDaM9nQE/Vdw_Of-gjSI/AAAAAAAACaA/h3j3yGEkPwI/s1600/01.%25E5%25AE%2598%25E7%25B6%25B2%25E4%25B8%258B%25E8%25BC%2589.png) 解壓縮後得到安裝檔 [![](http://2.bp.blogspot.com/--Q9ttYS9CVE/Vdw_OUuDv-I/AAAAAAAACaI/ufs39rQxRVk/s1600/02.%25E8%25A7%25A3%25E5%25A3%2593%25E7%25B8%25AE.png)](http://2.bp.blogspot.com/--Q9ttYS9CVE/Vdw_OUuDv-I/AAAAAAAACaI/ufs39rQxRVk/s1600/02.%25E8%25A7%25A3%25E5%25A3%2593%25E7%25B8%25AE.png) 安裝歡迎畫面 [![](http://1.bp.blogspot.com/-hEX0_tJR8ZQ/Vdw_OSHHxwI/AAAAAAAACbQ/JkU22JFLO8M/s1600/03.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://1.bp.blogspot.com/-hEX0_tJR8ZQ/Vdw_OSHHxwI/AAAAAAAACbQ/JkU22JFLO8M/s1600/03.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png) 選擇安裝的資料夾 [![](http://3.bp.blogspot.com/-j2KuGxIHmxM/Vdw_OyExMNI/AAAAAAAACbU/V4j4n-P0ols/s1600/04.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png)](http://3.bp.blogspot.com/-j2KuGxIHmxM/Vdw_OyExMNI/AAAAAAAACbU/V4j4n-P0ols/s1600/04.%25E9%2581%25B8%25E6%2593%2587%25E5%25AE%2589%25E8%25A3%259D%25E8%25B7%25AF%25E5%25BE%2591.png) 安裝需要管理員權限 [![](http://3.bp.blogspot.com/-L7s0QGfNKsk/Vdw_PG6DBJI/AAAAAAAACaU/m_sFGeGNNDI/s1600/05.%25E6%25BA%2596%25E5%2582%2599%25E5%25AE%2589%25E8%25A3%259D.png)](http://3.bp.blogspot.com/-L7s0QGfNKsk/Vdw_PG6DBJI/AAAAAAAACaU/m_sFGeGNNDI/s1600/05.%25E6%25BA%2596%25E5%2582%2599%25E5%25AE%2589%25E8%25A3%259D.png) 安裝中 [![](http://3.bp.blogspot.com/-typutUEBj_c/Vdw_PfIm1uI/AAAAAAAACaY/ILnu7d2SfGg/s1600/06.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png)](http://3.bp.blogspot.com/-typutUEBj_c/Vdw_PfIm1uI/AAAAAAAACaY/ILnu7d2SfGg/s1600/06.%25E9%2596%258B%25E5%25A7%258B%25E5%25AE%2589%25E8%25A3%259D.png) 安裝完成 [![](http://3.bp.blogspot.com/--dVs1w1o7yg/Vdw_PvkHMXI/AAAAAAAACak/HXZ7ml1M2r0/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png)](http://3.bp.blogspot.com/--dVs1w1o7yg/Vdw_PvkHMXI/AAAAAAAACak/HXZ7ml1M2r0/s1600/07.%25E5%25AE%2589%25E8%25A3%259D%25E5%25AE%258C%25E6%2588%2590.png) 預設是PORT 8080 [![](http://1.bp.blogspot.com/-tlBTFzskZHg/Vdw_QAI7yPI/AAAAAAAACa0/1JYPbm8Vra4/s1600/08.%25E9%25A0%2590%25E8%25A8%25AD8080.png)](http://1.bp.blogspot.com/-tlBTFzskZHg/Vdw_QAI7yPI/AAAAAAAACa0/1JYPbm8Vra4/s1600/08.%25E9%25A0%2590%25E8%25A8%25AD8080.png) 要改埠號的話要在安裝資料夾下面找到jenkins.xml [![](http://3.bp.blogspot.com/-zYnhTxUODLQ/Vdw_QdBFpfI/AAAAAAAACaw/kUkmUQSWo1k/s1600/09.%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png)](http://3.bp.blogspot.com/-zYnhTxUODLQ/Vdw_QdBFpfI/AAAAAAAACaw/kUkmUQSWo1k/s1600/09.%25E8%25A8%25AD%25E5%25AE%259A%25E6%25AA%2594.png) 把裡面的執行參數-httpPort=8080改掉就行了 [![](http://3.bp.blogspot.com/-wF8-p26IDHQ/Vdw_Q6ItqzI/AAAAAAAACbA/iKhSdaBwP5g/s1600/10.%25E6%2594%25B9port.png)](http://3.bp.blogspot.com/-wF8-p26IDHQ/Vdw_Q6ItqzI/AAAAAAAACbA/iKhSdaBwP5g/s1600/10.%25E6%2594%25B9port.png) 再重新啟動服務 [![](http://2.bp.blogspot.com/-JqdZYybFNAM/Vdw_RCrROQI/AAAAAAAACa8/6q9X6EoWnUU/s1600/11.%25E9%2587%258D%25E5%2595%259F%25E6%259C%258D%25E5%258B%2599.png)](http://2.bp.blogspot.com/-JqdZYybFNAM/Vdw_RCrROQI/AAAAAAAACa8/6q9X6EoWnUU/s1600/11.%25E9%2587%258D%25E5%2595%259F%25E6%259C%258D%25E5%258B%2599.png) 就會換成新埠號了 [!</description>
+    </item>
+    
+  </channel>
+</rss>

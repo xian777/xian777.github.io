@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    設定Web效能測試 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="加入Web效能測試
+[![](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png) 如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的 [![](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png) 在伺服器管理員中，點擊設定IE ESC [![](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png) 把管理員關閉就行了 [![](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png) 在瀏覽器中就會看到錄製工具列 [![](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png) 在網址列隨便輸入網址，就會看到自動錄製操作 [![](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png) 按下停止錄制後，會把錄製的結果帶回Visual Studio 可以在已錄制的項目上按屬性來修改，也可以手動插入要求 [![](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png) 接下來介紹如果繫結資料，先準備一個XML檔案 [![](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png) 隨便輸入一些資料 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;customers&gt; &lt;customer account=&#34;aa&#34; /&gt; &lt;customer account=&#34;bb&#34; /&gt; &lt;customer account=&#34;cc&#34; /&gt; &lt;/customers&gt;  點擊新增資料來源 [![](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png) 選擇剛準備的XML檔案，可以看到解析出來的資料 [![](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png) 選擇資料來源的資料表 [![](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png) 資料來源就新增成功了，另外可以設定資料來源的讀取方式 [![](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png) 在要繫結的項目上，直接選擇到要繫結的欄位就行了 [![](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png) 開始執行測試 [![](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png) 測試結果
+    ">
+
+
+<meta property="og:title" content="設定Web效能測試" />
+<meta property="og:description" content="加入Web效能測試
+[![](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png) 如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的 [![](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png) 在伺服器管理員中，點擊設定IE ESC [![](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png) 把管理員關閉就行了 [![](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png) 在瀏覽器中就會看到錄製工具列 [![](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png) 在網址列隨便輸入網址，就會看到自動錄製操作 [![](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png) 按下停止錄制後，會把錄製的結果帶回Visual Studio 可以在已錄制的項目上按屬性來修改，也可以手動插入要求 [![](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png) 接下來介紹如果繫結資料，先準備一個XML檔案 [![](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png) 隨便輸入一些資料 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;customers&gt; &lt;customer account=&#34;aa&#34; /&gt; &lt;customer account=&#34;bb&#34; /&gt; &lt;customer account=&#34;cc&#34; /&gt; &lt;/customers&gt;  點擊新增資料來源 [![](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png) 選擇剛準備的XML檔案，可以看到解析出來的資料 [![](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png) 選擇資料來源的資料表 [![](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png) 資料來源就新增成功了，另外可以設定資料來源的讀取方式 [![](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png) 在要繫結的項目上，直接選擇到要繫結的欄位就行了 [![](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png) 開始執行測試 [![](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png) 測試結果" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2015/01/%E8%A8%AD%E5%AE%9Aweb%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6/" />
+<meta property="article:published_time" content="2015-01-05T16:58:00+00:00" />
+<meta property="article:modified_time" content="2015-01-05T16:58:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="設定Web效能測試"/>
+<meta name="twitter:description" content="加入Web效能測試
+[![](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png) 如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的 [![](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png) 在伺服器管理員中，點擊設定IE ESC [![](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png) 把管理員關閉就行了 [![](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png) 在瀏覽器中就會看到錄製工具列 [![](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png) 在網址列隨便輸入網址，就會看到自動錄製操作 [![](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png) 按下停止錄制後，會把錄製的結果帶回Visual Studio 可以在已錄制的項目上按屬性來修改，也可以手動插入要求 [![](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png) 接下來介紹如果繫結資料，先準備一個XML檔案 [![](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png) 隨便輸入一些資料 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;customers&gt; &lt;customer account=&#34;aa&#34; /&gt; &lt;customer account=&#34;bb&#34; /&gt; &lt;customer account=&#34;cc&#34; /&gt; &lt;/customers&gt;  點擊新增資料來源 [![](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png) 選擇剛準備的XML檔案，可以看到解析出來的資料 [![](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png) 選擇資料來源的資料表 [![](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png) 資料來源就新增成功了，另外可以設定資料來源的讀取方式 [![](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png) 在要繫結的項目上，直接選擇到要繫結的欄位就行了 [![](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png) 開始執行測試 [![](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png) 測試結果"/>
+
+<meta itemprop="name" content="設定Web效能測試">
+<meta itemprop="description" content="加入Web效能測試
+[![](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png) 如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的 [![](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png) 在伺服器管理員中，點擊設定IE ESC [![](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png) 把管理員關閉就行了 [![](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png) 在瀏覽器中就會看到錄製工具列 [![](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png) 在網址列隨便輸入網址，就會看到自動錄製操作 [![](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png) 按下停止錄制後，會把錄製的結果帶回Visual Studio 可以在已錄制的項目上按屬性來修改，也可以手動插入要求 [![](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png) 接下來介紹如果繫結資料，先準備一個XML檔案 [![](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png) 隨便輸入一些資料 &lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;customers&gt; &lt;customer account=&#34;aa&#34; /&gt; &lt;customer account=&#34;bb&#34; /&gt; &lt;customer account=&#34;cc&#34; /&gt; &lt;/customers&gt;  點擊新增資料來源 [![](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png) 選擇剛準備的XML檔案，可以看到解析出來的資料 [![](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png) 選擇資料來源的資料表 [![](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png) 資料來源就新增成功了，另外可以設定資料來源的讀取方式 [![](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png) 在要繫結的項目上，直接選擇到要繫結的欄位就行了 [![](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png) 開始執行測試 [![](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png) 測試結果">
+<meta itemprop="datePublished" content="2015-01-05T16:58:00+00:00" />
+<meta itemprop="dateModified" content="2015-01-05T16:58:00+00:00" />
+<meta itemprop="wordCount" content="47">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<link rel="canonical" href="http://example.org/posts/2015/01/%E8%A8%AD%E5%AE%9Aweb%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>設定Web效能測試</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jan 5, 2015
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>加入Web效能測試</p>
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)](http://3.bp.blogspot.com/-99mTrr1aW0E/VKpRqk4NanI/AAAAAAAACFU/jtUa3AD_VSI/s1600/01.%E5%8A%A0%E5%85%A5Web%E6%95%88%E8%83%BD%E6%B8%AC%E8%A9%A6.png)</div>
+如果看到這個錯誤訊息，是IE瀏覽器的安全性設定造成的
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)](http://1.bp.blogspot.com/-84QcGZADseI/VKpRqofSrwI/AAAAAAAACFQ/JB1bFtf5hY8/s1600/02.%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.png)</div>
+在伺服器管理員中，點擊設定IE ESC
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)](http://1.bp.blogspot.com/-MZfXDAqyvBc/VKpRqs8nfgI/AAAAAAAACG0/tjBlcvf3Hjo/s1600/03.%E8%A8%AD%E5%AE%9AIPSEC.png)</div>
+把管理員關閉就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)](http://1.bp.blogspot.com/-ZhlQ7fy2yiw/VKpRre9ss7I/AAAAAAAACFY/XkUO18Sq1uQ/s1600/04.%E9%97%9C%E9%96%89IEESC.png)</div>
+在瀏覽器中就會看到錄製工具列
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)](http://1.bp.blogspot.com/-tzqsSLuwYJk/VKpRr5q0GRI/AAAAAAAACFo/W_mY-yuBNyw/s1600/05.%E5%95%9F%E5%8B%95%E9%8C%84%E8%A3%BD.png)</div>
+在網址列隨便輸入網址，就會看到自動錄製操作
+<div class="separator" style="clear: both; text-align: center;">[![](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)](http://3.bp.blogspot.com/-1EOx8cWF8GU/VKpRsNU-DRI/AAAAAAAACFk/rxeL1Zw64-A/s1600/06.%E9%8C%84%E8%A3%BD%E7%B6%B2%E7%AB%99.png)</div>
+按下停止錄制後，會把錄製的結果帶回Visual Studio
+可以在已錄制的項目上按屬性來修改，也可以手動插入要求
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)](http://2.bp.blogspot.com/-PK4J7p0omYg/VKpRs3_SppI/AAAAAAAACFw/FGnJmsjXaYY/s1600/07.%E5%AE%8C%E6%88%90%E9%8C%84%E8%A3%BD.png)</div>
+接下來介紹如果繫結資料，先準備一個XML檔案
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-0MH-lgCwCEY/VKpRtGpLDgI/AAAAAAAACF0/AFxHizxeqAg/s1600/09.%E5%8A%A0%E5%85%A5XML%E6%AA%94%E6%A1%88.png)</div>
+隨便輸入一些資料
+<div><pre class="brush:xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;customers&gt;
+  &lt;customer account="aa" /&gt;
+  &lt;customer account="bb" /&gt;
+  &lt;customer account="cc" /&gt;
+&lt;/customers&gt;
+</pre></div>
+點擊新增資料來源
+<div class="separator" style="clear: both; text-align: center;">[![](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)](http://4.bp.blogspot.com/-QVj9WMnCJxI/VKpRtoT1jLI/AAAAAAAACF8/KoMtf1AGp6I/s1600/10.%E5%8A%A0%E5%85%A5%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90.png)</div>
+選擇剛準備的XML檔案，可以看到解析出來的資料
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)](http://1.bp.blogspot.com/-R9xhLdiaeNc/VKpRuL1mIMI/AAAAAAAACGA/709r1p509Rs/s1600/11.%E5%B0%8D%E6%87%89xml%E6%AA%94%E6%A1%88.png)</div>
+選擇資料來源的資料表
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)](http://1.bp.blogspot.com/-LRgNR0Iac18/VKpRuk2t4mI/AAAAAAAACGI/E2q_aZ3mvk0/s1600/12.%E9%81%B8%E6%93%87%E8%B3%87%E6%96%99%E9%9B%86.png)</div>
+資料來源就新增成功了，另外可以設定資料來源的讀取方式
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)](http://1.bp.blogspot.com/-dI5zYtWc3ek/VKpRu4kXJzI/AAAAAAAACGQ/o1w-jfPVudY/s1600/13.%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96%E6%96%B9%E5%BC%8F.png)</div>
+在要繫結的項目上，直接選擇到要繫結的欄位就行了
+<div class="separator" style="clear: both; text-align: center;">[![](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)](http://2.bp.blogspot.com/-BhdUQ0pU1t0/VKpRvdVVaHI/AAAAAAAACGU/SA1NC1Mn5wg/s1600/14.%E7%B9%AB%E7%B5%90%E8%B3%87%E6%96%99.png)</div>
+開始執行測試
+<div class="separator" style="clear: both; text-align: center;">[![](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)](http://1.bp.blogspot.com/-n_xmXtdHKMw/VKpRv_19ZVI/AAAAAAAACGk/VdVv76xipmE/s1600/15.%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6.png)</div>
+測試結果
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=%e8%a8%ad%e5%ae%9aWeb%e6%95%88%e8%83%bd%e6%b8%ac%e8%a9%a6&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f
+			&title=%e8%a8%ad%e5%ae%9aWeb%e6%95%88%e8%83%bd%e6%b8%ac%e8%a9%a6&summary=%e5%8a%a0%e5%85%a5Web%e6%95%88%e8%83%bd%e6%b8%ac%e8%a9%a6%0a%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-99mTrr1aW0E%2fVKpRqk4NanI%2fAAAAAAAACFU%2fjtUa3AD_VSI%2fs1600%2f01.%25E5%258A%25A0%25E5%2585%25A5Web%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-99mTrr1aW0E%2fVKpRqk4NanI%2fAAAAAAAACFU%2fjtUa3AD_VSI%2fs1600%2f01.%25E5%258A%25A0%25E5%2585%25A5Web%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6.png%29%20%e5%a6%82%e6%9e%9c%e7%9c%8b%e5%88%b0%e9%80%99%e5%80%8b%e9%8c%af%e8%aa%a4%e8%a8%8a%e6%81%af%ef%bc%8c%e6%98%afIE%e7%80%8f%e8%a6%bd%e5%99%a8%e7%9a%84%e5%ae%89%e5%85%a8%e6%80%a7%e8%a8%ad%e5%ae%9a%e9%80%a0%e6%88%90%e7%9a%84%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-84QcGZADseI%2fVKpRqofSrwI%2fAAAAAAAACFQ%2fJB1bFtf5hY8%2fs1600%2f02.%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-84QcGZADseI%2fVKpRqofSrwI%2fAAAAAAAACFQ%2fJB1bFtf5hY8%2fs1600%2f02.%25E9%258C%25AF%25E8%25AA%25A4%25E8%25A8%258A%25E6%2581%25AF.png%29%20%e5%9c%a8%e4%bc%ba%e6%9c%8d%e5%99%a8%e7%ae%a1%e7%90%86%e5%93%a1%e4%b8%ad%ef%bc%8c%e9%bb%9e%e6%93%8a%e8%a8%ad%e5%ae%9aIE%20ESC%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MZfXDAqyvBc%2fVKpRqs8nfgI%2fAAAAAAAACG0%2ftjBlcvf3Hjo%2fs1600%2f03.%25E8%25A8%25AD%25E5%25AE%259AIPSEC.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-MZfXDAqyvBc%2fVKpRqs8nfgI%2fAAAAAAAACG0%2ftjBlcvf3Hjo%2fs1600%2f03.%25E8%25A8%25AD%25E5%25AE%259AIPSEC.png%29%20%e6%8a%8a%e7%ae%a1%e7%90%86%e5%93%a1%e9%97%9c%e9%96%89%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ZhlQ7fy2yiw%2fVKpRre9ss7I%2fAAAAAAAACFY%2fXkUO18Sq1uQ%2fs1600%2f04.%25E9%2597%259C%25E9%2596%2589IEESC.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ZhlQ7fy2yiw%2fVKpRre9ss7I%2fAAAAAAAACFY%2fXkUO18Sq1uQ%2fs1600%2f04.%25E9%2597%259C%25E9%2596%2589IEESC.png%29%20%e5%9c%a8%e7%80%8f%e8%a6%bd%e5%99%a8%e4%b8%ad%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0%e9%8c%84%e8%a3%bd%e5%b7%a5%e5%85%b7%e5%88%97%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-tzqsSLuwYJk%2fVKpRr5q0GRI%2fAAAAAAAACFo%2fW_mY-yuBNyw%2fs1600%2f05.%25E5%2595%259F%25E5%258B%2595%25E9%258C%2584%25E8%25A3%25BD.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-tzqsSLuwYJk%2fVKpRr5q0GRI%2fAAAAAAAACFo%2fW_mY-yuBNyw%2fs1600%2f05.%25E5%2595%259F%25E5%258B%2595%25E9%258C%2584%25E8%25A3%25BD.png%29%20%e5%9c%a8%e7%b6%b2%e5%9d%80%e5%88%97%e9%9a%a8%e4%be%bf%e8%bc%b8%e5%85%a5%e7%b6%b2%e5%9d%80%ef%bc%8c%e5%b0%b1%e6%9c%83%e7%9c%8b%e5%88%b0%e8%87%aa%e5%8b%95%e9%8c%84%e8%a3%bd%e6%93%8d%e4%bd%9c%20%5b%21%5b%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1EOx8cWF8GU%2fVKpRsNU-DRI%2fAAAAAAAACFk%2frxeL1Zw64-A%2fs1600%2f06.%25E9%258C%2584%25E8%25A3%25BD%25E7%25B6%25B2%25E7%25AB%2599.png%29%5d%28http%3a%2f%2f3.bp.blogspot.com%2f-1EOx8cWF8GU%2fVKpRsNU-DRI%2fAAAAAAAACFk%2frxeL1Zw64-A%2fs1600%2f06.%25E9%258C%2584%25E8%25A3%25BD%25E7%25B6%25B2%25E7%25AB%2599.png%29%20%e6%8c%89%e4%b8%8b%e5%81%9c%e6%ad%a2%e9%8c%84%e5%88%b6%e5%be%8c%ef%bc%8c%e6%9c%83%e6%8a%8a%e9%8c%84%e8%a3%bd%e7%9a%84%e7%b5%90%e6%9e%9c%e5%b8%b6%e5%9b%9eVisual%20Studio%20%e5%8f%af%e4%bb%a5%e5%9c%a8%e5%b7%b2%e9%8c%84%e5%88%b6%e7%9a%84%e9%a0%85%e7%9b%ae%e4%b8%8a%e6%8c%89%e5%b1%ac%e6%80%a7%e4%be%86%e4%bf%ae%e6%94%b9%ef%bc%8c%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%89%8b%e5%8b%95%e6%8f%92%e5%85%a5%e8%a6%81%e6%b1%82%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-PK4J7p0omYg%2fVKpRs3_SppI%2fAAAAAAAACFw%2fFGnJmsjXaYY%2fs1600%2f07.%25E5%25AE%258C%25E6%2588%2590%25E9%258C%2584%25E8%25A3%25BD.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-PK4J7p0omYg%2fVKpRs3_SppI%2fAAAAAAAACFw%2fFGnJmsjXaYY%2fs1600%2f07.%25E5%25AE%258C%25E6%2588%2590%25E9%258C%2584%25E8%25A3%25BD.png%29%20%e6%8e%a5%e4%b8%8b%e4%be%86%e4%bb%8b%e7%b4%b9%e5%a6%82%e6%9e%9c%e7%b9%ab%e7%b5%90%e8%b3%87%e6%96%99%ef%bc%8c%e5%85%88%e6%ba%96%e5%82%99%e4%b8%80%e5%80%8bXML%e6%aa%94%e6%a1%88%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-0MH-lgCwCEY%2fVKpRtGpLDgI%2fAAAAAAAACF0%2fAFxHizxeqAg%2fs1600%2f09.%25E5%258A%25A0%25E5%2585%25A5XML%25E6%25AA%2594%25E6%25A1%2588.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-0MH-lgCwCEY%2fVKpRtGpLDgI%2fAAAAAAAACF0%2fAFxHizxeqAg%2fs1600%2f09.%25E5%258A%25A0%25E5%2585%25A5XML%25E6%25AA%2594%25E6%25A1%2588.png%29%20%e9%9a%a8%e4%be%bf%e8%bc%b8%e5%85%a5%e4%b8%80%e4%ba%9b%e8%b3%87%e6%96%99%20%26lt%3b%3fxml%20version%3d%221.0%22%20encoding%3d%22utf-8%22%3f%26gt%3b%20%26lt%3bcustomers%26gt%3b%20%26lt%3bcustomer%20account%3d%22aa%22%20%2f%26gt%3b%20%26lt%3bcustomer%20account%3d%22bb%22%20%2f%26gt%3b%20%26lt%3bcustomer%20account%3d%22cc%22%20%2f%26gt%3b%20%26lt%3b%2fcustomers%26gt%3b%20%20%e9%bb%9e%e6%93%8a%e6%96%b0%e5%a2%9e%e8%b3%87%e6%96%99%e4%be%86%e6%ba%90%20%5b%21%5b%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-QVj9WMnCJxI%2fVKpRtoT1jLI%2fAAAAAAAACF8%2fKoMtf1AGp6I%2fs1600%2f10.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E4%25BE%2586%25E6%25BA%2590.png%29%5d%28http%3a%2f%2f4.bp.blogspot.com%2f-QVj9WMnCJxI%2fVKpRtoT1jLI%2fAAAAAAAACF8%2fKoMtf1AGp6I%2fs1600%2f10.%25E5%258A%25A0%25E5%2585%25A5%25E8%25B3%2587%25E6%2596%2599%25E4%25BE%2586%25E6%25BA%2590.png%29%20%e9%81%b8%e6%93%87%e5%89%9b%e6%ba%96%e5%82%99%e7%9a%84XML%e6%aa%94%e6%a1%88%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%9c%8b%e5%88%b0%e8%a7%a3%e6%9e%90%e5%87%ba%e4%be%86%e7%9a%84%e8%b3%87%e6%96%99%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R9xhLdiaeNc%2fVKpRuL1mIMI%2fAAAAAAAACGA%2f709r1p509Rs%2fs1600%2f11.%25E5%25B0%258D%25E6%2587%2589xml%25E6%25AA%2594%25E6%25A1%2588.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-R9xhLdiaeNc%2fVKpRuL1mIMI%2fAAAAAAAACGA%2f709r1p509Rs%2fs1600%2f11.%25E5%25B0%258D%25E6%2587%2589xml%25E6%25AA%2594%25E6%25A1%2588.png%29%20%e9%81%b8%e6%93%87%e8%b3%87%e6%96%99%e4%be%86%e6%ba%90%e7%9a%84%e8%b3%87%e6%96%99%e8%a1%a8%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-LRgNR0Iac18%2fVKpRuk2t4mI%2fAAAAAAAACGI%2fE2q_aZ3mvk0%2fs1600%2f12.%25E9%2581%25B8%25E6%2593%2587%25E8%25B3%2587%25E6%2596%2599%25E9%259B%2586.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-LRgNR0Iac18%2fVKpRuk2t4mI%2fAAAAAAAACGI%2fE2q_aZ3mvk0%2fs1600%2f12.%25E9%2581%25B8%25E6%2593%2587%25E8%25B3%2587%25E6%2596%2599%25E9%259B%2586.png%29%20%e8%b3%87%e6%96%99%e4%be%86%e6%ba%90%e5%b0%b1%e6%96%b0%e5%a2%9e%e6%88%90%e5%8a%9f%e4%ba%86%ef%bc%8c%e5%8f%a6%e5%a4%96%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%e8%b3%87%e6%96%99%e4%be%86%e6%ba%90%e7%9a%84%e8%ae%80%e5%8f%96%e6%96%b9%e5%bc%8f%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-dI5zYtWc3ek%2fVKpRu4kXJzI%2fAAAAAAAACGQ%2fo1w-jfPVudY%2fs1600%2f13.%25E6%25AA%2594%25E6%25A1%2588%25E8%25AE%2580%25E5%258F%2596%25E6%2596%25B9%25E5%25BC%258F.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-dI5zYtWc3ek%2fVKpRu4kXJzI%2fAAAAAAAACGQ%2fo1w-jfPVudY%2fs1600%2f13.%25E6%25AA%2594%25E6%25A1%2588%25E8%25AE%2580%25E5%258F%2596%25E6%2596%25B9%25E5%25BC%258F.png%29%20%e5%9c%a8%e8%a6%81%e7%b9%ab%e7%b5%90%e7%9a%84%e9%a0%85%e7%9b%ae%e4%b8%8a%ef%bc%8c%e7%9b%b4%e6%8e%a5%e9%81%b8%e6%93%87%e5%88%b0%e8%a6%81%e7%b9%ab%e7%b5%90%e7%9a%84%e6%ac%84%e4%bd%8d%e5%b0%b1%e8%a1%8c%e4%ba%86%20%5b%21%5b%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-BhdUQ0pU1t0%2fVKpRvdVVaHI%2fAAAAAAAACGU%2fSA1NC1Mn5wg%2fs1600%2f14.%25E7%25B9%25AB%25E7%25B5%2590%25E8%25B3%2587%25E6%2596%2599.png%29%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-BhdUQ0pU1t0%2fVKpRvdVVaHI%2fAAAAAAAACGU%2fSA1NC1Mn5wg%2fs1600%2f14.%25E7%25B9%25AB%25E7%25B5%2590%25E8%25B3%2587%25E6%2596%2599.png%29%20%e9%96%8b%e5%a7%8b%e5%9f%b7%e8%a1%8c%e6%b8%ac%e8%a9%a6%20%5b%21%5b%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-n_xmXtdHKMw%2fVKpRv_19ZVI%2fAAAAAAAACGk%2fVdVv76xipmE%2fs1600%2f15.%25E5%259F%25B7%25E8%25A1%258C%25E6%25B8%25AC%25E8%25A9%25A6.png%29%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-n_xmXtdHKMw%2fVKpRv_19ZVI%2fAAAAAAAACGk%2fVdVv76xipmE%2fs1600%2f15.%25E5%259F%25B7%25E8%25A1%258C%25E6%25B8%25AC%25E8%25A9%25A6.png%29%20%e6%b8%ac%e8%a9%a6%e7%b5%90%e6%9e%9c&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=%e8%a8%ad%e5%ae%9aWeb%e6%95%88%e8%83%bd%e6%b8%ac%e8%a9%a6&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2015%2f01%2f%25E8%25A8%25AD%25E5%25AE%259Aweb%25E6%2595%2588%25E8%2583%25BD%25E6%25B8%25AC%25E8%25A9%25A6%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

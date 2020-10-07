@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Autofac 一種IOC容器 | 
+    
+    My New Hugo Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="前言 接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入
+首先透過NuGet安裝Autofac套件 ](http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png)
+因為是MVC專案，所以還要再裝一個MVC整合套件 ](http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png)
+依照慣例在App_Start資料夾下新增一個AutofacConfig namespace WebApplication1 { using Autofac; using Autofac.Integration.Mvc; using System.Reflection; using System.Web.Mvc; public class AutofacConfig { public static void RegisterDependies() { ContainerBuilder builder = new ContainerBuilder(); builder.RegisterControllers(Assembly.GetExecutingAssembly()); builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()) .Where(x =&amp;gt; x.Namespace.EndsWith(&#34;Repositories&#34;)) .AsImplementedInterfaces(); IContainer container = builder.Build(); DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); } } } 在Global的Application_Start事件中啟用Autofac namespace WebApplication1 { using System.Web.Mvc; using System.Web.Routing; public class MvcApplication : System.Web.HttpApplication { protected void Application_Start() { AreaRegistration.
+    ">
+
+
+<meta property="og:title" content="Autofac 一種IOC容器" />
+<meta property="og:description" content="前言 接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入
+首先透過NuGet安裝Autofac套件 ](http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png)
+因為是MVC專案，所以還要再裝一個MVC整合套件 ](http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png)
+依照慣例在App_Start資料夾下新增一個AutofacConfig namespace WebApplication1 { using Autofac; using Autofac.Integration.Mvc; using System.Reflection; using System.Web.Mvc; public class AutofacConfig { public static void RegisterDependies() { ContainerBuilder builder = new ContainerBuilder(); builder.RegisterControllers(Assembly.GetExecutingAssembly()); builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()) .Where(x =&amp;gt; x.Namespace.EndsWith(&#34;Repositories&#34;)) .AsImplementedInterfaces(); IContainer container = builder.Build(); DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); } } } 在Global的Application_Start事件中啟用Autofac namespace WebApplication1 { using System.Web.Mvc; using System.Web.Routing; public class MvcApplication : System.Web.HttpApplication { protected void Application_Start() { AreaRegistration." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2014/06/autofac-%E4%B8%80%E7%A8%AEioc%E5%AE%B9%E5%99%A8/" />
+<meta property="article:published_time" content="2014-06-04T10:55:00+00:00" />
+<meta property="article:modified_time" content="2014-06-04T10:55:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Autofac 一種IOC容器"/>
+<meta name="twitter:description" content="前言 接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入
+首先透過NuGet安裝Autofac套件 ](http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png)
+因為是MVC專案，所以還要再裝一個MVC整合套件 ](http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png)
+依照慣例在App_Start資料夾下新增一個AutofacConfig namespace WebApplication1 { using Autofac; using Autofac.Integration.Mvc; using System.Reflection; using System.Web.Mvc; public class AutofacConfig { public static void RegisterDependies() { ContainerBuilder builder = new ContainerBuilder(); builder.RegisterControllers(Assembly.GetExecutingAssembly()); builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()) .Where(x =&amp;gt; x.Namespace.EndsWith(&#34;Repositories&#34;)) .AsImplementedInterfaces(); IContainer container = builder.Build(); DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); } } } 在Global的Application_Start事件中啟用Autofac namespace WebApplication1 { using System.Web.Mvc; using System.Web.Routing; public class MvcApplication : System.Web.HttpApplication { protected void Application_Start() { AreaRegistration."/>
+
+<meta itemprop="name" content="Autofac 一種IOC容器">
+<meta itemprop="description" content="前言 接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入
+首先透過NuGet安裝Autofac套件 ](http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png)
+因為是MVC專案，所以還要再裝一個MVC整合套件 ](http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png)
+依照慣例在App_Start資料夾下新增一個AutofacConfig namespace WebApplication1 { using Autofac; using Autofac.Integration.Mvc; using System.Reflection; using System.Web.Mvc; public class AutofacConfig { public static void RegisterDependies() { ContainerBuilder builder = new ContainerBuilder(); builder.RegisterControllers(Assembly.GetExecutingAssembly()); builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()) .Where(x =&amp;gt; x.Namespace.EndsWith(&#34;Repositories&#34;)) .AsImplementedInterfaces(); IContainer container = builder.Build(); DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); } } } 在Global的Application_Start事件中啟用Autofac namespace WebApplication1 { using System.Web.Mvc; using System.Web.Routing; public class MvcApplication : System.Web.HttpApplication { protected void Application_Start() { AreaRegistration.">
+<meta itemprop="datePublished" content="2014-06-04T10:55:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-04T10:55:00+00:00" />
+<meta itemprop="wordCount" content="77">
+
+
+
+<meta itemprop="keywords" content="Unit Test," />
+
+<link rel="canonical" href="http://example.org/posts/2014/06/autofac-%E4%B8%80%E7%A8%AEioc%E5%AE%B9%E5%99%A8/" />
+
+<link rel="icon" type="image/png" href="http://example.org/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+
+<script data-ad-client="ca-pub-5338947003335320" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>My New Hugo Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/rafed/ramium/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Autofac 一種IOC容器</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 4, 2014
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit Test</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/unit-test">Unit test</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="前言">前言</h1>
+<p>接續之前提到的IOC 控制反轉 &amp; DI 依賴注入和Repostitory Pattern，在Controller中提供了Repository介面的建構式，接下來就來介紹如何在網站啟動的時後，利用IOC容器把介面注入</p>
+<h1 id="首先透過nuget安裝autofac套件">首先透過NuGet安裝Autofac套件</h1>
+<p><img src="http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png" alt="安裝Autofac套件">](<a href="http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png">http://1.bp.blogspot.com/-ntFr0enXaqk/U46KMynHIaI/AAAAAAAABXk/B81ttCgQGnQ/s1600/01.NuGet.png</a>)</p>
+<h1 id="因為是mvc專案所以還要再裝一個mvc整合套件">因為是MVC專案，所以還要再裝一個MVC整合套件</h1>
+<p><img src="http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png" alt="MVC整合套件">](<a href="http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png">http://2.bp.blogspot.com/-7rOCvs9AgLQ/U46KQfEB8II/AAAAAAAABXs/P4WQJ1sUg5E/s1600/02.MVCPAckage.png</a>)</p>
+<h1 id="依照慣例在app_start資料夾下新增一個autofacconfig">依照慣例在App_Start資料夾下新增一個AutofacConfig</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> WebApplication1
+{
+    <span style="color:#66d9ef">using</span> Autofac;
+    <span style="color:#66d9ef">using</span> Autofac.Integration.Mvc;
+    <span style="color:#66d9ef">using</span> System.Reflection;
+    <span style="color:#66d9ef">using</span> System.Web.Mvc;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AutofacConfig</span>
+    {
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> RegisterDependies()
+        {
+            ContainerBuilder builder = <span style="color:#66d9ef">new</span> ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(x =&amp;gt; x.Namespace.EndsWith(<span style="color:#e6db74">&#34;Repositories&#34;</span>))
+                .AsImplementedInterfaces();
+            IContainer container = builder.Build();
+            DependencyResolver.SetResolver(<span style="color:#66d9ef">new</span> AutofacDependencyResolver(container));
+        }
+    }
+}
+</code></pre></div><h1 id="在global的application_start事件中啟用autofac">在Global的Application_Start事件中啟用Autofac</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> WebApplication1
+{
+    <span style="color:#66d9ef">using</span> System.Web.Mvc;
+    <span style="color:#66d9ef">using</span> System.Web.Routing;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MvcApplication</span> : System.Web.HttpApplication
+    {
+        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AutofacConfig.RegisterDependies();
+        }
+    }
+}
+</code></pre></div>
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Autofac%20%e4%b8%80%e7%a8%aeIOC%e5%ae%b9%e5%99%a8&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f
+			&title=Autofac%20%e4%b8%80%e7%a8%aeIOC%e5%ae%b9%e5%99%a8&summary=%e5%89%8d%e8%a8%80%20%e6%8e%a5%e7%ba%8c%e4%b9%8b%e5%89%8d%e6%8f%90%e5%88%b0%e7%9a%84IOC%20%e6%8e%a7%e5%88%b6%e5%8f%8d%e8%bd%89%20%26amp%3b%20DI%20%e4%be%9d%e8%b3%b4%e6%b3%a8%e5%85%a5%e5%92%8cRepostitory%20Pattern%ef%bc%8c%e5%9c%a8Controller%e4%b8%ad%e6%8f%90%e4%be%9b%e4%ba%86Repository%e4%bb%8b%e9%9d%a2%e7%9a%84%e5%bb%ba%e6%a7%8b%e5%bc%8f%ef%bc%8c%e6%8e%a5%e4%b8%8b%e4%be%86%e5%b0%b1%e4%be%86%e4%bb%8b%e7%b4%b9%e5%a6%82%e4%bd%95%e5%9c%a8%e7%b6%b2%e7%ab%99%e5%95%9f%e5%8b%95%e7%9a%84%e6%99%82%e5%be%8c%ef%bc%8c%e5%88%a9%e7%94%a8IOC%e5%ae%b9%e5%99%a8%e6%8a%8a%e4%bb%8b%e9%9d%a2%e6%b3%a8%e5%85%a5%0a%e9%a6%96%e5%85%88%e9%80%8f%e9%81%8eNuGet%e5%ae%89%e8%a3%9dAutofac%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f1.bp.blogspot.com%2f-ntFr0enXaqk%2fU46KMynHIaI%2fAAAAAAAABXk%2fB81ttCgQGnQ%2fs1600%2f01.NuGet.png%29%0a%e5%9b%a0%e7%82%ba%e6%98%afMVC%e5%b0%88%e6%a1%88%ef%bc%8c%e6%89%80%e4%bb%a5%e9%82%84%e8%a6%81%e5%86%8d%e8%a3%9d%e4%b8%80%e5%80%8bMVC%e6%95%b4%e5%90%88%e5%a5%97%e4%bb%b6%20%5d%28http%3a%2f%2f2.bp.blogspot.com%2f-7rOCvs9AgLQ%2fU46KQfEB8II%2fAAAAAAAABXs%2fP4WQJ1sUg5E%2fs1600%2f02.MVCPAckage.png%29%0a%e4%be%9d%e7%85%a7%e6%85%a3%e4%be%8b%e5%9c%a8App_Start%e8%b3%87%e6%96%99%e5%a4%be%e4%b8%8b%e6%96%b0%e5%a2%9e%e4%b8%80%e5%80%8bAutofacConfig%20namespace%20WebApplication1%20%7b%20using%20Autofac%3b%20using%20Autofac.Integration.Mvc%3b%20using%20System.Reflection%3b%20using%20System.Web.Mvc%3b%20public%20class%20AutofacConfig%20%7b%20public%20static%20void%20RegisterDependies%28%29%20%7b%20ContainerBuilder%20builder%20%3d%20new%20ContainerBuilder%28%29%3b%20builder.RegisterControllers%28Assembly.GetExecutingAssembly%28%29%29%3b%20builder.RegisterAssemblyTypes%28Assembly.GetExecutingAssembly%28%29%29%20.Where%28x%20%3d%26amp%3bgt%3b%20x.Namespace.EndsWith%28%26%2334%3bRepositories%26%2334%3b%29%29%20.AsImplementedInterfaces%28%29%3b%20IContainer%20container%20%3d%20builder.Build%28%29%3b%20DependencyResolver.SetResolver%28new%20AutofacDependencyResolver%28container%29%29%3b%20%7d%20%7d%20%7d%20%e5%9c%a8Global%e7%9a%84Application_Start%e4%ba%8b%e4%bb%b6%e4%b8%ad%e5%95%9f%e7%94%a8Autofac%20namespace%20WebApplication1%20%7b%20using%20System.Web.Mvc%3b%20using%20System.Web.Routing%3b%20public%20class%20MvcApplication%20%3a%20System.Web.HttpApplication%20%7b%20protected%20void%20Application_Start%28%29%20%7b%20AreaRegistration.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Autofac%20%e4%b8%80%e7%a8%aeIOC%e5%ae%b9%e5%99%a8&amp;body=Check out this site http%3a%2f%2fexample.org%2fposts%2f2014%2f06%2fautofac-%25E4%25B8%2580%25E7%25A8%25AEioc%25E5%25AE%25B9%25E5%2599%25A8%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
